@@ -1,0 +1,16 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    background: #000;
+    color: #DDD;
+    text-align: center;
+    width: 100vw;
+    padding: 5px 0 3px 0;
+    font-size: 0.9rem;
+    div {
+        margin: 0 auto;
+        @media only screen and (min-width: 1776px) {
+            display: inline;
+          }
+    }
+}

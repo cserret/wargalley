@@ -1,0 +1,79 @@
+.body, html {
+    overflow-x: hidden;
+}
+
+.block-hidden {
+    display: none;
+}
+
+.index {
+  overflow: hidden;
+  max-width: 100%;
+  max-height: 100vh;
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    .index-title {
+      font-size: 3rem;
+      font-family: serif;
+      padding: 2rem 1rem;
+    }
+
+    /*
+<div className="links">
+    <Link to="/efs">
+        <div className="link">
+            <img src={logo} alt="logo" width="109" height="150" />
+            <div>Fan site for GMT's East Front Series</div>
+        </div>
+    </Link>
+</div>
+*/
+
+    .links {
+      margin: 2rem;
+      a {
+        text-decoration: none;
+      }
+      .link {
+        display: flex;
+        img {
+           box-shadow: 1px 1px 1px 1px rgba(140,140,140,1), 2px 2px 1px 1px rgba(130,130,130,1), 3px 3px 1px 1px rgba(140,140,140,1), 4px 4px 1px 1px rgba(110,110,110,1);
+        }
+        div {
+          border: 1px solid black;
+          display: inline-block;
+          border-radius: 0.4rem;
+          line-height: 4.1rem;
+          margin: 3rem 1rem 2rem 2rem;
+          padding: 0 2rem;
+          background-image: linear-gradient(#ececfd, #b1b1c2);
+          cursor: pointer;
+          &:hover {
+            background-image: linear-gradient(#f5f5ff, #c1c1d2);
+          }
+          &:active {
+            background-image: linear-gradient(#acaccd, #717192);
+          }
+          span {
+            position: relative;
+            top: 1px;
+            font-size: 1.5rem;
+            color: black;
+            text-decoration: none;
+            &:active {
+                color: yellow;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+a:active,
+a:hover {
+    outline: 0;
+}

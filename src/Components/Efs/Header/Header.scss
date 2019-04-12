@@ -1,0 +1,126 @@
+.header {
+  width: 100vw;
+
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.3);
+  background: #82202a;
+  .subheader {
+    padding-top: 0.8rem;
+    position: relative;
+
+    .intro {
+      text-align: center;
+      color: #fedd02;
+
+      max-width: 100vw;
+
+      max-height: 29px;
+      transform: scaleY(1.1);
+      span {
+        font-size: 2.5rem;
+        color: #dd0;
+        letter-spacing: 0.01rem;
+        font-weight: bold;
+        .tm {
+          font-size: 1.4rem;
+          position: relative;
+          top: -0.75rem;
+          left: 0.4rem;
+          color: white;
+        }
+      }
+    }
+
+    .optional-title {
+      display: none;
+    }
+    .intro2 {
+      font-size: 1.4rem;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      padding: 1.4rem 0 0.4rem 0;
+      position: relative;
+      left: -0.65rem;
+    }
+    .flags {
+      position: absolute;
+      right: 2%;
+      bottom: 4.5rem;
+      display: flex;
+      width: 12%;
+      min-width: 200px;
+      max-width: 250px;
+      justify-content: space-between;
+
+      img {
+        width: 3vw;
+        height: calc((47 / 70) * 3vw);
+        max-width: 70px;
+        max-height: 47px;
+        min-width: calc(70px * 0.8);
+        min-height: calc(47px * 0.8);
+        //width: 4rem;
+        //height: 2.7rem;
+        cursor: pointer;
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+      }
+    }
+    .translation-attrib {
+        color: white;
+        position: absolute;
+        top: 0.5rem;
+        right: 2.2rem;
+        font-size: 1rem;
+        @media only screen and (max-width: 1600px) {
+            top: 0.15rem;
+            right: 1.6rem;
+            font-size: 0.8rem;
+          }
+    }
+
+    .appmenu {
+      background: black;
+      color: white;
+
+      padding: 0.4rem 0 0.25rem 0;
+      font-size: 1.2rem;
+      .line1 {
+        width: 86%;
+        margin: auto;
+        display: flex;
+        justify-content: space-evenly;
+        padding-bottom: 0.15rem;
+        border-bottom: 0.15rem solid #82202a;
+      }
+      .line2 {
+        width: 86%;
+        margin: auto;
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 0.25rem;
+      }
+      a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        cursor: pointer;
+        &:hover {
+          color: #dd0;
+        }
+        &:active {
+          color: cyan;
+        }
+      }
+    }
+  }
+}
+
+_:-ms-lang(x),
+.header .appmenu .line1,
+.header .appmenu .line2 {
+  flex: 1 auto;
+}
+_:-ms-lang(x),
+.appmenu line1 {
+  width: 80% !important;
+}

@@ -1,0 +1,66 @@
+.efs {
+  font-family: arial, helvetica, sans-serif;
+  .content {
+      margin-bottom: 100px;
+    .content-title {
+      display: flex;
+      font-size: 2rem;
+      font-weight: bold;
+      padding: 2rem 0 1rem 2rem;
+      div:nth-child(1) {
+        margin-right: 0.5rem;
+      }
+      div:nth-child(2) {
+        flex-grow: 1;
+        position: relative;
+        top: -0.4rem;
+        border-bottom: 2px solid black;
+      }
+    }
+    .clipart {
+      margin: auto;
+      width: auto;
+      text-align: center;
+      padding-bottom: 0.6rem;
+      img {
+        max-height: 400px;
+        height: auto;
+      }
+    }
+    p {
+      font-size: 1.3rem;
+      width: 96%;
+      margin: 0 auto;
+      padding: 0.5rem 0 0.6rem 0;
+    }
+    .subheader {
+        padding-top: 2rem;
+        font-size: 1.6rem;
+        font-weight: bold;
+    }
+    .gray-box {
+        clear: all;
+        background-color: #edeeed;
+        display: inline-block;
+        margin: 0.8rem 0 0 5rem;
+        font-size: 1.3rem;
+        padding: 0 1rem 0.8rem 0;
+        border: 1px solid #555;
+        .subsubheader {
+          font-weight: bold;
+          position: relative;
+          top: 0.2rem;
+        }
+        ul {
+            list-style: none;
+            position: relative;
+            margin: 0;
+         }
+         ul li:before {
+            content: "•";
+            font-size: 110%; /* or whatever */
+            padding-right: 15px;
+         }
+    }
+  }
+}
