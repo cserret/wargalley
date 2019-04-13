@@ -7,7 +7,9 @@ const Weather = (props) => {
         <div className="content">
 
             <div className="content-title">
-                <div>WEATHER</div>
+                <div className={props.language === 'en' ? '' : 'block-hidden'}>WEATHER</div>
+                <div className={props.language === 'fr' ? '' : 'block-hidden'}>MÉTÉO</div>
+                <div className={props.language === 'ru' ? '' : 'block-hidden'}>ПОГОДА</div>
                 <div></div>
             </div>
 

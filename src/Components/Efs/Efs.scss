@@ -1,7 +1,45 @@
 .efs {
   font-family: arial, helvetica, sans-serif;
   .content {
-      margin-bottom: 100px;
+    margin-bottom: 100px;
+
+    .comment-boxes {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin: 10px;
+      > div {
+        margin: 10px;
+      }
+    }
+
+    .title_img_comment_box {
+      margin-left: 50%;
+      transform: translateX(-50%);
+      display: inline-block;
+      text-align: center;
+      flex-direction: row;
+      justify-content: center;
+      background: #eeeeee;
+      border: 1px solid black;
+      padding: 4px;
+      .title {
+        font-weight: bold;
+        font-size: 1.3rem;
+        text-align: center;
+        padding: 5px 0 7px 0;
+      }
+      .image {
+        text-align: center;
+        width: auto;
+      }
+      .comment {
+        padding: 5px 10px;
+        font-size: 1.1rem;
+        white-space: nowrap;
+      }
+    }
+
     .content-title {
       display: flex;
       font-size: 2rem;
@@ -10,7 +48,7 @@
       div:nth-child(1) {
         margin-right: 0.5rem;
       }
-      div:nth-child(2) {
+      div:last-child {
         flex-grow: 1;
         position: relative;
         top: -0.4rem;
@@ -34,33 +72,94 @@
       padding: 0.5rem 0 0.6rem 0;
     }
     .subheader {
-        padding-top: 2rem;
-        font-size: 1.6rem;
-        font-weight: bold;
+      padding-top: 2rem;
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+    .subheader1_4 {
+      padding-top: 2rem;
+      padding-bottom: 0.5rem;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    .subsubheader2 {
+      padding-top: 1rem;
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
     }
     .gray-box {
-        clear: all;
-        background-color: #edeeed;
-        display: inline-block;
-        margin: 0.8rem 0 0 5rem;
-        font-size: 1.3rem;
-        padding: 0 1rem 0.8rem 0;
-        border: 1px solid #555;
-        .subsubheader {
-          font-weight: bold;
-          position: relative;
-          top: 0.2rem;
-        }
-        ul {
-            list-style: none;
-            position: relative;
-            margin: 0;
-         }
-         ul li:before {
-            content: "•";
-            font-size: 110%; /* or whatever */
-            padding-right: 15px;
-         }
+      clear: all;
+      background-color: #edeeed;
+      display: inline-block;
+      margin: 0.8rem 0 0 5rem;
+      font-size: 1.3rem;
+      padding: 0 1rem 0.8rem 0;
+      border: 1px solid #555;
+      .subsubheader {
+        font-weight: bold;
+        position: relative;
+        top: 0.2rem;
+      }
+      ul {
+        list-style: none;
+        position: relative;
+        margin: 0;
+      }
+      ul li:before {
+        content: "•";
+        font-size: 110%; /* or whatever */
+        padding-right: 15px;
+      }
     }
+  }
+  /*
+  <div className="gray-box">
+  <p className="subsubheader">COLOR CODES</p>
+  <div className="two-column-flex">
+      <div className="color-code-image"><img src={c1} alt="attack factor is red" /></div>
+      <div className="color-code-text">
+          <div><span>Attack factor is red:</span> Armored unit.</div>
+          <div><span>Movement in red box:</span> Unit is motorized.
+      </div>
+  </div>
+</div>
+*/
+
+  .two-column-flex {
+    display: flex;
+    .color-code-image img {
+      width: 80px;
+      height: 80px;
+      margin-left: 2rem;
+    }
+    .color-code-text {
+      margin: auto 0 auto 2rem;
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+  .spacer0_5rem {
+    height: 0.5rem;
+  }
+  .spacer1rem {
+    height: 1rem;
+  }
+  .spacer1_5rem {
+    height: 1.5rem;
+  }
+  .spacer2rem {
+    height: 2rem;
+  }
+  .spacer2_5rem {
+    height: 2.5rem;
+  }
+  .spacer3rem {
+    height: 3rem;
+  }
+  section {
+    width: 90%;
+    margin: auto;
   }
 }

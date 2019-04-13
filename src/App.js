@@ -13,6 +13,15 @@ class App extends Component {
                     <Switch>
                         <Route exact path='/' component={Index} />
                         <Route exact path='/efs' component={Efs} />
+                        <Route exact path='/efs/overview' component={Efs} />
+                        <Route exact path='/efs/units' component={Efs} />
+                        <Route exact path='/efs/sop' component={Efs} />
+                        <Route exact path='/efs/supply' component={Efs} />
+                        <Route exact path='/efs/movement' component={Efs} />
+                        <Route exact path='/efs/combat' component={Efs} />
+                        <Route exact path='/efs/airpower' component={Efs} />
+                        <Route exact path='/efs/headquarters' component={Efs} />
+                        <Route exact path='/efs/special' component={Efs} />
                         <Route exact path='/efs/weather' component={Efs} />
                     </Switch>
 

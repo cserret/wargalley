@@ -58,33 +58,33 @@ export default class Header extends Component {
                             <Link to="/efs">HOME</Link>
                             <Link to="/efs/overview">OVERVIEW</Link>
                             <Link to="/efs/units">UNITS</Link>
-                            <Link id="/efs/sop" to="/">SEQUENCE OF PLAY</Link>
+                            <Link to="/efs/sop">SEQUENCE OF PLAY</Link>
                             <Link to="/efs/supply">SUPPLY</Link>
                             <Link to="/efs/movement">MOVEMENT</Link>
                         </div>    
                         <div className="line2">
-                            <Link id="/efs/combat" to="/combat">COMBAT</Link>
+                            <Link to="/efs/combat">COMBAT</Link>
                             <Link to="/efs/airpower">AIRPOWER</Link>
                             <Link to="/efs/headquarters">HEADQUARTERS</Link>
-                            <Link id="/efs/sop" to="/special">SPECIAL UNITS</Link>
+                            <Link to="/efs/special">SPECIAL UNITS</Link>
                             <Link to="/efs/weather">WEATHER</Link>
                         </div> 
                     </div>
 
                     <div className={this.props.language === 'fr' ? 'appmenu' : 'block-hidden'}>
                         <div className="line1">
-                            <Link id="/efs" to="/">HOME</Link>
+                            <Link to="/">HOME</Link>
                             <Link to="/efs/overview">APERÇU</Link>
                             <Link to="/efs/units">UNITÉS</Link>
-                            <Link id="/efs/sop" to="/">SÉQUENCE DE JEU</Link>
+                            <Link to="/efs/sop">SÉQUENCE DE JEU</Link>
                             <Link to="/efs/supply">RAVITAILLEMENT</Link>
                             <Link to="/efs/movement">MOUVEMENT</Link>
                         </div>    
                         <div className="line2">
-                            <Link id="/efs/combat" to="/combat">COMBAT</Link>
+                            <Link to="/efs/combat">COMBAT</Link>
                             <Link to="/efs/airpower">AVIATION</Link>
                             <Link to="/efs/headquarters">QUARTIERS GÉNÉRAUX</Link>
-                            <Link id="/efs/sop" to="/special">UNITÉS SPECIALES</Link>
+                            <Link to="/efs/special">UNITÉS SPECIALES</Link>
                             <Link to="/efs/weather">METEO</Link>
                         </div> 
                     </div>
@@ -94,18 +94,18 @@ export default class Header extends Component {
 
                     <div className={this.props.language === 'ru' ? 'appmenu' : 'block-hidden'}>
                         <div className="line1">
-                            <Link id="/efs" to="/">HOME</Link>
+                            <Link to="/">HOME</Link>
                             <Link to="/efs/overview">Обзор</Link>
                             <Link to="/efs/units">Части</Link>
-                            <Link id="/efs/sop" to="/">Последовательность игры</Link>
+                            <Link to="/efs/sop">Последовательность игры</Link>
                             <Link to="/efs/supply">Снабжение</Link>
                             <Link to="/efs/movement">Движение</Link>
                         </div>    
                         <div className="line2">
-                            <Link id="/efs/combat" to="/combat">Бой</Link>
+                            <Link to="/efs/combat">Бой</Link>
                             <Link to="/efs/airpower">Авиация</Link>
                             <Link to="/efs/headquarters">Штабы</Link>
-                            <Link id="/efs/sop" to="/special">Специальные части</Link>
+                            <Link to="/efs/special">Специальные части</Link>
                             <Link to="/efs/weather">Погода</Link>
                         </div> 
                     </div>
