@@ -1,0 +1,37 @@
+.content {
+  .example {
+    &.example1 {
+      width: 1100px;
+      @media only screen and (max-width: 1300px) {
+        width: 900px;
+      }
+    }
+    &.example2 {
+        width: 1300px;
+        @media only screen and (max-width: 1300px) {
+            width: 900px;
+          }
+      }
+    margin-left: 2%;
+    .example-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+      padding-left: 1.3rem;
+      padding-bottom: 0.4rem;
+    }
+    img {
+      width: 400px;
+      height: auto;
+    }
+    div:nth-child(2) {
+      
+      margin: auto 0 auto 2rem;
+      @media only screen and (max-width: 1300px) {
+        .minor {
+            font-size: 1rem;
+        }
+      }
+    }
+  }
+}
