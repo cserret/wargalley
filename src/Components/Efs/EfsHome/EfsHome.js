@@ -105,45 +105,45 @@ const EfsHome = (props) => {
                     <div className={props.language === 'ru' ? 'contents-title' : 'block-hidden'}>СОДЕРЖАНИЕ</div>
                     <span className={props.language === 'en' ? '' : 'block-hidden'}>
                     <ul>
-                        <li><Link to="./overview">Overview</Link></li>
-                        <li><Link to="./units">Units</Link></li>
-                        <li><Link to="./sop">Sequence of Play</Link></li>
-                        <li><Link to="./supply">Supply</Link></li>
-                        <li><Link to="./movement">Movement</Link></li>
-                        <li><Link to="./combat">Combat</Link></li>
-                        <li><Link to="./airpower">Airpower</Link></li>
-                        <li><Link to="./headquarters">Headquarters</Link></li>
-                        <li><Link to="./special">Special Units</Link></li>
-                        <li><Link to="./weather">Weather</Link></li>
+                        <li><Link to="./efs/overview">Overview</Link></li>
+                        <li><Link to="./efs/units">Units</Link></li>
+                        <li><Link to="./efs/sop">Sequence of Play</Link></li>
+                        <li><Link to="./efs/supply">Supply</Link></li>
+                        <li><Link to="./efs/movement">Movement</Link></li>
+                        <li><Link to="./efs/combat">Combat</Link></li>
+                        <li><Link to="./efs/airpower">Airpower</Link></li>
+                        <li><Link to="./efs/headquarters">Headquarters</Link></li>
+                        <li><Link to="./efs/special">Special Units</Link></li>
+                        <li><Link to="./efs/weather">Weather</Link></li>
                     </ul>
                     </span>
                     <span className={props.language === 'fr' ? '' : 'block-hidden'}>
                     <ul>
-                        <li><Link to="./overview">Aperéu</Link></li>
-                        <li><Link to="./units">Unités</Link></li>
-                        <li><Link to="./sop">Sequence De Jeu</Link></li>
-                        <li><Link to="./supply">Ravitaillement</Link></li>
-                        <li><Link to="./movement">Mouvement</Link></li>
-                        <li><Link to="./combat">Combat</Link></li>
-                        <li><Link to="./airpower">Aviation</Link></li>
-                        <li><Link to="./headquarters">Quartiers Généraux</Link></li>
-                        <li><Link to="./special">Unités Spéciales</Link></li>
-                        <li><Link to="./weather">Météo</Link></li>
+                        <li><Link to="./efs/overview">Aperéu</Link></li>
+                        <li><Link to="./efs/units">Unités</Link></li>
+                        <li><Link to="./efs/sop">Sequence De Jeu</Link></li>
+                        <li><Link to="./efs/supply">Ravitaillement</Link></li>
+                        <li><Link to="./efs/movement">Mouvement</Link></li>
+                        <li><Link to="./efs/combat">Combat</Link></li>
+                        <li><Link to="./efs/airpower">Aviation</Link></li>
+                        <li><Link to="./efs/headquarters">Quartiers Généraux</Link></li>
+                        <li><Link to="./efs/special">Unités Spéciales</Link></li>
+                        <li><Link to="./efs/weather">Météo</Link></li>
                     </ul>
                     </span>
 
                     <span className={props.language === 'ru' ? '' : 'block-hidden'}>
                     <ul>
-                        <li><Link to="./overview">Обзор</Link></li>
-                        <li><Link to="./units">Части</Link></li>
-                        <li><Link to="./sop">Последовательность игры</Link></li>
-                        <li><Link to="./supply">Снабжение</Link></li>
-                        <li><Link to="./movement">Движение</Link></li>
-                        <li><Link to="./combat">Бой</Link></li>
-                        <li><Link to="./airpower">Авиация</Link></li>
-                        <li><Link to="./headquarters">Штабы</Link></li>
-                        <li><Link to="./special">Специальные части</Link></li>
-                        <li><Link to="./weather">Погода</Link></li>
+                        <li><Link to="./efs/overview">Обзор</Link></li>
+                        <li><Link to="./efs/units">Части</Link></li>
+                        <li><Link to="./efs/sop">Последовательность игры</Link></li>
+                        <li><Link to="./efs/supply">Снабжение</Link></li>
+                        <li><Link to="./efs/movement">Движение</Link></li>
+                        <li><Link to="./efs/combat">Бой</Link></li>
+                        <li><Link to="./efs/airpower">Авиация</Link></li>
+                        <li><Link to="./efs/headquarters">Штабы</Link></li>
+                        <li><Link to="./efs/special">Специальные части</Link></li>
+                        <li><Link to="./efs/weather">Погода</Link></li>
                     </ul>
                     </span>
 
