@@ -1,4 +1,15 @@
 .content {
+  .rations {
+      margin: 1vw auto;
+      width: 80%;
+      
+      img {
+          height: 20vw;
+          min-height: 200px;
+          max-height: 500px;
+          width: auto;
+      }
+    }
   .example {
       border: 1px solid black;
       padding: 1rem 1vw;

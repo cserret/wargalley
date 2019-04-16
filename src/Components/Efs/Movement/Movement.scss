@@ -1,0 +1,91 @@
+.content {
+    .road-signs {
+        img {
+            height: 30vw;
+            max-height: 500px;
+            min-height: 300px;
+            width: auto;
+        }
+    }
+    .unit-examples {
+        width: 98%;
+        margin: auto;
+        padding-top: 1rem;
+        .unit-example {
+            text-align: center;
+            margin: 1.5rem 0.1rem;
+            font-size: 1rem;
+            img {
+                height: 90px;
+                width: auto;
+                @media only screen and (min-width: 1900px) {
+                    height: 100px;
+              }
+            }
+            :nth-child(2) {
+                font-weight: bold;
+                
+                @media only screen and (min-width: 2000px) {
+                        font-size: 1.3rem;
+                  }
+            }
+            :nth-child(3) {
+                @media only screen and (min-width: 2000px) {
+                    font-size: 1.5rem;
+              }
+            }
+
+        }
+    }
+    .movement-phases {
+        padding-top: 1.8rem;
+        font-size: 1.3rem;
+        display: inline-block;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        .phases {
+            padding-top: 0.3rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            flex-direction: row;
+            img {
+                width: 31px;
+                height: 26px;
+                margin: 1px 8px 0 10px;
+            }
+        }
+        .axis {
+            padding: 0.5rem 1rem 0.4rem 0.7rem;
+            background-color: #B8BFC3;
+            border-bottom: 2px dotted rgba(0,0,0,0.3);
+        }
+        .soviet {
+            padding: 0.5rem 1rem 0.4rem 0.7rem;
+            background-color: #FC9F62;
+            border-top: 2px dotted rgba(0,0,0,0.3);
+        }
+    }
+}
+
+/*
+                <div className="movement-phases">
+                    <div class="axis">
+                        <div>The order of phases for the Axis player is:</div>
+                        <div className="phases">
+                            <div>Regular Movement</div>
+                            <div>Combat</div>
+                            <div>Motorized Movement</div>
+                        </div>
+                    </div>
+                    <div class="soviet">
+                        <div>The order of phases for the Soviet player is:</div>
+                        <div className="phases">
+                            <div>Motorized Movement</div>
+                            <div>Combat</div>
+                            <div>Regular Movement</div>
+                        </div>
+                    </div>
+                </div>
+                */

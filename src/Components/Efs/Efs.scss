@@ -5,6 +5,9 @@
   }
   .content {
     margin-bottom: 100px;
+    .slight-bold {
+        text-shadow: 0 0 0 rgba(0,0,0,0.7);
+    }
     .italic {
         font-style: italic;
     }
@@ -161,7 +164,11 @@
           width: auto;
       }
   }
-
+  .generic-flex-space-around {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
   .two-column-flex {
     display: flex;
     .color-code-image img {

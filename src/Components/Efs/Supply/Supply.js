@@ -7,6 +7,8 @@ import general_supply_example3 from "../../../images/efs/supply/general_supply_e
 import supply_mud from "../../../images/efs/supply/supply_mud.gif";
 import supply_snow from "../../../images/efs/supply/supply_snow.gif";
 import supplystrip from "../../../images/efs/supply/supplystrip.gif"
+import germanrations_pic from "../../../images/efs/supply/germanrations_pic.jpg"
+import sovietrations from "../../../images/efs/supply/sovietrations.jpg"
 import './Supply.scss';
 
 
@@ -127,6 +129,10 @@ const Supply = (props) => {
                 <p>
                     A Railroad Net (for the Axis, all rail hexes used must be "converted") can bring supply to any units on that railroad, or deliver the supply to the start of a road net or LOC. The railroad can be of any length to a supply source (the ultimate supply source is usually a map edge hex). If the railroad enters a hex with a main road or motorway road also in it, then the supply can be extended along that road 21 hexes from the point where the railroad meets that road. A "Road Net" consists of a Main Road or a Motorway (not Minor Roads). If a unit is on that "supply" road, then it is in supply. But usually a unit won't be on the road. In that case a LOC needs to reach to the unit for it to be deemed in General Supply. The LOC can be up to 7 hexes. The path of General Supply cannot enter an enemy occupied hex, cannot go through a hex with an enemy zone of control (ZOC) unless there is also a friendly combat unit in the hex.
              </p>
+             <div className="generic-flex-space-around rations">
+             <img src={germanrations_pic} />
+             <img src={sovietrations} />
+             </div>
                 <p>
                     Supply sources are identified in the scenario instructions. Typically they are a map edge, or range of hexes on a map edge, or a port. The Soviets also get to use Major City Hexes as a source of General Supply.
                  </p>
@@ -136,6 +142,10 @@ const Supply = (props) => {
                 <p>
                     Un rèseau ferroviaire (pour l'Allemand, tous les hexs de rails doivent avoir ètè "convertis") peut amener du ravitaillement è toutes les unitès sur cette voie ferrèe, ou amener du ravitaillement au dèbut d'un rèseau routier ou d'une LOC. La voie ferrèe peut ètre d'une longueur illimitèe (la source de ravitaillement ultime est gènèralement un hex au bord de la carte). Si la voie ferrèe entre dans un hex contenant ègalement une route principale ou une autoroute, alors le ravitaillement peut ètre ètendu è 21 hexs le long de cette route, è partir de l'intersection de la voie ferrèe et de la rout e. Un "Rèseau Routier" est composèe de Routes Principales ou d'Autoroutes (pas de Routes Mineures). Si une unitè est sur cette "route de ravitaillement", alors elle est ravitaillèe. Mais en gènèral, une unitè ne sera pas sur une route. Dans ce cas, une LOC doit ètre tracèe jusqu'è l'unitè pour qu'elle soit en ravitaillement gènèral. La LOC peut faire jusqu'è 7 hexs de long. Le chemin du Ravitaillement Gènèral ne peut pas entrer dans un hex occupè par l'ennemi, et ne peut pas traverser un hex en Zone de Contrèle ennemie (ZOC) è moins qu'une unitè de combat amie ne se trouve dans cet hex.
                 </p>
+                <div className="generic-flex-space-around rations">
+             <img src={germanrations_pic} />
+             <img src={sovietrations} />
+             </div>
                 <p>
                     Les sources de ravitaillement sont identifièes dans les instructions du scènario. Gènèralement ce sont des hexs au bord de la carte, ou un ensemble d'hexs au bord de la carte, ou un port. Les Soviétiques peuvent aussi utiliser leurs hexs de Villes Majeures comme source de Ravitaillement Gènèral.
 
@@ -146,6 +156,10 @@ const Supply = (props) => {
                 <p>
                     russian text
             </p>
+            <div className="generic-flex-space-around rations">
+             <img src={germanrations_pic} />
+             <img src={sovietrations} />
+             </div>
                 <p>
                     russian text
             </p>
@@ -731,6 +745,171 @@ Exception : la cavalerie ne subit pas cette pènalitè de -2.</li>
                     </ul>
                 </div>
             </div>
+
+
+
+
+
+
+            <div className="spacer2rem" />
+
+            <span className={props.language === 'en' ? '' : 'block-hidden'}>
+                <div className="subheader-image">
+                    <div>Attack Supply</div>
+                    <img src={supplystrip} alt="supply counters" />
+                </div>
+                <p>
+                Attack Supply is <span className="b">not required to conduct combat</span>. However, units that attack without Attack Supply suffer the following negative effects.  
+            </p>
+            </span>
+
+            <span className={props.language === 'fr' ? '' : 'block-hidden'}>
+                <div className="subheader-image">
+                    <div>Ravitaillement d'Attaque</div>
+                    <img src={supplystrip} alt="supply counters" />
+                </div>
+                <p>
+                Le Ravitaillement d'Attaque <span className="b">n'est pas obligatoire pour combattre</span>. Par contre, les unitès qui attaquent sans Ravitaillement d'Attaque subissent les effets nègatifs suivants.            
+            </p>
+            </span>
+
+            <span className={props.language === 'ru' ? '' : 'block-hidden'}>
+                <div className="subheader-image">
+                    <div>Поставка атаки</div>
+                    <img src={supplystrip} alt="supply counters" />
+                </div>
+                <p>
+                Soviet text           
+            </p>
+            </span>
+
+
+
+
+
+
+
+
+
+
+
+            <div className={props.language === 'en' ? '' : 'block-hidden'}>
+                <div className="gray-box">
+                    <p className="subsubheader">Effects of attacking without Attack Supply:</p>
+                    <ul>
+                        <li>+2 die modifier on combat table roll.</li>
+                        <li>Artillery cannot provide support.</li>
+                        <li>Results marked with * on the combat table cause additional losses to the attacker.</li>
+                        <li>German panzer or German motorized divisions do not get the Divisional Integrity Bonus in an attack if any of its
+member units participating in the attack are OOS, unless they are given Attack Supply for that attack.</li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+            <div className={props.language === 'fr' ? '' : 'block-hidden'}>
+                <div className="gray-box">
+                    <p className="subsubheader">Effets d'une attaque sans Ravitaillement d'Attaque:</p>
+                    <ul>
+                        <li>un modificateur de +2 sur le jet dè de la Table de Combat.</li>
+                        <li>L'artillerie ne peut pas fournir de soutien.</li>
+                        <li>Les rèsultats avec un * sur la table de combat entraènent des pertes supplèmentaires pour l'attaquant.</li>
+                        <li>Les divisions de panzers ou motorisèes Allemandes qui sont OOS (mème si une seule des unitès de la division est OOS) n'obtiennent pas le bonus d'intègritè divisionnaire si leur attaque ne reèoit pas de Ravitaillement d'Attaque.</li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+            <div className={props.language === 'ru' ? '' : 'block-hidden'}>
+                <div className="gray-box">
+                    <p className="subsubheader">Эффекты атаки без Поставка атаки</p>
+                    <ul>
+                        <li>Russian text</li>
+                        <li>Russian text</li>
+                        <li>Russian text</li>
+                        <li>Russian text</li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div className="spacer1_5rem"/>
+            <div className={props.language === 'en' ? '' : 'block-hidden'}>
+                <p>
+                To use Attack Supply for a combat all units that are participating in the attack, including any artillery units, must be able to trace a LOC (7 or 5 hexes, depending on the current General Supply LOC length) to the Attack Supply unit, either a Mobile Supply counter or a Supply Dump. The Attack Supply point is consumed (either remove the Mobile Supply counter, or flip a Supply Dump back over to its Mobile Supply side), and then the attack can proceed as a Combat Supplied attack. It doesn't matter if you have only one unit attacking or 20 with 4 artillery units providing support - 1 attack uses 1 Attack Supply, but you might have to use 2 (or more) in order to reach every attacking unit. Of course, its a good idea to have your Attack Supply close enough so that it reaches all attacking units so you only need to spend 1 Attack Supply. 
+                </p><p>
+                Note that when the odds are 9-1 or greater, the expenditure of Attack Supply is usually not necessary. 
+                </p><p>
+                A Attack Supply counter has two sides to it. One side is the Mobile Attack Supply unit. The other side is a Attack Supply Dump. Mobile Attack Supply units can move on their own, or be transported by rail. If you have two Mobile Attack Supply units in the same hex, they can be flipped to a single Attack Supply Dump. If you wish to move a Attack Supply Dump, then you have to sacrifice a point of Attack Supply by simply flipping the Attack Supply Dump to its Mobile Attack Supply side, then you can move it. You can not later turn this single unit back to its Attack Supply Dump unless it is joined by another Mobile Attack Supply unit later. Once you make the decision to flip a dump to its mobile side, you lose that point of Attack Supply. 
+                </p><p>
+                Attack Supply units cannot be captured. If the hex they are in is entered by an enemy unit, the Attack Supply is removed from the map. 
+                </p><p>
+                Both sides get a maximum number of Attack Supply counters to use in each scenario (except some training scenarios). This is a hard limit, you can not add more Attack Supply counters beyond this limit (although you're free to create dumps as much as you can with the available Mobile Supply units). Each side gets a certain maximum number of Mobile Attack Supply units that can be brought onto the map each turn. If all Attack Supply counters are on the map, then you don't get to bring any new ones onto the map. Typically, the Axis are constantly expending their Attack Supply, and therefore have a constant stream of Mobile Attack Supply units entering the map, often by rail. The Soviets, since they usually don't attack too often, sometimes get "maxxed" out on their Attack Supply units because the limit of Attack Supply units allocated to them are all on the map waiting to get used. 
+                </p><p>
+                For example, lets say your Attack Supply allotment is 4 Attack Supply points a turn. If, on a turn, you only have 1 Attack Supply unit available to be brought in (because the rest are on the map), then you bring only 1 in (the one available, even though you qualify for 4). They do not accumulate to the next turn. The next turn you can still only bring in the set maximum of 4 again. 
+                </p><p>
+                For the Axis, its important to keep attacking (in good odds attacks) and expending your Attack Supply. You don't want to get "maxed" out on Attack Supply sitting on the map because it probably means you are not using your troops effectively enough. Get them up front and attacking. Especially the panzer divisions. An idle panzer division is a bad thing.
+                </p>
+            </div>
+
+
+
+
+
+            <div className={props.language === 'fr' ? '' : 'block-hidden'}>
+                <p>
+                Pour pouvoir utiliser du Ravitaillement d'Attaque lors d'un combat, toutes les unitès participant è cette attaque, y compris les unitès d'artillerie, doivent ètre capables de tracer une LOC (7 ou 5 hexs, en fonction de la longueur actuelle de la LOC pour le Ravitaillement Gènèral) jusqu'è l'unitè de Ravitaillement d'Attaque, que ce soit une unitè de Ravitaillement Mobile ou un Dèpèt de Ravitaillement. Le Point de Ravitaillement d'Attaque est dèpensè (retirez le pion Ravitaillement Mobile de la carte, ou retournez le pion Dèpèt sur son cètè Mobile), ensuite l'attaque est rèsolue en ètant considèrèe comme Ravitaillèe pour le Combat. Il n'y a aucune diffèrence si vous attaquez avec une seule unitè ou avec 20 et 4 unitès d'artillerie en soutien - une attaque utilise 1 Ravitaillement d'Attaque, mais il est possible que vous en utilisiez deux (ou plus) de faèon è pouvoir atteindre chaque unitè de l'attaque. Bien sèr, c 'est toujours une bonne idèe d'avoir votre Ravitaillement d'Attaque suffisamment proche de faèon è ne dèpenser qu'un seul point par attaque. 
+                </p><p>
+                Notez que lorsque le rapport est supèrieur ou ègal è 9-1, la dèpense de Ravitaillement d'Attaque n'est pas forcèment nècessaire. 
+                </p><p>
+                Un pion Ravitaillement d'Attaque è deux faces. Une face reprèsente l'unitè de Ravitaillement Mobile, l'autre face reprèsente un Dèpèt de Ravitaillement. Les unitès de Ravitaillement Mobiles peuvent se dèplacer seules, ou prendre le train. Si vous avez deux unitès de Ravitaillement Mobiles dans le mème hex, vous pouvez en retourner une pour la transformer en Dèpèt (et retirer l'autre de la carte). Si vous souhaitez dèplacer un Dèpèt de Ravitaillement, alors vous devez sacrifier un point de Ravitaillement d'Attaque en retournant le pion Dèpèt sur son cètè Mobile, ensuite vous pouvez le dèplacer. Vous ne pourrez pas ensuite remettre cette unitè sur son cètè Dèpèt, è moins qu'elle ne soit rejointe plus tard par une autre unitè de Ravitailleme nt Mobile. Lorsque vous prenez la dècision de retourner un Dèpèt sur son cètè Mobile, vous perdez un point de Ravitaillement d'Attaque. 
+                </p><p>
+                Les unitès de Ravitaillement d'Attaque ne peuvent pas ètre capturèes. Si des unitès ennemies entrent dans leur hex, alors le Ravitaillement d'Attaque est retirè de la carte. 
+                </p><p>
+                Les deux camps ont un nombre maximum de pions de Ravitaillement d'Attaque è utiliser au cours de chaque scènario (sauf pour certains scènarios d'entraènement). Ceci est une limite absolue, vous ne pouvez pas utiliser plus de pions de Ravitaillement d'Attaque que cette limite (bien que vous soyez libre de crèer autant de Dèpèts que vous voulez avec les pions de Ravitaillement Mobile disponibles). Chaque camp obtient un nombre maximal d'unitès de Ravitaillement Mobiles pouvant entrer sur la carte au cours de chaque tour. Si tous les pions de Ravitaillement d'Attaque sont sur la carte, alors vous ne pouvez pas en faire entrer d'autres. Gènèralement, les Allemands dèpensent constamment leur Ravitailleme nt d'Attaque, et par consèquent, ils ont un flux constant d'unitès de Ravitaillement Mobiles qui entrent sur la carte, souvent en train. Les Soviétiques, comme gènèralement ils n'attaquent pas trop souvent, sont parfois au maximum d'unitès de Ravitaillement d'Attaque parce que toutes les unitès qui leur ont ètè allouèes sont sur la carte et attendent d'ètre utilisèes. 
+                </p><p>
+                Par exemple, disons que votre capacitè de Ravitaillement d'Attaque est de 4 points par tour. Si au tour 10 vous n'avez qu'un seul point de Ravitaillement d'Attaque pouvant entrer en jeu (parce que tous les autres sont sur la carte), alors vous pouvez le faire entrer et les trois autres sont perdus. Ils ne s'accumulent pas d'un tour è l'autre. Au tour suivant, vous pourrez toujours faire entrer un maximum de 4 points. 
+                </p><p>
+                Pour les Allemands, il est important d'èconomiser vos attaques (attaquer avec un bon rapport de forces) et la dèpense de votre Ravitaillement d'Attaque. Vous ne devriez pas vous retrouver avec le maximum de pions Ravitaillemen t d'Attaque en jeu, sinon cela voudrait dire que vous n'utilisez pas vos troupes de faèon suffisamment efficace. Faites les monter au front et attaquez, surtout avec les panzer divisions. Une panzer division qui ne fait rien est une mauvaise chose.
+                </p>
+            </div>
+
+
+
+
+
+
+            <div className={props.language === 'ru' ? '' : 'block-hidden'}>
+                <p>
+                Russian text
+                                </p><p>
+                                Russian text 
+                </p><p>
+                Russian text 
+                </p><p>
+                Russian text 
+                </p><p>
+                Russian text 
+                </p><p>
+                Russian text 
+                </p><p>
+                Russian text
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
