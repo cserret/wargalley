@@ -1,4 +1,45 @@
 .content {
+    .header-1-image {
+        :nth-child(1) {
+            margin-top: auto;
+            position: relative;
+            top: 4px;
+            font-size: 1.3rem;
+        }
+        :nth-child(2) {
+            height: 250px;
+            width: auto;
+            margin-left: 2rem;
+        }
+        &.infiltration {
+            img {
+                border: 1px solid black;
+            }
+        }
+    }
+    .header-2-image {
+        :nth-child(1) {
+            margin-top: auto;
+            position: relative;
+            top: 4px;
+            font-size: 1.3rem;
+        }
+        :nth-child(2) {
+            margin-top: auto;
+            margin-left: 1.5rem;
+            height: 70px;
+            width: auto;
+        }
+        :nth-child(3) {
+            height: 200px;
+            width: auto;
+            margin-left: 2rem;
+        }
+    }
+    .bare-ul {
+        margin: 0.3rem 0 0 2%;
+        padding: 0;
+    }
     .road-signs {
         img {
             height: 30vw;
