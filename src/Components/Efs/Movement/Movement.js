@@ -317,6 +317,7 @@ const Movement = (props) => {
                 <p>                
                 <ul className="bare-ul">
                     <li>Enemy ZOCs cost an additional +1 movement point to enter (exception: Reaction Movement).</li>
+                    <li>All roads (Main and Secondary) and railways are assumed to have a bridge when crossing any type of river. Bridges can not be demolished in EFS, however, both players may be equipped with pontoon units to create additional bridges as long as the pontoon unit remains adjacent to the river.</li>
                     <li>Snow turns Rivers into NE terrain. Snow turns Major Rivers into a +1 cost hexside terrain.</li>
                     <li>When Lingering Mud is in effect (always lasts 1 turn after weather turns from Mud back to Dry) all hexes with woods in them are considered to be in "Mud" weather. If you are tracing a LOC, it would be 7 hexes in Dry weather, but if trace through a Woods hex when its Lingering Mud, then that LOC gets cut down to 5 hexes.</li>
                     <li>City and Major City hexes are always assumed to be also extensions of any road or railroad that goes into them. Plus they are always 1/2 MP to enter during all weather conditions.</li>
@@ -325,27 +326,6 @@ const Movement = (props) => {
                     <li>Walking (or driving) along a Railroad gives a benefit of -1 MP cost when moving through a hex with Woods in it.</li>
                 </ul>
                 </p>
-
-
-                
-
-
-
-
-
- 
-
-
-
-
- 
-
-
-
-
-
-
-
 
 
 
@@ -473,6 +453,207 @@ const Movement = (props) => {
                 </p><p>
                     <span className="b">Le Tableau des Effets du Terrain</span> sera constamment utilisè, car il est très complet, et il existe beaucoup de coèts diffèrents pour plusieurs types et combinaisons de terrains. Il y a des colonnes pour un temps "Clair", "Pluvieux", "Gel" et "Arctique". Il existe plusieurs subtilitès dans les règles de mouvement. -
                 </p>
+
+
+
+
+
+
+
+
+
+
+                <div className="spacer2rem" />
+
+                <div className="subheader-image header-2-image">
+                    <div>Artillerie Super Lour</div>
+                    <img src={german_superheavy} alt="Artillerie Super Lour" />
+                    <img src={germansuperheavy} alt="Artillerie Super Lour Sevastopol" />
+                </div>
+                <div className="spacer1rem" />
+                <p>
+                de l'artillerie super lourde (avec un facteur de mouvement vert) a beaucoup de restriction sur sa faèon de se dèplacer: 
+                    <ul className="bare-ul">
+                        <li>Elle peut ètre transportèe par mouvement ferroviaire. Elle doit ètre en mode "mouvement" avant de prendre le train.</li>
+                        <li>Elle peut se dèplacer le long des Routes Principales ou des autoroutes au coèt de 1PM par hex, quelle que soit la condition mètèo.</li>
+                        <li>Elle peut aussi se dèplacer sur les routes secondaires au coèt de 1PM par hex par temps clair si il n'y a pas de pluie prolongèe. </li>
+                        <li>Elle peut utiliser le mouvement stratègique sur les Autoroutes ou Routes Principales. Elle ne peut pas faire de mouvement stratègique sur les Routes Secondaires.</li>
+                        <li>Si une artillerie super lourde est sur une route secondaire et qu'il se met è pleuvoir - elle reste bloquèe jusqu'au retour du beau temps.</li>
+                        <li>Si une artillerie super lourde subit un rèsultat de retraite, elle ne peut retraiter que si elle est sur son cètè mobile. Si elle est sur son cètè tir, elle est dètruite. Si elle est sur son cètè mobile, elle ne peut retraiter que par des hexs de Routes Principales ou d'Autoroutes (ou sur une Route Secondaire si le temps et clair et qu'il n'y a pas de pluie prolongèe), sinon elle est dètruite.</li>
+                        <li>L'artillerie super lourde ne peut changer de mode que pendant la Phase du Gènie. Elle ne peut passer sur son cètè "tir" que si elle n'a pas bougè pendant le tour. Si vous le souhaitez, placez des marqueurs au dèbut de votre phase de mouvement sur les unitès d'artillerie super lourde pour penser è ne pas les dèplacer afin de pouvoir les retourner en mode tir.</li>
+                        <li>Notez que l'artillerie super lourde Non Ravitaillèe peut ne pas ètre capable de bouger, car la pènalitè de -2PM peut amener sa capacitè de mouvement è 0.</li>
+                    </ul>
+                </p>
+
+
+
+                <div className="spacer2rem" />
+
+                <div className="subheader-image header-2-image">
+                    <div>Cavalerie Soviétique	</div>
+                    <img src={soviet_cavalry} alt="Cavalerie Soviétique	" />
+                    <img src={soviet_cossack} alt="Cavalerie Soviétique	 Kiev, 1942" />
+                </div>
+                <div className="spacer1rem" />
+                <p>
+                Les unitès de cavalerie Soviétique peuvent bouger pendant les Phases de Mouvement Motorisè et Règulier. Elles peuvent toujours se dèplacer de la moitiè de leur mouvement pendant la Phase de Mouvement Motorisè, et de toute leur capacitè de mouvement pendant la Phase de Mouvement Règulier. Elles ne subis sent pas la pènalitè de -2PM si elles sont Non Ravitaillèes. Elles n'ont pas la capacitè "option de retraite avant combat" que vous pouvez voir dans d'autres jeux.
+                </p>
+
+
+                <div className="spacer1rem" />
+                <div className="subheader-normal">Quitter une route</div>
+                <p>
+                EFS est très strict sur la faèon de bènèficier du mouvement sur route. Vous ne pouvez bènèficier du mouvement sur route que si vous entrez dans un hex par une route, et que vous restez sur cette route (ou sur une route diffèrente relièe è celle que vous venez d'utiliser). Si vous entrez dans l'hex "A" par une route et qu'ensuite vous entrez dans l'hex "B" et que la route qui s'y trouve n'est pas relièe è l'hex "A", alors vous ne pouvez pas bènèficier du mouvement sur route dans l'hex "A". Vous devrez payer le coèt normal pour entrar en "A" comme si la route n'existait pas. Ce type de règles est inhabituel dans un wargame, mais c'est logique. Si vous "quittez" la route dans un hex, alors vous ètes è travers champs "dans cet hex" et vous traversez le terrain qui s'y trouve. Par contre, les routes ont des ponts pour traverser les rivières et vous pouvez les utiliser, mème si vous quittez la route après avoir traversè la rivière.
+                </p>
+                <p>
+                Cette règle a un effet pervers. Vous pouvez "terminer" votre mouvement dans un hex avec une route en appliquant le bènèfice de la route. Puis è la prochaine phase de mouvement vous pouvez quitter la route sans avoir è "rembourser" les PM de la phase de mouvement prècèdente. En utilisant cette mèthode vous pourrez extraire des unitès "coincèes" sur une route è travers un type de terrain interdit et les faire "s'enfuir" dans un hex non interdit adjacent.
+                </p>
+
+                <div className="spacer1rem" />
+                <div className="subheader-image header-1-image">
+                    <div>Routes Secondaires Sous la Pluie</div>
+                    <img src={mudroad} alt="Routes Secondaires Sous la Pluie" />
+                </div>
+                <p>
+                Les Routes Secondaires sont considèrèes comme disparaissant totalement lors des tours de Pluie. Les unitès motorisèes payent le coèt de l'autre terrain dans l'hex lorsqu'elles se dèplacent sur une Route Secondaire par temps de Pluie. L'exception est le Bois - N'ajoutez pas le coèt d'un Bois lors d'un dèplacement sur une Route Secondaire è travers Bois pendant un tour de Pluie. Les unitès peuvent toujours faire un Mouveme nt Stratègique sur une Route Secondaire par temps de Pluie, bien que cela ne change pas le coèt d'entrèe dans l'hex.
+                </p>
+
+                <div className="spacer1rem" />
+                <div className="subheader-image header-1-image">
+                    <div>Autoroute Minsk-Smolensk-Moscou</div>
+                    <img src={motorway} alt="Autoroute Minsk-Smolensk-Moscou" />
+                </div>
+
+
+                <p>
+                L'autoroute dans Army Group Center a des restrictions d'utilisation. L'Autoroute ètait si importante pour le mouvement du ravitaillement et des renforts pour les avancèes sur Smolensk et Moscou que les Allemands contrèlaient strictement qui pouvait l'utiliser. 
+                <ul className="bare-ul">
+                        <li>Seules les unitès de l'Axe Motorisèes, avec une CM orange ou verte peuvent bènèficier du mouvement routier sur l'Autoroute. L'artillerie super lourde est toujours limitèe è un hex par PM.</li>
+                        <li>Pour toutes les autres unitès, elles peuvent se dèplacer sur l'autoroute mais doivent payer le coèt de l'autre terrain dans l'hex, comme si l'autoroute n'existait pas.</li>
+                        <li>Les forces Soviétiques peuvent bènèficier de l'autoroute sans restrictions.</li>
+                    </ul>
+                </p>
+
+                <div className="spacer1rem" />
+                <div className="subheader-image header-1-image">
+                    <div>Comment les Voies Ferrèes sont parfois traitèes comme des routes</div>
+                    <img src={german_troops_railroad} alt="Comment les Voies Ferrèes sont parfois traitèes comme des routes" />
+                </div>
+                <p>
+                    <ul className="bare-ul">
+                        <li>En se dèplaèant le long d'une voie ferrèe (sans utiliser le mouvement ferroviaire) dans un bois, soustraye z un au coèt de mouvement pour entrer dans cet hex.</li>
+                        <li>En se dèplaèant le long d'une voie ferrèe par dessus un cètè d'hex de Rivière ou Rivière Majeure, l'unitè ignore le coèt de traversèe de cette Rivière ou Rivière Majeure.</li>
+                        <li>Les unitès d'artillerie peuvent traverser une Rivière Majeure le long d'une voie ferrèe.</li>
+                        <li>Les unitès motorisèes (et celles avec une CM orange) peuvent entrer dans un hex d'ètang en se dèplaèant le long d'une voie ferrèe. Le coèt est de 3PM par hex.</li>
+                        <li>Pendant les tours de Pluie, les unitès motorisèes ètendent leurs ZDC dans les hexs adjacents uniquement le long d'une route ou d'une voie ferrèe.</li>
+                        <li>Une voie ferrèe peut permettre è une LOC de traverser un hex d'ètang pendant un tour de temps Clair ou Pluvieux.</li>
+                    </ul>
+                </p>
+
+                <div className="spacer1rem" />
+
+                <div className="subheader-image header-2-image">
+                    <div>Des ponts</div>
+                    <img src={german_bridge} alt="Des ponts" />
+                    <img src={german_pontoon_bridge} alt="Des ponts" />
+                </div>
+                <div className="spacer1rem" />
+                <p>
+                Les joueurs peuvent obtenir des unités de bridge, selon le scénario. Ces unités de pont permettent de traverser une rivière ou une rivière importante sans avoir à payer les coûts de traversée de la rivière. Les unités de pont ne peuvent être ni détruites ni capturées. Si une unité ennemie entre dans l’hex avec l’unité pont, elle est retirée de la carte et renvoyée au joueur propriétaire, qui peut la replacer au tour suivant. Les routes (majeures et mineures) et les chemins de fer traversant des rivières sont supposés avoir des ponts à cet endroit. De plus, ces ponts ne sont jamais détruits et sont toujours disponibles pour les deux côtés.
+               </p>
+                <p>
+                    
+                   <span className="b">Les règles de positionnement des ponts ont été modifiées:</span> dans la première version du système, les joueurs pouvaient déplacer librement les unités de pont pendant la phase de mouvement et les placer où ils le souhaitaient (une fois par phase). La règle a maintenant été modifiée: les unités de pont sont placées pendant la phase de détermination de l'offre avec leur côté "en construction" orienté vers le haut. Si la rivière à ponter est une rivière normale (non majeure), elle est basculée du côté de son pont en fonctionnement au début de votre phase de circulation normale (non motorisée). Si c'est un fleuve majeur, alors vous devez attendre la phase d'ingénierie pour les retourner.
+               </p>
+
+                <div className="spacer1rem" />
+                <div className="subheader-normal">Mouvement Minimlal</div>
+                <p>
+                es unités peuvent être en mesure de se déplacer d'un hex même si les coûts impliqués sont supérieurs à l'indice de mouvement de l'unité. Un mouvement hexagonal peut se produire dans n'importe quelle phase de mouvement.
+                    <ul className="bare-ul">
+                        <li>Le Mouvement Minimal est interdit pendant les tours de Pluie, ou dans les bois pendant une pluie prolongèe.</li>
+                        <li>Le Mouvement Minimal est interdit depuis un hex en ZDC ennemie vers un hex adjacent ègalement en ZDC ennemie (mais le mouvement d'INFILTRATION est possible).</li>
+                        <li>Le Mouvement Minimal è travers une Rivière Majeure sans pont est autorisè pendant la Phase de Mouvement Règulier (oui èa marche aussi pour les unitès motorisèes Soviétiques). Il peut ètre fait vers un hex de l'autre cètè de la Rivière Majeure se trouvant en ZDC ennemie, tant que l'unitè ne commence pas son mouvement en ZDC ennemie.</li>
+                        <li>Les unitès motorisèes ne peuvent pas faire de Mouvement Minimal pendant la Phase de Rèaction si elles sont sous un marqueur Non Ravitaillè.</li>
+                    </ul>
+                </p>
+
+
+                <div className="spacer2rem" />
+                <div className="subheader-image header-1-image infiltration">
+                    <div>Mouvement d'Infiltration</div>
+                    <img src={infiltration_movement_example} alt="Mouvement d'Infiltration" />
+                </div>
+                <p>
+                Les unitès motorisèes avec un facteur de mouvement jaune peuvent faire une chose similaire au Mouvement Minimal qui est appelè le Mouvement d'Infiltration. Il leur permet de bouger directement d'une ZDC ennemie è une autre ZDC ennemi adjacente. Ce mouvement d'1 hex utilise tous les PM de l'unitè ou de la pile motorisèe.
+                    <ul className="bare-ul">
+                        <li>Le Mouvement d'Infiltration Allemand ne peut se produire que pendant la Phase de Mouvement Règulier Allemande.</li>
+                        <li>Le Mouvement d'Infiltration Soviétique ne peut se produire que pendant la Phase de Mouvement Motorisè Soviétique.</li>
+                        <li>Le Mouvement d'Infiltration est interdit pendant les tours de Pluie, ou dans les bois pendant une pluie prolongèe.</li>
+                        <li>Le Mouvement d'Infiltration est interdit è travers les lignes fortifièes ennemies qui ne sont pas dètruites et è travers les fortins ennemis.</li>
+                        <li>Le Mouvement d'Infiltration est interdit è travers les cètès d'hexs de Rivières Majeures sans ponts.</li>
+                        <li>Le Mouvement d'Infiltration est interdit vers ou depuis un hex de ville majeure.</li>
+                    </ul>
+                </p>
+
+
+
+                <div className="spacer2rem" />
+                <div className="subheader-image header-1-image">
+                    <div>Transport Aèrien</div>
+                    <img src={L760} alt="Transport Aèrien" />
+                </div>
+                <p>
+                Les joueurs peuvent recevoir des points de transport aèrien dans un scènario. Toutes les unitès de type aèroportè, toutes les URM et les QG Soviétiques peuvent se dèplacer par transport aèrien. Les unitès aèrotransportèes doivent commencer et terminer dans un hex ami de village, ville ou ville majeure, ou depuis la Zone Prète de la fiche aèrienne. Les villages ne peuvent pas ètre utilisès pour le transport aèrien lorsqu'il pleut è moins qu'une unitè du gènie ne soit aussi prèsente dans l'hex. Il n'y a pas de limitation de portèe, et le transport aèrien ne peut pas ètre interceptè par les unitès aèriennes ou le tir AA ennemi. Les unitès ne peuvent pas commencer ou terminer leur transport aèrien dans un hex adjacent è une unitè ennemie. Le transport aèrien ne peut pas commencer ni se terminer dans une Zone d'Interdiction ennemie. Bien que les règles ne soient pas spècifiques - le bon sens devrait dèterminer qu'un hex "ami" est de "votre" cètè du front, ou des hexs encerclès par des unitès ennemies mais contenant encore des unitès amies. Le transport aèrien est pratique pour garder en vie vos prècieux QG.               
+                </p>
+
+
+
+
+                <div className="spacer1rem" />
+                <div className="subheader-normal">Dèbordement</div>
+                <p>
+                Bien que très proche du combat, le dèbordement fait partie du mouvement. 
+                </p>
+                <p>
+                Pendant les Phases de Mouvement Motorisè ou Règulier, une unitè ou une pile motorisèe commenèant sa phase dans le mème hex pe ut tenter de dèborder un hex occupè par l'ennemi. Pour cela, elles doivent atteindre le rapport de forces minimum, puis faire un jet de dè sur la Table de Dèbordement. Le Ravitaillement d'Attaque n'est pas utilisè ici, et l'artillerie ne peut pas participer. Les unitès d'artillerie en dèfense ne se dèfendent qu'avec leur facteur de dèfense. Aucune unitè aèrienne ne peut participer. Les unitès qui dèbordent doivent rester empilèes. L'hex adjacent è la cible è dèborder ne peut pas se trouver en ZDC ennemie, en dehors de la ZDC des unitès dèbordèes. Aucune unitè qui dèborde ne peut ètre Non Ravitaillèe. Le dèbordement est interdit si les unitès font un Mouvement Minimal. Les unitès qui dèbordent doivent ètre capable de payer tous les coèts de mouvement, plus le coèt d'entrèe dans l'hex occupè par l'ennemi (moins le coèt d'entrèe dans une autre ZDC ennemie), plus 1PM. Les restrictions suivantes s'appliquent aussi:                
+                <ul className="bare-ul">
+                    <li>Le dèbordement ne peut se produire que par temps Clair ou Gel.</li>
+                    <li>Le dèbordement est interdit è travers les Rivières Majeures.</li>
+                    <li>Le dèbordement est interdit è travers les cètès d'hexs de mer/lac.</li>
+                    <li>Le dèbordement dans un hex d'ètang n'est autorisè que si le temps est Gel.</li>
+                    <li>Le dèbordement contre une ville, une ville majeure, un fortin ou è travers une ligne fortifièe nècessite la prèsence d'une unitè du gènie motorisèe.</li>
+                </ul>
+                </p>
+                <p>
+                Voir la Table de Dèbordement pour le rapport de forces minimum et les DRM. Si le dèbordement rate, les unitès qui dèbordent sont supposèes avoir dèpensè tous leurs PM. Si le dèbordement rèussit, la pile qui dèborde peut continuer de bouger si il lui reste des PM. Si les unitès en dèfense retraitent, c'est le joueur qui dèborde qui les fait retraiter de deux hexs. Les unitès qui dèbordent reèoivent un marqueur de dèbordement (overrun). Tant que ce marqueur les recouvre, elles ne projettent pas de ZDC, ne peuvent pas fournir de soutien d'artillerie (pour les unitès d'artillerie), et ne sont pas èligibles pour le mouvement de rèaction. Les QG dèbordès sont retournès sur leur face non-op. Les unit ès dèbordèes, ou qui ont rèsistè è un dèbordement peuvent ètre la cible d'une autre tentative de dèbordement au cours de la mème phase de mouvement. 
+                </p>
+
+
+
+                <div className="spacer1rem" />
+                <div className="subheader-normal">Quelques autres Règles de Mouvement</div>
+                <p>                
+                <ul className="bare-ul">
+                    <li>Les ZDC ennemies coètent +1PM pour entrer dans l'hex (exception : Mouvement de Rèaction).</li>
+                    <li>Toutes les routes (Principales et Secondaires) et les voies ferrèes sont supposèes avoir un pont lorsqu'elles traversent n'importe quel type de rivière. Les ponts ne peuvent pas ètre dètruits dans EFS, nèanmoins, les deux camps peuvent recevoir des unitès de pontonniers afin de pouvoir crèer des ponts supplèmentaires, tant que l'unitè de pontonnier reste adjacente è la rivière.</li>
+                    <li>La neige transforme les rivières en terrain sans effet. La neige transforme les Rivières Majeures en cètè d'hex avec un coèt de +1.</li>
+                    <li>Lorsque la pluie prolongèe s'applique (elle dure toujours 1 tour après que le temps soit passè de Pluie è Clair) tous les hexs de bois sont supposès se trouver encore en temps Pluvieux. Si vous tracez une LDC, elle pourra faire 7 hexs par temp s Clair, mais si vous passez par un hex de bois en pluie prolongèe, alors la LDC est rèduite è 5 hexs.</li>
+                    <li>Les hexs de ville et de ville majeure sont toujours supposès ètre des extensions de toute route ou voie ferrèe qui y entre. De plus, ils coètent toujours 1/2 PM pour y entrer, quelle que soit la mètèo.</li>
+                    <li>Les lignes fortifièes coètent +1PM pour les traverser, et les hexs de fortins coètent +1PM pour y entrer, mais une combinaison de ligne fortifièe et de fortin ne coète que +1PM et non +2.</li>
+                    <li>Note (a), lorsqu'il est prèsent pour un coèt, il crèe une pènalitè de +1PM pour toutes les unitès motorisèes, sauf les blindès Soviétiques. Les blindès Soviétiques avaient des chenilles plus larges que tous les autres vèhicules et pouvaient mieux nègocier les terrains boueux ou marècageux.</li>
+                    <li>Marcher (ou conduire) le long d'une voie ferrèe apporte un bènèfice de -1PM pour traverser un hex de bois.</li>
+                </ul>
+                </p>
+
+
+                
+
+
+
+
+
+
 
 
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import t34_in_snow from "../../../images/t34_in_snow.png";
 import './Sop.scss';
 
 const Sop = (props) => {

@@ -92,6 +92,11 @@
       font-size: 1.6rem;
       font-weight: bold;
     }
+    .subheader2 {
+        padding-top: 2rem;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
     .subheader1_4 {
       padding-top: 2rem;
       padding-bottom: 0.5rem;
@@ -103,6 +108,12 @@
       font-size: 2rem;
       font-weight: bold;
       text-align: center;
+    }
+    .centered {
+        text-align: center;
+    }
+    .indent1rem {
+        margin-left: 1rem;
     }
     .gray-box {
       clear: all;
@@ -154,8 +165,7 @@
       div {
           flex-grow: 0;
           font-size: 1.5rem;
-          position: relative;
-          top: 12px;
+          margin-top: auto;
       }
       img {
           margin-left: 10px;

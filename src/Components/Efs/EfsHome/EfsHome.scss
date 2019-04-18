@@ -6,17 +6,19 @@
     margin: 0 auto;
     border: 1px solid black;
     margin-top: 2rem;
+    background-color: #f5fbff;
+    box-sizing: border-box;
     .notice-title {
       font-size: 1.3rem;
       background: black;
       color: white;
       font-weight: bold;
-
       padding: 1px;
     }
     .content-notice {
       padding: 10px;
       font-size: 1.2rem;
+      
     }
     .linky {
       position: relative;

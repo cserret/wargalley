@@ -758,6 +758,7 @@ Exception : la cavalerie ne subit pas cette pènalitè de -2.</li>
                     <div>Attack Supply</div>
                     <img src={supplystrip} alt="supply counters" />
                 </div>
+                <div className="spacer1rem"/>
                 <p>
                 Attack Supply is <span className="b">not required to conduct combat</span>. However, units that attack without Attack Supply suffer the following negative effects.  
             </p>
@@ -766,6 +767,7 @@ Exception : la cavalerie ne subit pas cette pènalitè de -2.</li>
             <span className={props.language === 'fr' ? '' : 'block-hidden'}>
                 <div className="subheader-image">
                     <div>Ravitaillement d'Attaque</div>
+                    <div className="spacer1rem"/>
                     <img src={supplystrip} alt="supply counters" />
                 </div>
                 <p>
@@ -776,6 +778,7 @@ Exception : la cavalerie ne subit pas cette pènalitè de -2.</li>
             <span className={props.language === 'ru' ? '' : 'block-hidden'}>
                 <div className="subheader-image">
                     <div>Поставка атаки</div>
+                    <div className="spacer1rem"/>
                     <img src={supplystrip} alt="supply counters" />
                 </div>
                 <p>

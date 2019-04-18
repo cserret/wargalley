@@ -1,5 +1,4 @@
 import React from 'react';
-import t34_in_snow from "../../../images/t34_in_snow.png";
 import './Units.scss';
 
 import c10 from "../../../images/efs/units/c10.jpg";
@@ -348,42 +347,42 @@ const Units = (props) => {
                 <div className="subheader1_4">MOTORIZED UNITS</div>
                 <table className="unit-type">
                     <tr>
-                        <td><img src={s4} /></td>
+                        <td><img src={s4} alt="armor" /></td>
                         <td>Armor<span className="red">*</span></td>
 
-                        <td><img src={s5} /></td>
+                        <td><img src={s5} alt="assault gun" /></td>
                         <td>Assault Gun<span className="red">*</span></td>
 
-                        <td><img src={s6} /></td>
+                        <td><img src={s6} alt="armored anti-tank" /></td>
                         <td>Armored Anti-Tank<span className="red">*</span></td>
 
-                        <td><img src={s7} /></td>
+                        <td><img src={s7} alt="recon" /></td>
                         <td>Recon</td>
                     </tr>
                 </table>
 
                 <table className="unit-type">
                     <tr>
-                        <td><img src={s8} alt="s8" /></td>
+                        <td><img src={s8} alt="motorized infantry" /></td>
                         <td>Motorized Infantry</td>
 
-                        <td><img src={s8b} alt="s8b" /></td>
+                        <td><img src={s8b} alt="motorcycle infantry" /></td>
                         <td>Motorcycle Infantry</td>
 
-                        <td><img src={s9} alt="s9" /></td>
+                        <td><img src={s9} alt="motorized border infantry" /></td>
                         <td>Motorized Border Infantry</td>
 
-                        <td><img src={s10} alt="s10" /></td>
+                        <td><img src={s10} alt="motorized combat engineer" /></td>
                         <td>Motorized Combat Engineer</td>
                     </tr>
                 </table>
 
                 <table className="unit-type">
                     <tr>
-                        <td><img src={s11} alt="s11" /></td>
+                        <td><img src={s11} alt="motorized anti-aircraft" /></td>
                         <td>Motorized Anti-Aircraft</td>
 
-                        <td><img src={s12} alt="s12" /></td>
+                        <td><img src={s12} alt="motorized anti-tank" /></td>
                         <td>Motorized Anti-Tank</td>
 
                     </tr>

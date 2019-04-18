@@ -1,5 +1,4 @@
 import React from 'react';
-import t34_in_snow from "../../../images/t34_in_snow.png";
 import german_aircraft_big from "../../../images/efs/overview/german_aircraft_big.jpg";
 import german_artillery_big from "../../../images/efs/overview/german_artillery_big.jpg";
 import german_infantry_division_big from "../../../images/efs/overview/german_infantry_division_big.jpg";
