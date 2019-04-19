@@ -5,6 +5,13 @@
             width: auto;
         }
     }
+    .gray-box.additional-loss {
+        max-width: 1000px;
+        overflow: hidden;
+    }
+    .font14rem {
+        font-size: 11.8rem;
+    }
     .sticky-example {
         margin: 1rem auto;
         padding-bottom: 1rem;
@@ -60,5 +67,128 @@
             border: 1px solid black;
         }
     }
-
+    .bigger-bold-text {
+        font-size: 150%;
+        font-weight: bold;
+        position: relative;
+        top: 11px;
+    }
+    .counter-left {
+        img{
+            height: 80px;
+            width: auto;
+            margin: auto;
+            margin-left: 30px;
+        }
+    }
+    .engineer-attrition {
+        border: 1px solid black;
+        background-color: #ddf;
+        font-size: 1.5rem;
+        padding: 0.7rem;
+        text-align: center;
+        display: inline-block;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        .title {
+            color: #01e;
+            font-style: italic;
+            font-weight: bold;
+        }
+        img {
+            height: 80px;
+            width: auto;
+        }
+        .subtitle {
+            font-weight: bold;
+            font-size: 1.3rem;
+            position: relative;
+            top: -5px;
+            .asterisk {
+                font-size: 1.8rem;
+                position: relative;
+                top: 8px;
+                margin: 0 1px;
+            }
+        }
+        .eatext {
+            padding-top: 4px;
+          text-align: left;
+          font-size: 1.3rem;
+        }
+    }
+    .armor-attrition {
+        border: 1px solid black;
+        background-color: #dd9;
+        font-size: 1.5rem;
+        padding: 0.7rem;
+        text-align: center;
+        display: inline-block;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        .generic-flex-space-around.armor {
+            padding-top: 9px;
+           width: 50%;
+           margin: auto;
+           font-size: 1.2rem;
+           div {
+               margin: auto;
+           }
+           img {
+               height: 90px;
+               width: 90px;
+           }
+        }
+        .title {
+            color: #01e;
+            font-style: italic;
+            font-weight: bold;
+        }
+        img {
+            height: 80px;
+            width: auto;
+        }
+        .subtitle {
+            font-weight: bold;
+            font-size: 1.3rem;
+            position: relative;
+            top: -5px;
+            .asterisk {
+                font-size: 1.8rem;
+                position: relative;
+                top: 8px;
+                margin: 0 1px;
+            }
+        }
+        .aatext {
+          padding: 14px 10px 0 10px;
+          text-align: left;
+          font-size: 1.3rem;
+          .moveup {
+              margin: 0;
+          }
+          .other-notes {
+              font-size: 1.1rem;
+          }
+          .extra {
+              padding: 0.5rem 0 0.4rem 0;
+          }
+        }
+    }
 }
+
+/*
+                <div className="engineer-attrition">
+                    <div className="title">ENGINEER ATTRITION</div>
+                    <div className="subtitle">Asterisk (*) Results and Engineers</div>
+                    <img src={german_engineer} alt="German engineer counter"/>
+                    <div>
+                    If an asterisk was on the combat result, then:<br/>
+                    if Engineering Effects had been declared by the attacker to get a -1 DRM, then:<br/>
+                    combat result of * means - one engineer step lost.<br/>
+                    combat result of 1* means - one engineer step lost (satisfies the numerical loss of 1).
+                    </div>
+                </div>
+                */

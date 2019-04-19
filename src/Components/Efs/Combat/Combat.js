@@ -10,6 +10,10 @@ import german_engineer from "../../../images/efs/combat/german_engineer2.gif";
 import artillery_units from "../../../images/efs/combat/artillery_units.jpg";
 import soviet_artillery_firing from "../../../images/efs/combat/soviet_artillery_firing.jpg";
 import orders_strip from "../../../images/efs/combat/orders_strip.jpg";
+import directhit from "../../../images/efs/combat/directhit.jpg";
+import counter_additional_retreat from "../../../images/efs/combat/counter_additional_retreat.png";
+import counter_no_retreat from "../../../images/efs/combat/counter_no_retreat.png";
+import panzer from "../../../images/efs/combat/panzer.png";
 import './Combat.scss';
 
 const Combat = (props) => {
@@ -177,39 +181,39 @@ const Combat = (props) => {
                     <img src={soviet_artillery_firing} alt="Soviet artillery firing" />
                 </p>
 
-                <div className="spacer2rem"/>
+                <div className="spacer2rem" />
                 <div className="subheader-image artillery">
                     <div>Artillery Support</div>
                     <img src={artillery_units} alt="artillery counters" />
                 </div>
-                <div className="spacer1rem"/>
+                <div className="spacer1rem" />
                 <p>
-                Artillery units need able to reach, by LOS, the Attack Supply being used to supply an attack in order for it to support that attack. If not, they can use additional Attack Supply that they can reach. Non-OOS Artillery units do not use Attack Supply when supporting a defense. OOS Artillery cannot provide defensive support. 
+                    Artillery units need able to reach, by LOS, the Attack Supply being used to supply an attack in order for it to support that attack. If not, they can use additional Attack Supply that they can reach. Non-OOS Artillery units do not use Attack Supply when supporting a defense. OOS Artillery cannot provide defensive support.
                 </p><p>
-                Artillery support values are halved in Mud, or in Lingering Mud in the affected hexes (Woods). Artillery is halved when firing into swamp. 
+                    Artillery support values are halved in Mud, or in Lingering Mud in the affected hexes (Woods). Artillery is halved when firing into swamp.
                 </p><p>
-                The Axis player can add up to 4 artillery units to the attack or defense. An exception is Axis super-heavy artillery, which do not count in the 4 unit max. Additionally, in the defense, Axis super-heavy artillery can only add their support strength in defense of their hex - as long as there is at least one other ground combat unit with it. Axis super-heavy artillery can only provide its support strength to attacks against City, Major City, Fortified Line, or Strongpoint terrain. 
+                    The Axis player can add up to 4 artillery units to the attack or defense. An exception is Axis super-heavy artillery, which do not count in the 4 unit max. Additionally, in the defense, Axis super-heavy artillery can only add their support strength in defense of their hex - as long as there is at least one other ground combat unit with it. Axis super-heavy artillery can only provide its support strength to attacks against City, Major City, Fortified Line, or Strongpoint terrain.
                 </p><p>
-                The Soviet player is usually limited to using 1 maximum artillery unit for an attack or defense. However, artillery units stacked with Headquarters can sometimes allow the Soviet player to use more than 1. See the chart regarding artillery support. 
+                    The Soviet player is usually limited to using 1 maximum artillery unit for an attack or defense. However, artillery units stacked with Headquarters can sometimes allow the Soviet player to use more than 1. See the chart regarding artillery support.
                 </p><p>
-                Artillery values cannot be split for use in more than one combat. 
+                    Artillery values cannot be split for use in more than one combat.
                 </p><p>
-                Artillery must be able to reach the Defender Hex with their range value in order to add support to an attack or defense. Note that artillery that have a range of one will need to be adjacent to the defender hex to participate. 
+                    Artillery must be able to reach the Defender Hex with their range value in order to add support to an attack or defense. Note that artillery that have a range of one will need to be adjacent to the defender hex to participate.
                 </p><p>
-                Artillery support values cannot exceed the ground combat strength of the friendly units involved in a defense or attack. 
+                    Artillery support values cannot exceed the ground combat strength of the friendly units involved in a defense or attack.
                 </p>
 
 
-                <div className="spacer2rem"/>
+                <div className="spacer2rem" />
                 <div className="subheader-image artillery">
                     <div>No Retreat and Additional Retreat orders</div>
                     <img src={orders_strip} alt="orders counters" />
                 </div>
-                <div className="spacer1rem"/>
+                <div className="spacer1rem" />
                 <p>
-                The attacker or defender in a battle may place No Retreat or Additional Retreat orders on units in a battle. An order applies to all the friendly units in that battle, even if it is a multiple-hex combat. The Axis player may always freely issue these orders, but the Soviet player needs to have a Headquarters within Command Range of the units with a non-interdicted Command point to use for issuing the order. An exception for the Soviets are NKVD units. A defender hex in a Town, City, or Major City and with a NKVD unit in it automatically places the hex under the No Retreat order (this is not optional, you are forced), except when within range of a non-op HQ's (see Headquarters page). 
+                    The attacker or defender in a battle may place No Retreat or Additional Retreat orders on units in a battle. An order applies to all the friendly units in that battle, even if it is a multiple-hex combat. The Axis player may always freely issue these orders, but the Soviet player needs to have a Headquarters within Command Range of the units with a non-interdicted Command point to use for issuing the order. An exception for the Soviets are NKVD units. A defender hex in a Town, City, or Major City and with a NKVD unit in it automatically places the hex under the No Retreat order (this is not optional, you are forced), except when within range of a non-op HQ's (see Headquarters page).
 </p><p>
-Orders are placed face down and not revealed until the moment of the combat die roll. The attacker places the orders down first. Except for the case of NKVD units, orders are optional. 
+                    Orders are placed face down and not revealed until the moment of the combat die roll. The attacker places the orders down first. Except for the case of NKVD units, orders are optional.
 </p>
 
 
@@ -220,10 +224,142 @@ Orders are placed face down and not revealed until the moment of the combat die 
 
 
 
+                <div className="gray-box">
+                    <p className="subsubheader">Effects of the No Retreat order</p>
+                    <div className="two-column-flex counter-left">
+                        <img src={counter_no_retreat} alt="counter no retreat order" />
+                        <div>
+                            <ul>
+                                <li>For the Defender under No Retreat order, +1 DRM to the combat die roll. Attacker with No Retreat does not get a DRM.</li>
+                                <li>Units under a No Retreat order change a "R" result to a step loss. Then apply any numerical step loss result. (R turns to a "1", R1 turns to effectively a "2", etc).</li>
+                                <li>In addition, any non-German units suffer an additional step loss unless they are in a city, major city, hill, mountain, alpine, woods, or non-destroyed fortification hex.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="gray-box">
+                    <p className="subsubheader">Effects of the Additional Retreat order</p>
+                    <div className="two-column-flex counter-left">
+                        <img src={counter_additional_retreat} alt="counter additional retreat order" />
+                        <div>
+                            <ul>
+                                <li>Units that get a R result and are under an Additional Retreat order retreat 3 hexes instead of 2. Units can only retreat on a "R" or "Rn" result.</li>
+                                <li>Retreat path is determined by non-owner. Units must be retreated through a path that does not result in step loss, if possible.</li>
+                                <li>Units retreating under Additional Retreat cannot retreat through even one uncontested enemy ZOC. If forced to they are eliminated.</li>
+                                <li>If there is a numerical step loss in addition to the R result, the units suffer one less step loss.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="spacer1rem" />
+                <p>
+                    Usually the defender will be the one using orders most often. The No Retreat order stops units from retreating, but can cost you more step losses. Unless you've got more than two steps in a defender hex, it may be reckless to place a No Retreat order on units. It may be tempting to cause a +1 DRM to the enemy, but you might be handing the enemy a great victory. Additional Retreat orders are quite useful when you actually do want to retreat, and want to cut down on step losses.
+                </p>
+
+                <div className="spacer2rem" />
+                <div className="subheader-image stalin">
+                    <div>Step Losses</div>
+                    <img src={directhit} alt="Direct hit on anti-tank gun" />
+                </div>
+                <div className="spacer1rem" />
+                <p>
+                    A numerical result on the combat results table is the number of step losses that occurred to an attacker and/or defender. The step loss is applied to the total lot of attackers or defenders, not to every individual unit. A unit has from 1 to 4 steps. A combat unit with its highest combat strength of 8 or more have four steps. 5-7 combat strength has three steps. Units with 2 steps have a weaker side on the reverse side of the counter. A unit with only one step has a blank reverse side (or its mobile side in case of super-heavy artillery). Units with 3 or 4 steps require the use of a Step Loss counter to indicate intermediate levels of strength that are not printed on the counter.
+                </p><p>
+                    Units that are eliminated in combat due to step losses, and were not completely surrounded or blocked by impassable terrain, go into the Cadre box for possible rebuilding during the replacement phase, otherwise they go to the eliminated box. Units that were destroyed by an "e" result go into the eliminated box. Units in the elimated box cannot be rebuilt. Exception - killed off Soviet MG/UR units always go back into the MG/UR pool, typically a opaque cup. Specific scenario rules may overrule the Cadre rule or modify it.
+                </p><p>
+                    When a armor or non-Guard artillery unit step is lost (not unit, step) move the marker on the step loss track. When the marker reaches the end of the track, chalk up one VP for the enemy and return the marker to the start of the step loss track. Each Guards step lost gives one VP directly to the enemy.
+                </p><p>
+                    Step losses may be modified by Asterisk (*) results, No Retreat orders, and Additional Retreat orders.
+                </p>
 
 
 
 
+
+
+                <p className="subheader2">Asterisk (<span className="bigger-bold-text">*</span>) Results</p>
+                <p>
+                    The combat results table is peppered with results marked with a asterisk symbol *, called "Asterisk Result" (sometimes called an easier to pronounce "Star Result"). This symbol can have the following effects:
+                <ul>
+                        <li>It can mean an "additional loss" to an attacker (<span className="green-bold">ADDITIONAL LOSS</span>).</li>
+                        <li>It can determine that the first loss distributed MUST be to an engineer or an armor unit. ( <span className="blue-bold">ENGINEER ATTRITION</span> or <span className="red-bold">ARMOR ATTRITION</span>)</li>
+                    </ul>
+                    And, sometimes, both can come into effect.
+                </p>
+
+                <div className="gray-box additional-loss">
+                    <p className="subsubheader"><span className="green-bold">ADDITIONAL LOSS</span> due to Asterisk (<span className="bigger-bold-text">*</span>) Results are activated when any of these conditions apply:</p>
+
+                    <div>
+                        <ul>
+                            <li>If the attack was made without Attack Supply.</li>
+                            <li>If the attack was a Soviet Mandated Attack.</li>
+                            <li>If the attack was against units protected by a non-destroyed Fortification (fortified line, or strongpoint). In the case of attacking across a Fortified Line, all attacking units must have attacked across a fortified line to have <span className="green-bold">ADDITIONAL LOSS</span> occur.</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div className="spacer1rem" />
+                <p>
+                    These asterisk conditions are cumulative for <span className="green-bold">ADDITIONAL LOSS</span>. You could have two * results, or even three * if you hit the trifecta - your attacking force is (1) attacking without Attack Supply, doing so as a (2) Mandated Attacked, and into (3) fortifications.
+                </p><p>
+                    The extra step loss(es) caused by <span className="green-bold">ADDITIONAL LOSS</span> can be applied to any attacking units of your choosing.
+                </p>
+
+                <p className="subheader2">
+                    <span className="blue-bold">ENGINEER ATTRITION</span> and <span className="red-bold">ARMOR ATTRITION</span>
+                </p>
+                <p>
+                    If an asterisk is on the combat results, and there are attacking engineers or armor, then check the following cases to see if they apply:
+                </p>
+                <div className="spacer2rem" />
+
+                <div className="engineer-attrition">
+                    <div className="title">ENGINEER ATTRITION</div>
+                    <div className="subtitle">Asterisk (<span className="asterisk">*</span>) Results and Engineers</div>
+                    <img src={german_engineer} alt="German engineer counter" />
+                    <div className="eatext">
+                        If an asterisk was on the combat result, then:<br />
+                        If Engineering Effects had been declared by the attacker to get a -1 DRM, then:<br />
+                        combat result of * means - one engineer step lost.<br />
+                        combat result of 1* means - one engineer step lost (and satisfies the numerical loss of 1).
+                    </div>
+                </div>
+                
+                <div className="spacer2rem"/>
+
+                <div className="armor-attrition">
+                    <div className="title">ARMOR ATTRITION</div>
+                    <div className="subtitle">Asterisk (<span className="asterisk">*</span>) Results and Armor</div>
+                    <div className="generic-flex-space-around armor">
+                        <img src={panzer} alt="German panzer counter" />
+                        <div>"Armor", as meant here, are units<br />
+                            with an attack value in red.
+                            </div>
+                    </div>
+                        <div className="aatext">
+                            If an asterisk is on the combat result with a numeric loss number, then:<br />
+                            If <span className="italic-bold">all</span> of the following are true:<br />
+                            <ul className="moveup">
+                                <li>If the attacking force contains at least one Armor unit.</li>
+                                <li>The other force has at least one step of any of these: Armor, anti-tank, or AA units.</li>
+                                <li>Engineering effects were not declared.</li>
+                                <li>The combat result contains a asterisk AND a number.</li>
+                            </ul>  
+                            Then -<br/>
+                            combat result of 1* means - one armor step lost (satisfies the numerical loss of 1).<br/>
+                            <div className="extra"><span className="red-bold">ARMOR ATTRITION</span> can occur to attacking, and defending, armor.</div>
+                            <span className="other-notes">
+                                other notes:<br/>
+                                A combat result of only a * does not cause ARMOR ATTRITION.<br/>
+                                If an armored step is lost due to ARMOR ATTRITION, then in the defending force - if they are<br/> losing 1 or more steps also - the first step they lose must be one of either armor, anti-tank, or AA.
+                            </span>
+                        </div>
+                   
+                </div>
 
 
             </span>
