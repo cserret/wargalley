@@ -166,9 +166,11 @@
           flex-grow: 0;
           font-size: 1.5rem;
           margin-top: auto;
+          position: relative;
+          top: 2px;
       }
       img {
-          margin-left: 10px;
+          margin-left: 20px;
           flex-grow: 0;
           height: 60px;
           width: auto;
@@ -230,5 +232,8 @@
   .italic-bold {
       font-style: italic;
       font-weight: bold;
+  }
+  .ul-no-top {
+    margin-block-start: 0;
   }
 }
