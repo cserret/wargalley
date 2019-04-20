@@ -40,7 +40,7 @@ const Overview = (props) => {
                 </span>
             </p>
 
-
+            <div className="spacer1rem"/>
             <div className="title_img_comment_box">
                 <div className="title">GERMAN PANZER DIVISION</div>
                 <div className="image"><img src={german_panzer_division} alt="German panzer division" /></div>
@@ -51,7 +51,7 @@ const Overview = (props) => {
 
                 </div>
             </div>
-
+            <div className="spacer1rem"/>
             <p>
                 <span className={props.language === 'en' ? '' : 'block-hidden'}>
                     In this game system, the panzer division is king. Often a panzer division gets the dual combat benefits of "divisional integrity" and "combined arms", which makes them very combat effective. Add into the mix engineers and air support, and panzer divisions can pretty much chew into any defense the Soviets can put up. But the main problem for the Axis player is that there are not enough panzer divisions, and with the lack of time the Axis has to accomplish their objectives, combined with the problems of getting enough Attack Supply to the front, the Axis player is often forced to put his precious panzer divisions into dangerous situations. How well the Axis player balances the need for victory points with risk to his panzer divisions is what gives this game system its excitement level
@@ -147,12 +147,10 @@ const Overview = (props) => {
                 <div className="image"><img src={soviet_headquarters_big} alt="Soviet Headquarters" /></div>
                 <div className="comment">
                     This Soviet headquarters has a command level of 2.<br />
-                    They vary from 0 to 3. The good headquarters units<br />
-                    need to be protected by stacking them with flak units<br />
-                    to fend off interdiction attempts by Axis aircraft.
+                    They vary from 0 to 3.
                 </div>
             </div>
-
+            <div className="spacer1rem"/>
             <p>
                 <span className={props.language === 'en' ? '' : 'block-hidden'}>
                     Only the Soviets have "headquarter units", and these are required to get non-motorized units to "activate" during the
