@@ -89,7 +89,7 @@
     }
     .subheader {
       padding-top: 2rem;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: bold;
     }
     .subheader2 {
@@ -180,6 +180,11 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+  }
+  .generic-flex-space-start {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
   }
   .two-column-flex {
     display: flex;

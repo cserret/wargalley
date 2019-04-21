@@ -5,7 +5,7 @@
     width: 800px;
     height: 340px;
     border: 1px solid red;
-    background: linear-gradient(to bottom, #cfefff 31%, #e5f9ff 100%);
+    background: linear-gradient(to bottom, #cfefff 31%, #eaf9ff 100%);
     img {
       position: absolute;
       top: 80px;
@@ -56,11 +56,12 @@
     }
   }
   .air-combat-determination-container {
-      position: relative;
-      width: 1190px;
-      margin: 2rem auto;
-      height: 490px;
-      background: linear-gradient(to bottom, #dfefff 31%, #eaf9ff 100%);
+    position: relative;
+    width: 1190px;
+    margin: 2rem auto;
+    height: 520px;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #cfefff 31%, #eaf9ff 100%);
     .air-combat-determination {
       border: 1px solid black;
       box-sizing: border-box;
@@ -78,10 +79,9 @@
         top: 0.25rem;
       }
       .roll-on {
-        border: 1px solid black;
+        border: 1px solid #999;
         display: inline-block;
         padding: 0.3rem 0.6rem;
-        border: 1px solid black;
         margin-top: 2rem;
         margin-bottom: 4rem;
         background-color: white;
@@ -91,21 +91,21 @@
         margin-bottom: 3rem;
         .air-gray-box {
           padding: 0.2rem 0.4rem;
-          border: 1px solid black;
+          border: 1px solid #999;
           background-color: #e4e4f4;
           width: 210px;
           margin: 0 20px;
         }
         .air-white-box {
           padding: 0.2rem 0.4rem;
-          border: 1px solid black;
+          border: 1px solid #999;
           background-color: white;
           width: 210px;
           margin: 0 20px;
         }
         .air-orange-box {
           padding: 0.2rem 0.4rem;
-          border: 1px solid black;
+          border: 1px solid #999;
           background-color: #fcd9c2;
           width: 210px;
           margin: 0 20px;
@@ -120,22 +120,155 @@
         padding: 0.7rem 0;
         margin: 4rem auto 1rem auto;
         width: 700px;
-        border: 1px solid black;
+        border: 1px solid #999;
         background-color: white;
       }
     }
   }
-  /*
-                    <div className="air-combat-determination">
-                    <div className="title">Air Combat Determination</div>
-                    <div className="roll-on">Roll on Air Initiative Table</div>
-                    <div className="row1">
-                        <div className="air-gray-box">Axis Local<br />Tactical Advantage</div>
-                        <div className="air-gray-box">Axis<br />Initiative</div>
-                        <div className="air-white-box">No<br />Air Combat</div>
-                        <div className="air-orange-box">Soviet<br/>Initiative</div>
-                        <div className="air-orange-box">Soviet Local<br/>Tactical Advantage</div>
-                    </div>
+  .air-explanations {
+    display: flex;
+    > :nth-child(1) {
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    > :nth-child(2) {
+      ol {
+        margin-top: 0;
+      }
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      div {
+        flex: 50%;
+      }
+      div:nth-child(even) {
+        border: 1px solid transparent;
+        margin-right: auto;
+        width: 50%;
+      }
+    }
+  }
+  .air-combat-example {
+    display: flex;
+    border: 1px solid black;
+    width: 1000px;
+    padding: 1rem;
+    background-color: #edeeed;
+    div:nth-child(2) {
+      border: 1px solid #e0e1ee;
+      padding: 1rem;
+      background-color: white;
+      box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.1), inset 2px 2px 2px 2px rgba(0, 0, 0, 0.05);
+    }
+  }
+  .subheader-image.antiair {
+    img {
+      height: 300px;
+      width: auto;
+    }
+  }
+  .subheader-normal.no-top {
+    padding-top: 0;
+  }
+  .ul-no-top-bottom {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 3rem;
+  }
+  .generic-flex-space-start {
+      margin-top: 1rem;
+      border: 1px solid black;
+      max-width: 115rem;
+      padding: 1rem;
+      background-color: #edeeed;
+      &.soviet {
+          background-color: #FCD9C2;
+      }
+      >:nth-child(3) {
+          flex: 0 1 auto;
+          height: calc(8vw + 100px);
+          max-height: 300px;
+        
+      }
+     
+      &.heinkel {
+        >:nth-child(3) {
+        flex: 0 1 auto;
+        margin-left: auto;
+        height: calc(8vw + 140px);
+        width: auto;
+        max-height: 320px;
+        }
+      }
+      &.dornier {
+        >:nth-child(3) {
+        flex: 0 1 auto;
+        margin-left: auto;
+        height: calc(8vw + 50px);
+        width: auto;
+        max-height: 260px;
+        }
+      }
+      
+      &.messerschmitt {
+        >:nth-child(3) {
+        flex: 0 1 auto;
+        margin-left: auto;
+        height: calc(8vw + 50px);
+        width: auto;
+        max-height: 260px;
+        }
+      }
+            
+      &.messerschmitt109 {
+        >:nth-child(3) {
+        flex: 0 1 auto;
+        margin-left: auto;
+        height: calc(8vw + 170px);
+        width: auto;
+        max-height: 360px;
+        }
+      }
+      &.sb2 {
+        >:nth-child(3) {
+        flex: 0 1 auto;
+        margin-left: auto;
+        height: calc(8vw + 50px);
+        width: auto;
+        max-height: 240px;
+        }
+      }
+      >div:nth-child(2) {
+          margin-left: 1rem;
+          margin-right: 1rem;
+          max-width: 70rem;
+        }
+      div:nth-child(1) {
+          font-weight: bold;
+          padding: 0 0 0.5rem 0;
+        }
 
-                </div>*/
+      .aircraft-counter {
+          height: 80px;
+          width: auto;
+      }
+    }
 }
+/*
+<div className="air-combat-example">
+<div>
+    <p>
+        It is the Soviet turn, and the Soviet player has flown a CAS mission to a Declared Combat hex. 
+    </p><p>
+        The Soviet player has sent two bombers and a fighter on this mission. 
+    </p><p>
+        The German player decides to send a CAS mission also to the same Declared Combat hex. 
+</p><p>
+        The German player has sent two fighters.
+    </p>
+</div>
+<div>
+    <img src={aircombat_ex1} alt="air combat example 1"/>
+</div>
+</div>*/
