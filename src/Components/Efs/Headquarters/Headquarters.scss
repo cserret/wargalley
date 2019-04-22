@@ -1,70 +1,90 @@
 .content {
-    .top-image {
-        
-        text-align: center;
-        div {
-            padding: 0.3rem 1.7rem;
-            box-sizing: border-box;
-            position: relative;
-            top: -0.3rem;
-            background-color:  #eee;
-            font-size: 1.2rem;
-            width: 845px;
-            text-align: left;
-            margin: auto;
-            border: 1px solid gray;
+  .top-image {
+    text-align: center;
+    div {
+      padding: 0.3rem 1.7rem;
+      box-sizing: border-box;
+      position: relative;
+      top: -0.3rem;
+      background-color: #eee;
+      font-size: 1.2rem;
+      width: 845px;
+      text-align: left;
+      margin: auto;
+      border: 1px solid gray;
+    }
+  }
+  .hq-info-container {
+    width: 840px;
+    height: 255px;
+    padding: 0px 10px 30px 0;
+    margin: auto;
+    border: 1px solid black;
+    overflow: hidden;
+    position: relative;
+    .title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      padding: 10px 0 60px 0;
+    }
+    .operational-side {
+      position: absolute;
+      font-size: 1.5rem;
+      top: 63px;
+      left: 219px;
+    }
+    .non-operational-side {
+      position: absolute;
+      font-size: 1.5rem;
+      top: 63px;
+      left: 572px;
+    }
+    .command-value {
+      position: absolute;
+      font-size: 1.5rem;
+      top: 142px;
+      left: 55px;
+      text-align: center;
+      &.fr {
+      font-size: 1.2rem;
+      }
+    }
+    .recovery-value {
+      position: absolute;
+      font-size: 1.5rem;
+      top: 142px;
+      left: 432px;
+      text-align: center;
+      &.fr {
+          left: 410px;
+        font-size: 1.2rem;
         }
     }
-    .hq-info-container {
-        width: 840px;
-        height: 255px;
-        padding: 0px 10px 30px 0;
-        margin: auto;
-        border: 1px solid black;
-        overflow: hidden;
-        position: relative;
-        .title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-align: center;
-            padding: 10px 0 60px 0;
-        }
-        .operational-side {
-            position: absolute;
-            font-size: 1.5rem;
-            top: 63px;
-            left: 219px;
-        }
-        .non-operational-side {
-            position: absolute;
-            font-size: 1.5rem;
-            top: 63px;
-            left: 572px;
-        }
-        .command-value {
-            position: absolute;
-            font-size: 1.5rem;
-            top: 142px;
-            left: 55px;
-            text-align: center;
-        }
-        .recovery-value {
-            position: absolute;
-            font-size: 1.5rem;
-            top: 142px;
-            left: 432px;
-            text-align: center;
-        }
-        .hq-info {
-            position: absolute;
-        display: flex;
-        justify-content: center;
-  
-        img {
-            margin: 1px 0 4px 230px;
-            box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.3);
-        }
-    }
+    .hq-info {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+
+      img {
+        margin: 1px 0 4px 230px;
+        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3),
+                    2px 2px 2px 2px rgba(0, 0, 0, 0.3),
+                    3px 3px 2px 2px rgba(0, 0, 0, 0.3),
+                    4px 4px 3px 3px rgba(0, 0, 0, 0.2);
+                    border-top: 1px solid #f6b072;
+                    border-left: 1px solid #f6b072;
+                    border-radius: 10px;
+                    overflow: hidden;
+      }
 
     }
+  }
+  .hq-info-container {
+    background: linear-gradient(to bottom, #f1dbc7 31%, #eeddce 100%);
+  }
+  .special1 {
+      position: relative;
+      top: -0.6rem;
+  }
 }
