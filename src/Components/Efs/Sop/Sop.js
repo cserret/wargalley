@@ -98,11 +98,11 @@ const Sop = (props) => {
         }
 
         return (
-            <React.Fragment>
-                <div className={firstClass}>{row['first']}</div>
-                <div className={secondClass}>{row['second']}</div>
-                <div className={thirdClass}>{row['third']}</div>
-                <div className="line" />
+            <React.Fragment key={index}>
+                <div  className={firstClass}>{row['first']}</div>
+                <div  className={secondClass}>{row['second']}</div>
+                <div  className={thirdClass}>{row['third']}</div>
+                <div  className="line" />
             </React.Fragment>
         );
     });

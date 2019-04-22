@@ -1,11 +1,8 @@
 import React from 'react';
-import artillerystrike from "../../../images/efs/supply/artillerystrike.jpg";
 import barrels from "../../../images/efs/supply/barrels.gif";
 import general_supply_example1 from "../../../images/efs/supply/general_supply_example1.jpg";
 import general_supply_example2 from "../../../images/efs/supply/general_supply_example2.jpg";
 import general_supply_example3 from "../../../images/efs/supply/general_supply_example3.jpg";
-import supply_mud from "../../../images/efs/supply/supply_mud.gif";
-import supply_snow from "../../../images/efs/supply/supply_snow.gif";
 import supplystrip from "../../../images/efs/supply/supplystrip.gif"
 import germanrations_pic from "../../../images/efs/supply/germanrations_pic.jpg"
 import sovietrations from "../../../images/efs/supply/sovietrations.jpg"
@@ -130,8 +127,8 @@ const Supply = (props) => {
                     A Railroad Net (for the Axis, all rail hexes used must be "converted") can bring supply to any units on that railroad, or deliver the supply to the start of a road net or LOC. The railroad can be of any length to a supply source (the ultimate supply source is usually a map edge hex). If the railroad enters a hex with a main road or motorway road also in it, then the supply can be extended along that road 21 hexes from the point where the railroad meets that road. A "Road Net" consists of a Main Road or a Motorway (not Minor Roads). If a unit is on that "supply" road, then it is in supply. But usually a unit won't be on the road. In that case a LOC needs to reach to the unit for it to be deemed in General Supply. The LOC can be up to 7 hexes. The path of General Supply cannot enter an enemy occupied hex, cannot go through a hex with an enemy zone of control (ZOC) unless there is also a friendly combat unit in the hex.
              </p>
              <div className="generic-flex-space-around rations">
-             <img src={germanrations_pic} />
-             <img src={sovietrations} />
+             <img src={germanrations_pic} alt="Germans eating rations"/>
+             <img src={sovietrations} alt="Soviets eating rations"/>
              </div>
                 <p>
                     Supply sources are identified in the scenario instructions. Typically they are a map edge, or range of hexes on a map edge, or a port. The Soviets also get to use Major City Hexes as a source of General Supply.
@@ -143,8 +140,8 @@ const Supply = (props) => {
                     Un rèseau ferroviaire (pour l'Allemand, tous les hexs de rails doivent avoir ètè "convertis") peut amener du ravitaillement è toutes les unitès sur cette voie ferrèe, ou amener du ravitaillement au dèbut d'un rèseau routier ou d'une LOC. La voie ferrèe peut ètre d'une longueur illimitèe (la source de ravitaillement ultime est gènèralement un hex au bord de la carte). Si la voie ferrèe entre dans un hex contenant ègalement une route principale ou une autoroute, alors le ravitaillement peut ètre ètendu è 21 hexs le long de cette route, è partir de l'intersection de la voie ferrèe et de la rout e. Un "Rèseau Routier" est composèe de Routes Principales ou d'Autoroutes (pas de Routes Mineures). Si une unitè est sur cette "route de ravitaillement", alors elle est ravitaillèe. Mais en gènèral, une unitè ne sera pas sur une route. Dans ce cas, une LOC doit ètre tracèe jusqu'è l'unitè pour qu'elle soit en ravitaillement gènèral. La LOC peut faire jusqu'è 7 hexs de long. Le chemin du Ravitaillement Gènèral ne peut pas entrer dans un hex occupè par l'ennemi, et ne peut pas traverser un hex en Zone de Contrèle ennemie (ZOC) è moins qu'une unitè de combat amie ne se trouve dans cet hex.
                 </p>
                 <div className="generic-flex-space-around rations">
-             <img src={germanrations_pic} />
-             <img src={sovietrations} />
+             <img src={germanrations_pic} alt="Germans eating rations" />
+             <img src={sovietrations} alt="Soviets eating rations"/>
              </div>
                 <p>
                     Les sources de ravitaillement sont identifièes dans les instructions du scènario. Gènèralement ce sont des hexs au bord de la carte, ou un ensemble d'hexs au bord de la carte, ou un port. Les Soviétiques peuvent aussi utiliser leurs hexs de Villes Majeures comme source de Ravitaillement Gènèral.
@@ -157,8 +154,8 @@ const Supply = (props) => {
                     russian text
             </p>
             <div className="generic-flex-space-around rations">
-             <img src={germanrations_pic} />
-             <img src={sovietrations} />
+             <img src={germanrations_pic} alt="Germans eating rations"/>
+             <img src={sovietrations} alt="Soviets eating rations"/>
              </div>
                 <p>
                     russian text

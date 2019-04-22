@@ -82,6 +82,15 @@
           padding: 0.3rem 0 0.3rem 0;
       }
     }
+    .pdiv {
+        font-size: 1.3rem;
+        width: 96%;
+        margin: 0 auto;
+        padding: 0.5rem 0 0.6rem 0;
+        &.minor {
+            padding: 0.3rem 0 0.3rem 0;
+        }
+    }
     .subheader-normal {
         font-size: 1.3rem;
         font-weight: bold;
