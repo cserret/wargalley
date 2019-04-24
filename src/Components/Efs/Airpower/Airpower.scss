@@ -192,6 +192,9 @@
       &.soviet {
           background-color: #FCD9C2;
       }
+      &.romanian {
+        background-color: #eaf9e2;
+      }
       >:nth-child(3) {
           flex: 0 1 auto;
           height: calc(8vw + 100px);

@@ -15,6 +15,7 @@
     }
   }
   .hq-info-container {
+    background: linear-gradient(to bottom, #f1dbc7 31%, #eeddce 100%);
     width: 840px;
     height: 255px;
     padding: 0px 10px 30px 0;
@@ -80,9 +81,7 @@
 
     }
   }
-  .hq-info-container {
-    background: linear-gradient(to bottom, #f1dbc7 31%, #eeddce 100%);
-  }
+
   .special1 {
       position: relative;
       top: -0.6rem;

@@ -41,6 +41,16 @@ import tb3_counter from "../../../images/efs/airpower/tb3.gif";
 import tb3 from "../../../images/efs/airpower/tb3.jpg";
 import yak1_counter from "../../../images/efs/airpower/yak-1.gif";
 import yak1 from "../../../images/efs/airpower/yak-1.jpg";
+import romanian_iar80 from "../../../images/efs/airpower/romanian_iar80.png";
+import iar80 from "../../../images/efs/airpower/iar_80.png";
+import romanian_potez63 from "../../../images/efs/airpower/romanian_potez63.png";
+import potez631 from "../../../images/efs/airpower/potez631.jpg";
+import romanian_pzl11 from "../../../images/efs/airpower/romanian_pzl11.png";
+import pzl11 from "../../../images/efs/airpower/pzl11.jpg";
+import romanian_pzl37 from "../../../images/efs/airpower/romanian_pzl37.png";
+import pzl37 from "../../../images/efs/airpower/PZL-37.jpg";
+import romanian_sm79 from "../../../images/efs/airpower/romanian_sm79.png";
+import sm79 from "../../../images/efs/airpower/SM_79.jpg";
 
 import './Airpower.scss';
 
@@ -725,6 +735,111 @@ class Airpower extends Component {
                         </div>
 
                     </div>
+
+
+
+                    <div className="pdiv">
+                        <div className="subheader">Romanian Aircraft in EFS</div>
+
+                        <div className="generic-flex-space-start romanian iar80">
+                            <img className="aircraft-counter" src={romanian_iar80} alt="IAR-80" />
+                            <div>
+                                <div>IAR-80</div>
+                                In 1930 the Romanian government issued specifications for a new fighter. The Industria Aeronautică Română (IAR) provided their prototypes,
+                                but lost the competition to the Polish PZL P.11. However, the IAR continued working on their prototypes, and demonstrated the IAR-80 Fighter to the government
+                                in 1939. Its performance was impressive enough to garner a contract for 100 IAR-80s in December 1939, soon followed by a contracts for many more over the 
+                                following years for a total of 346. The plane used a 14 cylinder radial piston engine and was armed with four 7.92mm FN machine guns in the wings.
+                                A Luftwaffe pilot who test flew the IAR-80 concluded that, while not as manueverable as the German BF-109E, it was nevertheless an adequate fighter.
+
+                                </div>
+                            <img src={iar80} alt="IAR-80" />
+                        </div>
+
+
+                        <div className="generic-flex-space-start romanian potez63">
+                            <img className="aircraft-counter" src={romanian_potez63} alt="Potez 63" />
+                            <div>
+                                <div>Potez 63</div>
+                                    Potez 63 was the overall designation for a series of aircraft designed by the Potez company in France, although in 1936 the company was absorbed
+                                    into the National Aircraft Construction Company of the North (SNCAN). These twin engined planes were made for fighter, bomber, and reconnaissance roles.
+                                    These planes had a resemblance to the
+                                    German BF-110, but lacked performance. However manueverability was good and this enabled pilots to often survive dogfights. 
+                                    The Potez aircraft were obsolete by the start
+                                    of the war, but were purchased by many countries in Europe including France, Germany, Hungary, Italy, Poland, Switzerland, Yugoslavia, and Romania..
+                                </div>
+                            <img src={potez631} alt="Potez 63" />
+                        </div>
+
+
+
+                        <div className="generic-flex-space-start romanian pzl11">
+                            <img className="aircraft-counter" src={romanian_pzl11} alt="PZL P.11" />
+                            <div>
+                                <div>PZL P.11</div>
+                                The Warsaw based PZL aircraft manufacture designed in the late 1920s, and production of the P.11 Figher began in 1931. It was very advanced at the time, as it used
+                                an all-metal structure and skin. It had two 7.92mm machine guns mounted on the sides of the fuselage. The engine was mounted on rubber 
+                                vibration absorbers and 
+                                the undercarriage and tail skid were mounted on pneumatic shock absorbers. Using a single "gull" wing that was highly aerodynamically efficient, it soon became 
+                                popularized as the "Polish Wing" or the "Puławski wing" (after the designer). Later models added another pair of machineguns fixed onto the wings.
+                                 Romania was an eager buyer of these planes, and the IAR started
+                                their own production line under license, calling their version the IAR P.11f, using the IAR's own 9Krse engine.
+                                Performance of the plane in dogfights was surprising good, despite being outclassed by modern fighters in most aspects. 
+                                It was claimed that its manuverability was limited only by the ability of the pilot to resist g-forces. In the Polish campaign, the P.11 
+                                proved to be a tough opponent for the German fighters, and although the P.11 suffered severe losses, they took down many German fighters with them. 
+                             </div>
+                            <img src={pzl11} alt="PZL P.11" />
+                        </div>
+
+                        <div className="generic-flex-space-start romanian pzl37">
+                            <img className="aircraft-counter" src={romanian_pzl37} alt="PZL.37 Łoś" />
+                            <div>
+                                <div>PZL.37 "Łoś"</div>
+                                The Polish PZL.37 Łoś (Moose) made a splash in 1936 as the best medium bomber ever designed at the time. It was slightly narrower than other
+                                medium bombers, but because of this was faster and easier to handle, and gained a reputation of being very reliable. It could carry a
+                                relatively heavy bomb load - but the bombs had to be of a specialized shape in order to fit. The fuselage of the plane
+                                was aerodynamically designed to add lift - one of the first plane designs to do so. Its retractable wide wheel carriage, 
+                                with doubled wheels, allowed it to take off and land on rough air strips or even fields and meadows. It had 3 machineguns that provided adequate protection. 
+                                Many countries put in orders for the PZL.37, but Romania was the main purchaser, equipping two squadrons with the plane. 
+                                By 1941 the much admired "Łoś" was still adequate as a bomber, but by then there were better medium bomber designs.
+                                </div>
+                            <img src={pzl37} alt="PZL.37 (Łoś)" />
+                        </div>
+
+
+                        <div className="generic-flex-space-start romanian sm79">
+                            <img className="aircraft-counter" src={romanian_sm79} alt="SM-79" />
+                            <div>
+                                <div>SM-79 "Sparviero"</div>
+                                The Savoia-Marchetti SM.79 Sparviero (Italian for sparrowhawk) was a 3 engined medium bomber, well liked by crews who nicknamed it the
+                                "il gobbo maledetto" ("the damned hunchback") due to its distinctive rounded canopy. Originally designed as a fast 8 passenger plane, it was adapted in 1034 to become a medium bomber.
+                                Although it was a mixed wood/metal tube construction, the "Sparrowhawk" broke many speed records, reaching 460 km/h (286 mph) at 3,790 m (12,430 ft), with the excellent range of 1600 miles. 
+                                Italy's fascist government was very proud of the plane and took every effort to promote it in competitions. 
+                                First used in combat in the Spanish Civil War, it would fly without fighter escort, since no enemy fighter could match its speed at that time.
+                                Over 1000 of these planes were made, mostly for the Italian and Romanian airforces. The plane was rugged and durable, and later in the war was modified to be an effective torpedo-bomber.
+                            
+                                </div>
+                            <img src={sm79} alt="SM-79" />
+                        </div>
+
+                    </div>    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
