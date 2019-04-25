@@ -36,7 +36,7 @@ export default class Efs extends Component {
     }
 
     changeRoute = () => {
-        console.log('changeRoute');
+    
     }
 
     render() {

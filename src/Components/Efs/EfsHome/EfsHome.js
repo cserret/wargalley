@@ -67,7 +67,7 @@ const EfsHome = (props) => {
                     Vance von Borries created <span className="tm">Typhoon!</span> as his first game for a new game system, titled the "EAST FRONT SERIES" (EFS), in 1995. It was an instant
                     hit, and is now out of print and a very desired collectable game, demanding high prices whenever offered. Vance followed
                     up this hit with a series of 3 games, the Barbarossa games, each named after one of 3 army groups of the Axis effort in the
-                    east. The first one is <span className="tm">Army Group South</span>, followed by <span className="tm">Army Group Center</span>, then came <span className="tm">Army Group North</span>.
+                    east. The first one was <span className="tm">Army Group South</span>, followed by <span className="tm">Army Group Center</span>, then came <span className="tm">Army Group North</span>.
                     All 3 games are now out of print. Currently in print are two new additions to the
                     series, <span className="tm">Barbarossa: Kiev to Rostov, 1941</span>, and <span className="tm">Barbarossa: Crimea, 1941-42</span>.
                     </span>
@@ -105,7 +105,7 @@ const EfsHome = (props) => {
                     <div className={props.language === 'ru' ? 'contents-title' : 'block-hidden'}>СОДЕРЖАНИЕ</div>
                     <span className={props.language === 'en' ? '' : 'block-hidden'}>
                     <ul>
-                        <li><Link hoverStyle={{ color: '#DDDD01' }} to="./efs/overview">Overview</Link></li>
+                        <li><Link to="./efs/overview">Overview</Link></li>
                         <li><Link to="./efs/units">Units</Link></li>
                         <li><Link to="./efs/sop">Sequence of Play</Link></li>
                         <li><Link to="./efs/supply">Supply</Link></li>

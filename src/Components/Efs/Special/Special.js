@@ -17,6 +17,7 @@ import flotilla from "../../../images/efs/special/flotilla.jpg";
 import ship from "../../../images/efs/special/ship.png";
 import ship_back from "../../../images/efs/special/ship_back.png";
 import base from "../../../images/efs/special/counter_base.png";
+import counter_zap from "../../../images/efs/special/counter_zap.png";
 import './Special.scss';
 
 export default class Special extends Component {
@@ -27,18 +28,15 @@ export default class Special extends Component {
     }
 
     componentDidMount = () => {
-        console.log('this.props: ', this.props);
         this.drawCanvas(this.props.language);
     }
 
     componentWillReceiveProps = (props) => {
-        console.log('componentWillReceiveProps: ', props);
         this.drawCanvas(props.language);
     }
 
 
     drawCanvas = (language) => {
-        var canvasDiv;
         var canvas;
         var ctx;
         if (language === 'en') {
@@ -488,7 +486,8 @@ export default class Special extends Component {
 
 
                     <div className="spacer2rem" />
-                    <div className="subheader-counter">
+                    <div className="subheader-image">
+                        <span>22.6</span>
                         <div>Militia</div>
                         <img src={militia} alt="Soviet militia counters" />
                     </div>
@@ -504,8 +503,24 @@ export default class Special extends Component {
                         Militia with infantry or cavalry symbols can be removed voluntarily from the map by the Soviet player in the Replacement Phase, which gives the Soviet player 1 "I" Type replacement point. They can only be removed from a hex in General Supply. This exchange is generally a good idea when you've got valuable infantry units you want to build back up.
             </p>
 
-                    <div className="spacer2rem" />
-                    <div className="subheader-counter">
+            <div className="spacer2rem" />
+            <div className="subheader-image">
+                        <span>22.7</span>
+                        <div>Zap units</div>
+                        <img src={counter_zap} alt="Soviet Zap counter" />
+                    </div>
+                    <div className="pdiv">
+                        Zap units represent groups of recruits that are in basic training. They are combat units, and can be used as they are, or used for replacements.
+                        <ul className="ul-no-top">
+                        <li>They can be expended to recreate a unit in the Cadre Box which requires a Type I Replacement. Replace the Zap unit with the cadre unit in the same hex. Place a "Do Not Move One GT" marker on it.
+                        The Do Not Move counter will be removed during the Soviet Engineering Phase.</li>
+                        <li>They can also be used to provide a Type I Replacement to an eligible reduced Soviet unit that is on the map. They unit being built up then gets the "Do Not Move One GT" marker placed on it.</li>
+                        </ul>
+                    </div>
+
+                    <div className="spacer1rem" />
+                    <div className="subheader-image">
+                    <span>22.8</span>
                         <div>Garrisons</div>
                         <img src={garrison} alt="Soviet garrison counters" />
                     </div>
@@ -835,7 +850,7 @@ Ces unités restent cachées jusqu'au moment oé elles sont engagées dans un co
                     Les unités de Milice sont assemblage de troupes combattantes hétérogénes organisées dans l'urgence par les militaires soviétiques. Le joueur russe ne peut les déplacées plus de loin que cinq hexagone de leur placement initial. Si elles sont forcées de faire retraites au-delé, cette restriction n'est plus valable. Contrairement aux unités UR/MG, elles ne sont pas retournées lors d'un mouvement mais seulement lors de combat. Si l'unité est un 0-0-0, elle est définitivement retirées du jeu, lors de l'élimination elle rejoint la table de reconstruction et pas la tasse. Le milice ainsi que la Cavalerie peuvent étre retirée volontairement du jeu durant la phase de renforcement et gagner ainsi un point de reconstruction du type ' I ' (é condition bien sér que l'hexagone oé elle se trouve soit ravitaillé). Cet échange est intéressant pour récupérer des unités de valeur et les renvoyer au feu.
                       </p>
 
-                    <div className="spacer2rem" />
+                    <div className="spacer1rem" />
                     <div className="subheader-counter">
                         <div>Garnison</div>
                         <img src={garrison} alt="Soviet garrison counters" />

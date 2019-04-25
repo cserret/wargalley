@@ -50,7 +50,7 @@ const Overview = (props) => {
 
                         A typical German panzer division consists of one panzer regiment,<br />
                         two motorized infantry regiments, and a recon battalion.
-    
+
                 </div>
                 </div>
             </div>
@@ -168,8 +168,8 @@ const Overview = (props) => {
                             <div className="title">DIVISION D'INFANTERIE ITALIEN</div>
                             <div className="image"><img src={italian_infantry_division} alt="Italian infantry division" /></div>
                             <div className="comment">
-                            Celle-ci a une force d'attaque de 4 et de dèfense de 4.<br />
-                            Elles ont deux "pas".
+                                Celle-ci a une force d'attaque de 4 et de dèfense de 4.<br />
+                                Elles ont deux "pas".
                 </div>
                         </div>
                     </div>
@@ -183,8 +183,8 @@ const Overview = (props) => {
                             <div className="title">DIVISION D'INFANTERIE SLOVAQUE</div>
                             <div className="image"><img src={slovak_infantry_div} alt="Slovak infantry division" /></div>
                             <div className="comment">
-                            Celle-ci a une force d'attaque de 3 et de dèfense de 4.<br />
-                            Elles ont deux "pas".
+                                Celle-ci a une force d'attaque de 3 et de dèfense de 4.<br />
+                                Elles ont deux "pas".
                 </div>
                         </div>
                     </div><div>
@@ -192,8 +192,8 @@ const Overview = (props) => {
                             <div className="title">DIVISION D'INFANTERIE ROUMAIN</div>
                             <div className="image"><img src={romanian_infantry_div} alt="Romanian infantry division" /></div>
                             <div className="comment">
-                            Celle-ci a une force d'attaque de 4 et de dèfense de 4.<br />
-                            Elles ont deux "pas".
+                                Celle-ci a une force d'attaque de 4 et de dèfense de 4.<br />
+                                Elles ont deux "pas".
                 </div>
                         </div>
                     </div>
@@ -218,27 +218,27 @@ const Overview = (props) => {
             <div className="spacer2rem" />
 
             <div className={props.language === 'en' ? '' : 'block-hidden'}>
-            <div className="title_img_comment_box">
-                <div className="title">SOVIET HEADQUARTERS</div>
-                <div className="image"><img src={soviet_headquarters_big} alt="Soviet Headquarters" /></div>
-                <div className="comment">
-                    This Soviet headquarters has a command level of 2.<br />
-                    They vary from 0 to 3.
+                <div className="title_img_comment_box">
+                    <div className="title">SOVIET HEADQUARTERS</div>
+                    <div className="image"><img src={soviet_headquarters_big} alt="Soviet Headquarters" /></div>
+                    <div className="comment">
+                        This Soviet headquarters has a command level of 2.<br />
+                        They vary from 0 to 3.
+                </div>
                 </div>
             </div>
-</div>
-<div className={props.language === 'fr' ? '' : 'block-hidden'}>
-            <div className="title_img_comment_box">
-                <div className="title">QUARTIERS GÉNÉRAUX SOVIÉTIQUES</div>
-                <div className="image"><img src={soviet_headquarters_big} alt="Soviet Headquarters" /></div>
-                <div className="comment">
-                Ce quartier gènèral Soviétique a un niveau de commandement de 2.<br/> 
-                Ce niveau varie de 0 è 3. Les bons quartiers gènèraux doivent ètre<br/> 
-                protègès en les empilant avec des unitès de flak pour repousser<br/> 
-                les tentatives d'interdiction de l'aviation Allemande.
+            <div className={props.language === 'fr' ? '' : 'block-hidden'}>
+                <div className="title_img_comment_box">
+                    <div className="title">QUARTIERS GÉNÉRAUX SOVIÉTIQUES</div>
+                    <div className="image"><img src={soviet_headquarters_big} alt="Soviet Headquarters" /></div>
+                    <div className="comment">
+                        Ce quartier gènèral Soviétique a un niveau de commandement de 2.<br />
+                        Ce niveau varie de 0 è 3. Les bons quartiers gènèraux doivent ètre<br />
+                        protègès en les empilant avec des unitès de flak pour repousser<br />
+                        les tentatives d'interdiction de l'aviation Allemande.
+                </div>
                 </div>
             </div>
-</div>
 
             <div className="spacer1rem" />
             <p>
@@ -263,61 +263,61 @@ const Overview = (props) => {
 
 
             <div className={props.language === 'en' ? '' : 'block-hidden'}>
-            <div className="comment-boxes">
-                <div>
-                    <div className="title_img_comment_box">
-                        <div className="title">SOVIET AIRCRAFT UNIT</div>
-                        <div className="image"><img src={soviet_aircraft_big} alt="Soviet aircraft unit" /></div>
-                        <div className="comment">
-                            This is a Soviet Polikarpov I-16 fighter. It has<br />
-                            a air-to-air combat strength of 1, and no combat<br />
-                            support strength. It fares poorly against most<br />
-                            German fighters, but can sometimes deliver a sting.
+                <div className="comment-boxes">
+                    <div>
+                        <div className="title_img_comment_box">
+                            <div className="title">SOVIET AIRCRAFT UNIT</div>
+                            <div className="image"><img src={soviet_aircraft_big} alt="Soviet aircraft unit" /></div>
+                            <div className="comment">
+                                This is a Soviet Polikarpov I-16 fighter. It has<br />
+                                a air-to-air combat strength of 1, and no combat<br />
+                                support strength. It fares poorly against most<br />
+                                German fighters, but can sometimes deliver a sting.
+                        </div>
+                        </div>
+
+                    </div><div>
+                        <div className="title_img_comment_box">
+                            <div className="title">GERMAN AIRCRAFT UNIT</div>
+                            <div className="image"><img src={german_aircraft_big} alt="German aircraft unit" /></div>
+                            <div className="comment">
+                                This is a German Messerschmitt Bf109 Fighter. It has<br />
+                                a air-to-air combat strength of 3, no ground combat<br />
+                                support strength, and an interdiction strength of 1.
+                </div>
                         </div>
                     </div>
-
-                </div><div>
-                    <div className="title_img_comment_box">
-                        <div className="title">GERMAN AIRCRAFT UNIT</div>
-                        <div className="image"><img src={german_aircraft_big} alt="German aircraft unit" /></div>
-                        <div className="comment">
-                            This is a German Messerschmitt Bf109 Fighter. It has<br />
-                            a air-to-air combat strength of 3, no ground combat<br />
-                            support strength, and an interdiction strength of 1.
                 </div>
-                    </div>
-                </div>
-            </div>
             </div>
 
             <div className={props.language === 'fr' ? '' : 'block-hidden'}>
-            <div className="comment-boxes">
-                <div>
-                    <div className="title_img_comment_box">
-                        <div className="title">AVION SOVIÉTIQUES</div>
-                        <div className="image"><img src={soviet_aircraft_big} alt="Soviet aircraft unit" /></div>
-                        <div className="comment">
-                        Ce quartier gènèral Soviétique a un niveau de commandement de 2.<br/> 
-                        Ce niveau varie de 0 è 3. Les bons quartiers gènèraux doivent <br/> 
-                        ètre protègès en les empilant avec des unitès de flak pour <br/>
-                        repousser les tentatives d'interdiction de l'aviation Allemande.
+                <div className="comment-boxes">
+                    <div>
+                        <div className="title_img_comment_box">
+                            <div className="title">AVION SOVIÉTIQUES</div>
+                            <div className="image"><img src={soviet_aircraft_big} alt="Soviet aircraft unit" /></div>
+                            <div className="comment">
+                                Ce quartier gènèral Soviétique a un niveau de commandement de 2.<br />
+                                Ce niveau varie de 0 è 3. Les bons quartiers gènèraux doivent <br />
+                                ètre protègès en les empilant avec des unitès de flak pour <br />
+                                repousser les tentatives d'interdiction de l'aviation Allemande.
+                        </div>
+                        </div>
+
+                    </div><div>
+                        <div className="title_img_comment_box">
+                            <div className="title">AVION ALLEMAND</div>
+                            <div className="image"><img src={german_aircraft_big} alt="German aircraft unit" /></div>
+                            <div className="comment">
+                                Ceci est un chasseur Allemand Messerschmitt Bf109. Il<br />
+                                a une force de combat aèrien de 3, aucune force de<br />
+                                soutien au sol, et une force d'interdiction de 1.
+                </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                </div><div>
-                    <div className="title_img_comment_box">
-                        <div className="title">AVION ALLEMAND</div>
-                        <div className="image"><img src={german_aircraft_big} alt="German aircraft unit" /></div>
-                        <div className="comment">
-                        Ceci est un chasseur Allemand Messerschmitt Bf109. Il<br/>
-                        a une force de combat aèrien de 3, aucune force de<br/> 
-                        soutien au sol, et une force d'interdiction de 1.
-                </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-            
 
 
             <p>
@@ -344,55 +344,55 @@ const Overview = (props) => {
 
 
             <div className={props.language === 'en' ? '' : 'block-hidden'}>
-            <div className="comment-boxes">
-                <div>
-                    <div className="title_img_comment_box">
-                        <div className="title">SOVIET ARTILLERY UNIT</div>
-                        <div className="image"><img src={soviet_artillery_big} alt="Soviet artillery unit" /></div>
-                        <div className="comment">
-                            This is a Soviet railway gun. This one has a range<br /> of four
-                            and a bombardment strength of 1.
+                <div className="comment-boxes">
+                    <div>
+                        <div className="title_img_comment_box">
+                            <div className="title">SOVIET ARTILLERY UNIT</div>
+                            <div className="image"><img src={soviet_artillery_big} alt="Soviet artillery unit" /></div>
+                            <div className="comment">
+                                This is a Soviet railway gun. This one has a range<br /> of four
+                                and a bombardment strength of 1.
                         </div>
-                    </div>
+                        </div>
 
-                </div><div>
-                    <div className="title_img_comment_box">
-                        <div className="title">GERMAN ARTILLERY UNIT</div>
-                        <div className="image"><img src={german_artillery_big} alt="German artillery unit" /></div>
-                        <div className="comment">
-                            This is a German artillery regiment. This one has<br /> a range of
-                            two and a bombardment strength of two.
+                    </div><div>
+                        <div className="title_img_comment_box">
+                            <div className="title">GERMAN ARTILLERY UNIT</div>
+                            <div className="image"><img src={german_artillery_big} alt="German artillery unit" /></div>
+                            <div className="comment">
+                                This is a German artillery regiment. This one has<br /> a range of
+                                two and a bombardment strength of two.
                 </div>
+                        </div>
                     </div>
                 </div>
             </div>
-</div>
 
 
-<div className={props.language === 'fr' ? '' : 'block-hidden'}>
-            <div className="comment-boxes">
-                <div>
-                    <div className="title_img_comment_box">
-                        <div className="title">ARTILLERIE SOVIÉTIQUE</div>
-                        <div className="image"><img src={soviet_artillery_big} alt="Soviet artillery unit" /></div>
-                        <div className="comment">
-                        Ceci est un canon ferroviaire Soviétique. Il a une<br/>
-                        portèe de quatre et une force de bombardement de 1.
+            <div className={props.language === 'fr' ? '' : 'block-hidden'}>
+                <div className="comment-boxes">
+                    <div>
+                        <div className="title_img_comment_box">
+                            <div className="title">ARTILLERIE SOVIÉTIQUE</div>
+                            <div className="image"><img src={soviet_artillery_big} alt="Soviet artillery unit" /></div>
+                            <div className="comment">
+                                Ceci est un canon ferroviaire Soviétique. Il a une<br />
+                                portèe de quatre et une force de bombardement de 1.
                         </div>
-                    </div>
+                        </div>
 
-                </div><div>
-                    <div className="title_img_comment_box">
-                        <div className="title">ARTILLERIE ALLEMANDE</div>
-                        <div className="image"><img src={german_artillery_big} alt="German artillery unit" /></div>
-                        <div className="comment">
-                        Ceci est un règiment d'artillerie Allemand. Il a une<br/> 
-                        portèe de deux, et une force de bombardement de deux.
+                    </div><div>
+                        <div className="title_img_comment_box">
+                            <div className="title">ARTILLERIE ALLEMANDE</div>
+                            <div className="image"><img src={german_artillery_big} alt="German artillery unit" /></div>
+                            <div className="comment">
+                                Ceci est un règiment d'artillerie Allemand. Il a une<br />
+                                portèe de deux, et une force de bombardement de deux.
                 </div>
+                        </div>
                     </div>
                 </div>
             </div>
-</div>
 
             <p>
                 <span className={props.language === 'en' ? '' : 'block-hidden'}>
@@ -419,63 +419,63 @@ const Overview = (props) => {
 
 
             <div className={props.language === 'en' ? '' : 'block-hidden'}>
-            <div className="comment-boxes">
-                <div>
-                    <div className="title_img_comment_box">
-                        <div className="title">GERMAN SUPPLY UNIT</div>
-                        <div className="image"><img src={german_supply_big} alt="German supply unit" /></div>
-                        <div className="comment">
-                            This is a trucked Attack Supply unit.<br />
-                            Two Attack Supply counters that are in the<br />
-                            same hex can be flipped to one 2 point dump.
+                <div className="comment-boxes">
+                    <div>
+                        <div className="title_img_comment_box">
+                            <div className="title">GERMAN SUPPLY UNIT</div>
+                            <div className="image"><img src={german_supply_big} alt="German supply unit" /></div>
+                            <div className="comment">
+                                This is a trucked Attack Supply unit.<br />
+                                Two Attack Supply counters that are in the<br />
+                                same hex can be flipped to one 2 point dump.
                         </div>
-                    </div>
+                        </div>
 
-                </div><div>
-                    <div className="title_img_comment_box">
-                        <div className="title">SOVIET ATTACK SUPPLY UNIT</div>
-                        <div className="image"><img src={soviet_supply_big} alt="Soviet attack supply unit" /></div>
-                        <div className="comment">
-                            A Soviet wagon Attack Supply counter.<br />
-                            Both the Axis and Soviets have both<br />
-                            truck and wagon Attack Supply units.
+                    </div><div>
+                        <div className="title_img_comment_box">
+                            <div className="title">SOVIET ATTACK SUPPLY UNIT</div>
+                            <div className="image"><img src={soviet_supply_big} alt="Soviet attack supply unit" /></div>
+                            <div className="comment">
+                                A Soviet wagon Attack Supply counter.<br />
+                                Both the Axis and Soviets have both<br />
+                                truck and wagon Attack Supply units.
                 </div>
+                        </div>
                     </div>
                 </div>
             </div>
-</div>
-<div className={props.language === 'fr' ? '' : 'block-hidden'}>
-            <div className="comment-boxes">
-                <div>
-                    <div className="title_img_comment_box">
-                        <div className="title">UNITE DE RAVITAILLEMENT ALLEMANDES</div>
-                        <div className="image"><img src={german_supply_big} alt="German supply unit" /></div>
-                        <div className="comment">
-                        Ceci est un camion de ravitaillement d'attaque. Deux pions<br/> 
-                        ravitaillement d'attaque peuvent ètre retournès pour<br/> 
-                        former un dèpèt è 2 points.
+            <div className={props.language === 'fr' ? '' : 'block-hidden'}>
+                <div className="comment-boxes">
+                    <div>
+                        <div className="title_img_comment_box">
+                            <div className="title">UNITE DE RAVITAILLEMENT ALLEMANDES</div>
+                            <div className="image"><img src={german_supply_big} alt="German supply unit" /></div>
+                            <div className="comment">
+                                Ceci est un camion de ravitaillement d'attaque. Deux pions<br />
+                                ravitaillement d'attaque peuvent ètre retournès pour<br />
+                                former un dèpèt è 2 points.
                         </div>
-                    </div>
+                        </div>
 
-                </div><div>
-                    <div className="title_img_comment_box">
-                        <div className="title">UNITE DE RAVITAILLEMENT SOVIÉTIQUE</div>
-                        <div className="image"><img src={soviet_supply_big} alt="Soviet attack supply unit" /></div>
-                        <div className="comment">
-                        Ceci est un chariot de ravitaillement d'attaque. Les Allemands<br/>
-                        et les Soviétiques ont tous deux des pions
-                        camions<br/> et chariots de ravitaillement d'attaque.
+                    </div><div>
+                        <div className="title_img_comment_box">
+                            <div className="title">UNITE DE RAVITAILLEMENT SOVIÉTIQUE</div>
+                            <div className="image"><img src={soviet_supply_big} alt="Soviet attack supply unit" /></div>
+                            <div className="comment">
+                                Ceci est un chariot de ravitaillement d'attaque. Les Allemands<br />
+                                et les Soviétiques ont tous deux des pions
+                        camions<br /> et chariots de ravitaillement d'attaque.
                 </div>
+                        </div>
                     </div>
                 </div>
             </div>
-</div>
 
 
             <p>
                 <span className={props.language === 'en' ? '' : 'block-hidden'}>
                     There are two types of supply in EFS. General supply is done by tracing to a Lines of Communication route (LOC). General supply denotes things such as food and fuel. Units that are out of General Supply suffer from reduced movement and other penalties. Attack Supply is a different kind of supply. It is used during combat. Attack Supply is represented by supply counters on the map. Attack Supply is needed to allow combat capable units to attack at their optimum performance level (there is no Defensive Combat Supply in this system). One Attack Supply point is typically used to "supply" a combat in the game. To attack without Attack Supply usually means the attacker is taking risks. The Axis player will find that he will often have to attack without Attack Supply, and this will be the major reason for Axis combat losses in the game.
-    
+
                 </span>
                 <span className={props.language === 'fr' ? '' : 'block-hidden'}>
                     Il existe deux types de ravitaillement dans EFS. Le ravitaillement gènèral est fait en traèant des Lignes de Communication (LOC). Le ravitaillement gènèrale reprèsente des choses comme la nourriture et le carburant. Les unitès qui ne sont pas en ravitaillement gènèral ont leur capacitè de mouvement rèduite ainsi que d'autres pènalitès. Le Ravitaillement d'Attaque est un type de ravitaillement diffèrent. Il est utilisè pendant le combat. Le Ravitaillement d'Attaque est reprèsentè par des pions ravitaillement sur la carte. Le Ravitaillement d'Attaque est nècessaire pour permettre è des unitès capables d'attaquer d'utiliser leur niveau de performance optimal (il n'y a pas de Ravitaillement Dèfensif dans ce système). Gènèralement, on dèpense un point de Ravitaillement d'Attaquer pour "ravitailler" un combat dans le jeu. Attaquer sans Ravitaillement d'Attaque signifie gènèralement que l'attaquant prend des risques. Le joueur Allemand s'apercevra vite qu'il devra souvent attaquer sans Ravitaillement d'Attaque, et ce sera leur raison majeure pour subir des pertes au combat.
@@ -506,7 +506,7 @@ const Overview = (props) => {
                 </span>
             </p>
 
-        <ScrollToTopOnMount />
+            <ScrollToTopOnMount />
 
         </div>
     );

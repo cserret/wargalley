@@ -240,6 +240,15 @@
         max-height: 360px;
         }
       }
+      &.il2 {
+        >:nth-child(3) {
+        flex: 0 1 auto;
+        margin-left: auto;
+        height: calc(8vw + 160px);
+        width: auto;
+        max-height: 340px;
+        }
+      }
       &.sb2 {
         >:nth-child(3) {
         flex: 0 1 auto;

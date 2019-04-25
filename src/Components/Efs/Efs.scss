@@ -1,39 +1,39 @@
 .efs {
   font-family: arial, helvetica, sans-serif;
   .b {
-      font-weight: bold;
+    font-weight: bold;
   }
   .content {
     margin-bottom: 100px;
     .image-caption {
-        display: flex;
-        width: auto;
-        flex-direction: column;
-        align-items: center;
-        border: 1px solid #aaa;
-        background-color: #e6e6e6;
-        width: 816px;
-        margin: auto;
-        img {
+      display: flex;
+      width: auto;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid #aaa;
+      background-color: #e6e6e6;
+      width: 816px;
+      margin: auto;
+      img {
         height: auto;
         width: auto;
-        }
-        text-align: center;
-        font-size: 1.3rem;
-        div {
-            flex-grow: 0;
-            display: inline-block;
-        }
-        &.flotilla {
-            width: 644px;
-            padding-bottom: 3px;
-        }
+      }
+      text-align: center;
+      font-size: 1.3rem;
+      div {
+        flex-grow: 0;
+        display: inline-block;
+      }
+      &.flotilla {
+        width: 644px;
+        padding-bottom: 3px;
+      }
     }
     .slight-bold {
-        text-shadow: 0 0 0 rgba(0,0,0,0.7);
+      text-shadow: 0 0 0 rgba(0, 0, 0, 0.7);
     }
     .italic {
-        font-style: italic;
+      font-style: italic;
     }
     .comment-boxes {
       display: flex;
@@ -103,37 +103,37 @@
       margin: 0 auto;
       padding: 0.5rem 0 0.6rem 0;
       &.minor {
-          padding: 0.3rem 0 0.3rem 0;
+        padding: 0.3rem 0 0.3rem 0;
       }
     }
     .pdiv {
-        font-size: 1.3rem;
-        width: 96%;
-        margin: 0 auto;
-        padding: 0.5rem 0 0.6rem 0;
-        &.minor {
-            padding: 0.3rem 0 0.3rem 0;
-        }
+      font-size: 1.3rem;
+      width: 96%;
+      margin: 0 auto;
+      padding: 0.5rem 0 0.6rem 0;
+      &.minor {
+        padding: 0.3rem 0 0.3rem 0;
+      }
     }
     .subheader-counter {
-        display: flex;
-        margin-left: 2%;
-        font-size: 1.4rem;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-        div {
-            margin-top: auto;
-            position: relative;
-            top: 4px;
-        }
-        img {
-            margin-left: 1.5rem;
-        }
+      display: flex;
+      margin-left: 2%;
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      div {
+        margin-top: auto;
+        position: relative;
+        top: 4px;
+      }
+      img {
+        margin-left: 1.5rem;
+      }
     }
     .subheader-normal {
-        font-size: 1.3rem;
-        font-weight: bold;
-        padding: 0 0 0 2%;
+      font-size: 1.3rem;
+      font-weight: bold;
+      padding: 0 0 0 2%;
     }
     .subheader {
       padding-top: 2rem;
@@ -141,10 +141,10 @@
       font-weight: bold;
     }
     .subheader2 {
-        padding-top: 2rem;
-        font-size: 1.4rem;
-        font-weight: bold;
-      }
+      padding-top: 2rem;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
     .subheader1_4 {
       padding-top: 2rem;
       padding-bottom: 0.5rem;
@@ -158,10 +158,10 @@
       text-align: center;
     }
     .centered {
-        text-align: center;
+      text-align: center;
     }
     .indent1rem {
-        margin-left: 1rem;
+      margin-left: 1rem;
     }
     .gray-box {
       clear: all;
@@ -205,25 +205,35 @@
 */
 
   .subheader-image {
-      font-weight: bold;
-      display: flex;
-      justify-content: flex-start;
-      width: 96%;
-      margin: auto;
-      div {
-          flex-grow: 0;
-          font-size: 1.4rem;
-          margin-top: auto;
-          position: relative;
-          top: 2px;
-      }
-      img {
-          margin-left: 20px;
-          flex-grow: 0;
-          height: 60px;
-          width: auto;
-      }
+    font-weight: bold;
+    display: flex;
+    justify-content: flex-start;
+    width: 96%;
+    margin: auto;
+    position: relative;
+    > span:nth-child(1) {
+      position: absolute;
+      bottom: 25px;
+      left: 0;
+      font-weight: normal;
+      color: red;
+      font-size: 1rem;
+    }
+    div {
+      flex-grow: 0;
+      font-size: 1.4rem;
+      margin-top: auto;
+      position: relative;
+      top: 4px;
+    }
+    img {
+      margin-left: 20px;
+      flex-grow: 0;
+      height: 60px;
+      width: auto;
+    }
   }
+
   .generic-flex-space-around {
     display: flex;
     flex-direction: row;
@@ -271,20 +281,20 @@
     margin: auto;
   }
   .green-bold {
-      color: #080;
-      font-weight: bold;
+    color: #080;
+    font-weight: bold;
   }
   .red-bold {
-      color: #e00;
-      font-weight: bold;
+    color: #e00;
+    font-weight: bold;
   }
   .blue-bold {
     color: #01e;
     font-weight: bold;
   }
   .italic-bold {
-      font-style: italic;
-      font-weight: bold;
+    font-style: italic;
+    font-weight: bold;
   }
   .ul-no-top {
     margin-block-start: 0;
@@ -293,7 +303,43 @@
     margin-block-start: 0.3rem;
   }
   .white-text {
-      color: white;
-      text-shadow: none !important;
+    color: white;
+    text-shadow: none !important;
+  }
+  .bigger-bold-text {
+    font-size: 150%;
+    font-weight: bold;
+    position: relative;
+    top: 10px;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+  }
+  .asterisk {
+    font-size: 2rem;
+    position: relative;
+    bottom: -0.55rem;
+    line-height: 1rem;
+  }
+  .subheader-rule {
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    left: 2%;
+    position: relative;
+    > span:first-child {
+      font-weight: normal;
+      font-size: 1;
+      position: absolute;
+      bottom: 1.7rem;
+      left: 0;
+      color: red;
+      font-size: 1rem;
+    }
+  }
+  .rule-ref {
+    font-weight: normal;
+    font-size: 1;
+    color: red;
+    font-size: 1rem;
   }
 }

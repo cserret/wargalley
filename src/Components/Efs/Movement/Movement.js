@@ -89,10 +89,7 @@ const Movement = (props) => {
                     </div>
 
                     <div className="unit-example">
-                        <img src={c8} alt="infiltration" />                <div className="subheader-image header-1-image">
-                    <div>Minor roads in mud</div>
-                    <img src={mudroad} alt="muddy road" />
-                </div>
+                        <img src={c8} alt="infiltration" />                
                         <div>INFILTRATION</div>
                         <div>Movement factor is yellow</div>
                     </div>
@@ -119,7 +116,7 @@ const Movement = (props) => {
                 </div>
 
                 <div className="movement-phases">
-                    <div class="axis">
+                    <div className="axis">
                         <div>The order of phases for the Axis player is:</div>
                         <div className="phases">
                             <div>Regular Movement</div>
@@ -129,7 +126,7 @@ const Movement = (props) => {
                             <div>Motorized Movement</div>
                         </div>
                     </div>
-                    <div class="soviet">
+                    <div className="soviet">
                         <div>The order of phases for the Soviet player is:</div>
                         <div className="phases">
                             <div>Motorized Movement</div>
@@ -156,7 +153,7 @@ const Movement = (props) => {
                     <img src={germansuperheavy} alt="German super heavy artillery at Sevastopol" />
                 </div>
                 <div className="spacer1rem" />
-                <p>
+                <div className="pdiv">
                     Super-heavy artillery (marked by unit symbol and green movement rate) are very restricted in how they can move:
                     <ul className="bare-ul">
                         <li>They can be transported by railroad movement. They must be in "move" mode before getting on a train.</li>
@@ -168,7 +165,7 @@ const Movement = (props) => {
                         <li>Super-heavy artillery can only change mode during the Engineering Phase. It can only change to its "firing" side if it did not move that turn. You might want to mark the super-heavy with some marker at the beginning of your movement phase so that you'll know not to move it so it can qualify to flip to firing mode.</li>
                         <li>Note that super-heavy artillery that is OOS may not be able to move at all, since the -2 MP effect of being OOS may bring its movement rate down to 0.</li>
                     </ul>
-                </p>
+                </div>
 
 
 
@@ -210,21 +207,21 @@ const Movement = (props) => {
                 </div>
 
 
-                <p>
+                <div className="pdiv">
                     The Motorway in Army Group Center has special restrictions on its use. The Motorway was so important for the movement of supplies and critical reinforcements to the drive on Smolensk and Moscow that the Germans strictly controlled who and want could utilize this very important highway.
                 <ul className="bare-ul">
                         <li>Only Axis motorized, Orange MA, and Green MA units may benefit from the road rate on the Motorway. Super-Heavy artillery is still, though, restricted to one hex per MP.</li>
                         <li>For all other units, they can move along the Motorway but they have to pay the costs of other terrain in the hex, as if the Motorway wasn't even there.</li>
                         <li>Soviet forces can use the beneficial Motorway rates without these restrictions.</li>
                     </ul>
-                </p>
+                </div>
 
                 <div className="spacer1rem" />
                 <div className="subheader-image header-1-image">
                     <div>How Railroads are sometimes treated like a road</div>
                     <img src={german_troops_railroad} alt="German troops walking along railroad" />
                 </div>
-                <p>
+                <div className="pdiv">
                     <ul className="bare-ul">
                         <li>When moving along a railroad (not using rail movement) in woods, subtract 1 from the movement cost to enter that hex.</li>
                         <li>When moving along a railroad over a River or Major River hexside, the unit ignores the cost of crossing that river or Major River hexside.</li>
@@ -233,7 +230,7 @@ const Movement = (props) => {
                         <li>During mud turns, motorized units extend their ZOCs into surrounding hexes only if it is along a road or railroad.</li>
                         <li>A railroad can allow a LOC to go through a swamp hex during Dry or Mud turns.</li>
                     </ul>
-                </p>
+                </div>
 
                 <div className="spacer1rem" />
 
@@ -252,7 +249,7 @@ const Movement = (props) => {
 
                 <div className="spacer1rem" />
                 <div className="subheader-normal">One Hex Movement</div>
-                <p>
+                <div className="pdiv">
                     Units may be able to move one hex even if the costs involved are higher than the unit's movement rating. One Hex Movement may occur in any movement phase.
                     <ul className="bare-ul">
                         <li>One Hex Movement cannot be performed on Mud turns, or in Woods during lingering Mud turns.</li>
@@ -260,7 +257,7 @@ const Movement = (props) => {
                         <li>One Hex Movement can only occur across a unbridged Major River in the Regular Movement Phase (yes this includes Soviet Motorized units also). This may be into a hex on the other side of the Major River that is in enemy ZOC, as long as the unit didn't start in enemy ZOC.</li>
                         <li>Motorized units cannot perform One Hex Movement in the Reaction Phase if it bears an OOS marker.</li>
                     </ul>
-                </p>
+                </div>
 
 
                 <div className="spacer2rem" />
@@ -268,7 +265,7 @@ const Movement = (props) => {
                     <div>Infiltration Movement</div>
                     <img src={infiltration_movement_example} alt="Infiltration movement example" />
                 </div>
-                <p>
+                <div className="pdiv">
                 Motorized units with yellow movement factors can do something similar to 1-Hex Movement called Infiltration Movement. It allows them to move directly from enemy ZOC to adjacent enemy ZOC. This movement of 1 hex uses up all the MPs of the motorized unit or stack of motorized units.
                     <ul className="bare-ul">
                         <li>Axis Infiltration Movement can only occur during the Axis Regular Movement Phase.</li>
@@ -278,7 +275,7 @@ const Movement = (props) => {
                         <li>Infiltration movement cannot happen across unbridged Major River hexsides.</li>
                         <li>Infiltration movement cannot occur into or out of major city hexes.</li>
                     </ul>
-                </p>
+                </div>
 
 
 
@@ -299,7 +296,7 @@ const Movement = (props) => {
                 <p>
                     Although similar to combat, overruns are considered part of movement. 
                 </p>
-                <p>
+                <div className="pdiv">
                     During Motorized Movement or regular Movement phases, a motorized unit, or stack of motorized units that start the movement phase stacked together, may attempt to overrun an enemy occupied hex. To do so they must meet the minimum odds, and then roll on the overrun table. Attack Supply is not used, and no artillery can participate. Defending artillery units only defend with their defence factor. No air units can participate. The overrunning units must remain stacked. The hex adjacent to the target of the overrun cannot be in the ZOC of other enemy units, other than the units that are being overrun. None of the overrunning units can be Out of Supply. Overruns cannot take place if the units are using One Hex Movement. The overrunning units must be able to pay all normal movement costs, plus the cost of entering the enemy occupied hex (minus the cost of entering another enemy ZOC), plus 1 MP. The following restrictions also apply:
                 
                 <ul className="bare-ul">
@@ -309,7 +306,7 @@ const Movement = (props) => {
                     <li>Overruns into swamp hexes can only occur during Frost weather.</li>
                     <li>Overruns against a city, major city, or strongpoints or across fortified lines require the presence of a motorized engineer.</li>
                 </ul>
-                </p>
+                </div>
                 <p>
                     See the overrun chart for minimum odds requirements and DRMs. If the overrun fails, the overrunning units are considered to have exhausted all their movement points. If the overrun is successful, the overrunning stack can continue moving if it has MPs left. If the defending units get retreated, then the overrunning player retreats them 2 hexes. Overrun units get an overrun marker put on them. While they have the overrun marker on them, they do not project a ZOC, cannot provide artillery support (if it is an artillery unit), and is not eligible for reaction movement. HQs that get overrun get flipped to their non-op side. Units that got overrun, or that resisted an overrun attempt, may be the target of another overrun attempt in the same movement phase. 
                 </p>
@@ -318,7 +315,7 @@ const Movement = (props) => {
 
                 <div className="spacer1rem" />
                 <div className="subheader-normal">Some other Movement rules</div>
-                <p>                
+                <div className="pdiv">                
                 <ul className="bare-ul">
                     <li>Enemy ZOCs cost an additional +1 movement point to enter (exception: Reaction Movement).</li>
                     <li>All roads (Main and Secondary) and railways are assumed to have a bridge when crossing any type of river. Bridges can not be demolished in EFS, however, both players may be equipped with pontoon units to create additional bridges as long as the pontoon unit remains adjacent to the river.</li>
@@ -329,7 +326,7 @@ const Movement = (props) => {
                     <li>Footnote (a), when it is present for a cost, creates a +1 MP penalty for all motorized units except for Soviet Armor. Soviet Armor had wider tracks than any other vehicles and could negotiate muddy or marshy ground better.</li>
                     <li>Walking (or driving) along a Railroad gives a benefit of -1 MP cost when moving through a hex with Woods in it.</li>
                 </ul>
-                </p>
+                </div>
 
 
 
@@ -429,24 +426,24 @@ const Movement = (props) => {
 
 
                 <div className="movement-phases">
-                    <div class="axis">
-                        <div>The order of phases for the Axis player is:</div>
+                    <div className="axis">
+                        <div>L'ordre des phases pour le joueur de l'Axe est:</div>
                         <div className="phases">
-                            <div>Regular Movement</div>
+                            <div>Mouvement régulier</div>
                             <img src={right_arrow} alt="right arrow" />
                             <div>Combat</div>
                             <img src={right_arrow} alt="right arrow" />
-                            <div>Motorized Movement</div>
+                            <div>Mouvement motorisé</div>
                         </div>
                     </div>
-                    <div class="soviet">
-                        <div>The order of phases for the Soviet player is:</div>
+                    <div className="soviet">
+                        <div>L'ordre des phases pour le joueur Soviétique est:</div>
                         <div className="phases">
-                            <div>Motorized Movement</div>
+                            <div>Mouvement motorisé</div>
                             <img src={right_arrow} alt="right arrow" />
                             <div>Combat</div>
                             <img src={right_arrow} alt="right arrow" />
-                            <div>Regular Movement</div>
+                            <div>Mouvement régulier</div>
                         </div>
                     </div>
                 </div>
@@ -475,7 +472,7 @@ const Movement = (props) => {
                     <img src={germansuperheavy} alt="Artillerie Super Lour Sevastopol" />
                 </div>
                 <div className="spacer1rem" />
-                <p>
+                <div className="pdiv">
                 de l'artillerie super lourde (avec un facteur de mouvement vert) a beaucoup de restriction sur sa faèon de se dèplacer: 
                     <ul className="bare-ul">
                         <li>Elle peut ètre transportèe par mouvement ferroviaire. Elle doit ètre en mode "mouvement" avant de prendre le train.</li>
@@ -487,7 +484,7 @@ const Movement = (props) => {
                         <li>L'artillerie super lourde ne peut changer de mode que pendant la Phase du Gènie. Elle ne peut passer sur son cètè "tir" que si elle n'a pas bougè pendant le tour. Si vous le souhaitez, placez des marqueurs au dèbut de votre phase de mouvement sur les unitès d'artillerie super lourde pour penser è ne pas les dèplacer afin de pouvoir les retourner en mode tir.</li>
                         <li>Notez que l'artillerie super lourde Non Ravitaillèe peut ne pas ètre capable de bouger, car la pènalitè de -2PM peut amener sa capacitè de mouvement è 0.</li>
                     </ul>
-                </p>
+                </div>
 
 
 
@@ -529,21 +526,21 @@ const Movement = (props) => {
                 </div>
 
 
-                <p>
+                <div className="pdiv">
                 L'autoroute dans Army Group Center a des restrictions d'utilisation. L'Autoroute ètait si importante pour le mouvement du ravitaillement et des renforts pour les avancèes sur Smolensk et Moscou que les Allemands contrèlaient strictement qui pouvait l'utiliser. 
                 <ul className="bare-ul">
                         <li>Seules les unitès de l'Axe Motorisèes, avec une CM orange ou verte peuvent bènèficier du mouvement routier sur l'Autoroute. L'artillerie super lourde est toujours limitèe è un hex par PM.</li>
                         <li>Pour toutes les autres unitès, elles peuvent se dèplacer sur l'autoroute mais doivent payer le coèt de l'autre terrain dans l'hex, comme si l'autoroute n'existait pas.</li>
                         <li>Les forces Soviétiques peuvent bènèficier de l'autoroute sans restrictions.</li>
                     </ul>
-                </p>
+                </div>
 
                 <div className="spacer1rem" />
                 <div className="subheader-image header-1-image">
                     <div>Comment les Voies Ferrèes sont parfois traitèes comme des routes</div>
                     <img src={german_troops_railroad} alt="Comment les Voies Ferrèes sont parfois traitèes comme des routes" />
                 </div>
-                <p>
+                <div className="pdiv">
                     <ul className="bare-ul">
                         <li>En se dèplaèant le long d'une voie ferrèe (sans utiliser le mouvement ferroviaire) dans un bois, soustraye z un au coèt de mouvement pour entrer dans cet hex.</li>
                         <li>En se dèplaèant le long d'une voie ferrèe par dessus un cètè d'hex de Rivière ou Rivière Majeure, l'unitè ignore le coèt de traversèe de cette Rivière ou Rivière Majeure.</li>
@@ -552,7 +549,7 @@ const Movement = (props) => {
                         <li>Pendant les tours de Pluie, les unitès motorisèes ètendent leurs ZDC dans les hexs adjacents uniquement le long d'une route ou d'une voie ferrèe.</li>
                         <li>Une voie ferrèe peut permettre è une LOC de traverser un hex d'ètang pendant un tour de temps Clair ou Pluvieux.</li>
                     </ul>
-                </p>
+                </div>
 
                 <div className="spacer1rem" />
 
@@ -572,7 +569,7 @@ const Movement = (props) => {
 
                 <div className="spacer1rem" />
                 <div className="subheader-normal">Mouvement Minimlal</div>
-                <p>
+                <div className="pdiv">
                 es unités peuvent être en mesure de se déplacer d'un hex même si les coûts impliqués sont supérieurs à l'indice de mouvement de l'unité. Un mouvement hexagonal peut se produire dans n'importe quelle phase de mouvement.
                     <ul className="bare-ul">
                         <li>Le Mouvement Minimal est interdit pendant les tours de Pluie, ou dans les bois pendant une pluie prolongèe.</li>
@@ -580,7 +577,7 @@ const Movement = (props) => {
                         <li>Le Mouvement Minimal è travers une Rivière Majeure sans pont est autorisè pendant la Phase de Mouvement Règulier (oui èa marche aussi pour les unitès motorisèes Soviétiques). Il peut ètre fait vers un hex de l'autre cètè de la Rivière Majeure se trouvant en ZDC ennemie, tant que l'unitè ne commence pas son mouvement en ZDC ennemie.</li>
                         <li>Les unitès motorisèes ne peuvent pas faire de Mouvement Minimal pendant la Phase de Rèaction si elles sont sous un marqueur Non Ravitaillè.</li>
                     </ul>
-                </p>
+                </div>
 
 
                 <div className="spacer2rem" />
@@ -588,7 +585,7 @@ const Movement = (props) => {
                     <div>Mouvement d'Infiltration</div>
                     <img src={infiltration_movement_example} alt="Mouvement d'Infiltration" />
                 </div>
-                <p>
+                <div className="pdiv">
                 Les unitès motorisèes avec un facteur de mouvement jaune peuvent faire une chose similaire au Mouvement Minimal qui est appelè le Mouvement d'Infiltration. Il leur permet de bouger directement d'une ZDC ennemie è une autre ZDC ennemi adjacente. Ce mouvement d'1 hex utilise tous les PM de l'unitè ou de la pile motorisèe.
                     <ul className="bare-ul">
                         <li>Le Mouvement d'Infiltration Allemand ne peut se produire que pendant la Phase de Mouvement Règulier Allemande.</li>
@@ -598,7 +595,7 @@ const Movement = (props) => {
                         <li>Le Mouvement d'Infiltration est interdit è travers les cètès d'hexs de Rivières Majeures sans ponts.</li>
                         <li>Le Mouvement d'Infiltration est interdit vers ou depuis un hex de ville majeure.</li>
                     </ul>
-                </p>
+                </div>
 
 
 
@@ -619,7 +616,7 @@ const Movement = (props) => {
                 <p>
                 Bien que très proche du combat, le dèbordement fait partie du mouvement. 
                 </p>
-                <p>
+                <div className="pdiv">
                 Pendant les Phases de Mouvement Motorisè ou Règulier, une unitè ou une pile motorisèe commenèant sa phase dans le mème hex pe ut tenter de dèborder un hex occupè par l'ennemi. Pour cela, elles doivent atteindre le rapport de forces minimum, puis faire un jet de dè sur la Table de Dèbordement. Le Ravitaillement d'Attaque n'est pas utilisè ici, et l'artillerie ne peut pas participer. Les unitès d'artillerie en dèfense ne se dèfendent qu'avec leur facteur de dèfense. Aucune unitè aèrienne ne peut participer. Les unitès qui dèbordent doivent rester empilèes. L'hex adjacent è la cible è dèborder ne peut pas se trouver en ZDC ennemie, en dehors de la ZDC des unitès dèbordèes. Aucune unitè qui dèborde ne peut ètre Non Ravitaillèe. Le dèbordement est interdit si les unitès font un Mouvement Minimal. Les unitès qui dèbordent doivent ètre capable de payer tous les coèts de mouvement, plus le coèt d'entrèe dans l'hex occupè par l'ennemi (moins le coèt d'entrèe dans une autre ZDC ennemie), plus 1PM. Les restrictions suivantes s'appliquent aussi:                
                 <ul className="bare-ul">
                     <li>Le dèbordement ne peut se produire que par temps Clair ou Gel.</li>
@@ -628,7 +625,7 @@ const Movement = (props) => {
                     <li>Le dèbordement dans un hex d'ètang n'est autorisè que si le temps est Gel.</li>
                     <li>Le dèbordement contre une ville, une ville majeure, un fortin ou è travers une ligne fortifièe nècessite la prèsence d'une unitè du gènie motorisèe.</li>
                 </ul>
-                </p>
+                </div>
                 <p>
                 Voir la Table de Dèbordement pour le rapport de forces minimum et les DRM. Si le dèbordement rate, les unitès qui dèbordent sont supposèes avoir dèpensè tous leurs PM. Si le dèbordement rèussit, la pile qui dèborde peut continuer de bouger si il lui reste des PM. Si les unitès en dèfense retraitent, c'est le joueur qui dèborde qui les fait retraiter de deux hexs. Les unitès qui dèbordent reèoivent un marqueur de dèbordement (overrun). Tant que ce marqueur les recouvre, elles ne projettent pas de ZDC, ne peuvent pas fournir de soutien d'artillerie (pour les unitès d'artillerie), et ne sont pas èligibles pour le mouvement de rèaction. Les QG dèbordès sont retournès sur leur face non-op. Les unit ès dèbordèes, ou qui ont rèsistè è un dèbordement peuvent ètre la cible d'une autre tentative de dèbordement au cours de la mème phase de mouvement. 
                 </p>
@@ -637,7 +634,7 @@ const Movement = (props) => {
 
                 <div className="spacer1rem" />
                 <div className="subheader-normal">Quelques autres Règles de Mouvement</div>
-                <p>                
+                <div className="pdiv">                
                 <ul className="bare-ul">
                     <li>Les ZDC ennemies coètent +1PM pour entrer dans l'hex (exception : Mouvement de Rèaction).</li>
                     <li>Toutes les routes (Principales et Secondaires) et les voies ferrèes sont supposèes avoir un pont lorsqu'elles traversent n'importe quel type de rivière. Les ponts ne peuvent pas ètre dètruits dans EFS, nèanmoins, les deux camps peuvent recevoir des unitès de pontonniers afin de pouvoir crèer des ponts supplèmentaires, tant que l'unitè de pontonnier reste adjacente è la rivière.</li>
@@ -648,7 +645,7 @@ const Movement = (props) => {
                     <li>Note (a), lorsqu'il est prèsent pour un coèt, il crèe une pènalitè de +1PM pour toutes les unitès motorisèes, sauf les blindès Soviétiques. Les blindès Soviétiques avaient des chenilles plus larges que tous les autres vèhicules et pouvaient mieux nègocier les terrains boueux ou marècageux.</li>
                     <li>Marcher (ou conduire) le long d'une voie ferrèe apporte un bènèfice de -1PM pour traverser un hex de bois.</li>
                 </ul>
-                </p>
+                </div>
 
 
                 

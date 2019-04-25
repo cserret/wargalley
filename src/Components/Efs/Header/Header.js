@@ -3,7 +3,6 @@ import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
 import flag_en from "../../../images/language_us.png";
 import flag_fr from "../../../images/language_fr.png";
-import flag_ru from "../../../images/language_ru.png";
 
 export default class Header extends Component {
     state = {

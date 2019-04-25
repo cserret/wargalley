@@ -330,13 +330,13 @@ const Units = (props) => {
 
             <p>
                 <span className={props.language === 'en' ? '' : 'block-hidden'}>
-                    Unit size is shown by small designations on the top of the unit type symbol. There was of course alot of variation in what a "division" or "regiment" meant, depending on nationality and time. But generally a corps could have anywhere from 2 to 5 divisions. A division would have 3 regiments/brigades of its main type, plus several smaller battalions and companies of supporting troops. A regiment or brigade would have 2-5 battalions. The term regiment is often considered the same thing as a brigade, but brigades were usually designed to be more of standalone fighting unit and not necessarily part of a division. Soviet divisions were smaller than German divisions.
+                    Unit size is shown by small designations on the top of the unit type symbol. There was of course alot of variation in what a "division" or "regiment" meant, depending on nationality and time. But generally a corps could have anywhere from 2 to 5 divisions. A division would have 3 regiments/brigades of its main type, plus several smaller battalions and companies of supporting troops. A regiment or brigade would have 2-5 battalions. The term regiment is often considered the same thing as a brigade, but brigades were usually designed to be more of a standalone fighting unit and not necessarily part of a division. Soviet divisions were smaller than German divisions.
                 </span>
             </p>
 
             <div className="spacer1rem" />
 
-            <table className="unit-size">
+            <table className="unit-size"><tbody>
                 <tr>
                     <td>XXX</td>
                     <td>Corps</td>
@@ -368,6 +368,7 @@ const Units = (props) => {
                     <td>Company</td>
                     <td>100-300 men.</td>
                 </tr>
+                </tbody>
             </table>
 
 
@@ -395,7 +396,7 @@ const Units = (props) => {
 
             <section>
                 <div className="subheader1_4">MOTORIZED UNITS</div>
-                <table className="unit-type">
+                <table className="unit-type"><tbody>
                     <tr>
                         <td><img src={s4} alt="armor" /></td>
                         <td>Armor<span className="red">*</span></td>
@@ -408,10 +409,10 @@ const Units = (props) => {
 
                         <td><img src={s7} alt="recon" /></td>
                         <td>Recon</td>
-                    </tr>
+                    </tr></tbody>
                 </table>
 
-                <table className="unit-type">
+                <table className="unit-type"><tbody>
                     <tr>
                         <td><img src={s8} alt="motorized infantry" /></td>
                         <td>Motorized Infantry</td>
@@ -424,10 +425,10 @@ const Units = (props) => {
 
                         <td><img src={s10} alt="motorized combat engineer" /></td>
                         <td>Motorized Combat Engineer</td>
-                    </tr>
+                    </tr></tbody>
                 </table>
 
-                <table className="unit-type">
+                <table className="unit-type"><tbody>
                     <tr>
                         <td><img src={s11} alt="motorized anti-aircraft" /></td>
                         <td>Motorized Anti-Aircraft</td>
@@ -435,7 +436,7 @@ const Units = (props) => {
                         <td><img src={s12} alt="motorized anti-tank" /></td>
                         <td>Motorized Anti-Tank</td>
 
-                    </tr>
+                    </tr></tbody>
                 </table>
                 <div className="note"><span className="red">*</span> Considered "Armor" for Armor Attrition, CAB, Panzer Divisional Integrity, and Armor Loss.</div>
 
@@ -454,7 +455,7 @@ const Units = (props) => {
 
             <section>
                 <div className="subheader1_4">NON-MOTORIZED UNITS</div>
-                <table className="unit-type">
+                <table className="unit-type"><tbody>
                     <tr>
                         <td><img src={s13} alt="infantry" /></td>
                         <td>Infantry</td>
@@ -467,10 +468,10 @@ const Units = (props) => {
 
                         <td><img src={s16} alt="s16" /></td>
                         <td>Security</td>
-                    </tr>
+                    </tr></tbody>
                 </table>
 
-                <table className="unit-type">
+                <table className="unit-type"><tbody>
                     <tr>
                         <td><img src={s18} alt="partisan" /></td>
                         <td>Partisan</td>
@@ -483,10 +484,10 @@ const Units = (props) => {
 
                         <td><img src={s21} alt="cavalry" /></td>
                         <td>Cavalry</td>
-                    </tr>
+                    </tr></tbody>
                 </table>
 
-                <table className="unit-type">
+                <table className="unit-type"><tbody>
                     <tr>
                         <td><img src={s22} alt="headquarters" /></td>
                         <td>Headquarters</td>
@@ -494,7 +495,7 @@ const Units = (props) => {
                         <td><img src={s23} alt="anti-aircraft" /></td>
                         <td>Anti-Aircraft</td>
 
-                    </tr>
+                    </tr></tbody>
                 </table>
             </section>
 
@@ -503,7 +504,7 @@ const Units = (props) => {
 
             <section>
                 <div className="subheader1_4">ARTILLERY UNITS</div>
-                <table className="unit-type">
+                <table className="unit-type"><tbody>
                     <tr>
                         <td><img src={s24} alt="Field Artillery" /></td>
                         <td>Field Artillery</td>
@@ -516,10 +517,10 @@ const Units = (props) => {
 
                         <td><img src={s27} alt="Super-Heavy Artillery" /></td>
                         <td>Super-Heavy Artillery</td>
-                    </tr>
+                    </tr></tbody>
                 </table>
 
-                <table className="unit-type">
+                <table className="unit-type"><tbody>
                     <tr>
                         <td><img src={s28} alt="Railroad Super-Heavy Artillery" /></td>
                         <td>Railroad Super-Heavy Artillery</td>
@@ -530,7 +531,7 @@ const Units = (props) => {
                         <td><img src={s30} alt="Naval Unit" /></td>
                         <td>Naval Unit</td>
 
-                    </tr>
+                    </tr></tbody>
                 </table>
 
             </section>
@@ -541,7 +542,7 @@ const Units = (props) => {
 
             <section>
                 <div className="subheader1_4">SPECIAL UNITS</div>
-                <table className="unit-type">
+                <table className="unit-type"><tbody>
                     <tr>
                         <td><img src={s31} alt="Flotilla" /></td>
                         <td>Flotilla</td>
@@ -549,7 +550,7 @@ const Units = (props) => {
                         <td><img src={s32} alt="Armored Train" /></td>
                         <td>Armored Train</td>
 
-                    </tr>
+                    </tr></tbody>
                 </table>
 
             </section>
@@ -712,7 +713,7 @@ const Units = (props) => {
 
 <div className="spacer1rem" />
 
-<table className="unit-size">
+<table className="unit-size"><tbody>
     <tr>
         <td>XXX</td>
         <td>Corps</td>
@@ -743,7 +744,7 @@ const Units = (props) => {
         <td>I</td>
         <td>Compagnie</td>
         <td>100-300 hommes.</td>
-    </tr>
+    </tr></tbody>
 </table>
 
 
@@ -771,7 +772,7 @@ const Units = (props) => {
 
 <section>
     <div className="subheader1_4">UNITES MOTORISEES</div>
-    <table className="unit-type">
+    <table className="unit-type"><tbody>
         <tr>
             <td><img src={s4} alt="armor" /></td>
             <td>Blindè<span className="red">*</span></td>
@@ -784,10 +785,10 @@ const Units = (props) => {
 
             <td><img src={s7} alt="recon" /></td>
             <td>Reconnaissance</td>
-        </tr>
+        </tr></tbody>
     </table>
 
-    <table className="unit-type">
+    <table className="unit-type"><tbody>
         <tr>
             <td><img src={s8} alt="motorized infantry" /></td>
             <td>Infanterie Motorisèe</td>
@@ -800,10 +801,10 @@ const Units = (props) => {
 
             <td><img src={s10} alt="motorized combat engineer" /></td>
             <td>Gènie de Combat Motorisè</td>
-        </tr>
+        </tr></tbody>
     </table>
 
-    <table className="unit-type">
+    <table className="unit-type"><tbody>
         <tr>
             <td><img src={s11} alt="motorized anti-aircraft" /></td>
             <td>Anti-Aèrien Motorisè</td>
@@ -811,7 +812,7 @@ const Units = (props) => {
             <td><img src={s12} alt="motorized anti-tank" /></td>
             <td>Anti-Char Motorisè</td>
 
-        </tr>
+        </tr></tbody>
     </table>
     <div className="note"><span className="red">*</span> Ces unitès sont considèrèes "Blindèes" pour l'Usure des Blindès, le Bonus d'Armes Combinèes, l'Intègritè Divisionnaire, et les pertes blindèes.</div>
 
@@ -830,7 +831,7 @@ const Units = (props) => {
 
 <section>
     <div className="subheader1_4">UNITES NON MOTORISEES</div>
-    <table className="unit-type">
+    <table className="unit-type"><tbody>
         <tr>
             <td><img src={s13} alt="infantry" /></td>
             <td>Infanterie</td>
@@ -843,10 +844,10 @@ const Units = (props) => {
 
             <td><img src={s16} alt="s16" /></td>
             <td>Sècurtiè</td>
-        </tr>
+        </tr></tbody>
     </table>
 
-    <table className="unit-type">
+    <table className="unit-type"><tbody>
         <tr>
             <td><img src={s18} alt="partisan" /></td>
             <td>Partisan</td>
@@ -859,10 +860,10 @@ const Units = (props) => {
 
             <td><img src={s21} alt="cavalry" /></td>
             <td>Cavalerie</td>
-        </tr>
+        </tr></tbody>
     </table>
 
-    <table className="unit-type">
+    <table className="unit-type"><tbody>
         <tr>
             <td><img src={s22} alt="headquarters" /></td>
             <td>Quartier Gènèral</td>
@@ -870,7 +871,7 @@ const Units = (props) => {
             <td><img src={s23} alt="anti-aircraft" /></td>
             <td>Anti-Aèrien</td>
 
-        </tr>
+        </tr></tbody>
     </table>
 </section>
 
@@ -879,7 +880,7 @@ const Units = (props) => {
 
 <section>
     <div className="subheader1_4">UNITES D'ARTILLERIE</div>
-    <table className="unit-type">
+    <table className="unit-type"><tbody>
         <tr>
             <td><img src={s24} alt="Field Artillery" /></td>
             <td>Artillerie de Campagne</td>
@@ -892,10 +893,10 @@ const Units = (props) => {
 
             <td><img src={s27} alt="Super-Heavy Artillery" /></td>
             <td>Artillerie Super Lourde</td>
-        </tr>
+        </tr></tbody>
     </table>
 
-    <table className="unit-type">
+    <table className="unit-type"><tbody>
         <tr>
             <td><img src={s28} alt="Railroad Super-Heavy Artillery" /></td>
             <td>Artillerie Ferroviaire Super Lourde</td>
@@ -906,7 +907,7 @@ const Units = (props) => {
             <td><img src={s30} alt="Naval Unit" /></td>
             <td>Unitè navale</td>
 
-        </tr>
+        </tr></tbody>
     </table>
 
 </section>
@@ -917,7 +918,7 @@ const Units = (props) => {
 
 <section>
     <div className="subheader1_4">UNITES SPECIALES</div>
-    <table className="unit-type">
+    <table className="unit-type"><tbody>
         <tr>
             <td><img src={s31} alt="Flotilla" /></td>
             <td>Flottille</td>
@@ -925,7 +926,7 @@ const Units = (props) => {
             <td><img src={s32} alt="Armored Train" /></td>
             <td>Train Blindè</td>
 
-        </tr>
+        </tr></tbody>
     </table>
 
 </section>

@@ -27,7 +27,7 @@ import i16 from "../../../images/efs/airpower/i-16.jpg";
 import i153_counter from "../../../images/efs/airpower/i-153.gif";
 import i153 from "../../../images/efs/airpower/i-153.jpg";
 import il2_counter from "../../../images/efs/airpower/il-2.gif";
-import il2 from "../../../images/efs/airpower/il-2.jpg";
+import il2_sturmovik from "../../../images/efs/airpower/il-2sturmovik.jpg";
 import ju88_counter from "../../../images/efs/airpower/ju-88.gif";
 import ju88 from "../../../images/efs/airpower/ju-88.jpg";
 import mig3_counter from "../../../images/efs/airpower/mig-3.gif";
@@ -63,13 +63,11 @@ class Airpower extends Component {
     }
 
     componentDidMount = () => {
-        console.log('this.props: ', this.props);
         this.drawCanvas(this.props.language);
     }
 
     componentWillReceiveProps = (props) => {
-        console.log('componentWillReceiveProps: ', props);
-        this.drawCanvas(props.languag);
+        this.drawCanvas(props.language);
     }
 
 
@@ -688,13 +686,13 @@ class Airpower extends Component {
                             <img src={pe2} alt="Petlyakov Pe-2" />
                         </div>
 
-                        <div className="generic-flex-space-start soviet">
+                        <div className="generic-flex-space-start soviet il2">
                             <img className="aircraft-counter" src={il2_counter} alt="Ilyushin-2 Shturmovik" />
                             <div>
                                 <div>Ilyushin-2 Shturmovik</div>
                                 The Ilyushin-2 Shturmovik ground-attack aircraft was one of the best aircraft designs of the war. Designed in 1938, it entered production in 1941. It was well armed with twin 7.62 machineguns, 8 rockets under the wings, and bombs in the bomb bays, and given exclusive access to the best aircraft engine produced by the Soviets (killing off the MiG-3 production lines, which needed that engine). It was well armored and sustained damage well. After the shock of German invasion, Stalin issued urgent orders to immediately ramp up production of the IL-2.
                             </div>
-                            <img src={il2} alt="Ilyushin-2 Shturmovik" />
+                            <img src={il2_sturmovik} alt="Ilyushin-2 Shturmovik" />
                         </div>
 
                         <div className="generic-flex-space-start soviet">
@@ -746,11 +744,11 @@ class Airpower extends Component {
                             <img className="aircraft-counter" src={romanian_iar80} alt="IAR-80" />
                             <div>
                                 <div>IAR-80</div>
-                                In 1930 the Romanian government issued specifications for a new fighter. The Industria Aeronautică Română (IAR) provided their prototypes,
-                                but lost the competition to the Polish PZL P.11. However, the IAR continued working on their prototypes, and demonstrated the IAR-80 Fighter to the government
-                                in 1939. Its performance was impressive enough to garner a contract for 100 IAR-80s in December 1939, soon followed by a contracts for many more over the 
-                                following years for a total of 346. The plane used a 14 cylinder radial piston engine and was armed with four 7.92mm FN machine guns in the wings.
-                                A Luftwaffe pilot who test flew the IAR-80 concluded that, while not as manueverable as the German BF-109E, it was nevertheless an adequate fighter.
+                                In 1930 the Romanian government issued specifications for a new fighter. The Industria Aeronautică Română (IAR) factory provided their prototypes,
+                                but lost in the competition to the Polish PZL P.11. However, the IAR continued working on their prototypes, and demonstrated the IAR-80 Fighter to the government
+                                in 1939. Its performance was impressive enough to garner a contract for 100 IAR-80s in December 1939, soon followed by contracts for many more over the 
+                                following years, for a total of 346 planes. The engine used was a 14 cylinder radial piston.  It was well armed with four 7.92mm FN machine guns in the wings.
+                                A Luftwaffe pilot who test flew the IAR-80 concluded that, while not as manueverable as the German BF-109E, it was a respectable fighter.
 
                                 </div>
                             <img src={iar80} alt="IAR-80" />
@@ -761,12 +759,12 @@ class Airpower extends Component {
                             <img className="aircraft-counter" src={romanian_potez63} alt="Potez 63" />
                             <div>
                                 <div>Potez 63</div>
-                                    Potez 63 was the overall designation for a series of aircraft designed by the Potez company in France, although in 1936 the company was absorbed
+                                    Potez 63 was the overall designation for a series of aircraft designed by the Potez company in France. In 1936 the Potez company was absorbed
                                     into the National Aircraft Construction Company of the North (SNCAN). These twin engined planes were made for fighter, bomber, and reconnaissance roles.
                                     These planes had a resemblance to the
-                                    German BF-110, but lacked performance. However manueverability was good and this enabled pilots to often survive dogfights. 
+                                    German BF-110, but lacked its performance. However, manueverability was good and this helped pilots to survive dogfights. 
                                     The Potez aircraft were obsolete by the start
-                                    of the war, but were purchased by many countries in Europe including France, Germany, Hungary, Italy, Poland, Switzerland, Yugoslavia, and Romania.
+                                    of the war, but were in service in many countries in Europe, including France, Germany, Hungary, Italy, Poland, Switzerland, Yugoslavia, and Romania.
                                 </div>
                             <img src={potez631} alt="Potez 63" />
                         </div>
@@ -777,12 +775,14 @@ class Airpower extends Component {
                             <img className="aircraft-counter" src={romanian_pzl11} alt="PZL P.11" />
                             <div>
                                 <div>PZL P.11</div>
-                                The Warsaw based PZL aircraft manufacture designed in the late 1920s, and production of the P.11 Figher began in 1931. It was very advanced at the time, as it used
+                                The Warsaw based aircraft manufacturer "PZL" designed the P.11 in the late 1920s, and production began in 1931. It was very advanced at the time, as it used
                                 an all-metal structure and skin. It had two 7.92mm machine guns mounted on the sides of the fuselage. The engine was mounted on rubber 
                                 vibration absorbers and 
-                                the undercarriage and tail skid were mounted on pneumatic shock absorbers. Using a single "gull" wing that was highly aerodynamically efficient, it soon became 
-                                popularized as the "Polish Wing" or the "Puławski wing" (after the designer). Later models added another pair of machineguns fixed onto the wings.
-                                 Romania was an eager buyer of these planes, and the IAR started
+                                the undercarriage and tail skid were mounted on pneumatic shock absorbers. 
+                                
+                                Its distinctive "gull" wing was very aerodynamically efficient, and it became known as the "Polish Wing" or the "Puławski wing" (after the designer). 
+                                Later models added another pair of machineguns fixed onto the wings.
+                                Romania was an eager buyer of these planes, and the Romanian IAR factory started
                                 their own production line under license, calling their version the IAR P.11f, using the IAR's own 9Krse engine.
                                 Performance of the plane in dogfights was surprising good, despite being outclassed by modern fighters in most aspects. 
                                 It was claimed that its manuverability was limited only by the ability of the pilot to resist g-forces. In the Polish campaign, the P.11 
@@ -796,7 +796,7 @@ class Airpower extends Component {
                             <div>
                                 <div>PZL.37 "Łoś"</div>
                                 The Polish PZL.37 Łoś (Moose) made a splash in 1936 as the best medium bomber ever designed at the time. It was slightly narrower than other
-                                medium bombers, but because of this was faster and easier to handle, and gained a reputation of being very reliable. It could carry a
+                                medium bombers, and because of this was faster and easier to handle. It also gained a reputation of being very reliable. It could carry a
                                 relatively heavy bomb load - but the bombs had to be of a specialized shape in order to fit. The fuselage of the plane
                                 was aerodynamically designed to add lift - one of the first plane designs to do so. Its retractable wide wheel carriage, 
                                 with doubled wheels, allowed it to take off and land on rough air strips or even fields and meadows. It had 3 machineguns that provided adequate protection. 
@@ -811,8 +811,8 @@ class Airpower extends Component {
                             <img className="aircraft-counter" src={romanian_sm79} alt="SM-79" />
                             <div>
                                 <div>SM-79 "Sparviero"</div>
-                                The Savoia-Marchetti SM.79 Sparviero (Italian for sparrowhawk) was a 3 engined medium bomber, well liked by crews who nicknamed it the
-                                "il gobbo maledetto" ("the damned hunchback") due to its distinctive rounded canopy. Originally designed as a fast 8 passenger plane, it was adapted in 1034 to become a medium bomber.
+                                The Savoia-Marchetti SM.79 Sparviero (Italian for sparrowhawk) was a 3 engined medium bomber, well liked by crews who nicknamed it
+                                "il gobbo maledetto" ("the damned hunchback") due to its distinctive rounded canopy. Originally designed as a fast 8 passenger plane, it was adapted in 1934 to become a medium bomber.
                                 Although it was a mixed wood/metal tube construction, the "Sparrowhawk" broke many speed records, reaching 460 km/h (286 mph) at 3,790 m (12,430 ft), with the excellent range of 1600 miles. 
                                 Italy's fascist government was very proud of the plane and took every effort to promote it in competitions. 
                                 First used in combat in the Spanish Civil War, it would fly without fighter escort, since no enemy fighter could match its speed at that time.
@@ -1276,13 +1276,13 @@ class Airpower extends Component {
                             <img src={pe2} alt="Petlyakov Pe-2" />
                         </div>
 
-                        <div className="generic-flex-space-start soviet">
+                        <div className="generic-flex-space-start soviet il2">
                             <img className="aircraft-counter" src={il2_counter} alt="Ilyushin-2 Shturmovik" />
                             <div>
                                 <div>Ilyushin-2 Shturmovik</div>
                                 L'avion d'attaque au sol Ilyushin-2 Sturmovik fut un des meilleurs avions crèes durant le conflit. Mis au point en 1938, il entra en production en 1941. Il ètait bien armè avec des mitrailleuses jumelles de 7.62mm, 8 rockets sous les ailes et des bombes en soutes le tout propulsè par les meilleurs moteurs de la production soviétique (on interrompit la production de Mig-3, pour permettre l'approvisionnement en moteur du Il-2). Il ètait fortement blindè et pouvait ainsi supporter de nombreux dommages. Après le choc de l'invasion Staline donna des ordres urgents pour rendre prioritaire la production de cet appareil.
                             </div>
-                            <img src={il2} alt="Ilyushin-2 Shturmovik" />
+                            <img src={il2_sturmovik} alt="Ilyushin-2 Shturmovik" />
                         </div>
 
                         <div className="generic-flex-space-start soviet">
@@ -1367,16 +1367,7 @@ class Airpower extends Component {
                             <img className="aircraft-counter" src={romanian_pzl11} alt="PZL P.11" />
                             <div>
                                 <div>PZL P.11</div>
-                                La construction d’avions PZL basée à Varsovie a été conçue à la fin des années 20 et la production du P.11 Figher a commencé en 1931. Elle était très avancée à l’époque car elle utilisait
-                                une structure et une peau entièrement métalliques. Il avait deux mitrailleuses de 7,92 mm montées sur les côtés du fuselage. Le moteur était monté sur du caoutchouc
-                                absorbeurs de vibrations et
-                                le train d'atterrissage et le patin de queue ont été montés sur des amortisseurs pneumatiques. En utilisant une seule aile "mouette" hautement aérodynamiquement efficace, elle est rapidement devenue
-                                popularisé comme "l'aile polonaise" ou "l'aile Puławski" (d'après le concepteur). Les modèles ultérieurs ont ajouté une autre paire de mitrailleuses fixées sur les ailes.
-                                 La Roumanie était un acheteur enthousiaste de ces avions, et le RAI a commencé
-                                leur propre chaîne de production sous licence, appelant leur version l’IAR P.11f, utilisant le propre moteur 9Krse de l’IRA.
-                                Les performances de l'avion en combat aérien étaient étonnamment bonnes, bien qu'elles soient surclassées par les chasseurs modernes dans la plupart des aspects.
-                                Il a été affirmé que sa manœuvrabilité n’était limitée que par la capacité du pilote à résister aux forces centrifuges. Dans la campagne polonaise, le P.11
-                                s'est avéré être un adversaire difficile pour les combattants allemands, et bien que le P.11 ait subi de lourdes pertes, ils ont abattu de nombreux combattants allemands avec eux. 
+                                Le constructeur aéronautique "PZL" basé à Varsovie a conçu le P.11 à la fin des années 20 et sa production a commencé en 1931. Il était très perfectionné à l'époque, car il utilisait une structure et une peau entièrement métalliques. Il avait deux mitrailleuses de 7,92 mm montées sur les côtés du fuselage. Le moteur était monté sur des amortisseurs de vibrations en caoutchouc et le châssis et le patin de la queue sur des amortisseurs pneumatiques. Utilisant une seule aile "mouette" hautement aérodynamique, elle est rapidement devenue popularisée sous le nom d '"aile polonaise" ou "aile Puławski" (d'après le concepteur). Les modèles ultérieurs ont ajouté une autre paire de mitrailleuses fixées sur les ailes. La Roumanie était un acheteur enthousiaste de ces avions, et l’usine roumaine IAR a démarré sa propre chaîne de production sous licence, appelant leur version l’IAR P.11f, utilisant le moteur 9Krse de l’IAR. Les performances de l'avion en combat aérien étaient étonnamment bonnes, bien qu'elles soient surclassées par les chasseurs modernes dans la plupart des aspects. Il a été affirmé que sa manœuvrabilité n’était limitée que par la capacité du pilote à résister aux forces centrifuges. En campagne polonaise, le P.11 s’est avéré être un adversaire redoutable pour les combattants allemands et, bien que le P.11 ait subi de lourdes pertes, il a emporté de nombreux combattants allemands. 
                              </div>
                             <img src={pzl11} alt="PZL P.11" />
                         </div>
@@ -1401,8 +1392,8 @@ class Airpower extends Component {
                             <img className="aircraft-counter" src={romanian_sm79} alt="SM-79" />
                             <div>
                                 <div>SM-79 "Sparviero"</div>
-                                Le Savoia-Marchetti SM.79 Sparviero (italien pour Sparrowhawk) était un bombardier moyen à moteur 3, bien aimé des équipages qui l'ont surnommé le
-                                "il gobbo maledetto" ("le maudit bossu") en raison de son auvent arrondi distinctif. Conçu à l'origine comme un avion rapide à 8 passagers, il a été adapté en 1034 pour devenir un bombardier moyen.
+                                Le Savoia-Marchetti SM.79 Sparviero (italien pour Sparrowhawk) était un bombardier moyen à moteur 3, bien aimé des équipages qui l'ont surnommé 
+                                "il gobbo maledetto" ("le maudit bossu") en raison de son auvent arrondi distinctif. Conçu à l'origine comme un avion rapide à 8 passagers, il a été adapté en 1934 pour devenir un bombardier moyen.
                                 Bien qu’il s’agisse d’une construction mixte à tubes de bois et de métal, le «Sparrowhawk» a battu de nombreux records de vitesse, atteignant 460 km / h (286 mph) à 3790 m (1230 pieds), avec une excellente autonomie de 1600 milles.
                                 Le gouvernement fasciste italien était très fier de l'avion et n'a ménagé aucun effort pour en faire la promotion lors des compétitions.
                                 D'abord utilisé au combat dans la guerre civile espagnole, il volerait sans escorte de chasse, car aucun chasseur ennemi ne pouvait égaler sa vitesse à cette époque.

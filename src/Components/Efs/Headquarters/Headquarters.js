@@ -14,12 +14,10 @@ export default class Headquarters extends Component {
     }
 
     componentDidMount = () => {
-        console.log('this.props: ', this.props);
         this.drawCanvas(this.props.language);
     }
 
     componentWillReceiveProps = (props) => {
-        console.log('componentWillReceiveProps: ', props);
         this.drawCanvas(props.language);
     }
 
