@@ -64,12 +64,11 @@ const EfsHome = (props) => {
 
                 <p>
                     <span className={props.language === 'en' ? '' : 'block-hidden'}>
-                    Vance von Borries created <span className="tm">Typhoon!</span> as his first game for a new game system, titled the "EAST FRONT SERIES" (EFS), in 1995. It was an instant
-                    hit, and is now out of print and a very desired collectable game, demanding high prices whenever offered. Vance followed
+                    Vance von Borries created <span className="tm">Typhoon!</span> as the first game for his new game system, titled the "<span className="b">EAST FRONT SERIES</span>" (EFS), in 1995. It was an instant
+                    hit, and is out of print and a very desired collectable game, demanding high prices whenever offered. Vance followed
                     up this hit with a series of 3 games, the Barbarossa games, each named after one of 3 army groups of the Axis effort in the
-                    east. The first one was <span className="tm">Army Group South</span>, followed by <span className="tm">Army Group Center</span>, then came <span className="tm">Army Group North</span>.
-                    All 3 games are now out of print. Currently in print are two new additions to the
-                    series, <span className="tm">Barbarossa: Kiev to Rostov, 1941</span>, and <span className="tm">Barbarossa: Crimea, 1941-42</span>.
+                    east: <span className="tm">Army Group South</span> (1996), <span className="tm">Army Group Center</span> (1998), and <span className="tm">Army Group North</span> (2000).
+                    Then came  <span className="tm">Barbarossa: Kiev to Rostov, 1941</span> (2008), and <span className="tm">Barbarossa: Crimea, 1941-42</span> (2010). They are all out of print as of now (2019).
                     </span>
                     <span className={props.language === 'fr' ? '' : 'block-hidden'}>
                     Vance von Borries a créé <span className="tm">Typhoon!</span> son premier jeu d'un nouveau système intitulé "EAST FRONT SERIES" (EFS), en 1995. Ce fut un succès instantané, il est maintenant épuisé et un jeu de collection très convoité, exigeant des prix élevés chaque fois qu’il est proposé. Vance a ensuite enchaîné ses succès avec une série de 3 jeux, les jeux de Barbarossa, chacun nommé d'après l'un des 3 groupes d'armées de l'effort de l'Axe dans l'est. Le premier est le <span className="tm">Amry Group Sourth</span>, suivi du groupe <span className="tm">Army Group Center</span>, suivi du <span className="tm">Army Group North</span>. Les 3 jeux sont maintenant épuisés. <span className="tm">Barbarossa: Kiev to Rostov, 1941</span>, et <span className="tm">Barbarossa: Crimea, 1941-1942</span>, sont actuellement imprimés.
