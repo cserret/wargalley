@@ -1,4 +1,5 @@
 import React from 'react';
+import ScrollToTopOnMount from "../../ScrollToTopOnMount";
 import combat from "../../../images/efs/combat/combat.jpg";
 import map_combat1 from "../../../images/efs/combat/map_combat1.jpg";
 import map_combat2 from "../../../images/efs/combat/map_combat2.jpg";
@@ -40,7 +41,7 @@ const Combat = (props) => {
                 </p>
                 <p>
                     The core general sequence leading to combat is
-                    <ol>
+                    <ol className="ol-less-top">
                         <li>Get adjacent to enemy units.</li>
                         <li>Declare Combat.</li>
                         <li>Enemy gets to respond, if possible.</li>
@@ -515,7 +516,7 @@ const Combat = (props) => {
                 </p>
                 <p>
                 La sèquence gènèrale menant è un combat est
-                    <ol>
+                    <ol className="ol-less-top">
                         <li>Se retrouver adjacent è des unitès ennemies.</li>
                         <li>Dèclarer le combat.</li>
                         <li>L'ennemie peut rèpondre si c'est possible.</li>
@@ -962,7 +963,7 @@ Si  <span className="italic-bold">tout</span> ce qui suit est vrai:<br />
 
 
 
-
+            <ScrollToTopOnMount />
 
 
         </div>

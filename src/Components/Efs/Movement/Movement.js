@@ -1,4 +1,5 @@
 import React from 'react';
+import ScrollToTopOnMount from "../../ScrollToTopOnMount";
 import c1 from "../../../images/efs/movement/c1.jpg";
 import c3 from "../../../images/efs/movement/c3.jpg";
 import c7 from "../../../images/efs/movement/c7.jpg";
@@ -88,7 +89,10 @@ const Movement = (props) => {
                     </div>
 
                     <div className="unit-example">
-                        <img src={c8} alt="infiltration" />
+                        <img src={c8} alt="infiltration" />                <div className="subheader-image header-1-image">
+                    <div>Minor roads in mud</div>
+                    <img src={mudroad} alt="muddy road" />
+                </div>
                         <div>INFILTRATION</div>
                         <div>Movement factor is yellow</div>
                     </div>
@@ -660,7 +664,7 @@ const Movement = (props) => {
             </span>
 
 
-
+            <ScrollToTopOnMount />
 
         </div >
     );

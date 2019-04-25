@@ -47,9 +47,9 @@
       right: 2%;
       bottom: 4.5rem;
       display: flex;
-      width: 12%;
-      min-width: 200px;
-      max-width: 250px;
+      width: 8%;
+      min-width: 150px;
+      max-width: 200px;
       justify-content: space-between;
 
       img {
@@ -88,12 +88,13 @@
         width: 86%;
         margin: auto;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-around;
         padding-bottom: 0.15rem;
         border-bottom: 0.15rem solid #82202a;
+
       }
       .line2 {
-        width: 86%;
+        width: 82%;
         margin: auto;
         display: flex;
         justify-content: space-evenly;
@@ -110,7 +111,11 @@
         &:active {
           color: cyan;
         }
+
       }
+
+
+
     }
   }
 }
@@ -119,6 +124,19 @@ _:-ms-lang(x),
 .header .appmenu .line1,
 .header .appmenu .line2 {
   flex: 1 auto;
+}
+_:-ms-lang(x),
+.header .appmenu .line1 a,
+.header .appmenu .line2 a {
+  flex: 1 auto;
+}
+_:-ms-lang(x),
+.header .appmenu .line1 a {
+  margin-left: 2.8vw;
+}
+_:-ms-lang(x),
+.header .appmenu .line2 a {
+  margin-left: 3.2vw;
 }
 _:-ms-lang(x),
 .appmenu line1 {

@@ -1,4 +1,5 @@
 import React from 'react';
+import ScrollToTopOnMount from "../../ScrollToTopOnMount";
 import barrels from "../../../images/efs/supply/barrels.gif";
 import general_supply_example1 from "../../../images/efs/supply/general_supply_example1.jpg";
 import general_supply_example2 from "../../../images/efs/supply/general_supply_example2.jpg";
@@ -909,7 +910,7 @@ member units participating in the attack are OOS, unless they are given Attack S
 
 
 
-
+            <ScrollToTopOnMount />
 
 
 

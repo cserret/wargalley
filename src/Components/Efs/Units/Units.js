@@ -1,4 +1,5 @@
 import React from 'react';
+import ScrollToTopOnMount from "../../ScrollToTopOnMount";
 import './Units.scss';
 
 import c10 from "../../../images/efs/units/c10.jpg";
@@ -50,6 +51,10 @@ import unitinfo1 from "../../../images/efs/units/unitinfo1.gif";
 import unitinfo2 from "../../../images/efs/units/unitinfo2.gif";
 import unitinfo3 from "../../../images/efs/units/unitinfo3.gif";
 import unitinfo4 from "../../../images/efs/units/unitinfo4.gif";
+import unitinfo1_fr from "../../../images/efs/units/unitinfo1_fr.gif";
+import unitinfo2_fr from "../../../images/efs/units/unitinfo2_fr.gif";
+import unitinfo3_fr from "../../../images/efs/units/unitinfo3_fr.gif";
+import unitinfo4_fr from "../../../images/efs/units/unitinfo4_fr.jpg";
 
 const Units = (props) => {
     return (
@@ -57,13 +62,20 @@ const Units = (props) => {
 
             <div className="content-title">
                 <div className={props.language === 'en' ? '' : 'block-hidden'}>UNITS</div>
-                <div className={props.language === 'fr' ? '' : 'block-hidden'}>UNITS fr</div>
+                <div className={props.language === 'fr' ? '' : 'block-hidden'}>UNITÉS</div>
                 <div className={props.language === 'ru' ? '' : 'block-hidden'}>UNITS ru</div>
                 <div></div>
             </div>
 
+            <div className={props.language === 'en' ? '' : 'block-hidden'}>
             <div className="clipart">
                 <img src={unitinfo1} alt="unit info 1" />
+            </div>
+            </div>
+            <div className={props.language === 'fr' ? '' : 'block-hidden'}>
+            <div className="clipart">
+                <img src={unitinfo1_fr} alt="unit info 1" />
+            </div>
             </div>
 
             <p>
@@ -78,10 +90,16 @@ const Units = (props) => {
                 </span>
             </p>
 
-
+<div className={props.language === 'en' ? '' : 'block-hidden'}>
             <div className="clipart">
                 <img src={unitinfo2} alt="unit info 2" />
             </div>
+</div>
+<div className={props.language === 'fr' ? '' : 'block-hidden'}>
+            <div className="clipart">
+                <img src={unitinfo2_fr} alt="unit info 2" />
+            </div>
+</div>
 
             <p>
                 <span className={props.language === 'en' ? '' : 'block-hidden'}>
@@ -109,9 +127,15 @@ const Units = (props) => {
 
 
 
-
+            <div className={props.language === 'en' ? '' : 'block-hidden'}>
             <div className="clipart">
                 <img src={unitinfo3} alt="unit info 3" />
+            </div>
+            </div>
+            <div className={props.language === 'fr' ? '' : 'block-hidden'}>
+            <div className="clipart">
+                <img src={unitinfo3_fr} alt="unit info 3" />
+            </div>
             </div>
 
             <p>
@@ -127,9 +151,15 @@ const Units = (props) => {
             </p>
 
 
-
+            <div className={props.language === 'en' ? '' : 'block-hidden'}>
             <div className="clipart">
                 <img src={unitinfo4} alt="unit info 4" />
+            </div>
+            </div>
+            <div className={props.language === 'fr' ? '' : 'block-hidden'}>
+            <div className="clipart">
+                <img src={unitinfo4_fr} alt="unit info 4" />
+            </div>
             </div>
 
             <p>
@@ -153,6 +183,26 @@ const Units = (props) => {
             </p>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div className={props.language === 'en' ? '' : 'block-hidden'}>
 
             <div className="gray-box">
                 <p className="subsubheader2">COLOR CODES</p>
@@ -504,9 +554,385 @@ const Units = (props) => {
 
             </section>
 
+        </div>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div className={props.language === 'fr' ? '' : 'block-hidden'}>
+
+<div className="gray-box">
+    <p className="subsubheader2">CODES DES COULEURS</p>
+
+    <div className="two-column-flex">
+        <div className="color-code-image"><img src={c1} alt="attack factor is red" /></div>
+        <div className="color-code-text">
+            <div><span>Facteur d'Attaque en rouge:</span> Unitè Blindèe.</div>
+            <div><span>Mouvement dans une case rouge:</span>  l'Unitè est motorisèe.</div>
+        </div>
+    </div>
+
+    <div className="two-column-flex">
+        <div className="color-code-image"><img src={c2} alt="c2" /></div>
+        <div className="color-code-text">
+            <div><span>Bande jaune en haut:</span> N'a de ZDC que dans l'hex occupè.</div>
+            <div><span>Type en bleu:</span> Navale.</div>
+            <div><span>Mouvement en vert:</span> NKVD.</div>
+        </div>
+    </div>
+
+    <div className="two-column-flex">
+        <div className="color-code-image"><img src={c3} alt="c3" /></div>
+        <div className="color-code-text">
+            <div><span>Mouvement en bleu:</span> Mouvement de flottille uniquement.</div>
+        </div>
+    </div>
+
+    <div className="two-column-flex">
+        <div className="color-code-image"><img src={c4} alt="c4" /></div>
+        <div className="color-code-text">
+            <div><span>Type en vert:</span> NKVD.</div>
+        </div>
+    </div>
+
+
+    <div className="two-column-flex">
+        <div className="color-code-image"><img src={c5} alt="c5" /></div>
+        <div className="color-code-text">
+            <div><span>Type en jaune:</span> Milice.</div>
+        </div>
+    </div>
+
+    <div className="two-column-flex">
+        <div className="color-code-image"><img src={c6} alt="c6" /></div>
+        <div className="color-code-text">
+            <div><span>Type en bleu clair:</span> Aèroportè.</div>
+        </div>
+    </div>
+
+    <div className="two-column-flex">
+        <div className="color-code-image"><img src={c13} alt="c13" /></div>
+        <div className="color-code-text">
+            <div><span>Type en rouge:</span> Garde.</div>
+        </div>
+    </div>
+
+    <div className="two-column-flex">
+        <div className="color-code-image"><img src={c7} alt="c7" /></div>
+        <div className="color-code-text">
+            <div><span>Type en blanc:</span> Armèe règulière.</div>
+        </div>
+    </div>
+
+    <div className="two-column-flex">
+        <div className="color-code-image"><img src={c8} alt="c8" /></div>
+        <div className="color-code-text">
+            <div><span>Mouvement en jaune:</span> Capable d'infiltrer.</div>
+        </div>
+    </div>
+
+    <div className="two-column-flex">
+        <div className="color-code-image"><img src={c10} alt="c10" /></div>
+        <div className="color-code-text">
+            <div><span>Mouvement en gris:</span> Mouvement ferroviaire uniquement.</div>
+        </div>
+    </div>
+
+    <div className="two-column-flex">
+        <div className="color-code-image"><img src={c11} alt="c11" /></div>
+        <div className="color-code-text">
+            <div><span>Type en bleu clair:</span> Luftwaffe/Aèroportè.</div>
+        </div>
+    </div>
+
+    <div className="two-column-flex">
+        <div className="color-code-image"><img src={c12} alt="c12" /></div>
+        <div className="color-code-text">
+            <div><span>Mouvement en orange:</span> Motorisè, bouge en mouvement règulier.</div>
+        </div>
+    </div>
+
+    <div className="two-column-flex">
+        <div className="color-code-image"><img src={italian_infantry_div_60} alt="Italian infantry" /></div>
+        <div className="color-code-text">
+            <div><span>Les unités italiennes sont violettes.</span></div>
+        </div>
+    </div>
+
+
+    <div className="two-column-flex">
+        <div className="color-code-image"><img src={slovak_infantry_div_60} alt="Slovak infantry" /></div>
+        <div className="color-code-text">
+            <div><span>Les unités slovaques sont jaunes.</span></div>
+        </div>
+    </div>
+
+    <div className="two-column-flex">
+        <div className="color-code-image"><img src={rumanian_infantry_div_60} alt="Romanian infantry" /></div>
+        <div className="color-code-text">
+            <div><span>Les unités roumaines sont vertes.</span></div>
+        </div>
+    </div>
+
+    <div className="two-column-flex">
+        <div className="color-code-image"><img src={finnish_60} alt="Finnish infantry" /></div>
+        <div className="color-code-text">
+            <div><span>Les unités finlandaises sont blanches avec une bande bleue.</span></div>
+        </div>
+    </div>
+
+</div>
+
+<div className="spacer2rem" />
+
+<p>
+    <span className={props.language === 'en' ? '' : 'block-hidden'}>
+    Unit size is designated by small symbols on top of the unit type boxes.
+    </span>
+    <span className={props.language === 'fr' ? '' : 'block-hidden'}>
+    La taille de l'unité est indiquée par de petites désignations en haut du symbole de type d'unité.
+    </span>
+</p>
+
+<div className="spacer1rem" />
+
+<table className="unit-size">
+    <tr>
+        <td>XXX</td>
+        <td>Corps</td>
+        <td>Les corps avaient un nombre variable de divisions qui leur étaient assignées.</td>
+    </tr>
+    <tr>
+        <td>XX</td>
+        <td>Division</td>
+        <td> Les effectifs officiels de la division d'infanterie allemande étaient d'environ 15 000 à 18 000 hommes dans une division. <br /> Panzer allemand
+            les divisions comptaient environ 150-200 chars et environ 11 000 hommes. <br /> Les divisions d’infanterie soviétique comptaient environ 11 000 hommes.</td>
+    </tr>
+    <tr>
+        <td>X</td>
+        <td>Brigade</td>
+        <td>Les Soviétiques ont souvent utilisé des brigades de chars pour compléter leurs unités d'infanterie.</td>
+    </tr>
+    <tr>
+        <td>III</td>
+        <td>Régiment</td>
+        <td>Environ 1200 - 3000 hommes. Généralement 3 régiments à une division.</td>
+    </tr>
+    <tr>
+        <td>II</td>
+        <td>Bataillon</td>
+        <td>400 à 900 hommes. Un bataillon avait généralement 3 à 5 compagnies.</td>
+    </tr>
+    <tr>
+        <td>I</td>
+        <td>Compagnie</td>
+        <td>100-300 hommes.</td>
+    </tr>
+</table>
+
+
+
+<div className="spacer3rem" />
+<p>
+    <span className={props.language === 'en' ? '' : 'block-hidden'}>
+        There's a large variety of unit types in EFS. Many have specific capabilities and restrictions described in the rules.                </span>
+    <span className={props.language === 'fr' ? '' : 'block-hidden'}>
+        Il y a une grande diversitè de types d'unitès dans EFS. La plupart ont des capacitès spècifiques ainsi que des restrictions qui sont dècrites dans les règles.
+    </span>
+    <span className={props.language === 'ru' ? '' : 'block-hidden'}>
+        Russian text
+    </span>
+</p>
+
+
+
+
+
+
+
+
+
+
+<section>
+    <div className="subheader1_4">UNITES MOTORISEES</div>
+    <table className="unit-type">
+        <tr>
+            <td><img src={s4} alt="armor" /></td>
+            <td>Blindè<span className="red">*</span></td>
+
+            <td><img src={s5} alt="assault gun" /></td>
+            <td>Canon d'Assaut<span className="red">*</span></td>
+
+            <td><img src={s6} alt="armored anti-tank" /></td>
+            <td>Blindè Anti-Char<span className="red">*</span></td>
+
+            <td><img src={s7} alt="recon" /></td>
+            <td>Reconnaissance</td>
+        </tr>
+    </table>
+
+    <table className="unit-type">
+        <tr>
+            <td><img src={s8} alt="motorized infantry" /></td>
+            <td>Infanterie Motorisèe</td>
+
+            <td><img src={s8b} alt="motorcycle infantry" /></td>
+            <td>Infanterie è Moto</td>
+
+            <td><img src={s9} alt="motorized border infantry" /></td>
+            <td>Infanterie de Frontière Motorisèe</td>
+
+            <td><img src={s10} alt="motorized combat engineer" /></td>
+            <td>Gènie de Combat Motorisè</td>
+        </tr>
+    </table>
+
+    <table className="unit-type">
+        <tr>
+            <td><img src={s11} alt="motorized anti-aircraft" /></td>
+            <td>Anti-Aèrien Motorisè</td>
+
+            <td><img src={s12} alt="motorized anti-tank" /></td>
+            <td>Anti-Char Motorisè</td>
+
+        </tr>
+    </table>
+    <div className="note"><span className="red">*</span> Ces unitès sont considèrèes "Blindèes" pour l'Usure des Blindès, le Bonus d'Armes Combinèes, l'Intègritè Divisionnaire, et les pertes blindèes.</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<section>
+    <div className="subheader1_4">UNITES NON MOTORISEES</div>
+    <table className="unit-type">
+        <tr>
+            <td><img src={s13} alt="infantry" /></td>
+            <td>Infanterie</td>
+
+            <td><img src={s14} alt="mountain infantry" /></td>
+            <td>Montagnards</td>
+
+            <td><img src={s15} alt="Airborne / Parachute" /></td>
+            <td>Aèroportè/Parachute</td>
+
+            <td><img src={s16} alt="s16" /></td>
+            <td>Sècurtiè</td>
+        </tr>
+    </table>
+
+    <table className="unit-type">
+        <tr>
+            <td><img src={s18} alt="partisan" /></td>
+            <td>Partisan</td>
+
+            <td><img src={s19} alt="combat engineer" /></td>
+            <td>Gènie de Combat</td>
+
+            <td><img src={s20} alt="ski" /></td>
+            <td>Ski</td>
+
+            <td><img src={s21} alt="cavalry" /></td>
+            <td>Cavalerie</td>
+        </tr>
+    </table>
+
+    <table className="unit-type">
+        <tr>
+            <td><img src={s22} alt="headquarters" /></td>
+            <td>Quartier Gènèral</td>
+
+            <td><img src={s23} alt="anti-aircraft" /></td>
+            <td>Anti-Aèrien</td>
+
+        </tr>
+    </table>
+</section>
+
+
+
+
+<section>
+    <div className="subheader1_4">UNITES D'ARTILLERIE</div>
+    <table className="unit-type">
+        <tr>
+            <td><img src={s24} alt="Field Artillery" /></td>
+            <td>Artillerie de Campagne</td>
+
+            <td><img src={s25} alt="Rocket Artillery" /></td>
+            <td>Fusèes</td>
+
+            <td><img src={s26} alt="Coast Artillery" /></td>
+            <td>Artillerie Cètière</td>
+
+            <td><img src={s27} alt="Super-Heavy Artillery" /></td>
+            <td>Artillerie Super Lourde</td>
+        </tr>
+    </table>
+
+    <table className="unit-type">
+        <tr>
+            <td><img src={s28} alt="Railroad Super-Heavy Artillery" /></td>
+            <td>Artillerie Ferroviaire Super Lourde</td>
+
+            <td><img src={s29} alt="Super-Heavy (firing side)" /></td>
+            <td>Super Lourde (cètè tir)	</td>
+
+            <td><img src={s30} alt="Naval Unit" /></td>
+            <td>Unitè navale</td>
+
+        </tr>
+    </table>
+
+</section>
+
+
+
+
+
+<section>
+    <div className="subheader1_4">UNITES SPECIALES</div>
+    <table className="unit-type">
+        <tr>
+            <td><img src={s31} alt="Flotilla" /></td>
+            <td>Flottille</td>
+
+            <td><img src={s32} alt="Armored Train" /></td>
+            <td>Train Blindè</td>
+
+        </tr>
+    </table>
+
+</section>
+
+</div>
+
+<ScrollToTopOnMount />
 
 
 

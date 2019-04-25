@@ -1,4 +1,5 @@
 import React from 'react';
+import ScrollToTopOnMount from "../../ScrollToTopOnMount";
 import './Sop.scss';
 
 const Sop = (props) => {
@@ -126,7 +127,7 @@ const Sop = (props) => {
 
                 </div>
             </div>
-
+            <ScrollToTopOnMount />
         </div>
     );
 }

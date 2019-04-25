@@ -1,4 +1,5 @@
 import React from 'react';
+import ScrollToTopOnMount from "../../ScrollToTopOnMount";
 import t34_in_snow from "../../../images/t34_in_snow.png";
 import './Weather.scss';
 
@@ -331,7 +332,7 @@ const Weather = (props) => {
 
 
 
-
+            <ScrollToTopOnMount />
         </div>
 
     );

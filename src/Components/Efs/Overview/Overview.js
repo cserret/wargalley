@@ -1,4 +1,5 @@
 import React from 'react';
+import ScrollToTopOnMount from "../../ScrollToTopOnMount";
 import german_aircraft_big from "../../../images/efs/overview/german_aircraft_big.jpg";
 import german_artillery_big from "../../../images/efs/overview/german_artillery_big.jpg";
 import german_infantry_division_big from "../../../images/efs/overview/german_infantry_division_big.jpg";
@@ -22,7 +23,7 @@ const Overview = (props) => {
 
             <div className="content-title">
                 <div className={props.language === 'en' ? '' : 'block-hidden'}>OVERVIEW</div>
-                <div className={props.language === 'fr' ? '' : 'block-hidden'}>OVERVIEW fr</div>
+                <div className={props.language === 'fr' ? '' : 'block-hidden'}>APERÇU</div>
                 <div className={props.language === 'ru' ? '' : 'block-hidden'}>OVERVIEW ru</div>
                 <div></div>
             </div>
@@ -40,18 +41,33 @@ const Overview = (props) => {
                 </span>
             </p>
 
-            <div className="spacer1rem"/>
-            <div className="title_img_comment_box">
-                <div className="title">GERMAN PANZER DIVISION</div>
-                <div className="image"><img src={german_panzer_division} alt="German panzer division" /></div>
-                <div className="comment">
+            <div className="spacer1rem" />
+            <div className={props.language === 'en' ? '' : 'block-hidden'}>
+                <div className="title_img_comment_box">
+                    <div className="title">GERMAN PANZER DIVISION</div>
+                    <div className="image"><img src={german_panzer_division} alt="German panzer division" /></div>
+                    <div className="comment">
 
-                    A typical German panzer division consists of one panzer regiment,<br />
-                    two motorized infantry regiments, and a recon battalion.
-
+                        A typical German panzer division consists of one panzer regiment,<br />
+                        two motorized infantry regiments, and a recon battalion.
+    
+                </div>
                 </div>
             </div>
-            <div className="spacer1rem"/>
+
+            <div className={props.language === 'fr' ? '' : 'block-hidden'}>
+                <div className="title_img_comment_box">
+                    <div className="title">PANZER DIVISION ALLEMANDE</div>
+                    <div className="image"><img src={german_panzer_division} alt="German panzer division" /></div>
+                    <div className="comment">
+
+                        Une Panzer division Allemande typique est composèe d'un règiment de panzers,<br />
+                        de deux règiments d'infanterie motorisèe, et un bataillon de reconnaissance.
+                </div>
+                </div>
+            </div>
+
+            <div className="spacer1rem" />
             <p>
                 <span className={props.language === 'en' ? '' : 'block-hidden'}>
                     In this game system, the panzer division is king. Often a panzer division gets the dual combat benefits of "divisional integrity" and "combined arms", which makes them very combat effective. Add into the mix engineers and air support, and panzer divisions can pretty much chew into any defense the Soviets can put up. But the main problem for the Axis player is that there are not enough panzer divisions, and with the lack of time the Axis has to accomplish their objectives, combined with the problems of getting enough Attack Supply to the front, the Axis player is often forced to put his precious panzer divisions into dangerous situations. How well the Axis player balances the need for victory points with risk to his panzer divisions is what gives this game system its excitement level
@@ -64,66 +80,125 @@ const Overview = (props) => {
                 </span>
             </p>
 
+            <div className={props.language === 'en' ? '' : 'block-hidden'}>
+                <div className="comment-boxes">
+                    <div>
+                        <div className="title_img_comment_box">
+                            <div className="title">SOVIET INFANTRY DIVISION</div>
+                            <div className="image"><img src={soviet_infantry_division_big} alt="Soviet infantry division" /></div>
+                            <div className="comment">
+                                A Soviet infantry division varies in strength.<br />
+                                This one has an attack strength of 4 and<br /> defense
+                                of 5. They have 2 or 3 steps.
+                </div>
+                        </div>
+                    </div><div>
 
-            <div className="comment-boxes">
-                <div>
-                    <div className="title_img_comment_box">
-                        <div className="title">SOVIET INFANTRY DIVISION</div>
-                        <div className="image"><img src={soviet_infantry_division_big} alt="Soviet infantry division" /></div>
-                        <div className="comment">
-                            A Soviet infantry division varies in strength.<br />
-                            This one has an attack strength of 4 and<br /> defense
-                            of 5. They have 2 or 3 steps.
+                        <div className="title_img_comment_box">
+                            <div className="title">GERMAN INFANTRY DIVISION</div>
+                            <div className="image"><img src={german_infantry_division_big} alt="German infantry division" /></div>
+                            <div className="comment">
+                                A German infantry division varies in strength.<br />
+                                This one has an attack strength of 8 and<br />
+                                defense of 9. They have 4 steps.
                 </div>
+                        </div>
+                    </div><div>
+                        <div className="title_img_comment_box">
+                            <div className="title">ITALIAN INFANTRY DIVISION</div>
+                            <div className="image"><img src={italian_infantry_division} alt="Italian infantry division" /></div>
+                            <div className="comment">
+                                This Italian infantry division has an attack<br />
+                                strength of 4 and defense of 4. It has 2 steps.
+                </div>
+                        </div>
                     </div>
-                </div><div>
+                </div>
 
-                    <div className="title_img_comment_box">
-                        <div className="title">GERMAN INFANTRY DIVISION</div>
-                        <div className="image"><img src={german_infantry_division_big} alt="German infantry division" /></div>
-                        <div className="comment">
-                            A German infantry division varies in strength.<br />
-                            This one has an attack strength of 8 and<br />
-                            defense of 9. They have 4 steps.
+
+
+                <div className="comment-boxes">
+                    <div>
+                        <div className="title_img_comment_box">
+                            <div className="title">SLOVAK INFANTRY DIVISION</div>
+                            <div className="image"><img src={slovak_infantry_div} alt="Slovak infantry division" /></div>
+                            <div className="comment">
+                                This Slovakian infantry division has an attack<br />
+                                strength of 3 and defense of 4. It has 2 steps.
                 </div>
-                    </div>
-                </div><div>
-                    <div className="title_img_comment_box">
-                        <div className="title">ITALIAN INFANTRY DIVISION</div>
-                        <div className="image"><img src={italian_infantry_division} alt="Italian infantry division" /></div>
-                        <div className="comment">
-                            This Italian infantry division has an attack<br />
-                            strength of 4 and defense of 4. It has 2 steps.
+                        </div>
+                    </div><div>
+                        <div className="title_img_comment_box">
+                            <div className="title">ROMANIAN INFANTRY DIVISION</div>
+                            <div className="image"><img src={romanian_infantry_div} alt="Romanian infantry division" /></div>
+                            <div className="comment">
+                                This Rumanian infantry division has an attack<br />
+                                strength of 4 and defense of 4. It has 2 steps.
                 </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-
-
-            <div className="comment-boxes">
-                <div>
-                    <div className="title_img_comment_box">
-                        <div className="title">SLOVAK INFANTRY DIVISION</div>
-                        <div className="image"><img src={slovak_infantry_div} alt="Slovak infantry division" /></div>
-                        <div className="comment">
-                            This Slovakian infantry division has an attack<br />
-                            strength of 3 and defense of 4. It has 2 steps.
+            <div className={props.language === 'fr' ? '' : 'block-hidden'}>
+                <div className="comment-boxes">
+                    <div>
+                        <div className="title_img_comment_box">
+                            <div className="title">DIVISION D'INFANTERIE SOVIÉTIQUE</div>
+                            <div className="image"><img src={soviet_infantry_division_big} alt="Soviet infantry division" /></div>
+                            <div className="comment">
+                                Les divisions d'infanterie Soviétiques ont une force variable.<br />
+                                Celle-ci a une force d'attaque de 4 et de dèfense de 5.<br />
+                                Elles ont deux ou trois "pas".
                 </div>
+                        </div>
+                    </div><div>
+
+                        <div className="title_img_comment_box">
+                            <div className="title">DIVISION D'INFANTERIE ALLEMANDE</div>
+                            <div className="image"><img src={german_infantry_division_big} alt="German infantry division" /></div>
+                            <div className="comment">
+                                Les divisions d'infanterie Allemandes ont une force variable.<br />
+                                Celle-ci a une force d'attaque de 8 et de dèfense de 9.<br />
+                                Elles ont quatre "pas".
+                </div>
+                        </div>
+                    </div><div>
+                        <div className="title_img_comment_box">
+                            <div className="title">DIVISION D'INFANTERIE ITALIEN</div>
+                            <div className="image"><img src={italian_infantry_division} alt="Italian infantry division" /></div>
+                            <div className="comment">
+                            Celle-ci a une force d'attaque de 4 et de dèfense de 4.<br />
+                            Elles ont deux "pas".
+                </div>
+                        </div>
                     </div>
-                </div><div>
-                    <div className="title_img_comment_box">
-                        <div className="title">ROMANIAN INFANTRY DIVISION</div>
-                        <div className="image"><img src={romanian_infantry_div} alt="Romanian infantry division" /></div>
-                        <div className="comment">
-                            This Rumanian infantry division has an attack<br />
-                            strength of 4 and defense of 4. It has 2 steps.
                 </div>
+
+
+
+                <div className="comment-boxes">
+                    <div>
+                        <div className="title_img_comment_box">
+                            <div className="title">DIVISION D'INFANTERIE SLOVAQUE</div>
+                            <div className="image"><img src={slovak_infantry_div} alt="Slovak infantry division" /></div>
+                            <div className="comment">
+                            Celle-ci a une force d'attaque de 3 et de dèfense de 4.<br />
+                            Elles ont deux "pas".
+                </div>
+                        </div>
+                    </div><div>
+                        <div className="title_img_comment_box">
+                            <div className="title">DIVISION D'INFANTERIE ROUMAIN</div>
+                            <div className="image"><img src={romanian_infantry_div} alt="Romanian infantry division" /></div>
+                            <div className="comment">
+                            Celle-ci a une force d'attaque de 4 et de dèfense de 4.<br />
+                            Elles ont deux "pas".
+                </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
 
             <p>
                 <span className={props.language === 'en' ? '' : 'block-hidden'}>
@@ -140,8 +215,9 @@ const Overview = (props) => {
 
 
 
-            <div className="spacer2rem"/>
+            <div className="spacer2rem" />
 
+            <div className={props.language === 'en' ? '' : 'block-hidden'}>
             <div className="title_img_comment_box">
                 <div className="title">SOVIET HEADQUARTERS</div>
                 <div className="image"><img src={soviet_headquarters_big} alt="Soviet Headquarters" /></div>
@@ -150,7 +226,21 @@ const Overview = (props) => {
                     They vary from 0 to 3.
                 </div>
             </div>
-            <div className="spacer1rem"/>
+</div>
+<div className={props.language === 'fr' ? '' : 'block-hidden'}>
+            <div className="title_img_comment_box">
+                <div className="title">QUARTIERS GÉNÉRAUX SOVIÉTIQUES</div>
+                <div className="image"><img src={soviet_headquarters_big} alt="Soviet Headquarters" /></div>
+                <div className="comment">
+                Ce quartier gènèral Soviétique a un niveau de commandement de 2.<br/> 
+                Ce niveau varie de 0 è 3. Les bons quartiers gènèraux doivent ètre<br/> 
+                protègès en les empilant avec des unitès de flak pour repousser<br/> 
+                les tentatives d'interdiction de l'aviation Allemande.
+                </div>
+            </div>
+</div>
+
+            <div className="spacer1rem" />
             <p>
                 <span className={props.language === 'en' ? '' : 'block-hidden'}>
                     Only the Soviets have "headquarter units", and these are required to get non-motorized units to "activate" during the
@@ -158,10 +248,10 @@ const Overview = (props) => {
                     can be attacked by Axis ground combat units, they can be bombed by Axis aircraft, and they can cause problems for the Soviets
                     if they become "non-operational". The Axis do not have headquarter units in the game. The Axis command capability is so effective
                     that all Axis units are always considered to be in "command control", and therefore the Soviets do not have the capability
-                    to attack the Axis command infrastructure in this game system.                
+                    to attack the Axis command infrastructure in this game system.
                 </span>
                 <span className={props.language === 'fr' ? '' : 'block-hidden'}>
-                Seuls les Soviétiques ont des "quartiers gènèraux", et ils sont nècessaires pour "activer" les unitès non motorisèes pendant la phase de mouvement motorisè Soviétique, ils peuvent donner des "ordres" et ont une capacitè limitèe è dèplacer des rèserves pour combattre. Ces quartiers gènèraux peuvent ètre attaquès par des unitès de combat terrestres Allemandes, bombardèes par l'aviation Allemande,et causer des problèmes aux Soviétiques si ils deviennent "non opèrationnel". Les Allemands n'ont pas de pions quartiers gènèraux dans ce jeu. Les capacitès de commandement Allemandes sont si efficaces que toutes les unitès Allemandes sont toujours considèrèes comme ètant en "contrèle de commandement", et par consèquent, les Soviétiques n'ont pas la capacitè d'attaquer l'infrastructure de commandement Allemande avec ce système de jeu.                 </span>
+                    Seuls les Soviétiques ont des "quartiers gènèraux", et ils sont nècessaires pour "activer" les unitès non motorisèes pendant la phase de mouvement motorisè Soviétique, ils peuvent donner des "ordres" et ont une capacitè limitèe è dèplacer des rèserves pour combattre. Ces quartiers gènèraux peuvent ètre attaquès par des unitès de combat terrestres Allemandes, bombardèes par l'aviation Allemande,et causer des problèmes aux Soviétiques si ils deviennent "non opèrationnel". Les Allemands n'ont pas de pions quartiers gènèraux dans ce jeu. Les capacitès de commandement Allemandes sont si efficaces que toutes les unitès Allemandes sont toujours considèrèes comme ètant en "contrèle de commandement", et par consèquent, les Soviétiques n'ont pas la capacitè d'attaquer l'infrastructure de commandement Allemande avec ce système de jeu.                 </span>
                 <span className={props.language === 'ru' ? '' : 'block-hidden'}>
                     Russian text
                 </span>
@@ -172,33 +262,62 @@ const Overview = (props) => {
 
 
 
-
+            <div className={props.language === 'en' ? '' : 'block-hidden'}>
             <div className="comment-boxes">
                 <div>
                     <div className="title_img_comment_box">
                         <div className="title">SOVIET AIRCRAFT UNIT</div>
                         <div className="image"><img src={soviet_aircraft_big} alt="Soviet aircraft unit" /></div>
                         <div className="comment">
-                            This is a Soviet Polikarpov I-16 fighter. It has<br/> 
-                            a air-to-air combat strength of 1, and no combat<br/> 
-                            support strength. It fares poorly against most<br/>
+                            This is a Soviet Polikarpov I-16 fighter. It has<br />
+                            a air-to-air combat strength of 1, and no combat<br />
+                            support strength. It fares poorly against most<br />
                             German fighters, but can sometimes deliver a sting.
                         </div>
-                  </div>
-                    
+                    </div>
+
                 </div><div>
                     <div className="title_img_comment_box">
                         <div className="title">GERMAN AIRCRAFT UNIT</div>
                         <div className="image"><img src={german_aircraft_big} alt="German aircraft unit" /></div>
                         <div className="comment">
-                            This is a German Messerschmitt Bf109 Fighter. It has<br/> 
-                            a air-to-air combat strength of 3, no ground combat<br/> 
+                            This is a German Messerschmitt Bf109 Fighter. It has<br />
+                            a air-to-air combat strength of 3, no ground combat<br />
                             support strength, and an interdiction strength of 1.
                 </div>
                     </div>
                 </div>
             </div>
+            </div>
 
+            <div className={props.language === 'fr' ? '' : 'block-hidden'}>
+            <div className="comment-boxes">
+                <div>
+                    <div className="title_img_comment_box">
+                        <div className="title">AVION SOVIÉTIQUES</div>
+                        <div className="image"><img src={soviet_aircraft_big} alt="Soviet aircraft unit" /></div>
+                        <div className="comment">
+                        Ce quartier gènèral Soviétique a un niveau de commandement de 2.<br/> 
+                        Ce niveau varie de 0 è 3. Les bons quartiers gènèraux doivent <br/> 
+                        ètre protègès en les empilant avec des unitès de flak pour <br/>
+                        repousser les tentatives d'interdiction de l'aviation Allemande.
+                        </div>
+                    </div>
+
+                </div><div>
+                    <div className="title_img_comment_box">
+                        <div className="title">AVION ALLEMAND</div>
+                        <div className="image"><img src={german_aircraft_big} alt="German aircraft unit" /></div>
+                        <div className="comment">
+                        Ceci est un chasseur Allemand Messerschmitt Bf109. Il<br/>
+                        a une force de combat aèrien de 3, aucune force de<br/> 
+                        soutien au sol, et une force d'interdiction de 1.
+                </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
 
 
             <p>
@@ -208,10 +327,10 @@ const Overview = (props) => {
                     anywhere on the map. Simple combat routines handle air-to-air combat. Aircraft can be aborted from their missions, or damaged
                     or destroyed. Usually air combat and flak is not too deadly, but occassionally a plane will go down in flames (usually a
                     Soviet aircraft unit). Missions that aircraft can perform are air-to-air combat, ground support and interdiction. Each aircraft
-                    counter represents fourty to eighty planes, or a few squadrons each.                
+                    counter represents fourty to eighty planes, or a few squadrons each.
                 </span>
                 <span className={props.language === 'fr' ? '' : 'block-hidden'}>
-                    L'aviation est abstraite dans EFS. La prioritè de la simulation est le combat terrestre. Il n'y a pas d'aèroports, la disponibilitè des avions est dèterminè par le scènario jouè. Gènèralement, les avions qui sont dans la "zone prète" (ready box) peuvent ètre utilisès n'importe oè sur la carte. Une procèdure assez simple permet de rèsoudre le combat aèrien. Les avions peuvent abandonner leur mission, ètre endommagès ou dètruits. Gènèralement le combat aèrien et la flak ne sont pas trop mortels, mais parfois un avion sera descendu en flammes (gènèralement un avion Soviétique). Les missions que peuvent entreprendre les avions sont le combat aèrien, le soutien au sol et l'interdiction. Chaque pion avion reprèsente de quarante è quatre vingts avions, ou quelques escadrilles.                
+                    L'aviation est abstraite dans EFS. La prioritè de la simulation est le combat terrestre. Il n'y a pas d'aèroports, la disponibilitè des avions est dèterminè par le scènario jouè. Gènèralement, les avions qui sont dans la "zone prète" (ready box) peuvent ètre utilisès n'importe oè sur la carte. Une procèdure assez simple permet de rèsoudre le combat aèrien. Les avions peuvent abandonner leur mission, ètre endommagès ou dètruits. Gènèralement le combat aèrien et la flak ne sont pas trop mortels, mais parfois un avion sera descendu en flammes (gènèralement un avion Soviétique). Les missions que peuvent entreprendre les avions sont le combat aèrien, le soutien au sol et l'interdiction. Chaque pion avion reprèsente de quarante è quatre vingts avions, ou quelques escadrilles.
                 </span>
                 <span className={props.language === 'ru' ? '' : 'block-hidden'}>
                     Russian text
@@ -224,31 +343,56 @@ const Overview = (props) => {
 
 
 
-
+            <div className={props.language === 'en' ? '' : 'block-hidden'}>
             <div className="comment-boxes">
                 <div>
                     <div className="title_img_comment_box">
                         <div className="title">SOVIET ARTILLERY UNIT</div>
                         <div className="image"><img src={soviet_artillery_big} alt="Soviet artillery unit" /></div>
                         <div className="comment">
-                            This is a Soviet railway gun. This one has a range<br/> of four 
+                            This is a Soviet railway gun. This one has a range<br /> of four
                             and a bombardment strength of 1.
                         </div>
-                  </div>
-                    
+                    </div>
+
                 </div><div>
                     <div className="title_img_comment_box">
                         <div className="title">GERMAN ARTILLERY UNIT</div>
                         <div className="image"><img src={german_artillery_big} alt="German artillery unit" /></div>
                         <div className="comment">
-                            This is a German artillery regiment. This one has<br/> a range of 
+                            This is a German artillery regiment. This one has<br /> a range of
                             two and a bombardment strength of two.
                 </div>
                     </div>
                 </div>
             </div>
+</div>
 
 
+<div className={props.language === 'fr' ? '' : 'block-hidden'}>
+            <div className="comment-boxes">
+                <div>
+                    <div className="title_img_comment_box">
+                        <div className="title">ARTILLERIE SOVIÉTIQUE</div>
+                        <div className="image"><img src={soviet_artillery_big} alt="Soviet artillery unit" /></div>
+                        <div className="comment">
+                        Ceci est un canon ferroviaire Soviétique. Il a une<br/>
+                        portèe de quatre et une force de bombardement de 1.
+                        </div>
+                    </div>
+
+                </div><div>
+                    <div className="title_img_comment_box">
+                        <div className="title">ARTILLERIE ALLEMANDE</div>
+                        <div className="image"><img src={german_artillery_big} alt="German artillery unit" /></div>
+                        <div className="comment">
+                        Ceci est un règiment d'artillerie Allemand. Il a une<br/> 
+                        portèe de deux, et une force de bombardement de deux.
+                </div>
+                    </div>
+                </div>
+            </div>
+</div>
 
             <p>
                 <span className={props.language === 'en' ? '' : 'block-hidden'}>
@@ -257,11 +401,11 @@ const Overview = (props) => {
                     or defense. The Soviets suffer from poor coordination with their artillery, and usually only one in range artillery unit
                     can throw in its support. Both the Axis and Soviets have a good assortment of artillery, including rail guns, rockets, and
                     naval guns, with varying strengths and ranges. In EFS artillery is only used with ground combat, they do not do any "bombardment"
-                    on their own.     
+                    on their own.
 
                 </span>
                 <span className={props.language === 'fr' ? '' : 'block-hidden'}>
-                L'artillerie est très importante dans EFS. Elle ajoute de la force è une attaque, et peut renforcer une dèfense. Les Allemands sont très douès dans la coordination de l'artillerie en combat, et peuvent projeter leur soutien avec une è quatre unitès è portèe en attaque et en dèfense. Les Soviétiques souffrent d'une mauvaise coordination de leur artillerie, et gènèralement une seule unitè è portèe peut projeter son soutien. Les Allemands et les Soviétiques ont un bon assortiment d'artillerie, comme les fusèes, l'artillerie navale, rampes de missiles, avec diverses forces et portèes. Dans EFS, l'artillerie n'est utilisèe que pour le combat terrestre, elle ne peut pas "bombarder" seule.               
+                    L'artillerie est très importante dans EFS. Elle ajoute de la force è une attaque, et peut renforcer une dèfense. Les Allemands sont très douès dans la coordination de l'artillerie en combat, et peuvent projeter leur soutien avec une è quatre unitès è portèe en attaque et en dèfense. Les Soviétiques souffrent d'une mauvaise coordination de leur artillerie, et gènèralement une seule unitè è portèe peut projeter son soutien. Les Allemands et les Soviétiques ont un bon assortiment d'artillerie, comme les fusèes, l'artillerie navale, rampes de missiles, avec diverses forces et portèes. Dans EFS, l'artillerie n'est utilisèe que pour le combat terrestre, elle ne peut pas "bombarder" seule.
                 </span>
                 <span className={props.language === 'ru' ? '' : 'block-hidden'}>
                     Russian text
@@ -274,48 +418,74 @@ const Overview = (props) => {
 
 
 
-
+            <div className={props.language === 'en' ? '' : 'block-hidden'}>
             <div className="comment-boxes">
                 <div>
                     <div className="title_img_comment_box">
                         <div className="title">GERMAN SUPPLY UNIT</div>
                         <div className="image"><img src={german_supply_big} alt="German supply unit" /></div>
                         <div className="comment">
-                            This is a trucked Attack Supply unit.<br/>
-                            Two Attack Supply counters that are in the<br/>
+                            This is a trucked Attack Supply unit.<br />
+                            Two Attack Supply counters that are in the<br />
                             same hex can be flipped to one 2 point dump.
                         </div>
-                  </div>
-                    
+                    </div>
+
                 </div><div>
                     <div className="title_img_comment_box">
                         <div className="title">SOVIET ATTACK SUPPLY UNIT</div>
                         <div className="image"><img src={soviet_supply_big} alt="Soviet attack supply unit" /></div>
                         <div className="comment">
-                            A Soviet wagon Attack Supply counter.<br/>
-                            Both the Axis and Soviets have both<br/>
+                            A Soviet wagon Attack Supply counter.<br />
+                            Both the Axis and Soviets have both<br />
                             truck and wagon Attack Supply units.
                 </div>
                     </div>
                 </div>
             </div>
+</div>
+<div className={props.language === 'fr' ? '' : 'block-hidden'}>
+            <div className="comment-boxes">
+                <div>
+                    <div className="title_img_comment_box">
+                        <div className="title">UNITE DE RAVITAILLEMENT ALLEMANDES</div>
+                        <div className="image"><img src={german_supply_big} alt="German supply unit" /></div>
+                        <div className="comment">
+                        Ceci est un camion de ravitaillement d'attaque. Deux pions<br/> 
+                        ravitaillement d'attaque peuvent ètre retournès pour<br/> 
+                        former un dèpèt è 2 points.
+                        </div>
+                    </div>
 
+                </div><div>
+                    <div className="title_img_comment_box">
+                        <div className="title">UNITE DE RAVITAILLEMENT SOVIÉTIQUE</div>
+                        <div className="image"><img src={soviet_supply_big} alt="Soviet attack supply unit" /></div>
+                        <div className="comment">
+                        Ceci est un chariot de ravitaillement d'attaque. Les Allemands<br/>
+                        et les Soviétiques ont tous deux des pions
+                        camions<br/> et chariots de ravitaillement d'attaque.
+                </div>
+                    </div>
+                </div>
+            </div>
+</div>
 
 
             <p>
                 <span className={props.language === 'en' ? '' : 'block-hidden'}>
-                There are two types of supply in EFS. General supply is done by tracing to a Lines of Communication route (LOC). General supply denotes things such as food and fuel. Units that are out of General Supply suffer from reduced movement and other penalties. Attack Supply is a different kind of supply. It is used during combat. Attack Supply is represented by supply counters on the map. Attack Supply is needed to allow combat capable units to attack at their optimum performance level (there is no Defensive Combat Supply in this system). One Attack Supply point is typically used to "supply" a combat in the game. To attack without Attack Supply usually means the attacker is taking risks. The Axis player will find that he will often have to attack without Attack Supply, and this will be the major reason for Axis combat losses in the game.      
-
+                    There are two types of supply in EFS. General supply is done by tracing to a Lines of Communication route (LOC). General supply denotes things such as food and fuel. Units that are out of General Supply suffer from reduced movement and other penalties. Attack Supply is a different kind of supply. It is used during combat. Attack Supply is represented by supply counters on the map. Attack Supply is needed to allow combat capable units to attack at their optimum performance level (there is no Defensive Combat Supply in this system). One Attack Supply point is typically used to "supply" a combat in the game. To attack without Attack Supply usually means the attacker is taking risks. The Axis player will find that he will often have to attack without Attack Supply, and this will be the major reason for Axis combat losses in the game.
+    
                 </span>
                 <span className={props.language === 'fr' ? '' : 'block-hidden'}>
-                Il existe deux types de ravitaillement dans EFS. Le ravitaillement gènèral est fait en traèant des Lignes de Communication (LOC). Le ravitaillement gènèrale reprèsente des choses comme la nourriture et le carburant. Les unitès qui ne sont pas en ravitaillement gènèral ont leur capacitè de mouvement rèduite ainsi que d'autres pènalitès. Le Ravitaillement d'Attaque est un type de ravitaillement diffèrent. Il est utilisè pendant le combat. Le Ravitaillement d'Attaque est reprèsentè par des pions ravitaillement sur la carte. Le Ravitaillement d'Attaque est nècessaire pour permettre è des unitès capables d'attaquer d'utiliser leur niveau de performance optimal (il n'y a pas de Ravitaillement Dèfensif dans ce système). Gènèralement, on dèpense un point de Ravitaillement d'Attaquer pour "ravitailler" un combat dans le jeu. Attaquer sans Ravitaillement d'Attaque signifie gènèralement que l'attaquant prend des risques. Le joueur Allemand s'apercevra vite qu'il devra souvent attaquer sans Ravitaillement d'Attaque, et ce sera leur raison majeure pour subir des pertes au combat.                 
+                    Il existe deux types de ravitaillement dans EFS. Le ravitaillement gènèral est fait en traèant des Lignes de Communication (LOC). Le ravitaillement gènèrale reprèsente des choses comme la nourriture et le carburant. Les unitès qui ne sont pas en ravitaillement gènèral ont leur capacitè de mouvement rèduite ainsi que d'autres pènalitès. Le Ravitaillement d'Attaque est un type de ravitaillement diffèrent. Il est utilisè pendant le combat. Le Ravitaillement d'Attaque est reprèsentè par des pions ravitaillement sur la carte. Le Ravitaillement d'Attaque est nècessaire pour permettre è des unitès capables d'attaquer d'utiliser leur niveau de performance optimal (il n'y a pas de Ravitaillement Dèfensif dans ce système). Gènèralement, on dèpense un point de Ravitaillement d'Attaquer pour "ravitailler" un combat dans le jeu. Attaquer sans Ravitaillement d'Attaque signifie gènèralement que l'attaquant prend des risques. Le joueur Allemand s'apercevra vite qu'il devra souvent attaquer sans Ravitaillement d'Attaque, et ce sera leur raison majeure pour subir des pertes au combat.
                 </span>
                 <span className={props.language === 'ru' ? '' : 'block-hidden'}>
                     Russian text
                 </span>
             </p>
 
-            <div className="spacer2rem"/>
+            <div className="spacer2rem" />
             <div className="clipart">
                 <img src={map_sample} alt="map sample" />
             </div>
@@ -329,14 +499,14 @@ const Overview = (props) => {
                     improves the realism of the game system, at some cost in complexity.
                 </span>
                 <span className={props.language === 'fr' ? '' : 'block-hidden'}>
-                Il y a plusieurs types de terrains dans EFS. Le terrain est important pour la dètermination des coèts de mouvement et pour les effets sur le combat. EFS a peut ètre les effets du terrains les plus complexes de tous les temps. De plus, les coèts et les restrictions changent en fonction des conditions mètèo. La mètèo peut ètre Claire, Pluie ou Neige, avec la possibilitè de tempètes. Le grand tableau des effets du terrain sera constamment consultè, mème par les joueurs vètèrans d'EFS. La sophistication des effets du terrain amèliore de faèon importante le rèalisme du système de jeu, mais avec un certain prix en complexitè.                
+                    Il y a plusieurs types de terrains dans EFS. Le terrain est important pour la dètermination des coèts de mouvement et pour les effets sur le combat. EFS a peut ètre les effets du terrains les plus complexes de tous les temps. De plus, les coèts et les restrictions changent en fonction des conditions mètèo. La mètèo peut ètre Claire, Pluie ou Neige, avec la possibilitè de tempètes. Le grand tableau des effets du terrain sera constamment consultè, mème par les joueurs vètèrans d'EFS. La sophistication des effets du terrain amèliore de faèon importante le rèalisme du système de jeu, mais avec un certain prix en complexitè.
                 </span>
                 <span className={props.language === 'ru' ? '' : 'block-hidden'}>
                     Russian text
                 </span>
             </p>
 
-
+        <ScrollToTopOnMount />
 
         </div>
     );

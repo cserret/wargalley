@@ -35,6 +35,10 @@ export default class Efs extends Component {
         localStorage.setItem('language',language);
     }
 
+    changeRoute = () => {
+        console.log('changeRoute');
+    }
+
     render() {
         return (
             <div className="efs">

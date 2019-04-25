@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
 import flag_en from "../../../images/language_us.png";
 import flag_fr from "../../../images/language_fr.png";
@@ -44,7 +44,7 @@ export default class Header extends Component {
                     <div className="flags">
                         <img src={flag_en} alt="english" onClick={() => this.changeLanguage('en')} />
                         <img src={flag_fr} alt="french" onClick={() => this.changeLanguage('fr')} />
-                        <img src={flag_ru} alt="russian" onClick={() => this.changeLanguage('ru')} />
+                        
                     </div>
                     <span className={this.props.language === 'fr' ? 'translation-attrib' : 'block-hidden'}>
                         Traduction française fournie par Noél Haubry, nhaubry@netcourrier.com
@@ -55,37 +55,37 @@ export default class Header extends Component {
 
                     <div className={this.props.language === 'en' ? 'appmenu' : 'block-hidden'}>
                         <div className="line1">
-                            <Link to="/efs">HOME</Link>
-                            <Link to="/efs/overview">OVERVIEW</Link>
-                            <Link to="/efs/units">UNITS</Link>
-                            <Link to="/efs/sop">SEQUENCE OF PLAY</Link>
-                            <Link to="/efs/supply">SUPPLY</Link>
-                            <Link to="/efs/movement">MOVEMENT</Link>
+                            <NavLink exact={true} activeStyle={{ color: '#DDDD01' }} to="/efs">HOME</NavLink>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/overview">OVERVIEW</NavLink>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/units">UNITS</NavLink>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/sop">SEQUENCE OF PLAY</NavLink>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/supply">SUPPLY</NavLink>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/movement">MOVEMENT</NavLink>
                         </div>    
                         <div className="line2">
-                            <Link to="/efs/combat">COMBAT</Link>
-                            <Link to="/efs/airpower">AIRPOWER</Link>
-                            <Link to="/efs/headquarters">HEADQUARTERS</Link>
-                            <Link to="/efs/special">SPECIAL UNITS</Link>
-                            <Link to="/efs/weather">WEATHER</Link>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/combat">COMBAT</NavLink>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/airpower">AIRPOWER</NavLink>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/headquarters">HEADQUARTERS</NavLink>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/special">SPECIAL UNITS</NavLink>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/weather">WEATHER</NavLink>
                         </div> 
                     </div>
 
                     <div className={this.props.language === 'fr' ? 'appmenu' : 'block-hidden'}>
                         <div className="line1">
-                            <Link to="/">HOME</Link>
-                            <Link to="/efs/overview">APERÇU</Link>
-                            <Link to="/efs/units">UNITÉS</Link>
-                            <Link to="/efs/sop">SÉQUENCE DE JEU</Link>
-                            <Link to="/efs/supply">RAVITAILLEMENT</Link>
-                            <Link to="/efs/movement">MOUVEMENT</Link>
+                            <NavLink exact={true} activeStyle={{ color: '#DDDD01' }} to="/efs">HOME</NavLink>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/overview">APERÇU</NavLink>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/units">UNITÉS</NavLink>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/sop">SÉQUENCE DE JEU</NavLink>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/supply">RAVITAILLEMENT</NavLink>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/movement">MOUVEMENT</NavLink>
                         </div>    
                         <div className="line2">
-                            <Link to="/efs/combat">COMBAT</Link>
-                            <Link to="/efs/airpower">AVIATION</Link>
-                            <Link to="/efs/headquarters">QUARTIERS GÉNÉRAUX</Link>
-                            <Link to="/efs/special">UNITÉS SPECIALES</Link>
-                            <Link to="/efs/weather">METEO</Link>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/combat">COMBAT</NavLink>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/airpower">AVIATION</NavLink>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/headquarters">QUARTIERS GÉNÉRAUX</NavLink>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/special">UNITÉS SPECIALES</NavLink>
+                            <NavLink activeStyle={{ color: '#DDDD01' }} to="/efs/weather">METEO</NavLink>
                         </div> 
                     </div>
 
@@ -94,7 +94,7 @@ export default class Header extends Component {
 
                     <div className={this.props.language === 'ru' ? 'appmenu' : 'block-hidden'}>
                         <div className="line1">
-                            <Link to="/">HOME</Link>
+                            <Link to="/efs">HOME</Link>
                             <Link to="/efs/overview">Обзор</Link>
                             <Link to="/efs/units">Части</Link>
                             <Link to="/efs/sop">Последовательность игры</Link>

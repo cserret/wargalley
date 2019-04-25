@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ScrollToTopOnMount from "../../ScrollToTopOnMount";
 import headquarters from "../../../images/efs/hq/headquarters.jpg";
 import soviet_headquarters_front from "../../../images/efs/hq/soviet_headquarters_front.png";
 import soviet_headquarters_back from "../../../images/efs/hq/soviet_headquarters_back.png";
@@ -14,7 +15,7 @@ export default class Headquarters extends Component {
 
     componentDidMount = () => {
         console.log('this.props: ', this.props);
-        //this.drawCanvas(this.props.language);
+        this.drawCanvas(this.props.language);
     }
 
     componentWillReceiveProps = (props) => {
@@ -167,7 +168,7 @@ export default class Headquarters extends Component {
 
                 <div className={this.props.language === 'fr' ? '' : 'block-hidden'}>
                     <div className="content-title">
-                        <div className={this.props.language === 'en' ? '' : 'block-hidden'}>QUARTIERS GÉNÉRAL</div>
+                        <div className={this.props.language === 'fr' ? '' : 'block-hidden'}>QUARTIERS GÉNÉRAL</div>
                         <div></div>
                     </div>
                     <div className="top-image">
@@ -271,7 +272,7 @@ export default class Headquarters extends Component {
 
 
 
-
+                <ScrollToTopOnMount />
 
 
 

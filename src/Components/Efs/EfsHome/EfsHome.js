@@ -105,7 +105,7 @@ const EfsHome = (props) => {
                     <div className={props.language === 'ru' ? 'contents-title' : 'block-hidden'}>СОДЕРЖАНИЕ</div>
                     <span className={props.language === 'en' ? '' : 'block-hidden'}>
                     <ul>
-                        <li><Link to="./efs/overview">Overview</Link></li>
+                        <li><Link hoverStyle={{ color: '#DDDD01' }} to="./efs/overview">Overview</Link></li>
                         <li><Link to="./efs/units">Units</Link></li>
                         <li><Link to="./efs/sop">Sequence of Play</Link></li>
                         <li><Link to="./efs/supply">Supply</Link></li>

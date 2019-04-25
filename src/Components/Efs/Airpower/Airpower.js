@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ScrollToTopOnMount from "../../ScrollToTopOnMount";
 import il2_squadron from "../../../images/efs/airpower/il2_squadron.jpg";
 import hs129B from "../../../images/efs/airpower/hs129B.png";
 import dogfight from "../../../images/efs/airpower/dogfight.jpg";
@@ -765,7 +766,7 @@ class Airpower extends Component {
                                     These planes had a resemblance to the
                                     German BF-110, but lacked performance. However manueverability was good and this enabled pilots to often survive dogfights. 
                                     The Potez aircraft were obsolete by the start
-                                    of the war, but were purchased by many countries in Europe including France, Germany, Hungary, Italy, Poland, Switzerland, Yugoslavia, and Romania..
+                                    of the war, but were purchased by many countries in Europe including France, Germany, Hungary, Italy, Poland, Switzerland, Yugoslavia, and Romania.
                                 </div>
                             <img src={potez631} alt="Potez 63" />
                         </div>
@@ -1328,7 +1329,90 @@ class Airpower extends Component {
 
 
 
+                    <div className="pdiv">
+                        <div className="subheader">Romanian Aircraft in EFS</div>
 
+                        <div className="generic-flex-space-start romanian iar80">
+                            <img className="aircraft-counter" src={romanian_iar80} alt="IAR-80" />
+                            <div>
+                                <div>IAR-80</div>
+                                En 1930, le gouvernement roumain a publié un cahier des charges pour un nouveau chasseur. L’Industria Aeronautică Română (IAR) a fourni ses prototypes,
+                                mais a perdu la concurrence à la Pologne PZL P.11. Cependant, le RAI a continué à travailler sur leurs prototypes et a présenté au gouvernement le chasseur IAR-80
+                                en 1939. Sa performance est suffisamment impressionnante pour décrocher un contrat pour 100 IAR-80 en décembre 1939, suivi de près par un contrat pour de nombreux autres
+                                années suivantes pour un total de 346. L'avion utilisait un moteur à piston radial de 14 cylindres et était armé de quatre mitrailleuses FN de 7,92 mm dans les ailes.
+                                Un pilote de la Luftwaffe qui pilotait l’IAR-80 a conclu que, même s’il n’était pas aussi maniable que le BF-109E allemand, c’était quand même un avion de chasse adéquat.
+
+                                </div>
+                            <img src={iar80} alt="IAR-80" />
+                        </div>
+
+
+                        <div className="generic-flex-space-start romanian potez63">
+                            <img className="aircraft-counter" src={romanian_potez63} alt="Potez 63" />
+                            <div>
+                                <div>Potez 63</div>
+                                Potez 63 désignait globalement une série d’aéronefs conçus par la société Potez en France, bien qu’en 1936 la société fût absorbée.
+                                    dans la Société nationale de construction d’aéronefs du Nord (SNCAN). Ces avions bimoteurs ont été conçus pour les rôles de chasseur, de bombardier et de reconnaissance.
+                                    Ces avions avaient une ressemblance avec le
+                                    BF-110 allemand, mais manquait de performance. Cependant, la manœuvrabilité était bonne et cela permettait aux pilotes de souvent survivre à des combats aériens.
+                                    L'avion Potez était obsolète au début
+                                    de la guerre, mais ont été achetés par de nombreux pays d’Europe, notamment la France, l’Allemagne, la Hongrie, l’Italie, la Pologne, la Suisse, la Yougoslavie et la Roumanie.
+                                </div>
+                            <img src={potez631} alt="Potez 63" />
+                        </div>
+
+
+
+                        <div className="generic-flex-space-start romanian pzl11">
+                            <img className="aircraft-counter" src={romanian_pzl11} alt="PZL P.11" />
+                            <div>
+                                <div>PZL P.11</div>
+                                La construction d’avions PZL basée à Varsovie a été conçue à la fin des années 20 et la production du P.11 Figher a commencé en 1931. Elle était très avancée à l’époque car elle utilisait
+                                une structure et une peau entièrement métalliques. Il avait deux mitrailleuses de 7,92 mm montées sur les côtés du fuselage. Le moteur était monté sur du caoutchouc
+                                absorbeurs de vibrations et
+                                le train d'atterrissage et le patin de queue ont été montés sur des amortisseurs pneumatiques. En utilisant une seule aile "mouette" hautement aérodynamiquement efficace, elle est rapidement devenue
+                                popularisé comme "l'aile polonaise" ou "l'aile Puławski" (d'après le concepteur). Les modèles ultérieurs ont ajouté une autre paire de mitrailleuses fixées sur les ailes.
+                                 La Roumanie était un acheteur enthousiaste de ces avions, et le RAI a commencé
+                                leur propre chaîne de production sous licence, appelant leur version l’IAR P.11f, utilisant le propre moteur 9Krse de l’IRA.
+                                Les performances de l'avion en combat aérien étaient étonnamment bonnes, bien qu'elles soient surclassées par les chasseurs modernes dans la plupart des aspects.
+                                Il a été affirmé que sa manœuvrabilité n’était limitée que par la capacité du pilote à résister aux forces centrifuges. Dans la campagne polonaise, le P.11
+                                s'est avéré être un adversaire difficile pour les combattants allemands, et bien que le P.11 ait subi de lourdes pertes, ils ont abattu de nombreux combattants allemands avec eux. 
+                             </div>
+                            <img src={pzl11} alt="PZL P.11" />
+                        </div>
+
+                        <div className="generic-flex-space-start romanian pzl37">
+                            <img className="aircraft-counter" src={romanian_pzl37} alt="PZL.37 Łoś" />
+                            <div>
+                                <div>PZL.37 "Łoś"</div>
+                                Le polonais PZL.37 Łoś (élan) a fait sensation en 1936 en tant que meilleur bombardier moyen jamais conçu à l’époque. Il était légèrement plus étroit que les autres
+                                bombardiers moyens, mais à cause de cela était plus rapide et plus facile à manipuler, et a acquis la réputation d'être très fiable. Il pourrait porter un
+                                bombe relativement lourde - mais les bombes devaient avoir une forme spéciale pour pouvoir être placées. Le fuselage de l'avion
+                                a été conçu aérodynamiquement pour ajouter de la portance - l’un des premiers modèles d’avions à le faire. Son large tablier rétractable,
+                                avec des roues doubles, lui a permis de décoller et d'atterrir sur des pistes rugueuses ou même des champs et des prairies. Il avait 3 mitrailleuses qui fournissaient une protection adéquate.
+                                De nombreux pays ont passé des commandes pour le PZL.37, mais la Roumanie était le principal acheteur, équipant l'avion de deux escadrons.
+                                En 1941, le bien-aimé "Łoś" était toujours suffisant en tant que bombardier, mais à cette époque, il existait de meilleures conceptions de bombardiers moyens.
+                                </div>
+                            <img src={pzl37} alt="PZL.37 (Łoś)" />
+                        </div>
+
+
+                        <div className="generic-flex-space-start romanian sm79">
+                            <img className="aircraft-counter" src={romanian_sm79} alt="SM-79" />
+                            <div>
+                                <div>SM-79 "Sparviero"</div>
+                                Le Savoia-Marchetti SM.79 Sparviero (italien pour Sparrowhawk) était un bombardier moyen à moteur 3, bien aimé des équipages qui l'ont surnommé le
+                                "il gobbo maledetto" ("le maudit bossu") en raison de son auvent arrondi distinctif. Conçu à l'origine comme un avion rapide à 8 passagers, il a été adapté en 1034 pour devenir un bombardier moyen.
+                                Bien qu’il s’agisse d’une construction mixte à tubes de bois et de métal, le «Sparrowhawk» a battu de nombreux records de vitesse, atteignant 460 km / h (286 mph) à 3790 m (1230 pieds), avec une excellente autonomie de 1600 milles.
+                                Le gouvernement fasciste italien était très fier de l'avion et n'a ménagé aucun effort pour en faire la promotion lors des compétitions.
+                                D'abord utilisé au combat dans la guerre civile espagnole, il volerait sans escorte de chasse, car aucun chasseur ennemi ne pouvait égaler sa vitesse à cette époque.
+                                Plus de 1000 de ces avions ont été construits, principalement pour les forces aériennes italiennes et roumaines. L'avion était robuste et durable, et plus tard dans la guerre a été modifié pour devenir un bombardier torpille efficace.
+                            
+                                </div>
+                            <img src={sm79} alt="SM-79" />
+                        </div>
+
+                    </div>  
 
 
 
@@ -1341,7 +1425,7 @@ class Airpower extends Component {
 
 
 
-
+                <ScrollToTopOnMount />
 
 
 
