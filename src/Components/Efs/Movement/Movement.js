@@ -148,6 +148,7 @@ const Movement = (props) => {
                 <div className="spacer2rem" />
 
                 <div className="subheader-image header-2-image">
+                    <span>23.41</span>
                     <div>Super-heavy artillery</div>
                     <img src={german_superheavy} alt="German Super-heavy artillery" />
                     <img src={germansuperheavy} alt="German super heavy artillery at Sevastopol" />
@@ -172,18 +173,27 @@ const Movement = (props) => {
                 <div className="spacer2rem" />
 
                 <div className="subheader-image header-2-image">
+                    <span>6.71, 22.12a</span>
                     <div>Soviet cavalry</div>
                     <img src={soviet_cavalry} alt="Soviet cavalry" />
                     <img src={soviet_cossack} alt="Soviet Cossack commander at Kiev, 1942" />
                 </div>
                 <div className="spacer1rem" />
                 <p>
-                    Soviet cavalry units can move during both Motorized and Regular Movement Phases. They can always move 1/2 their movement during the Soviet Motorized Movement Phase, and then full movement during the Regular Movement Phase. They do not suffer from the -2 MP penalty for being OOS. They do not have the "retreat before combat option" capability that you see in some other games.
+                    Soviet cavalry units can move during both Motorized and Regular Movement Phases. 
+                    They can always move 1/2 their movement during the Soviet Motorized Movement Phase, and then full movement during the Regular Movement Phase. 
+                    They do not suffer from the -2 MP penalty for being OOS. 
+                    Cavalry units with a yellow MA can conduct Infiltration Movement.  <span className="rule-ref">11.52.b, 10.13.d,e</span>
+                    Cavalry units can conduct overruns. If the overrun fails, the cavalry unit takes the first hit. <span className="rule-ref">11.41</span>
+                    They do not have the "retreat before combat option" capability that you see in some other games.
                 </p>
 
 
                 <div className="spacer1rem" />
-                <div className="subheader-normal">Exiting a Road</div>
+                <div className="subheader-rule">
+                    <span>10.7 Ex. 4</span>
+                    <div>Exiting a Road</div>
+                </div>
                 <p>
                     EFS is strict as to when you can benefit from road movement. You can only benefit from road movement if you enter a hex on a road, and stay on that road (or to a different road that connects to the road you were using) as you exit it. If you enter, say, hex "A" along a road, but then move a hex "b" that the road does not connect to (from "A" to "B"), then you cannot claim the road benefit when you initially went into hex "A". You would have to pay normal costs to enter "A" as if the road didn't even go there. This kind of rule is unusual in a wargame, but it makes logical sense. If you "leave" the road inside a hex, then you are getting off the road "in that hex" and going right into the terrain that hex has. However, roads will provide a bridge to get across rivers, even if once after getting on the hex across the river you leave that road.
                 </p>
@@ -191,24 +201,24 @@ const Movement = (props) => {
                     This rule has a little wiggle room. You could "end" your movement in a phase in a hex with a road and claim the road benefit. Then in the next movement phase you can leave that road and not worry about "paying back" for the previous movement phase. Using this method you could extract units that were otherwise "trapped" on a road going through otherwise prohibited terrain and "escape" into a non-prohibited hex that is next to it.
                 </p>
 
-                <div className="spacer1rem" />
-                <div className="subheader-image header-1-image">
+                <div className="subheader-image stalin">
+                <span>10.75c2</span>
                     <div>Minor roads in mud</div>
                     <img src={mudroad} alt="muddy road" />
                 </div>
+
                 <p>
                     Minor Roads are considered to all but disappear in Mud turns. Motorized units must pay cost for the other terrain in the hex when moving along a Minor Road during Mud. The exception is Woods - do not add Woods cost while traveling along a Minor Road through Woods in Mud. Units can still do Strategic Movement along Minor Roads in Mud, though it doesn't change the cost of entering the hexes.
                 </p>
 
-                <div className="spacer1rem" />
+                <div className="spacer2rem" />
                 <div className="subheader-image header-1-image">
                     <div>Minsk-Smolensk-Moscow Motorway</div>
                     <img src={motorway} alt="Minsk-Smolensk-Moscow Motorway" />
                 </div>
 
-
                 <div className="pdiv">
-                    The Motorway in Army Group Center has special restrictions on its use. The Motorway was so important for the movement of supplies and critical reinforcements to the drive on Smolensk and Moscow that the Germans strictly controlled who and want could utilize this very important highway.
+                    (<span className="i">Barbarossa: Army Group Center only</span>) The Motorway in Army Group Center has special restrictions on its use. The Motorway was so important for the movement of supplies and critical reinforcements to the drive on Smolensk and Moscow that the Germans strictly controlled who and want could utilize this very important highway.
                 <ul className="bare-ul">
                         <li>Only Axis motorized, Orange MA, and Green MA units may benefit from the road rate on the Motorway. Super-Heavy artillery is still, though, restricted to one hex per MP.</li>
                         <li>For all other units, they can move along the Motorway but they have to pay the costs of other terrain in the hex, as if the Motorway wasn't even there.</li>
@@ -216,7 +226,7 @@ const Movement = (props) => {
                     </ul>
                 </div>
 
-                <div className="spacer1rem" />
+                <div className="spacer2rem" />
                 <div className="subheader-image header-1-image">
                     <div>How Railroads are sometimes treated like a road</div>
                     <img src={german_troops_railroad} alt="German troops walking along railroad" />
@@ -266,7 +276,7 @@ const Movement = (props) => {
                     <img src={infiltration_movement_example} alt="Infiltration movement example" />
                 </div>
                 <div className="pdiv">
-                Motorized units with yellow movement factors can do something similar to 1-Hex Movement called Infiltration Movement. It allows them to move directly from enemy ZOC to adjacent enemy ZOC. This movement of 1 hex uses up all the MPs of the motorized unit or stack of motorized units.
+                Motorized and Cavalry units with yellow movement factors can do something similar to 1-Hex Movement called Infiltration Movement. It allows them to move directly from enemy ZOC to adjacent enemy ZOC. This movement of 1 hex uses up all the MPs of the motorized unit or stack of motorized units.
                     <ul className="bare-ul">
                         <li>Axis Infiltration Movement can only occur during the Axis Regular Movement Phase.</li>
                         <li>Soviet Infiltration Movement can only occur during the Soviet Motorized Movement Phase.</li>
@@ -297,7 +307,7 @@ const Movement = (props) => {
                     Although similar to combat, overruns are considered part of movement. 
                 </p>
                 <div className="pdiv">
-                    During Motorized Movement or regular Movement phases, a motorized unit, or stack of motorized units that start the movement phase stacked together, may attempt to overrun an enemy occupied hex. To do so they must meet the minimum odds, and then roll on the overrun table. Attack Supply is not used, and no artillery can participate. Defending artillery units only defend with their defence factor. No air units can participate. The overrunning units must remain stacked. The hex adjacent to the target of the overrun cannot be in the ZOC of other enemy units, other than the units that are being overrun. None of the overrunning units can be Out of Supply. Overruns cannot take place if the units are using One Hex Movement. The overrunning units must be able to pay all normal movement costs, plus the cost of entering the enemy occupied hex (minus the cost of entering another enemy ZOC), plus 1 MP. The following restrictions also apply:
+                    During Motorized Movement or regular Movement phases, a motorized unit, or stack of motorized (and/or Cavalry) units that start the movement phase stacked together, may attempt to overrun an enemy occupied hex. To do so they must meet the minimum odds, and then roll on the overrun table. Attack Supply is not used, and no artillery can participate. Defending artillery units only defend with their defence factor. No air units can participate. The overrunning units must remain stacked. The hex adjacent to the target of the overrun cannot be in the ZOC of other enemy units, other than the units that are being overrun. None of the overrunning units can be Out of Supply. Overruns cannot take place if the units are using One Hex Movement. The overrunning units must be able to pay all normal movement costs, plus the cost of entering the enemy occupied hex (minus the cost of entering another enemy ZOC), plus 1 MP. The following restrictions also apply:
                 
                 <ul className="bare-ul">
                     <li>Overruns can only occur in Dry or Frost weather.</li>

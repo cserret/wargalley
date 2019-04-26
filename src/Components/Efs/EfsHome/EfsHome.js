@@ -80,7 +80,7 @@ const EfsHome = (props) => {
                 </p>
                 <p>
                     <span className={props.language === 'en' ? '' : 'block-hidden'}>
-                    In this discussion I will primarily keep to AGS, AGC, and AGN, although most of it should apply to Typhoon! as well. The newer revisions of the system can be
+                    In this discussion I will primarily keep to the newer games, although most of it should apply to Typhoon! as well. The newer revisions of the system can be
                     applied to Typhoon!, although you'll have to come up with some updated counters and use some of the charts and rules from the later Barbarossa games (<a href="https://www.gmtgames.com/bags/gmtefret.htm">link</a>). Kiev to Rostov and Crimea have some updates and minor changes to the rules.
                 </span>
                 <span className={props.language === 'fr' ? '' : 'block-hidden'}>

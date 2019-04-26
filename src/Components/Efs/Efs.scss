@@ -213,7 +213,7 @@
     position: relative;
     > span:nth-child(1) {
       position: absolute;
-      bottom: 25px;
+      bottom: 22px;
       left: 0;
       font-weight: normal;
       color: red;
@@ -341,5 +341,8 @@
     font-size: 1;
     color: red;
     font-size: 1rem;
+  }
+  .i {
+      font-style: italic;
   }
 }

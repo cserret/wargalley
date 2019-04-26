@@ -56,6 +56,7 @@ const Supply = (props) => {
 
             <span className={props.language === 'en' ? '' : 'block-hidden'}>
                 <div className="subheader-image">
+                    <span>6.0</span>
                     <div>General Supply</div>
                     <img src={barrels} alt="general supply barrels" />
                 </div>
@@ -616,8 +617,10 @@ const Supply = (props) => {
         
             <span className={props.language === 'en' ? '' : 'block-hidden'}>
            
-            <div className="subheader-normal">Use of Attack Supply as General Supply</div>
-
+            <div className="subheader-rule">
+                <span>6.53</span>
+                <div>Use of Attack Supply as General Supply</div>
+            </div>
                 <p>
                     There is one more way for units to get General Supply, but it's something to be avoided unless you have a very good reason. You can use Attack Supply as a source of General Supply. Using a Attack Supply counter for General Supply uses up that Attack Supply, or 1 point of a Dump. This procedure gives General Supply to friendly units that can trace 5 hexes, under the same conditions as tracing a LOC, to the Attack Supply. The units are then considered in General Supply for 1 turn. Typically, only Soviet forces will use this tactic, since they are often cut off by the advancing Germans, and may have some friendly Attack Supply trapped with them. But you may find yourself, as the Axis player, forced to do this if for example a panzer division got cut off - or if you "planned" on a panzer division being cut off while involved in a deep thrust behind enemy lines. 
                 </p>
@@ -651,7 +654,10 @@ const Supply = (props) => {
         
             <span className={props.language === 'en' ? '' : 'block-hidden'}>
            
-            <div className="subheader-normal">Effects of not being able to get General Supply</div>
+            <div className="subheader-rule">
+                <span>6.7</span>
+                <div>Effects of not being able to get General Supply</div>
+            </div>
 
                 <p>
                 Units that were in General Supply but are found to be unable to trace to General Supply are marked with a "Emergency Supply" marker. These units are still considered to be in General Supply. Units that have a "Emergency Supply" marker on them, and are found to still be unable to trace to General Supply during the Supply phase have the "Emergency Supply" marker flipped to "Out of Supply". Strongpoints also suffer from being Out of Supply. Units that are marked "Out of Supply" have the following negative effects:               
@@ -753,6 +759,7 @@ Exception : la cavalerie ne subit pas cette pènalitè de -2.</li>
 
             <span className={props.language === 'en' ? '' : 'block-hidden'}>
                 <div className="subheader-image">
+                    <span>6.8</span>
                     <div>Attack Supply</div>
                     <img src={supplystrip} alt="supply counters" />
                 </div>
