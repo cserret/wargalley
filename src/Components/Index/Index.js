@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Index.scss';
 import logo from "../../images/easternfrontseries.png";
+import hex from "../../images/snaphex.png";
 
 const Index = (props) => {
     return (
@@ -25,6 +26,12 @@ const Index = (props) => {
                             <div><span>Fan site for GMT's East Front Series</span></div>
                         </div>
                     </Link>
+                    <a href="https://hyenasofwar.com" target="_blank" rel="noopener noreferrer">
+                        <div className="link">
+                            <img className="hex-logo" src={hex} alt="logo" width="109" height="150" />
+                            <div><span>Hex grid map generator</span></div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

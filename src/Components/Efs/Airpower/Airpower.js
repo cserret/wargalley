@@ -35,7 +35,7 @@ import mig3 from "../../../images/efs/airpower/mig3.jpg";
 import pe2_counter from "../../../images/efs/airpower/pe2.gif";
 import pe2 from "../../../images/efs/airpower/pe-2.jpg";
 import sb2_counter from "../../../images/efs/airpower/sb-2.gif";
-import sb2 from "../../../images/efs/airpower/sb-2.jpg";
+import sb2 from "../../../images/efs/airpower/sb-m103.jpg";
 import su2_counter from "../../../images/efs/airpower/su-2.gif";
 import su2 from "../../../images/efs/airpower/su-2.jpg";
 import tb3_counter from "../../../images/efs/airpower/tb3.gif";

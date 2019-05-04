@@ -39,8 +39,15 @@
       }
       .link {
         display: flex;
+        margin-top: 20px;
         img {
            box-shadow: 1px 1px 1px 1px rgba(140,140,140,1), 2px 2px 1px 1px rgba(130,130,130,1), 3px 3px 1px 1px rgba(140,140,140,1), 4px 4px 1px 1px rgba(110,110,110,1);
+        }
+        .hex-logo {
+            width: 118px;
+            height: 105px;
+            position: relative;
+            top: 30px;
         }
         div {
           border: 1px solid black;
