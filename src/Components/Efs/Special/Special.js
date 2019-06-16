@@ -284,7 +284,7 @@ export default class Special extends Component {
                     <p>
                         A armored train travels up to 48 rail hexes per turn (subject to interdiction effects). They can move in either the Motorized Phase or the regular Movement Phase (but not both in the same turn). They do not require any supply to move, and do not count against the rail capacity. They cannot transport anything.
             </p><p>
-                        German armored trains can only run on converted track, while Soviet armored trains can only run on non-converted track.
+                        German armored trains can only run on converted track (converted to German closer width train rails and more closely spaced water towers), while Soviet armored trains can only run on non-converted track.
             </p><p>
                         Armored trains can move into enemy ZOC, but not through them. They can run on tracks "behind" enemy lines (as long as the track is the proper type for it).
             </p><p>
@@ -292,7 +292,7 @@ export default class Special extends Component {
             </p><p>
                         Some Soviet trains are NKVD trains, and act as NKVD units for the purposes of the No Retreat automatic orders for NKVD. They can drive through Command Ranges of non-op HQ's.
             </p><p>
-                        Although weak, lacking ZOC, and relegated to staying on rail lines, armored trains can help out with defending an area you have difficulty getting any regular ground troops to, as they can go a long ways on a track. Sending a NKVD armored train into a city about to get surrounded is a great way to improve the defense, since the units there will ignore surrender rolls.
+                        Although weak, lacking ZOC, and relegated to staying on rail lines, armored trains can help out with defending an area you have difficulty getting any regular ground troops to, as they can go a long ways on a track. Sending a NKVD armored train into a city about to get surrounded is a great way to improve the defense, since the units there will get a beneficial modifier for surrender rolls.
             </p>
 
                     <div className="spacer2rem" />

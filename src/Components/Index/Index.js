@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Index.scss';
 import logo from "../../images/easternfrontseries.png";
 import hex from "../../images/snaphex.png";
+import snapcounter from "../../images/snapcounter.png";
 
 const Index = (props) => {
     return (
@@ -26,10 +27,16 @@ const Index = (props) => {
                             <div><span>Fan site for GMT's East Front Series</span></div>
                         </div>
                     </Link>
-                    <a href="https://hyenasofwar.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://snaphex.com/setup">
                         <div className="link">
-                            <img className="hex-logo" src={hex} alt="logo" width="109" height="150" />
+                            <img className="hex-logo" src={hex} alt="logo" width="118" height="105" />
                             <div><span>Hex grid map generator</span></div>
+                        </div>
+                    </a>
+                    <a href="https://snaphex.com/snap_counter">
+                        <div className="link">
+                            <img className="counter-logo" src={snapcounter} alt="logo" width="118" height="118" />
+                            <div><span>Counter designer</span></div>
                         </div>
                     </a>
                 </div>
