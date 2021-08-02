@@ -271,23 +271,18 @@ export default class Special extends Component {
                     <div className="spacer1rem" />
 
                     <p>
-                        Bridge units are available to both sides, and really represent engineer units specialized in bridge building. These bridge units typically provided pontoon bridges across rivers, although they did also repair conventional bridges, but since bridges can't be "blown" in EFS, the only aspect of these bridge units in EFS is the ability to provide temporary bridges across rivers and major rivers.
+                        Bridge units are available to both sides. They actually represent engineer units that are capable of building bridges. These bridges (actually pontoon bridges) allow units (of their side) to cross rivers and major rivers.
             </p><p>
-                        A bridge unit at a river negates the crossing the river cost for that hexisde. Note that the counter has an arrow. It points to the hexside that gets the temporary bridge.
+                        A bridge unit at a river negates the "crossing the river" cost for that hexside. Note that the counter has an arrow. It points to the hexside that gets the bridge.
             </p><p>
                         Bridge unit placement is very fast and loose in EFS. Basically you can place it in any hex in General Supply, regardless of any affiliation marked on the counter. No more than two friendly bridge units can be active per map. You can move a bridge unit at *any time* (once) during each friendly Movement Phase. This means units can use it to cross a river at one spot, then you can move the bridge unit to another river, and other units can then run across its bridge at the new location.
             </p><p>
                         Non-op HQ's interfere with Bridge units - they prohibit placement of bridges within their Command Range, and bridge units cannot leave a hex while under Command Range of a non-op HQ's.
             </p><p>
-                        Bridge units cannot be captured or destroyed by the enemy. Bridge units cannot retreat. If the hex they are in is entered by an enemy unit, the bridge unit is moved to off map, then can be placed back on the map in the owner's regular Movement phase.
+                        Bridge units cannot be captured or destroyed by the enemy. Bridge units cannot retreat. If the hex they are in is entered by an enemy unit, then the bridge unit is moved off the map. They can be placed back on the map in the owner's regular Movement phase.
             </p>
 
-
-
-
-
                     <div className="spacer2rem" />
-
 
                     <div className="subheader-image">
                         <span>7.25</span>
@@ -495,7 +490,7 @@ export default class Special extends Component {
                     <div className="spacer1rem" />
 
                     <p>
-                        The Peoples Commissariat for Internal Affairs, known by the initials NKVD, formed special political troops. The feared "NKVD Commissars" of these units could overrule the decisions of commanders on the ground. A common order would be for the Commissars to demand a defense to the death.
+                        The Peoples Commissariat for Internal Affairs, known by the initials NKVD, formed special political troops. The feared "NKVD Commissars" of these units could overrule the decisions of commanders on the ground. Historically, Commissars were infamous for demanding that units defend their positions to the death.
             </p><p>
                         Whenever a NKVD unit is defending in a major city, city, or town hex, it issues a mandatory NO RETREAT order on all units in the hex - unless the hex is under the command span of a Non-Op HQ. You cannot counter-order this NKVD NO RETREAT order (other than by moving a non-op HQ to within range of the hex).
             </p><p>
@@ -565,7 +560,7 @@ export default class Special extends Component {
                         <ul className="ul-no-top">
                             <li>They can be expended to recreate a unit in the Cadre Box which requires a Type I Replacement. Replace the Zap unit with the cadre unit in the same hex. Place a "Do Not Move One GT" marker on it.
                         The Do Not Move counter will be removed during the Soviet Engineering Phase.</li>
-                            <li>They can also be used to provide a Type I Replacement to an eligible reduced Soviet unit that is on the map. They unit being built up then gets the "Do Not Move One GT" marker placed on it.</li>
+                            <li>They can also be used to provide a Type I Replacement to an eligible reduced Soviet unit that is on the map. The unit being built up then gets the "Do Not Move One GT" marker placed on it.</li>
                         </ul>
                     </div>
 

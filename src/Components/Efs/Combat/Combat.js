@@ -19,6 +19,7 @@ import panzer from "../../../images/efs/combat/panzer.png";
 import retreat from "../../../images/efs/combat/retreat.jpg";
 import advance from "../../../images/efs/combat/advance.jpg";
 import germanantitank1942east from "../../../images/efs/combat/germanantitank1942east.jpg";
+import surrenderc from "../../../images/efs/combat/surrenderc.jpg";
 import wreck from "../../../images/efs/combat/miiiwreck.jpg";
 import './Combat.scss';
 
@@ -457,6 +458,33 @@ const Combat = (props) => {
                     Advancing can be used to cut off possible retreats of defenders in other combats in that phase. In fact, better players always have this in mind when setting up attacks.
                     But you also need to avoid retreating the enemy to hexes where they can escape, or where they can block gaps in their line. Don't help the enemy.
                 </div>
+
+                <div className="spacer2rem" />
+                <div className="subheader-image stalin">
+                    <span>21.0</span>
+                    <div>Soviet Surrender</div>
+                    <img src={surrenderc} alt="advance" />
+                </div>
+                <div className="spacer1rem" />
+                <div className="pdiv">
+                    Soviet units that are surrounded, or otherwise in a hopeless state, may surrender (German units never surrender, at
+                    least not in this game system).
+
+                    During the Soviet Surrender Phase, the Soviet Player rolls on the Soviet Surrender Table for each Soviet occupied hex that:
+                    <ul className="ul-no-top">
+                        <li>Is adjacent to an Axis combat unit that does not have a No Zoc band and ...</li>
+                        <li>cannot trace a line of hexes of any length free of Axis units or their uncontested ZOCs to a non-surrounded friendly
+                            major city, port, or map-edge Supply Source.
+                        </li>
+                    </ul>
+                    <p>
+                    The Soviet player gets benefit DRMs for: a) being within the command range of a HQ, b) the hex has a Guard or NKVD unit, c) the hex
+                    is a city, d) the hex has a fortification.
+                    </p><p>
+                    The Soviet player gets negative DRMs if theres: a) a Emergency Supply marker, b) Out of Supply marker, c) only Militia and/or coastal artillery units.</p>
+   
+                </div>
+
 
                 <div className="spacer2rem" />
                 <p className="centered">
