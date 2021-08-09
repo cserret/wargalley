@@ -341,6 +341,8 @@ export default class Special extends Component {
             </p><p>
                         Flotillas can be "overrun" by enemy units on the same side of the river as the flotilla. They can be attacked as if a regular unit, and they can participate on attacks on enemy units that are in a hex adjacent to the river (either side).
             </p><p>
+                        Flotillas do not require Attack Supply, and do not require General Supply. <span className="rule-ref">(22.56)</span>
+            </p><p>
                 Flotillas cannot attack in Storm weather. If Storm weather is rolled, flotillas must be repositioned to the nearest friendly port within its movement allowance. If no port
                 is in reach, then the flotilla stays in place. Place a "Do Not Move One GT" on the flotillas.
                 </p><p>
