@@ -20,7 +20,7 @@ import retreat from "../../../images/efs/combat/retreat.jpg";
 import advance from "../../../images/efs/combat/advance.jpg";
 import germanantitank1942east from "../../../images/efs/combat/germanantitank1942east.jpg";
 import surrenderc from "../../../images/efs/combat/surrenderc.jpg";
-import wreck from "../../../images/efs/combat/miiiwreck.jpg";
+import wreck from "../../../images/efs/combat/burning_t34_.jpg";
 import './Combat.scss';
 
 const Combat = (props) => {
@@ -120,7 +120,7 @@ const Combat = (props) => {
 
                 <div className="spacer2rem" />
                 <div className="subheader-image stalin">
-                <span>12.4, 15.21</span>
+                    <span>12.4, 15.21</span>
                     <div>Mandated Attack</div>
                     <img src={joseph_stalin} alt="Joseph Stalin" />
                 </div>
@@ -130,19 +130,19 @@ const Combat = (props) => {
                 </p>
                 <div className="pdiv">
                     If the Soviet player does not (or cannot) meet this requirement, the order for the Mandated Attack(s) still remain in effect. Additionally, these penalties occur:
-                <ul>
+                    <ul>
                         <li>
                             If during the Game Turn Interphase there are unmet Mandated Attacks, the Axis Player receives +2 VPs for each outstanding Mandated Attack, if the Axis player took and held a vp location that turn.
-                    </li>
+                        </li>
                         <li>The Soviets get a +1 drm for each unmet Mandated Attack when rolling on the Replacements Table.</li>
                     </ul>
                 </div>
                 <p>
                     There is a marker titled "Mandated Attack Not Yet Made" that goes on the Soviet Loss/Replacement Track that can keep track of the current Mandated Attack *debt*.
-</p>
+                </p>
                 <p>
                     Soviets suffer from <span className="asterisk">*</span> results on the Combat Results table for Mandated Attacks, regardless of Attack Supply. Note that <span className="asterisk">*</span> results are cumulative. A Soviet Mandated Attack that is not Attack Supplied suffers the equivalent of two <span className="asterisk">*</span> results if a <span className="asterisk">*</span> result is rolled.
-</p>
+                </p>
                 <p>
                     As the Soviet player, you will probably suffer needless losses due to these Mandated Attacks. Its something that is unavoidable. Just be prepared to be capable of making an attack every turn, because you don't know when the Mandated Attack order will come down the pipe. Keep Attack Supply near the front so that you don't have to suffer double <span className="asterisk">*</span> losses when making a Mandated Attack.
                 </p>
@@ -174,24 +174,24 @@ const Combat = (props) => {
                 <p>
                     German panzer and motorized divisions can qualify for a Divisional Integrity bonus drm of -1. For a German panzer division to qualify for the bonus,
                     it must have its panzer regiment attacking, and at least two of its other units (motorized infantry regiments or the recon unit) attacking the same defender.
-                     The attacking units can be stacked together or in different hexes. These Divisional Integrity bonuses are cumulative.
-                     For a German motorized division it would need all three of its regiments involved in the same attack to qualify,
-                     Any SS motorized division need only have 3 of its four component units present to qualify for Divisional Integrity.
-                     PLUS for each German motorized division getting a Divisional Integrity bonus, it must be *matched* by a qualifying German panzer division that is participating in the same attack.
-                      German motorized divisions, alone, do not qualify for the Divisional Integrity bonus.
+                    The attacking units can be stacked together or in different hexes. These Divisional Integrity bonuses are cumulative.
+                    For a German motorized division it would need all three of its regiments involved in the same attack to qualify,
+                    Any SS motorized division need only have 3 of its four component units present to qualify for Divisional Integrity.
+                    PLUS for each German motorized division getting a Divisional Integrity bonus, it must be *matched* by a qualifying German panzer division that is participating in the same attack.
+                    German motorized divisions, alone, do not qualify for the Divisional Integrity bonus.
 
-                      If the attack is not supplied with Attack Supply, then if any of the units counted for the Divisional Integrity are OOS, the Divisional Integrity is denied for that division.
-</p><p>
+                    If the attack is not supplied with Attack Supply, then if any of the units counted for the Divisional Integrity are OOS, the Divisional Integrity is denied for that division.
+                </p><p>
                     Exception: The SS LAH brigade qualifies with its two units.
-</p><p>
+                </p><p>
                     Unlike the finicky Combined Arms bonus, the Divisional Integrity bonus is available in all weather conditions, against any enemy units in any terrain.
                     The only thing that might mess it up is the required units being OOS while attacking without Attack Supply.
-</p><p>
+                </p><p>
                     Note that under the right conditions, German panzer divisions will often get both a Divisional Integrity bonus AND a Combined Arms bonus.
                     This makes them the most effective fighting force in the game.
-</p><p>
+                </p><p>
                     Since German motorized divisions only get the Divisional Integrity bonus when attacking in concert with German panzer divisions, its obvious that you should keep them together or near each other.
-</p>
+                </p>
 
 
                 <div className="spacer2rem" />
@@ -236,16 +236,58 @@ const Combat = (props) => {
 
                 <div className="spacer2rem" />
                 <div className="subheader-image artillery">
-                    <span>14.3, 15.58</span>
-                    <div>No Retreat and Additional Retreat orders</div>
+                    <span>12.5</span>
+                    <div>"No Retreat" and "Additional Retreat" order markers</div>
                     <img src={orders_strip} alt="orders counters" />
                 </div>
                 <div className="spacer1rem" />
                 <p>
-                    The attacker or defender in a battle may place No Retreat or Additional Retreat orders on units in a battle. An order applies to all the friendly units in that battle, even if it is a multiple-hex combat. The Axis player may always freely issue these orders, but the Soviet player needs to have a Headquarters within Command Range of the units with a non-interdicted Command point to use for issuing the order. An exception for the Soviets are NKVD units. A defender hex in a Town, City, or Major City and with a NKVD unit in it automatically places the hex under the No Retreat order (this is not optional, you are forced), except when within range of a non-op HQ's (see Headquarters page).
-</p><p>
-                    Orders are placed face down and not revealed until the moment of the combat die roll. The attacker places the orders down first. Except for the case of NKVD units, orders are optional.
-</p>
+                    The attacker and defender in a battle may place a "No Retreat" or "Additional Retreat" order marker on units in
+                    a battle. The placement of an order marker is done after defensive artillery support is declared.
+                </p><p>
+                    The orders marker, either "Additional Retreat" or "No Retreat", is placed face down on
+                    the defending units so that
+                    the attacker does not know which order it is.
+                </p><p>
+                    The attacker can only place an orders marker on their units if the defender has an orders marker on them.
+                </p><p>
+                    Orders can only be placed on a hex that is in "qualifying terrain". A hex is in "qualifying terrain" if
+                    it has any of: woods, alpine, mountain, city, major city, or any type of friendly active fortification
+                    (Exception - Citadels).
+                </p><p>
+                    A town is also "qualifying terrain" if there are mud conditions and the defender gets a DRM benefit for
+                    mud - but in this case it only qualifies for the "No Retreat" order.
+                </p><p>
+                    An "Additional Retreat" order marker cannot be placed on a hex that is under the mud weather condition.
+                </p><p>
+                    The defender will be able to put a (single) orders marker on a defending hex that has
+                    qualifying terrain. The placement of orders is optional (except for NKDV described below).
+                </p><p>
+                    The German player can place an orders marker for any units that are defending in qualifying
+                    terrain.
+                </p><p>
+                    For the Soviets, they can only place a orders marker if:<br />
+                    a) There is an operational HQ within range of the defending hex, and that HQ has at least 1 non-interdicted
+                    command point to expend for the order. Non-Op headquarters that are in command range of the hex will prevent
+                    the placement of orders.<br />
+                    b) The defending hex has a NKVD unit. In this case, the NKVD automatically places a "No Retreat" order
+                    on the hex it is in - if the hex has "qualifying terrain". No HQ command point is expended for this automatic
+                    placement. The presence of a HQ or Non-Op HQ has no effect
+                    on this placement. However, a HQ with a command point to spend, which is in command range (with no Non-Op
+                    HQ in command range) can expend a command point to remove this "automatic" order.
+                </p><p>
+                    An orders marker applies to all the friendly units in that battle, even if it is a multiple-hex
+                    combat. Conflicting orders cannot be applied to a player's units in the same combat.
+                </p><p>
+                    After orders for the defender is place, the attacker may place an order on their attacking units. Again,
+                    one orders marker applies to all units of that player that are in the combat. The placement
+                    of an orders marker does not need "qualifying terrain" - the fact that the defender has an orders marker
+                    on it allows the attacking player to place an orders marker on that player's attacking units.
+                </p><p>
+                    The Soviet player will need a HQ in command range (with no Non-Op HQ in command range) with
+                    a command point to expend for the placement of an orders marker for attacking units.
+                </p>
+
 
 
 
@@ -286,7 +328,13 @@ const Combat = (props) => {
 
                 <div className="spacer1rem" />
                 <p>
-                    Usually the defender will be the one using orders most often. The No Retreat order stops units from retreating, but can cost you more step losses. Unless you've got more than two steps in a defender hex, it may be reckless to place a No Retreat order on units. It may be tempting to cause a +1 DRM to the enemy, but you might be handing the enemy a great victory. Additional Retreat orders are quite useful when you actually do want to retreat, and want to cut down on step losses.
+                    <div className="commentary">
+                        The "No Retreat" order stops units from retreating,
+                        but can cost you more step losses. Unless you've got more than two steps in a defender hex, it may be reckless to
+                        place a "No Retreat" order on units. It may be tempting to cause a +1 DRM to the enemy, but you might be handing the
+                        enemy a great victory - unless the defender is doomed anyways. "Additional Retreat" orders are quite useful when you actually do want to retreat, and want to
+                        cut down on step losses.
+                    </div>
                 </p>
 
                 <div className="spacer2rem" />
@@ -306,15 +354,15 @@ const Combat = (props) => {
                     Step losses may be modified by Asterisk (*) results, No Retreat orders, and Additional Retreat orders.
                 </p>
 
-
+                <div className="spacer2rem" />
                 <div className="subheader-image stalin">
                     <span>16.3</span>
                     <div>Asterisk (<span className="bigger-bold-text">*</span>) Results</div>
-                    <img src={wreck} alt="Wrecked pnazer" />
+                    <img src={wreck} alt="burning T-34" />
                 </div>
                 <div className="pdiv">
                     The combat results table is peppered with results marked with a asterisk symbol <span className="asterisk">*</span>, called "Asterisk Result" (sometimes called an easier to pronounce "Star Result"). This symbol can have the following effects:
-                <ul class="ul-no-top">
+                    <ul class="ul-no-top">
                         <li>It can mean an "additional loss" to an attacker (<span className="green-bold">ADDITIONAL LOSS</span>).</li>
                         <li>It can determine that the first loss distributed MUST be to an engineer or an armor unit. ( <span className="blue-bold">ENGINEER ATTRITION</span> or <span className="red-bold">ARMOR ATTRITION</span>)</li>
                     </ul>
@@ -371,7 +419,7 @@ const Combat = (props) => {
                         <img src={panzer} alt="German panzer counter" />
                         <div>"Armor", as meant here, are units<br />
                             with an attack value in red.
-                            </div>
+                        </div>
                     </div>
                     <div className="aatext">
                         If an asterisk is on the combat result with a numeric loss number, then:<br />
@@ -389,7 +437,7 @@ const Combat = (props) => {
                             other notes:<br />
                             A combat result of only a <span className="asterisk">*</span> does not cause ARMOR ATTRITION.<br />
                             If an armored step is lost due to ARMOR ATTRITION, then in the defending force - if they are<br /> losing 1 or more steps also - the first step they lose must be one of either armor, anti-tank, or AA.
-                            </span>
+                        </span>
                     </div>
 
                 </div>
@@ -478,11 +526,11 @@ const Combat = (props) => {
                         </li>
                     </ul>
                     <p>
-                    The Soviet player gets benefit DRMs for: a) being within the command range of a HQ, b) the hex has a Guard or NKVD unit, c) the hex
-                    is a city, d) the hex has a fortification.
+                        The Soviet player gets benefit DRMs for: a) being within the command range of a HQ, b) the hex has a Guard or NKVD unit, c) the hex
+                        is a city, d) the hex has a fortification.
                     </p><p>
-                    The Soviet player gets negative DRMs if theres: a) a Emergency Supply marker, b) Out of Supply marker, c) only Militia and/or coastal artillery units.</p>
-   
+                        The Soviet player gets negative DRMs if theres: a) a Emergency Supply marker, b) Out of Supply marker, c) only Militia and/or coastal artillery units.</p>
+
                 </div>
 
 
@@ -655,19 +703,19 @@ const Combat = (props) => {
                 </p>
                 <div className="pdiv">
                     Si le joueur Soviétique ne veut (ou ne peut) pas exècuter l'odre, la (ou les) attaques obligatoires continuent de s'appliquer. De plus, ces pènalitès s'appliquent:
-                <ul>
+                    <ul>
                         <li>
                             Si pendant l'Interphase de Changement de Tour il reste des Attaques Obligatoires qui n'ont pas ètè exècutèes, le joueur Allemand reèoit +2PV pour chaque Attaque Obligatoire non rèsolue, tant que le joueur Allemand contrèle n'importe quelle localisation rapportant des points de victoire dans le scènario.
-                    </li>
+                        </li>
                         <li>Le joueur Soviétique obtient un DRM +1 par Attaque Obligatoire non rèsolue lorsqu'il fait un jet sur la Table de Remplacement.</li>
                     </ul>
                 </div>
                 <p>
                     Il y a un marqueur "Attaques Obligatoire non rèsolues" è mettre sur la piste de Pertes/Remplacements Soviétique de faèon è savoir combien il reste d'Attaques Obligatoire è faire.
-</p>
+                </p>
                 <p>
                     Les Soviétiques doivent appliquer les r èsultats * de la Table de Rèsultat des Combats pour les Attaques Obligatoire, quel que soit l'ètat du Ravitaillement d'Attaque. Notez que les rèsultats <span className="asterisk">*</span> sont cumulatfs. Une Attaque Obligatoire sans Ravitaillement d'Attaque subira les effets de deux <span className="asterisk">*</span> si il y a un rèsultat avec une <span className="asterisk">*</span>.
-</p>
+                </p>
                 <p>
                     En tant que joueur Soviétique, vous subirez probablement des pertes inutiles è cause de ces Attaques Obligatoire. C'est quelque chose d'inèvitable. Soyez juste prèparè pour pouvoir faire une attaque è chaque tour, parce que vous ne saurez jamais quand vont ètre donnès les ordres d'attaque. Gardez votre ravitaillement d'attaque près du front de faèon è ne pas subir une double perte è cause d'une * pendant une Attaque Obligatoire.
                 </p>
@@ -693,15 +741,15 @@ const Combat = (props) => {
                 <div className="spacer1rem" />
                 <p>
                     Les divisions de panzers et les divisions motorisèes Allemandes peuvent recevoir un bonus d'intègritè divisionnaire sous la forme d'un DRM -1. Pour qu'une panzer division Allemande reèoive ce bonus, son règiment de panzers doit attaquer, et au moins deux de ses autres unitès (r ègiments d'infanterie motorisè ou l'unitè de reconnaissance) doivent attaquer le mème dèfenseur. Les unitès de l'attaquant peuvent ètre empilèes ensemble ou se trouver dans des hexs diffèrents. Ces bonus d'intègritè divisionnaire sont cumulatifs. Pour une division motorisèe Allemande, il faudrait que les trois règiments soient engagès dans la mème attaque pour recevoir le bonus, PLUS, pour chaque division motorisèe Allemande avec le bonus d'intègritè divisionnaire, il doit y avoir autant de divisions de panzers participant è la mème attaque. Les divisions motorisèes Allemandes seules ne peuvent pas se qualifier pour le bonus d'intègritè divisionnaire. Si l'attaque n'est pas ravitaillèe avec du Ravitaillement d'Attaque, et qu'une des unitès prises en compte pour l'intègritè divisionnaire, alors l'intègritè divisionnaire est refusèe pour cette division.
-</p><p>
+                </p><p>
                     Exceptions : les divisions motorisèes SS n'ont besoin que de trois des quatre èlèments pour prètendre è l'intègritè divisionnaire. La brigade SS LAH reèoit le bonus avec deux de ses unitès.
-</p><p>
+                </p><p>
                     Contrairement au BAC, le bonus d'intègritè divisionnaire peut ètre utilisè par tous les temps, contre des unitès ennemies dans n'importe quel terrain. La seule chose qui peut l'empècher est qu'il y ait des unitès Non Ravitaillèes qui attaquent sans Ravitaillement d'Attaque.
-</p><p>
+                </p><p>
                     Notez que dans les bonnes conditions, les panzer divisions Allemandes auront souvent le bonus d'intègritè divisionnaire ET le BAC. Ce qui fait d'elles les forces de combat les plus puissantes du jeu.
-</p><p>
+                </p><p>
                     Comme les divisions motorisèes Allemandes n'obtiennent le bonus d'intègritè divisionnaire qu'en attaquant avec des divisions de panzers, il est èvident que vous devrez les garder ensemble, ou è proximitè.
-</p>
+                </p>
 
 
                 <div className="spacer2rem" />
@@ -751,9 +799,9 @@ const Combat = (props) => {
                 <div className="spacer1rem" />
                 <p>
                     L'attaquant ou le dèfenseur peut placer des marqueurs d'ordres Pas de Retraite ou Retraite Supplèmentaire sur les unitès au combat. Un ordre s'applique è toutes les unitès engagèes dans le combat, mème si c'est un combat multi-hexs. Le joueur Allemand peut toujours donner ces ordres librement, mais le joueur Soviétique doit avoir un QG è portèe de commandement des unitès avec un point de commandement non interdit pour pouvoir donner l'ordre. Une exception pour les Soviétiques : les unitès du NKVD. Un dèfenseur dan s un hex de village, de ville ou de ville majeure et avec une unitè du NKVD place automatiquement un ordre Pas de Retraite dans l'hex (ceci n'est pas optionnel, vous y ètes obligè), sauf si l'hex est è portèe d'un QG non-op (voir la page sur les QG).
-</p><p>
+                </p><p>
                     Les ordres sont placès face cachèe et ne sont rèvèlè qu'au moment de lancer le dè de rèsolution du combat. L'attaquant place ses ordres en premier. Sauf dans le cas du NKVD, les ordres sont optionnels.
-</p>
+                </p>
 
 
 
@@ -825,7 +873,7 @@ const Combat = (props) => {
 
                 <div className="pdiv">
                     Ce symbole signifie "1 ètape de la perte additionnelle pour l'attaquant", ou Attrition. Ou il peut signifier que tous les deux se produisent, si les conditions de qualification existent.
-                <ul classname="ul-no-top">
+                    <ul classname="ul-no-top">
                         <li>Cela peut signifier une "perte supplémentaire" pour un attaquant (<span className="green-bold">PERTE SUPPLEMENTAIRE</span>).</li>
                         <li>Il peut déterminer que la première perte distribuée DOIT être faite à un ingénieur ou à une unité de blindage. ( <span className="blue-bold">ATTRITION DU'GÈNIE</span> or <span className="red-bold">
                             ATTRITION DE L'ARMURE</span>)</li>
@@ -881,8 +929,8 @@ const Combat = (props) => {
                     <div className="generic-flex-space-around armor">
                         <img src={panzer} alt="German panzer counter" />
                         <div>"Blindè" signifie ici les unitès
-avec une valeur d'attaque en rouge.
-                            </div>
+                            avec une valeur d'attaque en rouge.
+                        </div>
                     </div>
                     <div className="aatext">
 
@@ -902,7 +950,7 @@ avec une valeur d'attaque en rouge.
                             Un rèsultat avec seulement une <span className="asterisk">*</span> n'entraène pas l'attrition des blindès.<br />
                             Si un pas blindè est perdu è cause de l'attrition des blindès pour la force en dèfense, au cas oè plus d'1<br />
                             pas doit ètre perdu, le premier pas doit ètre retirè è une unitè blindèe, anti-chars, ou anti-aèrienne.
-                            </span>
+                        </span>
                     </div>
 
                 </div>

@@ -42,6 +42,8 @@ const Movement = (props) => {
                 <p>
                     The movement rules form the core of the EFS system. There are various kinds of movement, and there are different phases in which movement can occur. Ground units are typically either non-motorized (foot or horse drawn) or motorized. But color coding on the movement factors of the counters can specify finer distinctions within these two types.
                     </p><p>
+                        Units move hex by adjacent hex (except for air transport). Hexes on the map each represent about 5 miles / 8 km.
+                        </p><p>
                     These are the movement phases in EFS:
                     </p>
 
@@ -70,7 +72,7 @@ const Movement = (props) => {
                         <li><span className="slight-bold">Yellow movement factor</span> - Infiltration capable.</li>
                         <li><span className="slight-bold">Gray movement factor</span> - Rail movement only.</li>
                         <li><span className="slight-bold">Orange movement factor</span> - Motorized but only moves in Regular Movement phase.</li>
-                        <li><span className="slight-bold">Blue movement factor</span> - Naval movement only.</li>
+                        <li><span className="slight-bold">Blue movement factor</span> - Flotilla/Naval movement only.</li>
                     </ul>
                 </div>
 

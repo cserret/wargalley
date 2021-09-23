@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './EfsHome.scss';
-import gamesGroup from "../../../images/efsgroup.png";
-import awaitingOrders from "../../../images/awaitingordersc.png";
+import gamesGroup from "../../../images/efsgroup.jpg";
+import awaitingOrders from "../../../images/awaitingorders.jpg";
 
 const EfsHome = (props) => {
     return (
@@ -94,6 +94,11 @@ const EfsHome = (props) => {
                 </span>
 
                 </p>
+                <p className="new-rules-notice">
+                This site is being updated to reflect the newest version of the rules, Barbarossa Standard Rules (BSR) 2.0, available at<br />
+                <a href="https://gmtwebsiteassets.s3.us-west-2.amazonaws.com/bagc/Barb-AGC_StandardRules_Final_Lo-Res.pdf"
+                target="_blank" className="new-rules">https://gmtwebsiteassets.s3.us-west-2.amazonaws.com/bagc/Barb-AGC_StandardRules_Final_Lo-Res.pdf</a>
+                    </p>
             </div>
             <img src={gamesGroup} alt="games group" />
 

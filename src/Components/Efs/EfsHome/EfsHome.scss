@@ -1,6 +1,21 @@
 .efs-home {
   position: relative;
   text-align: center;
+  .new-rules {
+      color: blue;
+      text-decoration: none;
+      &:hover {
+        color: red;
+      }
+  }
+  .new-rules-notice {
+    border: 1px solid blue;
+    text-align: center;
+    background: yellow;
+    padding: 10px;
+    font-size: 110%;
+    margin-bottom: 28px;
+  }
   .notice-box {
     width: 550px;
     margin: 0 auto;
