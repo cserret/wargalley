@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ScrollToTopOnMount from "../../ScrollToTopOnMount";
+import BsrLink from "../BsrLink/BsrLink";
 import armored_train from "../../../images/efs/special/armored_train.gif";
 import armored_train_top from "../../../images/efs/special/armored_train.jpg";
 import c3 from "../../../images/efs/special/c3.jpg";
@@ -28,30 +29,19 @@ export default class Special extends Component {
     }
 
     componentDidMount = () => {
-        this.drawCanvas(this.props.language);
+        this.drawCanvas();
     }
 
     componentWillReceiveProps = (props) => {
-        this.drawCanvas(props.language);
+        this.drawCanvas();
     }
 
 
-    drawCanvas = (language) => {
+    drawCanvas = () => {
         var canvas;
         var ctx;
-        if (language === 'en') {
-            canvas = document.getElementById('naval_info_container_canvas');
-        }
-        if (language === 'fr') {
-            canvas = document.getElementById('naval_info_container_canvas_fr');
-        }
-
-
-
-
+        canvas = document.getElementById('naval_info_container_canvas');
         ctx = canvas.getContext("2d");
-
-
         ctx.strokeStyle = "#000000";
         ctx.lineJoin = "round";
         ctx.lineWidth = 3;
@@ -62,33 +52,6 @@ export default class Special extends Component {
         ctx.lineTo(199, 132);
         ctx.stroke();
 
-        // ctx.strokeStyle = "#EBAE97";
-        // ctx.lineWidth = 4;
-        // ctx.beginPath();
-        // ctx.moveTo(129, 215);
-        // ctx.lineTo(190, 209);
-        // ctx.stroke();
-
-        // ctx.strokeStyle = "#897d74";
-        // ctx.lineWidth = 4;
-        // ctx.beginPath();
-        // ctx.moveTo(129, 215);
-        // ctx.lineTo(198, 209);
-        // ctx.stroke();
-
-        // ctx.strokeStyle = "#897d74";
-        // ctx.lineWidth = 4;
-        // ctx.beginPath();
-        // ctx.moveTo(129, 214.5);
-        // ctx.lineTo(198, 208.5);
-        // ctx.stroke();
-
-        // ctx.strokeStyle = "#897d74";
-        // ctx.lineWidth = 5;
-        // ctx.beginPath();
-        // ctx.moveTo(129, 215.5);
-        // ctx.lineTo(198, 209.5);
-        // ctx.stroke();
         ctx.strokeStyle = "#a89a8e";
         ctx.lineWidth = 4.5;
         ctx.beginPath();
@@ -178,7 +141,7 @@ export default class Special extends Component {
     render = () => {
         return (
             <div className="content">
-                <div className={this.props.language === 'en' ? '' : 'block-hidden'}>
+                <div>
                     <div className="content-title">
                         <div>SPECIAL UNITS</div>
                         <div></div>
@@ -596,374 +559,7 @@ export default class Special extends Component {
 
                 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <div className={this.props.language === 'fr' ? '' : 'block-hidden'}>
-                    <div className="content-title">
-                        <div>UNITÉS SPECIALES</div>
-                        <div></div>
-                    </div>
-
-                    <div className="image-caption">
-                        <img src={armored_train_top} alt="armored train" />
-                        <div>Trains blindés à tourelles T-34 et T-28</div>
-                    </div>
-                    <div className="spacer1rem" />
-                    <p>EFS a plusieurs types d'unités spéciales qui ajoutent é EFS une saveur historique trés riche. </p>
-
-                    <div className="spacer2rem" />
-                    <div className="subheader-counter">
-                        <div>Génie</div>
-                        <img src={german_engineer2} alt="German engineer counter" />
-                    </div>
-                    <p>
-                        Le Génie dans EFS construit des points d'appuis amis et détruit ceux de l'ennemi. Une unité de Génie dans une ville pendant un tour de Boue autorise le transport aérien depuis cette cité. Une unité de Génie motorisé est nécessaire aux tentatives d'overrun contre des villes, des villes majeures et hexagone fortifié (line de fortification ou point d'appuis). Les " Apports du Génie " peuvent étre déclaré dans le combat, voir la section Combat pour plus d'informations.
-                                </p><p>
-                        Les Points d'Appuis peuvent étre construits par les deux camps (sauf mention contraire dans le livret de scénario). Il ne peut y avoir qu'un PA par hexagone, bien qu'un PA puisse étre construit derriére une ligne fortifiée. Le joueur de l'Axe a besoin d'unités du Génie pour pouvoir les construire sur la carte. Le russe lui n'en a pas l'obligation bien que leur présence accélére la mise en place en évitant la face " En construction " du pion PA et en plaéant directement le cété " Construit " (Completed). Les PA donne un modificateur de +1 au lancé de au combat en faveur du défenseur entre autres, il existe d'autre apport bénéfiques. Les PA peuvent , s'il sont coupés et sans ravitaillement, étre perdu . Ils peuvent étre construit sur n'importe quel hexagone pourvu que celui-ci soit capable de tracer une ligne de ravitaillement général et ce méme en ZOC ennemie. Habituellement, les PA sont construits dans les villes, les hexagones de victoire, derriére les riviéres, sur les terrains favorables é la défense ou en les saupoudrant autour des villes importantes comme Smolensk ou Kiev. Bien que le +1 au dé ne résonne pas comme un avantage considérable, il existe d'autre bonus non négligeables comme l'obtention de résultats é astérisque, la difficulté é pratiquer des overrun et continue é provoquer des génes méme si ils ont été abandonnés en bloquant les routes, les conversion de rail et le ravitaillement tant qu'ils ne sont pas détruits. Pour réaliser leur annihilation, une division ou du Génie doit étre présente durant la phase de Génie, ce qui ralenti d'autant l'avancée des troupes de l'Axe ou détourne des moyens utiles ailleurs.
-                                 </p>
-
-
-
-
-
-
-                    <div className="gray-box">
-                        <p className="subsubheader">Génie Soviétique - Point d'Appuis (Strongpoint)</p>
-                        <img src={soviet_fort} alt="Soviet fort counter" />
-                        <ul>
-                            <li>Peut construire un PA le tour oé il le reéoit via la Table de Replacements. Le Génie Soviétique ne peut pas construire d'autre PA de leur propre chef, il doivent en quelque sorte étre ravitaillé en PA. NB : le joueur Soviétique peu placer un marqueur de PA " en construction" sans unité de génie présente.                </li>
-                            <li>Le Génie doit étre en Ravitaillement Général.</li>
-                            <li>Le Génie ne doit pas avoir utilisé le mouvement stratégique ou par rail durant le tour.</li>
-                            <li>Le Génie ne doit pas avoir converti d'hexagone de chemin de fer.</li>
-                            <li>Si le Génie est dans le rayon d'un QB non op. il ne peut placer des PA.</li>
-                        </ul>
-                    </div>
-
-
-
-
-
-
-
-
-
-                    <div className="gray-box">
-                        <p className="subsubheader">Génie Allemand - PA (Strongpoint)</p>
-                        <img src={german_fort} alt="German fort counter" />
-                        <ul>
-                            <li>Peut placer un PA sur sa face en construction sur l'hexagone occupé.</li>
-                            <li>Le Génie doit rester sur l'hexagone jusqu'é la prochaine phase de Génie, pour pouvoir retourner le marqueur sur sa face PA. Si l'unité quitte l'hexagone avant la fin de construction le marqueur est perdu.</li>
-                            <li>Le Génie doit étre en Ravitaillement Général.</li>
-                            <li>NB souvent les régles du scénario interdisent la construction des PA de l'Axe.</li>
-                        </ul>
-                    </div>
-
-
-
-
-
-
-
-
-
-                    <div className="spacer2rem" />
-                    <div className="subheader-counter">
-                        <div>Pontonniers</div>
-                        <img src={german_bridge} alt="German bridge counter" />
-                    </div>
-                    <p>
-                        Les pontonniers sont disponible pour chaque camp et représentent les unités spécialisées dans la construction de ponts. Ces unités de pontonniers installent des ponts de bateaux é travers les cours d'eau et peuvent le cas échéant réparer les ponts classiques, cela dit ont ne peut pas faire sauter de pont dans EFS. La seule fonction de ces pions est de permettre le passage temporaire é n'importe quel endroit, d'une riviére ou d'un fleuve. L'unité de pontonniers annule le surcoét pour le passage de la riviére dans l'hexagone oé ils sont placés. Ces pions ont une fléche qui indique le point de passage temporaire. Le placement et la suppression des unités de pontonniers dans EFS sont trés aisés. Dans la pratique, on peut le placer sur n'importe quel hexagone durant la phase de Ravitaillement Général, sans tenir compte des information imprimées sur le pion (l'appartenance é une armée est donnée é titre indicatif). Pas plus de deux unités de pontonniers peuvent étre active en méme temps sur la méme carte. Le déplacement a lieu une seule fois par tour durant le mouvement général et é n'importe quel moment de cette phase. Cela signifie concrétement, que le pont peut étre utilisé pour faire traverser différentes unités puis étre bougé vers un autre point qui sera lui-méme utilisé pour d'autre unités et ce dans la méme phase.. Les QG non opérationnel interfére dans el placement des ponts - ils en interdisent le placement dans leur rayon de commandement et les pions ne peuvent quitter les rayon de ces derniers tant que ceux-ci ne sont pas opérationnels. Les unités de pontonniers ne peuvent étre détruites ni faire retraite, si une unité ennemie entre dans l'hexagone quelle occupent, elles sont retirées du jeu et replacer le tour suivant durant la phase de mouvement général.
-            </p>
-
-
-
-
-
-                    <div className="spacer2rem" />
-                    <div className="subheader-counter">
-                        <div>Trains blindés</div>
-                        <img src={armored_train} alt="Trains blindés" />
-                    </div>
-                    <p>
-                        Chaque camp avait des trains blindés, aussi dans les premiers jeux de la série seul les Soviétiques sont ravitaillés par ce genre d'unité. Un train blindé peut se déplacer jusqu'é 48 hexagones de chemin de fer par tour (en tenant compte des interdictions potentielles). Ils peuvent se déplacer indifféremment dans l'une ou l'autre des phases de mouvements (mais pas les deux). Il ne nécessite pas de ravitaillement pour pouvoir se déplacer et ne comptent pas dans la capacité ferroviaire. Ils ne transportent rien. Les trains blindés allemands ne peuvent utiliser que la partie convertie du réseau, pendant que les trains soviétiques ne peuvent utiliser que la partie non convertie. Ils peuvent entrer dans une ZOC mais pas la traverser. Ils peuvent utiliser les réseaux ferrés derriére les lignes ennemies tant qu'un chemin est utilisable. Ils n'ont pas de bonus blindé. Certains d'entre eux sont des trains du NKVD et agissent comme les unités du NKVD pour les cas d'ordre automatique de Non Retraite. Ils peuvent rouler é travers du rayon de commandement de QG non opérationnels.
-            </p><p>
-                        Bien qu'elles soient faibles et sans ZOC, ces petites unites peuvent aider le russe en defendant des zones peu accessibles aux troupes réguliéres et agir de faéon quasi indépendante et couvrir utilement le long de leur tracé, les autres unités.
-                        </p>
-
-                    <div className="spacer2rem" />
-
-                    <div className="image-caption flotilla">
-                        <img src={flotilla} alt="flotilla" />
-                        <div>Camouflaged BK-1125, rear platform, 12.7mm<br />
-                            DSHK Heavy Machine Gun. (cmchant.com)</div>
-                    </div>
-
-                    <div className="spacer1rem" />
-                    <div className="subheader-counter">
-                        <div>Flotilles	</div>
-                        <img src={c3} alt="Flotilles	" />
-                    </div>
-                    <p>
-                        Les flottilles sont des groupes de navires blindés. Elles peuvent se déplacer le long des riviéres et des cétes maritimes et mer jusque 16 hexagones. Elles sont soumises aux interdictions aériennes. Elles peuvent entrer dans une Zoc mais pas la traverser. Comme les ZOC ne s'étendent pas é travers les riviéres majeures, les flottilles peuvent se déplacer librement le long de celles-ci. Lors d'un mouvement le long d'une riviére, le joueur doit indiquer le cété ou se trouve la flottille. Elles peuvent étre attaquée par des unités réguliéres et étre overrunées ainsi que participer é des combats normaux des deux cétés de la riviére. Leur déplacement ne quitte pas le cours de la ou des riviéres. Elles ne peuvent bénéficier des avantages liés aux fortification ou lignes fortifiées. Les flottilles de l'axe possédent en facteur de défense AA.
-
-            </p><p>
-                        Les flottilles sont particuliérement utiles en milieux marécageux, car elles ne sont pas affectées par le terrain. Ainsi, elles obligent l'Axe é laisser des unités en garnisons é l'arriére dans les zones que les flottilles peuvent atteindre tout en les rendant difficile é détruire du fait de la composition de terrain.
-            </p>
-
-                    <div className="spacer2rem" />
-
-
-
-                    <div id="naval_info_container_fr" className="naval-info-container-fr">
-                        <div className="title">INFORMATION SUR L'UNITÉ NAVAL</div>
-                        <div className="floater range">Intervalle</div>
-                        <div className="floater arty">Facteur<br />de soutien</div>
-                        <div className="floater protection">Indice de<br />Protection</div>
-                        <div className="floater transport">Capacité de<br />Transport</div>
-                        <div className="floater movement">Points de<br />Mouvement<br />Naval</div>
-                        <div className="floater class">Classe</div>
-                        <div className="floater name">Prénom</div>
-                        <div className="floater recovery">Valeur de<br />Récupération</div>
-                        <div className="floater sailed">S - A Navigué</div>
-                        <div className="ships">
-                            <div>
-                                <div>De face (prêt)</div>
-                                <img src={ship} alt="Naval unit front" />
-                            </div>
-                            <div>
-                                <div>Arrière (a navigué)</div>
-                                <img src={ship_back} alt="Naval unit back" />
-                            </div>
-                        </div>
-                        <canvas id="naval_info_container_canvas_fr" width="800" height="400" className="naval-info-container-canvas" />
-                    </div>
-
-                    <div className="spacer1rem" />
-
-
-
-
-                    <div className="subheader-normal">
-                        Naval
-            </div>
-                    <div className="pdiv">
-                        Les règles navales (8.0) sont nombreuses, mais voici un résumé:
-            <ul className="ul-no-top">
-                            <li>Les unités navales ne sont pas des unités de combat. Ils n'ont aucune valeur d'empilement. Cependant, ils ont besoin de ravitaillement général et de ravitaillement d’attaque comme les unités de combat.</li>
-                            <li>Les unités navales ne se déplacent que dans des hexs maritimes, mais elles peuvent se trouver dans un hex portuaire où elles empêchent l'entrée d'unités ennemies non combattantes dans l'hex.</li>
-                            <li>Les unités navales n'ont pas de marches mais prennent des points de dégâts. Seules les unités navales de type "T" peuvent être reconstruites.</li>
-                            <li>Les unités navales fournissent des tirs AA, mais uniquement pour eux-mêmes.</li>
-                            <li>Les unités navales avec des valeurs de soutien d'artillerie peuvent fournir un tir d'artillerie offensif, si elles sont à portée d'un maléfice de défenseur.</li>
-                            <li>Les unités navales ont deux côtés - "Ready" et "Sailed". Une unité navale "prête" peut être déplacée et considérée comme armée et ravitaillée en carburant. Une unité navale "naviguée" aura besoin
-                    lancer pour la préparation au cours de la phase de préparation navale du segment stratégique. Une unité navale peut être déplacée dans n'importe quelle phase de mouvement, même les phases de mouvement ennemies.</li>
-                            <li>Les unités navales avec une capacité de transport peuvent transporter des unités au sol.</li>
-                            <li>Les unités navales peuvent transporter des unités pour permettre un assaut amphibie.</li>
-                        </ul>
-
-                        Types d'unités navales:
-            <ul className="ul-no-top">
-                            <li>BB - Bataille</li>
-                            <li>CL - Croiseur Léger</li>
-                            <li>DL - Destroyer Leader</li>
-                            <li>DD - Destroyer</li>
-                            <li>T<span className="white-text">D</span> - Transport</li>
-                        </ul>
-                    </div>
-
-                    <div className="spacer1rem" />
-                    <div className="subheader-counter base">
-                        <div>Base Navale Soviétique</div>
-                        <img src={base} alt="Soviet naval base counter" />
-                    </div>
-                    <div className="pdiv">
-                        Dans le jeu de Crimée, le joueur soviétique a deux unités de la base navale qui peuvent être placées dans n’importe quel hex de port sous contrôle soviétique. L'unité double la capacité du port
-                        du port. Après le placement, une base navale ne peut être déplacée que par transport maritime.
-                </div>
-
-                    <div className="spacer2rem" />
-                    <div className="subheader-counter">
-                        <div>Artillerie super lourde</div>
-                        <img src={super_heavy_artillery} alt="Super heavy artillery counters" />
-                    </div>
-                    <p>
-                        Chaque camp posséde des unités d'artillerie super lourde. Elles ont des restrictions de mouvement assez significatives, communes aux deux camps, souligné dans la partie mouvement de ce site. Elles sont utiles lors de la réduction de forts et de villes. Elles doivent étre mises en batteries avant de pouvoir agir, c'est pourquoi elles ont deux faces utiles sur leurs pions : une face mobile et une face préte é faire feu. Elles ne peuvent étre retournées que pendant la phase du Génie ainsi lorsqu'elles passent en position tir elles ne peuvent plus bouger durant le tour (une bonne solution face é un adversaire pointilleux est de marquer le pion pour éviter un mouvement malencontreux). Les unités d'artillerie lourde (lorsque elles tirent) ajoute leur potentiel de bombardement aux combat plus un modificateur de dé de -1 sur une attaque en milieu urbain, en ville majeure.
-                </p>
-
-                    <div className="gray-box">
-                        <p className="subsubheader">Artillerie super lourde de Soviétique</p>
-                        <ul>
-                            <li>Les unités de défenses cétiéres et l'artillerie sur rail soviétiques sont considérées comme de l'artillerie super lourde.</li>
-                            <li>Les unités d'artillerie super lourde avec un marqueur activé ne peuvent apporter leur valeur de soutien au combat.</li>
-                            <li>Les unités d'artillerie super lourde soviétique sont comptées pour déterminer le nombre maximum d'unités pouvant apporter leur soutient lors d'un combat.</li>
-                            <li>Les unités d'artillerie super lourde soviétique peuvent apporter leur valeur de support en défense et en attaque.</li>
-                        </ul>
-                    </div>
-
-
-                    <div className="gray-box">
-                        <p className="subsubheader">Artillerie super lourde de l'Axe</p>
-                        <ul>
-                            <li>Les unités d'artillerie super lourde allemande ne sont pas comptées pour déterminer le nombre maximum d'unités pouvant apporter leur soutient lors d'un combat.
-                </li>
-                            <li>Les unités d'artillerie super lourde soviétique peuvent apporter leur valeur de support seulement en défense. Dans ce cas, on ne compte que la valeur défensive du pion.</li>
-                        </ul>
-                    </div>
-
-
-
-                    <div className="spacer3rem" />
-                    <div className="subheader-counter">
-                        <div>Garde</div>
-                        <img src={guards_rocket} alt="Soviet guards rocket counter" />
-                    </div>
-                    <p>
-                        Les soviétiques commencérent une mise en éuvre d'unités de la Garde lorsque certaines unités eurent acquis de l'expérience et se comportérent correctement au combat (en générale celles qui avaient survécues). Elles recevaient en priorité le matériel en particulier celui provenant du Prét Bail allié. Ces unités étaient plus et avaient un meilleur commandement.
-
-            </p><p>
-                        Les soviétiques peuvent activer une unité de la garde située dans le rayon de commandement d'un QG (avec ou sans point de commandement du é un niveau 0 ou é une interdiction). Néanmoins les QG non opérationnel ne peuvent réaliser cette action.
-
-            </p>
-
-
-
-                    <div className="spacer2rem" />
-                    <div className="subheader-counter">
-                        <div>NKVD</div>
-                        <img src={soviet_nkvd} alt="Soviet NKVD counter" />
-                    </div>
-                    <p>
-                        Le commissariat du peuple aux affaires internes, connu par les initiales NKVD était composé de troupes politiques spéciales. Les terribles "commissaires" de ces unités pouvaient annuler les décisions d'un commandant sur le terrain. Un ordre commun pour les commissaires était de demander une résistance jusqu'é la mort.
-</p><p>
-                        Lorsqu'une unité du NKVD se défend dans une ville majeure, une ville ou un village, il donne obligatoirement un ordre 'Pas de Retraite' é toutes les unités empilées avec elle - é moins que l'hex ne soit dans le rayon de commandement d'un QG non op. Vous ne pouvez pas annuler l'ordre de ne pas retraiter du NKVD (sauf en déplaéant un QG non op é portée de l'hex).
-</p><p>
-                        Vous ne pouvez pas appliquer de pas de pertes é l'unité du NKVD qui a donné l'ordre de ne pas retraiter é moins qu'il n'y ait plus d'autres unités éligibles pour subir des pertes. Si il y a deux unités du NKVD ou plus dans un hex, alors une seule d'entre elle est l'unité "active" du NKVD - les autres sont traitées comme des unités réguliéres. Le joueur Soviétique choisit l'unité du NKVD qui sera "active". Les unités du NKVD ne peuvent que donner l'ordre Pas de Retraite - elles ne peuvent jamais donner un ordre de RETRAITE SUPPLEMENTAIRE.
-</p><p>
-                        Les unités du NKVD qui ne sont pas dans une ville majeure, une ville ou un village ne peuvent pas donner d'ordres et sont traitées comme les autres unités d'infanterie.
-</p><p>
-                        Il existe des unités ferroviaires du NKVD trés utile lorsque vous avez besoin d'un hex de ville pour monter une défense acharnée.
-</p><p>
-                        Les unités du NKVD apportent un modificateur au dé bénéfique pour les jets de reddition dans leur hex.
-
-
-            </p>
-
-
-
-
-
-                    <div className="spacer2rem" />
-                    <div className="subheader-counter">
-                        <div>Unités UR/Mitrailleuse</div>
-                        <img src={ur_mg} alt="Soviet UR counters" />
-                    </div>
-                    <p>
-                        Ukreplyonni Raion (UR) unités sont des groupes de mitrailleuses et des troupes de forteresse. Ces unités, et la milice, ont des faces inconnues (réminiscence de Panzergruppe Guderian). Elles sont placée dans une tasse opaque et tirées aléatoirement placée face cachée. Comme elles sont supposées étre inconnues un minimum de précaution s'imose lors de leur placement pour qu'elles restent une surprise pour les russes et les allemands. Certaine peuvent étre placées au début du scénario, d'autres arrivent comme renforts ou peuvnet étre construite en utilisant un point de renforcement de type 'I' points pour les tirer de la tasse et les placer sur la carte. Durant la phase amie de renforcement, les unités UR/MG sont placées dans n'importe quelle ville ou ville majeure amie en ravitaillée, ou n'importe quel hexagone de fortification soviétique, ami pendant la phase de ravitaillement. Elles ne peuvent ni étre empilées avec une autre unité UR/MG déjé présente, ni placée en ZOC ennemies (se souvenir que les ZOCs ne s'étendent pas dans les Villes Majeures).
-</p><p>
-                        Ces unités restent cachées jusqu'au moment oé elles sont engagées dans un combat ou lorsque le joueur russe les déplace. Si l'une d'entre elle est du type 0-0-0, elle est immédiatement retirée du jeu et replacée dans la tasse.
-            </p>
-
-
-                    <div className="spacer2rem" />
-                    <div className="subheader-counter">
-                        <div>unités de Milice</div>
-                        <img src={militia} alt="Soviet militia counters" />
-                    </div>
-                    <p>
-                        Les unités de Milice sont assemblage de troupes combattantes hétérogénes organisées dans l'urgence par les militaires soviétiques. Le joueur russe ne peut les déplacées plus de loin que cinq hexagone de leur placement initial. Si elles sont forcées de faire retraites au-delé, cette restriction n'est plus valable. Contrairement aux unités UR/MG, elles ne sont pas retournées lors d'un mouvement mais seulement lors de combat. Si l'unité est un 0-0-0, elle est définitivement retirées du jeu, lors de l'élimination elle rejoint la table de reconstruction et pas la tasse. Le milice ainsi que la Cavalerie peuvent étre retirée volontairement du jeu durant la phase de renforcement et gagner ainsi un point de reconstruction du type ' I ' (é condition bien sér que l'hexagone oé elle se trouve soit ravitaillé). Cet échange est intéressant pour récupérer des unités de valeur et les renvoyer au feu.
-                      </p>
-
-                    <div className="spacer1rem" />
-                    <div className="subheader-counter">
-                        <div>Garnison</div>
-                        <img src={garrison} alt="Soviet garrison counters" />
-                    </div>
-                    <p>
-                        Dans plusieurs scenarii, le joueur soviétique peut avoir une ou plusieurs unités obligées de servir de garnison ce qui signifie qu'elle ne peuvent sortir de leur hexagone de déploiement. Ces troupes sont contrélées par le Haut Commandement et ne peuvent servir comme chair é conon sur le front.
-</p><p>
-                        Seules les unités désignées comme garnison servent dans cette mission et ce tant que les conditions de fin de service ne sont pas remplies, les autres unités qui traverseraient ou stationneraient dans le méme hexagone n'acquiérent pas ce statut. Dés la fin de celui-ci, elles se comportent normalement.
- </p>
-                    <div className="pdiv">
-                        L'obligation de Garnison prend fin lorsqu'une de ces cas se produit:
-            <ul className="ul-no-top">
-                            <li>L'hexagone est attaqué.</li>
-                            <li>Une unité ennemie devient adjacente.</li>
-                            <li>Elle n'est plus ravitaillée.</li>
-                            <li>Un 'R' dans la table de Renforcement est obtenu.</li>
-                            <li>Le scénario indique le tour de fin de garnison. </li>
-                        </ul>
-                    </div>
-
-
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <ScrollToTopOnMount />
-
 
             </div>
 

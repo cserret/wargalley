@@ -221,6 +221,10 @@
       font-weight: normal;
       color: red;
       font-size: 1rem;
+      &.bsr2 {
+        color: green;
+        text-shadow: 0 0 1px green;
+      }
     }
     div {
       flex-grow: 0;
@@ -235,6 +239,13 @@
       height: 60px;
       width: auto;
     }
+  }
+
+  .commentary {
+    padding: 14px;
+    background: #e0fff0;
+    font-style: italic;
+    border: 1px solid #9b9;
   }
 
   .generic-flex-space-around {

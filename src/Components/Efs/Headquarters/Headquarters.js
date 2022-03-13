@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ScrollToTopOnMount from "../../ScrollToTopOnMount";
+import BsrLink from "../BsrLink/BsrLink";
 import headquarters from "../../../images/efs/hq/headquarters.jpg";
 import soviet_headquarters_front from "../../../images/efs/hq/soviet_headquarters_front.png";
 import soviet_headquarters_back from "../../../images/efs/hq/soviet_headquarters_back.png";
@@ -26,12 +27,8 @@ export default class Headquarters extends Component {
         var canvasDiv;
         var canvas;
         var ctx;
-        if( language === 'en' ) {
-            canvasDiv = document.getElementById('hq_info_container');
-        }
-        if( language === 'fr' ) {
-            canvasDiv = document.getElementById('hq_info_container_fr');
-        }
+        canvasDiv = document.getElementById('hq_info_container');
+     
         canvas = document.createElement('canvas');
         canvas.setAttribute('width', 850);
         canvas.setAttribute('height', 240);
@@ -62,9 +59,9 @@ export default class Headquarters extends Component {
     render = () => {
         return (
             <div className="content">
-                <div className={this.props.language === 'en' ? '' : 'block-hidden'}>
+                <div>
                     <div className="content-title">
-                        <div className={this.props.language === 'en' ? '' : 'block-hidden'}>HEADQUARTERS</div>
+                        <div>HEADQUARTERS</div>
                         <div></div>
                     </div>
                     <div className="top-image">
@@ -154,125 +151,7 @@ export default class Headquarters extends Component {
 
                 </div>
 
-
-
-
-
-
-
-
-
-
-
-                <div className={this.props.language === 'fr' ? '' : 'block-hidden'}>
-                    <div className="content-title">
-                        <div className={this.props.language === 'fr' ? '' : 'block-hidden'}>QUARTIERS GÉNÉRAL</div>
-                        <div></div>
-                    </div>
-                    <div className="top-image">
-                        <img src={headquarters} alt="headquarters" />
-                        <div>Quartier général du front occidental, automne 1941. De gauche à droite - le lieutenant-général Vasily Sokolovsky, chef d'état-major Nikolay Bulganin, le général d'armée Gerogy Zhukov.</div>
-                    </div>
-                    <div className="spacer1rem" />
-                    <div className="pdiv">
-                    Seul le joueur soviétique a des Quartiers Généraux. Le joueur soviétique est pènalisè par une structure de commandement inefficace, et les règles sur les QG simulent ces difficultès. Le rayon de commandement est de 4 hexagones. Cette portèe est tracèe sans tenir compte du terrain, de la météo ou des unités de l'Axe. La valeur de commandement des QG est utilisèe indiffèremment pour trois actions. Cela représente : 
-                    <ul className="ul-no-top">
-                            <li>TLe nombre d'unités non motorisèes qu'il peut activer. Un QG ne peut s'activer lui-mème ou activer un autre QG.</li>
-                            <li>Le nombre d'unités motorisèes qui peuvent bouger pendant la phase de Rèaction.</li>
-                            <li>Le nombre de marqueurs d'ordres ('No Retreat' et 'Additional Retreat') utilisables. </li>
-                        </ul>
-                        <div className="special1">La valeur de commandement peut ètre rèduite par les interdictions aèriennes ennemies. </div>
-                    </div>
-                    <div id="hq_info_container_fr" className="hq-info-container">
-                        <div className="title">INFORMATION SUR LES QG SOVIETIQUES</div>
-                        <div className="operational-side">Côté opérationnel</div>
-                        <div className="non-operational-side">Côté non opérationnel</div>
-                        <div className="command-value fr">VALEUR DE<br />COMMANDE</div>
-                        <div className="recovery-value fr">VALEUR DE<br />RÉCUPÉRATION</div>
-                        <div className="hq-info">
-                            <img src={soviet_headquarters_front} alt="Soviet headquarters front" />
-                            <img src={soviet_headquarters_back} alt="Soviet headquarters back" />
-                        </div>
-                    </div>
-
-
-                    <div className="spacer2rem" />
-                    <div className="subheader-normal">Activation des unités</div>
-                    <p>
-                    Un QG soviétique opérationnel peut activer des unités non-motorisèes (sont inclues les unités dont le potentiel de mouvement est orange ou vert) durant la phase de mouvement motorisèe soviétique. Ces unités doivent ètre dans le rayon de commandement du QG. Les unités concernèes peuvent bouger de la totalitè de leur potentiel de mouvement. Elles peuvent ensuite engager un combat après la phase de mouvement mècanisèe. Pour activer ces unités, le QG doit payer un point de commandement par unitè quelque soit la taille de celle-ci. Un QG opèrationnel peut activer une unitè de la Garde dans son rayon d'activation sans payer de points. 
-</p>
-                    <div className="subheader-normal">Ordres</div>
-                    <p>
-                    Les QG Soviétiques peuvent utiliser pour le coèt d'un point de Commandement par hexagone attaquè dans son rayon d'action, un ordre ' No Retreat' ou un ordre 'Additional Retreat'. Les QG Soviétiques peuvent aussi utiliser leurs ordres pour l'attaque.
-</p>
-
-                    <div className="subheader-normal">QG Non-operationel (QG Non-op)</div>
-                    <p>
-                    Quand les QG entre comme renfort ils sont sur leurs face non commandèe. Dans certains scènarii, le joueur soviétique peut avoir sur la carte des QG non actifs. Cet ètat cause diffèrents dèsagrèments. Toute unitè dans le rayon de commandement d'un QG non opèrationnel perd le contact avec un QG opèrationnel. 
-</p>
-
-
-
-                    <div className="gray-box">
-                        <p className="subsubheader">Effets des QG Non-opèrationnel</p>
-                        <ul>
-                            <li>Les unités dans le rayon de commandement d'un QG Non-Op, ne peuvent ètre activèes pour bouger durant la phase de mouvement motorisèe. </li>
-                            <li>Les unités dans le rayon de commandement d'un QG Non-Op, ne peuvent faire de mouvement de rèaction. </li>
-                            <li>Aucun nouveau Point d'Appuis ne peut ètre construit dans le rayon de commandement d'un QG Non-Op, (les renforts de Type 'E' ne sont pas concernès).</li>
-                            <li>Les ponts ne peuvent ètre placès dans le rayon de commandement d'un QG Non-Op. S'ils sont prèsents dans ce rayon, ils ne peuvent ètre dèplacès. </li>
-                            <li>Les unités aèriennes soviétiques en appui au sol, ne peuvent pas apporter le bènèfice de leur prèsence dans un hexagone attaquè dans le rayon de commandement d'un QG Non-Op.</li>
-                            <li>Le nombre maximal d'unitè d'artillerie èligible en soutient d'un hexagone attaquè dans le rayon de commandement d'un QG Non-Op, ne peut excèder un pion. </li>
-                            <li>Les unités du NKVD qui sont dans le rayon de commandement d'un QG Non-Op, ne peuvent utiliser la possibilitè d'un ordre 'No Retreat' quand elles sont en ville, village ou ville majeure. </li>
-                            <li>Aucune unitè de la Garde ne peut ètre activèe dans le rayon de commandement d'un QG Non-Op.</li>
-                            <li>Un QG Non-Op gène le mouvement des unités qui commencent leur phase de mouvement mècanisè dans le rayon de commandement d'un QG Non-Op. Le maximum d'unités èligibles ègale è la valeur de recouvrement moins un (si la valeur de recouvrement est de 3 alors seules 2 unités pourront participer au mouvement mècanisè) Une unitè qui commence son mouvement en dehors du rayon de commandement d'un QG Non-Op, ne dèpense pas de points supplèmentaires ni ne subit aucune restriction en entrant dans le rayon de celui-ci.</li>
-                        </ul>
-                    </div>
-
-                    <div className="spacer2rem" />
-                    <div className="subheader-normal">Activation des QG</div>
-                    <p>
-                    Les QG non opèrationnels deviennent opèrationnels lorsque sur un lancè de dè, le nombre indiquè est infèrieur ou ègale è la valeur de recouvrement, ceci intervient pendant l'Interphase. Le joueur soviétique peut aussi dissoudre un QG Non-Op durant l'interphase. Un maximum d'un QG par tour peut ètre dissous puis retirer du jeu et ètre envoyè dans la case cadre. Ceci donne au joueur de l'axe 2 points de victoire. Un QG Non-Op peut rester dans la case jusqu'è ce qui soit rèactiver et ainsi ètre reconstruit sur la carte. 
-                </p>
-                    <div className="spacer0_5rem" />
-                    <div className="subheader-normal">Autres règles concernant les QG</div>
-                    <div className="pdiv">
-                        <ul class="ul-no-top">
-                            <li>La perte de QG coète des PV. Voir le calendrier pour les scènarios.</li>
-                            <li>Les QG qui sont forcès de retraiter dans un hexagone vacant dans un ZOC de l'axe devient Non-Op. </li>
-                            <li>Les QG ont leurs valeurs de commandement rèduites par la une interdiction sur la zone. </li>
-                            <li>Les QG ont une valeur d'empilement de 0, exceptè lors de leur mouvement par rail, mer ou air oè lè il est de 1.</li>
-                            <li>Un QG qui est overrunè devient Non-Op.</li>
-                            <li>Les QG qui sont sous un marqueur garnison peuvent opèrer comme des QG exception faite qu'ils ne peuvent bouger. </li>
-                        </ul>
-                    </div>
-
-                    <div className="subheader-normal">Commentaires sur les QG</div>
-                    <p>
-                    Les nouveaux joueurs sur EFS èchouent souvent è reconnaètre l'importance des QG soviétiques dans le jeu. Comme joueur soviétique, vous devez toujours avoir la plus grande attention pour eux, les garder en sècuritè et les èvacuer par rail ou par air si ils sont en danger ou coupès des arrières. La meilleure place pour les QG est è quelques hexagones de la ligne de front. Vous devez essayer de les garder sur une route ou une voie ferrèe dans la cas oè ils devraient fuir dans les plus brefs dèlais. Vous devez aussi, au moins avec le meilleur QG, garder une unitè de DCA en accompagnement pour dècourager les joueurs de l'Axe de tenter des interdictions. 
-                     </p>
-                     <p>
-                     Vous devez dans la mesure du possible, faire qu'un maximum d'unitè soit dans le rayon de commandement d'un QG, bien qu'il soit difficile de couvrir tout le monde. Probablement, la plus importante fonction des QG soviétiques est la possibilitè de bouger des unités motorisèes lors de la phase de rèaction, ainsi par habitude il est bon d'avoir des unités motorisèes près du QG pour les utiliser en rèserve. Les QG autorisent aussi l'emploi de plus d'une artillerie pour participer è un combat si elles sont empilèes avec le QG, ce qui doit ètre fait pour dèfendre une zone vitale surtout si les unités sont très proches du front ce qui est un bon emploi des QG peu efficaces, ceux avec un point de commandement par ex. Il faut essayer d'èviter les possibilitès de dèbordement (Overrun) sur les QG en les empilant avec d'autres unités ou en crèant des dèfenses en profondeurs susceptibles des les protèger ou en leur barrant l'accès. Les QG sont des proies de choix pour les Panzer Divisionen allemandes un bon joueur allemand essaiera toujours de s'en prendre aux QG tdès que possible. Gardez toujours vos QG loin de la ligne de front, ils y sont en danger. Les QG Non-Op peuvent bouger normalement et donc doivent se prèserver des risques liès è la proximitè du front. 
-                     </p>
-
-
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <ScrollToTopOnMount />
-
-
 
             </div>
         );
