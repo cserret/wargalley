@@ -1,6 +1,6 @@
 import React from 'react';
 import ScrollToTopOnMount from "../../ScrollToTopOnMount";
-import BsrLink from "../BsrLink/BsrLink";
+//import BsrLink from "../BsrLink/BsrLink";
 import t34_in_snow from "../../../images/t34_in_snow.png";
 import './Weather.scss';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import ScrollToTopOnMount from "../../ScrollToTopOnMount";
-import BsrLink from "../BsrLink/BsrLink";
+//import BsrLink from "../BsrLink/BsrLink";
 import './Sop.scss';
 
 const Sop = (props) => {
@@ -36,7 +36,6 @@ const Sop = (props) => {
         let firstClass = 'first';
         let secondClass = 'second';
         let thirdClass = 'third';
-        let bothClass = 'both';
         if (index === 0) {
             firstClass += ' ind';
             secondClass += ' ind';

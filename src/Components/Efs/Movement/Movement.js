@@ -10,7 +10,6 @@ import c12 from "../../../images/efs/movement/c12.jpg";
 import german_bridge from "../../../images/efs/movement/german_bridge.gif";
 import infiltration_movement_example from "../../../images/efs/movement/infiltration_movement_example.jpg";
 import german_superheavy from "../../../images/efs/movement/german_superheavy.jpg";
-import L760 from "../../../images/efs/movement/L-760.jpg";
 import motorway from "../../../images/efs/movement/motorway.jpg";
 import roadsigns from "../../../images/efs/movement/roadsigns.jpg";
 import soviet_cavalry from "../../../images/efs/movement/soviet_cavalry.jpg";
@@ -20,6 +19,7 @@ import german_pontoon_bridge from "../../../images/efs/movement/german_pontoon_b
 import german_troops_railroad from "../../../images/efs/movement/german_troops_railroad.png";
 import mudroad from "../../../images/efs/movement/mudroad.jpg";
 import right_arrow from "../../../images/efs/right_arrow.png";
+import airTransportUnits from "../../../images/efs/movement/air_transport_units.png";
 
 import './Movement.scss';
 
@@ -290,39 +290,86 @@ const Movement = (props) => {
                     <div className="header-1-image-title">Infiltration Movement<BsrLink page="27" rule="11.4" /></div>
                     <img src={infiltration_movement_example} alt="Infiltration movement example" style={{ height: 'auto' }} />
                 </div>
-
+                <div className="spacer0_5rem" />
                 <div className="pdiv">
-                    Infiltration Movement allows eligible units to move directly from enemy ZOC to adjacent enemy ZOC.<br />
+                    Infiltration Movement allows eligible units to move directly from a hex in enemy unit ZOC to adjacent hex in enemy unit ZOC (even if the ZOC is from different
+                    enemy units), in it's movement phase where it normally has its full movement point allowance. The unit doing Infiltration Movement expends all its movement point allowance in moving that 1 hex.
+                    already in enemy zoc. The unit can be Out of Supply, and still execute Infiltration Movement.<br />
                     <div className="spacer0_5rem" />
                     Eligible units:
                     <ul className="bare-ul">
                         <li>Motorized units with a printed Movement Allowance of 7 or greater.</li>
                         <li>Cavalry units with a yellow Movement Allowance.</li>
-                        <li>Ski units with a yellow Movement Allowance.</li>
-                        <li>Mountain units.</li>
+                        <li>Ski units with a yellow Movement Allowance (see special restriction below).</li>
+                        <li>Mountain units (see special restriction below).</li>
+                        <li>All combat units (except for green and orange MA units) can qualify for infiltration movement if the hex being moved to has a
+                            friendly unit at the start of the movement phase.</li>
                     </ul>
                     <div className="spacer0_5rem" />
                     Restrictions:<br />
                     <ul className="bare-ul">
-                        <li>Axis Infiltration Movement can only occur during the Axis Regular Movement Phase.</li>
-                        <li>Soviet Infiltration Movement can only occur during the Soviet Motorized Movement Phase.</li>
-                        <li>Infiltration movement cannot be performed on Mud turns, or in Woods during lingering Mud turns.</li>
-                        <li>Infiltration movement cannot happen across non-destroyed enemy fortified lines or into enemy Strongpoints.</li>
-                        <li>Infiltration movement cannot happen across unbridged Major River hexsides.</li>
-                        <li>Infiltration movement cannot occur into or out of major city hexes.</li>
+                        <li>Infiltration Movement cannot be done when the weather condition of the hex being moved to is Mud.</li>
+                        <li>The unit must have had enough movement points to have moved into the hex as if there was no enemy ZOC. The One-Hex movement rule cannot be used to evade this requirement.</li>
+                        <li>Infiltration movement cannot happen across non-destroyed enemy fortified lines or into enemy fortifications.</li>
+                        <li>Ski units can only conduct Infiltration Movement when the weather condition of the hex being moved to is Snow.</li>
+                        <li>Mountain units can conduct Infiltration Movement into or out of hill, mountain, or alpine hex.</li>
                     </ul>
                 </div>
 
 
 
                 <div className="spacer2rem" />
-                <div className="subheader-image header-1-image">
-                    <div>Air Transport</div>
-                    <img src={L760} alt="L-750 transport aircraft" />
+
+                <div className="subheader-image header-2-image">
+                    <div className="header-1-image-title">One-Hex Movement<BsrLink page="27" rule="11.5" /></div>
                 </div>
-                <p>
-                    Players may get air transport points allocated to them in a scenario. All airborne type units, all MSUs, and Soviet HQ's can move by air transport. Air transported units must start and end on a friendly town, city, major city hex, or from the Air Ready box. Towns cannot be used for air transport in Mud conditions unless an engineer is also present in the hex. There is no range restriction, and air transport cannot be opposed by enemy air units or AA Fire. Units cannot start or end their air transport in a hex next to any enemy unit. Air transport cannot start or end in an enemy Zone of Interdiction. Although the rules aren't specific - common sense dictates that "friendly" means hexes on "your" side of the front, or hexes that are cut off by the enemy, but still have friendly units in them. Air transport is useful for saving your valuable HQ's.
-                </p>
+                <div className="spacer0_5rem" />
+                <div className="pdiv">
+                    A unit with a movement allowance greater than 0 can always move 1 hex (as its total movement that phase)
+                    even if it doesn't have enough movement points to do so, under these conditions:<br />
+
+
+                    <ul className="bare-ul">
+                        <li>Can only be done in the movement phase that the unit usually has its full movement allowance.</li>
+                        <li>Can not be done into a hex, or across a hexside, that is prohibited to the unit due to terrain restrictions listed on the
+                            Terrain Effects Chart.</li>
+                        <li>Cannot be from a hex in an enemy ZOC to a hex also in enemy ZOC.</li>
+                    </ul>
+                </div>
+
+
+                <div className="spacer2rem" />
+                <div className="subheader-image">
+                    <div>Air Transport Mission<BsrLink page="37" rule="14.7" /></div>
+                    <img src={airTransportUnits} alt="transport aircraft units" style={{ height: 'auto' }} />
+                </div>
+                <div className="spacer0_5rem" />
+                <div className="pdiv">
+                    Airborne, parachute, infantry, mountain, engineer, MSU, and HQ units can be transported by air.
+                    Exception - Non-Op Soviet HQ with a Do Not Move marker on it cannot be air transported.
+                    <div className="spacer0_5rem" />
+                    An air transport aircraft unit
+                    must be available in the Ready Box, to be used for the transport mission. Air missions are subject to Air Combat if enemy
+                    air unit(s) are at the destination hex, and they could be subject to enemy AA fire if the destination hex has a AA capable
+                    unit next to it. The player attempting an Air Transport Mission can add fighter units to the mission.
+                    <div className="spacer0_5rem" />
+                    Each air transport aircraft unit can only carry one HQ unit, or a unit with zero stacking points, a MSU, or a unit that has
+                    one stacking point. A unit that has two stacking points can be transported if there are two air transport units available if they
+                    are in the same Air Transport Mission.
+                    <div className="spacer0_5rem" />
+                    Air Transport Missions are limited to a 60 hex range. They must "take off" from a a friendly supply source hex, a two, city, or major
+                    city hex, or the Active Box of the Unit Rebuilding Track. They can land at a friendy town, city or major city hex.
+                    <div className="spacer0_5rem" />
+                    If there is air combat at the destination hex, the unit(s) being transported may suffer the same fate at the aircraft they are in:
+
+                    <ul className="bare-ul">
+                        <li>Destroyed: the unit that was being transported is also destroyed.</li>
+                        <li>Damaged: the unit that was being transported is successfully delivered to the destination hex.</li>
+                        <li>Aborted: the unit is sent back to the original hex it took off from.</li>
+                        <li>If a unit with 2 stacking points was being transported by two transport air units, and one of the air units was destroyed
+                            or aborted - return the transported unit to its starting hex.</li>
+                    </ul>
+                </div>
 
 
 

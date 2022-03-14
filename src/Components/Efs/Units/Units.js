@@ -1,6 +1,6 @@
 import React from 'react';
 import ScrollToTopOnMount from "../../ScrollToTopOnMount";
-import BsrLink from "../BsrLink/BsrLink";
+//import BsrLink from "../BsrLink/BsrLink";
 import './Units.scss';
 
 import c10 from "../../../images/efs/units/c10.jpg";
@@ -52,10 +52,7 @@ import unitinfo1 from "../../../images/efs/units/unitinfo1.gif";
 import unitinfo2 from "../../../images/efs/units/unitinfo2.gif";
 import unitinfo3 from "../../../images/efs/units/unitinfo3.gif";
 import unitinfo4 from "../../../images/efs/units/unitinfo4.gif";
-import unitinfo1_fr from "../../../images/efs/units/unitinfo1_fr.gif";
-import unitinfo2_fr from "../../../images/efs/units/unitinfo2_fr.gif";
-import unitinfo3_fr from "../../../images/efs/units/unitinfo3_fr.gif";
-import unitinfo4_fr from "../../../images/efs/units/unitinfo4_fr.jpg";
+
 
 const Units = (props) => {
     return (

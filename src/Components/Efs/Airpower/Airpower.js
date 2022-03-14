@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ScrollToTopOnMount from "../../ScrollToTopOnMount";
-import BsrLink from "../BsrLink/BsrLink";
+//import BsrLink from "../BsrLink/BsrLink";
 import il2_squadron from "../../../images/efs/airpower/il2_squadron.jpg";
 import hs129B from "../../../images/efs/airpower/hs129B.png";
 import dogfight from "../../../images/efs/airpower/dogfight.jpg";

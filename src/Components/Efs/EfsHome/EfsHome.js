@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './EfsHome.scss';
-import BsrLink from "../BsrLink/BsrLink";
+//import BsrLink from "../BsrLink/BsrLink";
 import gamesGroup from "../../../images/efsgroup.jpg";
 import awaitingOrders from "../../../images/awaitingorders.jpg";
 

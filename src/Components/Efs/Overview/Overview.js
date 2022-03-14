@@ -1,6 +1,6 @@
 import React from 'react';
 import ScrollToTopOnMount from "../../ScrollToTopOnMount";
-import BsrLink from "../BsrLink/BsrLink";
+//import BsrLink from "../BsrLink/BsrLink";
 import german_aircraft_big from "../../../images/efs/overview/german_aircraft_big.jpg";
 import german_artillery_big from "../../../images/efs/overview/german_artillery_big.jpg";
 import german_infantry_division_big from "../../../images/efs/overview/german_infantry_division_big.jpg";

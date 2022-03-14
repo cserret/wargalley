@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ScrollToTopOnMount from "../../ScrollToTopOnMount";
-import BsrLink from "../BsrLink/BsrLink";
+//import BsrLink from "../BsrLink/BsrLink";
 import headquarters from "../../../images/efs/hq/headquarters.jpg";
 import soviet_headquarters_front from "../../../images/efs/hq/soviet_headquarters_front.png";
 import soviet_headquarters_back from "../../../images/efs/hq/soviet_headquarters_back.png";

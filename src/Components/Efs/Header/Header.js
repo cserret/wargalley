@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Header.scss';
-import flag_en from "../../../images/language_us.png";
-import flag_fr from "../../../images/language_fr.png";
 
 export default class Header extends Component {
     state = {
