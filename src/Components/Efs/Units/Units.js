@@ -53,7 +53,6 @@ import unitinfo2 from "../../../images/efs/units/unitinfo2.gif";
 import unitinfo3 from "../../../images/efs/units/unitinfo3.gif";
 import unitinfo4 from "../../../images/efs/units/unitinfo4.gif";
 
-
 const Units = (props) => {
     return (
         <div className="content">

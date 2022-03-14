@@ -7,7 +7,7 @@ import c7 from "../../../images/efs/movement/c7.jpg";
 import c8 from "../../../images/efs/movement/c8.jpg";
 import c10 from "../../../images/efs/movement/c10.jpg";
 import c12 from "../../../images/efs/movement/c12.jpg";
-import german_bridge from "../../../images/efs/movement/german_bridge.gif";
+import german_bridge from "../../../images/efs/movement/bridge_unit_german.png";
 import infiltration_movement_example from "../../../images/efs/movement/infiltration_movement_example.jpg";
 import german_superheavy from "../../../images/efs/movement/german_superheavy.jpg";
 import motorway from "../../../images/efs/movement/motorway.jpg";
@@ -19,7 +19,9 @@ import german_pontoon_bridge from "../../../images/efs/movement/german_pontoon_b
 import german_troops_railroad from "../../../images/efs/movement/german_troops_railroad.png";
 import mudroad from "../../../images/efs/movement/mudroad.jpg";
 import right_arrow from "../../../images/efs/right_arrow.png";
-import airTransportUnits from "../../../images/efs/movement/air_transport_units.png";
+import airTransportUnits from "../../../images/efs/movement/air_transport_units.jpg";
+import mountain_unit_infiltration_example from "../../../images/efs/movement/mountain_unit_infiltration_example.jpg";
+import overrun_marker from "../../../images/efs/movement/overrun_marker.png";
 
 import './Movement.scss';
 
@@ -271,19 +273,6 @@ const Movement = (props) => {
                     Movement over the completed bridge is considered to be road movement.
                 </p>
 
-                <div className="spacer1rem" />
-                <div className="subheader-normal">One Hex Movement</div>
-                <div className="pdiv">
-                    Units may be able to move one hex even if the costs involved are higher than the unit's movement rating. One Hex Movement may occur in any movement phase.
-                    <ul className="bare-ul">
-                        <li>One Hex Movement cannot be performed on Mud turns, or in Woods during lingering Mud turns.</li>
-                        <li>One Hex Movement can not be performed from a hex in enemy ZOC to an adjacent hex in enemy ZOC (though it may be able by using INFILTRATION movement).</li>
-                        <li>One Hex Movement can only occur across a unbridged Major River in the Regular Movement Phase (yes this includes Soviet Motorized units also). This may be into a hex on the other side of the Major River that is in enemy ZOC, as long as the unit didn't start in enemy ZOC.</li>
-                        <li>Motorized units cannot perform One Hex Movement in the Reaction Phase if it bears an OOS marker.</li>
-                    </ul>
-                </div>
-
-
                 <div className="spacer2rem" />
 
                 <div className="subheader-image header-2-image">
@@ -301,9 +290,6 @@ const Movement = (props) => {
                         <li>Motorized units with a printed Movement Allowance of 7 or greater.</li>
                         <li>Cavalry units with a yellow Movement Allowance.</li>
                         <li>Ski units with a yellow Movement Allowance (see special restriction below).</li>
-                        <li>Mountain units (see special restriction below).</li>
-                        <li>All combat units (except for green and orange MA units) can qualify for infiltration movement if the hex being moved to has a
-                            friendly unit at the start of the movement phase.</li>
                     </ul>
                     <div className="spacer0_5rem" />
                     Restrictions:<br />
@@ -312,7 +298,24 @@ const Movement = (props) => {
                         <li>The unit must have had enough movement points to have moved into the hex as if there was no enemy ZOC. The One-Hex movement rule cannot be used to evade this requirement.</li>
                         <li>Infiltration movement cannot happen across non-destroyed enemy fortified lines or into enemy fortifications.</li>
                         <li>Ski units can only conduct Infiltration Movement when the weather condition of the hex being moved to is Snow.</li>
-                        <li>Mountain units can conduct Infiltration Movement into or out of hill, mountain, or alpine hex.</li>
+                    </ul>
+                </div>
+
+
+                <div className="spacer2rem" />
+
+                <div className="subheader-image header-2-image">
+                    <div className="header-1-image-title">Special Infiltration Movement<BsrLink page="27" rule="11.48" /></div>
+                    <img src={mountain_unit_infiltration_example} alt="mountain unit Infiltration Movement example" style={{ height: 'auto' }} />
+                </div>
+                <div className="spacer0_5rem" />
+                <div className="pdiv">
+                    <ul className="bare-ul">
+                        <li>Mountain units can conduct Infiltration Movement into or out of a hill, mountain, or alpine hex.</li>
+
+                        <li>All combat units (except for green and orange MA units) can qualify for infiltration movement if the hex being moved to has a
+                            friendly unit at the start of the movement phase. The unit that was in the destination hex is free to move after the
+                            infiltrating unit moves into the hex.</li>
                     </ul>
                 </div>
 
@@ -375,23 +378,84 @@ const Movement = (props) => {
 
 
                 <div className="spacer1rem" />
-                <div className="subheader-normal">Overrun</div>
+                <div className="subheader-normal">Overrun<BsrLink page="25" rule="11.3" /></div>
                 <p>
-                    Although similar to combat, overruns are considered part of movement.
-                </p>
-                <div className="pdiv">
-                    During Motorized Movement or regular Movement phases, a motorized unit, or stack of motorized (and/or Cavalry) units that start the movement phase stacked together, may attempt to overrun an enemy occupied hex. To do so they must meet the minimum odds, and then roll on the overrun table. Attack Supply is not used, and no artillery can participate. Defending artillery units only defend with their defence factor. No air units can participate. The overrunning units must remain stacked. The hex adjacent to the target of the overrun cannot be in the ZOC of other enemy units, other than the units that are being overrun. None of the overrunning units can be Out of Supply. Overruns cannot take place if the units are using One Hex Movement. The overrunning units must be able to pay all normal movement costs, plus the cost of entering the enemy occupied hex (minus the cost of entering another enemy ZOC), plus 1 MP. The following restrictions also apply:
-
+                    During a movement phase, some units may be able to attack enemy units while moving, by using up some of its movement points.
+                    Unlike regular combat, units that are conducting an overrun cannot have Orders placed on them, cannot have artillery support,
+                    cannot get air support, do not get the CAS bonus, do not get the Panzer Division Integrity Bonus, and no reaction movement allowed.
+                    <div className="spacer0_5rem" />
+                    Unit(s) conducting an overrun must have at least 5-1 odds against the unit(s) being overrun.
+                    <div className="spacer0_5rem" />
+                    Eligible units that can conduct overruns are:
                     <ul className="bare-ul">
-                        <li>Overruns can only occur in Dry or Frost weather.</li>
-                        <li>Overruns cannot be done across Major Rivers.</li>
-                        <li>Overruns cannot be done across inland sea/lake hexsides.</li>
-                        <li>Overruns into swamp hexes can only occur during Frost weather.</li>
-                        <li>Overruns against a city, major city, or strongpoints or across fortified lines require the presence of a motorized engineer.</li>
+                        <li>Motorized units (Exceptions: motorized artillery, motorized NKVD, and motorized Axis-Allied units cannot do overruns)</li>
+                        <li>Soviet cavalry units</li>
                     </ul>
-                </div>
-                <p>
-                    See the overrun chart for minimum odds requirements and DRMs. If the overrun fails, the overrunning units are considered to have exhausted all their movement points. If the overrun is successful, the overrunning stack can continue moving if it has MPs left. If the defending units get retreated, then the overrunning player retreats them 2 hexes. Overrun units get an overrun marker put on them. While they have the overrun marker on them, they do not project a ZOC, cannot provide artillery support (if it is an artillery unit), and is not eligible for reaction movement. HQs that get overrun get flipped to their non-op side. Units that got overrun, or that resisted an overrun attempt, may be the target of another overrun attempt in the same movement phase.
+                    <div className="spacer0_5rem" />
+                    Overruns cannot be conducted:
+                    <ul className="bare-ul">
+                        <li>in a hex where Mud conditions exist</li>
+                        <li>in a hex where Snow conditions exist (<b>for Axis only</b>)</li>
+                        <li>across a lake or <b>major river</b> hexide (doesn't matter if its bridged or not)</li>
+                        <li>into a fortified belt, citadel, lake, alpine, mountain, city, major city, or shallow water hexes.</li>
+                    </ul>
+                    <div className="spacer0_5rem" />
+                    Additionally:
+                    <ul className="bare-ul">
+                        <li>Marsh or Swamp - an overrun can be conducted into these only when the hex is frozen or when moving along a motorway, road, or railroad.
+                            This costs an additional movement point, so in total 2 movement points in "overrun mp cost".
+                        </li>
+                        <li>Fortified hexside or strongpoint - Overrun is allowed if there is a motorized engineer in the stack doing the overrun and the odds are at least 12-1.</li>
+                    </ul>
+                    <div className="spacer0_5rem" />
+                    When there are "Untried Defenders" in the Overrun hex:
+                    <ul className="bare-ul">
+                        <li>Turn the untried defender(s) to their "tried" sides.</li>
+                        <li>If it turns out the overrun now fails to get to its 5-1 minimum odds, the overrun attempt automatically fails.</li>
+                        <li>If the untried defender(s) are all of the "Remove" type, and the overrun hex is now empty of defenders, the overrun is
+                            automatically successful (but they don't get the overrun cost refunded to them).</li>
+                    </ul>
+
+
+                    <div className="spacer0_5rem" />
+                    Units that are conducting an overrun (if there is more than one) must be stacked together at the start of the movement phase,
+                    and must remain stacked throughout the overrun procedure.
+                    <div className="spacer0_5rem" />
+                    Units must either be adjacent to the target hex (the Overrun hex) at the start of the movement phase, or have enough movement points to
+                    move adjacent to the Overrun hex, and have enough movement points left over, <b>plus a overrun cost of 1 MP</b>, to enter the target hex
+                    (as if the enemy unit(s) was not in the hex).
+                    <div className="spacer0_5rem" />
+                    The hex the overrunning unit(s) are in when launching the overrun cannot be in the ZOC of an enemy unit from a different hex than the Overrun hex.
+                    <div className="spacer0_5rem" />
+                    Infiltration Movement and One-hex movement is not allowed when doing an Overrun.
+                    <div className="spacer0_5rem" />
+                    Units that cannot conduct an overrun cannot be part of the stack doing the overrun. Although those units can move normally after the overrun
+                    operation is finished.
+                    <div className="spacer0_5rem" />
+                    A hex with enemy units in it can be subjected to multiple overruns in a movement phase.
+                    <div className="spacer0_5rem" />
+                    If the overrun fails, the overrunning units are considered to have exhausted all their movement points and remain in the hex where they
+                    attempted the overrun from.
+                    <div className="spacer0_5rem" />
+                    If the overrun is successful, any Supply dumps, Bridge markers, and Ferry markers in the overrun hex are removed, any surviving defenders
+                    are retrated 2 hexes, and the stack that conducted the ovverun can continue moving if it has MPs left (it can even overrun another hex if
+                    it has enough MPs left). If the defending units get retreated, then the overrunning player retreats them 2 hexes.
+                    Overrun units get an overrun marker put on them.
+                    <div className="spacer1rem" />
+                    <div className="bulletsWithImageToRight">
+                        <div>
+                            Units with an overrun marker on them:
+                            <ul className="bare-ul">
+                                <li>do not project a ZOC</li>
+                                <li>cannot provide artillery support (if it is an artillery unit)</li>
+                                <li>are not eligible for reaction movement</li>
+                                <li>HQs that get overrun get flipped to their non-op side</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <img src={overrun_marker} />
+                        </div>
+                    </div>
                 </p>
 
 
