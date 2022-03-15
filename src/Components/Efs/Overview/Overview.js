@@ -3,7 +3,7 @@ import ScrollToTopOnMount from "../../ScrollToTopOnMount";
 //import BsrLink from "../BsrLink/BsrLink";
 import german_aircraft_big from "../../../images/efs/overview/german_aircraft_big.jpg";
 import german_artillery_big from "../../../images/efs/overview/german_artillery_big.jpg";
-import german_infantry_division_big from "../../../images/efs/overview/german_infantry_division_big.jpg";
+import german_infantry_division from "../../../images/efs/overview/german_infantry_division_120.png";
 import german_panzer_division from "../../../images/efs/overview/german_panzer_division.jpg";
 import german_supply_big from "../../../images/efs/overview/german_supply_big.jpg";
 import italian_infantry_division from "../../../images/efs/overview/italian_infantry_division.gif";
@@ -64,18 +64,18 @@ const Overview = (props) => {
                             <div className="image"><img src={soviet_infantry_division} alt="Soviet infantry division" /></div>
                             <div className="comment">
                                 A Soviet infantry division varies in strength.<br />
-                                This one has an attack strength of 4 and<br /> defense
-                                of 5. They have 2 or 3 steps.
+                                This one has an attack strength of 3 (first number) and<br /> 
+                                defense of 4 (second number). They have 2 or 3 steps.
                             </div>
                         </div>
                     </div><div>
 
                         <div className="title_img_comment_box">
                             <div className="title">GERMAN INFANTRY DIVISION</div>
-                            <div className="image"><img src={german_infantry_division_big} alt="German infantry division" /></div>
+                            <div className="image"><img src={german_infantry_division} alt="German infantry division" /></div>
                             <div className="comment">
                                 A German infantry division varies in strength.<br />
-                                This one has an attack strength of 8 and<br />
+                                This one has an attack strength of 7 and<br />
                                 defense of 9. They have 4 steps.
                             </div>
                         </div>

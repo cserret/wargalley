@@ -1,6 +1,6 @@
 import React from 'react';
 import ScrollToTopOnMount from "../../ScrollToTopOnMount";
-//import BsrLink from "../BsrLink/BsrLink";
+import BsrLink from "../BsrLink/BsrLink";
 import combat from "../../../images/efs/combat/combat.jpg";
 import map_combat1 from "../../../images/efs/combat/map_combat1.jpg";
 import map_combat2 from "../../../images/efs/combat/map_combat2.jpg";
@@ -121,39 +121,72 @@ const Combat = (props) => {
 
                 <div className="spacer2rem" />
                 <div className="subheader-image stalin">
-                    <span>12.4, 15.21</span>
-                    <div>Mandated Attack</div>
+                    <div>Mandated Attack<BsrLink page="29" rule="12.3" /></div>
                     <img src={joseph_stalin} alt="Joseph Stalin" />
                 </div>
                 <div className="spacer1rem" />
                 <p>
-                    The Soviet player may be obligated to make one or more Mandated Attacks during a turn. Typically these are received as a "special event" on the Soviet Replacements Table, which is rolled on each turn. A Mandated Attack represents a direct order from Stavka to go on the offensive. Soviet generals that refused these orders often suffered immediate consequences. In EFS, when a Mandated Attack is required, the Soviet player must make an attack at a minimum (initial) odds of at least 3-2 as soon as possible, preferably in the turn it is received.
+                    The Soviet player may be obligated to make one or more Mandated Attacks during a turn.
+                    Typically these are received as a "special event" on the Soviet Replacements Table, or they
+                    may be specified in the scenario rules.
+                    <div className="spacer0_5rem" />
+                    A Mandated Attack represents a direct order from Stavka to go on the offensive.
+                    Soviet generals that refused these orders often suffered immediate consequences.
+                    In EFS, when a Mandated Attack is required, the Soviet player must make an attack at a minimum (initial) odds of at least
+                    3-2 with at least 6 steps of combat units, as soon as possible, preferably in the turn it is received.
+                    <div className="spacer0_5rem" />
+                    An overrun cannot be claimed as a mandated attack.
+                    <div className="spacer0_5rem" />
+                    The initial odds (before modifications) have to be 3-2 to qualify as a mandated attack - regardless if subsequent odds calculations brings the odds lower.
+                    <div className="spacer0_5rem" />
+                    <b>HQ Doubling Effects</b><BsrLink page="30" rule="12.35" /> - if a HQ is in range of a unit(s) participating in the Mandated Attack, then that HQ
+                    gets to double its (non-interdicted) command rating for that combat phase if it activates at least one unit to participate
+                    in the mandated attack.
                 </p>
                 <div className="pdiv">
-                    If the Soviet player does not (or cannot) meet this requirement, the order for the Mandated Attack(s) still remain in effect. Additionally, these penalties occur:
-                    <ul>
+                    If the Soviet player does not (or cannot) meet this requirement, the order for the Mandated Attack(s) still remain in effect. Additionally,
+                    these penalties occur:
+                    <ul className="bare-ul">
                         <li>
-                            If during the Game Turn Interphase there are unmet Mandated Attacks, the Axis Player receives +2 VPs for each outstanding Mandated Attack, if the Axis player took and held a vp location that turn.
+                            Any turn the Axis player captures one or more scenario VP locations, and holds it during the Administrative Segment, all
+                            unfulfilled Mandated Attacks are converted into Victory Points (see the Victory Point Schedule for details). When the Axis player
+                            gets these victory point(s) for unfulfilled Mandated Attacks, move the Mandated Attacks Not Yet Made marker back to zero.
                         </li>
                         <li>The Soviets get a +1 drm for each unmet Mandated Attack when rolling on the Replacements Table.</li>
                     </ul>
                 </div>
-                <p>
-                    There is a marker titled "Mandated Attack Not Yet Made" that goes on the Soviet Loss/Replacement Track that can keep track of the current Mandated Attack *debt*.
-                </p>
-                <p>
-                    Soviets suffer from <span className="asterisk">*</span> results on the Combat Results table for Mandated Attacks, regardless of Attack Supply. Note that <span className="asterisk">*</span> results are cumulative. A Soviet Mandated Attack that is not Attack Supplied suffers the equivalent of two <span className="asterisk">*</span> results if a <span className="asterisk">*</span> result is rolled.
-                </p>
-                <p>
-                    As the Soviet player, you will probably suffer needless losses due to these Mandated Attacks. Its something that is unavoidable. Just be prepared to be capable of making an attack every turn, because you don't know when the Mandated Attack order will come down the pipe. Keep Attack Supply near the front so that you don't have to suffer double <span className="asterisk">*</span> losses when making a Mandated Attack.
-                </p>
+
 
                 <div className="subheader-rule">
-                    <span>15.67</span>
-                    Combined Arms bonus
+                    Combined Arms Bonus<BsrLink page="41" rule="15.57" />
                 </div>
 
-                <p>The Combined Arms bonus (CAB) gives a DRM of -1 benefit to the attacker. There are several requirements that must be met before the attacker can qualify for CAB: the attacker must have a qualifying armored unit (identified by the red attack factor), and also have a recon, motorized infantry, motorcycle, or engineer unit attacking with it. The units being attacked cannot have any armor, AT or AA units. CAB cannot not occur if the defending units are behind any kind of river, in swamp hexes, in fortifications or behind fortified lines, or in City or Major City hexes. CAB can only occur during Dry or Frost turns. Once again ...
+                <p>The Combined Arms bonus (CAB) gives a DRM of -1 benefit to the Axis attacker (only Axis units can get CAB).<br />
+                <div className="spacer0_5rem" />
+                    Qualifications:
+                    <ul className="bare-ul">
+                        <li>
+                            The attacking Axis units have at least one <b>armored</b> unit with a red attack strength, along with at least
+                            one reconnaissance, motorized infantry, motorcycle, or motorized engineer unit.
+                        </li>
+                        <li>The defending Soviet unit(s) do not have any of:
+                            armor unit with red attack strength,
+                            any type of anti-tank unit,
+                            any type of anti-aircraft.
+                        </li>
+                    </ul>
+                    <div className="spacer0_5rem" />
+                    Restrictions:
+                    <ul className="bare-ul">
+                        <li>
+                            No CAB if all required unit types are attacking across canal, river, or major river.
+                        </li>
+                        <li>No CAB if all required unit types are attacking into swamp hexes (unless frozen),
+                            non-destroyed fortifications, cities, major cities, mountain hexes, or alpine hexes.
+                        </li>
+                        <li>No CAB during Mud or Snow, or where lingering Mud or Snow exists in the hex.</li>
+                    </ul>
+
                 </p>
 
                 <div className="special-emphasis">
