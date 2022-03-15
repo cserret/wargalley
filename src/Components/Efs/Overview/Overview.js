@@ -11,9 +11,9 @@ import map_sample from "../../../images/efs/overview/map_sample.jpg";
 import romanian_infantry_div from "../../../images/efs/overview/romanian_infantry_div.gif";
 import slovak_infantry_div from "../../../images/efs/overview/slovak_infantry_div.gif";
 import soviet_aircraft_big from "../../../images/efs/overview/soviet_aircraft_big.jpg";
-import soviet_artillery_big from "../../../images/efs/overview/soviet_artillery_big.jpg";
-import soviet_headquarters_big from "../../../images/efs/overview/soviet_headquarters_big.jpg";
-import soviet_infantry_division_big from "../../../images/efs/overview/soviet_infantry_division_big.jpg";
+import soviet_artillery from "../../../images/efs/overview/soviet_artillery_120.png";
+import soviet_hq from "../../../images/efs/overview/soviet_hq_120.png";
+import soviet_infantry_division from "../../../images/efs/overview/soviet_infantry_div_120.png";
 import soviet_truck_120 from "../../../images/efs/overview/soviet_truck_120.png";
 import soviet_dump_120 from "../../../images/efs/overview/soviet_dump_120.png";
 
@@ -61,7 +61,7 @@ const Overview = (props) => {
                     <div>
                         <div className="title_img_comment_box">
                             <div className="title">SOVIET INFANTRY DIVISION</div>
-                            <div className="image"><img src={soviet_infantry_division_big} alt="Soviet infantry division" /></div>
+                            <div className="image"><img src={soviet_infantry_division} alt="Soviet infantry division" /></div>
                             <div className="comment">
                                 A Soviet infantry division varies in strength.<br />
                                 This one has an attack strength of 4 and<br /> defense
@@ -127,10 +127,10 @@ const Overview = (props) => {
             <div>
                 <div className="title_img_comment_box">
                     <div className="title">SOVIET HEADQUARTERS</div>
-                    <div className="image"><img src={soviet_headquarters_big} alt="Soviet Headquarters" /></div>
+                    <div className="image"><img src={soviet_hq} alt="Soviet Headquarters" /></div>
                     <div className="comment">
-                        This Soviet headquarters has a command level of 2.<br />
-                        They vary from 0 to 3.
+                        This Soviet headquarters has a command level<br />
+                        of 1 (green number). They vary from 0 to 3.
                     </div>
                 </div>
             </div>
@@ -190,10 +190,11 @@ const Overview = (props) => {
                     <div>
                         <div className="title_img_comment_box">
                             <div className="title">SOVIET ARTILLERY UNIT</div>
-                            <div className="image"><img src={soviet_artillery_big} alt="Soviet artillery unit" /></div>
+                            <div className="image"><img src={soviet_artillery} alt="Soviet artillery unit" /></div>
                             <div className="comment">
-                                This is a Soviet railway gun. This one has a range<br /> of four
-                                and a bombardment strength of 1.
+                                This is a Soviet artillery unit. This one has a<br /> 
+                                range of 2 (smaller number upper left in red)<br />
+                                bombardment strength of 3, and defense of 1.
                             </div>
                         </div>
 
