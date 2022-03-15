@@ -14,7 +14,8 @@ import soviet_aircraft_big from "../../../images/efs/overview/soviet_aircraft_bi
 import soviet_artillery_big from "../../../images/efs/overview/soviet_artillery_big.jpg";
 import soviet_headquarters_big from "../../../images/efs/overview/soviet_headquarters_big.jpg";
 import soviet_infantry_division_big from "../../../images/efs/overview/soviet_infantry_division_big.jpg";
-import soviet_supply_big from "../../../images/efs/overview/soviet_supply_big.jpg";
+import soviet_truck_120 from "../../../images/efs/overview/soviet_truck_120.png";
+import soviet_dump_120 from "../../../images/efs/overview/soviet_dump_120.png";
 
 import './Overview.scss';
 
@@ -84,7 +85,7 @@ const Overview = (props) => {
                             <div className="image"><img src={italian_infantry_division} alt="Italian infantry division" /></div>
                             <div className="comment">
                                 This Italian infantry division has an attack<br />
-                                strength of 4 and defense of 4. It has 2 steps.
+                                strength of 4 and defense of 5. It has 2 steps.
                             </div>
                         </div>
                     </div>
@@ -242,10 +243,13 @@ const Overview = (props) => {
 
                     </div><div>
                         <div className="title_img_comment_box">
-                            <div className="title">SOVIET ATTACK SUPPLY UNIT</div>
-                            <div className="image"><img src={soviet_supply_big} alt="Soviet attack supply unit" /></div>
+                            <div className="title">SOVIET ATTACK<br/>SUPPLY UNITS</div>
+                            <div className="image-by-image">
+                                <div className="image"><img src={soviet_truck_120} alt="Soviet attack supply unit" /></div>
+                                <div className="image"><img src={soviet_dump_120} alt="Soviet supply dump unit" /></div>
+                            </div>
                             <div className="comment">
-                                A Soviet trucked Attack Supply counter.<br />
+                                A Soviet trucked Attack Supply<br/>and Attack Supply Dump units.<br />
                             </div>
                         </div>
                     </div>
