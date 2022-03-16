@@ -2,19 +2,57 @@
   position: relative;
   text-align: center;
   .new-rules {
-      color: blue;
-      text-decoration: none;
-      &:hover {
-        color: red;
-      }
+    color: blue;
+    text-decoration: none;
+    &:hover {
+      color: red;
+    }
   }
   .new-rules-notice {
-    border: 1px solid blue;
-    text-align: center;
-    background: yellow;
-    padding: 10px;
-    font-size: 110%;
-    margin-bottom: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 10px;
+    .first-para {
+      font-size: 110%;
+      padding: 10px 0 5px;
+    }
+    a.product-link {
+      text-decoration: none;
+      .product-style {
+        margin-top: 10px;
+        border: 5px solid black;
+        padding: 10px 25px;
+        background: linear-gradient(90deg, rgb(125, 29, 39) 0%, rgb(141, 45, 54) 100%);
+        > div:first-child {
+          color: #f3d518;
+          font-size: 200%;
+          font-weight: bold;
+          text-align: center;
+          text-shadow: 1px 1px rgba(243, 213, 24, 0.5) -1px -1px rgba(243, 213, 24, 0.5);
+        }
+        > div:nth-child(2) {
+          color: white;
+          font-size: 103%;
+          font-weight: bold;
+          letter-spacing: 0.01em;
+        }
+        > div:nth-child(3) {
+          color: white;
+          font-size: 90%;
+          margin-top: 10px;
+          font-style: italic;
+          text-align: center;
+          color: #aff;
+          letter-spacing: 0.01em;
+        }
+      }
+    }
+
+    div.bsr-link {
+      font-size: 140%;
+    }
   }
   .notice-box {
     width: 550px;
@@ -33,7 +71,6 @@
     .content-notice {
       padding: 10px;
       font-size: 1.2rem;
-      
     }
     .linky {
       position: relative;
@@ -73,45 +110,45 @@
     margin-bottom: 3.5rem;
     display: flex;
     .contents-list {
-        padding-top: 0.8rem;
-        padding-bottom: 0.1rem;
-        margin-left: 20%;
-        width: 470px;
-        text-align: left;
+      padding-top: 0.8rem;
+      padding-bottom: 0.1rem;
+      margin-left: 20%;
+      width: 470px;
+      text-align: left;
 
-        ul {
-            list-style: none;
-         }
-         
-         ul li:before {
-            content: "•";
-            font-size: 170%; /* or whatever */
-            padding-right: 5px;
-         }
-        a {
-            color: #24e;
-            font-size: 1.7rem;
-            font-weight: bold;
-            text-decoration: none;
-            &:hover {
-                color: red;
-            }
+      ul {
+        list-style: none;
+      }
+
+      ul li:before {
+        content: "•";
+        font-size: 170%; /* or whatever */
+        padding-right: 5px;
+      }
+      a {
+        color: #24e;
+        font-size: 1.7rem;
+        font-weight: bold;
+        text-decoration: none;
+        &:hover {
+          color: red;
         }
+      }
       .contents-title {
         font-size: 2.8rem;
         font-weight: bold;
       }
     }
     .images {
-        padding-top: 0.93%;
-        margin-left: 5%;
-        @media only screen and (max-width: 1100px) {
-            display: none;
-          }
-        img {
-            width: auto;
-            height: 380px;
-        }
+      padding-top: 0.93%;
+      margin-left: 5%;
+      @media only screen and (max-width: 1100px) {
+        display: none;
+      }
+      img {
+        width: auto;
+        height: 380px;
+      }
     }
   }
 }

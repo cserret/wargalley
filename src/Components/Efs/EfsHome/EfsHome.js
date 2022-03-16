@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './EfsHome.scss';
-//import BsrLink from "../BsrLink/BsrLink";
+import BsrLink from "../BsrLink/BsrLink";
 import gamesGroup from "../../../images/efsgroup.jpg";
 import awaitingOrders from "../../../images/awaitingorders.jpg";
 
@@ -9,7 +9,75 @@ const EfsHome = (props) => {
     return (
         <div className="efs-home">
 
-            <div className="notice-box">
+
+            <div className="info">
+                <p>
+
+
+                </p>
+                <div className="new-rules-notice">
+                        <div className="first-para">
+                        Congratulations to everyone who have<br /> 
+                        received their copy (or will soon) of the new
+                        </div>
+                        <a className="product-link" href="https://www.gmtgames.com/p-594-barbarossa-army-group-center-1941-2nd-edition.aspx" target="_blank" rel="noopener noreferrer">
+                        <div className="product-style">
+                            <div>BARBAROSSA</div>
+                            <div>ARMY GROUP CENTER, 1941</div>
+                            <div>SECOND EDITION</div>
+                        </div>
+                        </a>
+                        <p>
+                            This site is being updated to reflect<br />
+                            the newest version of the rules -
+                        </p>
+                        <div className="bsr-link">
+                            <a href="https://gmtwebsiteassets.s3.us-west-2.amazonaws.com/bagc/Barb-AGC_StandardRules_Final_Lo-Res.pdf"
+                                target="_blank" rel="noopener noreferrer" className="new-rules">Barbarossa Standard Rules 2.0</a>
+                        </div>
+                        <p>
+                            This site is currently being updated, but it will take some time to get it 100%.<br/>
+                            Please don't think that everything here applies to your new game, you will<br/>
+                            end up getting confused. The new rules are what you need to be reading.<br/>
+                            This site is not connected to or coordinated with GMT Games.<br/>
+                            The parts that I have updated have the "subscript rules link" that looks like:<BsrLink page="32" rule="13.4" />
+                        </p>
+                    </div>
+            </div>
+            <img src={gamesGroup} alt="games group" />
+
+            <div className="contents">
+                <div className="contents-list">
+                    <div>CONTENTS</div>
+                    <span>
+                        <ul>
+                            <li><Link to="./efs/overview">Overview</Link></li>
+                            <li><Link to="./efs/units">Units</Link></li>
+                            <li><Link to="./efs/sop">Sequence of Play</Link></li>
+                            <li><Link to="./efs/supply">Supply</Link></li>
+                            <li><Link to="./efs/movement">Movement</Link></li>
+                            <li><Link to="./efs/combat">Combat</Link></li>
+                            <li><Link to="./efs/airpower">Airpower</Link></li>
+                            <li><Link to="./efs/headquarters">Headquarters</Link></li>
+                            <li><Link to="./efs/special">Special Units</Link></li>
+                            <li><Link to="./efs/weather">Weather</Link></li>
+                        </ul>
+                    </span>
+
+                </div>
+                <div className="images">
+                    <img src={awaitingOrders} alt="awaiting orders" />
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default EfsHome;
+
+/*
+
+<div className="notice-box">
                 <div>NOTICE</div>
 
                 <div className="content-notice">
@@ -31,8 +99,7 @@ const EfsHome = (props) => {
                 </div>
             </div>
 
-            <div className="info">
-                <p>
+
                     <span>
                     In 1941 Germany invaded the Soviet Union. Attempting to deal a "knock-out blow" to the Soviet colossus, Germany and its allies
                     sent in 21 panzer divisions, 10 motorized divisions, and 163 infantry divisions. The biggest military
@@ -57,41 +124,4 @@ const EfsHome = (props) => {
                     In this discussion I will primarily keep to the newer games, although most of it should apply to Typhoon! as well. The newer revisions of the system can be
                     applied to Typhoon!, although you'll have to come up with some updated counters and use some of the charts and rules from the later Barbarossa games (<a href="https://www.gmtgames.com/bags/gmtefret.htm">link</a>). Kiev to Rostov and Crimea have some updates and minor changes to the rules.
                 </span>
-
-                </p>
-                <p className="new-rules-notice">
-                This site is being updated to reflect the newest version of the rules, Barbarossa Standard Rules (BSR) 2.0, available at<br />
-                <a href="https://gmtwebsiteassets.s3.us-west-2.amazonaws.com/bagc/Barb-AGC_StandardRules_Final_Lo-Res.pdf"
-                target="_blank" rel="noopener noreferrer" className="new-rules">https://gmtwebsiteassets.s3.us-west-2.amazonaws.com/bagc/Barb-AGC_StandardRules_Final_Lo-Res.pdf</a>
-                    </p>
-            </div>
-            <img src={gamesGroup} alt="games group" />
-
-            <div className="contents">
-                <div className="contents-list">
-                    <div>CONTENTS</div>
-                    <span>
-                    <ul>
-                        <li><Link to="./efs/overview">Overview</Link></li>
-                        <li><Link to="./efs/units">Units</Link></li>
-                        <li><Link to="./efs/sop">Sequence of Play</Link></li>
-                        <li><Link to="./efs/supply">Supply</Link></li>
-                        <li><Link to="./efs/movement">Movement</Link></li>
-                        <li><Link to="./efs/combat">Combat</Link></li>
-                        <li><Link to="./efs/airpower">Airpower</Link></li>
-                        <li><Link to="./efs/headquarters">Headquarters</Link></li>
-                        <li><Link to="./efs/special">Special Units</Link></li>
-                        <li><Link to="./efs/weather">Weather</Link></li>
-                    </ul>
-                    </span>
-
-                </div>
-                <div className="images">
-                    <img src={awaitingOrders} alt="awaiting orders" />
-                </div>
-            </div>
-        </div>
-    );
-}
-
-export default EfsHome;
+                */
