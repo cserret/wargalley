@@ -162,7 +162,7 @@ const Combat = (props) => {
                 </div>
 
                 <p>The Combined Arms bonus (CAB) gives a DRM of -1 benefit to the Axis attacker (only Axis units can get CAB).<br />
-                <div className="spacer0_5rem" />
+                    <div className="spacer0_5rem" />
                     Qualifications:
                     <ul className="bare-ul">
                         <li>
@@ -200,33 +200,28 @@ const Combat = (props) => {
 
                 <div className="spacer2rem" />
                 <div className="subheader-image stalin">
-                    <span>15.68</span>
-                    <div>Divisional Integrity</div>
+                    <div>Panzer Divisional Integrity Bonus<BsrLink page="41" rule="15.58" /></div>
                     <img src={divisional_integrity} alt="Divisional Integrity" />
                 </div>
                 <div className="spacer1rem" />
                 <p>
-                    German panzer and motorized divisions can qualify for a Divisional Integrity bonus drm of -1. For a German panzer division to qualify for the bonus,
-                    it must have its panzer regiment attacking, and at least two of its other units (motorized infantry regiments or the recon unit) attacking the same defender.
-                    The attacking units can be stacked together or in different hexes. These Divisional Integrity bonuses are cumulative.
-                    For a German motorized division it would need all three of its regiments involved in the same attack to qualify,
-                    Any SS motorized division need only have 3 of its four component units present to qualify for Divisional Integrity.
-                    PLUS for each German motorized division getting a Divisional Integrity bonus, it must be *matched* by a qualifying German panzer division that is participating in the same attack.
-                    German motorized divisions, alone, do not qualify for the Divisional Integrity bonus.
-
-                    If the attack is not supplied with Attack Supply, then if any of the units counted for the Divisional Integrity are OOS, the Divisional Integrity is denied for that division.
-                </p><p>
-                    Exception: The SS LAH brigade qualifies with its two units.
-                </p><p>
-                    Unlike the finicky Combined Arms bonus, the Divisional Integrity bonus is available in all weather conditions, against any enemy units in any terrain.
-                    The only thing that might mess it up is the required units being OOS while attacking without Attack Supply.
-                </p><p>
-                    Note that under the right conditions, German panzer divisions will often get both a Divisional Integrity bonus AND a Combined Arms bonus.
-                    This makes them the most effective fighting force in the game.
-                </p><p>
-                    Since German motorized divisions only get the Divisional Integrity bonus when attacking in concert with German panzer divisions, its obvious that you should keep them together or near each other.
+                    German panzer and motorized divisions can qualify for a Panzer Divisional Integrity Bonus drm of -1, when attacking (not defending) in regular combat.
+                    <div className="spacer0_5rem" />
+                    Requirements:
+                    <ul className="bare-ul">
+                        <li>
+                            A German panzer division must have at least 3 of its 4 units attacking the same hex. One of them has to be the panzer regiment.
+                        </li>
+                        <li>
+                            A German motorized division requires all 3 of its units, and is attacking the same hex as a qualifying panzer division (One qualifying panzer division can only be used to qualify one motorized division).
+                        </li>
+                        <li>
+                            None of the units being used to qualify for the bonus can be in OOS state, unless they have attack supply.
+                        </li>
+                    </ul>
+                    <div className="spacer0_5rem" />
+                    The Das Reich motorized division only has two regiments, and therefore cannot qualify for the bonus.
                 </p>
-
 
                 <div className="spacer2rem" />
                 <div className="subheader-image">
