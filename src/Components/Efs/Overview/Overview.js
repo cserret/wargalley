@@ -4,9 +4,8 @@ import ScrollToTopOnMount from "../../ScrollToTopOnMount";
 import german_aircraft_big from "../../../images/efs/overview/german_aircraft_big.jpg";
 import german_artillery_big from "../../../images/efs/overview/german_artillery_big.jpg";
 import german_infantry_division from "../../../images/efs/overview/german_infantry_division_120.png";
-import german_panzer_division from "../../../images/efs/overview/german_panzer_division.jpg";
 import german_supply_big from "../../../images/efs/overview/german_supply_big.jpg";
-import italian_infantry_division from "../../../images/efs/overview/italian_infantry_division.gif";
+import italian_infantry_division from "../../../images/efs/overview/italian_infantry_120.png";
 import map_sample from "../../../images/efs/overview/map_sample.jpg";
 import romanian_infantry_div from "../../../images/efs/overview/romanian_infantry_div.gif";
 import slovak_infantry_div from "../../../images/efs/overview/slovak_infantry_div.gif";
@@ -16,6 +15,7 @@ import soviet_hq from "../../../images/efs/overview/soviet_hq_120.png";
 import soviet_infantry_division from "../../../images/efs/overview/soviet_infantry_div_120.png";
 import soviet_truck_120 from "../../../images/efs/overview/soviet_truck_120.png";
 import soviet_dump_120 from "../../../images/efs/overview/soviet_dump_120.png";
+import german_panzer_division_120 from "../../../images/efs/overview/panzer_division.png";
 
 import './Overview.scss';
 
@@ -28,7 +28,6 @@ const Overview = (props) => {
                 <div></div>
             </div>
 
-
             <p>
                 <span>
                     The East Front Series game system simulates warfare on the Eastern Front, 1941. Units represented as counters are divisions, brigades, regiments, companies, batteries, and groups of planes. The map scale is 5 miles to the hex. A turn represents 2 days. The sequence of play is assymetrical, meaning the Axis order of phases during a turn is different than the Soviet order of phases. Specifically the Axis player gets to move all its units then do combat, the normal "wargame" order of things. But for the Soviets, they move their motorized units, with a very limited ability to move a few non-motorized units with their motorized units, before doing combat. This causes the Soviet abilities to wage war to be handicapped, and neatly inserts the command control problems the Soviets experienced into the game, without the need for artificial "idiot rules". The Soviets in 1941 had so much difficulty in coordinating their armor with their infantry in attacks that often the armor went into the attack without infantry support, and often Soviet units involved in a desperate defence would get no reserves sent to them, even when ample troops were nearby. The rigid Soviet command structure meant that directives from above were to be obeyed, despite the realities on the ground. The Germans, of course, were indoctrinated through their military training to show initiative, and showed great flexibility in battle, with excellent coordination between the various elements of their armed forces.
@@ -39,7 +38,7 @@ const Overview = (props) => {
             <div>
                 <div className="title_img_comment_box">
                     <div className="title">GERMAN PANZER DIVISION</div>
-                    <div className="image"><img src={german_panzer_division} alt="German panzer division" /></div>
+                    <div className="image">&nbsp;<img src={german_panzer_division_120} alt="German panzer division" /></div>
                     <div className="comment">
 
                         A typical German panzer division consists of one panzer regiment,<br />
