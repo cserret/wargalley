@@ -247,19 +247,19 @@ const Combat = (props) => {
                 <div className="spacer1rem" />
                 <p>
                     Artillery units are units that have a range which is a number of hexes they can fire across to add combat factors to a combat. These units
-                    include basic artillery units, heavy artillery units, rocket units, coast defense units, and railroad guns.
+                    include basic artillery units, heavy artillery units, rocket units, coast defense units, and railroad artillery units.
                     <div className="spacer0_5rem" />
-                    Both players can add potentially add artillery support to combats, whether they are attacking or defending.
+                    Both players can potentially add artillery support to the same combats, whether they are attacking or defending.
                     <div className="spacer0_5rem" />
-                    The support factors that one side's artillery is adding to a combat cannot exceed the combat value of the friendly units in the hex.
+                    The support factors that one side's artillery is adding to a combat cannot exceed the total combat value of the friendly units in the hex(es) in the combat.
                     <div className="spacer0_5rem" />
                     General Requirements/Restrictions
                     <ul className="bare-ul">
-                        <li>The artillery unit(s) must be in range of the defender hex where a Declared Attack Marker is placed.</li>
-                        <li>The artillery unit(s) must be in Attack Supply - a Attack Supply (which is being expended for this combat) LOC must be able to reach the artillery unit(s).</li>
+                        <li>The artillery unit(s) must be in range of the defender hex where a Declared Attack marker is placed.</li>
+                        <li>The artillery unit(s) <b>must be in Attack Supply</b> - a Attack Supply (which is being expended for this combat) LOC must be able to reach the artillery unit(s).</li>
                         <li>Defending artillery units in an enemy ZOC cannot provide support to friendly units in another hex.</li>
                         <li>Attacking artillery units in an enemy ZOC can only provide support to a defender hex that is projecting enemy ZOC on it.</li>
-                        <li>Defending artillery unit(s) alone in a defender hex do not get to use their support strength. They only used their defense value
+                        <li>Defending artillery unit(s) alone in a defender hex do not get to use their support strength. They only provide their defense value
                             (typically 1).</li>
                         <li>Artillery units in a defender hex without Attack Supply will only provide their defense strength (typically 1).</li>
                     </ul>
@@ -276,19 +276,19 @@ const Combat = (props) => {
                             only provide half of their support value (round down).
                         </li>
                         <li>No more than two Axis-Allied artillery units can provide defense support to a single combat.</li>
-                        <li>Up to two German artillery units can join in with Axis-Allied artillery (regardless if one or two are firing support).</li>
+                        <li>Up to two German artillery units can join in a combat with Axis-Allied artillery unit(s) (regardless if one or two are firing support).</li>
                     </ul>
                     <div className="spacer0_5rem" />
                     Soviet specific artillery rules
                     <ul className="bare-ul">
                         <li>Only one artillery unit or coast defense unit can provide artillery support, but it can be two if:
                           <ul>
-                              <li>Both are the same Defender hex</li>
-                              <li>Two artillery units are in command range of the same non-interdicted HQ and not within the command range of a non-Op HQ</li>
+                              <li>Both are defending in the same combat.</li>
+                              <li>Two artillery units are in command range of the same non-interdicted HQ and not within the command range of a non-Op HQ.</li>
                               <li>One artillery unit can be in the defender hex while another is outside the hex, but the one outside the defender hex is in range and in command range of a HQ.</li>
                               </ul></li>
                         <li>Up to two rocket units can be added in addition to the one (or two) regular Soviet artillery limit.</li>
-                        <li>Any number of Soviet railroad units and naval artillery, which are in command range of a HQ, can add their support above the regular Soviet artillery limit.</li>
+                        <li>Any number of Soviet railroad artillery units and naval artillery, which are in command range of a HQ, can add their support above the regular Soviet artillery limit.</li>
                     </ul>
                     <div className="spacer0_5rem" />
                     Terrain and artillery
