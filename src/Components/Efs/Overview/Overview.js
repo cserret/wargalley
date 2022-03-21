@@ -1,15 +1,15 @@
 import React from 'react';
 import ScrollToTopOnMount from "../../ScrollToTopOnMount";
 //import BsrLink from "../BsrLink/BsrLink";
-import german_aircraft_big from "../../../images/efs/overview/german_aircraft_big.jpg";
-import german_artillery_big from "../../../images/efs/overview/german_artillery_big.jpg";
-import german_infantry_division from "../../../images/efs/overview/german_infantry_division_120.png";
+import german_aircraft_big from "../../../images/efs/overview/german_bf109_120.png";
+import german_artillery_big from "../../../images/efs/overview/german_artillery_120.png";
+import german_infantry_division from "../../../images/efs/overview/german_infantry_120.png";
 import german_supply_big from "../../../images/efs/overview/german_supply_big.jpg";
 import italian_infantry_division from "../../../images/efs/overview/italian_infantry_120.png";
 import map_sample from "../../../images/efs/overview/map_sample.jpg";
-import romanian_infantry_div from "../../../images/efs/overview/romanian_infantry_div.gif";
-import slovak_infantry_div from "../../../images/efs/overview/slovak_infantry_div.gif";
-import soviet_aircraft_big from "../../../images/efs/overview/soviet_aircraft_big.jpg";
+import romanian_infantry_div from "../../../images/efs/overview/romanian_infantry_120.png";
+import slovak_infantry_div from "../../../images/efs/overview/slovak_infantry_120.png";
+import soviet_aircraft_big from "../../../images/efs/overview/soviet_air_I_152_120.png";
 import soviet_artillery from "../../../images/efs/overview/soviet_artillery_120.png";
 import soviet_hq from "../../../images/efs/overview/soviet_hq_120.png";
 import soviet_infantry_division from "../../../images/efs/overview/soviet_infantry_div_120.png";
@@ -152,10 +152,9 @@ const Overview = (props) => {
                             <div className="title">SOVIET AIRCRAFT UNIT</div>
                             <div className="image"><img src={soviet_aircraft_big} alt="Soviet aircraft unit" /></div>
                             <div className="comment">
-                                This is a Soviet Polikarpov I-16 fighter. It has<br />
-                                a air-to-air combat strength of 1, and no combat<br />
-                                support strength. It fares poorly against most<br />
-                                German fighters, but can sometimes deliver a sting.
+                                This is a Soviet Polikarpov I-153 fighter. It has<br />
+                                a air-to-air combat strength of 1, no combat<br />
+                                support strength, and interdiction value of 1.
                             </div>
                         </div>
 

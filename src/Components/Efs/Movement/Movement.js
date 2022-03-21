@@ -453,7 +453,7 @@ const Movement = (props) => {
                             </ul>
                         </div>
                         <div>
-                            <img src={overrun_marker} />
+                            <img src={overrun_marker} alt="overrun marker" />
                         </div>
                     </div>
                 </p>
