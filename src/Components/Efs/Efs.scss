@@ -204,8 +204,24 @@
 </div>
 */
   .rule-ref {
-      color: red;
-      font-size: 1rem;
+    color: red;
+    font-size: 1rem;
+  }
+  .subheader-n-images {
+    font-weight: bold;
+    width: 96%;
+    display: flex;
+    justify-content: flex-start;
+    margin: auto;
+    position: relative;
+    div {
+      align-self: flex-end;
+      font-size: 1.4rem;
+    }
+    img {
+      align-self: flex-end;
+      margin-left: 20px;
+    }
   }
   .subheader-image {
     font-weight: bold;
@@ -214,6 +230,7 @@
     width: 96%;
     margin: auto;
     position: relative;
+
     > span:nth-child(1) {
       position: absolute;
       bottom: 22px;
@@ -310,11 +327,29 @@
     font-style: italic;
     font-weight: bold;
   }
+  .bare-ul {
+    margin: 0.3rem 0 0 2%;
+    padding: 0;
+  }
+  .sub-box {
+    display: table;
+    border: 1px solid black;
+    margin: 3px 0 5px 8px;
+    background-color: #dfffdf;
+    padding-right: 20px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+  }
+
   .ul-no-top {
     margin-block-start: 0;
   }
   .ol-less-top {
     margin-block-start: 0.3rem;
+  }
+  .exception {
+    color: red;
+    text-shadow: 0 0 red;
   }
   .white-text {
     color: white;
@@ -357,6 +392,6 @@
     font-size: 1rem;
   }
   .i {
-      font-style: italic;
+    font-style: italic;
   }
 }

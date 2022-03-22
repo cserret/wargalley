@@ -9,7 +9,8 @@ import joseph_stalin from "../../../images/efs/combat/joseph-stalin.jpg";
 import combined_arms_bonus from "../../../images/efs/combat/combined_arms_bonus.jpg";
 //import combined_arms_bonus_fr from "../../../images/efs/combat/combined_arms_bonus_fr.gif";
 import divisional_integrity from "../../../images/efs/combat/divisional_integrity.jpg";
-import german_engineer from "../../../images/efs/combat/german_engineer2.gif";
+import german_engineer from "../../../images/efs/combat/german_engineer_motorized_120.png";
+import soviet_engineer from "../../../images/efs/combat/soviet_engineer_120.png";
 import artillery_units from "../../../images/efs/combat/artillery_strip_120.png";
 import soviet_artillery_firing from "../../../images/efs/combat/soviet_artillery_firing.jpg";
 import orders_strip from "../../../images/efs/combat/orders_strip.jpg";
@@ -22,6 +23,7 @@ import advance from "../../../images/efs/combat/advance.jpg";
 import germanantitank1942east from "../../../images/efs/combat/germanantitank1942east.jpg";
 import surrenderc from "../../../images/efs/combat/surrenderc.jpg";
 import wreck from "../../../images/efs/combat/burning_t34_.jpg";
+import german_engineers_crossing_river from "../../../images/efs/combat/german_engineers2.jpg";
 import './Combat.scss';
 
 const Combat = (props) => {
@@ -201,7 +203,7 @@ const Combat = (props) => {
                 <div className="spacer2rem" />
                 <div className="subheader-image stalin">
                     <div>Panzer Divisional Integrity Bonus<BsrLink page="41" rule="15.58" /></div>
-                    <img src={divisional_integrity} alt="Divisional Integrity" />
+                    <img src={divisional_integrity} style={{ height: 'auto' }} alt="Divisional Integrity" />
                 </div>
                 <div className="spacer1rem" />
                 <p>
@@ -224,14 +226,40 @@ const Combat = (props) => {
                 </p>
 
                 <div className="spacer2rem" />
-                <div className="subheader-image">
-                    <span>15.63</span>
-                    <div>Engineer Effects</div>
-                    <img src={german_engineer} alt="German engineer counter" />
+
+
+                <div className="subheader-n-images">
+                    <div>Engineer Effects<BsrLink page="41" rule="15.53" /></div>
+                    <img src={german_engineer} style={{ height: 'auto' }} alt="German motorized engineer counter" />
+                    <img src={soviet_engineer} style={{ height: 'auto' }} alt="Soviet engineer counter" />
+                    <img src={german_engineers_crossing_river} style={{ height: 'auto' }} alt="Soviet Cossack commander at Kiev, 1942" />
                 </div>
+
+
+
                 <div className="spacer1rem" />
                 <p>
-                    Engineer effects can be declared when the attacking force contains at least one engineer unit and the defender is receiving a DRM for city, major city, fortified line, strongpoint, or River (not Major River) terrain. Engineer effects can also be declared when attacking a town in Mud (as the defender gets a DRM in that situation). The engineer effect gives the attacker a -1 DRM. Note that by declaring Engineer Effects, the engineer may take a step loss due to a asterisk result (see below for details). Engineer effects are only for attacking, defending engineers give no special benefit to the defense.
+                    Engineer effects can provide a -1 DRM on attacks if requirements are met. Having more than one engineer does not increase the benefit.
+                    <div className="spacer0_5rem" />
+                    General Requirements/Restrictions
+                    <ul className="bare-ul">
+                        <li>The attacking unit(s) must include at least one engineer type unit.</li>
+                        <li>The defender terrain contains any of:
+                                <ul className="sub-box">
+                                    <li>city or Major City.</li>
+                                    <li>river (not Major River).</li>
+                                    <li>non-frozen canal.</li>
+                                    <li>non-destroyed fortification which is providing the defender with a Defender DRM benefit.</li>
+                                    <li>across a shallow water hexside. <span className="exception">Exception:</span> armored engineers cannot attack across shallow water hexsides.<BsrLink page="41" rule="15.53d" /></li>
+                                    <li>town, if the weather condition in the town hex is Mud or Snow.</li>
+                                </ul>
+
+                        </li>
+                    </ul>
+                    <div className="spacer0_5rem" />
+                    <b>Special Engineer Stacking<BsrLink page="41" rule="15.53c" /></b> - for both players, one engineer unit can stack above the stacking limit and participate in the attack. After the combat, stacking rules must
+                    be followed, and if the engineer is still in the hex and overstacked, it must be retreated 2 hexes. If the stacking rules cannot
+                    be satisfied, then the engineer unit is eliminated.
                 </p>
 
                 <div className="spacer1rem" />
@@ -242,7 +270,7 @@ const Combat = (props) => {
                 <div className="spacer2rem" />
                 <div className="subheader-image">
                     <div>Artillery Support<BsrLink page="31" rule="13.0" /></div>
-                    <img src={artillery_units} style={{height: "auto"}} alt="artillery counters" />
+                    <img src={artillery_units} style={{ height: "auto" }} alt="artillery counters" />
                 </div>
                 <div className="spacer1rem" />
                 <p>
@@ -282,11 +310,11 @@ const Combat = (props) => {
                     Soviet specific artillery rules
                     <ul className="bare-ul">
                         <li>Only one artillery unit or coast defense unit can provide artillery support, but it can be two if:
-                          <ul>
-                              <li>Both are defending in the same combat.</li>
-                              <li>Two artillery units are in command range of the same non-interdicted HQ and not within the command range of a non-Op HQ.</li>
-                              <li>One artillery unit can be in the defender hex while another is outside the hex, but the one outside the defender hex is in range and in command range of a HQ.</li>
-                              </ul></li>
+                            <ul>
+                                <li>Both are defending in the same combat.</li>
+                                <li>Two artillery units are in command range of the same non-interdicted HQ and not within the command range of a non-Op HQ.</li>
+                                <li>One artillery unit can be in the defender hex while another is outside the hex, but the one outside the defender hex is in range and in command range of a HQ.</li>
+                            </ul></li>
                         <li>Up to two rocket units can be added in addition to the one (or two) regular Soviet artillery limit.</li>
                         <li>Any number of Soviet railroad artillery units and naval artillery, which are in command range of a HQ, can add their support above the regular Soviet artillery limit.</li>
                     </ul>
