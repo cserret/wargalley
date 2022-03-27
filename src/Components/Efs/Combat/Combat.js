@@ -24,6 +24,8 @@ import germanantitank1942east from "../../../images/efs/combat/germanantitank194
 import surrenderc from "../../../images/efs/combat/surrenderc.jpg";
 import wreck from "../../../images/efs/combat/burning_t34_.jpg";
 import german_engineers_crossing_river from "../../../images/efs/combat/german_engineers2.jpg";
+import german_motorized_antiair from "../../../images/efs/combat/german_antiair_motorized_120.png";
+import german_assault_gun from "../../../images/efs/combat/german_assault_gun_120.png";
 import './Combat.scss';
 
 const Combat = (props) => {
@@ -33,7 +35,7 @@ const Combat = (props) => {
             <div>
 
                 <div className="content-title">
-                    <div>COMBAT</div>
+                    <div>COMBAT<BsrLink pos="title" page="38" rule="15.0" /></div>
                     <div></div>
                 </div>
 
@@ -42,23 +44,100 @@ const Combat = (props) => {
                 </div>
                 <div className="spacer1rem" />
                 <p>
-                    In addition to all the problems of supply and movement, units also occasionally had to engage in combat.
+                    Each turn, there is a combat phase for each player. These combat phases are where most of the fighting occurs between player's units. There is something called "overrun" which is a type of attack that occurs during a movement phase,
+                    but that is a special form of combat that is considered more a function of movement rather than strictly "combat" (although the general rules for combat do apply). See the
+                    Movement section for info on overrun.
+                    <div className="spacer0_5rem" />
+                    Combat can occur between combat unit(s) that are in hexes adjacent to each other. Additional units such as artillery units and air units can participate without
+                    being adjacent to the hex being attacked. But you will need combat units "on the ground" adjacent to an enemy occupied hex in order to declare an attack.
+                    <div className="spacer0_5rem" />
+                    For attacking units to perform at their best, they will need to be supplied with an Attack Supply point (ASP). But, Attack Supply is not required, and units can still
+                    attack without having Attack Supply being used for their attack or defense. Defending units do not need to use Attack Supply, except for artillery units
+                    that are in Limited Artillery conditions<BsrLink page="33" rule="13.5" />
+                    <div className="spacer0_5rem" />
+                    Flotillas and Armored Trains are not affected by lack of Attack Supply.
+                    <div className="spacer0_5rem" />
+                    Attacking units that are marked Out of Supply get to ignore any Out of Supply effects during a combat, if they are being allocated Attack Supply.<BsrLink page="39" rule="15.21" />
                 </p>
-                <div className="pdiv">
-                    The core general sequence leading to combat is
-                    <ol className="ol-less-top">
-                        <li>Get adjacent to enemy units.</li>
-                        <li>Declare Combat.</li>
-                        <li>Enemy gets to respond, if possible.</li>
-                        <li>Then you go forward with the attack, for better or for worse. Once you declared an attack, you have to follow through and roll them dice. </li>
-                    </ol>
+                <div className="subheader-n-images">
+                    <div>Bunker Busting<BsrLink page="40" rule="15.44" /></div>
+                    <img src={german_motorized_antiair} alt="German motorized anti-air unit" />
+                    <img src={german_assault_gun} alt="German assault gun unit" />
                 </div>
                 <p>
-                    Factors that can affect combat are air support, naval support, Attack Supply expenditure, artillery support, Orders, terrain, weather, fortifications, engineers, Combined Arms, Divisional Integrity, and supply issues.
+                    Some Axis units can be declared a "Bunker Buster" in a Declared Attack when attacking certain terrain, which allows them to double their attack value.
+                    <div className="spacer1rem" />
+
+                    <div className="indented-box background-green">
+                        <div className="indented-box-title">Qualifying Axis units for being a Bunker Buster:</div>
+                        <ul>
+                            <li>anti-aircraft</li>
+                            <li>motorized anti-aircraft</li>
+                            <li>assault gun</li>
+                        </ul>
+                    </div>
+
+                    <div className="spacer1rem" />
+
+                    <div className="indented-box background-beige">
+                        <div className="indented-box-title">Qualifying terrain for the Defender hex:</div>
+                        <ul>
+                        <li>non-destroyed strongpoint</li>
+                        <li>fortified belt</li>
+                        <li>fortified lines</li>
+                        <li>city</li>
+                        <li>Major city</li>
+                        </ul>
+                    </div>
+
+
+
+
+
+                    <div className="spacer1rem" />
+                    Only one qualifying unit can be designated as a Bunker Buster in a Declared Attack.
+                    <div className="spacer0_5rem" />
+                    A anti-aircraft unit that contributed a DRM to AA Fire during the current combat phase cannot be selected to be a Bunker Buster.
+                    <div className="spacer0_5rem" />
+                    If Bunker Busting is being used in a Declared Attack, then the attacker is liable for Engineer Loss, and may lose the Bunker Buster unit.<BsrLink page="43" rule="16.33b2" />
+
+
                 </p><p>
+                    <div className="subheader-image">
+                        <div>Combat Steps<BsrLink page="40" rule="15.44" /></div>
+                        <img src={declared_attack} alt="declared attack counter" />
+                    </div>
+                    <ol>
+                        <li>The attacker declares any enemy occupied hexes that will be attacked, and places a Attack marker on the hex.</li>
+                        <li>The defender will get a chance to react to the attack(s), and could possibly declare artillery support, have HQs that are in range issue orders,
+                            and air units can be sent on mission(s) to the Defender Hex.
+                        </li>
+                        <li>Any air combat is performed, with any air units that remain, and are conducting a "support" mission, will have their support values added to their side.
+                        </li>
+                        <li>The combat factors are then added up for each side, with factors such as terrain, weather, artillery support, and air support taken into account.
+                        </li>
+                        <li>The attacker rolls the D10 die, and consults the Combat Table for the results.
+                        </li>
+                        <li>Any losses are taken from the units in the combat, and any retreats and advances are conducted.
+                        </li>
+                    </ol>
                     The Combat Results table is a standard odds based table. Odds go from 1-4 to 10-1. Odds less than 1-4 are treated as automatic attacker eliminated (although you can't declare a combat if the initial odds are less than 1-4), and odds greater than 10-1 are treated as 10-1. There is a 3-2 column and a 3-4 column, which sometimes requires some mental mathematical dexterity. The results on the table range from no effect, to retreats, to step losses, and to complete annihilation, otherwise known as the dreaded 'e' result.
                 </p><p>
                     <span className="b">Attacking Is Voluntary</span>, however if you wish to attack, then things get a little "sticky". Any enemy unit that exerts a ZOC into a hex of an attacking unit MUST also be attacked.
+                </p>
+                <p>
+                    Attacks that are made without Attack Supply have these consequences<BsrLink page="39" rule="15.22" />:
+                    <ul className="bare-ul">
+                        <li>A +2 DRM is applied.</li>
+                        <li>The attacker cannot allocate Artillery Support, although they still could if an ASP is used for the artillery (even though the ground attack is being made without ASP)<BsrLink page="39" rule="15.34" />.</li>
+                        <li>Any Panzer or Motorized Division that has an Out of Supply marker on it (and is not getting an ASP spent on the combat it is involved in), does not receive it's Panzer Division Integrity Bonus.</li>
+                        <li>The attacking units suffer an addition step loss if the combat result has an asterisk (*).</li>
+                    </ul>
+                    <div className="spacer0_5rem" />
+
+                    <div className="spacer0_5rem" />
+                    For the defender in a Declared Attack, no ASP needs to be used, except if they are in a Limited Artillery condition, then an ASP needs to allocated so that they can fire their artillery support. The ASP
+                    may or may not end up being used, according to the results of the Limited Artillery table.<BsrLink page="39" rule="15.21" />
                 </p>
                 <div className="sticky-example">
                     <div>Attacking is Voluntary, but Sticky! Example:</div>
@@ -245,14 +324,14 @@ const Combat = (props) => {
                     <ul className="bare-ul">
                         <li>The attacking unit(s) must include at least one engineer type unit.</li>
                         <li>The defender terrain contains any of:
-                                <ul className="sub-box">
-                                    <li>city or Major City.</li>
-                                    <li>river (not Major River).</li>
-                                    <li>non-frozen canal.</li>
-                                    <li>non-destroyed fortification which is providing the defender with a Defender DRM benefit.</li>
-                                    <li>across a shallow water hexside. <span className="exception">Exception:</span> armored engineers cannot attack across shallow water hexsides.<BsrLink page="41" rule="15.53d" /></li>
-                                    <li>town, if the weather condition in the town hex is Mud or Snow.</li>
-                                </ul>
+                            <ul className="sub-box">
+                                <li>city or Major City.</li>
+                                <li>river (not Major River).</li>
+                                <li>non-frozen canal.</li>
+                                <li>non-destroyed fortification which is providing the defender with a Defender DRM benefit.</li>
+                                <li>across a shallow water hexside. <span className="exception">Exception:</span> armored engineers cannot attack across shallow water hexsides.<BsrLink page="41" rule="15.53d" /></li>
+                                <li>town, if the weather condition in the town hex is Mud or Snow.</li>
+                            </ul>
 
                         </li>
                     </ul>

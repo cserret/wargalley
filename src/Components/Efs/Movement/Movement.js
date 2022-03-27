@@ -50,8 +50,9 @@ const Movement = (props) => {
 
 
 
-                <div className="gray-box">
-                    <p className="subsubheader">Movement phases</p>
+
+                <div className="indented-box background-blue">
+                    <div className="indented-box-title">Movement phases:</div>
                     <ul>
                         <li><span className="slight-bold">Regular Movement</span> - All (practically all) units get to move.</li>
                         <li><span className="slight-bold">Motorized Movement</span> - Only motorized units (non-orange movement factor) units move. The Soviets can sometimes get a non-motorized unit to move here.</li>
@@ -59,13 +60,13 @@ const Movement = (props) => {
                     </ul>
                 </div>
 
-                <div className="spacer1rem" />
+                <div className="spacer0_5rem" />
                 <p>
                     and the specific movement types in EFS:
                 </p>
 
-                <div className="gray-box">
-                    <p className="subsubheader">Movement rate color codes:</p>
+                <div className="indented-box background-green">
+                    <div className="indented-box-title">Movement rate color codes:</div>
                     <ul>
                         <li><span className="slight-bold">Non-boxed white movement factor</span> - Non-motorized.</li>
                         <li><span className="slight-bold">Red box around movement factor</span> - Motorized.</li>
@@ -284,22 +285,34 @@ const Movement = (props) => {
                     Infiltration Movement allows eligible units to move directly from a hex in enemy unit ZOC to adjacent hex in enemy unit ZOC (even if the ZOC is from different
                     enemy units), in it's movement phase where it normally has its full movement point allowance. The unit doing Infiltration Movement expends all its movement point allowance in moving that 1 hex.
                     already in enemy zoc. The unit can be Out of Supply, and still execute Infiltration Movement.<br />
-                    <div className="spacer0_5rem" />
-                    Eligible units:
-                    <ul className="bare-ul">
+                    <div className="spacer1rem" />
+                    
+                    
+                    
+                    
+                <div className="indented-box background-green">
+                    <div className="indented-box-title">Eligible units:</div>
+                    <ul>
                         <li>Motorized units with a printed Movement Allowance of 7 or greater.</li>
                         <li>Cavalry units with a yellow Movement Allowance.</li>
                         <li>Ski units with a yellow Movement Allowance (see special restriction below).</li>
                     </ul>
-                    <div className="spacer0_5rem" />
-                    Restrictions:<br />
-                    <ul className="bare-ul">
+                </div>
+
+
+                <div className="spacer1rem" />
+                    <div className="indented-box background-red">
+                        <div className="indented-box-title">Restrictions:</div>
+                        <ul>
                         <li>Infiltration Movement cannot be done when the weather condition of the hex being moved to is Mud.</li>
                         <li>The unit must have had enough movement points to have moved into the hex as if there was no enemy ZOC. The One-Hex movement rule cannot be used to evade this requirement.</li>
                         <li>Infiltration movement cannot happen across non-destroyed enemy fortified lines or into enemy fortifications.</li>
                         <li>Ski units can only conduct Infiltration Movement when the weather condition of the hex being moved to is Snow.</li>
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
+
+</div>
+
 
 
                 <div className="spacer2rem" />

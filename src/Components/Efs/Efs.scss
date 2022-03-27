@@ -4,7 +4,8 @@
     font-weight: bold;
   }
   .content {
-    margin-bottom: 100px;
+    margin: 0 5px 100px 0px;
+    padding-left: 30px;
     .image-caption {
       display: flex;
       width: auto;
@@ -12,8 +13,6 @@
       align-items: center;
       border: 1px solid #aaa;
       background-color: #e6e6e6;
-      width: 816px;
-      margin: auto;
       img {
         height: auto;
         width: auto;
@@ -76,7 +75,7 @@
       display: flex;
       font-size: 2rem;
       font-weight: bold;
-      padding: 2rem 0 1rem 2rem;
+      padding: 2rem 0 1rem 0;
       div:nth-child(1) {
         margin-right: 0.5rem;
       }
@@ -99,25 +98,12 @@
     }
     p {
       font-size: 1.3rem;
-      width: 96%;
-      margin: 0 auto;
-      padding: 0.5rem 0 0.6rem 0;
-      &.minor {
-        padding: 0.3rem 0 0.3rem 0;
-      }
     }
     .pdiv {
       font-size: 1.3rem;
-      width: 96%;
-      margin: 0 auto;
-      padding: 0.5rem 0 0.6rem 0;
-      &.minor {
-        padding: 0.3rem 0 0.3rem 0;
-      }
     }
     .subheader-counter {
       display: flex;
-      margin-left: 2%;
       font-size: 1.4rem;
       font-weight: bold;
       margin-bottom: 0.5rem;
@@ -133,7 +119,6 @@
     .subheader-normal {
       font-size: 1.3rem;
       font-weight: bold;
-      padding: 0 0 0 2%;
     }
     .subheader {
       padding-top: 2rem;
@@ -167,14 +152,12 @@
       clear: all;
       background-color: #edeeed;
       display: inline-block;
-      margin: 0.8rem 0 0 5rem;
+      margin: 0 0 0 5rem;
       font-size: 1.3rem;
-      padding: 0 1rem 0.8rem 0;
       border: 1px solid #555;
       .subsubheader {
         font-weight: bold;
         position: relative;
-        top: 0.2rem;
         padding-right: 10px;
         padding-left: 10px;
         white-space: nowrap;
@@ -190,6 +173,37 @@
         padding-right: 15px;
       }
     }
+
+
+    .indented-box {
+      border: 1px solid black;
+      display: inline-block;
+      margin-left: 50px;
+      &.background-green {
+        background-color: #dfd;
+      }
+      &.background-blue {
+        background-color: #c8d8e6;
+      }
+      &.background-red {
+        background-color: #e8d8d6;
+      }
+      &.background-beige {
+        background-color: #efefe0;
+      }
+      padding: 6px 10px;
+      font-size: 20px;
+      .indented-box-title {
+        font-weight: bold;
+        margin-right: 5px;
+      }
+      ul {
+        margin: 5px 5px 2px 40px;
+        padding: 0;
+      }
+    }
+
+
   }
   /*
   <div className="gray-box">
@@ -209,10 +223,8 @@
   }
   .subheader-n-images {
     font-weight: bold;
-    width: 96%;
     display: flex;
     justify-content: flex-start;
-    margin: auto;
     position: relative;
     div {
       align-self: flex-end;
@@ -221,14 +233,13 @@
     img {
       align-self: flex-end;
       margin-left: 20px;
+      height: auto;
     }
   }
   .subheader-image {
     font-weight: bold;
     display: flex;
     justify-content: flex-start;
-    width: 96%;
-    margin: auto;
     position: relative;
 
     > span:nth-child(1) {
@@ -308,8 +319,7 @@
     height: 3rem;
   }
   section {
-    width: 90%;
-    margin: auto;
+    border: 10px dotted red;
   }
   .green-bold {
     color: #080;
@@ -373,7 +383,6 @@
     margin-top: 2rem;
     font-size: 1.4rem;
     font-weight: bold;
-    left: 2%;
     position: relative;
     > span:first-child {
       font-weight: normal;
