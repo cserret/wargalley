@@ -4,7 +4,6 @@ import BsrLink from "../BsrLink/BsrLink";
 import combat from "../../../images/efs/combat/combat.jpg";
 import map_combat1 from "../../../images/efs/combat/map_combat1.jpg";
 import map_combat2 from "../../../images/efs/combat/map_combat2.jpg";
-import declared_attack from "../../../images/efs/combat/declared_attack.gif";
 import joseph_stalin from "../../../images/efs/combat/joseph-stalin.jpg";
 import combined_arms_bonus from "../../../images/efs/combat/combined_arms_bonus.jpg";
 //import combined_arms_bonus_fr from "../../../images/efs/combat/combined_arms_bonus_fr.gif";
@@ -26,6 +25,8 @@ import wreck from "../../../images/efs/combat/burning_t34_.jpg";
 import german_engineers_crossing_river from "../../../images/efs/combat/german_engineers2.jpg";
 import german_motorized_antiair from "../../../images/efs/combat/german_antiair_motorized_120.png";
 import german_assault_gun from "../../../images/efs/combat/german_assault_gun_120.png";
+import german_luftwaffe_flak from "../../../images/efs/combat/german_luftwaffe_flak_120.png";
+import declared_attack from "../../../images/efs/combat/declared_attack_120.png";
 import './Combat.scss';
 
 const Combat = (props) => {
@@ -61,6 +62,7 @@ const Combat = (props) => {
                 </p>
                 <div className="subheader-n-images">
                     <div>Bunker Busting<BsrLink page="40" rule="15.44" /></div>
+                    <img src={german_luftwaffe_flak} alt="German Luftwaffe motorized antiair unit" />
                     <img src={german_motorized_antiair} alt="German motorized anti-air unit" />
                     <img src={german_assault_gun} alt="German assault gun unit" />
                 </div>
@@ -82,11 +84,11 @@ const Combat = (props) => {
                     <div className="indented-box background-beige">
                         <div className="indented-box-title">Qualifying terrain for the Defender hex:</div>
                         <ul>
-                        <li>non-destroyed strongpoint</li>
-                        <li>fortified belt</li>
-                        <li>fortified lines</li>
-                        <li>city</li>
-                        <li>Major city</li>
+                            <li>non-destroyed strongpoint</li>
+                            <li>fortified belt</li>
+                            <li>fortified lines</li>
+                            <li>city</li>
+                            <li>Major city</li>
                         </ul>
                     </div>
 
@@ -103,14 +105,74 @@ const Combat = (props) => {
 
 
                 </p><p>
-                    <div className="subheader-image">
-                        <div>Combat Steps<BsrLink page="40" rule="15.44" /></div>
+
+
+
+                    <div className="subheader-n-images">
+                        <div>Combat procedure</div>
                         <img src={declared_attack} alt="declared attack counter" />
                     </div>
+
                     <ol>
-                        <li>The attacker declares any enemy occupied hexes that will be attacked, and places a Attack marker on the hex.</li>
-                        <li>The defender will get a chance to react to the attack(s), and could possibly declare artillery support, have HQs that are in range issue orders,
-                            and air units can be sent on mission(s) to the Defender Hex.
+                        <li><b>Attack Declaration<BsrLink page="28" rule="12.1" /></b> - The attacker declares any enemy occupied hexes that will be attacked, and places a Attack marker on each of them.
+                             <br />
+                            A hex with an Attack marker on it is called a Defender hex, for this combat phase.</li>
+                        <li><b>Reaction Phase</b> - The defender will get conduct Reaction Movement, designate artillery, and issue Retreat Orders.
+                            <div className="spacer0_5rem" />
+                            <div className="indented-box background-green">
+                                Reaction Movement allows the defending player to move one eligible unit for each Defender hex,
+                                at half its movement allowance. 
+                                <br />
+                                No Specialized Movement is allowed.
+                                <br />
+                                To be eligible for Reaction Movement, a unit:
+                                <ul>
+                                    <li>is not in an enemy ZOC</li>
+                                    <li>is not in a Defender hex</li>
+                                    <li>is within 3 hexes of a Defender hex.</li>
+                                    <li>has a red-box MA.</li>
+                                    <li>does not have a Fuel Shortage or Overrun marker on it.</li>
+                                    <li>(for Soviet) is in command range of a HQ with a non-interdicted command point, and is not in range of a Non-op HQ.</li>
+                                    <li>(for Soviet) is not a NKVD unit.</li>
+                                </ul>
+                                <div className="spacer0_5rem" />
+                                Units conducting Reaction Movement do not have to move towards the Defender hex.
+                                <div className="spacer0_5rem" />
+                                They cannot enter or exit a Interdicted hex.
+                                <div className="spacer0_5rem" />
+                                They do not pay the +1 MP cost for entering a ZOC. If entering an enemy ZOC other than the Defender hex that it is reacting for, a friendly
+                                unit needs to be present in the hex.
+                                <div className="spacer0_5rem" />
+                                For multi-hex combats - only one reacting unit can enter any of the Defender hexes it is reacting for.
+                                <div className="spacer0_5rem" />
+                                Reacting units cannot cause new combats to be declared.
+
+                            </div>
+
+                            <div className="spacer0_5rem" />
+
+                            <div className="indented-box background-yellow">
+                                Designate defender artillery
+                                <ul>
+                                    <li>if is within it's range to the Defender hex. In the case of a multi-hex attack, the artillery only needs to be able to reach one of the Defender hexes.</li>
+                                    <li>if is in a Defender hex with other non-artillery units. In this case it can only provide support to the Defender hex it is in.</li>
+                                    <li>Axis-Allied artillery provides support at only half strength, unless it is in the defender hex.</li>
+                                    <li>A maximum of two Axis-Allied artillery can provide support to each Defender hex. Up to two German artillery units can also provide
+                                        support to the same Defender hex as Axis-Allied artillery.
+                                    </li>
+                                    <li>Rocket Artillery and Axis Super-heavy (S-HA) artillery have an "A" next to their support strength. This means they can only be used for attacks, not for defense.</li>
+                                </ul>
+
+
+                            </div>
+
+
+
+
+
+
+
+
                         </li>
                         <li>Any air combat is performed, with any air units that remain, and are conducting a "support" mission, will have their support values added to their side.
                         </li>
@@ -126,7 +188,7 @@ const Combat = (props) => {
                     <span className="b">Attacking Is Voluntary</span>, however if you wish to attack, then things get a little "sticky". Any enemy unit that exerts a ZOC into a hex of an attacking unit MUST also be attacked.
                 </p>
                 <p>
-                    Attacks that are made without Attack Supply have these consequences<BsrLink page="39" rule="15.22" />:
+                    Attacks that are made without Attack Supply have these consequences:<BsrLink page="39" rule="15.22" />
                     <ul className="bare-ul">
                         <li>A +2 DRM is applied.</li>
                         <li>The attacker cannot allocate Artillery Support, although they still could if an ASP is used for the artillery (even though the ground attack is being made without ASP)<BsrLink page="39" rule="15.34" />.</li>
@@ -184,8 +246,10 @@ const Combat = (props) => {
                 </p>
                 <p>In the Reaction Movement phase the defender may move any motorized units that are within three hexes of a Declared Attack hex, up to half of their movement allowance.
                 </p>
-                <div className="gray-box">
-                    <p className="subsubheader">Reaction Movement Qualifications</p>
+
+
+                <div className="indented-box background-green">
+                    <div className="indented-box-title">Reaction Movement Qualifications:</div>
                     <ul>
                         <li>Only non-orange ma motorized units may move in the Reaction Movement phase.</li>
                         <li>Must be within 3 hexes of the Declared Attack hex.</li>
@@ -463,14 +527,8 @@ const Combat = (props) => {
 
 
 
-
-
-
-
-
-
-                <div className="gray-box">
-                    <p className="subsubheader">Effects of the No Retreat order</p>
+                <div className="indented-box-with-image-to-left">
+                    <div>Effects of the No Retreat order</div>
                     <div className="two-column-flex counter-left">
                         <img src={counter_no_retreat} alt="counter no retreat order" />
                         <div>
@@ -483,8 +541,10 @@ const Combat = (props) => {
                     </div>
                 </div>
 
-                <div className="gray-box">
-                    <p className="subsubheader">Effects of the Additional Retreat order</p>
+                <div className="spacer1rem" />
+
+                <div className="indented-box-with-image-to-left">
+                    <div>Effects of the Additional Retreat order</div>
                     <div className="two-column-flex counter-left">
                         <img src={counter_additional_retreat} alt="counter additional retreat order" />
                         <div>
@@ -497,17 +557,13 @@ const Combat = (props) => {
                         </div>
                     </div>
                 </div>
+                <div className="spacer1rem" />
+
+
+
 
                 <div className="spacer1rem" />
-                <p>
-                    <div className="commentary">
-                        The "No Retreat" order stops units from retreating,
-                        but can cost you more step losses. Unless you've got more than two steps in a defender hex, it may be reckless to
-                        place a "No Retreat" order on units. It may be tempting to cause a +1 DRM to the enemy, but you might be handing the
-                        enemy a great victory - unless the defender is doomed anyways. "Additional Retreat" orders are quite useful when you actually do want to retreat, and want to
-                        cut down on step losses.
-                    </div>
-                </p>
+
 
                 <div className="spacer2rem" />
                 <div className="subheader-image stalin">
@@ -532,6 +588,7 @@ const Combat = (props) => {
                     <div>Asterisk (<span className="bigger-bold-text">*</span>) Results</div>
                     <img src={wreck} alt="burning T-34" />
                 </div>
+                <div className="spacer1rem" />
                 <div className="pdiv">
                     The combat results table is peppered with results marked with a asterisk symbol <span className="asterisk">*</span>, called "Asterisk Result" (sometimes called an easier to pronounce "Star Result"). This symbol can have the following effects:
                     <ul class="ul-no-top">
@@ -541,18 +598,16 @@ const Combat = (props) => {
                     And, sometimes, both can come into effect.
                 </div>
 
-                <div className="gray-box additional-loss">
-                    <p className="subsubheader"><span className="green-bold">ADDITIONAL LOSS</span> due to Asterisk (<span className="bigger-bold-text">*</span>) Results are activated when any of these conditions apply:</p>
+                <div className="spacer1rem" />
 
-                    <div>
-                        <ul>
-                            <li>If the attack was made without Attack Supply.</li>
-                            <li>If the attack was a Soviet Mandated Attack.</li>
-                            <li>If the attack was against units protected by a non-destroyed Fortification (fortified line, or strongpoint).</li>
-                        </ul>
-                        <div className="pdiv">In the case of attacking across a Fortified Line, all attacking units must have attacked across a fortified line to have <span className="green-bold">ADDITIONAL LOSS</span> occur.</div>
-                    </div>
-
+                <div className="indented-box background-green">
+                    <div className="indented-box-title"><span className="green-bold">ADDITIONAL LOSS</span> due to Asterisk (<span className="bigger-bold-text">*</span>) if:</div>
+                    <ul>
+                        <li>If the attack was made without Attack Supply.</li>
+                        <li>If the attack was a Soviet Mandated Attack.</li>
+                        <li>If the attack was against units protected by a non-destroyed Fortification (fortified line, or strongpoint).</li>
+                    </ul>
+                    <div className="pdiv">In the case of attacking across a Fortified Line, all attacking units must have attacked across a fortified line to have <span className="green-bold">ADDITIONAL LOSS</span> occur.</div>
                 </div>
 
                 <div className="spacer1rem" />

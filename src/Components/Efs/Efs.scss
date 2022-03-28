@@ -174,22 +174,29 @@
       }
     }
 
-
     .indented-box {
       border: 1px solid black;
       display: inline-block;
       margin-left: 50px;
       &.background-green {
-        background-color: #dfd;
+        background-color: #e2ffe2;
+        text-shadow:0 0 rgba(0,255,0,0.9);
       }
       &.background-blue {
         background-color: #c8d8e6;
+        text-shadow:0 0 rgba(55,55,155,0.9);
       }
       &.background-red {
         background-color: #e8d8d6;
+        text-shadow:0 0 rgba(155,55,55,0.9);
       }
       &.background-beige {
         background-color: #efefe0;
+        text-shadow:0 0 rgba(110,110,55,0.9);
+      }
+      &.background-yellow {
+        background-color: #ffffd0;
+        text-shadow:0 0 rgba(127,127,0,0.9);
       }
       padding: 6px 10px;
       font-size: 20px;
@@ -203,8 +210,27 @@
       }
     }
 
+    .indented-box-with-image-to-left {
+      border: 1px solid black;
+      display: inline-block;
+      margin-left: 50px;
+      padding: 6px 10px;
+      font-size: 20px;
+      > div:first-child {
+        font-weight: bold;
+        margin-right: 5px;
+      }
+      img {
+        height: auto;
+      }
+      ul {
+        margin: 5px 5px 2px 40px;
+        padding: 0;
+      }
+    }
 
-  }
+  } // end .content
+
   /*
   <div className="gray-box">
   <p className="subsubheader">COLOR CODES</p>
