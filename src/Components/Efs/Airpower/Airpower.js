@@ -190,17 +190,17 @@ class Airpower extends Component {
                     <div className="generic-flex-space-around airpower">
                         <img src={il2_squadron} alt="il-2 squadron" />
                     </div>
-                    <div className="spacer1rem" />
-                    <p>
+                    <span className="spacer1rem" />
+                    <div>
                         Airpower is abstracted in the EFS system. There are no airfields. Airpower is allocated per map according to the scenario allotment. Each player gets "air units" that are differentiated by the predominant plane model in that group of planes the counter represents. They are also marked with the predominant type of plane they are, either Fighter (F), Fighter-Bomber (FB), or Bomber (B). For air units to actually go on the map to do something, they need to be in a "ready" state. There are four states an air unit can be in : "Destroyed", "Damaged", "Flown", and "Ready". Generally you try to get your air units up into the Ready box so that they can fly onto the map and do missions.
-                </p>
-                    <p>
+                </div>
+                    <div>
                         The missions your air units can participate in are Interdiction or Close Air Support (if they have an interdiction rating or a Close Air Support rating). Planes can also do combat against each other, although this isn't strictly termed a "mission", more like an "accident on the way to do a mission", or "guess who I ran into on my way to the mission". There are no Combat Air Patrol or Bombardment missions in standard EFS (although there are some special bombardment rules available for AGN that I don't cover here). The Air Combat Table is a simple ratio table. For example a German Bf109 with a combat rating of 3 going up against a Pe-2 with a rating of 2 will roll on the +1 column. If the Pe-2 can fire back, it will be on the -1 column.
-                </p>
-                    <p>
+                </div>
+                    <div>
                         Note that there are "advanced" air rules available. This page does not cover those, it only gives an overview of the standard EFS air rules.
-                </p>
-                    <div className="spacer1_5rem" />
+                </div>
+                    <span className="spacer1_5rem" />
                     <div id="unit_info" className="unit-info">
                         <div className="title">AIRCRAFT UNIT INFORMATION</div>
                         <img src={hs129B} alt="airunit counter info" />
@@ -211,43 +211,43 @@ class Airpower extends Component {
                         <div className="interdiction">INTERDICTION</div>
                     </div>
 
-                    <div className="spacer1_5rem" />
-                    <p>
+                    <span className="spacer1_5rem" />
+                    <div>
                         Air units do not have steps. They may get damaged, or get eliminated due to combat or flak. Since each air unit counter represents 40-80 planes each, it isn't practical to track single airplane losses. What is represented when an air unit is damaged or destroyed is really the attrition air units suffer through a series of missions. Replacements or reinforcements of air units do not come often for either side. They may come in on the setup chart during later turns in a scenario, or, for the Soviets, they may get an air replacement through a good roll on the Replacements table.
-                </p><p>
+                </div><div>
                         In EFS the Germans tend to dominate in air operations. They can pretty much do any mission they want, while the Soviets have to be careful. If the Soviet player is aggressive and eager to go "toe to toe" with German fighters every turn, the Soviet Airforce will be extinct by the middle of the scenario. But the Soviet should not be so timid as to never "go to air" for fear of losing air units. The correct path is somewhere in the middle. Often enough so the German player never gets too confident and sends bombers out without fighter cover, and to get the German player to always hold back aircraft to counter any Soviet combats. Note that the Soviet sometimes gets to replace lost air units through the Replacement Table, while the German doesn't, so a air unit loss isn't "as bad" to the Soviet as it is to the German. Once a German player loses, say, a valuable Ju-88 - thats it! Its gone for the rest of the game. Its customary for the German player to sink into his seat and mumble a German curse when this happens. The air combat table is a simple ratio table that favors of course the higher columns, but even at -3 the Soviet can get a good result.
-                </p>
+                </div>
 
-                    <div className="spacer1_5rem" />
+                    <span className="spacer1_5rem" />
                     <div className="subheader-normal">Air Missions</div>
-                    <p>
+                    <div>
                         Each air unit that is in the Ready box can do 1 mission in a turn. Units with an Interdiction Rating and Close Air Support (CAS) can attempt to perform those missions. A maximum of three air units may participate in a single CAS or Interdiction mission, and a only a single hex can be the target of one Interdiction mission or a CAS mission (per player) per phase. There can be "two" CAS missions to the same hex, provided its a German CAS Mission and a Soviet CAS Mission. There are no range considerations (except for some scenarios with special rules). Air units sent on a "Mission" may end up being diverted from the mission to do air combat. Typically a German player will send one or two bombers for CAS with a fighter or two to provide "cover" for the bombers in case enemy fighters show up. If no enemy fighters show up, then the fighter, if it has a CAS rating, can participate with the bombers in the CAS mission.
-                </p>
-                    <p>
+                </div>
+                    <div>
                         A <span className="blue-bold">Interdiction Mission</span> is an attempt by the German player to increase movement costs for the Soviet player in a hex and its surrounding 6 hexes, and to decrease the command points of Soviet Headquarters.
-                </p>
-                    <p>
+                </div>
+                    <div>
                         A <span className="blue-bold">CAS Mission</span> is an attempt to provide favorable die roll modifiers to a ground combat. Both sides may attempt CAS Missions to any hex that has a Declared Combat marker on it. Of course both players may decide to do CAS on the same hex (which happens often).
-                </p>
-                    <p>
+                </div>
+                    <div>
                         The Soviet player can oppose German Interdiction missions by sending fighters to the Interdiction Mission hex in hopes of causing air-to-air combat.
-                </p>
-                    <p>
+                </div>
+                    <div>
                         A player may do "CAS" with the only real purpose of provoking air-to-air combat. This can happen if, for example, the Soviet player sends two MiG-3 units (with no CAS ratings) on a CAS Mission solely to oppose the enemy's CAS Mission to the same hex. And since you're allowed up to three air units on a mission, you can send a mix of fighters and bombers - the bombers to do CAS and the fighters to provoke (or defend against) air-to-air combat.
-                </p>
-                    <p>
+                </div>
+                    <div>
                         The phasing player always places air units face down on mission hexes first. Then the non-phasing player can make a decision to send CAS missions or oppose Interdiction Missions. In the case of Interdiction Missions, the Soviet player can only send air units to the mission hex declared by the German player in an attempt to do air-to-air combat. In the case of CAS, the non-phasing player can send units to any hex with a Declared Combat marker on it (which may or may not have enemy planes doing CAS on it too). If you only want to attempt air-to-air combat to try to get the enemy to abort on CAS, then you could just send fighters to Declared Combat hexes with an enemy CAS Mission on it - basically a CAS Mission with no bombs.
-                </p>
+                </div>
 
-                    <div className="spacer2rem" />
+                    <span className="spacer2rem" />
                     <div className="subheader-image stalin">
                         <div>Air Combat</div>
                         <img src={dogfight} alt="dogfight" />
                     </div>
-                    <div className="spacer1rem" />
-                    <p>
+                    <span className="spacer1rem" />
+                    <div>
                         When players send air units to the same hex, air combat may occur. The phasing player rolls on the Air Initiative Table to find out if there is air-to-air combat, and if so then which side gets the "initiative". When the players are ready, both sides turn over the air units from their hidden sides to their info sides. Then the players must decide which air units are "Mission" units, and which will conduct air-to-air combat - the so-called "firing" units. Bomber "B" air units MUST be "Mission" units. Fighter "F" and Fighter-Bomber "FB" air units can be freely assigned as "Mission" units or "Firing" units. <span className="b">The phasing player always makes the decision first</span>. Units that become "firing" units basically abort on whatever mission they may have been planning, and become capable of firing upon enemy planes. Air units that remain Mission units cannot fire back during air-to-air combat, but may be fired upon by enemy firing units.
-                </p>
+                </div>
 
                     <div id="air_combat_determination_container" className="air-combat-determination-container">
                         <div id="air_combat_determination" className="air-combat-determination">
@@ -309,15 +309,15 @@ class Airpower extends Component {
                     <div className="pdiv">
                         <div className="air-combat-example">
                             <div>
-                                <p>
+                                <div>
                                     It is the Soviet turn, and the Soviet player has flown a CAS mission to a Declared Combat hex.
-                            </p><p>
+                            </div><div>
                                     The Soviet player has sent two bombers and a fighter on this mission.
-                            </p><p>
+                            </div><div>
                                     The German player decides to send a CAS mission also to the same Declared Combat hex.
-                        </p><p>
+                        </div><div>
                                     The German player has sent two fighters.
-                            </p>
+                            </div>
                             </div>
                             <div>
                                 <img src={aircombat_ex1} alt="air combat example 1" />
@@ -329,16 +329,16 @@ class Airpower extends Component {
                     <div className="pdiv">
                         <div className="air-combat-example">
                             <div>
-                                <p>
+                                <div>
 
                                     The Soviet decides to make the I-153 a "firing" unit, and the two bombers have to be "mission" units. ("B" types always have to be declared "mission" units).
-                            </p><p>
+                            </div><div>
                                     The German decides to make both his units "firing" units.
-                            </p><p>
+                            </div><div>
                                     The Soviet player rolls on the Air Initiative Table.
-                        </p><p>
+                        </div><div>
                                     The German player has the initiative, so the German gets to assign who fights who. The Bf109 is assigned to attack the I-153 firing unit (firing units must be attacked before mission units). The Bf110 is assigned to attack the IL-2 bomber.
-                            </p>
+                            </div>
                             </div>
                             <div>
                                 <img src={aircombat_ex2} alt="air combat example 2" />
@@ -350,14 +350,14 @@ class Airpower extends Component {
                     <div className="pdiv">
                         <div className="air-combat-example">
                             <div>
-                                <p>
+                                <div>
 
                                     The first combat the German player decides to do is the one between the Bf109 and the I-153. The Bf109 has an Air Rating of 4. The I-153 has an Air Rating of 1. The German rolls on the +3 column of the Air Combat Table. The roll is a 4 - the I-153 is Destroyed. The I-153 gets to fire back (air combat is simultaneous). The Soviet player rolls on the -3 column. The I-153 gets lucky and rolls a 1 - the Bf109 is Aborted.
-                            </p><p>
+                            </div><div>
                                     Now the German player goes to the next combat. The Bf110 has an Air Rating of 2. The IL-2 has a Air Rating of 1. The German rolls on the +1 column. The roll is a 5 - the IL-2 is Aborted. The IL-2 cannot fire back as it is a "Mission" unit.
-                            </p><p>
+                            </div><div>
                                     The Bf109 goes back to the Axis Flown Box. The I-153 goes to the Soviet Destroyed Box. The IL-2 goes back to the Soviet Flown Box.
-                        </p>
+                        </div>
                             </div>
                             <div>
                                 <img src={aircombat_ex3} alt="air combat example 3" />
@@ -369,12 +369,12 @@ class Airpower extends Component {
                     <div className="pdiv">
                         <div className="air-combat-example">
                             <div>
-                                <p>
+                                <div>
 
                                     If the Air Initiative roll had only been Axis Initiative, then the Bf110 would also go back to the Axis Flown Box. However, the result was Axis Initiative, Axis Local Tactical Advantage. So the Bf110, since it did not get hit by any result on the Air Combat Table in the first round, can now continue on and attack another enemy air unit. So the Bf110 now attacks the SB-2. The SB-2 cannot fire back, regardless if it is a Mission or Firing unit.
-                            </p><p>
+                            </div><div>
                                     If after this attack the SB-2 survives the attack with no result, then it can continue on with its mission. The Bf110 goes back to the Axis Flown Box after this second round regardless of what the result is.
-                            </p>
+                            </div>
                             </div>
                             <div>
                                 <img src={aircombat_ex4} alt="air combat example 4" />
@@ -385,26 +385,26 @@ class Airpower extends Component {
 
 
 
-                    <div className="spacer3rem" />
+                    <span className="spacer3rem" />
                     <div className="subheader-image antiair">
                         <div>AA Fire</div>
                         <img src={sovietantiair} alt="Soviet anti-air" />
                     </div>
-                    <div className="spacer1rem" />
-                    <p>
+                    <span className="spacer1rem" />
+                    <div>
                         Surviving Mission Units have to survive AA Fire (sometimes called the inaccurate, but shorter, term "Flak") before they can accomplish their mission. AA Fire can occur if there are qualifying enemy ground units in either the hex the Mission Units are doing their mission on, or in any of the 6 surrounding hexes. Both Axis and Soviets can fire AA Fire in either player turn.
-                </p>
+                </div>
 
                     <div className="pdiv">
                         To qualify for AA Fire -
-                <div className="spacer0_5rem" />
+                <span className="spacer0_5rem" />
                         <div className="subheader-normal">
                             Axis:
                 </div>
                         <ul className="ul-no-top-bottom">
                             <li>Any Axis ground units, except cavalry units and non-AA units with a No Zoc band (a yellow band across the top of the counter).</li>
                         </ul>
-                        <div className="spacer0_5rem" />
+                        <span className="spacer0_5rem" />
                         <div className="subheader-normal no-top">
                             Soviet:
                 </div>
@@ -415,24 +415,24 @@ class Airpower extends Component {
                             <li>Naval units, except flotillas.</li>
                         </ul>
                     </div>
-                    <p>
+                    <div>
                         If a player qualifies for firing AA Fire, then the player gets ONE shot at each Mission Unit (regardless of the number of qualifying AA Fire units). Note the important drms on the AA Fire Table. Air Units that get a result, even if it is only an Abort, fail to do their mission.
-                </p>
+                </div>
 
 
 
-                    <div className="spacer3rem" />
+                    <span className="spacer3rem" />
                     <div className="subheader-image antiair">
                         <div>Interdiction</div>
                         <img src={interdiction} alt="Interdiction" />
                     </div>
-                    <div className="spacer1rem" />
-                    <p>
+                    <span className="spacer1rem" />
+                    <div>
                         A successful Interdiction Mission causes the target hex and the surrounding 6 hexes to become affected by Interdiction. Place an Interdiction Marker on the hex. Interdiction can be level 1 or level 2, depending on how many Interdiction hits came through on the mission. No more than 2 interdiction points can affect a hex. Interdiction does not cause step losses in EFS, but rather models the nuisance effects of interdiction. Interdiction forces the enemy to be more cautious in movement, and interferes with the ability of Soviet Headquarters to operate normally.
-                </p>
+                </div>
 
                     <div className="gray-box">
-                        <p className="subsubheader">Interdiction Effects</p>
+                       <div className="subsubheader">Interdiction Effects</div>
                         <ul>
                             <li>Each interdicted hex costs flotillas 4 movement points.</li>
                             <li>No Air Transport can begin or end in a interdiction hex.</li>
@@ -444,15 +444,15 @@ class Airpower extends Component {
                         </ul>
                     </div>
 
-                    <div className="spacer3rem" />
+                    <span className="spacer3rem" />
                     <div className="subheader-image antiair">
                         <div>Close Air Support (CAS)</div>
                         <img src={cas} alt="cas" />
                     </div>
-                    <div className="spacer1rem" />
-                    <p>
+                    <span className="spacer1rem" />
+                    <div>
                         Successful CAS missions contribute their total CAS rating to the combat drms. If both players have successful CAS missions on a combat, then figure the net CAS result. Note that while Soviets are restricted in how many artillery units can participate in a combat, there is no restriction on how many Soviet air units can contribute in a CAS mission, other than the maximum 3 air unit limit on a mission in a hex. Also remember that the maximum drms that can be applied to a combat are +3 or -3. CAS values are not affected by terrain or weather.
-                    </p>
+                    </div>
 
                     <div className="pdiv">
                         <div className="subheader">Axis Aircraft in EFS</div>

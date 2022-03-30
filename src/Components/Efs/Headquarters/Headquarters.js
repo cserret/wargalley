@@ -68,7 +68,7 @@ export default class Headquarters extends Component {
                         <img src={headquarters} alt="headquarters" />
                         <div>Headquarters of the Western Front, Autumn 1941. Left to right - Lieutenant General Vasily Sokolovsky, Chief of Staff Nikolay Bulganin, Army General Gerogy Zhukov.</div>
                     </div>
-                    <div className="spacer1rem" />
+                    <span className="spacer1rem" />
                     <div className="pdiv">
                         Only the Soviet player has Headquarters. The Soviet player is hindered by an inefficient Command structure, and the Headquarter rules simulate these difficulties. The Soviet HQ's "Command range" is 4 hexes. This range is traced without regard to terrain, weather, or Axis units. The Command Value of a headquarters is used, separately, for 3 things. It represents:
                     <ul className="ul-no-top">
@@ -91,25 +91,25 @@ export default class Headquarters extends Component {
                     </div>
 
 
-                    <div className="spacer2rem" />
+                    <span className="spacer2rem" />
                     <div className="subheader-normal">Unit Activation</div>
-                    <p>
+                    <div>
                         Operational Soviet Headquarters can "activate" non-motorized (including orange MA and green MA units) units to move in the Soviet Motorized Movement Phase. The units must be within Command range of the HQ's. The units that are activated can move up to their full movement allowance. They can engage in combat following the Motorized Movement Phase. To activate a unit, the HQ's must "pay" one of its Command points. One Command point per unit, regardless of size. Operational HQ's can activate one in-range Guards unit at no Command point cost.
-</p>
+</div>
                     <div className="subheader-normal">Orders</div>
-                    <p>
+                    <div>
                         Soviet HQ's can issue, at the cost of a Command point per Defender Hex, a No Retreat order or a Additional Retreat order, to any Defender Hexes within its Command range. Soviet HQ's can also issue orders to attacking Soviet units.
-</p>
+</div>
 
                     <div className="subheader-normal">Non-operational Headquarters (Non-op HQ's)</div>
-                    <p>
+                    <div>
                         When Soviet Headquarters enter the game as a reinforcement, they are in a non-op state. In some scenarios the Soviet player may start out with a non-op HQ's on the map. Non-op HQ's cause various problems. Any unit that is in range of a non-op headquarters "loses" contact with any in range operational HQ's. Non-Op headquarters can move normally.
-</p>
+</div>
 
 
 
                     <div className="gray-box">
-                        <p className="subsubheader">Non-op HQ's effects</p>
+                       <div className="subsubheader">Non-op HQ's effects</div>
                         <ul>
                             <li>Units within Command range of a non-op HQ's cannot be activated for movement in the Motorized phase.</li>
                             <li>Units within Command range of a non-op HQ's cannot do Reaction movement.</li>
@@ -123,15 +123,15 @@ export default class Headquarters extends Component {
                         </ul>
                     </div>
 
-                    <div className="spacer2rem" />
+                    <span className="spacer2rem" />
                     <div className="subheader-normal">Activating Headquarters</div>
-                    <p>
+                    <div>
                         Non-op HQ's can become operational HQ's by rolling their recovery value or less during the Game Turn Interphase. The Soviet player can also opt to "disband" a non-op HQ's during the Game Turn Interphase. A max of one non-op HQ's per Game Turn Interphase can be disbanded and taken off the map and put into the Cadre Box. This gives the Axis player +2 VPs. Non-op HQ's in the Cadre Box can stay there until they successfully roll their recovery value before being brought onto the map.
-                </p>
-                    <div className="spacer0_5rem" />
+                </div>
+                    <span className="spacer0_5rem" />
                     <div className="subheader-normal">Other Headquarters rules</div>
                     <div className="pdiv">
-                        <ul class="ul-no-top">
+                        <ul className="ul-no-top">
                             <li>Lost HQ's units cost VPs. See the victory point schedule for the scenario.</li>
                             <li>HQ's that are forced to retreat through a vacant hex in Axis ZOC gets flipped to its non-op side.</li>
                             <li>HQ's get their Command value reduced by any Zone of Interdiction value it is in.</li>
@@ -142,11 +142,11 @@ export default class Headquarters extends Component {
                     </div>
 
                     <div className="subheader-normal">Comments on Headquarters</div>
-                    <p>
+                    <div>
                         New players to EFS often fail to recognize how important Soviet HQ's units are. As the Soviet player, you should always pay the upmost attention to keeping them safe, and evacuating them by rail or air if they become endangered of being cut off. The proper place for HQ's is a few hexes behind the "front line". You should always try to keep them on a road or rail in case they need to vamoose out real quick. You should also, at least with the better HQ's, keep a AA unit with them to discourage Axis air interdiction. 
-                        </p><p>
+                        </div><div>
                         You should strive to keep as much of your front line under Command range of a HQ's, although it's often not possible to cover it all. Probably the most important function the Soviet HQ's provides is the ability to move motorized units in the Reaction phase, so you usually want some motorized units near the Soviet HQ's so they can be used in this way. Soviet HQ's enable more than one Soviet artillery to participate in a combat if they are stacked with the HQ's, which may be useful when trying to defend a crucial area, even though this forces you to place them very near the front line (hint - this is a good job for those poor 1 Command point HQ's). Try to minimize the possibility of your HQ's being overrun by stacking them with a combat unit, or keeping a "defense in depth", or at least some road-bumps, in front of them. HQ's are "bait" for German panzer divisions, and a good German player will always try to hit HQ's whenever possible. Keep non-op HQ's AWAY from your front line, they are dangerous. Non-op HQ's can move normally so they should never be on the front line screwing things up.
-                     </p>
+                     </div>
 
 
                 </div>

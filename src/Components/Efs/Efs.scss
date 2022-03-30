@@ -1,5 +1,6 @@
 .efs {
   font-family: arial, helvetica, sans-serif;
+  font-size: 20px;
   .b {
     font-weight: bold;
   }
@@ -98,6 +99,7 @@
     }
     p {
       font-size: 1.3rem;
+      margin: 12px 0 15px 0;
     }
     .pdiv {
       font-size: 1.3rem;
@@ -233,7 +235,7 @@
 
   /*
   <div className="gray-box">
-  <p className="subsubheader">COLOR CODES</p>
+ <div className="subsubheader">COLOR CODES</div>
   <div className="two-column-flex">
       <div className="color-code-image"><img src={c1} alt="attack factor is red" /></div>
       <div className="color-code-text">
@@ -252,6 +254,7 @@
     display: flex;
     justify-content: flex-start;
     position: relative;
+    margin: 12px 0;
     div {
       align-self: flex-end;
       font-size: 1.4rem;
@@ -327,21 +330,27 @@
     }
   }
   .spacer0_5rem {
+    display: block;
     height: 0.5rem;
   }
   .spacer1rem {
+    display: block;
     height: 1rem;
   }
   .spacer1_5rem {
+    display: block;
     height: 1.5rem;
   }
   .spacer2rem {
+    display: block;
     height: 2rem;
   }
   .spacer2_5rem {
+    display: block;
     height: 2.5rem;
   }
   .spacer3rem {
+    display: block;
     height: 3rem;
   }
   section {

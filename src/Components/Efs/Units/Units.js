@@ -68,11 +68,11 @@ const Units = (props) => {
                 </div>
             </div>
 
-            <p>
+            <div>
                 <span>
                     Counters representing ground units have a variety of information packed on them. The graphic above should be self explanatory. Many of the counters come with their setup hexes printed on them and/or icons that designate in what scenario they appear in. Most ground combat units have separate attack and defense strengths. Some units are better on the attack than defense, and some are stronger in defense than attack (or have no attack strength).
                 </span>
-            </p>
+            </div>
 
             <div>
                 <div className="clipart">
@@ -80,7 +80,7 @@ const Units = (props) => {
                 </div>
             </div>
 
-            <p>
+            <div>
                 <span>
                     There are various types of artillery in EFS. The more common artillery types move like regular combat units do. They
                     can move along roads, trails, open terrain, or be transported by rail. Ranges and support strengths of the artillery units
@@ -90,7 +90,7 @@ const Units = (props) => {
                     cannot support, and must wait to "flip" to their "firing" side to contribute to combats. Soviet Navy ships can only support
                     combats that are near the coast.
                 </span>
-            </p>
+            </div>
 
             <div>
                 <div className="clipart">
@@ -98,11 +98,11 @@ const Units = (props) => {
                 </div>
             </div>
 
-            <p>
+            <div>
                 <span>
                     Soviet Headquarters can be either "operational" or "non-operational". A Soviet Headquarters that is non-operation causes a disruption in command control in the area they are in. To become operational, they must make their activation die roll, which has to be equal or less than the "recovery value". The command value of a headquarters indicates the level of command control it can exert. A low value means it is a weak headquarters (0 or 1), while higher command values (2-3) indicates a well run headquarters. Command values give a headquarters ability to activate non-motorized units to allow them to move in the Soviet motorized phases, the ability to give "no retreat" or "retreat" orders, and the ability to order reserves into a defensive battle.
                 </span>
-            </p>
+            </div>
 
 
             <div>
@@ -111,7 +111,7 @@ const Units = (props) => {
                 </div>
             </div>
 
-            <p>
+            <div>
                 <span>
                     There are two types of aircraft in EFS, "Bombers" and "Fighters". Bombers can do close air support and/or interdiction.
                     Some fighters can also do close air support and/or interdiction, although their primary role is as a fighter. Air Combat
@@ -121,12 +121,12 @@ const Units = (props) => {
                     <br /><br /> Color is extensively used on the counters to express a variety of information. The following graphic provides a
                     legend to the color codes.
                 </span>
-            </p>
+            </div>
 
             <div>
 
                 <div className="gray-box">
-                    <p className="subsubheader2">COLOR CODES</p>
+                   <div className="subsubheader2">COLOR CODES</div>
 
                     <div className="two-column-flex">
                         <div className="color-code-image"><img src={c1} alt="attack factor is red" /></div>
@@ -247,15 +247,15 @@ const Units = (props) => {
 
                 </div>
 
-                <div className="spacer2rem" />
+                <span className="spacer2rem" />
 
-                <p>
+                <div>
                     <span>
                         Unit size is shown by small designations on the top of the unit type symbol. There was of course alot of variation in what a "division" or "regiment" meant, depending on nationality and time. But generally a corps could have anywhere from 2 to 5 divisions. A division would have 3 regiments/brigades of its main type, plus several smaller battalions and companies of supporting troops. A regiment or brigade would have 2-5 battalions. The term regiment is often considered the same thing as a brigade, but brigades were usually designed to be more of a standalone fighting unit and not necessarily part of a division. Soviet divisions were smaller than German divisions.
                     </span>
-                </p>
+                </div>
 
-                <div className="spacer1rem" />
+                <span className="spacer1rem" />
 
                 <table className="unit-size"><tbody>
                     <tr>
@@ -294,12 +294,12 @@ const Units = (props) => {
 
 
 
-                <div className="spacer3rem" />
-                <p>
+                <span className="spacer3rem" />
+                <div>
                     <span>
                         There's a large variety of unit types in EFS. Many have specific capabilities and restrictions described in the rules.
                     </span>
-                </p>
+                </div>
 
                 <section>
                     <div className="subheader1_4">MOTORIZED UNITS</div>

@@ -28,13 +28,13 @@ const Overview = (props) => {
                 <div></div>
             </div>
 
-            <p>
+            <div>
                 <span>
                     The East Front Series game system simulates warfare on the Eastern Front, 1941. Units represented as counters are divisions, brigades, regiments, companies, batteries, and groups of planes. The map scale is 5 miles to the hex. A turn represents 2 days. The sequence of play is assymetrical, meaning the Axis order of phases during a turn is different than the Soviet order of phases. Specifically the Axis player gets to move all its units then do combat, the normal "wargame" order of things. But for the Soviets, they move their motorized units, with a very limited ability to move a few non-motorized units with their motorized units, before doing combat. This causes the Soviet abilities to wage war to be handicapped, and neatly inserts the command control problems the Soviets experienced into the game, without the need for artificial "idiot rules". The Soviets in 1941 had so much difficulty in coordinating their armor with their infantry in attacks that often the armor went into the attack without infantry support, and often Soviet units involved in a desperate defence would get no reserves sent to them, even when ample troops were nearby. The rigid Soviet command structure meant that directives from above were to be obeyed, despite the realities on the ground. The Germans, of course, were indoctrinated through their military training to show initiative, and showed great flexibility in battle, with excellent coordination between the various elements of their armed forces.
                 </span>
-            </p>
+            </div>
 
-            <div className="spacer1rem" />
+            <span className="spacer1rem" />
             <div>
                 <div className="title_img_comment_box">
                     <div className="title">GERMAN PANZER DIVISION</div>
@@ -48,12 +48,12 @@ const Overview = (props) => {
                 </div>
             </div>
 
-            <div className="spacer1rem" />
-            <p>
+            <span className="spacer1rem" />
+            <div>
                 <span>
                     In this game system, the panzer division is king. Often a panzer division gets the dual combat benefits of "divisional integrity" and "combined arms", which makes them very combat effective. Add into the mix engineers and air support, and panzer divisions can pretty much chew into any defense the Soviets can put up. But the main problem for the Axis player is that there are not enough panzer divisions, and with the lack of time the Axis has to accomplish their objectives, combined with the problems of getting enough Attack Supply to the front, the Axis player is often forced to put his precious panzer divisions into dangerous situations. How well the Axis player balances the need for victory points with risk to his panzer divisions is what gives this game system its excitement level.
                 </span>
-            </p>
+            </div>
 
             <div>
                 <div className="comment-boxes">
@@ -115,13 +115,13 @@ const Overview = (props) => {
                 </div>
             </div>
 
-            <p>
+            <div>
                 <span>
                     All around, the German military units are superior to the Soviet units. The German infantry divisions are reliable and strong, with many steps. The German motorized divisions complement the limited German panzer divisions and can often take the "hits" in battle, protecting the strength of the panzer divisions. German aircraft are superior to the Soviet aircraft, and usually can force the Soviet bombers to abort their attempts at ground combat support. German allies have generally weaker units, on par with their Soviet counterparts.
                 </span>
-            </p>
+            </div>
 
-            <div className="spacer2rem" />
+            <span className="spacer2rem" />
 
             <div>
                 <div className="title_img_comment_box">
@@ -133,8 +133,8 @@ const Overview = (props) => {
                     </div>
                 </div>
             </div>
-            <div className="spacer1rem" />
-            <p>
+            <span className="spacer1rem" />
+            <div>
                 <span>
                     Only the Soviets have "headquarter units", and these are required to get non-motorized units to "activate" during the
                     Soviet motorized phase, they can issue "orders", and have a limited ability to move reserves into battles. These headquarters
@@ -143,7 +143,7 @@ const Overview = (props) => {
                     that all Axis units are always considered to be in "command control", and therefore the Soviets do not have the capability
                     to attack the Axis command infrastructure in this game system.
                 </span>
-            </p>
+            </div>
 
             <div>
                 <div className="comment-boxes">
@@ -172,7 +172,7 @@ const Overview = (props) => {
                 </div>
             </div>
 
-            <p>
+            <div>
                 <span>
                     The airpower system in EFS is abstracted. The priority of the simulation is on ground combat. There are no airfields,
                     aircraft availability is determined by the scenario allotment. Generally, aircraft that are in the "ready box" can be used
@@ -181,7 +181,7 @@ const Overview = (props) => {
                     Soviet aircraft unit). Missions that aircraft can perform are air-to-air combat, ground support and interdiction. Each aircraft
                     counter represents fourty to eighty planes, or a few squadrons each.
                 </span>
-            </p>
+            </div>
 
             <div>
                 <div className="comment-boxes">
@@ -209,7 +209,7 @@ const Overview = (props) => {
                 </div>
             </div>
 
-            <p>
+            <div>
                 <span>
                     Artillery in EFS is very important. It gives added strength to attacks, and can stiffen the defense. The Axis is more
                     adept in their coordination of artillery in combat, and can throw in support from up to four in range artillery to an attack
@@ -219,7 +219,7 @@ const Overview = (props) => {
                     on their own.
 
                 </span>
-            </p>
+            </div>
 
 
 
@@ -255,19 +255,19 @@ const Overview = (props) => {
                 </div>
             </div>
 
-            <p>
+            <div>
                 <span>
                     There are two types of supply in EFS. General supply is done by tracing to a Lines of Communication route (LOC). General supply denotes things such as food and fuel. Units that are out of General Supply suffer from reduced movement and other penalties. Attack Supply is a different kind of supply. It is used during combat. Attack Supply is represented by supply counters on the map. Attack Supply is needed to allow combat capable units to attack at their optimum performance level (there is no Defensive Combat Supply in this system). One Attack Supply point is typically used to "supply" a combat in the game. To attack without Attack Supply usually means the attacker is taking risks. The Axis player will find that he will often have to attack without Attack Supply, and this will be the major reason for Axis combat losses in the game.
 
                 </span>
-            </p>
+            </div>
 
-            <div className="spacer2rem" />
+            <span className="spacer2rem" />
             <div className="clipart">
                 <img src={map_sample} alt="map sample" />
             </div>
 
-            <p>
+            <div>
                 <span>
                     There are several types of terrain in EFS. Terrain is important for determining movement costs and for combat effects.
                     EFS has perhaps one of the most complex terrain effects of all time. Plus the costs and restrictions change for different
@@ -275,7 +275,7 @@ const Overview = (props) => {
                     effects chart will be consulted constantly, even by veteran EFS players. The sophistication of the terrain effects significantly
                     improves the realism of the game system, at some cost in complexity.
                 </span>
-            </p>
+            </div>
 
             <ScrollToTopOnMount />
 

@@ -11,13 +11,13 @@ const EfsHome = (props) => {
 
 
             <div className="info">
-                <p>
+                <div>
 
 
-                </p>
+                </div>
                 <div className="new-rules-notice">
                         <div className="first-para">
-                        Congratulations to everyone who have<br /> 
+                        Congratulations to everyone who has<br /> 
                         received their copy (or will soon) of the new
                         </div>
                         <a className="product-link" href="https://www.gmtgames.com/p-594-barbarossa-army-group-center-1941-2nd-edition.aspx" target="_blank" rel="noopener noreferrer">
@@ -27,21 +27,21 @@ const EfsHome = (props) => {
                             <div>SECOND EDITION</div>
                         </div>
                         </a>
-                        <p>
+                        <div>
                             This site is being updated to reflect<br />
                             the newest version of the rules -
-                        </p>
+                        </div>
                         <div className="bsr-link">
                             <a href="https://gmtwebsiteassets.s3.us-west-2.amazonaws.com/bagc/Barb-AGC_StandardRules_Final_Lo-Res.pdf"
                                 target="_blank" rel="noopener noreferrer" className="new-rules">Barbarossa Standard Rules 2.0</a>
                         </div>
-                        <p>
+                        <div>
                             This site is currently being updated, but it will take some time to get it 100%.<br/>
                             Please don't think that everything here applies to your new game, you will<br/>
                             end up getting confused. The new rules are what you need to be reading.<br/>
                             This site is not connected to or coordinated with GMT Games.<br/>
                             The parts that I have updated have the "subscript rules link" that looks like:<BsrLink page="32" rule="13.4" />
-                        </p>
+                        </div>
                     </div>
             </div>
             <img src={gamesGroup} alt="games group" />
@@ -108,9 +108,9 @@ export default EfsHome;
                     the Soviets suffered terribly against the well oiled Axis armies. The GMT Barbarrossa games simulate
                     these military operations in 1941 on the Eastern Front.
                     </span>
-                </p>
+                </div>
 
-                <p>
+                <div>
                     <span>
                     Vance von Borries created <span className="tm">Typhoon!</span> as the first game for his new game system, titled the "<span className="b">EAST FRONT SERIES</span>" (EFS), in 1995. It was an instant
                     hit, and is out of print and a very desired collectable game, demanding high prices whenever offered. Vance followed
@@ -118,8 +118,8 @@ export default EfsHome;
                     east: <span className="tm">Army Group South</span> (1996), <span className="tm">Army Group Center</span> (1998), and <span className="tm">Army Group North</span> (2000).
                     Then came  <span className="tm">Barbarossa: Kiev to Rostov, 1941</span> (2008), and <span className="tm">Barbarossa: Crimea, 1941-42</span> (2010). They are all out of print as of now (2019).
                     </span>
-                </p>
-                <p>
+                </div>
+                <div>
                     <span>
                     In this discussion I will primarily keep to the newer games, although most of it should apply to Typhoon! as well. The newer revisions of the system can be
                     applied to Typhoon!, although you'll have to come up with some updated counters and use some of the charts and rules from the later Barbarossa games (<a href="https://www.gmtgames.com/bags/gmtefret.htm">link</a>). Kiev to Rostov and Crimea have some updates and minor changes to the rules.
