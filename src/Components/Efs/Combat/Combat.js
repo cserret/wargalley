@@ -36,30 +36,317 @@ const Combat = (props) => {
     useEffect(() => {
         // Your code here
         console.log('mounted')
-        let _paper = Snap('#exampleStickyAttack');
-        _paper.attr({ viewBox: "0, 0, 430, 401" });
-        _paper.rect(14, 340, 400, 41).attr({fill: "#cceeff", stroke: "none", "opacity": 0.9});
-        let text1 = _paper.text(215, 360, "Attacking can be sticky.").attr(
-            { "textAnchor": "middle", 
-            "dominant-baseline": "central", 
-            "fontSize": "25", 
-            "fontWeight": "normal", 
-            "fontFamily": "sans-serif", 
-            stroke: "none", 
-            fill: "black" })
+        let paper = Snap('#exampleStickyAttack');
+
+        paper.attr({ viewBox: "0, 0, 430, 401" });
+
+        let textBackground = paper.rect(7, 320, 420, 75).attr({ fill: "#cceeff", stroke: "none", "opacity": 0.9 });
+
+        // let star_d = "M 0 -46.7 L 12.2 -11.9 50.3 -11.9 20.7 11 31.5 46.8 0 25.8 -31.4 46.8 -20.7 11 -50.3 -11.9 -12.2 -11.9 z"
+        // let redStar = paper.path(star_d).attr({ 
+        //     stroke: "black", 
+        //     strokeWidth: 3, 
+        //     fill: "red", 
+        //     'stroke-linejoin': "miter"});
+
+        // applyTranslation(redStar, 100, 100) 
+        // applyRotation(redStar, 30)
+
+        let arrow_d = "M 0 -20, 24 4, 10 4, 10 30, -10 30, -10 4, -24 4     z"
+
+        let arrowShadow = paper.path(arrow_d).attr({ 
+            stroke: "black", 
+            strokeWidth: 3, 
+            strokeOpacity: 0.2,
+            fill: "black", 
+            opacity: 0.5,
+            'stroke-linejoin': "miter"});
+            applyTranslation(arrowShadow, 155, 226)
+            applyRotation(arrowShadow, 310) 
 
 
-            setTimeout(function() {
-                animate1()
-              }, 3000);
+        let arrow = paper.path(arrow_d).attr({ 
+            stroke: "black", 
+            strokeWidth: 1, 
+            fill: "red", 
+            'stroke-linejoin': "miter"});
+            applyTranslation(arrow, 152, 223)
+            applyRotation(arrow, 310) 
 
-              const animate1 = () => {
-                text1.animate({
-                    opacity: 0
-                  }, 1000);
-              }
+
+        let text1 = paper.text(215, 358, "Attacking is voluntary...").attr(
+            {
+                "textAnchor": "middle",
+                "dominant-baseline": "central",
+                "fontSize": "25",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                stroke: "none",
+                fill: "black"
+            })
+        let g0 = paper.group()
+        g0.attr({ opacity: 0 });
+        g0.append(text1);
+
+        let text2 = paper.text(215, 358, "but can be sticky.").attr(
+            {
+                "textAnchor": "middle",
+                "dominant-baseline": "central",
+                "fontSize": "25",
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                stroke: "none",
+                fill: "black"
+            })
+
+        let g1 = paper.group()
+        g1.append(text2);
+        g1.attr({ opacity: 0 });
+
+
+        var textIfThisPanzer = multitext(paper, 33, 342, "If this panzer division wants to attack...", 395,
+            {
+                "dominant-baseline": "central",
+                "fontSize": 25,
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                stroke: "none",
+                fill: "black",
+            });
+        var circlePanzerDivision = paper.circle(204, 261, 60).attr({stroke: "red", strokeWidth: 5, fill: "#9999aa", fillOpacity: 0.3})    
+        let g2 = paper.group()
+        g2.append(textIfThisPanzer);
+        g2.append(circlePanzerDivision)
+        g2.attr({ opacity: 0 });
+
+
+        var textIfThisPanzer2 = multitext(paper, 33, 342, "If this panzer division wants to attack this Soviet division", 395,
+            {
+                "dominant-baseline": "central",
+                "fontSize": 25,
+                "fontWeight": "normal",
+                "fontFamily": "sans-serif",
+                stroke: "none",
+                fill: "black",
+            });
+        var circleSovietDivision = paper.circle(99, 202, 60).attr({stroke: "orange", strokeWidth: 5, fill: "orange", fillOpacity: 0.3})    
+        let g3 = paper.group()
+        g3.append(textIfThisPanzer2);
+        g3.append(circleSovietDivision)
+        g3.attr({ opacity: 0 });
+
+
+        var textThenTheAntiTank = multitext(paper, 33, 342, "Then the anti-tank unit will also need to be attacked,", 395,
+        {
+            "dominant-baseline": "central",
+            "fontSize": 25,
+            "fontWeight": "normal",
+            "fontFamily": "sans-serif",
+            stroke: "none",
+            fill: "black",
+        });
+    var circleSovietAntiTank = paper.circle(204, 141, 60).attr({stroke: "orange", strokeWidth: 5, fill: "orange", fillOpacity: 0.3})    
+    let g4 = paper.group()
+    g4.append(textThenTheAntiTank);
+    g4.append(circleSovietAntiTank)
+    g4.attr({ opacity: 0 });
+
+
+
+        let groupArray = []
+        groupArray.push({group: g0, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 3000})
+        groupArray.push({group: g1, fadeInDuration: 100, fadeOutDuration: 100,  delay: 300, duration: 3000})
+        groupArray.push({group: g2, fadeInDuration: 100, fadeOutDuration: 0,  delay: 600, duration: 4000})
+        groupArray.push({group: g3, fadeInDuration: 0, fadeOutDuration: 100,  delay: 0, duration: 4000})
+        groupArray.push({group: g4, fadeInDuration: 100, fadeOutDuration: 100,  delay: 300, duration: 4000})
+        
+
+        const activateGroup = index => {
+            let duration = groupArray[index].duration
+            groupArray.forEach((g, gIndex) => {
+                if (gIndex === index) {
+                    setTimeout(() => g.group.animate({ opacity: 1 }, g.fadeInDuration), g.delay)
+                }
+                else {
+                    g.group.animate({ opacity: 0 }, g.fadeOutDuration);
+                }
+            })
+            setTimeout( () => {
+               index++
+               if( index > groupArray.length-1 ) {
+                   index = 0
+               }
+               activateGroup(index)
+            }, duration)
+        }
+
+        activateGroup(0)
+
+
+        // setInterval(function () {
+
+        //     if (animationCount > groupArray.length - 1) {
+        //         animationCount = 0;
+        //     }
+        //     activateGroup(animationCount)
+        //     animationCount++;
+
+        // }, 3000);
 
     }, []);
+
+    const multitext = (paper, x, y, txt, max_width, attributes) => {
+        var t = paper.text(0, 0, txt).attr(attributes);
+        t.attr({...attributes, opacity: 0});
+        let totalWidth = t.getBBox().width
+        console.log('totalWidth: ', totalWidth)
+
+
+
+        // we can get svg to write a single space character, so we need to derive the width of a space character.
+        var letterA = paper.text(x, y, 'a').attr(attributes);
+        let letterAwidth = letterA.getBBox().width
+        var letterB = paper.text(x, y, 'b').attr(attributes);
+        let letterBwidth = letterB.getBBox().width
+        var letterA_B = paper.text(x, y, 'a b').attr(attributes);
+        let letterA_bwidth = letterA_B.getBBox().width
+        let spaceWidth = letterA_bwidth - (letterAwidth + letterBwidth)
+        console.log('spaceWidth: ', spaceWidth)
+        letterA.remove()
+        letterB.remove()
+        letterA_B.remove()
+
+        // break text into array
+        let wordsArray = txt.split(' ')
+        console.log('wordsArray: ', wordsArray)
+        let widthsPerWord = []
+        let firstWordOfLine = true
+        let currentLine = ''
+        let previousLine = ''
+        let currentWord = ''
+        let linesToPrint = []
+        let stopIt = 0
+        while (wordsArray.length > 0) {
+            console.log('VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV')
+            previousLine = currentLine
+
+            currentWord = wordsArray.shift()
+            console.log('currentWord: ', currentWord)
+
+            if (firstWordOfLine) {
+                currentLine += currentWord
+                firstWordOfLine = false
+            }
+            else {
+                currentLine += ' ' + currentWord
+            }
+
+
+
+
+            var temp = paper.text(0, 0, currentLine).attr(attributes);
+            let currentLineWidth = temp.getBBox().width
+            temp.remove();
+            console.log('currentLine: ', currentLine, ' width: ', currentLineWidth)
+            if (currentLineWidth > max_width) {
+                linesToPrint.push(previousLine)
+                wordsArray.unshift(currentWord)
+                firstWordOfLine = true
+                currentLine = ''
+                previousLine = ''
+            }
+
+            stopIt++
+            if (stopIt > 30) {
+                wordsArray = []
+            }
+            console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
+        }
+        if (currentLine !== '') {
+            linesToPrint.push(currentLine)
+        }
+        console.log('final, linesToPrint: ', linesToPrint)
+        let linesGroup = paper.group()
+        linesToPrint.forEach((line, index) => {
+            console.log('attempting to print line: ', line, ' at index ', index)
+            linesGroup.append(paper.text(x, y + (attributes.fontSize * 1.2 * index), line).attr(attributes));
+        })
+
+        return linesGroup;
+    };
+
+    const applyRotation = (g, rotation) => {
+        let measureG = g.getBBox()
+        let currentMatrix = g.transform().localMatrix;
+        let addMatrix = new Snap.Matrix()
+        addMatrix.rotate(rotation, measureG.cx, measureG.cy)
+        addMatrix.add(currentMatrix)
+        g.transform(addMatrix)
+    }
+
+    const applyTranslation = (g, xpos, ypos) => {
+        let currentMatrix = g.transform().localMatrix;
+        let addMatrix = new Snap.Matrix()
+        addMatrix.translate(xpos, ypos)
+        addMatrix.add(currentMatrix)
+        g.transform(addMatrix)
+    }
+
+    const multitextOld = (paper, x, y, txt, max_width, attributes) => {
+        var temp = paper.text(0, 0, txt).attr(attributes);
+        temp.attr(attributes);
+        var letter_width = temp.getBBox().width / txt.length;
+        temp.remove();
+
+        var words = txt.split(" ");
+        var width_so_far = 0, current_line = 0, lines = [''];
+        for (var i = 0; i < words.length; i++) {
+
+            var l = words[i].length;
+            if (width_so_far + (l * letter_width) > max_width) {
+                lines.push('');
+                current_line++;
+                width_so_far = 0;
+            }
+            width_so_far += l * letter_width;
+            lines[current_line] += words[i] + " ";
+        }
+
+        var t = paper.text(x, y, lines).attr(attributes);
+        t.selectAll("tspan:nth-child(n+2)").attr({
+            dy: "1.1em",
+            x: x
+        });
+        return t;
+    };
+
+
+
+
+
+
+    const textBlock = (paper, x, y, width, height, text, fontSize) => {
+        var block = paper.rect(x, y, width, height, 0, 0);
+
+        block.attr({
+            fill: "rgb(236, 240, 241)",
+            stroke: "#1f2c39",
+            strokeWidth: 3
+        });
+
+        var text = paper.text(x, y, text);
+        text.attr({
+            'font-size': fontSize
+        });
+
+        block.attr({
+            width: (text.node.clientWidth)
+        });
+        let tg = paper.group()
+        tg.append(block)
+        tg.append(text)
+        return tg
+    }
 
     return (
         <div className="content">
