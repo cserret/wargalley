@@ -52,156 +52,244 @@ const Combat = (props) => {
         // applyTranslation(redStar, 100, 100) 
         // applyRotation(redStar, 30)
 
-        let arrow_d = "M 0 -20, 24 4, 10 4, 10 30, -10 30, -10 4, -24 4     z"
-
-        let arrowShadow = paper.path(arrow_d).attr({ 
-            stroke: "black", 
-            strokeWidth: 3, 
-            strokeOpacity: 0.2,
-            fill: "black", 
-            opacity: 0.5,
-            'stroke-linejoin': "miter"});
-            applyTranslation(arrowShadow, 155, 226)
-            applyRotation(arrowShadow, 310) 
 
 
-        let arrow = paper.path(arrow_d).attr({ 
-            stroke: "black", 
-            strokeWidth: 1, 
-            fill: "red", 
-            'stroke-linejoin': "miter"});
-            applyTranslation(arrow, 152, 223)
-            applyRotation(arrow, 310) 
+        let standardTextCenteredAttr = {
+            "textAnchor": "middle",
+            "dominant-baseline": "central",
+            "fontSize": "25",
+            "fontWeight": "normal",
+            "fontFamily": "sans-serif",
+            stroke: "none",
+            fill: "black"
+        }
 
-
-        let text1 = paper.text(215, 358, "Attacking is voluntary...").attr(
-            {
-                "textAnchor": "middle",
-                "dominant-baseline": "central",
-                "fontSize": "25",
-                "fontWeight": "normal",
-                "fontFamily": "sans-serif",
-                stroke: "none",
-                fill: "black"
-            })
-        let g0 = paper.group()
-        g0.attr({ opacity: 0 });
-        g0.append(text1);
-
-        let text2 = paper.text(215, 358, "but can be sticky.").attr(
-            {
-                "textAnchor": "middle",
-                "dominant-baseline": "central",
-                "fontSize": "25",
-                "fontWeight": "normal",
-                "fontFamily": "sans-serif",
-                stroke: "none",
-                fill: "black"
-            })
-
-        let g1 = paper.group()
-        g1.append(text2);
-        g1.attr({ opacity: 0 });
-
-
-        var textIfThisPanzer = multitext(paper, 33, 342, "If this panzer division wants to attack...", 395,
-            {
-                "dominant-baseline": "central",
-                "fontSize": 25,
-                "fontWeight": "normal",
-                "fontFamily": "sans-serif",
-                stroke: "none",
-                fill: "black",
-            });
-        var circlePanzerDivision = paper.circle(204, 261, 60).attr({stroke: "red", strokeWidth: 5, fill: "#9999aa", fillOpacity: 0.3})    
-        let g2 = paper.group()
-        g2.append(textIfThisPanzer);
-        g2.append(circlePanzerDivision)
-        g2.attr({ opacity: 0 });
-
-
-        var textIfThisPanzer2 = multitext(paper, 33, 342, "If this panzer division wants to attack this Soviet division", 395,
-            {
-                "dominant-baseline": "central",
-                "fontSize": 25,
-                "fontWeight": "normal",
-                "fontFamily": "sans-serif",
-                stroke: "none",
-                fill: "black",
-            });
-        var circleSovietDivision = paper.circle(99, 202, 60).attr({stroke: "orange", strokeWidth: 5, fill: "orange", fillOpacity: 0.3})    
-        let g3 = paper.group()
-        g3.append(textIfThisPanzer2);
-        g3.append(circleSovietDivision)
-        g3.attr({ opacity: 0 });
-
-
-        var textThenTheAntiTank = multitext(paper, 33, 342, "Then the anti-tank unit will also need to be attacked,", 395,
-        {
+        let standardTextLeftAlignedAttr = {
             "dominant-baseline": "central",
             "fontSize": 25,
             "fontWeight": "normal",
             "fontFamily": "sans-serif",
             stroke: "none",
             fill: "black",
+        }
+
+
+        let text1 = paper.text(215, 358, "Attacking is voluntary...").attr(standardTextCenteredAttr)
+        let g0 = paper.group()
+        g0.attr({ opacity: 0 });
+        g0.append(text1);
+
+        let text2 = paper.text(215, 358, "but can be sticky.").attr(standardTextCenteredAttr)
+
+        let g1 = paper.group()
+        g1.append(text2);
+        g1.attr({ opacity: 0 });
+
+
+        var textIfThisPanzer = multitext(paper, 33, 342, "If this panzer division wants to attack...", 395, standardTextLeftAlignedAttr);
+        var circlePanzerDivision = paper.circle(204, 261, 60).attr({ stroke: "red", strokeWidth: 5, fill: "#9999aa", fillOpacity: 0.3 })
+        let g2 = paper.group()
+        g2.append(textIfThisPanzer);
+        g2.append(circlePanzerDivision)
+        g2.attr({ opacity: 0 });
+
+
+        var textIfThisPanzer2 = multitext(paper, 33, 342, "If this panzer division wants to attack this Soviet division", 395, standardTextLeftAlignedAttr);
+        var circleSovietDivision = paper.circle(99, 202, 60).attr({ stroke: "orange", strokeWidth: 5, fill: "orange", fillOpacity: 0.3 })
+        let g3 = paper.group()
+        g3.append(textIfThisPanzer2);
+        g3.append(circleSovietDivision)
+        g3.attr({ opacity: 0 });
+
+
+        var textThenTheAntiTank = multitext(paper, 33, 342, "Then the anti-tank unit will also need to be attacked,", 395, standardTextLeftAlignedAttr);
+        var circleSovietAntiTank = paper.circle(204, 141, 60).attr({ stroke: "orange", strokeWidth: 5, fill: "orange", fillOpacity: 0.3 })
+        let g4 = paper.group()
+        g4.append(textThenTheAntiTank);
+        g4.append(circleSovietAntiTank)
+        g4.attr({ opacity: 0 });
+
+
+        var textBecauseTheAntiTank = multitext(paper, 33, 342, "because the anti-tank unit exerts its ZOC on the attackers hex.", 390, standardTextLeftAlignedAttr);
+        let g5 = paper.group()
+        g5.append(textBecauseTheAntiTank);
+        g5.attr({ opacity: 0 });
+
+
+        let ax, ay = 0
+        let hr = 69
+        let d = 'M '
+        for (let degrees = 0; degrees < 360; degrees += 60) {
+            ax = (Math.cos(degrees * (Math.PI / 180)) * hr)
+            ay = (Math.sin(degrees * (Math.PI / 180)) * hr)
+            d += roundFloat(ax, 2) + ' ' + roundFloat(ay, 2) + (d.includes('L') ? ' ' : ' L ')
+        }
+        d += 'z'
+        console.log('d: ', d)
+        let hexShape = paper.path(d).attr({
+            stroke: "red",
+            strokeWidth: 2,
+            fill: "red",
+            fillOpacity: 0.3,
+            'stroke-linejoin': "miter"
         });
-    var circleSovietAntiTank = paper.circle(204, 141, 60).attr({stroke: "orange", strokeWidth: 5, fill: "orange", fillOpacity: 0.3})    
-    let g4 = paper.group()
-    g4.append(textThenTheAntiTank);
-    g4.append(circleSovietAntiTank)
-    g4.attr({ opacity: 0 });
+
+        let zocTextB = paper.text(2, 2, "ZOC").attr({
+            "textAnchor": "middle",
+            "dominant-baseline": "central",
+            "fontSize": 35,
+            "fontWeight": "bold",
+            "fontFamily": "serif",
+            stroke: "none",
+            fill: "black"
+        })
+
+        let zocText = paper.text(0, 0, "ZOC").attr({
+            "textAnchor": "middle",
+            "dominant-baseline": "central",
+            "fontSize": 35,
+            "fontWeight": "bold",
+            "fontFamily": "serif",
+            stroke: "none",
+            fill: "white"
+        })
+        let zocGroup = paper.group()
+        zocGroup.append(hexShape)
+        zocGroup.append(zocTextB)
+        zocGroup.append(zocText)
+
+        let zocGroup1 = zocGroup.clone(true);
+        let zocGroup2 = zocGroup.clone(true);
+        let zocGroup3 = zocGroup.clone(true);
+        let zocGroup4 = zocGroup.clone(true);
+        let zocGroup5 = zocGroup.clone(true);
+        let zocGroup6 = zocGroup.clone(true);
+        // applyTranslation(hexShape, 292,100)
+        applyTranslation(zocGroup, 207, 143)
+        applyTranslation(zocGroup1, 103, 83)
+        applyTranslation(zocGroup2, 207, 23)
+        applyTranslation(zocGroup3, 311, 83)
+        applyTranslation(zocGroup4, 311, 203)
+        applyTranslation(zocGroup5, 207, 263)
+        applyTranslation(zocGroup6, 102, 203)
+    
+          
+        zocGroup.attr({ opacity: 0 });
+        zocGroup1.attr({ opacity: 0 });
+        zocGroup2.attr({ opacity: 0 });
+        zocGroup3.attr({ opacity: 0 });
+        zocGroup4.attr({ opacity: 0 });
+        zocGroup5.attr({ opacity: 0 });
+        zocGroup6.attr({ opacity: 0 });
+        let groupArray3 = []
+        groupArray3.push({ group: zocGroup, fadeInDuration: 100, fadeOutDuration: 100, delay: 800, duration: 9000, terminate: false })
+        groupArray3.push({ group: zocGroup1, fadeInDuration: 100, fadeOutDuration: 100, delay: 800, duration: 9000, terminate: false })
+        groupArray3.push({ group: zocGroup2, fadeInDuration: 100, fadeOutDuration: 100, delay: 800, duration: 9000, terminate: false })
+        groupArray3.push({ group: zocGroup3, fadeInDuration: 100, fadeOutDuration: 100, delay: 800, duration: 9000, terminate: false })
+        groupArray3.push({ group: zocGroup4, fadeInDuration: 100, fadeOutDuration: 100, delay: 800, duration: 9000, terminate: false })
+        groupArray3.push({ group: zocGroup5, fadeInDuration: 100, fadeOutDuration: 100, delay: 800, duration: 9000, terminate: false })
+        groupArray3.push({ group: zocGroup6, fadeInDuration: 100, fadeOutDuration: 100, delay: 800, duration: 9000, terminate: true })
+
+
+
+
+        let groupArray2 = []
+        let arrow_d = "M 0 -20, 24 4, 10 4, 10 30, -10 30, -10 4, -24 4     z"
+
+        let arrowShadow = paper.path(arrow_d).attr({
+            stroke: "black",
+            strokeWidth: 3,
+            strokeOpacity: 0.2,
+            fill: "black",
+            opacity: 0.5,
+            'stroke-linejoin': "miter"
+        });
+        applyTranslation(arrowShadow, 155, 226)
+        applyRotation(arrowShadow, 310)
+
+
+        let arrow = paper.path(arrow_d).attr({
+            stroke: "black",
+            strokeWidth: 1,
+            fill: "red",
+            'stroke-linejoin': "miter",
+        });
+        applyTranslation(arrow, 152, 223)
+        applyRotation(arrow, 310)
+
+        let g2_0 = paper.group()
+        g2_0.append(arrowShadow)
+        g2_0.append(arrow)
+        g2_0.attr({ opacity: 0 });
+
+        groupArray2.push({ group: g2_0, fadeInDuration: 100, fadeOutDuration: 100, delay: 800, duration: 9000, terminate: true })
+
+
+
+
 
 
 
         let groupArray = []
-        groupArray.push({group: g0, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 3000})
-        groupArray.push({group: g1, fadeInDuration: 100, fadeOutDuration: 100,  delay: 300, duration: 3000})
-        groupArray.push({group: g2, fadeInDuration: 100, fadeOutDuration: 0,  delay: 600, duration: 4000})
-        groupArray.push({group: g3, fadeInDuration: 0, fadeOutDuration: 100,  delay: 0, duration: 4000})
-        groupArray.push({group: g4, fadeInDuration: 100, fadeOutDuration: 100,  delay: 300, duration: 4000})
-        
+        groupArray.push({ group: g0, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 3000, terminate: false })
+        groupArray.push({ group: g1, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 3000, terminate: false })
+        groupArray.push({ group: g2, fadeInDuration: 100, fadeOutDuration: 0, delay: 600, duration: 4000, terminate: false })
+        groupArray.push({ group: g3, fadeInDuration: 0, fadeOutDuration: 100, delay: 0, duration: 4000, terminate: false, spawnChildGroupArray: groupArray2 })
+        groupArray.push({ group: g4, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 4000, terminate: false })
+        groupArray.push({ group: g5, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 4000, terminate: false })
 
-        const activateGroup = index => {
+
+
+
+
+        const activateGroup = (groupArray, index) => {
             let duration = groupArray[index].duration
             groupArray.forEach((g, gIndex) => {
                 if (gIndex === index) {
                     setTimeout(() => g.group.animate({ opacity: 1 }, g.fadeInDuration), g.delay)
+                    console.log('Is there a child process?: ', g)
+                    if (g.spawnChildGroupArray && g.spawnChildGroupArray !== undefined) {
+                        console.log('yes: ', g.spawnChildGroupArray)
+                        activateGroup(g.spawnChildGroupArray, 0)
+                    }
                 }
                 else {
                     g.group.animate({ opacity: 0 }, g.fadeOutDuration);
                 }
             })
-            setTimeout( () => {
-               index++
-               if( index > groupArray.length-1 ) {
-                   index = 0
-               }
-               activateGroup(index)
+            setTimeout(() => {
+                if (groupArray[index].terminate !== true) {
+                    index++
+                    if (index > groupArray.length - 1) {
+                        index = 0
+                    }
+                    activateGroup(groupArray, index)
+                }
+                else {
+                    groupArray[index].group.animate({ opacity: 0 }, groupArray[index].fadeOutDuration);
+                }
             }, duration)
         }
 
-        activateGroup(0)
+        activateGroup(groupArray, 0)
 
 
-        // setInterval(function () {
-
-        //     if (animationCount > groupArray.length - 1) {
-        //         animationCount = 0;
-        //     }
-        //     activateGroup(animationCount)
-        //     animationCount++;
-
-        // }, 3000);
 
     }, []);
 
+    const roundFloat = (nbr, dec_places = 0) => {
+        var mult = Math.pow(10, dec_places);
+        if (Array.isArray(nbr)) {
+            return nbr.map(num => Math.round(num * mult) / mult)
+        }
+
+        return Math.round(nbr * mult) / mult;
+    }
+
     const multitext = (paper, x, y, txt, max_width, attributes) => {
         var t = paper.text(0, 0, txt).attr(attributes);
-        t.attr({...attributes, opacity: 0});
+        t.attr({ ...attributes, opacity: 0 });
         let totalWidth = t.getBBox().width
-        console.log('totalWidth: ', totalWidth)
-
-
 
         // we can get svg to write a single space character, so we need to derive the width of a space character.
         var letterA = paper.text(x, y, 'a').attr(attributes);
@@ -211,14 +299,12 @@ const Combat = (props) => {
         var letterA_B = paper.text(x, y, 'a b').attr(attributes);
         let letterA_bwidth = letterA_B.getBBox().width
         let spaceWidth = letterA_bwidth - (letterAwidth + letterBwidth)
-        console.log('spaceWidth: ', spaceWidth)
         letterA.remove()
         letterB.remove()
         letterA_B.remove()
 
         // break text into array
         let wordsArray = txt.split(' ')
-        console.log('wordsArray: ', wordsArray)
         let widthsPerWord = []
         let firstWordOfLine = true
         let currentLine = ''
@@ -227,11 +313,9 @@ const Combat = (props) => {
         let linesToPrint = []
         let stopIt = 0
         while (wordsArray.length > 0) {
-            console.log('VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV')
             previousLine = currentLine
 
             currentWord = wordsArray.shift()
-            console.log('currentWord: ', currentWord)
 
             if (firstWordOfLine) {
                 currentLine += currentWord
@@ -247,7 +331,6 @@ const Combat = (props) => {
             var temp = paper.text(0, 0, currentLine).attr(attributes);
             let currentLineWidth = temp.getBBox().width
             temp.remove();
-            console.log('currentLine: ', currentLine, ' width: ', currentLineWidth)
             if (currentLineWidth > max_width) {
                 linesToPrint.push(previousLine)
                 wordsArray.unshift(currentWord)
@@ -260,15 +343,12 @@ const Combat = (props) => {
             if (stopIt > 30) {
                 wordsArray = []
             }
-            console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
         }
         if (currentLine !== '') {
             linesToPrint.push(currentLine)
         }
-        console.log('final, linesToPrint: ', linesToPrint)
         let linesGroup = paper.group()
         linesToPrint.forEach((line, index) => {
-            console.log('attempting to print line: ', line, ' at index ', index)
             linesGroup.append(paper.text(x, y + (attributes.fontSize * 1.2 * index), line).attr(attributes));
         })
 
