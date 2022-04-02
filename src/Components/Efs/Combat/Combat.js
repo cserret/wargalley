@@ -86,34 +86,32 @@ const Combat = (props) => {
         g1.attr({ opacity: 0 });
 
 
-        var textIfThisPanzer = multitext(paper, 33, 342, "If this panzer division wants to attack...", 395, standardTextLeftAlignedAttr);
-        var circlePanzerDivision = paper.circle(204, 261, 60).attr({ stroke: "red", strokeWidth: 5, fill: "#9999aa", fillOpacity: 0.3 })
+        var textIfThisPanzer = multitext(paper, 33, 342, "If this panzer regiment wants to attack this Soviet division", 395, standardTextLeftAlignedAttr);
+        var circleSovietDivision = paper.circle(99, 202, 60).attr({ stroke: "orange", strokeWidth: 5, fill: "orange", fillOpacity: 0.3 })
         let g2 = paper.group()
         g2.append(textIfThisPanzer);
-        g2.append(circlePanzerDivision)
+        g2.append(circleSovietDivision)
         g2.attr({ opacity: 0 });
-
-
-        var textIfThisPanzer2 = multitext(paper, 33, 342, "If this panzer division wants to attack this Soviet division", 395, standardTextLeftAlignedAttr);
-        var circleSovietDivision = paper.circle(99, 202, 60).attr({ stroke: "orange", strokeWidth: 5, fill: "orange", fillOpacity: 0.3 })
-        let g3 = paper.group()
-        g3.append(textIfThisPanzer2);
-        g3.append(circleSovietDivision)
-        g3.attr({ opacity: 0 });
 
 
         var textThenTheAntiTank = multitext(paper, 33, 342, "Then the anti-tank unit will also need to be attacked,", 395, standardTextLeftAlignedAttr);
         var circleSovietAntiTank = paper.circle(204, 141, 60).attr({ stroke: "orange", strokeWidth: 5, fill: "orange", fillOpacity: 0.3 })
-        let g4 = paper.group()
-        g4.append(textThenTheAntiTank);
-        g4.append(circleSovietAntiTank)
-        g4.attr({ opacity: 0 });
+        let g3 = paper.group()
+        g3.append(textThenTheAntiTank);
+        g3.attr({ opacity: 0 });
 
 
         var textBecauseTheAntiTank = multitext(paper, 33, 342, "because the anti-tank unit exerts its ZOC on the attackers hex.", 390, standardTextLeftAlignedAttr);
+        let g4 = paper.group()
+        g4.append(textBecauseTheAntiTank);
+        g4.attr({ opacity: 0 });
+
+        var textEitherThePanzer = multitext(paper, 33, 342, "Either the panzer regiment attacks both the infantry unit and the anti-tank unit...", 390, standardTextLeftAlignedAttr);
         let g5 = paper.group()
-        g5.append(textBecauseTheAntiTank);
+        g5.append(textEitherThePanzer);
         g5.attr({ opacity: 0 });
+
+
 
 
         let ax, ay = 0
@@ -181,14 +179,14 @@ const Combat = (props) => {
         zocGroup4.attr({ opacity: 0 });
         zocGroup5.attr({ opacity: 0 });
         zocGroup6.attr({ opacity: 0 });
-        let groupArray3 = []
-        groupArray3.push({ group: zocGroup, fadeInDuration: 100, fadeOutDuration: 100, delay: 800, duration: 9000, terminate: false })
-        groupArray3.push({ group: zocGroup1, fadeInDuration: 100, fadeOutDuration: 100, delay: 800, duration: 9000, terminate: false })
-        groupArray3.push({ group: zocGroup2, fadeInDuration: 100, fadeOutDuration: 100, delay: 800, duration: 9000, terminate: false })
-        groupArray3.push({ group: zocGroup3, fadeInDuration: 100, fadeOutDuration: 100, delay: 800, duration: 9000, terminate: false })
-        groupArray3.push({ group: zocGroup4, fadeInDuration: 100, fadeOutDuration: 100, delay: 800, duration: 9000, terminate: false })
-        groupArray3.push({ group: zocGroup5, fadeInDuration: 100, fadeOutDuration: 100, delay: 800, duration: 9000, terminate: false })
-        groupArray3.push({ group: zocGroup6, fadeInDuration: 100, fadeOutDuration: 100, delay: 800, duration: 9000, terminate: true })
+        let groupArrayZoc = []
+        groupArrayZoc.push({ group: zocGroup, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 1000, leaveVisible: true, terminate: false })
+        groupArrayZoc.push({ group: zocGroup1, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 100, leaveVisible: true, terminate: false })
+        groupArrayZoc.push({ group: zocGroup2, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 100, leaveVisible: true, terminate: false })
+        groupArrayZoc.push({ group: zocGroup3, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 100, leaveVisible: true, terminate: false })
+        groupArrayZoc.push({ group: zocGroup4, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 100, leaveVisible: true, terminate: false })
+        groupArrayZoc.push({ group: zocGroup5, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 100, leaveVisible: true, terminate: false })
+        groupArrayZoc.push({ group: zocGroup6, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 6000, terminate: true })
 
 
 
@@ -236,7 +234,7 @@ const Combat = (props) => {
         groupArray.push({ group: g2, fadeInDuration: 100, fadeOutDuration: 0, delay: 600, duration: 4000, terminate: false })
         groupArray.push({ group: g3, fadeInDuration: 0, fadeOutDuration: 100, delay: 0, duration: 4000, terminate: false, spawnChildGroupArray: groupArray2 })
         groupArray.push({ group: g4, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 4000, terminate: false })
-        groupArray.push({ group: g5, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 4000, terminate: false })
+        groupArray.push({ group: g5, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 6000, terminate: false, spawnChildGroupArray: groupArrayZoc })
 
 
 
@@ -254,7 +252,13 @@ const Combat = (props) => {
                     }
                 }
                 else {
+                    if(g.leaveVisible && g.leaveVisible === true ) {
+                    ;
+                    } 
+                    else {
+                  
                     g.group.animate({ opacity: 0 }, g.fadeOutDuration);
+                    }
                 }
             })
             setTimeout(() => {
@@ -266,7 +270,9 @@ const Combat = (props) => {
                     activateGroup(groupArray, index)
                 }
                 else {
-                    groupArray[index].group.animate({ opacity: 0 }, groupArray[index].fadeOutDuration);
+                    groupArray.forEach( gTerminate => {
+                        gTerminate.group.attr({ opacity: 0 });
+                    })
                 }
             }, duration)
         }
