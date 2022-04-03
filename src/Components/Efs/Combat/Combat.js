@@ -28,6 +28,7 @@ import german_motorized_antiair from "../../../images/efs/combat/german_antiair_
 import german_assault_gun from "../../../images/efs/combat/german_assault_gun_120.png";
 import german_luftwaffe_flak from "../../../images/efs/combat/german_luftwaffe_flak_120.png";
 import declared_attack from "../../../images/efs/combat/declared_attack_120.png";
+import declared_attack_92 from "../../../images/efs/combat/declared_attack_92.png";
 import example_sticky_attack from "../../../images/efs/combat/example_sticky_attack.png";
 import './Combat.scss';
 
@@ -40,7 +41,8 @@ const Combat = (props) => {
 
         paper.attr({ viewBox: "0, 0, 430, 401" });
 
-        let textBackground = paper.rect(7, 320, 420, 75).attr({ fill: "#cceeff", stroke: "none", "opacity": 0.9 });
+        let textBackground = paper.rect(0, 320, 430, 75).attr({ fill: "#cceeff", stroke: "none", "opacity": 1 });
+        let arrow_d = "M 0 -20, 24 4, 10 4, 10 30, -10 30, -10 4, -24 4 z"
 
         // let star_d = "M 0 -46.7 L 12.2 -11.9 50.3 -11.9 20.7 11 31.5 46.8 0 25.8 -31.4 46.8 -20.7 11 -50.3 -11.9 -12.2 -11.9 z"
         // let redStar = paper.path(star_d).attr({ 
@@ -73,6 +75,37 @@ const Combat = (props) => {
             fill: "black",
         }
 
+        let datauri = "data:image/png;base64,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"
+        let declaredAttackMarker = paper.image(datauri, 0, 0, 92, 92)
+
+        //let declaredAttackMarkertest = paper.image(datauri, 155, 95, 92, 92)
+
+        let declaredMarkersArray = []
+        let declaredAttack1 = paper.group()
+        declaredAttack1.append(declaredAttackMarker)
+        let declaredAttack2 = declaredAttack1.clone(true);
+        declaredAttack1.attr({opacity: 0})
+        declaredAttack2.attr({opacity: 0})
+        declaredMarkersArray.push({ group: declaredAttack1, fadeInDuration: 100, fadeOutDuration: 100, delay: 100, duration: 300, 
+            leaveVisible: true, terminate: false, animation: { type: "translate", startX: 0, startY: 0, endX: 48, endY: 150, duration: 300 }})
+        declaredMarkersArray.push({ group: declaredAttack2, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 4000, 
+            terminate: true, animation: { type: "translate", startX: 0, startY: 0, endX: 152, endY: 91, duration: 300 } })
+
+
+        var circleSovietDivision = paper.circle(99, 202, 60).attr({ stroke: "orange", strokeWidth: 5, fill: "orange", fillOpacity: 0.3 })
+        var circleSovietAntiTank = paper.circle(204, 141, 60).attr({ stroke: "orange", strokeWidth: 5, fill: "orange", fillOpacity: 0.3 })
+        let circleSovietGroup1 = paper.group()
+        let circleSovietGroup2 = paper.group()
+        circleSovietGroup1.append(circleSovietDivision)
+        circleSovietGroup2.append(circleSovietAntiTank)
+        circleSovietGroup1.attr({ opacity: 0 });
+        circleSovietGroup2.attr({ opacity: 0 });
+        let circleSovietGroupArray = []
+        circleSovietGroupArray.push({ group: circleSovietGroup1, fadeInDuration: 100, fadeOutDuration: 0, delay: 3500, duration: 6000, leaveVisible: false, terminate: false })
+        circleSovietGroupArray.push({ group: circleSovietGroup2, fadeInDuration: 100, fadeOutDuration: 0, delay: 2500, duration: 5000, leaveVisible: false, terminate: true })
+
+
+
 
         let text1 = paper.text(215, 358, "Attacking is voluntary...").attr(standardTextCenteredAttr)
         let g0 = paper.group()
@@ -87,15 +120,14 @@ const Combat = (props) => {
 
 
         var textIfThisPanzer = multitext(paper, 33, 342, "If this panzer regiment wants to attack this Soviet division", 395, standardTextLeftAlignedAttr);
-        var circleSovietDivision = paper.circle(99, 202, 60).attr({ stroke: "orange", strokeWidth: 5, fill: "orange", fillOpacity: 0.3 })
+        var circlePanzerDivision = paper.circle(204, 261, 60).attr({ stroke: "red", strokeWidth: 5, fill: "#9999aa", fillOpacity: 0.3 })
         let g2 = paper.group()
         g2.append(textIfThisPanzer);
-        g2.append(circleSovietDivision)
+        g2.append(circlePanzerDivision)
         g2.attr({ opacity: 0 });
 
 
         var textThenTheAntiTank = multitext(paper, 33, 342, "Then the anti-tank unit will also need to be attacked,", 395, standardTextLeftAlignedAttr);
-        var circleSovietAntiTank = paper.circle(204, 141, 60).attr({ stroke: "orange", strokeWidth: 5, fill: "orange", fillOpacity: 0.3 })
         let g3 = paper.group()
         g3.append(textThenTheAntiTank);
         g3.attr({ opacity: 0 });
@@ -106,12 +138,108 @@ const Combat = (props) => {
         g4.append(textBecauseTheAntiTank);
         g4.attr({ opacity: 0 });
 
-        var textEitherThePanzer = multitext(paper, 33, 342, "Either the panzer regiment attacks both the infantry unit and the anti-tank unit...", 390, standardTextLeftAlignedAttr);
+        var textEitherThePanzer = multitext(paper, 33, 342, "Either the panzer regiment attacks both units...", 390, standardTextLeftAlignedAttr);
         let g5 = paper.group()
+
+
+
+        let arrowShadow2 = paper.path(arrow_d).attr({
+            stroke: "black",
+            strokeWidth: 3,
+            strokeOpacity: 0.2,
+            fill: "black",
+            opacity: 0.5,
+            'stroke-linejoin': "miter"
+        });
+        applyTranslation(arrowShadow2, 155, 226)
+        applyRotation(arrowShadow2, 310)
+        let arrow2 = paper.path(arrow_d).attr({
+            stroke: "black",
+            strokeWidth: 1,
+            fill: "red",
+            'stroke-linejoin': "miter",
+        });
+        applyTranslation(arrow2, 152, 223)
+        applyRotation(arrow2, 310)
+
+
+        let arrowShadow3 = paper.path(arrow_d).attr({
+            stroke: "black",
+            strokeWidth: 3,
+            strokeOpacity: 0.2,
+            fill: "black",
+            opacity: 0.5,
+            'stroke-linejoin': "miter"
+        });
+        applyTranslation(arrowShadow3, 208, 202)
+        let arrow3 = paper.path(arrow_d).attr({
+            stroke: "black",
+            strokeWidth: 1,
+            fill: "red",
+            'stroke-linejoin': "miter",
+        });
+        applyTranslation(arrow3, 205, 199)
+
         g5.append(textEitherThePanzer);
+        g5.append(arrowShadow2);
+        g5.append(arrow2);
+        g5.append(arrowShadow3);
+        g5.append(arrow3);
         g5.attr({ opacity: 0 });
 
+        var textOrTheEngineer = multitext(paper, 33, 342, "or the Engineer unit helps out and attacks the anti-tank unit", 390, standardTextLeftAlignedAttr);
+        let g6 = paper.group()
+        g6.append(textOrTheEngineer)
 
+        // arrow pointing at the anti tank unit
+        let arrowShadow4 = paper.path(arrow_d).attr({
+            stroke: "black",
+            strokeWidth: 3,
+            strokeOpacity: 0.2,
+            fill: "black",
+            opacity: 0.5,
+            'stroke-linejoin': "miter"
+        });
+        let arrow4rotation = 310
+        applyRotation(arrowShadow4, arrow4rotation)
+        applyTranslation(arrowShadow4, 255, 169)
+        let arrow4 = paper.path(arrow_d).attr({
+            stroke: "black",
+            strokeWidth: 1,
+            fill: "red",
+            'stroke-linejoin': "miter",
+        });
+        applyTranslation(arrow4, 255, 167)
+        applyRotation(arrow4, arrow4rotation)
+        g6.append(arrowShadow4)
+        g6.append(arrow4)
+
+        // arrow pointing at the soviet division
+        let arrowShadow5 = paper.path(arrow_d).attr({
+            stroke: "black",
+            strokeWidth: 3,
+            strokeOpacity: 0.2,
+            fill: "black",
+            opacity: 0.5,
+            'stroke-linejoin': "miter"
+        });
+        applyTranslation(arrowShadow5, 155, 226)
+        applyRotation(arrowShadow5, 310)
+
+
+        let arrow5 = paper.path(arrow_d).attr({
+            stroke: "black",
+            strokeWidth: 1,
+            fill: "red",
+            'stroke-linejoin': "miter",
+        });
+        applyTranslation(arrow5, 152, 223)
+        applyRotation(arrow5, 310)
+        g6.append(arrowShadow5)
+        g6.append(arrow5)
+
+
+        g6.attr({ opacity: 0 });
 
 
         let ax, ay = 0
@@ -170,8 +298,8 @@ const Combat = (props) => {
         applyTranslation(zocGroup4, 311, 203)
         applyTranslation(zocGroup5, 207, 263)
         applyTranslation(zocGroup6, 102, 203)
-    
-          
+
+
         zocGroup.attr({ opacity: 0 });
         zocGroup1.attr({ opacity: 0 });
         zocGroup2.attr({ opacity: 0 });
@@ -186,13 +314,13 @@ const Combat = (props) => {
         groupArrayZoc.push({ group: zocGroup3, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 100, leaveVisible: true, terminate: false })
         groupArrayZoc.push({ group: zocGroup4, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 100, leaveVisible: true, terminate: false })
         groupArrayZoc.push({ group: zocGroup5, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 100, leaveVisible: true, terminate: false })
-        groupArrayZoc.push({ group: zocGroup6, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 6000, terminate: true })
+        groupArrayZoc.push({ group: zocGroup6, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 4500, terminate: true })
 
 
 
 
         let groupArray2 = []
-        let arrow_d = "M 0 -20, 24 4, 10 4, 10 30, -10 30, -10 4, -24 4     z"
+
 
         let arrowShadow = paper.path(arrow_d).attr({
             stroke: "black",
@@ -220,7 +348,7 @@ const Combat = (props) => {
         g2_0.append(arrow)
         g2_0.attr({ opacity: 0 });
 
-        groupArray2.push({ group: g2_0, fadeInDuration: 100, fadeOutDuration: 100, delay: 800, duration: 9000, terminate: true })
+        groupArray2.push({ group: g2_0, fadeInDuration: 100, fadeOutDuration: 100, delay: 100, duration: 11000, terminate: true })
 
 
 
@@ -231,12 +359,17 @@ const Combat = (props) => {
         let groupArray = []
         groupArray.push({ group: g0, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 3000, terminate: false })
         groupArray.push({ group: g1, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 3000, terminate: false })
-        groupArray.push({ group: g2, fadeInDuration: 100, fadeOutDuration: 0, delay: 600, duration: 4000, terminate: false })
-        groupArray.push({ group: g3, fadeInDuration: 0, fadeOutDuration: 100, delay: 0, duration: 4000, terminate: false, spawnChildGroupArray: groupArray2 })
-        groupArray.push({ group: g4, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 4000, terminate: false })
-        groupArray.push({ group: g5, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 6000, terminate: false, spawnChildGroupArray: groupArrayZoc })
+        groupArray.push({ group: g2, fadeInDuration: 100, fadeOutDuration: 0, delay: 600, duration: 6000, terminate: false, spawnChildGroupArray: circleSovietGroupArray })
+        groupArray.push({ group: g3, fadeInDuration: 0, fadeOutDuration: 100, delay: 300, duration: 4000, terminate: false, spawnChildGroupArray: groupArray2 })
+        groupArray.push({ group: g4, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 9000, terminate: false, spawnChildGroupArray: groupArrayZoc, spawnChildGroupArrayDelay: 1000 })
+        groupArray.push({ group: g5, fadeInDuration: 100, fadeOutDuration: 100, delay: 600, duration: 5000, terminate: false })
+        groupArray.push({ group: g6, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 10000, terminate: false, spawnChildGroupArray: declaredMarkersArray, spawnChildGroupArrayDelay: 3000 })
 
-
+        /*
+        , spawnChildGroupArray: groupArrayZoc
+        , spawnChildGroupArray: groupArray2
+        
+        */
 
 
 
@@ -244,20 +377,43 @@ const Combat = (props) => {
             let duration = groupArray[index].duration
             groupArray.forEach((g, gIndex) => {
                 if (gIndex === index) {
-                    setTimeout(() => g.group.animate({ opacity: 1 }, g.fadeInDuration), g.delay)
-                    console.log('Is there a child process?: ', g)
+
+                    //animation: { type: "translate", startX: 0, startY: 0, endX: 150, endY: 200, duration: 300 }
+                    if( g.animation ) {
+                        g.group.attr({opacity: 1})
+                        console.log('doing transform')
+                        let endX = g.animation.endX
+                        let endY = g.animation.endY
+                        let startX = g.animation.startX
+                        let startY = g.animation.startY
+                        let duration = g.animation.duration
+                        g.group.transform( 't0,0');
+                        g.group.animate({ transform: 'T' + endX + ',' + endY}, duration)
+                        
+                    }
+                    else {
+                        setTimeout(() => g.group.animate({ opacity: 1 }, g.fadeInDuration), g.delay)
+                    }
+                    
+                    
+                    
+                    
                     if (g.spawnChildGroupArray && g.spawnChildGroupArray !== undefined) {
-                        console.log('yes: ', g.spawnChildGroupArray)
-                        activateGroup(g.spawnChildGroupArray, 0)
+                        if (g.spawnChildGroupArrayDelay) {
+                            setTimeout(() => activateGroup(g.spawnChildGroupArray, 0), g.spawnChildGroupArrayDelay)
+                        }
+                        else {
+                            activateGroup(g.spawnChildGroupArray, 0)
+                        }
                     }
                 }
                 else {
-                    if(g.leaveVisible && g.leaveVisible === true ) {
-                    ;
-                    } 
+                    if (g.leaveVisible && g.leaveVisible === true) {
+                        ;
+                    }
                     else {
-                  
-                    g.group.animate({ opacity: 0 }, g.fadeOutDuration);
+
+                        g.group.animate({ opacity: 0 }, g.fadeOutDuration);
                     }
                 }
             })
@@ -270,7 +426,7 @@ const Combat = (props) => {
                     activateGroup(groupArray, index)
                 }
                 else {
-                    groupArray.forEach( gTerminate => {
+                    groupArray.forEach(gTerminate => {
                         gTerminate.group.attr({ opacity: 0 });
                     })
                 }
@@ -456,9 +612,11 @@ const Combat = (props) => {
                     Each turn, there is a combat phase for each player.
                     These combat phases are where most of the fighting occurs between player's units.
                     <span className="spacer0_5rem" />
-                    There is something called "overrun" which is a type of attack that occurs during a movement phase,
-                    but that is a special form of combat that is considered more a function of movement rather than strictly "combat" (although the general rules for combat do apply). See the
-                    Movement section for info on overrun.
+                    <div className="rules-note">
+                        There is a mechanism called "overrun" which is a type of attack that occurs during a movement phase,
+                        but that is a special form of combat that is considered more a function of movement rather than strictly "combat" (although the general rules for combat do apply). See the
+                        Movement section for info on overrun.
+                    </div>
                     <span className="spacer0_5rem" />
                     Combat can occur between combat unit(s) that are in hexes adjacent to each other. Additional units such as artillery units and air units can participate without
                     being adjacent to the hex being attacked. But you will need combat units "on the ground" adjacent to an enemy occupied hex in order to declare an attack.
@@ -473,9 +631,9 @@ const Combat = (props) => {
                     attack without having Attack Supply being used.
                     <span className="spacer0_5rem" />
                     Defending units do not need to use Attack Supply, except for artillery units
-                    which are in a special state called a "Limited Artillery Supply" condition<BsrLink page="33" rule="13.5" />
+                    which are in a special state called a "Limited Artillery Supply" condition.<BsrLink page="33" rule="13.5" />
                     <span className="spacer0_5rem" />
-                    Flotillas and Armored Trains are not affected by lack of Attack Supply.
+                    Flotillas and Armored Trains are not affected by lack of Attack Supply.<BsrLink page="39" rule="15.22" />
                     <span className="spacer0_5rem" />
                     Attacking units that are marked Out of Supply get to ignore any Out of Supply effects during a combat, if they are being allocated Attack Supply.<BsrLink page="39" rule="15.21" />
                 </div>

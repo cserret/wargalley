@@ -35,12 +35,12 @@ const EfsHome = (props) => {
                             <a href="https://gmtwebsiteassets.s3.us-west-2.amazonaws.com/bagc/Barb-AGC_StandardRules_Final_Lo-Res.pdf"
                                 target="_blank" rel="noopener noreferrer" className="new-rules">Barbarossa Standard Rules 2.0</a>
                         </div>
-                        <div>
+                        <div className="update-notice">
                             This site is currently being updated, but it will take some time to get it 100%.<br/>
                             Please don't think that everything here applies to your new game, you will<br/>
                             end up getting confused. The new rules are what you need to be reading.<br/>
                             This site is not connected to or coordinated with GMT Games.<br/>
-                            The parts that I have updated have the "subscript rules link" that looks like:<BsrLink page="32" rule="13.4" />
+                            The updated parts have the "superscript rules link" that looks like:<BsrLink page="32" rule="13.4" />
                         </div>
                     </div>
             </div>
