@@ -3,8 +3,6 @@ import Snap from 'snapsvg-cjs';
 import ScrollToTopOnMount from "../../ScrollToTopOnMount";
 import BsrLink from "../BsrLink/BsrLink";
 import combat from "../../../images/efs/combat/combat.jpg";
-import map_combat1 from "../../../images/efs/combat/map_combat1.jpg";
-import map_combat2 from "../../../images/efs/combat/map_combat2.jpg";
 import joseph_stalin from "../../../images/efs/combat/joseph-stalin.jpg";
 import combined_arms_bonus from "../../../images/efs/combat/combined_arms_bonus.jpg";
 //import combined_arms_bonus_fr from "../../../images/efs/combat/combined_arms_bonus_fr.gif";
@@ -13,8 +11,6 @@ import german_engineer from "../../../images/efs/combat/german_engineer_motorize
 import soviet_engineer from "../../../images/efs/combat/soviet_engineer_120.png";
 import artillery_units from "../../../images/efs/combat/artillery_strip_120.png";
 import soviet_artillery_firing from "../../../images/efs/combat/soviet_artillery_firing.jpg";
-import orders_strip from "../../../images/efs/combat/orders_strip.jpg";
-import directhit from "../../../images/efs/combat/directhit.jpg";
 import counter_additional_retreat from "../../../images/efs/combat/counter_additional_retreat.png";
 import counter_no_retreat from "../../../images/efs/combat/counter_no_retreat.png";
 import panzer from "../../../images/efs/combat/panzer.png";
@@ -28,8 +24,7 @@ import german_motorized_antiair from "../../../images/efs/combat/german_antiair_
 import german_assault_gun from "../../../images/efs/combat/german_assault_gun_120.png";
 import german_luftwaffe_flak from "../../../images/efs/combat/german_luftwaffe_flak_120.png";
 import declared_attack from "../../../images/efs/combat/declared_attack_120.png";
-import declared_attack_92 from "../../../images/efs/combat/declared_attack_92.png";
-import example_sticky_attack from "../../../images/efs/combat/example_sticky_attack.png";
+import orders from "../../../images/efs/combat/orders_120.png";
 import './Combat.scss';
 
 const Combat = (props) => {
@@ -41,7 +36,7 @@ const Combat = (props) => {
 
         paper.attr({ viewBox: "0, 0, 430, 401" });
 
-        let textBackground = paper.rect(0, 320, 430, 75).attr({ fill: "#cceeff", stroke: "none", "opacity": 1 });
+        paper.rect(0, 320, 430, 75).attr({ fill: "#cceeff", stroke: "none", "opacity": 1 });
         let arrow_d = "M 0 -20, 24 4, 10 4, 10 30, -10 30, -10 4, -24 4 z"
 
         // let star_d = "M 0 -46.7 L 12.2 -11.9 50.3 -11.9 20.7 11 31.5 46.8 0 25.8 -31.4 46.8 -20.7 11 -50.3 -11.9 -12.2 -11.9 z"
@@ -84,12 +79,16 @@ const Combat = (props) => {
         let declaredAttack1 = paper.group()
         declaredAttack1.append(declaredAttackMarker)
         let declaredAttack2 = declaredAttack1.clone(true);
-        declaredAttack1.attr({opacity: 0})
-        declaredAttack2.attr({opacity: 0})
-        declaredMarkersArray.push({ group: declaredAttack1, fadeInDuration: 100, fadeOutDuration: 100, delay: 100, duration: 300, 
-            leaveVisible: true, terminate: false, animation: { type: "translate", startX: 0, startY: 0, endX: 48, endY: 150, duration: 300 }})
-        declaredMarkersArray.push({ group: declaredAttack2, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 12000, 
-            terminate: true, animation: { type: "translate", startX: 0, startY: 0, endX: 152, endY: 91, duration: 300 } })
+        declaredAttack1.attr({ opacity: 0 })
+        declaredAttack2.attr({ opacity: 0 })
+        declaredMarkersArray.push({
+            group: declaredAttack1, fadeInDuration: 100, fadeOutDuration: 100, delay: 100, duration: 300,
+            leaveVisible: true, terminate: false, animation: { type: "translate", startX: 0, startY: 0, endX: 48, endY: 150, duration: 300 }
+        })
+        declaredMarkersArray.push({
+            group: declaredAttack2, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 12000,
+            terminate: true, animation: { type: "translate", startX: 0, startY: 0, endX: 152, endY: 91, duration: 300 }
+        })
 
 
         var circleSovietDivision = paper.circle(99, 202, 60).attr({ stroke: "orange", strokeWidth: 5, fill: "orange", fillOpacity: 0.3 })
@@ -119,7 +118,7 @@ const Combat = (props) => {
         g1.attr({ opacity: 0 });
 
 
-        var textIfThisPanzer = multitext(paper, 25, 342, "If this panzer regiment wants to attack this Soviet division", 395, standardTextLeftAlignedAttr);
+        var textIfThisPanzer = multitext(paper, 25, 342, "If this panzer regiment wants to attack this Soviet division,", 395, standardTextLeftAlignedAttr);
         var circlePanzerDivision = paper.circle(204, 261, 60).attr({ stroke: "red", strokeWidth: 5, fill: "#9999aa", fillOpacity: 0.3 })
         let g2 = paper.group()
         g2.append(textIfThisPanzer);
@@ -127,7 +126,7 @@ const Combat = (props) => {
         g2.attr({ opacity: 0 });
 
 
-        var textThenTheAntiTank = multitext(paper, 25, 342, "Then the anti-tank unit will also need to be attacked,", 395, standardTextLeftAlignedAttr);
+        var textThenTheAntiTank = multitext(paper, 25, 342, "then the anti-tank unit will also need to be attacked,", 395, standardTextLeftAlignedAttr);
         let g3 = paper.group()
         g3.append(textThenTheAntiTank);
         g3.attr({ opacity: 0 });
@@ -212,26 +211,26 @@ const Combat = (props) => {
         });
         applyTranslation(arrow4, 255, 167)
         applyRotation(arrow4, arrow4rotation)
-        
+
         g6.append(arrowShadow4)
         g6.append(arrow4)
 
         let g7 = paper.group()
         g7.append(textNoteThat)
-        g7.append( arrowShadow4.clone() )
-        g7.append( arrow4.clone() )
-        g7.attr({ opacity: 0})
+        g7.append(arrowShadow4.clone())
+        g7.append(arrow4.clone())
+        g7.attr({ opacity: 0 })
 
         let declaredAttackEngineer1 = paper.group()
         declaredAttackEngineer1.append(declaredAttackMarker.clone())
         let declaredAttackEngineer2 = declaredAttackEngineer1.clone(true);
-        declaredAttackEngineer1.attr({opacity: 0})
-        declaredAttackEngineer2.attr({opacity: 0})
-        
+        declaredAttackEngineer1.attr({ opacity: 0 })
+        declaredAttackEngineer2.attr({ opacity: 0 })
+
         let arrowFromEngineerToAntiTankGroup = paper.group()
-        arrowFromEngineerToAntiTankGroup.append( arrowShadow4.clone() )
-        arrowFromEngineerToAntiTankGroup.append( arrow4.clone() )
-        arrowFromEngineerToAntiTankGroup.attr({opacity: 0})
+        arrowFromEngineerToAntiTankGroup.append(arrowShadow4.clone())
+        arrowFromEngineerToAntiTankGroup.append(arrow4.clone())
+        arrowFromEngineerToAntiTankGroup.attr({ opacity: 0 })
         let arrowFromEngineerToAntiAirGroup = paper.group()
         let arrowShadowEngineerToAntiAir = paper.path(arrow_d).attr({
             stroke: "black",
@@ -249,34 +248,38 @@ const Combat = (props) => {
             'stroke-linejoin': "miter",
         });
         applyTranslation(arrowEngineerToAntiAir, 309, 137)
-        arrowFromEngineerToAntiAirGroup.append( arrowShadowEngineerToAntiAir )
-        arrowFromEngineerToAntiAirGroup.append( arrowEngineerToAntiAir )
-        arrowFromEngineerToAntiAirGroup.attr({opacity: 0})
+        arrowFromEngineerToAntiAirGroup.append(arrowShadowEngineerToAntiAir)
+        arrowFromEngineerToAntiAirGroup.append(arrowEngineerToAntiAir)
+        arrowFromEngineerToAntiAirGroup.attr({ opacity: 0 })
         let arrowsFromEngineerToBothAntiTankAndAntiAirArray = []
         arrowsFromEngineerToBothAntiTankAndAntiAirArray.push({ group: arrowFromEngineerToAntiTankGroup, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 3700, leaveVisible: true, terminate: false })
         arrowsFromEngineerToBothAntiTankAndAntiAirArray.push({ group: arrowFromEngineerToAntiAirGroup, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 2100, leaveVisible: true, terminate: false })
 
-        
+
         let arrowFromEngineerToAntiTankGroupInReverse = paper.group()
-        arrowFromEngineerToAntiTankGroupInReverse.append( arrowShadow4.clone() )
-        arrowFromEngineerToAntiTankGroupInReverse.append( arrow4.clone() )
-        arrowFromEngineerToAntiTankGroupInReverse.attr({opacity: 0})
+        arrowFromEngineerToAntiTankGroupInReverse.append(arrowShadow4.clone())
+        arrowFromEngineerToAntiTankGroupInReverse.append(arrow4.clone())
+        arrowFromEngineerToAntiTankGroupInReverse.attr({ opacity: 0 })
         let arrowFromEngineerToAntiAirGroupInReverse = paper.group()
-        arrowFromEngineerToAntiAirGroupInReverse.append( arrowShadowEngineerToAntiAir.clone() )
-        arrowFromEngineerToAntiAirGroupInReverse.append( arrowEngineerToAntiAir.clone() )
-        arrowFromEngineerToAntiAirGroupInReverse.attr({opacity: 0})
-       
+        arrowFromEngineerToAntiAirGroupInReverse.append(arrowShadowEngineerToAntiAir.clone())
+        arrowFromEngineerToAntiAirGroupInReverse.append(arrowEngineerToAntiAir.clone())
+        arrowFromEngineerToAntiAirGroupInReverse.attr({ opacity: 0 })
+
         let arrowsFromEngineerToBothAntiTankAndAntiAirInReverseArray = []
         arrowsFromEngineerToBothAntiTankAndAntiAirInReverseArray.push({ group: arrowFromEngineerToAntiAirGroupInReverse, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 4000, leaveVisible: true, terminate: false })
         arrowsFromEngineerToBothAntiTankAndAntiAirInReverseArray.push({ group: arrowFromEngineerToAntiTankGroupInReverse, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 5000, leaveVisible: true, terminate: true })
 
 
         //let declaredMarkersEngineerArray = []
-  
-        arrowsFromEngineerToBothAntiTankAndAntiAirArray.push({ group: declaredAttackEngineer1, fadeInDuration: 100, fadeOutDuration: 100, delay: 100, duration: 300, 
-            leaveVisible: true, terminate: false, animation: { type: "translate", startX: 0, startY: 0, endX: 152, endY: 91, duration: 300 }})
-            arrowsFromEngineerToBothAntiTankAndAntiAirArray.push({ group: declaredAttackEngineer2, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 3500, 
-            terminate: true, terminate: true, animation: { type: "translate", startX: 0, startY: 0, endX: 256, endY: 32, duration: 300 } })
+
+        arrowsFromEngineerToBothAntiTankAndAntiAirArray.push({
+            group: declaredAttackEngineer1, fadeInDuration: 100, fadeOutDuration: 100, delay: 100, duration: 300,
+            leaveVisible: true, terminate: false, animation: { type: "translate", startX: 0, startY: 0, endX: 152, endY: 91, duration: 300 }
+        })
+        arrowsFromEngineerToBothAntiTankAndAntiAirArray.push({
+            group: declaredAttackEngineer2, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 3500,
+            terminate: true, animation: { type: "translate", startX: 0, startY: 0, endX: 256, endY: 32, duration: 300 }
+        })
 
 
 
@@ -327,7 +330,7 @@ const Combat = (props) => {
 
 
 
-        var textHasNoZoc = multitext(paper, 33, 342, "it does not have to attack the anti-air unit, because...", 390, standardTextLeftAlignedAttr);
+        var textHasNoZoc = multitext(paper, 33, 342, "it does not have to also attack the anti-air unit, because...", 390, standardTextLeftAlignedAttr);
         // arrow pointing at the anti-air unit from the engineer unit
         let arrowShadowToAntiAir = paper.path(arrow_d).attr({
             stroke: "black",
@@ -349,24 +352,24 @@ const Combat = (props) => {
         g8.append(textHasNoZoc)
         g8.append(arrowShadowToAntiAir)
         g8.append(arrowToAntiAir)
-        g8.attr({opacity: 0})
+        g8.attr({ opacity: 0 })
 
 
         let g9 = paper.group()
         //var textHasNoZoc2 = multitext(paper, 33, 342, "the anti-air unit has no ZOC.", 390, standardTextLeftAlignedAttr);
         let textHasNoZoc2 = paper.text(215, 358, "the anti-air unit has no ZOC.").attr(standardTextCenteredAttr)
         g9.append(textHasNoZoc2)
-        g9.attr({opacity: 0})
+        g9.attr({ opacity: 0 })
 
         let g10 = paper.group()
         var textSoItCanAttack = multitext(paper, 25, 342, "So the engineer unit can attack the anti-tank unit only, or...", 390, standardTextLeftAlignedAttr);
         g10.append(textSoItCanAttack)
-        g10.attr({opacity: 0})
+        g10.attr({ opacity: 0 })
 
         let g11 = paper.group()
         var textOrBoth = multitext(paper, 33, 342, "both the anti-tank and the anti-air units.", 390, standardTextLeftAlignedAttr);
         g11.append(textOrBoth)
-        g11.attr({opacity: 0})
+        g11.attr({ opacity: 0 })
 
         let noZocArrowBoxPath = 'M 10, 34 L 240 34, 240 20, 264 49, 240 75, 240 60, 10 60 z'
         let noZocArrowBoxShadow = paper.path(noZocArrowBoxPath).attr({
@@ -386,7 +389,7 @@ const Combat = (props) => {
         })
         noZocArrowBoxShadow.transform('t2,2')
         //noZocArrowBoxShadow.transform('s1.01')
-        let noZocText = paper.text(128, 48, "Yellow box means NO ZOC").attr({...standardTextCenteredAttr, "fontSize": 18})
+        let noZocText = paper.text(128, 48, "Yellow box means NO ZOC").attr({ ...standardTextCenteredAttr, "fontSize": 18 })
         let noZocBoxGroup = paper.group()
         let noZocBoxGroupArray = []
 
@@ -395,9 +398,11 @@ const Combat = (props) => {
         noZocBoxGroup.append(noZocText)
         noZocBoxGroup.attr({ opacity: 0 });
 
-        noZocBoxGroupArray.push({ group: noZocBoxGroup, fadeInDuration: 100, fadeOutDuration: 100, delay: 100, duration: 4100, terminate: true,
-            animation: { type: "translate", startX: -200, startY: 0, endX: 0, endY: 0, duration: 300 } }) 
-        
+        noZocBoxGroupArray.push({
+            group: noZocBoxGroup, fadeInDuration: 100, fadeOutDuration: 100, delay: 100, duration: 4100, terminate: true,
+            animation: { type: "translate", startX: -200, startY: 0, endX: 0, endY: 0, duration: 300 }
+        })
+
 
 
 
@@ -483,19 +488,31 @@ const Combat = (props) => {
         zocGroup5.attr({ opacity: 0 });
         zocGroup6.attr({ opacity: 0 });
         let groupArrayZoc = []
-         groupArrayZoc.push({ group: zocGroup, fadeInDuration: 100, fadeOutDuration: 0, delay: 0, duration: 1000, leaveVisible: true, terminate: false }) 
-         groupArrayZoc.push({ group: zocGroup1, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 100, leaveVisible: true, terminate: false,
-             animation: { type: "translate", startX: 207, startY: 143, endX: 103, endY: 83, duration: 300 } }) 
-        groupArrayZoc.push({ group: zocGroup2, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 100, leaveVisible: true, terminate: false,
-            animation: { type: "translate", startX: 207, startY: 143, endX: 207, endY: 23, duration: 300 } }) 
-        groupArrayZoc.push({ group: zocGroup3, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 100, leaveVisible: true, terminate: false,
-            animation: { type: "translate", startX: 207, startY: 143, endX: 311, endY: 83, duration: 300 } }) 
-        groupArrayZoc.push({ group: zocGroup4, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 100, leaveVisible: true, terminate: false,
-            animation: { type: "translate", startX: 207, startY: 143, endX: 311, endY: 203, duration: 300 } }) 
-        groupArrayZoc.push({ group: zocGroup5, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 100, leaveVisible: true, terminate: false,
-            animation: { type: "translate", startX: 207, startY: 143, endX: 207, endY: 263, duration: 300 } }) 
-        groupArrayZoc.push({ group: zocGroup6, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 4600, terminate: true, 
-            animation: { type: "translate", startX: 207, startY: 143, endX: 102, endY: 203, duration: 300 } }) 
+        groupArrayZoc.push({ group: zocGroup, fadeInDuration: 100, fadeOutDuration: 0, delay: 0, duration: 1000, leaveVisible: true, terminate: false })
+        groupArrayZoc.push({
+            group: zocGroup1, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 100, leaveVisible: true, terminate: false,
+            animation: { type: "translate", startX: 207, startY: 143, endX: 103, endY: 83, duration: 300 }
+        })
+        groupArrayZoc.push({
+            group: zocGroup2, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 100, leaveVisible: true, terminate: false,
+            animation: { type: "translate", startX: 207, startY: 143, endX: 207, endY: 23, duration: 300 }
+        })
+        groupArrayZoc.push({
+            group: zocGroup3, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 100, leaveVisible: true, terminate: false,
+            animation: { type: "translate", startX: 207, startY: 143, endX: 311, endY: 83, duration: 300 }
+        })
+        groupArrayZoc.push({
+            group: zocGroup4, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 100, leaveVisible: true, terminate: false,
+            animation: { type: "translate", startX: 207, startY: 143, endX: 311, endY: 203, duration: 300 }
+        })
+        groupArrayZoc.push({
+            group: zocGroup5, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 100, leaveVisible: true, terminate: false,
+            animation: { type: "translate", startX: 207, startY: 143, endX: 207, endY: 263, duration: 300 }
+        })
+        groupArrayZoc.push({
+            group: zocGroup6, fadeInDuration: 100, fadeOutDuration: 0, delay: 1500, duration: 4600, terminate: true,
+            animation: { type: "translate", startX: 207, startY: 143, endX: 102, endY: 203, duration: 300 }
+        })
 
 
 
@@ -536,14 +553,14 @@ const Combat = (props) => {
         let g12 = paper.group()
         var textOnTheOtherHand = multitext(paper, 25, 342, "On the other hand, if the engineer wants to attack only the anti-air...", 390, standardTextLeftAlignedAttr);
         g12.append(textOnTheOtherHand)
-        let arrowEngineerToAntiAir2 = arrowEngineerToAntiAir.clone() 
+        let arrowEngineerToAntiAir2 = arrowEngineerToAntiAir.clone()
         g12.append(arrowEngineerToAntiAir2)
-        g12.attr({opacity: 0})
+        g12.attr({ opacity: 0 })
 
         let g13 = paper.group()
         var textItWillHaveToAttack = multitext(paper, 25, 342, "it will also have to attack the anti-tank unit - it is projecting ZOC.", 390, standardTextLeftAlignedAttr);
         g13.append(textItWillHaveToAttack)
-        g13.attr({opacity: 0})
+        g13.attr({ opacity: 0 })
 
         let groupArray = []
         groupArray.push({ group: g0, fadeInDuration: 100, fadeOutDuration: 100, delay: 300, duration: 3000, terminate: false })
@@ -574,25 +591,25 @@ const Combat = (props) => {
                 if (gIndex === index) {
 
                     //animation: { type: "translate", startX: 0, startY: 0, endX: 150, endY: 200, duration: 300 }
-                    if( g.animation ) {
-                        g.group.attr({opacity: 1})
+                    if (g.animation) {
+                        g.group.attr({ opacity: 1 })
                         console.log('doing transform')
                         let endX = g.animation.endX
                         let endY = g.animation.endY
                         let startX = g.animation.startX
                         let startY = g.animation.startY
                         let duration = g.animation.duration
-                        g.group.transform( 'T' +  + startX + ',' + startY);
-                        g.group.animate({ transform: 'T' + endX + ',' + endY}, duration)
-                        
+                        g.group.transform('T' + + startX + ',' + startY);
+                        g.group.animate({ transform: 'T' + endX + ',' + endY }, duration)
+
                     }
                     else {
                         setTimeout(() => g.group.animate({ opacity: 1 }, g.fadeInDuration), g.delay)
                     }
-                    
-                    
-                    
-                    
+
+
+
+
                     if (g.spawnChildGroupArray && g.spawnChildGroupArray !== undefined) {
                         if (g.spawnChildGroupArrayDelay) {
                             setTimeout(() => activateGroup(g.spawnChildGroupArray, 0), g.spawnChildGroupArrayDelay)
@@ -646,23 +663,21 @@ const Combat = (props) => {
     const multitext = (paper, x, y, txt, max_width, attributes) => {
         var t = paper.text(0, 0, txt).attr(attributes);
         t.attr({ ...attributes, opacity: 0 });
-        let totalWidth = t.getBBox().width
 
         // we can get svg to write a single space character, so we need to derive the width of a space character.
-        var letterA = paper.text(x, y, 'a').attr(attributes);
-        let letterAwidth = letterA.getBBox().width
-        var letterB = paper.text(x, y, 'b').attr(attributes);
-        let letterBwidth = letterB.getBBox().width
-        var letterA_B = paper.text(x, y, 'a b').attr(attributes);
-        let letterA_bwidth = letterA_B.getBBox().width
-        let spaceWidth = letterA_bwidth - (letterAwidth + letterBwidth)
-        letterA.remove()
-        letterB.remove()
-        letterA_B.remove()
+        //var letterA = paper.text(x, y, 'a').attr(attributes);
+        //let letterAwidth = letterA.getBBox().width
+        //var letterB = paper.text(x, y, 'b').attr(attributes);
+        //let letterBwidth = letterB.getBBox().width
+        //var letterA_B = paper.text(x, y, 'a b').attr(attributes);
+        //let letterA_bwidth = letterA_B.getBBox().width
+        //let spaceWidth = letterA_bwidth - (letterAwidth + letterBwidth)
+        //letterA.remove()
+        //letterB.remove()
+        //letterA_B.remove()
 
         // break text into array
         let wordsArray = txt.split(' ')
-        let widthsPerWord = []
         let firstWordOfLine = true
         let currentLine = ''
         let previousLine = ''
@@ -729,61 +744,12 @@ const Combat = (props) => {
         g.transform(addMatrix)
     }
 
-    const multitextOld = (paper, x, y, txt, max_width, attributes) => {
-        var temp = paper.text(0, 0, txt).attr(attributes);
-        temp.attr(attributes);
-        var letter_width = temp.getBBox().width / txt.length;
-        temp.remove();
-
-        var words = txt.split(" ");
-        var width_so_far = 0, current_line = 0, lines = [''];
-        for (var i = 0; i < words.length; i++) {
-
-            var l = words[i].length;
-            if (width_so_far + (l * letter_width) > max_width) {
-                lines.push('');
-                current_line++;
-                width_so_far = 0;
-            }
-            width_so_far += l * letter_width;
-            lines[current_line] += words[i] + " ";
-        }
-
-        var t = paper.text(x, y, lines).attr(attributes);
-        t.selectAll("tspan:nth-child(n+2)").attr({
-            dy: "1.1em",
-            x: x
-        });
-        return t;
-    };
 
 
 
 
 
 
-    const textBlock = (paper, x, y, width, height, text, fontSize) => {
-        var block = paper.rect(x, y, width, height, 0, 0);
-
-        block.attr({
-            fill: "rgb(236, 240, 241)",
-            stroke: "#1f2c39",
-            strokeWidth: 3
-        });
-
-        var text = paper.text(x, y, text);
-        text.attr({
-            'font-size': fontSize
-        });
-
-        block.attr({
-            width: (text.node.clientWidth)
-        });
-        let tg = paper.group()
-        tg.append(block)
-        tg.append(text)
-        return tg
-    }
 
     return (
         <div className="content">
@@ -800,12 +766,16 @@ const Combat = (props) => {
                 </div>
                 <span className="spacer1rem" />
                 <div className="subheader-n-images">
-                    <div>Combat overview</div>
+                    <div>Combat (high level) overview</div>
                 </div>
                 <div>
 
                     Each turn, there is a combat phase for each player.
-                    These combat phases are where most of the fighting occurs between player's units.
+                    These combat phases are where most of the fighting occurs between player's ground units (units such as infantry, tanks, cavalry, etc). and they can be
+                    aided by air, artillery, and naval assets which can only participate in combat if it was a combat initiated by ground units.
+                    <span className="spacer0_5rem" />
+                    There can be air-to-air combat, or ground-to-air (anti air assets), but these are handled in the combat sequence. Air units and artillery units never
+                    attack each other unless its in the context of a ground combat with ground units.
                     <span className="spacer0_5rem" />
                     <div className="rules-note">
                         There is a mechanism called "overrun" which is a type of attack that occurs during a movement phase,
@@ -813,24 +783,53 @@ const Combat = (props) => {
                         Movement section for info on overrun.
                     </div>
                     <span className="spacer0_5rem" />
-                    Combat can occur between combat unit(s) that are in hexes adjacent to each other. Additional units such as artillery units and air units can participate without
+                    Combat can only occur between unit(s) that are in hexes adjacent to each other. Additional units such as artillery units and air units can participate without
                     being adjacent to the hex being attacked. But you will need combat units "on the ground" adjacent to an enemy occupied hex in order to declare an attack.
                     <span className="spacer0_5rem" />
                     In order to be able to declare an attack for the Combat Phase, the active player will need to have at least
-                    one unit with a non-zero attack value. Units with zero attack values, like Untried Units cannot attack.
-                    Also, flotillas during a storm cannot attack. A "Declared Attack" marker will be placed on the hexes that
-                    are being attacked.
+                    one unit with a non-zero attack value.
+                    <span className="spacer0_5rem" />
+                    Once the phasing player has decided on which hexes will be getting attacked, that player places
+                    a "Declared Attack" marker on each of them.
+                    <span className="spacer0_5rem" />
+                    <div className="rules-note">
+                    The Declared Attack markers have numbers on them, but those are just for reference so the players can easily say "next I'm doing
+                    Declared Attack number 7", etc
+                    </div>
+
                     <span className="spacer0_5rem" />
                     For attacking units to perform at their best, they will need to be supplied with an Attack Supply point (ASP).
                     However, Attack Supply is not required, and units can still
-                    attack without having Attack Supply being used.
+                    attack without having Attack Supply being expended.
                     <span className="spacer0_5rem" />
                     Defending units do not need to use Attack Supply, except for artillery units
-                    which are in a special state called a "Limited Artillery Supply" condition.<BsrLink page="33" rule="13.5" />
+                    which can be in a special state called a "Limited Artillery Supply" condition.<BsrLink page="33" rule="13.5" />
                     <span className="spacer0_5rem" />
                     Flotillas and Armored Trains are not affected by lack of Attack Supply.<BsrLink page="39" rule="15.22" />
                     <span className="spacer0_5rem" />
+                    Air units do not use Attack Supply.
+                    <span className="spacer0_5rem" />
                     Attacking units that are marked Out of Supply get to ignore any Out of Supply effects during a combat, if they are being allocated Attack Supply.<BsrLink page="39" rule="15.21" />
+                    <span className="spacer0_5rem" />
+                    After the phasing player is done placing all the Declared Attack markers, then the defender will have a (limited) ability to 
+                    respond to the attacks. Some of those options are reaction movement, artillery allocation, air support.
+                    <span className="spacer0_5rem" />
+                    Then each combat is done one by one. Combat involves counting up attack and defense factors, incorporating any terrain effects,
+                    any Out of Supply effects, and air support if any.
+                    Then the "odds" are calculated, for example: 17 attacking factors against 6 defending factors will result in odds of 2-1 (whole numbers
+                    only, fractions are dropped).
+                    <span className="spacer0_5rem" />
+                    Higher odds are better for the attacker, lower odds are better for the defender.
+                    <span className="spacer0_5rem" />
+                    Then the Combat Table is referenced, the attacker rolls a die, then after adding or subtracting any
+                    die roll modifiers (DRMs), the result of the combat is cross referenced. The odds will be a column on the table, and the die roll
+                    result is a row. Where they intersect - are the results.
+                    <span className="spacer0_5rem" />
+                    Higher die rolls are better for the defender, lower die rolls are better for the attacker (generally). A "0" on the ten-sided die represents
+                    0 (zero), not 10.
+                    <span className="spacer0_5rem" />
+                    The results can be step losses (units get weaker) or eliminated, and possibly retreats (units run away 2 hexes). The attackers can often
+                    advance into a Defender hex, if the defenders were all eliminated or retreated.
                 </div>
                 <span className="spacer1rem" />
                 <div className="subheader-n-images">
@@ -846,16 +845,16 @@ const Combat = (props) => {
                     friendly units that are also adjacent to those enemy units.
                     <span className="spacer0_5rem" />
                     So as is evident - going up to attack one enemy occupied hex when other enemy occupied hexes are next to
-                    it can lead to 2 or more attacks that need to be declared.
+                    it can lead to 2 or more attacks that also need to be declared.
                 </div>
 
 
                 <div className="subheader-n-images">
                     <div>Multiple-Hex Attacks<BsrLink page="29" rule="12.17" /></div>
-                    
+
                 </div>
                 <div>
-                
+
                     In most cases combats will be between one enemy occupied hex and an adjacent enemy occupied hex. However
                     there can be multiple-hex attacks that are "one" Declared Attack. The requirements are that all attacking units are adjacent to all defending units.
                     Any artillery participating with support only need to be able to reach one of the hexes involved in the
@@ -864,51 +863,7 @@ const Combat = (props) => {
 
                 <span className="spacer0_5rem" />
 
-                <div className="subheader-n-images">
-                    <div>Bunker Busting<BsrLink page="40" rule="15.44" /></div>
-                    <img src={german_luftwaffe_flak} alt="German Luftwaffe motorized antiair unit" />
-                    <img src={german_motorized_antiair} alt="German motorized anti-air unit" />
-                    <img src={german_assault_gun} alt="German assault gun unit" />
-                </div>
                 <div>
-                    Some Axis units can be declared a "Bunker Buster" in a Declared Attack when attacking certain terrain, which allows them to double their attack value.
-                    <span className="spacer1rem" />
-
-                    <div className="indented-box background-green">
-                        <div className="indented-box-title">Qualifying Axis units for being a Bunker Buster:</div>
-                        <ul>
-                            <li>anti-aircraft</li>
-                            <li>motorized anti-aircraft</li>
-                            <li>assault gun</li>
-                        </ul>
-                    </div>
-
-                    <span className="spacer1rem" />
-
-                    <div className="indented-box background-beige">
-                        <div className="indented-box-title">Qualifying terrain for the Defender hex:</div>
-                        <ul>
-                            <li>non-destroyed strongpoint</li>
-                            <li>fortified belt</li>
-                            <li>fortified lines</li>
-                            <li>city</li>
-                            <li>Major city</li>
-                        </ul>
-                    </div>
-
-
-
-
-
-                    <span className="spacer1rem" />
-                    Only one qualifying unit can be designated as a Bunker Buster in a Declared Attack.
-                    <span className="spacer0_5rem" />
-                    A anti-aircraft unit that contributed a DRM to AA Fire during the current combat phase cannot be selected to be a Bunker Buster.
-                    <span className="spacer0_5rem" />
-                    If Bunker Busting is being used in a Declared Attack, then the attacker is liable for Engineer Loss, and may lose the Bunker Buster unit.<BsrLink page="43" rule="16.33b2" />
-
-
-                </div><div>
 
 
 
@@ -919,8 +874,21 @@ const Combat = (props) => {
 
                     <ol>
                         <li><b>Attack Declaration<BsrLink page="28" rule="12.1" /></b> - The attacker declares any enemy occupied hexes that will be attacked, and places a Attack marker on each of them.
-                            <br />
-                            A hex with an Attack marker on it is called a Defender hex, for this combat phase.</li>
+                            <span className="spacer0_5rem" />
+                            A hex with an Attack marker on it is called a Defender hex, for this combat phase.
+                            <span className="spacer0_5rem" />
+                            To be able to declare an attack, the active player must have attack-eligible units adjacent to enemy units, in terrain (and across hexsides) that the attacking
+                            units can normally move into.
+                            <span className="spacer0_5rem" />
+                            All units are eligible to attack except:
+                            <ul className="bare-ui">
+                                <li>Units with zero attack strength.</li>
+                                <li>Flotillas during Storm.</li>
+                                <li>Untried units.</li>
+                                <li>Units with a zero attack strength. </li>
+                            </ul>
+                            <span className="spacer1rem" />
+                        </li>
                         <li><b>Reaction Phase</b> - The defender will get conduct Reaction Movement, designate artillery, and issue Retreat Orders.
                             <span className="spacer0_5rem" />
                             <div className="indented-box background-green">
@@ -957,7 +925,7 @@ const Combat = (props) => {
                             <span className="spacer0_5rem" />
 
                             <div className="indented-box background-yellow">
-                                <div className="indented-box-title">Defender artillery designation</div>
+                                <div className="indented-box-title">Defender artillery designation<BsrLink page="31" rule="13.0" /></div>
                                 Designate eligible defender artillery to support the combat. Artillery is eligible to provide its support strength if it meets the requirements:
                                 <ul>
                                     <li>Is eligible if it is within it's range to the Defender hex.
@@ -985,21 +953,98 @@ const Combat = (props) => {
                                 <span className="spacer0_5rem" />
                                 No Retreat -
                                 <ul className="bare-ul">
-                                    <li>Unit(s) with a No Retreat order do not retreat.</li> 
+                                    <li>Unit(s) with a No Retreat order do not retreat.</li>
                                     <li>The No Retreat order confers a +1 DRM on the combat die roll.</li>
                                     <li>If a retreat result occurs, the units suffer a step loss (above any numeric step losses specified).</li>
                                 </ul>
                                 <span className="spacer0_5rem" />
-                                Addtional Retreat - 
+                                Addtional Retreat -
                                 <ul className="bare-ul">
-                                    <li>Unit(s) with an Additional Retreat marker retreat 3 hexes instead of 2, if the combat result has a retreat results for the unit(s) that had the order.</li>
+                                    <li>Unit(s) with an Additional Retreat order retreat 3 hexes instead of 2, <b>if</b> the combat result has a retreat results for the unit(s) that had the order.</li>
                                     <li>If the combat result
-                                has a retreat result and a numeric loss result, the unit(s) with the Additional Retreat order suffer one less step loss.</li> 
-                                <li>Attacking units with an Additional Retreat order on them cannot advance after combat.</li>
-                                <li>If the units with the Additional Retreat order are retreating - the opposing player gets to retreat them. However, they cannot be retreated on a path that causes any additional loss, if there are better alternatives.
-                                </li>
-                                <li>Units under an Additional Retreat order cannot retreat through enemy ZOC, unless a friendly unit(s) is in the hex(es) in enemy ZOC.</li>
+                                        has a retreat result and a numeric loss result, the unit(s) with the Additional Retreat order suffer one less step loss.</li>
+                                    <li>Attacking units with an Additional Retreat order on them cannot advance after combat.</li>
+                                    <li>If the units with the Additional Retreat order are retreating - the opposing player gets to retreat them. However, they cannot be retreated on a path that causes any additional loss, if there are better alternatives.
+                                    </li>
+                                    <li>Units under an Additional Retreat order cannot retreat through enemy ZOC, unless a friendly unit(s) is in the hex(es) in enemy ZOC.</li>
                                 </ul>
+
+
+                                <div className="normal-text-n-images bold">
+                                    <div>Orders Placement<BsrLink page="30" rule="12.53" /></div>
+                                    <img src={orders} alt="orders marker" />
+                                </div>
+
+                                <span className="spacer0_5rem" />
+                                In the Reaction Phase, the defender will decide first, if orders will be issued. Orders are placed face down (hidden).
+                                <span className="spacer0_5rem" />
+                                The defender can only place orders where there are Declared Attack markers, and if the requirements for placing an order are met.
+                                <span className="spacer0_5rem" />
+                                The attacker can then place orders for Declared Attacks where the defender has placed an order.
+                                <span className="spacer0_5rem" />
+                                For the defender to place an order, the defender hex must contain eligible terrain
+                                (for multiple-hex combat, if any of the hexes contain eligible terrain):
+                                <ol>
+                                    <li>woods</li>
+                                    <li>alpine</li>
+                                    <li>mountain</li>
+                                    <li>city or Major City</li>
+                                    <li>any kind of friendly fortification, except Citadel<BsrLink page="50" rule="18.5" /></li>
+                                    <li>town, when the weather gives the town a DRM for defense</li>
+                                </ol>
+                                <span className="spacer0_5rem" />
+                                For the attacker to place an order:
+                                <ul>
+                                    <li>The defender hex has an order on it. The terrain the attackers are in doesn't matter.</li>
+                                    <li>The Additional Retreat order cannot be placed on hexes where Mud conditions apply.</li>
+                                    <li>Orders cannot be placed in a enemy air Zone of Interdiction.</li>
+                                </ul>
+                                <span className="spacer0_5rem" />
+                                Soviet restrictions on order placement<BsrLink page="31" rule="12.54" />:<br />
+                                <ul>
+                                    <li>Soviet Orders require a Soviet HQ with at least one command point, and which is in range of at least one hex of friendly
+                                        units involved in combat. A Non-Op HQ will, of course, prevent the placement of orders, within its command range.
+                                    </li>
+                                    <li>
+                                        If a NKVD unit(s) is in qualifying terrain in a Defender hex, it automatically issues a No Retreat order, regardless of any Non-Op HQ in range.
+                                        However, a HQ with at least one command point can remove the No Retreat order which was placed by a NKVD.
+                                    </li>
+                                </ul>
+
+                                <span className="spacer1rem" />
+                                <div className="box-with-image-to-left">
+                                    <div>Effects of the No Retreat order</div>
+                                    <div className="two-column-flex counter-left">
+                                        <img src={counter_no_retreat} style={{ width: "auto" }} alt="counter no retreat order" />
+                                        <div>
+                                            <ul>
+                                                <li>For the Defender under No Retreat order, +1 DRM to the combat die roll. Attacker with No Retreat does not get a DRM.</li>
+                                                <li>Units under a No Retreat order change a "R" result to a step loss. Then apply any numerical step loss result. (R turns to a "1", R1 turns to effectively a "2", etc).</li>
+                                                <li>In addition, any non-German units suffer an additional step loss unless they are in a city, major city, hill, mountain, alpine, woods, or non-destroyed fortification hex.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <span className="spacer1rem" />
+
+                                <div className="box-with-image-to-left">
+                                    <div>Effects of the Additional Retreat order</div>
+                                    <div className="two-column-flex counter-left">
+                                        <img src={counter_additional_retreat} alt="counter additional retreat order" />
+                                        <div>
+                                            <ul>
+                                                <li>Units that get a R result and are under an Additional Retreat order retreat 3 hexes instead of 2. Units can only retreat on a "R" or "Rn" result.</li>
+                                                <li>Retreat path is determined by non-owner. Units must be retreated through a path that does not result in step loss, if possible.</li>
+                                                <li>Units retreating under Additional Retreat cannot retreat through even one uncontested enemy ZOC. If forced to they are eliminated.</li>
+                                                <li>If there is a numerical step loss in addition to the R result, the units suffer one less step loss.</li>
+                                                <li>Attackers with an Additional Retreat order cannot advance if the defender vacates the Defender hex.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+
 
                             </div>
 
@@ -1007,74 +1052,48 @@ const Combat = (props) => {
                         </li>
 
                     </ol>
-                    The Combat Results table is a standard odds based table. Odds go from 1-4 to 10-1. Odds less than 1-4 are treated as automatic attacker eliminated (although you can't declare a combat if the initial odds are less than 1-4), and odds greater than 10-1 are treated as 10-1. There is a 3-2 column and a 3-4 column, which sometimes requires some mental mathematical dexterity. The results on the table range from no effect, to retreats, to step losses, and to complete annihilation, otherwise known as the dreaded 'e' result.
-                </div><div>
-                    <span className="b">Attacking Is Voluntary</span>, however if you wish to attack, then things get a little "sticky". Any enemy unit that exerts a ZOC into a hex of an attacking unit MUST also be attacked.
+                </div>
+
+
+                <div className="subheader-n-images">
+                    <div>Bunker Busting<BsrLink page="40" rule="15.44" /></div>
+                    <img src={german_luftwaffe_flak} alt="German Luftwaffe motorized antiair unit" />
+                    <img src={german_motorized_antiair} alt="German motorized anti-air unit" />
+                    <img src={german_assault_gun} alt="German assault gun unit" />
                 </div>
                 <div>
-                    Attacks that are made without Attack Supply have these consequences:<BsrLink page="39" rule="15.22" />
-                    <ul className="bare-ul">
-                        <li>A +2 DRM is applied.</li>
-                        <li>The attacker cannot allocate Artillery Support, although they still could if an ASP is used for the artillery (even though the ground attack is being made without ASP)<BsrLink page="39" rule="15.34" />.</li>
-                        <li>Any Panzer or Motorized Division that has an Out of Supply marker on it (and is not getting an ASP spent on the combat it is involved in), does not receive it's Panzer Division Integrity Bonus.</li>
-                        <li>The attacking units suffer an addition step loss if the combat result has an asterisk (*).</li>
-                    </ul>
+                    Some Axis units can be declared a "Bunker Buster" in a Declared Attack when attacking certain terrain, which allows them to double their attack value.
+                    <span className="spacer1rem" />
+
+                    <div className="indented-box background-green">
+                        <div className="indented-box-title">Qualifying Axis units for being a Bunker Buster:</div>
+                        <ul>
+                            <li>anti-aircraft</li>
+                            <li>motorized anti-aircraft</li>
+                            <li>assault gun</li>
+                        </ul>
+                    </div>
+
+                    <span className="spacer1rem" />
+
+                    <div className="indented-box background-beige">
+                        <div className="indented-box-title">Qualifying terrain for the Defender hex:</div>
+                        <ul>
+                            <li>non-destroyed strongpoint</li>
+                            <li>fortified belt</li>
+                            <li>fortified lines</li>
+                            <li>city</li>
+                            <li>Major city</li>
+                        </ul>
+                    </div>
+
+                    <span className="spacer1rem" />
+                    Only one qualifying unit can be designated as a Bunker Buster in a Declared Attack.
                     <span className="spacer0_5rem" />
-
+                    A anti-aircraft unit that contributed a DRM to AA Fire during the current combat phase cannot be selected to be a Bunker Buster.
                     <span className="spacer0_5rem" />
-                    For the defender in a Declared Attack, no ASP needs to be used, except if they are in a Limited Artillery condition, then an ASP needs to allocated so that they can fire their artillery support. The ASP
-                    may or may not end up being used, according to the results of the Limited Artillery table.<BsrLink page="39" rule="15.21" />
-                </div>
+                    If Bunker Busting is being used in a Declared Attack, then the attacker is liable for Engineer Loss, and may lose the Bunker Buster unit.<BsrLink page="43" rule="16.33b2" />
 
-
-                <span className="spacer2rem" />
-                <div className="subheader-image">
-                    <span>12.0</span>
-                    <div>Declaration of Attack</div>
-                    <img src={declared_attack} style={{height: "auto"}} alt="declared attack counter" />
-                </div>
-                <span className="spacer1rem" />
-                <div>
-                    The phasing player must designate all his attacks before the start of the Combat phase. All designated attacks must have initial odds of at least 1-4. The rules state that a Declared Attack marker must be put on the defender hex being attacked. I prefer to put them on the attacking units, with the arrow of the marker pointing towards the defender hex, that way its easier for me to remember who exactly is attacking what. But you can do it either way. By only putting the marker on the defender hex, you can sometimes cause some doubt to your enemy as to who exactly is attacking, or how strong an attack to expect. At the moment of combat, the attacker can change who is attacking which defender hex, but still - each marked defender hex must be attacked, even if the final odds turn out to be less than 1-4.
-                </div>
-
-
-                <div className="subheader2">Hexes Eligible to be Attacked</div>
-
-                <div>
-                    In order for your units to attack enemy units, either:<br />
-                    <span className="indent1rem"><span className="b">a)</span> The hex the enemy units are in can be normally entered by your units (according to the current weather conditions).</span><br />
-                    <span className="indent1rem">AND / OR</span> <br />
-                    <span className="indent1rem"><span className="b">b)</span> The enemy units exert a ZOC into the hex the attackers are attacking from. However, advance after combat cannot occur into terrain units are prohibited from entering.</span><br />
-                </div>
-                <div>
-                    Multiple-hex defender hexes can be attacked as a single attack, but all attacking units must be adjacent to all defending units. Typically, multiple defender hex combats consist of an attacker in one hex attacking two defender hexes.
-                </div>
-
-                <div className="subheader-rule">
-                    <span>14.1</span>
-                    Reaction Movement
-                </div>
-
-                <div>Reaction Movement provides a mechanism where a defender can move additional troops to a hex under attack, possibly upsetting the odds calculation, or possibly denying the enemy a CAB bonus. It is similar to the concept of "reserves", except only motorized, or Guard, units can move.
-                </div>
-                <div>In the Reaction Movement phase the defender may move any motorized units that are within three hexes of a Declared Attack hex, up to half of their movement allowance.
-                </div>
-
-
-                <div className="indented-box background-green">
-                    <div className="indented-box-title">Reaction Movement Qualifications:</div>
-                    <ul>
-                        <li>Only non-orange ma motorized units may move in the Reaction Movement phase.</li>
-                        <li>Must be within 3 hexes of the Declared Attack hex.</li>
-                        <li>Cannot start in ZOC of an enemy unit, or be in a Defender Hex.</li>
-                        <li>For Soviets, must also be within Command Range of an operating Headquarters unit with at least 1 non-interdicted Command Point, and also NOT be in range of a Non-Op Headquaters.</li>
-                        <li>Must not have a Overrun marker on it.</li>
-                    </ul>
-                </div>
-
-                <span className="spacer1rem" />
-                <div>Motorized units that qualify to move in the Reaction Phase need not move towards the Declared Attack. It can move in any direction, up to half its movement allowance. It can do One Hex Movement if the unit is not OOS and its not Mud weather. It cannot enter an enemy ZOC unless there is a friendly unit(s) in the hex. If it moves into a hex that is in enemy ZOC (and has a friendly unit(s) in it), it must stop. It also does not pay the normal +1 cost for entering ZOC if entering a Defender Hex. Once a motorized unit enters a defender hex, it adds its combat strength to the defense, plus any other benefits it may add, such as denying the enemy the use of CAB.
                 </div>
 
 
@@ -1284,117 +1303,8 @@ const Combat = (props) => {
                     </ul>
                 </div>
 
-                <span className="spacer2rem" />
-                <div className="subheader-image artillery">
-                    <span className="bsr2">12.5 BSR 2.0</span>
-                    <div>"No Retreat" and "Additional Retreat" order markers</div>
-                    <img src={orders_strip} alt="orders counters" />
-                </div>
-                <span className="spacer1rem" />
-                <div>
-                    The attacker and defender in a battle may place a "No Retreat" or "Additional Retreat" order marker on units in
-                    a battle. The placement of an order marker is done after defensive artillery support is declared.
-                </div><div>
-                    The orders marker, either "Additional Retreat" or "No Retreat", is placed face down on
-                    the defending units so that
-                    the attacker does not know which order it is.
-                </div><div>
-                    The attacker can only place an orders marker on their units if the defender has an orders marker on them.
-                </div><div>
-                    Orders can only be placed on a hex that is in "qualifying terrain". A hex is in "qualifying terrain" if
-                    it has any of: woods, alpine, mountain, city, major city, or any type of friendly active fortification
-                    (Exception - Citadels).
-                </div><div>
-                    A town is also "qualifying terrain" if there are mud conditions and the defender gets a DRM benefit for
-                    mud - but in this case it only qualifies for the "No Retreat" order.
-                </div><div>
-                    An "Additional Retreat" order marker cannot be placed on a hex that is under the mud weather condition.
-                </div><div>
-                    The defender will be able to put a (single) orders marker on a defending hex that has
-                    qualifying terrain. The placement of orders is optional (except for NKDV described below).
-                </div><div>
-                    The German player can place an orders marker for any units that are defending in qualifying
-                    terrain.
-                </div><div>
-                    For the Soviets, they can only place a orders marker if:<br />
-                    a) There is an operational HQ within range of the defending hex, and that HQ has at least 1 non-interdicted
-                    command point to expend for the order. Non-Op headquarters that are in command range of the hex will prevent
-                    the placement of orders.<br />
-                    b) The defending hex has a NKVD unit. In this case, the NKVD automatically places a "No Retreat" order
-                    on the hex it is in - if the hex has "qualifying terrain". No HQ command point is expended for this automatic
-                    placement. The presence of a HQ or Non-Op HQ has no effect
-                    on this placement. However, a HQ with a command point to spend, which is in command range (with no Non-Op
-                    HQ in command range) can expend a command point to remove this "automatic" order.
-                </div><div>
-                    An orders marker applies to all the friendly units in that battle, even if it is a multiple-hex
-                    combat. Conflicting orders cannot be applied to a player's units in the same combat.
-                </div><div>
-                    After orders for the defender is place, the attacker may place an order on their attacking units. Again,
-                    one orders marker applies to all units of that player that are in the combat. The placement
-                    of an orders marker does not need "qualifying terrain" - the fact that the defender has an orders marker
-                    on it allows the attacking player to place an orders marker on that player's attacking units.
-                </div><div>
-                    The Soviet player will need a HQ in command range (with no Non-Op HQ in command range) with
-                    a command point to expend for the placement of an orders marker for attacking units.
-                </div>
 
 
-
-
-                <div className="indented-box-with-image-to-left">
-                    <div>Effects of the No Retreat order</div>
-                    <div className="two-column-flex counter-left">
-                        <img src={counter_no_retreat} alt="counter no retreat order" />
-                        <div>
-                            <ul>
-                                <li>For the Defender under No Retreat order, +1 DRM to the combat die roll. Attacker with No Retreat does not get a DRM.</li>
-                                <li>Units under a No Retreat order change a "R" result to a step loss. Then apply any numerical step loss result. (R turns to a "1", R1 turns to effectively a "2", etc).</li>
-                                <li>In addition, any non-German units suffer an additional step loss unless they are in a city, major city, hill, mountain, alpine, woods, or non-destroyed fortification hex.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <span className="spacer1rem" />
-
-                <div className="indented-box-with-image-to-left">
-                    <div>Effects of the Additional Retreat order</div>
-                    <div className="two-column-flex counter-left">
-                        <img src={counter_additional_retreat} alt="counter additional retreat order" />
-                        <div>
-                            <ul>
-                                <li>Units that get a R result and are under an Additional Retreat order retreat 3 hexes instead of 2. Units can only retreat on a "R" or "Rn" result.</li>
-                                <li>Retreat path is determined by non-owner. Units must be retreated through a path that does not result in step loss, if possible.</li>
-                                <li>Units retreating under Additional Retreat cannot retreat through even one uncontested enemy ZOC. If forced to they are eliminated.</li>
-                                <li>If there is a numerical step loss in addition to the R result, the units suffer one less step loss.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <span className="spacer1rem" />
-
-
-
-
-                <span className="spacer1rem" />
-
-
-                <span className="spacer2rem" />
-                <div className="subheader-image stalin">
-                    <span>16.2, 22.11</span>
-                    <div>Step Losses</div>
-                    <img src={directhit} alt="Direct hit on anti-tank gun" />
-                </div>
-                <span className="spacer1rem" />
-                <div>
-                    A numerical result on the combat results table is the number of step losses that occurred to an attacker and/or defender. The step loss is applied to the total lot of attackers or defenders, not to every individual unit. A unit has from 1 to 4 steps. A combat unit with its highest combat strength of 8 or more have four steps. 5-7 combat strength has three steps. Units with 2 steps have a weaker side on the reverse side of the counter. A unit with only one step has a blank reverse side (or its mobile side in case of super-heavy artillery). A Soviet HQ has 1 step. Units with 3 or 4 steps require the use of a Step Loss counter to indicate intermediate levels of strength that are not printed on the counter.
-                </div><div>
-                    Units that are eliminated in combat due to step losses, and were not completely surrounded or blocked by impassable terrain, go into the Cadre box for possible rebuilding during the replacement phase, otherwise they go to the eliminated box. Units that were destroyed by an "e" result go into the eliminated box. Units in the elimated box cannot be rebuilt. Exception - killed off Soviet MG/UR units always go back into the MG/UR pool, typically a opaque cup. Specific scenario rules may overrule the Cadre rule or modify it.
-                </div><div>
-                    When a armor or non-Guard artillery unit step is lost (not unit, step) move the marker on the step loss track. When the marker reaches the end of the track, chalk up one VP for the enemy and return the marker to the start of the step loss track. Each Guards step lost gives one VP directly to the enemy.
-                </div><div>
-                    Step losses may be modified by Asterisk (*) results, No Retreat orders, and Additional Retreat orders.
-                </div>
 
                 <span className="spacer2rem" />
                 <div className="subheader-image stalin">
