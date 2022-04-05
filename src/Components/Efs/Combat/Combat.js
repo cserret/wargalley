@@ -878,19 +878,18 @@ const Combat = (props) => {
                     </div>
 
                     <ol>
-                        <li><b>Attack Declaration<BsrLink page="28" rule="12.1" /></b> - The attacker declares any enemy occupied hexes that will be attacked, and places a Attack marker on each of them.
+                        <li><b>Attack Declaration<BsrLink page="28" rule="12.1" /></b> - The attacker declares any enemy occupied hexes that will be attacked, and places a Declared Attack marker on each of them.
                             <span className="spacer0_5rem" />
-                            A hex with an Attack marker on it is called a Defender hex, for this combat phase.
+                            A hex with a Declared Attack marker on it is called a Defender hex, for this combat phase.
                             <span className="spacer0_5rem" />
                             To be able to declare an attack, the active player must have attack-eligible units adjacent to enemy units, in terrain (and across hexsides) that the attacking
                             units can normally move into.
                             <span className="spacer0_5rem" />
                             All units are eligible to attack except:
                             <ul className="bare-ui">
-                                <li>Units with zero attack strength.</li>
+                                <li>Units with a zero attack strength.</li>
                                 <li>Flotillas during Storm.</li>
                                 <li>Untried units.</li>
-                                <li>Units with a zero attack strength. </li>
                             </ul>
                             <span className="spacer1rem" />
                         </li>
