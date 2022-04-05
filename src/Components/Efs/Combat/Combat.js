@@ -873,12 +873,12 @@ const Combat = (props) => {
 
 
                     <div className="subheader-n-images">
-                        <div>Combat procedure</div>
+                        <div>Attack Declaration Phase<BsrLink page="28" rule="12.1" /></div>
                         <img src={declared_attack} alt="declared attack counter" />
                     </div>
 
                     <ol>
-                        <li><b>Attack Declaration<BsrLink page="28" rule="12.1" /></b> - The attacker declares any enemy occupied hexes that will be attacked, and places a Declared Attack marker on each of them.
+                        <li><b>Attack Declaration</b> - The attacker declares any enemy occupied hexes that will be attacked, and places a Declared Attack marker on each of them.
                             <span className="spacer0_5rem" />
                             A hex with a Declared Attack marker on it is called a Defender hex, for this combat phase.
                             <span className="spacer0_5rem" />
@@ -893,7 +893,7 @@ const Combat = (props) => {
                             </ul>
                             <span className="spacer1rem" />
                         </li>
-                        <li><b>Reaction Phase</b> - The defender will get conduct Reaction Movement, designate artillery, and issue Retreat Orders.
+                        <li><b>Reaction Phase</b> - The defender will get to conduct Reaction Movement, designate artillery, and issue Retreat Orders.
                             <span className="spacer0_5rem" />
                             <div className="indented-box background-green">
                                 <div className="indented-box-title">Reaction Movement</div>
@@ -953,25 +953,10 @@ const Combat = (props) => {
 
                             <div className="indented-box background-pink">
                                 <div className="indented-box-title">Orders Markers<BsrLink page="30" rule="12.5" /></div>
-                                There are two kinds of orders, which affect the combat results by providing a DRM and other effects.
+                                There are two kinds of orders, that have different effects. No Retreat and Additional Retreat. Both attacker and defender may be able to get these orders.
+                                Only one kind of order can be placed on a player's units in a Declared Combat. An order applied to a player's unit(s) in a Declared Attack will apply to
+                                all units that are involved in the combat.
                                 <span className="spacer0_5rem" />
-                                No Retreat -
-                                <ul className="bare-ul">
-                                    <li>Unit(s) with a No Retreat order do not retreat.</li>
-                                    <li>The No Retreat order confers a +1 DRM on the combat die roll.</li>
-                                    <li>If a retreat result occurs, the units suffer a step loss (above any numeric step losses specified).</li>
-                                </ul>
-                                <span className="spacer0_5rem" />
-                                Addtional Retreat -
-                                <ul className="bare-ul">
-                                    <li>Unit(s) with an Additional Retreat order retreat 3 hexes instead of 2, <b>if</b> the combat result has a retreat results for the unit(s) that had the order.</li>
-                                    <li>If the combat result
-                                        has a retreat result and a numeric loss result, the unit(s) with the Additional Retreat order suffer one less step loss.</li>
-                                    <li>Attacking units with an Additional Retreat order on them cannot advance after combat.</li>
-                                    <li>If the units with the Additional Retreat order are retreating - the opposing player gets to retreat them. However, they cannot be retreated on a path that causes any additional loss, if there are better alternatives.
-                                    </li>
-                                    <li>Units under an Additional Retreat order cannot retreat through enemy ZOC, unless a friendly unit(s) is in the hex(es) in enemy ZOC.</li>
-                                </ul>
 
 
                                 <div className="normal-text-n-images bold">
@@ -1023,7 +1008,7 @@ const Combat = (props) => {
                                         <div>
                                             <ul>
                                                 <li>For the Defender under No Retreat order, +1 DRM to the combat die roll. Attacker with No Retreat does not get a DRM.</li>
-                                                <li>Units under a No Retreat order change a "R" result to a step loss. Then apply any numerical step loss result. (R turns to a "1", R1 turns to effectively a "2", etc).</li>
+                                                <li>Units under a No Retreat order do not retreat. Change a "R" result to a step loss. Then apply any numerical step loss result. (R turns to a "1", R1 turns to effectively a "2", etc).</li>
                                                 <li>In addition, any non-German units suffer an additional step loss unless they are in a city, major city, hill, mountain, alpine, woods, or non-destroyed fortification hex.</li>
                                             </ul>
                                         </div>
@@ -1042,7 +1027,7 @@ const Combat = (props) => {
                                                 <li>Retreat path is determined by non-owner. Units must be retreated through a path that does not result in step loss, if possible.</li>
                                                 <li>Units retreating under Additional Retreat cannot retreat through even one uncontested enemy ZOC. If forced to they are eliminated.</li>
                                                 <li>If there is a numerical step loss in addition to the R result, the units suffer one less step loss.</li>
-                                                <li>Attackers with an Additional Retreat order cannot advance if the defender vacates the Defender hex.</li>
+                                                <li>Attackers with an Additional Retreat order cannot advance after combat.</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -1057,7 +1042,7 @@ const Combat = (props) => {
 
                     </ol>
                 </div>
-
+                <span className="spacer1rem" />
 
                 <div className="subheader-n-images">
                     <div>Bunker Busting<BsrLink page="40" rule="15.44" /></div>
