@@ -75,11 +75,20 @@
         }
     }
     .counter-left {
+        margin-left: 30px;
+        &.flush-left {
+            margin-left: 0;
+        }
         img{
             height: 80px;
             width: auto;
             margin: auto;
-            margin-left: 30px;
+        }
+        div {
+            margin-left: 10px;
+            .title {
+                font-weight: bold;
+            }
         }
     }
     .engineer-attrition {

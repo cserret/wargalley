@@ -30,7 +30,30 @@ const Overview = (props) => {
 
             <div>
                 <span>
-                    The East Front Series game system simulates warfare on the Eastern Front, 1941. Units represented as counters are divisions, brigades, regiments, companies, batteries, and groups of planes. The map scale is 5 miles to the hex. A turn represents 2 days. The sequence of play is assymetrical, meaning the Axis order of phases during a turn is different than the Soviet order of phases. Specifically the Axis player gets to move all its units then do combat, the normal "wargame" order of things. But for the Soviets, they move their motorized units, with a very limited ability to move a few non-motorized units with their motorized units, before doing combat. This causes the Soviet abilities to wage war to be handicapped, and neatly inserts the command control problems the Soviets experienced into the game, without the need for artificial "idiot rules". The Soviets in 1941 had so much difficulty in coordinating their armor with their infantry in attacks that often the armor went into the attack without infantry support, and often Soviet units involved in a desperate defence would get no reserves sent to them, even when ample troops were nearby. The rigid Soviet command structure meant that directives from above were to be obeyed, despite the realities on the ground. The Germans, of course, were indoctrinated through their military training to show initiative, and showed great flexibility in battle, with excellent coordination between the various elements of their armed forces.
+                    The East Front Series game system simulates warfare on the Eastern Front, 1941. 
+                    <div className="spacer0_5rem" />
+                    Units represented as counters are divisions, brigades, regiments, companies, batteries, and groups of planes. 
+                    <div className="spacer0_5rem" />
+                    The map scale is 5 miles to the hex. A turn represents 2 days.
+                    <div className="spacer0_5rem" />
+                     The sequence of play is assymetrical, meaning the Axis order of phases during a turn is different than the Soviet order of phases. 
+                     <div className="spacer0_5rem" />
+                     Specifically the Axis player gets to move all its units then do combat, the normal "wargame" order of things. 
+                     <div className="spacer0_5rem" />
+                     But for the Soviets, they move their motorized units, with a very limited ability to move a few non-motorized units with their motorized units, 
+                     before doing combat. This causes the Soviet abilities to wage war to be handicapped, and neatly inserts the command control problems the Soviets 
+                     experienced into the game, without the need for artificial "dummy" rules for the Soviets (other than Mandated Attacks, but that was Stalin's fault).
+                     <div className="spacer0_5rem" />
+                      The Soviets in 1941 had so much difficulty in coordinating their armor 
+                     with their infantry in attacks that often the armor went into the attack without infantry support, and Soviet units involved in a desperate 
+                     defence would get no reserves sent to them, even when ample troops were nearby sitting idle. 
+                     <div className="spacer0_5rem" />
+                     The rigid Soviet command structure meant that directives from above 
+                     were to be obeyed, despite the realities on the ground.
+                     <div className="spacer0_5rem" />
+                     The Germans, of course, were indoctrinated through their military training to take 
+                     initiative all the way down the line, and as a result they had great flexibility in battle, along with excellent coordination between the various elements of 
+                     their armed forces.
                 </span>
             </div>
 
@@ -41,8 +64,8 @@ const Overview = (props) => {
                     <div className="image">&nbsp;<img src={german_panzer_division_120} alt="German panzer division" /></div>
                     <div className="comment">
 
-                        A typical German panzer division consists of one panzer regiment,<br />
-                        two motorized infantry regiments, and a recon battalion.
+                        A typical German panzer division, in this game system, consists of one<br />
+                        panzer regiment, two motorized infantry regiments, and a recon battalion.
 
                     </div>
                 </div>
@@ -51,7 +74,21 @@ const Overview = (props) => {
             <span className="spacer1rem" />
             <div>
                 <span>
-                    In this game system, the panzer division is king. Often a panzer division gets the dual combat benefits of "divisional integrity" and "combined arms", which makes them very combat effective. Add into the mix engineers and air support, and panzer divisions can pretty much chew into any defense the Soviets can put up. But the main problem for the Axis player is that there are not enough panzer divisions, and with the lack of time the Axis has to accomplish their objectives, combined with the problems of getting enough Attack Supply to the front, the Axis player is often forced to put his precious panzer divisions into dangerous situations. How well the Axis player balances the need for victory points with risk to his panzer divisions is what gives this game system its excitement level.
+                    In this game system, the panzer division is king. Often a panzer division gets the dual combat benefits of "divisional integrity" and "combined arms", 
+                    which makes them very combat effective.
+                    <div className="spacer0_5rem" />
+                    Add into the mix engineers and air support, and panzer divisions can pretty much chew into any defense 
+                    the Soviets can put up.
+                    <div className="spacer0_5rem" />
+                    But the main problem for the Axis player is that there are not enough panzer divisions, and with the lack of time the 
+                    Axis has to accomplish their objectives, combined with the problems of getting enough Attack Supply to the front, the Axis player is often 
+                    forced to put his/her precious panzer divisions into dangerous situations.
+                    <div className="spacer0_5rem" />
+                    How well the Axis player balances the need for victory points with risk to 
+                    his panzer divisions and other units is what gives this game system its excitement level.
+                    <div className="spacer0_5rem" />
+                    The Soviet player will need to strategically trade space for time, and come up with ways to slow down the German onslaught, while striking
+                    back when the Germans get careless. 
                 </span>
             </div>
 
