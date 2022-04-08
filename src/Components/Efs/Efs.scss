@@ -179,7 +179,7 @@
     .indented-box {
       border: 1px solid black;
       display: inline-block;
-      margin-left: 50px;
+      margin-left: 20px;
       &.background-green {
         background-color: #e2ffe2;
         text-shadow:0 0 rgba(0,255,0,0.9);
@@ -269,11 +269,36 @@
   </div>
 </div>
 */
+.image-text {
+
+  display: flex;
+  margin-left: 20px;
+  padding: 10px 5px 10px 5px;
+  background-color: #ffdddd;
+  ul {
+    margin: 0;
+  }
+  img {
+    align-self: center;
+    margin-left: 10px;
+  }
+  >div {
+    margin-left: 20px;
+  }
+  &.background-pink {
+    border: 1px solid #eedddd;
+    background-color: #ffdddd;
+}
+&.background-grayblue {
+  border: 1px solid #ccccdd;
+  background-color: #ddddee;
+}
+}
 .rules-note {
   border: 1px solid #ddd;
   padding: 3px 5px;
-  background-color: #e5efff;  
-  color: #292;
+  background-color: #eaf4ff;  
+  color: #181;
 }
   .rule-ref {
     color: red;

@@ -12,9 +12,6 @@ import artillery_units from "../../../images/efs/combat/artillery_strip_120.png"
 import soviet_artillery_firing from "../../../images/efs/combat/soviet_artillery_firing.jpg";
 import counter_additional_retreat from "../../../images/efs/combat/additional_retreat_120.png";
 import counter_no_retreat from "../../../images/efs/combat/no_retreat_120.png";
-import panzer from "../../../images/efs/combat/panzer.png";
-import retreat from "../../../images/efs/combat/retreat.jpg";
-import advance from "../../../images/efs/combat/advance.jpg";
 import germanantitank1942east from "../../../images/efs/combat/germanantitank1942east.jpg";
 import wreck from "../../../images/efs/combat/burning_t34_.jpg";
 import german_engineers_crossing_river from "../../../images/efs/combat/german_engineers2.jpg";
@@ -25,6 +22,9 @@ import declared_attack from "../../../images/efs/combat/declared_attack_120.png"
 import orders from "../../../images/efs/combat/orders_120.png";
 import fuelShortage from "../../../images/efs/combat/fuelShortage_120.png";
 import panzerRegiment from "../../../images/efs/combat/panzer_regiment_120.png";
+import antitank from "../../../images/efs/combat/antitank.jpg";
+import flamethrower from "../../../images/efs/combat/flamethrower.jpg";
+import chargingSoldiers from "../../../images/efs/combat/chargingSoldiers.jpg";
 import './Combat.scss';
 
 const Combat = (props) => {
@@ -1355,7 +1355,6 @@ const Combat = (props) => {
 
                 <span className="spacer2rem" />
                 <div className="subheader-image stalin">
-                    <span>16.3</span>
                     <div>Asterisk (<span className="bigger-bold-text">*</span>) Results<BsrLink page="43" rule="16.3" /></div>
                     <img src={wreck} alt="burning T-34" />
                 </div>
@@ -1363,176 +1362,105 @@ const Combat = (props) => {
                 <div className="pdiv">
                     The combat results table is peppered with results marked with a asterisk symbol <span className="asterisk">*</span>,
                     called "Asterisk Result" (sometimes called an easier to pronounce "Star Result").
-                    This symbol can mean different things depending on how an attack was carried out.
+                    This symbol can mean an additional step loss(es), above any step losses caused by result on the combat table, depending on aspects of the combat.
                     <span className="spacer1rem" />
                     <div className="indented-box background-green">
-                        <div className="indented-box-title">A Star Result causes an additional step loss (or losses - these are cumulative) to the attacker if :</div>
+                        <div className="indented-box-title">Additional Loss<BsrLink page="43" rule="16.32" /></div>
+                        <span className="spacer0_5rem" />
+                        A Star Result causes an additional step loss (or losses - these are cumulative) to the attacker if:
                         <ul>
                             <li>If the attack was made without Attack Supply.</li>
                             <li>The attack was a Mandated Attack<BsrLink page="29" rule="12.3" /></li>
                             <li>The Defender hex was a non-destroyed Fortification and/or all attackers were attacking across Fortified Lines.</li>
                         </ul>
                         <span className="spacer0_5rem" />
-                        Attacking a non-destroyed Fortification *and* across fortified lines does not count as 2 losses, its 1 loss due to attacking
-                        a non-destroyed Fortification.
+                        Attacking a non-destroyed Fortification *and* across fortified lines does not count as 2 additional losses, its counts as 1 additional loss.
+                        <span className="spacer0_5rem" />
+                        <b>Additionally:</b>
+                        <span className="spacer0_5rem" />
+                        <div className="two-column-flex counter-left flush-left" style={{ marginLeft: "10px", marginBottom: "5px" }}>
+                            <img src={fuelShortage} style={{ height: "auto" }} alt="fuel shortage counter" />
+                            <img src={panzerRegiment} style={{ height: "auto" }} alt="panzer regiment unit" />
+                            <div>
+                                <span className="title">Fuel Shortage and Star Result<BsrLink page="43" rule="16.32b" /></span><br />
+                                If attacking <b>or defending</b> Axis units include a red attack strength armored unit with a Fuel Shortage marker, then a Star Result
+                                causes an additional step loss to the Axis (not necessarily to a red attack factor armor unit).
+                            </div>
+                        </div>
+
+
+
                     </div>
 
 
+                    <span className="spacer1_0rem" />
+
+
+
+
+
                     <span className="spacer1rem" />
+                    <b>Special Situation Asterisk Losses</b><BsrLink page="43" rule="16.33" />
+                    <span className="spacer0_5rem" />
+                    Attacking armor and engineers may be subject to "Special Situation" star losses under certain conditions, if there a Star Result.
+                    <span className="spacer0_5rem" />
+                    If there is a step loss to armor or engineers due to these
+                    Special Situation losses - they will not be cumulative with the "Additional" star losses described above. They describe
+                    from what unit the first loss is to be taken from.
+                    <span className="spacer0_5rem" />
+                    If there is both a armor and engineer special condition both occuring in a combat, a red-attack value armor must take the first loss.
+                    <span className="spacer0_5rem" />
 
-
-
-                    <div className="two-column-flex counter-left flush-left">
-                        <img src={fuelShortage} style={{ height: "auto" }} alt="fuel shortage counter" />
-                        <img src={panzerRegiment} style={{ height: "auto" }} alt="panzer regiment unit" />
+                    <div className="image-text background-pink">
+                        <img src={antitank} style={{ width: "auto" }} alt="Soviet anti-tank in action" />
                         <div>
-                            <span className="title">Fuel Shortage and Star Result<BsrLink page="28" rule="12.1" /></span><br />
-                            Additionally, if attacking <b>or defending</b> Axis units include a red attack strength armored unit with a Fuel Shortage marker, then a Star Result
-                            causes an additional step loss to the Axis.
+                            <b>Armor Attrition Loss</b><br />
+                            A step loss occurs to an attacking red-attack factor armor unit if there is a Star Result and these all apply:
+                            <ul>
+                                <li>The attacking force has one or more steps of red-strength armored units, and</li>
+                                <li>The defending force has any anti-tank, armor, and/or anti-aircraft units, and</li>
+                                <li>at least one of the conditions of Additional Loss occurs, or a numeric Attacker loss is the result on the combat table.</li>
+                            </ul>
+                            <span className="spacer0_5rem" />
+                            <b><i>AND</i></b> if there is any step loss(es) for the Defender in the combat result, then the defender must take the first step loss
+                            from a red-strength armor unit, or if there are none, then the step loss must come from owner's choice of anti-tank or anti-aircraft.
                         </div>
                     </div>
-
-
-
+                    <span className="spacer0_5rem" />
+                    <div className="image-text background-grayblue">
+                        <img src={flamethrower} style={{ width: "auto" }} alt="German flamethrower" />
+                        <div>
+                            <b>Engineer Loss</b><br />
+                            A step loss occurs to an attacking engineer or Bunker Buster unit if there is a Star Result and these both apply:
+                            <ul>
+                                <li>The attacking force includes any units using declared Engineer Effects, and/or a unit is being used as a Bunker Buster, and</li>
+                                <li>at least one of the conditions of Additional Loss occurs.</li>
+                            </ul>
+                        </div>
+                    </div>
                     <span className="spacer1rem" />
-                    These step losses are commulative! Although for the "attacking fortification" rule, it only counts once even if the attackers are attacking a fortification
-                    across fortified lines.
-
-                    <br /><br />
-                    <ul className="ul-no-top">
-                        <li>It can mean an "additional loss" to an attacker (<span className="green-bold">ADDITIONAL LOSS</span>).</li>
-                        <li>It can determine that the first loss distributed MUST be to an engineer or an armor unit. ( <span className="blue-bold">ENGINEER ATTRITION</span> or <span className="red-bold">ARMOR ATTRITION</span>)</li>
-                    </ul>
-                    And, sometimes, both can come into effect.
-                </div>
-
-                <span className="spacer1rem" />
-
-
-
-                <span className="spacer1rem" />
-                <div>
-                    These asterisk conditions are cumulative for <span className="green-bold">ADDITIONAL LOSS</span>. You could have two <span className="asterisk">*</span> results, or even three <span className="asterisk">*</span> if you hit the trifecta - your attacking force is (1) attacking without Attack Supply, doing so as a (2) Mandated Attacked, and into (3) fortifications.
-                </div><div>
-                    The extra step loss(es) caused by <span className="green-bold">ADDITIONAL LOSS</span> can be applied to any attacking units of your choosing.
-                </div>
-
-                <div className="subheader2">
-                    <span className="blue-bold">ENGINEER ATTRITION</span> and <span className="red-bold">ARMOR ATTRITION</span>
-                </div>
-                <div>
-                    If an asterisk is on the combat results, and there are attacking engineers or armor, then check the following cases to see if they apply:
-                </div>
-                <span className="spacer2rem" />
-
-                <div className="engineer-attrition">
-                    <div className="title">ENGINEER ATTRITION</div>
-                    <div className="subtitle">Asterisk (<span className="asterisk">*</span>) Results and Engineers</div>
-                    <img src={german_engineer} alt="German engineer counter" />
-                    <div className="eatext">
-                        If an asterisk was on the combat result, then:<br />
-                        If Engineering Effects had been declared by the attacker to get a -1 DRM, then:<br />
-                        combat result of <span className="asterisk">*</span> means - one engineer step lost.<br />
-                        combat result of 1<span className="asterisk">*</span> means - one engineer step lost (and satisfies the numerical loss of 1).
-                    </div>
-                </div>
-
-                <span className="spacer2rem" />
-
-                <div className="armor-attrition">
-                    <div className="title">ARMOR ATTRITION</div>
-                    <div className="subtitle">Asterisk (<span className="asterisk">*</span>) Results and Armor</div>
-                    <div className="generic-flex-space-around armor">
-                        <img src={panzer} alt="German panzer counter" />
-                        <div>"Armor", as meant here, are units<br />
-                            with an attack value in red.
-                        </div>
-                    </div>
-                    <div className="aatext">
-                        If an asterisk is on the combat result with a numeric loss number, then:<br />
-                        If <span className="italic-bold">all</span> of the following are true:<br />
-                        <ul className="moveup">
-                            <li>If the attacking force contains at least one Armor unit.</li>
-                            <li>The other force has at least one step of any of these: Armor, anti-tank, or AA units.</li>
-                            <li>Engineering effects were not declared.</li>
-                            <li>The combat result contains a asterisk AND a number.</li>
-                        </ul>
-                        Then -<br />
-                        combat result of <span className="asterisk">*</span> means - one armor step lost (satisfies the numerical loss of 1).<br />
-                        <div className="extra"><span className="red-bold">ARMOR ATTRITION</span> can occur to attacking, and defending, armor.</div>
-                        <span className="other-notes">
-                            other notes:<br />
-                            A combat result of only a <span className="asterisk">*</span> does not cause ARMOR ATTRITION.<br />
-                            If an armored step is lost due to ARMOR ATTRITION, then in the defending force - if they are<br /> losing 1 or more steps also - the first step they lose must be one of either armor, anti-tank, or AA.
-                        </span>
+                    <div className="rules-note" style={{ padding: "15px" }}>
+                        Note some of the subtlety in these Star Result rules:
+                        <span className="spacer0_5rem" />
+                        The Additional Loss rules include the Fuel Shortage under the concept of "Additional Loss". For example, if an attack
+                        is made with no Attack Supply, and one of the armor units has a Fuel Shortage marker on it - there will be 2 additional losses -
+                        1 for attacking with no Attack Supply, plus 1 for the attacking armor with a Fuel Shortage marker on it.
+                        <span className="spacer0_5rem" />
+                        You can think of "Additional Loss" as something that adds up. 1 + 1 + 1 + 1 etc, for each condition the attacker "qualifies" for.
+                        <span className="spacer0_5rem" />
+                        If you have a "Special Situation" step loss - what that means is that the first "Additional Loss" you have must be taken from
+                        an armor unit (for Armor Attrition) or and Engineer/Bunker Buster (for Engineer Loss).
+                        <span className="spacer0_5rem" />
+                        However, for Armor Attrition - even if there is no "Additional Loss" required, it still requires the first loss to be taken from a
+                        red attack factor armor unit if there is a numeric loss listed on the combat result. This does not apply for Engineer Loss however.
+                        <span className="spacer0_5rem" />
+                        If you are using Engineer Effects or Bunker Busting, and get a star result - it only requires the first Additional Loss to be taken
+                        from an Engineer or Bunker Buster unit <b>*if*</b> you qualify for Additional Loss.
                     </div>
 
                 </div>
 
 
-                <span className="spacer2rem" />
-
-
-                <div>
-                    <span className="green-bold">ADDITIONAL LOSS</span> can occur at the same time with <span className="blue-bold">ENGINEER ATTRITION</span> or <span className="red-bold">ARMOR ATTRITION</span>, if the qualifying conditions exist.
-                </div><div>
-                    <span className="blue-bold">ENGINEER ATTRITION</span> has precedence over <span className="red-bold">ARMOR ATTRITION</span>. If <span className="blue-bold">ENGINEER ATTRITION</span> occured - do not do <span className="red-bold">ARMOR ATTRITION</span>.
-                </div><div>
-                    Attacking units under an Additional Retreat order must still accept <span className="asterisk">*</span> results, when they apply. The benefit of Additional Retreat only subtracts 1 from any numerical step loss that is indicated in the result.
-                </div>
-
-
-
-                <span className="spacer2rem" />
-                <div className="subheader-image stalin">
-                    <span>16.4</span>
-                    <div>Retreats</div>
-                    <img src={retreat} alt="retreat" />
-                </div>
-                <span className="spacer1rem" />
-                <div className="pdiv">
-
-
-                    In most situations, the owning player retreats the units. If the units retreating had an "Additional Retreat" order on them, then the non-owning player retreats them.
-                    <ul className="ul-no-top">
-                        <li>The retreat has to be away from the original Defender Hex.</li>
-                        <li>The owning player cannot purposely retreat the units through enemy ZOC to destroy them if there are safer retreat paths available.</li>
-                        <li>If units are forced to end their retreat in a hex that is over stacked, they can retreat one more hex. If unable to do so, they are eliminated.</li>
-                        <li>Some units can never retreat - they are super-heavy artillery on their fire sides, dumps, bridge units, zero MA units. Dumps are destroyed, and bridge units can return in the owning player's Movement Phase.</li>
-                        <li>Units cannot retreat into hexes they are not allowed to move.</li>
-                        <li>Units cannot retreat through two consecutive empty hexes with enemy ZOCs unless friendly units are in them. If forced to do so they are eliminated.</li>
-                        <li>Units may pass through a empty hex with an enemy ZOC in it, but the unit (or stack) loses one step and must roll on the retreat table.</li>
-                        <li>Soviet Headquarters that are forced to retreat through a non-friendly occupied hex in enemy ZOC gets flipped to its Non-Op side.</li>
-                        <li>Artillery units may be willfully destroyed before rolling on the retreat table (in order to avoid DRM penalties for having artillery units trying to get through).</li>
-                        <li>Units cannot retreat across a unbridged Major River, except in Snow/Arctic weather when non-artillery units may retreat across. </li>
-                    </ul>
-                </div>
-
-
-
-
-                <span className="spacer2rem" />
-                <div className="subheader-image stalin">
-                    <span>16.5</span>
-                    <div>Advances</div>
-                    <img src={advance} alt="advance" />
-                </div>
-                <span className="spacer1rem" />
-                <div className="pdiv">
-                    When a defender hex is vacated due a retreat or elimination, any surviving attacking units may advance into that hex (ignoring any enemy ZOCs), with some limitations.
-                    <ul className="ul-no-top">
-                        <li>The decision to advance must be made before moving onto a different combat.</li>
-                        <li>All, some, or none of the attacking units may advance, it is up to the attacking player.</li>
-                        <li>Artillery units cannot advance after combat.</li>
-                        <li>Attacker cannot violate stacking rules in an advance.</li>
-                        <li>In case of a multiple defender hex combat, the attacker can choose from any defender hex to advance into.</li>
-                        <li>Attacking units with a Additional Retreat order cannot advance.</li>
-                        <li>Attacking units cannot advance into terrain it is not allowed to move into. </li>
-                    </ul>
-
-                    Advancing can be used to cut off possible retreats of defenders in other combats in that phase. In fact, better players always have this in mind when setting up attacks.
-                    But you also need to avoid retreating the enemy to hexes where they can escape, or where they can block gaps in their line. Don't help the enemy.
-                </div>
 
 
                 <span className="spacer2rem" />
@@ -1557,10 +1485,10 @@ const Combat = (props) => {
                     </ul>
                 </div>
 
-
+<div className="spacer2rem" />
                 <div className="subheader-n-images">
-                    <div>Combat Phase<BsrLink page="28" rule="12.1" /></div>
-                    <img src={declared_attack} alt="declared attack counter" />
+                    <div>Combat Phase<BsrLink page="38" rule="15.0" /></div>
+                    <img src={chargingSoldiers} alt="Soviets on the attack" />
                 </div>
                 (coming soon)
 
