@@ -25,6 +25,12 @@ import panzerRegiment from "../../../images/efs/combat/panzer_regiment_120.png";
 import antitank from "../../../images/efs/combat/antitank.jpg";
 import flamethrower from "../../../images/efs/combat/flamethrower.jpg";
 import chargingSoldiers from "../../../images/efs/combat/chargingSoldiers.jpg";
+//import germanSecurity from "../../../images/efs/combat/german_security_120.png";
+import germanStrongpoint from "../../../images/efs/combat/german_strongpoint_120.png";
+import sovietStrongpoint from "../../../images/efs/combat/soviet_strongpoint2_120.png";
+import hexFortifiedLine from "../../../images/efs/combat/hex_fortified_line.png";
+import hexFortifiedBelt from "../../../images/efs/combat/hex_fortified_belt.png";
+import hexCitadel from "../../../images/efs/combat/hex_citadel.png";
 import './Combat.scss';
 
 const Combat = (props) => {
@@ -1100,48 +1106,7 @@ const Combat = (props) => {
 
                 </ol>
 
-                <span className="spacer1rem" />
 
-                <div className="subheader-n-images">
-                    <div>Bunker Busting<BsrLink page="40" rule="15.44" /></div>
-                    <img src={german_luftwaffe_flak} alt="German Luftwaffe motorized antiair unit" />
-                    <img src={german_motorized_antiair} alt="German motorized anti-air unit" />
-                    <img src={german_assault_gun} alt="German assault gun unit" />
-                </div>
-                <div>
-                    Some Axis units can be declared a "Bunker Buster" in a Declared Attack when attacking certain terrain, which allows them to double their attack value.
-                    <span className="spacer1rem" />
-
-                    <div className="indented-box background-green">
-                        <div className="indented-box-title">Qualifying Axis units for being a Bunker Buster:</div>
-                        <ul>
-                            <li>anti-aircraft</li>
-                            <li>motorized anti-aircraft</li>
-                            <li>assault gun</li>
-                        </ul>
-                    </div>
-
-                    <span className="spacer1rem" />
-
-                    <div className="indented-box background-beige">
-                        <div className="indented-box-title">Qualifying terrain for the Defender hex:</div>
-                        <ul>
-                            <li>non-destroyed strongpoint</li>
-                            <li>fortified belt</li>
-                            <li>fortified lines</li>
-                            <li>city</li>
-                            <li>Major city</li>
-                        </ul>
-                    </div>
-
-                    <span className="spacer1rem" />
-                    Only one qualifying unit can be designated as a Bunker Buster in a Declared Attack.
-                    <span className="spacer0_5rem" />
-                    A anti-aircraft unit that contributed a DRM to AA Fire during the current combat phase cannot be selected to be a Bunker Buster.
-                    <span className="spacer0_5rem" />
-                    If Bunker Busting is being used in a Declared Attack, then the attacker is liable for Engineer Loss, and may lose the Bunker Buster unit.<BsrLink page="43" rule="16.33b2" />
-
-                </div>
 
 
                 <span className="spacer2rem" />
@@ -1182,113 +1147,7 @@ const Combat = (props) => {
                 </div>
 
 
-                <div className="subheader-rule">
-                    Combined Arms Bonus<BsrLink page="41" rule="15.57" />
-                </div>
 
-                <div>The Combined Arms bonus (CAB) gives a DRM of -1 benefit to the Axis attacker (only Axis units can get CAB).<br />
-                    <span className="spacer0_5rem" />
-                    Qualifications:
-                    <ul className="bare-ul">
-                        <li>
-                            The attacking Axis units have at least one <b>armored</b> unit with a red attack strength, along with at least
-                            one reconnaissance, motorized infantry, motorcycle, or motorized engineer unit.
-                        </li>
-                        <li>The defending Soviet unit(s) do not have any of:
-                            armor unit with red attack strength,
-                            any type of anti-tank unit,
-                            any type of anti-aircraft.
-                        </li>
-                    </ul>
-                    <span className="spacer0_5rem" />
-                    Restrictions:
-                    <ul className="bare-ul">
-                        <li>
-                            No CAB if all required unit types are attacking across canal, river, or major river.
-                        </li>
-                        <li>No CAB if all required unit types are attacking into swamp hexes (unless frozen),
-                            non-destroyed fortifications, cities, major cities, mountain hexes, or alpine hexes.
-                        </li>
-                        <li>No CAB during Mud or Snow, or where lingering Mud or Snow exists in the hex.</li>
-                    </ul>
-
-                </div>
-
-                <div className="special-emphasis">
-                    CAB can only occur during Dry or Frost turns
-                </div>
-
-                <span className="spacer1rem" />
-                <div className="centered-bordered">
-                    <img src={combined_arms_bonus} alt="combined arms bonus examples" />
-                </div>
-
-                <span className="spacer2rem" />
-                <div className="subheader-image stalin">
-                    <div>Panzer Divisional Integrity Bonus<BsrLink page="41" rule="15.58" /></div>
-                    <img src={divisional_integrity} style={{ height: 'auto' }} alt="Divisional Integrity" />
-                </div>
-                <span className="spacer1rem" />
-                <div>
-                    German panzer and motorized divisions can qualify for a Panzer Divisional Integrity Bonus drm of -1, when attacking (not defending) in regular combat.
-                    <span className="spacer0_5rem" />
-                    Requirements:
-                    <ul className="bare-ul">
-                        <li>
-                            A German panzer division must have at least 3 of its 4 units attacking the same hex. One of them has to be the panzer regiment.
-                        </li>
-                        <li>
-                            A German motorized division requires all 3 of its units, and is attacking the same hex as a qualifying panzer division (One qualifying panzer division can only be used to qualify one motorized division).
-                        </li>
-                        <li>
-                            None of the units being used to qualify for the bonus can be in OOS state, unless they have attack supply.
-                        </li>
-                    </ul>
-                    <span className="spacer0_5rem" />
-                    The Das Reich motorized division only has two regiments, and therefore cannot qualify for the bonus.
-                </div>
-
-                <span className="spacer2rem" />
-
-
-                <div className="subheader-n-images">
-                    <div>Engineer Effects<BsrLink page="41" rule="15.53" /></div>
-                    <img src={german_engineer} style={{ height: 'auto' }} alt="German motorized engineer counter" />
-                    <img src={soviet_engineer} style={{ height: 'auto' }} alt="Soviet engineer counter" />
-                    <img src={german_engineers_crossing_river} style={{ height: 'auto' }} alt="Soviet Cossack commander at Kiev, 1942" />
-                </div>
-
-
-
-                <span className="spacer1rem" />
-                <div>
-                    Engineer effects can provide a -1 DRM on attacks if requirements are met. Having more than one engineer does not increase the benefit.
-                    <span className="spacer0_5rem" />
-                    General Requirements/Restrictions
-                    <ul className="bare-ul">
-                        <li>The attacking unit(s) must include at least one engineer type unit.</li>
-                        <li>The defender terrain contains any of:
-                            <ul className="sub-box">
-                                <li>city or Major City.</li>
-                                <li>river (not Major River).</li>
-                                <li>non-frozen canal.</li>
-                                <li>non-destroyed fortification which is providing the defender with a Defender DRM benefit.</li>
-                                <li>across a shallow water hexside. <span className="exception">Exception:</span> armored engineers cannot attack across shallow water hexsides.<BsrLink page="41" rule="15.53d" /></li>
-                                <li>town, if the weather condition in the town hex is Mud or Snow.</li>
-                            </ul>
-
-                        </li>
-                    </ul>
-                    <span className="spacer0_5rem" />
-                    <b>Special Engineer Stacking<BsrLink page="41" rule="15.53c" /></b> - for both players, one engineer unit can stack above the stacking limit and participate in the attack. After the combat, stacking rules must
-                    be followed, and if the engineer is still in the hex and overstacked, it must be retreated 2 hexes. If the stacking rules cannot
-                    be satisfied, then the engineer unit is eliminated.
-                </div>
-
-                <span className="spacer1rem" />
-                <div className="centered artillery">
-                    <img src={soviet_artillery_firing} alt="Soviet artillery firing" />
-                </div>
 
                 <span className="spacer2rem" />
                 <div className="subheader-image">
@@ -1353,6 +1212,176 @@ const Combat = (props) => {
 
 
 
+                <span className="spacer1rem" />
+
+
+                
+
+                <div className="subheader-n-images">
+                    <div>Bunker Busting<BsrLink page="40" rule="15.44" /></div>
+                    <img src={german_luftwaffe_flak} alt="German Luftwaffe motorized antiair unit" />
+                    <img src={german_motorized_antiair} alt="German motorized anti-air unit" />
+                    <img src={german_assault_gun} alt="German assault gun unit" />
+                </div>
+                <div>
+                    Some Axis units can be declared a "Bunker Buster" in a Declared Attack when attacking certain terrain, which allows them to double their attack value.
+                    <span className="spacer1rem" />
+
+                    <div className="indented-box background-green">
+                        <div className="indented-box-title">Qualifying Axis units for being a Bunker Buster:</div>
+                        <ul>
+                            <li>anti-aircraft</li>
+                            <li>motorized anti-aircraft</li>
+                            <li>assault gun</li>
+                        </ul>
+                    </div>
+
+                    <span className="spacer1rem" />
+
+                    <div className="indented-box background-beige">
+                        <div className="indented-box-title">Qualifying terrain for the Defender hex:</div>
+                        <ul>
+                            <li>non-destroyed strongpoint</li>
+                            <li>fortified belt</li>
+                            <li>fortified lines</li>
+                            <li>city</li>
+                            <li>Major city</li>
+                        </ul>
+                    </div>
+
+                    <span className="spacer1rem" />
+                    Only one qualifying unit can be designated as a Bunker Buster in a Declared Attack.
+                    <span className="spacer0_5rem" />
+                    A anti-aircraft unit that contributed a DRM to AA Fire during the current combat phase cannot be selected to be a Bunker Buster.
+                    <span className="spacer0_5rem" />
+                    If Bunker Busting is being used in a Declared Attack, then the attacker is liable for Engineer Loss, and may lose the Bunker Buster unit.<BsrLink page="43" rule="16.33b2" />
+
+                </div>
+
+
+                <div className="subheader-n-images">
+                    <div>Engineer Effects<BsrLink page="41" rule="15.53" /></div>
+                    <img src={german_engineer} style={{ height: 'auto' }} alt="German motorized engineer counter" />
+                    <img src={soviet_engineer} style={{ height: 'auto' }} alt="Soviet engineer counter" />
+                    <img src={german_engineers_crossing_river} style={{ height: 'auto' }} alt="Soviet Cossack commander at Kiev, 1942" />
+                </div>
+
+
+
+                <span className="spacer1rem" />
+                <div>
+                    Engineer effects can provide a -1 DRM on attacks if requirements are met. Having more than one engineer does not increase the benefit.
+                    <span className="spacer0_5rem" />
+                    General Requirements/Restrictions
+                    <ul className="bare-ul">
+                        <li>The attacking unit(s) must include at least one engineer type unit.</li>
+                        <li>The defender terrain contains any of:
+                            <ul className="sub-box">
+                                <li>city or Major City.</li>
+                                <li>river (not Major River).</li>
+                                <li>non-frozen canal.</li>
+                                <li>non-destroyed fortification which is providing the defender with a Defender DRM benefit.</li>
+                                <li>across a shallow water hexside. <span className="exception">Exception:</span> armored engineers cannot attack across shallow water hexsides.<BsrLink page="41" rule="15.53d" /></li>
+                                <li>town, if the weather condition in the town hex is Mud or Snow.</li>
+                            </ul>
+
+                        </li>
+                    </ul>
+                    <span className="spacer0_5rem" />
+                    <b>Special Engineer Stacking<BsrLink page="41" rule="15.53c" /></b> - for both players, one engineer unit can stack above the stacking limit and participate in the attack. After the combat, stacking rules must
+                    be followed, and if the engineer is still in the hex and overstacked, it must be retreated 2 hexes. If the stacking rules cannot
+                    be satisfied, then the engineer unit is eliminated.
+                </div>
+
+
+
+
+                <div className="subheader-rule">
+                    Combined Arms Bonus<BsrLink page="41" rule="15.57" />
+                </div>
+
+                <div>The Combined Arms bonus (CAB) gives a DRM of -1 benefit to the Axis attacker (only Axis units can get CAB).<br />
+                    <span className="spacer0_5rem" />
+                    Qualifications:
+                    <ul className="bare-ul">
+                        <li>
+                            The attacking Axis units have at least one <b>armored</b> unit with a red attack strength, along with at least
+                            one reconnaissance, motorized infantry, motorcycle, or motorized engineer unit.
+                        </li>
+                        <li>The defending Soviet unit(s) do not have any of:
+                            armor unit with red attack strength,
+                            any type of anti-tank unit,
+                            any type of anti-aircraft.
+                        </li>
+                    </ul>
+                    <span className="spacer0_5rem" />
+                    Restrictions:
+                    <ul className="bare-ul">
+                        <li>
+                            No CAB if all required unit types are attacking across canal, river, or major river.
+                        </li>
+                        <li>No CAB if all required unit types are attacking into swamp hexes (unless frozen),
+                            non-destroyed fortifications, cities, major cities, mountain hexes, or alpine hexes.
+                        </li>
+                        <li>No CAB during Mud or Snow, or where lingering Mud or Snow exists in the hex.</li>
+                    </ul>
+
+                </div>
+
+                <div className="special-emphasis">
+                    CAB can only occur during Dry or Frost turns
+                </div>
+
+                <span className="spacer1rem" />
+                <div className="centered-bordered">
+                    <img src={combined_arms_bonus} alt="combined arms bonus examples" />
+                </div>
+
+
+
+
+
+
+
+                <span className="spacer2rem" />
+                <div className="subheader-image stalin">
+                    <div>Panzer Divisional Integrity Bonus<BsrLink page="41" rule="15.58" /></div>
+                    <img src={divisional_integrity} style={{ height: 'auto' }} alt="Divisional Integrity" />
+                </div>
+                <span className="spacer1rem" />
+                <div>
+                    German panzer and motorized divisions can qualify for a Panzer Divisional Integrity Bonus drm of -1, when attacking (not defending) in regular combat.
+                    <span className="spacer0_5rem" />
+                    Requirements:
+                    <ul className="bare-ul">
+                        <li>
+                            A German panzer division must have at least 3 of its 4 units attacking the same hex. One of them has to be the panzer regiment.
+                        </li>
+                        <li>
+                            A German motorized division requires all 3 of its units, and is attacking the same hex as a qualifying panzer division (One qualifying panzer division can only be used to qualify one motorized division).
+                        </li>
+                        <li>
+                            None of the units being used to qualify for the bonus can be in OOS state, unless they have attack supply.
+                        </li>
+                    </ul>
+                    <span className="spacer0_5rem" />
+                    The Das Reich motorized division only has two regiments, and therefore cannot qualify for the bonus.
+                </div>
+
+                <span className="spacer2rem" />
+
+
+
+
+                <span className="spacer1rem" />
+                <div className="centered artillery">
+                    <img src={soviet_artillery_firing} alt="Soviet artillery firing" />
+                </div>
+
+
+
+
+
                 <span className="spacer2rem" />
                 <div className="subheader-image stalin">
                     <div>Asterisk (<span className="bigger-bold-text">*</span>) Results<BsrLink page="43" rule="16.3" /></div>
@@ -1391,6 +1420,10 @@ const Combat = (props) => {
 
 
                     </div>
+
+
+
+
 
 
                     <span className="spacer1_0rem" />
@@ -1461,7 +1494,27 @@ const Combat = (props) => {
                 </div>
 
 
-
+                <div className="subheader-n-images">
+                    <div>Fortifications<BsrLink page="48" rule="18.0" /></div>
+                    <img src={germanStrongpoint} style={{ height: 'auto' }} alt="German strongpoint counter" />
+                    <img src={sovietStrongpoint} style={{ height: 'auto' }} alt="Soviet strongpoint counter" />
+                    <img src={hexFortifiedLine} style={{ height: 'auto' }} alt="fortified line hex" />
+                    <img src={hexFortifiedBelt} style={{ height: 'auto' }} alt="fortified belt hex" />
+                    <img src={hexCitadel} style={{ height: 'auto' }} alt="citadel hex" />
+ </div>
+                <div>
+                    Fortifications refers to strongpoints, fortified lines, fortified belts, and citadels.
+                    The Axis and Soviet players can build and benefit from strongpoints, but only Soviets can use
+                    fortified lines, fortified belts, and citadels. They can be destroyed, which nullfies their effects.
+                    <span className="spacer0_5rem" />
+                    Fortifications have these common features:
+                    <ul className="bare-ul">
+                        <li>they block the non-owning player's tracing of supply for the or railroad conversion through the fortified hex, or at the 
+                            hexline where there is a fortified line.</li> 
+                    <li>Movement into a fortified hex costs +1 MP, and movement across a fortified line (along a hexside), costs +1 MP to
+                    cross it. However, moving across a fortified line to enter a fortified hex only costs +1 MP, not 2.</li>
+                    </ul>
+                </div>
 
                 <span className="spacer2rem" />
                 <div className="centered">
