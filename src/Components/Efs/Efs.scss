@@ -294,6 +294,36 @@
   background-color: #ddddee;
 }
 }
+
+
+.colored-box {
+
+  margin-left: 20px;
+  padding: 10px 5px 10px 0px;
+  background-color: #ffdddd;
+  ul {
+    margin: 5px 5px 0px 20px;
+    li { margin-top: 3px; }
+  }
+  img {
+    align-self: center;
+    margin-left: 10px;
+  }
+  div.primary-heading {
+    margin-left: 15px;
+    text-shadow: 0 0 rgba(0,0,0,0.4);
+    letter-spacing: 0.01rem;
+  }
+  div.secondary-heading {
+    margin-left: 37px;
+    margin-top: 8px;
+  }
+  div.postscript {
+    margin: 15px 5px 5px 15px;
+  }
+}
+
+
 .rules-note {
   border: 1px solid #ddd;
   padding: 3px 5px;
@@ -316,8 +346,7 @@
       align-self: flex-end;
     }
     img {
-      align-self: flex-end;
-      margin-left: 20px;
+      align-self: center;
       height: auto;
     }
   }
@@ -327,14 +356,27 @@
     justify-content: flex-start;
     position: relative;
     margin: 12px 0;
+
     div {
       align-self: flex-end;
       font-size: 1.4rem;
     }
     img {
-      align-self: flex-end;
-      margin-left: 20px;
+      align-self: center;
       height: auto;
+    }
+    .image-caption-underneath {
+      display: flex;
+      flex-direction: column;
+      img {
+        margin: 0 20px;
+      }
+      span {
+        margin: 2px 20px 0 20px;
+        font-size: 80%;
+        text-align: center;
+        font-weight: normal;
+      }
     }
   }
   .subheader-image {

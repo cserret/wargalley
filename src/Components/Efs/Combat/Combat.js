@@ -31,6 +31,7 @@ import sovietStrongpoint from "../../../images/efs/combat/soviet_strongpoint2_12
 import hexFortifiedLine from "../../../images/efs/combat/hex_fortified_line.png";
 import hexFortifiedBelt from "../../../images/efs/combat/hex_fortified_belt.png";
 import hexCitadel from "../../../images/efs/combat/hex_citadel.png";
+import destroyedFortification from "../../../images/efs/combat/destroyed_fortification_120.png";
 import './Combat.scss';
 
 const Combat = (props) => {
@@ -1215,7 +1216,7 @@ const Combat = (props) => {
                 <span className="spacer1rem" />
 
 
-                
+
 
                 <div className="subheader-n-images">
                     <div>Bunker Busting<BsrLink page="40" rule="15.44" /></div>
@@ -1493,27 +1494,216 @@ const Combat = (props) => {
 
                 </div>
 
+                <span className="spacer1rem" />
 
                 <div className="subheader-n-images">
                     <div>Fortifications<BsrLink page="48" rule="18.0" /></div>
-                    <img src={germanStrongpoint} style={{ height: 'auto' }} alt="German strongpoint counter" />
-                    <img src={sovietStrongpoint} style={{ height: 'auto' }} alt="Soviet strongpoint counter" />
-                    <img src={hexFortifiedLine} style={{ height: 'auto' }} alt="fortified line hex" />
-                    <img src={hexFortifiedBelt} style={{ height: 'auto' }} alt="fortified belt hex" />
-                    <img src={hexCitadel} style={{ height: 'auto' }} alt="citadel hex" />
- </div>
+                    <div className="image-caption-underneath">
+                        <img src={germanStrongpoint} style={{ height: 'auto' }} alt="German strongpoint counter" />
+                        <span>Axis Strongpoint</span>
+                    </div>
+                    <div className="image-caption-underneath">
+                        <img src={sovietStrongpoint} style={{ height: 'auto' }} alt="Soviet strongpoint counter" />
+                        <span>Soviet Strongpoint</span>
+                    </div>
+                    <div className="image-caption-underneath">
+                        <img src={hexFortifiedLine} style={{ height: 'auto' }} alt="fortified line hex" />
+                        <span>Fortified Line</span>
+                    </div>
+                    <div className="image-caption-underneath">
+                        <img src={hexFortifiedBelt} style={{ height: 'auto' }} alt="fortified belt hex" />
+                        <span>Fortified Belt</span>
+                    </div>
+                    <div className="image-caption-underneath">
+                        <img src={hexCitadel} style={{ height: 'auto' }} alt="citadel hex" />
+                        <span>Citadel</span>
+                    </div>
+                </div>
                 <div>
-                    Fortifications refers to strongpoints, fortified lines, fortified belts, and citadels.
-                    The Axis and Soviet players can build and benefit from strongpoints, but only Soviets can use
-                    fortified lines, fortified belts, and citadels. They can be destroyed, which nullfies their effects.
+                    Fortifications refers to Strongpoints, Fortified Lines, Fortified Belts, and Citadels.
                     <span className="spacer0_5rem" />
-                    Fortifications have these common features:
+                    Strongpoints are represented by counters, while Fortified Lines/Belts and Citadels are printed on the map.
+                    <span className="spacer0_5rem" />
+                    The Axis and Soviet players can build and benefit from Strongpoints, while
+                    Fortified Lines, Fortified Belts and Citadels can only benefit the Soviets.
+                    <span className="spacer0_5rem" />
+                    Fortifications that have been destroyed have no effects.
+                    <span className="spacer0_5rem" />
+                    Strongpoints represent field fortifications built by engineers and by troops themselves. They
+                    give a defensive benefit to all friendly troops in the hex.
+                    <span className="spacer0_5rem" />
+                    Fortified Lines are a hexside feature, and represent a continuous line of pill boxes and bunkers.
+                    They provide defensive benefits to the defender if all attackers are across a Fortified Line hexside.
+                    <span className="spacer0_5rem" />
+                    Fortified Belts  are extensive area of pill boxes and bunkers and other defensive features. They provide
+                    a defensive benefit to all friendly units in the hex.
+                    <span className="spacer0_5rem" />
+                    Citadels represent substantial fortifications that took time to develop, and often had underground
+                    levels. They typically were built in avenues of approach to important cities and ports.  They provide
+                    a defensive benefit to all friendly units in the hex.
+                    <span className="spacer1rem" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div className="colored-box" style={{ background: "#e3e3ea", border: "1px solid #dde" }}>
+                        <div className="primary-heading">
+                            Fortifications have these common features<BsrLink page="48" rule="18.1" />
+                        </div>
+                        <ul>
+                            <li>Fortifications block the non-owning player's tracing of supply for the or railroad conversion through the fortified hex, or at the
+                                hexline where there is a fortified line.</li>
+                            <li>Movement into a fortified hex costs +1 MP, and movement across a fortified line (along a hexside), costs +1 MP to
+                                cross it (regardless of any road or railroad). However, moving across a fortified line to enter a
+                                fortified hex only costs +1 MP, not 2.</li>
+                        </ul>
+                    </div>
+
+
+
+                    <span className="spacer0_5rem" />
+
+
+
+                    <div className="colored-box" style={{ background: "#f3e0d9", border: "1px solid #dcb" }}>
+                        <div className="primary-heading">
+                            Special features of Fortifications:<BsrLink page="49" rule="18.13" />
+                        </div>
+                        <ul>
+                            <li>Overrun and Combined Arms Bonus (CAB) are not allowed against an active Fortified Belt or Citadel.
+                            </li>
+
+                            <li>Overruns where the enemy is behind a fortified line or in a enemy Strongpoint needs odds of at least 12-1
+                                and the overrunning units includes a motorized Engineer unit.</li>
+
+                            <li>Axis ZOC does not extend into a Fortified Belt hex.</li>
+
+                            <li>Neither players' units exert a ZOC into or out of a Citadel hex.</li>
+
+                            <li>Soviet units on an active Citadel hex are always in General Supply, and are not subject to Surrender</li>
+
+                            <li>A Strongpoint has no effect if it is built on a Fortified Belt hex.</li>
+
+                            <li>A Strongpoint still has its effects if built on a Citadel hex.</li>
+                        </ul>
+                    </div>
+
+                    <span className="spacer0_5rem" />
+
+
+                    <div className="colored-box" style={{ background: "#e7e7d0", border: "1px solid #ddc" }}>
+                        <div className="primary-heading">
+                            Combat effects of Fortifications:<BsrLink page="49" rule="18.22" />
+                        </div>
+                        <div className="secondary-heading">Fortified Line:</div>
+                        <ul>
+                            <li>if all attacking Axis units are across a fortified line hexside(s), then there is a +1 DRM
+                                to the combat (cumulative with other terrain DRMs). Exception - when at least one Axis unit is attacking
+                                across a Fortified Line, and other Axis unit(s) are attacking from a different hex(es) - if those hexsides
+                                confer a DRM due to other terrain, then a +1 DRM will apply.</li>
+
+                            <li>Axis Combined Arms Bonus (CAB) is not allowed if all Axis units are attacking across Fortified Line
+                                hexsides.</li>
+                        </ul>
+
+
+                        <div className="secondary-heading">Fortified Belt:<BsrLink page="49" rule="18.3" /></div>
+                        <ul>
+                            <li>A Fortified Belt confers a +1 DRM combat (cumulative with other terrain DRMs), from all
+                                6 directions.
+                            </li>
+                            <li>Axis Combined Arms Bonus (CAB) is not allowed.</li>
+                        </ul>
+
+
+                        <div className="secondary-heading">Strongpoint:<BsrLink page="49" rule="18.4" /></div>
+                        <ul>
+                            <li>A Strongpoint confers a +1 DRM combat (cumulative with other terrain DRMs).
+                            </li>
+                            <li>A Strongpoint on a active Fortified Belt hex confers no DRM of its own.</li>
+                            <li>The +1 DRM of a Strongpoint is not cumulative with Fortified Lines (except as noted below). However, it can
+                                still have a +1 DRM if enemy units are attacking the hex from a hexside that does not
+                                have a fortified line.
+                            </li>
+                            <li>If all Axis units are attacking across a Fortified Line into a hex with a Strongpoint,
+                                and the Defender hex is within four (4) hexes of a Soviet-controlled City or Major City,
+                                apply a +2 DRM.</li>
+                        </ul>
+
+
+                        <div className="secondary-heading">Citadel:<BsrLink page="50" rule="18.5" /></div>
+                        <ul>
+                            <li>A Citadel confers a +1 DRM combat (cumulative with other terrain DRMs).
+                            </li>
+                            <li>Any combination of defending units can double their defense strength up to a maximum of
+                                3 extra defense points for the defenders.</li>
+                            <li>Axis armored units (except for armored engineer units) are halved in attack strength.</li>
+                            <li>Defenders in a Citadel cannot be given Orders.</li>
+                            <li>Defenders in a Citadel ignore R results (and there is no extra loss as with a No Retreat order).</li>
+                            <li>The maximum possible defense DRM for a combat against a Citadel is +4, plus effects of anyair support</li>
+                            <li>A maximum of -1 DRM for Engineer Effect is allowed against a Citadel hex.</li>
+                            <li>A maximum of -1 DRM for Super-Heavy artillery is allowed against a Citadel hex.</li>
+                            <li>A maximum of -1 DRM Panzer Integrity Bonus is allowed against a Citadel hex.</li>
+                        </ul>
+
+                        <div className="postscript">
+                            For all fortifications, the positive DRM benefit given to the defender can be offset by the
+                            attacker by -1 DRM by
+                            employing Axis Engineer Effects<BsrLink page="41" rule="15.53" />
+                            or Super-Heavy artillery.<BsrLink page="33" rule="13.44" />
+                        </div>
+
+                    </div>
+
+
+                    <span className="spacer1rem" />
+
+
+
+                    <div className="subheader-n-images">
+                        <div>Fortification Destruction<BsrLink page="49" rule="18.13" /></div>
+                        <div className="image-caption-underneath">
+                            <img src={destroyedFortification} style={{ height: 'auto' }} alt="Destroyed Fortification counter" />
+                            <span>Destroyed Fortification</span>
+                        </div>
+                    </div>
+
+
+
+
+
                     <ul className="bare-ul">
-                        <li>they block the non-owning player's tracing of supply for the or railroad conversion through the fortified hex, or at the 
-                            hexline where there is a fortified line.</li> 
-                    <li>Movement into a fortified hex costs +1 MP, and movement across a fortified line (along a hexside), costs +1 MP to
-                    cross it. However, moving across a fortified line to enter a fortified hex only costs +1 MP, not 2.</li>
+                        <li>By simply having a combat unit on a fortified hex during the Engineering phase will destroy enemy
+                            Fortifications.</li>
+
+                        <li>Fortified Lines and Citadels can be destroyed by Bombardment<BsrLink page="32" rule="13.43" />.</li>
+
+                        <li>Strongpoints can be removed at will by the owning player.</li>
+
+                        <li>Strongpoints will be removed if they qualify for Strongpoint
+                            Deterioration: <BsrLink page="11" rule="6.36" /> During the Supply Status Phase, Strongpoints
+                            that are unoccupied by friendly unit(s) and are Out of Supply are removed, however, a temporary supply
+                            source could be used to prevent their removal.<BsrLink page="10" rule="6.26" /></li>
+
+
+
+
+
                     </ul>
+                    <span className="spacer1rem" />
+                    Use a Fortification Destroyed marker to mark destroyed fortifications, except for Strongpoints, which are
+                    counters that are removed from the map.
+
                 </div>
 
                 <span className="spacer2rem" />
@@ -1538,7 +1728,7 @@ const Combat = (props) => {
                     </ul>
                 </div>
 
-<div className="spacer2rem" />
+                <div className="spacer2rem" />
                 <div className="subheader-n-images">
                     <div>Combat Phase<BsrLink page="38" rule="15.0" /></div>
                     <img src={chargingSoldiers} alt="Soviets on the attack" />
@@ -1583,7 +1773,7 @@ const Combat = (props) => {
             <ScrollToTopOnMount />
 
 
-        </div>
+        </div >
     );
 }
 
