@@ -1258,7 +1258,7 @@ const Combat = (props) => {
                     If Bunker Busting is being used in a Declared Attack, then the attacker is liable for Engineer Loss, and may lose the Bunker Buster unit.<BsrLink page="43" rule="16.33b2" />
 
                 </div>
-
+                <span className="spacer1rem" />
 
                 <div className="subheader-n-images">
                     <div>Engineer Effects<BsrLink page="41" rule="15.53" /></div>
@@ -1369,19 +1369,7 @@ const Combat = (props) => {
                     The Das Reich motorized division only has two regiments, and therefore cannot qualify for the bonus.
                 </div>
 
-                <span className="spacer2rem" />
-
-
-
-
-                <span className="spacer1rem" />
-                <div className="centered artillery">
-                    <img src={soviet_artillery_firing} alt="Soviet artillery firing" />
-                </div>
-
-
-
-
+            
 
                 <span className="spacer2rem" />
                 <div className="subheader-image stalin">
@@ -1672,10 +1660,9 @@ const Combat = (props) => {
 
                     <div className="subheader-n-images">
                         <div>Fortification Destruction<BsrLink page="49" rule="18.13" /></div>
-                        <div className="image-caption-underneath">
+                     
                             <img src={destroyedFortification} style={{ height: 'auto' }} alt="Destroyed Fortification counter" />
-                            <span>Destroyed Fortification</span>
-                        </div>
+                        
                     </div>
 
 

@@ -362,8 +362,9 @@
       font-size: 1.4rem;
     }
     img {
-      align-self: center;
+      align-self: flex-end;
       height: auto;
+      margin-left: 10px;
     }
     .image-caption-underneath {
       display: flex;
@@ -468,7 +469,7 @@
     height: 3rem;
   }
   section {
-    border: 10px dotted red;
+    //border: 10px dotted red;
   }
   .green-bold {
     color: #080;
