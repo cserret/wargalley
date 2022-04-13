@@ -3,13 +3,13 @@ import Snap from 'snapsvg-cjs';
 import ScrollToTopOnMount from "../../ScrollToTopOnMount";
 import BsrLink from "../BsrLink/BsrLink";
 import combat from "../../../images/efs/combat/combat.jpg";
-import joseph_stalin from "../../../images/efs/combat/joseph-stalin.jpg";
+import joseph_stalin from "../../../images/efs/combat/joseph-stalin_.jpg";
 import combined_arms_bonus from "../../../images/efs/combat/combined_arms_bonus.jpg";
 import divisional_integrity from "../../../images/efs/combat/divisional_integrity.jpg";
 import german_engineer from "../../../images/efs/combat/german_engineer_motorized_120.png";
 import soviet_engineer from "../../../images/efs/combat/soviet_engineer_120.png";
 import artillery_units from "../../../images/efs/combat/artillery_strip_120.png";
-import soviet_artillery_firing from "../../../images/efs/combat/soviet_artillery_firing.jpg";
+//import soviet_artillery_firing from "../../../images/efs/combat/soviet_artillery_firing.jpg";
 import counter_additional_retreat from "../../../images/efs/combat/additional_retreat_120.png";
 import counter_no_retreat from "../../../images/efs/combat/no_retreat_120.png";
 import germanantitank1942east from "../../../images/efs/combat/germanantitank1942east.jpg";
@@ -32,6 +32,7 @@ import hexFortifiedLine from "../../../images/efs/combat/hex_fortified_line.png"
 import hexFortifiedBelt from "../../../images/efs/combat/hex_fortified_belt.png";
 import hexCitadel from "../../../images/efs/combat/hex_citadel.png";
 import destroyedFortification from "../../../images/efs/combat/destroyed_fortification_120.png";
+import mandatedAttack from "../../../images/efs/combat/mandated_attack_120.png";
 import './Combat.scss';
 
 const Combat = (props) => {
@@ -1111,11 +1112,12 @@ const Combat = (props) => {
 
 
                 <span className="spacer2rem" />
-                <div className="subheader-image stalin">
+                <div className="subheader-n-images">
                     <div>Mandated Attack<BsrLink page="29" rule="12.3" /></div>
-                    <img src={joseph_stalin} alt="Joseph Stalin" />
+                    <img src={mandatedAttack} alt="Mandated Attack marker" />
+                    <img src={joseph_stalin} alt="Joseph Stalin looking judgemental" />
                 </div>
-                <span className="spacer1rem" />
+                <span className="spacer0_5rem" />
                 <div>
                     The Soviet player may be obligated to make one or more Mandated Attacks during a turn.
                     Typically these are received as a "special event" on the Soviet Replacements Table, or they
@@ -1508,25 +1510,30 @@ const Combat = (props) => {
                     </div>
                 </div>
                 <div>
-                    Fortifications refers to Strongpoints, Fortified Lines, Fortified Belts, and Citadels.
+                    Fortifications refer to Strongpoints, Fortified Lines, Fortified Belts, and Citadels.
                     <span className="spacer0_5rem" />
-                    Strongpoints are represented by counters, while Fortified Lines/Belts and Citadels are printed on the map.
+                    Strongpoints are represented by counters, while Fortified Lines, Fortified Belts and Citadels are printed on the map.
                     <span className="spacer0_5rem" />
                     The Axis and Soviet players can build and benefit from Strongpoints, while
                     Fortified Lines, Fortified Belts and Citadels can only benefit the Soviets.
                     <span className="spacer0_5rem" />
-                    Fortifications that have been destroyed have no effects.
+                    Strongpoints are Fortifications that can be built in one or two turns.
+                    Fortified Lines, Fortified Belts and Citadels are pre-existing defensive structures that have been built over time, and
+                    are not constructed during the game. They are printed on the map.
                     <span className="spacer0_5rem" />
-                    Strongpoints represent field fortifications built by engineers and by troops themselves. They
+                    Fortifications that have been destroyed lose their effects. They are sometimes refered to as "non-active Fortification", as opposed to "active Fortification" - which means a Fortification that has not been destroyed.
+                    <span className="spacer0_5rem" />
+                    Strongpoints represent field fortifications that can been built, in one or two turns, by engineers and by troops themselves. 
+                    In some scenarios, Strongpoints may already be present at the start of a scenario. They
                     give a defensive benefit to all friendly troops in the hex.
                     <span className="spacer0_5rem" />
                     Fortified Lines are a hexside feature, and represent a continuous line of pill boxes and bunkers.
                     They provide defensive benefits to the defender if all attackers are across a Fortified Line hexside.
                     <span className="spacer0_5rem" />
                     Fortified Belts  are extensive area of pill boxes and bunkers and other defensive features. They provide
-                    a defensive benefit to all friendly units in the hex.
+                    a defensive benefit to all friendly units in the hex, from attackers in all 6 hexes around it.
                     <span className="spacer0_5rem" />
-                    Citadels represent substantial fortifications that took time to develop, and often had underground
+                    Citadels represent substantial fortifications that took many years to develop, and often had underground
                     levels. They typically were built in avenues of approach to important cities and ports.  They provide
                     a defensive benefit to all friendly units in the hex.
                     <span className="spacer1rem" />
@@ -1546,10 +1553,10 @@ const Combat = (props) => {
 
                     <div className="colored-box" style={{ background: "#e3e3ea", border: "1px solid #dde" }}>
                         <div className="primary-heading">
-                            Fortifications have these common features<BsrLink page="48" rule="18.1" />
+                            All active Fortifications have these common features<BsrLink page="48" rule="18.1" />
                         </div>
                         <ul>
-                            <li>Fortifications block the non-owning player's tracing of supply for the or railroad conversion through the fortified hex, or at the
+                            <li>Fortifications block the non-owning player's tracing of supply and railroad conversion through the fortified hex, or at the
                                 hexline where there is a fortified line.</li>
                             <li>Movement into a fortified hex costs +1 MP, and movement across a fortified line (along a hexside), costs +1 MP to
                                 cross it (regardless of any road or railroad). However, moving across a fortified line to enter a
@@ -1600,7 +1607,7 @@ const Combat = (props) => {
                                 across a Fortified Line, and other Axis unit(s) are attacking from a different hex(es) - if those hexsides
                                 confer a DRM due to other terrain, then a +1 DRM will apply.</li>
 
-                            <li>Axis Combined Arms Bonus (CAB) is not allowed if all Axis units are attacking across Fortified Line
+                            <li>Axis Combined Arms Bonus (CAB) is not allowed if all Axis units, that are claiming CAB, are attacking across Fortified Line
                                 hexsides.</li>
                         </ul>
 
