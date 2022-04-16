@@ -1259,10 +1259,10 @@ const Combat = (props) => {
                     <span className="spacer0_5rem" />
                     A anti-aircraft unit that contributed a DRM to AA Fire during the current combat phase cannot be selected to be a Bunker Buster.
                     <span className="spacer0_5rem" />
-                    If Bunker Busting is being used in a Declared Attack, then the attacker is liable for Engineer Loss if there is a Asterisk result, and 
+                    If Bunker Busting is being used in a Declared Attack, then the attacker may be liable for Engineer Loss, and 
                     may lose the Bunker Buster unit. If both Engineer Effects and Bunker Busting are being used,
-                    and there is a Asterisk result, the loss is not doubled - the owning player choses whether 
-                    to lose the engineer or the bunker busting unit.<BsrLink page="43" rule="16.33b2" />
+                    and there is a Engineer Loss required, the loss is not doubled - the owning player chooses whether 
+                    to lose a step from the engineer or the bunker busting unit.<BsrLink page="43" rule="16.33b2" />
 
                 </div>
                 <span className="spacer1rem" />
@@ -1470,9 +1470,8 @@ const Combat = (props) => {
                                 <li>at least one of the conditions of Additional Loss occurs.</li>
                             </ul>
                             <span className="spacer0_5rem" />
-                            If both Engineer Effects and Bunker Busting is being used, and there is a Engineer loss due to a Star Result,
-                            the loss is not doubled. The owning player choses to lose either a step from an engineer, or a step from
-                            the bunker busting unit.<BsrLink page="43" rule="16.33b2" />
+                            If both Engineer Effects and Bunker Busting is being used, and there is a Engineer Loss required,
+                            the loss is not doubled. The owning player chooses from which to lose a step from - an engineer or the bunker busting unit.<BsrLink page="43" rule="16.33b2" />
                         </div>
                     </div>
                     <span className="spacer1rem" />
@@ -1492,8 +1491,8 @@ const Combat = (props) => {
                         red attack factor armor unit if there is a numeric loss listed on the combat result. This does not apply for Engineer Loss however.
                         <span className="spacer0_5rem" />
                         If you are using Engineer Effects and/or Bunker Busting, and get a star result - it only requires the first Additional Loss to be taken
-                        from an Engineer or Bunker Buster unit <b>*if*</b> you qualify for Additional Loss. If both Engineer Effects and Bunker Busting is being used,
-                        and Engineer Loss is required, then the owning player chooses which to lose a step from, and engineer step or a step from the bunker busting unit. 
+                        from an Engineer or Bunker Buster unit <b>*if*</b> you qualify for Additional Loss. If both Engineer Effects and Bunker Busting are being used,
+                        and Engineer Loss is required, then the owning player chooses which to lose a step from, an engineer step or a step from the bunker busting unit. 
                     </div>
 
                 </div>
