@@ -33,6 +33,7 @@ import hexFortifiedBelt from "../../../images/efs/combat/hex_fortified_belt.png"
 import hexCitadel from "../../../images/efs/combat/hex_citadel.png";
 import destroyedFortification from "../../../images/efs/combat/destroyed_fortification_120.png";
 import mandatedAttack from "../../../images/efs/combat/mandated_attack_120.png";
+import dasReich from "../../../images/efs/combat/dasreich_80.png";
 import './Combat.scss';
 
 const Combat = (props) => {
@@ -1250,6 +1251,7 @@ const Combat = (props) => {
                             <li>city</li>
                             <li>Major city</li>
                         </ul>
+                        And the hex does NOT contain a Citadel.
                     </div>
 
                     <span className="spacer1rem" />
@@ -1257,7 +1259,10 @@ const Combat = (props) => {
                     <span className="spacer0_5rem" />
                     A anti-aircraft unit that contributed a DRM to AA Fire during the current combat phase cannot be selected to be a Bunker Buster.
                     <span className="spacer0_5rem" />
-                    If Bunker Busting is being used in a Declared Attack, then the attacker is liable for Engineer Loss, and may lose the Bunker Buster unit.<BsrLink page="43" rule="16.33b2" />
+                    If Bunker Busting is being used in a Declared Attack, then the attacker is liable for Engineer Loss if there is a Asterisk result, and 
+                    may lose the Bunker Buster unit. If both Engineer Effects and Bunker Busting are being used,
+                    and there is a Asterisk result, the loss is not doubled - the owning player choses whether 
+                    to lose the engineer or the bunker busting unit.<BsrLink page="43" rule="16.33b2" />
 
                 </div>
                 <span className="spacer1rem" />
@@ -1271,7 +1276,7 @@ const Combat = (props) => {
 
 
 
-                <span className="spacer1rem" />
+                <span className="spacer0_5rem" />
                 <div>
                     Engineer effects can provide a -1 DRM on attacks if requirements are met. Having more than one engineer does not increase the benefit.
                     <span className="spacer0_5rem" />
@@ -1368,7 +1373,10 @@ const Combat = (props) => {
                         </li>
                     </ul>
                     <span className="spacer0_5rem" />
-                    The Das Reich motorized division only has two regiments, and therefore cannot qualify for the bonus.
+                    <div className="small-counters-left">
+                    <img src={dasReich} alt="Das Reich counters" />
+                    <span>The Das Reich motorized division only has two regiments, and therefore cannot qualify for the Panzer Divisional Integrity Bonus.</span>
+                    </div>
                 </div>
 
             
@@ -1432,18 +1440,18 @@ const Combat = (props) => {
                     Special Situation losses - they will not be cumulative with the "Additional" star losses described above. They describe
                     from what unit the first loss is to be taken from.
                     <span className="spacer0_5rem" />
-                    If there is both a armor and engineer special condition both occuring in a combat, a red-attack value armor must take the first loss.
-                    <span className="spacer0_5rem" />
+                    If there is both a armor and engineer Special Situation both occuring in a combat, a red-attack value armor unit must take the first loss.
+                    <span className="spacer1rem" />
 
                     <div className="image-text background-pink">
                         <img src={antitank} style={{ width: "auto" }} alt="Soviet anti-tank in action" />
                         <div>
-                            <b>Armor Attrition Loss</b><br />
+                            <b>Special Situation: Armor Attrition Loss</b><br />
                             A step loss occurs to an attacking red-attack factor armor unit if there is a Star Result and these all apply:
                             <ul>
                                 <li>The attacking force has one or more steps of red-strength armored units, and</li>
                                 <li>The defending force has any anti-tank, armor, and/or anti-aircraft units, and</li>
-                                <li>at least one of the conditions of Additional Loss occurs, or a numeric Attacker loss is the result on the combat table.</li>
+                                <li>at least one of the conditions of Additional Loss occurs, <b>or a numeric Attacker loss is on result on the combat table</b>.</li>
                             </ul>
                             <span className="spacer0_5rem" />
                             <b><i>AND</i></b> if there is any step loss(es) for the Defender in the combat result, then the defender must take the first step loss
@@ -1454,12 +1462,17 @@ const Combat = (props) => {
                     <div className="image-text background-grayblue">
                         <img src={flamethrower} style={{ width: "auto" }} alt="German flamethrower" />
                         <div>
-                            <b>Engineer Loss</b><br />
+                            <b>Special Situation: Engineer Loss</b><br />
                             A step loss occurs to an attacking engineer or Bunker Buster unit if there is a Star Result and these both apply:
                             <ul>
-                                <li>The attacking force includes any units using declared Engineer Effects, and/or a unit is being used as a Bunker Buster, and</li>
+                                <li>The attacking force includes any units using declared Engineer Effects, and/or a unit is 
+                                    being used as a Bunker Buster, and</li>
                                 <li>at least one of the conditions of Additional Loss occurs.</li>
                             </ul>
+                            <span className="spacer0_5rem" />
+                            If both Engineer Effects and Bunker Busting is being used, and there is a Engineer loss due to a Star Result,
+                            the loss is not doubled. The owning player choses to lose either a step from an engineer, or a step from
+                            the bunker busting unit.<BsrLink page="43" rule="16.33b2" />
                         </div>
                     </div>
                     <span className="spacer1rem" />
@@ -1473,13 +1486,14 @@ const Combat = (props) => {
                         You can think of "Additional Loss" as something that adds up. 1 + 1 + 1 + 1 etc, for each condition the attacker "qualifies" for.
                         <span className="spacer0_5rem" />
                         If you have a "Special Situation" step loss - what that means is that the first "Additional Loss" you have must be taken from
-                        an armor unit (for Armor Attrition) or and Engineer/Bunker Buster (for Engineer Loss).
+                        an armor unit (for Armor Attrition) or an Engineer/Bunker Buster (for Engineer Loss).
                         <span className="spacer0_5rem" />
                         However, for Armor Attrition - even if there is no "Additional Loss" required, it still requires the first loss to be taken from a
                         red attack factor armor unit if there is a numeric loss listed on the combat result. This does not apply for Engineer Loss however.
                         <span className="spacer0_5rem" />
-                        If you are using Engineer Effects or Bunker Busting, and get a star result - it only requires the first Additional Loss to be taken
-                        from an Engineer or Bunker Buster unit <b>*if*</b> you qualify for Additional Loss.
+                        If you are using Engineer Effects and/or Bunker Busting, and get a star result - it only requires the first Additional Loss to be taken
+                        from an Engineer or Bunker Buster unit <b>*if*</b> you qualify for Additional Loss. If both Engineer Effects and Bunker Busting is being used,
+                        and Engineer Loss is required, then the owning player chooses which to lose a step from, and engineer step or a step from the bunker busting unit. 
                     </div>
 
                 </div>
@@ -1512,20 +1526,23 @@ const Combat = (props) => {
                 <div>
                     Fortifications refer to Strongpoints, Fortified Lines, Fortified Belts, and Citadels.
                     <span className="spacer0_5rem" />
+                    They give a defensive benefit to all friendly troops in the hex, although for Fortified Lines, all attackers have to be
+                    coming across the Fortified Line hexside(s).
+                    <span className="spacer0_5rem" />
                     Strongpoints are represented by counters, while Fortified Lines, Fortified Belts and Citadels are printed on the map.
                     <span className="spacer0_5rem" />
                     The Axis and Soviet players can build and benefit from Strongpoints, while
                     Fortified Lines, Fortified Belts and Citadels can only benefit the Soviets.
                     <span className="spacer0_5rem" />
                     Strongpoints are Fortifications that can be built in one or two turns.
+                    <span className="spacer0_5rem" />
                     Fortified Lines, Fortified Belts and Citadels are pre-existing defensive structures that have been built over time, and
                     are not constructed during the game. They are printed on the map.
                     <span className="spacer0_5rem" />
                     Fortifications that have been destroyed lose their effects. They are sometimes refered to as "non-active Fortification", as opposed to "active Fortification" - which means a Fortification that has not been destroyed.
                     <span className="spacer0_5rem" />
                     Strongpoints represent field fortifications that can been built, in one or two turns, by engineers and by troops themselves. 
-                    In some scenarios, Strongpoints may already be present at the start of a scenario. They
-                    give a defensive benefit to all friendly troops in the hex.
+                    In some scenarios, Strongpoints may already be present at the start of a scenario.
                     <span className="spacer0_5rem" />
                     Fortified Lines are a hexside feature, and represent a continuous line of pill boxes and bunkers.
                     They provide defensive benefits to the defender if all attackers are across a Fortified Line hexside.
@@ -1677,8 +1694,9 @@ const Combat = (props) => {
 
 
                     <ul className="bare-ul">
-                        <li>By simply having a combat unit on a fortified hex during the Engineering phase will destroy enemy
-                            Fortifications.</li>
+                        <li>Enemy fortifications are destroyed when an enemy combat unit is on it's hex during the
+                            its Engineering Phase.
+                        </li>
 
                         <li>Fortified Lines and Citadels can be destroyed by Bombardment<BsrLink page="32" rule="13.43" />.</li>
 
@@ -1727,8 +1745,17 @@ const Combat = (props) => {
                     <div>Combat Phase<BsrLink page="38" rule="15.0" /></div>
                     <img src={chargingSoldiers} alt="Soviets on the attack" />
                 </div>
-                (coming soon)
+                (Coming soon)
+                {
+                // in the Combat Phase, the phasing player will conduct the Declared Attacks in any order desired.
+                // The combat sequence for each Declared Attack is carried out in this order:
 
+                // Count up the attacking and defending combat factors.
+                //     The defender reveals any Untried units.
+                //     The defender cannot withold any units from combat in a Defender hex.
+                //     The attacker can choose with units will be attacking - with the requirement that
+                //     every Defender hex must have units attacking it.
+                }
 
 
 
