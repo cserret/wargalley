@@ -946,6 +946,12 @@ const Combat = (props) => {
 
                 <ol>
                     <li><b>Attack Declaration</b> - The attacker declares any enemy occupied hexes that will be attacked, and places a Declared Attack marker on each of them.
+                    <div className="rules-note" style={{ padding: "10px" }}>
+                        <b>Note:</b> Even though a player is "officially" supposed to put the Declared Attack marker on the Defender hex, many players prefer to put the marker
+                        on the units that are attacking - with the arrow on the Declared Attack marker pointing at the Defender hex. Or some players will put the Declared Attack
+                        marker on an empty hex, pointing at the Defender hex. As long as both players are happy with the way the marker is being placed, then the effect is the same:
+                        the hex being attacked is clearly identified.
+                        </div>
                         <span className="spacer0_5rem" />
                         A hex with a Declared Attack marker on it is called a Defender hex, for this combat phase.
                         <span className="spacer0_5rem" />
@@ -958,6 +964,11 @@ const Combat = (props) => {
                             <li>Flotillas during Storm.</li>
                             <li>Untried units.</li>
                         </ul>
+                        <span className="spacer0_5rem" />
+                        Immediately after each Defender hex is identified by the placing of Declared Attack marker(s), then the players will compute the "initial" odds, to ensure the Minimum Combat Odds<BsrLink page="29" rule="12.2" /> is satisfied.
+                        This will include the attack and defense strengths of non-artillery units, and incorporating any terrain and weather effects. Untried Units in the Defender hex are not
+                        turned over at this time - assume they have a defense strength of 1 each. The Minimum Combat Odds requires that the odds be at least 1-4. If not, then
+                        remove the Declared Attack marker(s) - because the hex cannot be attacked.
                         <span className="spacer1rem" />
                     </li>
                     <li><b>Reaction Phase</b> - The defender will get to conduct Reaction Movement, designate artillery, and issue Retreat Orders.
@@ -1170,12 +1181,11 @@ const Combat = (props) => {
                     General Requirements/Restrictions
                     <ul className="bare-ul">
                         <li>The artillery unit(s) must be in range of the defender hex where a Declared Attack marker is placed.</li>
-                        <li>The artillery unit(s) <b>must be in Attack Supply</b> - a Attack Supply (which is being expended for this combat) LOC must be able to reach the artillery unit(s).</li>
+                        <li>The attacker's artillery unit(s) <b>must be in Attack Supply</b> - a Attack Supply (which is being expended for this combat) LOC must be able to reach the artillery unit(s).</li>
                         <li>Defending artillery units in an enemy ZOC cannot provide support to friendly units in another hex.</li>
                         <li>Attacking artillery units in an enemy ZOC can only provide support to a defender hex that is projecting enemy ZOC on it.</li>
                         <li>Defending artillery unit(s) alone in a defender hex do not get to use their support strength. They only provide their defense value
                             (typically 1).</li>
-                        <li>Artillery units in a defender hex without Attack Supply will only provide their defense strength (typically 1).</li>
                     </ul>
                     <span className="spacer0_5rem" />
                     Axis specific artillery rules
@@ -1203,6 +1213,7 @@ const Combat = (props) => {
                             </ul></li>
                         <li>Up to two rocket units can be added in addition to the one (or two) regular Soviet artillery limit.</li>
                         <li>Any number of Soviet railroad artillery units and naval artillery, which are in command range of a HQ, can add their support above the regular Soviet artillery limit.</li>
+                        <li>If the Defender hex is in a ZOI - Zone of Interdiction - then the Soviet defender can only have at most 1 artillery unit provide support.</li>
                     </ul>
                     <span className="spacer0_5rem" />
                     Terrain and artillery
@@ -1251,7 +1262,8 @@ const Combat = (props) => {
                             <li>city</li>
                             <li>Major city</li>
                         </ul>
-                        And the hex does NOT contain a Citadel.
+                        <span className="spacer0_5rem" />
+                        Note that Citadel is not qualifying terrain.
                     </div>
 
                     <span className="spacer1rem" />
@@ -1744,17 +1756,130 @@ const Combat = (props) => {
                     <div>Combat Phase<BsrLink page="38" rule="15.0" /></div>
                     <img src={chargingSoldiers} alt="Soviets on the attack" />
                 </div>
-                (Coming soon)
-                {
-                // in the Combat Phase, the phasing player will conduct the Declared Attacks in any order desired.
-                // The combat sequence for each Declared Attack is carried out in this order:
+                <span className="spacer0_5rem" />
+                The attacker selects any air units that are in the Ready Box and places them on any desired Declared attack hexes, then the defender does 
+                the same. Conduct the Combat Air Supprt (CAS) Mission Sequence.
 
-                // Count up the attacking and defending combat factors.
-                //     The defender reveals any Untried units.
-                //     The defender cannot withold any units from combat in a Defender hex.
-                //     The attacker can choose with units will be attacking - with the requirement that
-                //     every Defender hex must have units attacking it.
-                }
+                <span className="spacer1rem" />
+                 The phasing player will now conduct the Declared Attacks in any order desired.
+                 Every hex marked with a Declared Attack marker must have the Combat sequence executed on it. The attacker cannot cancel attacks.
+                 <span className="spacer1rem" />
+                 The combat sequence for each Declared Attack is carried out in a series of steps:
+                 <span className="spacer1rem" />
+                 <div className="indented-box background-red">
+                     <div className="indented-box-title">Combat Sequence</div>
+                 <ol className="spaced-ol" style={{marginLeft: "40px"}}>
+                    <li>Attacker identifies the units that will be attacking a Defender hex (or hexes if its is a multi-hex combat).
+                    </li>
+
+                    <li>Attacker issues any No Retreat/Additional Retreat order to the attacking units.
+                    </li>
+                    <li>Identify any Attack Supply that will be used<BsrLink page="38" rule="15.2" />
+
+
+                      attacks without Attack Supply have these effects:
+                        Apply +2 DRM to the combat die roll.
+                        If any Panzer or Motorized Division that the attacker wants to use to qualify for the Panzer Integrity Bonus, all
+                        the required units to qualify must have Attack Supply, otherwise they do note qualify for the Panzer Integrity Bonus.
+                        The attacker cannot allocate artillery support (unless the artillery is getting an ASP spent where it can reach it).
+                        If the defender has artillery that could support, but is in Limited Artillery condition, then it can't support
+                        unless it has an ASP spent for it.
+                        Asterisk results will cause Additional Loss (and possibly Special Situation loss).
+                        
+                        
+                    </li> 
+                    <li>Allocate Artillery support
+                        The defender computes the support strength of friendly artillery that was committed (in the Reaction Phase) to support the Defender hex.
+                        Some artillery that was committed may no longer qualify to support, if Enemy ZOC is now extending into their hex 
+                        (due to the movement of units in previously processed combats). The defender cannot add in any other artillery which were not committed in the
+                        Reaction Phase to the combat. 
+
+                        The attacker now computes the strength of artillery units that are participating in the combat. They must be in range of a Attack Supply that
+                        is being expended for the combat.
+
+                        Artillery support strength for both the attacker and defender may be modified by Terrain and Weather.
+                    </li>
+                    <li>
+                    The attacker conducts any Bombardment and Citadel Destruction.
+                    </li>
+                    <li>
+                    If Soviets are the defender, any Untried Units in the Defender hex are turned around and revealed. Remove any marked "remove".
+                    If all unit(s) in a Defender hex turn out to be of the "remove" type of Untried units, then they
+                    are removed and the Declared Attack marker is removed. Cancel the expenditure of any ASP for that combat. Units that were
+                    attacking can advance into the hex.<BsrLink page="40" rule="15.43b" />. The ASP that may had been allocated to that combat cannot
+                    be reassigned to a different Declared Attack.
+                    </li>
+                    <li>
+                    Expend the ASP for the combat.
+                    </li>
+                    <li>
+                    Combat Odds Determination
+
+                     Terrain Effects on Combat:
+                         Swamp - if Weather condition is Frozen, then Swamps have no combat effects.
+                                 Otherwise: Halve the combat strength of units attacking <b>from</b> a swamp.
+                                            Artillery support is halved when firing <b>into</b> a swamp.
+                         (non-major) River and Canal - If Weather condition is Frozen, then Rivers and Canals have no combat effects.
+                                            Otherwise: all attacking units are across a River and/or Canal, then apply +1 DRM. Note that Fortified Line can
+                                            also be used "as" a River, for this DRM determination. Bridges have no effect.
+                        Major River - if Weather condition is Frozen, then
+                                       if all attacking non-artillery units are across a Major River, then apply a +1 DRM.
+                                       Otherwise: all attacking non-artillery units are halved in attack strength. Bridges have no effect.
+                        City, Major City, Mountain, and Alpine -
+                                The total attack strength of red attack strength armored units is halved.
+                                A Defender hex that has a City or Major City causes a +1 DRM.
+                                A Defender hex that has Mountain or Alpine terrain causes a +2 DRM.
+
+                                Weather Effects (in the Defender hex) on Combat:
+                                    Mud: Attacking and defending artillery support strength is halved.
+
+                                Storm: Flotillas cannot attack. 
+
+                                When halving any units attack strength - combine the affected units, then halve, and then drop any fractions. Halving effects
+                                are cumulative. So if a unit(s) strength is halved all the way to zero, then that unit(s) contributes 0 to the attack strength.<BsrLink page="7" rule="3.4" />
+                    </li>
+                    <li>
+                    The attacker can change which ground units are attacking the Defender hex, but cannot hold back any units that were required to bring up the attack up to at least
+                    an initial odds of 1-4. 
+                    </li>
+                    <li>
+                    Count up the attacking and defending combat factors, including any Artillery Support and Combat Air Support. The total friendly artillery support strength
+                    cannot exceed the friendly non-artillery (unadjusted) strength.<BsrLink page="31" rule="13.13b" />
+                    The defender cannot withold any units from combat in a Defender hex.             
+                    </li>
+                    <li>
+                    Reveal Defender order, if there is one.
+                    </li>
+                    <li>
+                    Turn artillery that was used to its "Fired" side.
+                    </li>
+                    <li>
+                    Determine the combat odds. If any attack is now at less than 1-4, it will be resolved as 1-4.
+                    </li>
+                    <li>
+                    Declare any Engineer Effects, CAB, Panzer Integrity Bonuses. Determine the net DRMs. The final DRM cannot exceed +3 or -3.
+                    </li>
+                    <li>
+                    Roll the die and consult the Combat Results Chart for the result.
+                    </li>
+                    <li>
+                    Remove the Declared Attack and any Orders markers.
+                    </li>
+                    <li>
+                    Apply the combat results.
+                    </li>
+                    <li>
+                    Conduct any retreat.
+                    </li>
+                    <li>
+                    Conduct and Advance after Combat.
+                    </li>
+                    <li>
+                    Adjust the VP track if a VP hex was captured (or lost) and if any units that have a VP cost associated with them were eliminated.
+                    Remove any spent ASPs.                        
+                    </li>
+                </ol>
+                </div>
 
 
 

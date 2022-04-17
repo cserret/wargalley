@@ -214,6 +214,17 @@
         margin: 5px 5px 2px 40px;
         padding: 0;
       }
+        ol.spaced-ol {
+          position: relative;
+          top: -14px;
+          left: -35px;
+          li{
+           margin: 5px 0;
+          }
+          li:first-child {
+            margin-top: 0px;
+          }
+      }
     }
     .span-note {
       color: green;
