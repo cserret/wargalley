@@ -848,13 +848,13 @@ const Combat = (props) => {
                         Movement section for info on overrun.
                     </div>
                     <span className="spacer0_5rem" />
-                    For any airpower missions, there can be air-to-air combat and/or ground-to-air (anti air assets), but these are handled immediately before the combat sequence begins. 
+                    For any airpower missions, there can be air-to-air combat and/or ground-to-air (anti air assets), but these are handled immediately before the combat sequence begins.
                     <span className="spacer0_5rem" />
                     Although shooting down enemy planes is beneficial, what players are mostly
                     hoping for are successful (or prevention of) Combat Air Support (CAS) Missions, because they provide beneficial die roll modifiers (DRMs) for the combat roll.
                     <span className="spacer0_5rem" />
 
-                    
+
                     Combat can only occur between unit(s) that are in hexes adjacent to each other. Additional units such as artillery units and air units can participate without
                     being adjacent to the hex being attacked. But you will need combat units "on the ground" adjacent to an enemy occupied hex in order to declare an attack.
                     <span className="spacer0_5rem" />
@@ -973,7 +973,7 @@ const Combat = (props) => {
                             <li>Untried units.</li>
                         </ul>
                         <span className="spacer0_5rem" />
-                        Immediately after each Defender hex is identified by the placing of Declared Attack marker(s), then the players will compute the "initial" odds, 
+                        Immediately after each Defender hex is identified by the placing of Declared Attack marker(s), then the players will compute the "initial" odds,
                         to ensure the Minimum Combat Odds<BsrLink page="29" rule="12.2" /> is satisfied. The attacker will designate the units that will bring the initial odds
                         to at least 1-4.
                         <div className="rules-note" style={{ padding: "10px" }}>
@@ -1097,7 +1097,7 @@ const Combat = (props) => {
                             </ul>
 
                             <span className="spacer1rem" />
-                            <div className="box-with-image-to-left" style={{background: "#fbb"}}>
+                            <div className="box-with-image-to-left" style={{ background: "#fbb" }}>
                                 <div>Effects of the No Retreat order</div>
                                 <div className="two-column-flex counter-left">
                                     <img src={counter_no_retreat} style={{ width: "auto" }} alt="counter no retreat order" />
@@ -1113,7 +1113,7 @@ const Combat = (props) => {
 
                             <span className="spacer1rem" />
 
-                            <div className="box-with-image-to-left" style={{background: "#dda"}}>
+                            <div className="box-with-image-to-left" style={{ background: "#dda" }}>
                                 <div>Effects of the Additional Retreat order</div>
                                 <div className="two-column-flex counter-left">
                                     <img src={counter_additional_retreat} style={{ width: "auto" }} alt="counter additional retreat order" />
@@ -1793,7 +1793,7 @@ const Combat = (props) => {
 
                         <li>Attacker issues any No Retreat/Additional Retreat order to the attacking units.
                         </li>
-                        <li>Identify any Attack Supply that will be used<BsrLink page="38" rule="15.2" />
+                        <li>Identify any Attack Supply that will be used.<BsrLink page="38" rule="15.2" />
                             <span className="spacer0_5rem" />
                             <div className="indented-box" style={{ background: "#eddddd" }}>
                                 <div className="indented-box-title">attacks without Attack Supply have these effects:</div>
@@ -1850,7 +1850,7 @@ const Combat = (props) => {
                                     <li> If all Untried unit(s) in a Defender hex turn out to be of the "remove" type, then they
                                         are removed and the Declared Attack marker is removed. There is no combat.</li>
                                     <li>Cancel the expenditure of any ASP for that combat. Units that were
-                                        attacking can advance into the hex.<BsrLink page="40" rule="15.43b" />.</li>
+                                        attacking can advance into the hex.<BsrLink page="40" rule="15.43b" /></li>
                                     <li>The ASP that may had been allocated to that combat cannot
                                         be reassigned to a different Declared Attack.</li>
                                 </ol>
@@ -1863,7 +1863,12 @@ const Combat = (props) => {
                         <li>
                             Combat Odds Determination
                             <span className="spacer0_5rem" />
-                            <div className="indented-box" style={{background: "#daeada"}}>
+                            Count up the attacking and defending combat factors, including any Artillery Support. The total friendly artillery support strength
+                            cannot exceed the friendly non-artillery (unadjusted) strength.<BsrLink page="31" rule="13.13b" />
+                            <span className="spacer0_5rem" />
+                            The defender cannot withold any units from combat in a Defender hex.
+                            <span className="spacer1rem" />
+                            <div className="indented-box" style={{ background: "#daeada" }}>
                                 <span className="spacer0_5rem" />
                                 <div className="indented-box-title">Terrain Effects on Combat:</div>
 
@@ -1891,7 +1896,7 @@ const Combat = (props) => {
                                 </ul>
                             </div>
                             <span className="spacer0_5rem" />
-                            <div className="indented-box" style={{background: "#eef"}}>
+                            <div className="indented-box" style={{ background: "#eef" }}>
                                 <div className="indented-box-title">Weather Effects (in the Defender hex) on Combat:</div>
                                 <ul>
                                     <li>Mud: Artillery support strength (attacking and defending) is halved.
@@ -1902,23 +1907,25 @@ const Combat = (props) => {
                                 </ul>
                             </div>
                             <span className="spacer0_5rem" />
-                            <div className="rules-note" style={{padding: "5px 10px"}}>
+                            <div className="rules-note" style={{ padding: "5px 10px" }}>
                                 When halving any units attack strength - combine the affected units, then halve, and then drop any fractions. Then
                                 add this number to the total of non-halved units. Halving effects
-                                are cumulative. So if a unit(s) strength is halved all the way to zero, then that unit(s) contributes 0 to the attack strength.<BsrLink page="7" rule="3.4" />
-</div>
-                        </li>
-                        <li>
+                                are cumulative. So if a unit(s) strength is halved all the way to zero, then that unit(s) contributes 0 to the
+                                attack strength.<BsrLink page="7" rule="3.4" />
+                            </div>
+
+                            <span className="spacer0_5rem" />
+                            <div className="rules-note" style={{ padding: "5px 10px" }}>
                             The attacker can change which ground units are attacking the Defender hex, but cannot hold back any units that were required to bring up the attack up to at least
                             an initial odds of 1-4. This may require some honesty on the part of the players.
+                            </div>
+                            <span className="spacer0_5rem" />
+
+
+                            <span className="spacer0_5rem" />
                         </li>
                         <li>
-                            Count up the attacking and defending combat factors, including any Artillery Support. The total friendly artillery support strength
-                            cannot exceed the friendly non-artillery (unadjusted) strength.<BsrLink page="31" rule="13.13b" />
-                            The defender cannot withold any units from combat in a Defender hex.
-                        </li>
-                        <li>
-                            Reveal Defender order, if there is one.
+                            Reveal Defender Order, if there is one.
                         </li>
                         <li>
                             Turn artillery that was used to its "Fired" side.
@@ -1939,13 +1946,13 @@ const Combat = (props) => {
                             Apply the combat results. Remember the effects of any orders, and any Asterisk losses.
                         </li>
                         <li>
-                            Conduct any retreat.
+                            Conduct any Retreat.
                         </li>
                         <li>
-                            Conduct and Advance after Combat.
+                            Conduct any Advance after Combat.
                         </li>
                         <li>
-                            Adjust the VP track if a VP hex was captured (or lost) and if any units that have a VP cost associated with them were eliminated.
+                            Adjust the VP track if a VP hex was captured (or lost) and if any units that have a VP cost associated with them for losses.
                             Remove any spent ASPs.
                         </li>
                     </ol>
