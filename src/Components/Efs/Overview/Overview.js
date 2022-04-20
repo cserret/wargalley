@@ -15,6 +15,8 @@ import soviet_hq from "../../../images/efs/overview/soviet_hq_120.png";
 import soviet_infantry_division from "../../../images/efs/overview/soviet_infantry_div_120.png";
 import soviet_truck_120 from "../../../images/efs/overview/soviet_truck_120.png";
 import soviet_dump_120 from "../../../images/efs/overview/soviet_dump_120.png";
+import german_truck_120 from "../../../images/efs/overview/german_truck_120.png";
+import german_dump_120 from "../../../images/efs/overview/german_dump_120.png";
 import german_panzer_division_120 from "../../../images/efs/overview/panzer_division.png";
 
 import './Overview.scss';
@@ -30,30 +32,30 @@ const Overview = (props) => {
 
             <div>
                 <span>
-                    The East Front Series game system simulates warfare on the Eastern Front, 1941. 
+                    The East Front Series game system simulates warfare on the Eastern Front, 1941.
                     <div className="spacer0_5rem" />
-                    Units represented as counters are divisions, brigades, regiments, companies, batteries, and groups of planes. 
+                    Units represented as counters are divisions, brigades, regiments, companies, batteries, and groups of planes.
                     <div className="spacer0_5rem" />
                     The map scale is 5 miles to the hex. A turn represents 2 days.
                     <div className="spacer0_5rem" />
-                     The sequence of play is assymetrical, meaning the Axis order of phases during a turn is different than the Soviet order of phases. 
-                     <div className="spacer0_5rem" />
-                     Specifically the Axis player gets to move all its units then do combat, the normal "wargame" order of things. 
-                     <div className="spacer0_5rem" />
-                     But for the Soviets, they move their motorized units, with a very limited ability to move a few non-motorized units with their motorized units, 
-                     before doing combat. This causes the Soviet abilities to wage war to be handicapped, and neatly inserts the command control problems the Soviets 
-                     experienced into the game, without the need for artificial "dummy" rules for the Soviets (other than Mandated Attacks, but that was Stalin's fault).
-                     <div className="spacer0_5rem" />
-                      The Soviets in 1941 had so much difficulty in coordinating their armor 
-                     with their infantry in attacks that often the armor went into the attack without infantry support, and Soviet units involved in a desperate 
-                     defence would get no reserves sent to them, even when ample troops were nearby sitting idle. 
-                     <div className="spacer0_5rem" />
-                     The rigid Soviet command structure meant that directives from above 
-                     were to be obeyed, despite the realities on the ground.
-                     <div className="spacer0_5rem" />
-                     The Germans, of course, were indoctrinated through their military training to take 
-                     initiative all the way down the line, and as a result they had great flexibility in battle, along with excellent coordination between the various elements of 
-                     their armed forces.
+                    The sequence of play is assymetrical, meaning the Axis order of phases during a turn is different than the Soviet order of phases.
+                    <div className="spacer0_5rem" />
+                    Specifically the Axis player gets to move all its units then do combat, the normal "wargame" order of things.
+                    <div className="spacer0_5rem" />
+                    But for the Soviets, they move their motorized units, with a very limited ability to move a few non-motorized units with their motorized units,
+                    before doing combat. This causes the Soviet abilities to wage war to be handicapped, and neatly inserts the command control problems the Soviets
+                    experienced into the game, without the need for artificial "dummy" rules for the Soviets (other than Mandated Attacks, but that was Stalin's fault).
+                    <div className="spacer0_5rem" />
+                    The Soviets in 1941 had so much difficulty in coordinating their armor
+                    with their infantry in attacks that often the armor went into the attack without infantry support, and Soviet units involved in a desperate
+                    defence would get no reserves sent to them, even when ample troops were nearby sitting idle.
+                    <div className="spacer0_5rem" />
+                    The rigid Soviet command structure meant that directives from above
+                    were to be obeyed, despite the realities on the ground.
+                    <div className="spacer0_5rem" />
+                    The Germans, of course, were indoctrinated through their military training to take
+                    initiative all the way down the line, and as a result they had great flexibility in battle, along with excellent coordination between the various elements of
+                    their armed forces.
                 </span>
             </div>
 
@@ -74,21 +76,21 @@ const Overview = (props) => {
             <span className="spacer1rem" />
             <div>
                 <span>
-                    In this game system, the panzer division is king. Often a panzer division gets the dual combat benefits of "divisional integrity" and "combined arms", 
+                    In this game system, the panzer division is king. Often a panzer division gets the dual combat benefits of "divisional integrity" and "combined arms",
                     which makes them very combat effective.
                     <div className="spacer0_5rem" />
-                    Add into the mix engineers and air support, and panzer divisions can pretty much chew into any defense 
+                    Add into the mix engineers and air support, and panzer divisions can pretty much chew into any defense
                     the Soviets can put up.
                     <div className="spacer0_5rem" />
-                    But the main problem for the Axis player is that there are not enough panzer divisions, and with the lack of time the 
-                    Axis has to accomplish their objectives, combined with the problems of getting enough Attack Supply to the front, the Axis player is often 
+                    But the main problem for the Axis player is that there are not enough panzer divisions, and with the lack of time the
+                    Axis has to accomplish their objectives, combined with the problems of getting enough Attack Supply to the front, the Axis player is often
                     forced to put his/her precious panzer divisions into dangerous situations.
                     <div className="spacer0_5rem" />
-                    How well the Axis player balances the need for victory points with risk to 
+                    How well the Axis player balances the need for victory points with risk to
                     his panzer divisions and other units is what gives this game system its excitement level.
                     <div className="spacer0_5rem" />
                     The Soviet player will need to strategically trade space for time, and come up with ways to slow down the German onslaught, while striking
-                    back when the Germans get careless. 
+                    back when the Germans get careless.
                 </span>
             </div>
 
@@ -100,7 +102,7 @@ const Overview = (props) => {
                             <div className="image"><img src={soviet_infantry_division} alt="Soviet infantry division" /></div>
                             <div className="comment">
                                 A Soviet infantry division varies in strength.<br />
-                                This one has an attack strength of 3 (first number) and<br /> 
+                                This one has an attack strength of 3 (first number) and<br />
                                 defense of 4 (second number). They have 2 or 3 steps.
                             </div>
                         </div>
@@ -227,7 +229,7 @@ const Overview = (props) => {
                             <div className="title">SOVIET ARTILLERY UNIT</div>
                             <div className="image"><img src={soviet_artillery} alt="Soviet artillery unit" /></div>
                             <div className="comment">
-                                This is a Soviet artillery unit. This one has a<br /> 
+                                This is a Soviet artillery unit. This one has a<br />
                                 range of 2 (smaller number upper left in red)<br />
                                 bombardment strength of 3, and defense of 1.
                             </div>
@@ -239,7 +241,7 @@ const Overview = (props) => {
                             <div className="image"><img src={german_artillery_big} alt="German artillery unit" /></div>
                             <div className="comment">
                                 This is a German artillery regiment. This one has<br /> a range of
-                                two and a bombardment strength of two.
+                                two and a bombardment strength of three.
                             </div>
                         </div>
                     </div>
@@ -268,24 +270,27 @@ const Overview = (props) => {
                 <div className="comment-boxes">
                     <div>
                         <div className="title_img_comment_box">
-                            <div className="title">GERMAN SUPPLY UNIT</div>
-                            <div className="image"><img src={german_supply_big} alt="German supply unit" /></div>
+                            <div className="title">AXIS ATTACK<br />SUPPLY UNITS</div>
+                            <div className="image-by-image">
+                                <div className="image"><img src={german_truck_120} alt="German attack supply unit" /></div>
+                                <div className="image"><img src={german_dump_120} alt="German supply dump unit" /></div>
+                            </div>
                             <div className="comment">
-                                This is a trucked Attack Supply unit.<br />
-                                Two Attack Supply counters that are in the<br />
-                                same hex can be flipped to one 2 point dump.
+                                Axis trucked Attack Supply unit<br />
+                                and Attack Supply Dump unit.
                             </div>
                         </div>
 
                     </div><div>
                         <div className="title_img_comment_box">
-                            <div className="title">SOVIET ATTACK<br/>SUPPLY UNITS</div>
+                            <div className="title">SOVIET ATTACK<br />SUPPLY UNITS</div>
                             <div className="image-by-image">
                                 <div className="image"><img src={soviet_truck_120} alt="Soviet attack supply unit" /></div>
                                 <div className="image"><img src={soviet_dump_120} alt="Soviet supply dump unit" /></div>
                             </div>
                             <div className="comment">
-                                A Soviet trucked Attack Supply<br/>and Attack Supply Dump units.<br />
+                                Soviet trucked Attack Supply unit<br />
+                                and Attack Supply Dump unit.<br />
                             </div>
                         </div>
                     </div>

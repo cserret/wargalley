@@ -1853,6 +1853,8 @@ const Combat = (props) => {
                                         attacking can advance into the hex.<BsrLink page="40" rule="15.43b" /></li>
                                     <li>The ASP that may had been allocated to that combat cannot
                                         be reassigned to a different Declared Attack.</li>
+                                    <li>Attacking units that were allocated to that combat cannot
+                                        be reassigned to a different Declared Attack.</li>
                                 </ol>
                             </div>
                             <span className="spacer0_5rem" />
@@ -1916,8 +1918,8 @@ const Combat = (props) => {
 
                             <span className="spacer0_5rem" />
                             <div className="rules-note" style={{ padding: "5px 10px" }}>
-                            The attacker can change which ground units are attacking the Defender hex, but cannot hold back any units that were designated to bring the attack 
-                            up to at least an initial odds of 1-4. This may require some honesty on the part of the players.
+                                The attacker can change which ground units are attacking the Defender hex, but cannot hold back any units that were designated to bring the attack
+                                up to at least an initial odds of 1-4. This may require some honesty on the part of the players.
                             </div>
                             <span className="spacer0_5rem" />
 
@@ -1976,131 +1978,3 @@ const Combat = (props) => {
 }
 
 export default Combat;
-
-/*
-
-                The attacker selects any air units that are in the Ready Box and places them on any desired Declared attack hexes, then the defender does 
-                the same. Conduct the Combat Air Supprt (CAS) Mission Sequence.
-
-                <span className="spacer1rem" />
-                 The phasing player will now conduct the Declared Attacks in any order desired.
-                 Every hex marked with a Declared Attack marker must have the Combat sequence executed on it. The attacker cannot cancel attacks.
-                 <span className="spacer1rem" />
-                 The combat sequence for each Declared Attack is carried out in a series of steps:
-                 <span className="spacer1rem" />
-                 <div className="indented-box background-red">
-                     <div className="indented-box-title">Combat Sequence</div>
-                 <ol className="spaced-ol" style={{marginLeft: "40px"}}>
-                    <li>Attacker identifies the units that will be attacking a Defender hex (or hexes if its is a multi-hex combat).
-                    </li>
-
-                    <li>Attacker issues any No Retreat/Additional Retreat order to the attacking units.
-                    </li>
-                    <li>Identify any Attack Supply that will be used<BsrLink page="38" rule="15.2" />
-
-
-                      attacks without Attack Supply have these effects:
-                        Apply +2 DRM to the combat die roll.
-                        If any Panzer or Motorized Division that the attacker wants to use to qualify for the Panzer Integrity Bonus, all
-                        the required units to qualify must have Attack Supply, otherwise they do note qualify for the Panzer Integrity Bonus.
-                        The attacker cannot allocate artillery support (unless the artillery is getting an ASP spent where it can reach it).
-                        If the defender has artillery that could support, but is in Limited Artillery condition, then it can't support
-                        unless it has an ASP spent for it.
-                        Asterisk results will cause Additional Loss (and possibly Special Situation loss).
-                        
-                        
-                    </li> 
-                    <li>Allocate Artillery support
-                        The defender computes the support strength of friendly artillery that was committed (in the Reaction Phase) to support the Defender hex.
-                        Some artillery that was committed may no longer qualify to support, if Enemy ZOC is now extending into their hex 
-                        (due to the movement of units in previously processed combats). The defender cannot add in any other artillery which were not committed in the
-                        Reaction Phase to the combat. 
-
-                        The attacker now computes the strength of artillery units that are participating in the combat. They must be in range of a Attack Supply that
-                        is being expended for the combat.
-
-                        Artillery support strength for both the attacker and defender may be modified by Terrain and Weather.
-                    </li>
-                    <li>
-                    The attacker conducts any Bombardment and Citadel Destruction.
-                    </li>
-                    <li>
-                    If Soviets are the defender, any Untried Units in the Defender hex are turned around and revealed. Remove any marked "remove".
-                    If all unit(s) in a Defender hex turn out to be of the "remove" type of Untried units, then they
-                    are removed and the Declared Attack marker is removed. Cancel the expenditure of any ASP for that combat. Units that were
-                    attacking can advance into the hex.<BsrLink page="40" rule="15.43b" />. The ASP that may had been allocated to that combat cannot
-                    be reassigned to a different Declared Attack.
-                    </li>
-                    <li>
-                    Expend the ASP for the combat.
-                    </li>
-                    <li>
-                    Combat Odds Determination
-
-                     Terrain Effects on Combat:
-                         Swamp - if Weather condition is Frozen, then Swamps have no combat effects.
-                                 Otherwise: Halve the combat strength of units attacking <b>from</b> a swamp.
-                                            Artillery support is halved when firing <b>into</b> a swamp.
-                         (non-major) River and Canal - If Weather condition is Frozen, then Rivers and Canals have no combat effects.
-                                            Otherwise: all attacking units are across a River and/or Canal, then apply +1 DRM. Note that Fortified Line can
-                                            also be used "as" a River, for this DRM determination. Bridges have no effect.
-                        Major River - if Weather condition is Frozen, then
-                                       if all attacking non-artillery units are across a Major River, then apply a +1 DRM.
-                                       Otherwise: all attacking non-artillery units are halved in attack strength. Bridges have no effect.
-                        City, Major City, Mountain, and Alpine -
-                                The total attack strength of red attack strength armored units is halved.
-                                A Defender hex that has a City or Major City causes a +1 DRM.
-                                A Defender hex that has Mountain or Alpine terrain causes a +2 DRM.
-
-                                Weather Effects (in the Defender hex) on Combat:
-                                    Mud: Attacking and defending artillery support strength is halved.
-
-                                Storm: Flotillas cannot attack. 
-
-                                When halving any units attack strength - combine the affected units, then halve, and then drop any fractions. Halving effects
-                                are cumulative. So if a unit(s) strength is halved all the way to zero, then that unit(s) contributes 0 to the attack strength.<BsrLink page="7" rule="3.4" />
-                    </li>
-                    <li>
-                    The attacker can change which ground units are attacking the Defender hex, but cannot hold back any units that were required to bring up the attack up to at least
-                    an initial odds of 1-4. 
-                    </li>
-                    <li>
-                    Count up the attacking and defending combat factors, including any Artillery Support and Combat Air Support. The total friendly artillery support strength
-                    cannot exceed the friendly non-artillery (unadjusted) strength.<BsrLink page="31" rule="13.13b" />
-                    The defender cannot withold any units from combat in a Defender hex.             
-                    </li>
-                    <li>
-                    Reveal Defender order, if there is one.
-                    </li>
-                    <li>
-                    Turn artillery that was used to its "Fired" side.
-                    </li>
-                    <li>
-                    Determine the combat odds. If any attack is now at less than 1-4, it will be resolved as 1-4.
-                    </li>
-                    <li>
-                    Declare any Engineer Effects, CAB, Panzer Integrity Bonuses. Determine the net DRMs. The final DRM cannot exceed +3 or -3.
-                    </li>
-                    <li>
-                    Roll the die and consult the Combat Results Chart for the result.
-                    </li>
-                    <li>
-                    Remove the Declared Attack and any Orders markers.
-                    </li>
-                    <li>
-                    Apply the combat results.
-                    </li>
-                    <li>
-                    Conduct any retreat.
-                    </li>
-                    <li>
-                    Conduct and Advance after Combat.
-                    </li>
-                    <li>
-                    Adjust the VP track if a VP hex was captured (or lost) and if any units that have a VP cost associated with them were eliminated.
-                    Remove any spent ASPs.                        
-                    </li>
-                </ol>
-
-</div>
-*/
