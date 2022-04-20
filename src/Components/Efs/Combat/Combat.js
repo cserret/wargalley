@@ -1916,8 +1916,8 @@ const Combat = (props) => {
 
                             <span className="spacer0_5rem" />
                             <div className="rules-note" style={{ padding: "5px 10px" }}>
-                            The attacker can change which ground units are attacking the Defender hex, but cannot hold back any units that were required to bring up the attack up to at least
-                            an initial odds of 1-4. This may require some honesty on the part of the players.
+                            The attacker can change which ground units are attacking the Defender hex, but cannot hold back any units that were designated to bring the attack 
+                            up to at least an initial odds of 1-4. This may require some honesty on the part of the players.
                             </div>
                             <span className="spacer0_5rem" />
 
