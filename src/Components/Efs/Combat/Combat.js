@@ -864,7 +864,7 @@ const Combat = (props) => {
                     Once the phasing player has decided on which hexes will be getting attacked, that player places
                     a "Declared Attack" marker on each of them.
                     <span className="spacer0_5rem" />
-                    <div className="rules-note">
+                    <div className="rules-clarification">
                         The Declared Attack markers have numbers on them, but those are just for reference so the players can easily say "next I'm doing
                         Declared Attack number 7", etc.
                     </div>
@@ -1432,7 +1432,7 @@ const Combat = (props) => {
                             <li>The Defender hex was a non-destroyed Fortification and/or all attackers were attacking across Fortified Lines.</li>
                         </ul>
                         <span className="spacer0_5rem" />
-                        Attacking a non-destroyed Fortification *and* across fortified lines does not count as 2 additional losses, its counts as 1 additional loss.
+                        Attacking a non-destroyed Fortification *and* across fortified lines does not count as 2 additional losses, it counts as 1 additional loss.
                         <span className="spacer0_5rem" />
                         <b>Additionally:</b>
                         <span className="spacer0_5rem" />
@@ -1442,7 +1442,7 @@ const Combat = (props) => {
                             <div>
                                 <span className="title">Fuel Shortage and Star Result<BsrLink page="43" rule="16.32b" /></span><br />
                                 If attacking <b>or defending</b> Axis units include a red attack strength armored unit with a Fuel Shortage marker, then a Star Result
-                                causes an additional step loss to the Axis (not necessarily to a red attack factor armor unit).
+                                causes a "Additional Loss" - an additional step loss to the Axis (not necessarily to a red attack factor armor unit).
                             </div>
                         </div>
 
@@ -1455,7 +1455,7 @@ const Combat = (props) => {
 
 
 
-                    <span className="spacer1_0rem" />
+                    <span className="spacer0_5rem" />
 
 
 
@@ -1464,13 +1464,11 @@ const Combat = (props) => {
                     <span className="spacer1rem" />
                     <b>Special Situation Asterisk Losses</b><BsrLink page="43" rule="16.33" />
                     <span className="spacer0_5rem" />
-                    Attacking armor and engineers may be subject to "Special Situation" star losses under certain conditions, if there a Star Result.
+                    Armor, engineers, anti-tank, anti-aircraft, and bunker busting units may be subject to "Special Situation" star losses under certain conditions.
                     <span className="spacer0_5rem" />
-                    If there is a step loss to armor or engineers due to these
-                    Special Situation losses - they will not be cumulative with the "Additional" star losses described above. They describe
-                    from what unit the first loss is to be taken from.
+                    A "Special Situation Asterisk Loss" is not cumulative with "Additional Loss".
                     <span className="spacer0_5rem" />
-                    If there is both a armor and engineer Special Situation both occuring in a combat, a red-attack value armor unit must take the first loss.
+                    If conditions are met for both "Armor Attrition Loss" and "Engineer Loss" Special Situations, then a red-attack value armor unit must take the step loss.
                     <span className="spacer1rem" />
 
                     <div className="image-text background-pink">
@@ -1481,7 +1479,7 @@ const Combat = (props) => {
                             <ul>
                                 <li>The attacking force has one or more steps of red-strength armored units, and</li>
                                 <li>The defending force has any anti-tank, armor, and/or anti-aircraft units, and</li>
-                                <li>at least one of the conditions of Additional Loss occurs, <b>or a numeric Attacker loss is on result on the combat table</b>.</li>
+                                <li>at least one of the conditions of Additional Loss occurs, <b>*OR* a numeric Attacker loss is on result on the combat table</b>.</li>
                             </ul>
                             <span className="spacer0_5rem" />
                             <b><i>AND</i></b> if there is any step loss(es) for the Defender in the combat result, then the defender must take the first step loss
@@ -1517,12 +1515,16 @@ const Combat = (props) => {
                         If you have a "Special Situation" step loss - what that means is that the first "Additional Loss" you have must be taken from
                         an armor unit (for Armor Attrition) or an Engineer/Bunker Buster (for Engineer Loss).
                         <span className="spacer0_5rem" />
-                        However, for Armor Attrition - even if there is no "Additional Loss" required, it still requires the first loss to be taken from a
-                        red attack factor armor unit if there is a numeric loss listed on the combat result. This does not apply for Engineer Loss however.
+                        However, Armor Attrition - even if the conditions for "Additional Loss" are not met - still requires the first loss to be taken from a
+                        red attack factor armor unit <b>IF</b> there is a numeric loss listed on the combat result. This does not apply for Engineer Loss. Engineer Loss
+                        requires that the conditions for "Additional Loss" be met.
                         <span className="spacer0_5rem" />
                         If you are using Engineer Effects and/or Bunker Busting, and get a star result - it only requires the first Additional Loss to be taken
                         from an Engineer or Bunker Buster unit <b>*if*</b> you qualify for Additional Loss. If both Engineer Effects and Bunker Busting are being used,
                         and Engineer Loss is required, then the owning player chooses which to lose a step from, an engineer step or a step from the bunker busting unit.
+                        <span className="spacer0_5rem" />
+                        If "Additional Loss" conditions are met, and Armor Attrition and Engineer Loss conditions are met, and a bunker busting unit is being used -
+                        then its still 1 required (first) step lost - which must come from a red-attack value armor. 
                     </div>
 
                 </div>
