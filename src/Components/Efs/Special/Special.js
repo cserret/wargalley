@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ScrollToTopOnMount from "../../ScrollToTopOnMount";
-//import BsrLink from "../BsrLink/BsrLink";
+import BsrLink from "../BsrLink/BsrLink";
 import armored_train from "../../../images/efs/special/armored_train.gif";
 import armored_train_top from "../../../images/efs/special/armored_train.jpg";
 import c3 from "../../../images/efs/special/c3.jpg";
@@ -149,7 +149,7 @@ export default class Special extends Component {
 
                     <div className="image-caption">
                         <img src={armored_train_top} alt="armored train" />
-                        <div>Armored trains with T-34 and T-28 turrets</div>
+                        <div>Armored trains with T-28 and T-34 turrets</div>
                     </div>
                     <span className="spacer1rem" />
                     <div>EFS has several types of special units, which adds to EFS's rich historical flavor and chrome. </div>
@@ -157,37 +157,57 @@ export default class Special extends Component {
                     <span className="spacer2rem" />
 
                     <div className="subheader-image">
-                        <span>23.1</span>
-                        <div>Engineers</div>
+                        <div>Engineers<BsrLink page="56" rule="22.1" /></div>
+
                         <img src={german_engineer2} alt="German engineer counter" />
                     </div>
                     <span className="spacer1rem" />
 
                     <div>
-                        Engineers in EFS build strongpoints and destroy enemy strongpoints. An engineer unit in a town in Mud weather can enable air transport from that town. A motorized engineer is necessary to enable overrun attempts against city, major city, or fortification hexes (fortified lines or strongpoints). "Engineer Effects" can be declared in combat, see Combat section for info.
-            </div><div>
-                        Strongpoints can be built by both sides (as long as the scenario special rules don't disallow it). There can only be a maximum of one strongpoint in a hex, although a strongpoint can be built behind a fortified hexline.
-            </div><div>
-                        The German player needs engineers to place strongpoints on the map. The Soviet doesn't, although engineers can speed the placement of strongpoints by allowing the Soviet player to place a "completed", rather than "under construction", strongpoint on the map.
-            </div><div>
+                        Engineers provide various benefits in EFS, they:
+                        <ul className="ul-no-top">
+                            <li>build strongpoints and destroy enemy strongpoints.<BsrLink page="56" rule="22.11" /></li>
+                            <li>aid movement and attack across shallow water hexsides.<BsrLink page="41" rule="15.53d" /></li>
+                            <li>convert rail hexes.<BsrLink page="41" rule="15.53c" /></li>
+                            <li>aid or participate in overruns.<BsrLink page="25" rule="11.3" /></li>
+                            <li>allow construction of a Ferry.<BsrLink page="57" rule="22.32b" /></li>
+                        </ul>
+                        Engineers can also
+                        <ul className="ul-no-top">
+                            <li>can provide Engineer Effects in combat in certain situations.<BsrLink page="23" rule="10.47b" /><BsrLink page="41" rule="15.53" /></li>
+                            <li>exceed the stacking limit.<BsrLink page="41" rule="15.53c" /></li>
+                        </ul>
+                        <div className="adjusted-up">
+                        An Engineer can also be subject to Engineer Loss in a combat.<BsrLink page="43" rule="16.32,3b" />
+                    </div>
+                    </div><div>
+                        Strongpoints can be built by both sides . 
+                        There can only be a maximum of one strongpoint in a hex, although a strongpoint can 
+                        be built behind a fortified hexline.
+                    </div><div>
+                        The German player needs engineers to place strongpoints on the map. 
+                        The Soviet doesn't, although engineers can speed the placement of strongpoints by 
+                        allowing the Soviet player to place a "completed", rather than "under construction", 
+                        strongpoint on the map.
+                    </div><div>
                         Strongpoints give a +1 drm to the defender in a strongpoint, along with some other benefits. Strongpoints can go out of supply and "die" if cut off. Strongpoints can be built in any hex in General Supply, even in enemy ZOC.
-            </div><div>
+                    </div><div>
                         Usually the Soviet player will put strongpoints in victory point towns and cities, behind rivers and other defensible terrain, and cluster them around very important cities like Smolensk or Kiev. Although the +1 drm may not sound like a big deal, strongpoints also cause asterisk results to be levied against the attacker, greatly reduces the chance of being overrun, and continues to cause the Axis player problems even after you've abandoned the strongpoint by blocking roads, railroad conversion, and supply routes until destroyed.
-            </div><div>
+                    </div><div>
                         To destroy a strongpoint a division or engineer unit needs to be in the hex with the strongpoint in the Engineering phase, which often causes the Axis player to slow down or divert their units for fortification destruction duties.
-            </div>
+                    </div>
 
-
+                    <span className="spacer1rem" />
 
 
 
 
                     <div className="gray-box">
-                       <div className="subsubheader">Soviet Engineer - Strongpoints</div>
+                        <div className="subsubheader">Soviet Engineer - Strongpoints</div>
                         <img src={soviet_fort} alt="Soviet fort counter" />
                         <ul>
                             <li>Can build a completed strongpoint the turn it is received, via the Replacements Table. Soviet Engineers cannot build strongpoints of their own free will, they must be supplied from the Replacements Table. Note that the Soviet player can place "under construction" strongpoints without an engineer present.
-                </li>
+                            </li>
                             <li>The engineer must be in General Supply.</li>
                             <li>The engineer must not have moved in strategic or rail movement in the turn.</li>
                             <li>The engineer must not have converted any rail hexes.</li>
@@ -199,12 +219,12 @@ export default class Special extends Component {
 
 
 
-
+                    <span className="spacer1rem" />
 
 
 
                     <div className="gray-box">
-                       <div className="subsubheader">German Engineer - Strongpoints</div>
+                        <div className="subsubheader">German Engineer - Strongpoints</div>
                         <img src={german_fort} alt="German fort counter" />
                         <ul>
                             <li>Can place a "under construction" strongpoint on the hex they are on.</li>
@@ -235,15 +255,15 @@ export default class Special extends Component {
 
                     <div>
                         Bridge units are available to both sides. They actually represent engineer units that are capable of building bridges. These bridges (actually pontoon bridges) allow units (of their side) to cross rivers and major rivers.
-            </div><div>
+                    </div><div>
                         A bridge unit at a river negates the "crossing the river" cost for that hexside. Note that the counter has an arrow. It points to the hexside that gets the bridge.
-            </div><div>
+                    </div><div>
                         Bridge unit placement is very fast and loose in EFS. Basically you can place it in any hex in General Supply, regardless of any affiliation marked on the counter. No more than two friendly bridge units can be active per map. You can move a bridge unit at *any time* (once) during each friendly Movement Phase. This means units can use it to cross a river at one spot, then you can move the bridge unit to another river, and other units can then run across its bridge at the new location.
-            </div><div>
+                    </div><div>
                         Non-op HQ's interfere with Bridge units - they prohibit placement of bridges within their Command Range, and bridge units cannot leave a hex while under Command Range of a non-op HQ's.
-            </div><div>
+                    </div><div>
                         Bridge units cannot be captured or destroyed by the enemy. Bridge units cannot retreat. If the hex they are in is entered by an enemy unit, then the bridge unit is moved off the map. They can be placed back on the map in the owner's regular Movement phase.
-            </div>
+                    </div>
 
                     <span className="spacer2rem" />
 
@@ -256,17 +276,17 @@ export default class Special extends Component {
 
                     <div>
                         A armored train travels up to 48 rail hexes per turn (subject to interdiction effects). They can move in either the Motorized Phase or the regular Movement Phase (but not both in the same turn). They do not require any supply to move, and do not count against the rail capacity. They cannot transport anything.
-            </div><div>
+                    </div><div>
                         German armored trains can only run on converted track (converted to German closer width train rails and more closely spaced water towers), while Soviet armored trains can only run on non-converted track.
-            </div><div>
+                    </div><div>
                         Armored trains can move into enemy ZOC, but not through them. They can run on tracks "behind" enemy lines (as long as the track is the proper type for it).
-            </div><div>
+                    </div><div>
                         Armored trains do not possess any "armor" benefits. They do not disqualify attacking units from getting CAB.
-            </div><div>
+                    </div><div>
                         Some Soviet trains are NKVD trains, and act as NKVD units for the purposes of the No Retreat automatic orders for NKVD. They can drive through Command Ranges of non-op HQ's.
-            </div><div>
+                    </div><div>
                         Although weak, lacking ZOC, and relegated to staying on rail lines, armored trains can help out with defending an area you have difficulty getting any regular ground troops to, as they can go a long ways on a track. Sending a NKVD armored train into a city about to get surrounded is a great way to improve the defense, since the units there will get a beneficial modifier for surrender rolls.
-            </div>
+                    </div>
 
                     <span className="spacer2rem" />
 
@@ -288,34 +308,34 @@ export default class Special extends Component {
                     <div>
                         Flotillas are armored boats. They can travel along rivers, coastal hexes, and even sea hexes. They can move up to in
                         16 hexes in both the friendly Movement Phase and the friendly Motorized Movement Phase. Flotillas cannot use strategic movement.
-                        </div><div>
+                    </div><div>
                         When moving a flotilla, you keep along the river. No "jumping" over land to continue on another river. Flotillas do not benefit from fortified lines or strongpoints, by themselves. Axis flotillas are AA Fire capable.
-</div><div>
-    Flotillas do not extend ZOC, but do have ZOC in the hex they are in. They block enemy supply in the hex they occupy.
-            </div><div>
+                    </div><div>
+                        Flotillas do not extend ZOC, but do have ZOC in the hex they are in. They block enemy supply in the hex they occupy.
+                    </div><div>
                         They are subject to air interdiction. Moving through an interdicted hex cost 4 mps. <span className="rule-ref">(11.2)</span>
                     </div><div>
                         They can move into ZOC, but not through them. Since ZOCs don't extend across Major Rivers, flotillas can freely move along Major Rivers.
-            </div><div>
+                    </div><div>
                         When they move along a river you need to indicate the "side" of the river they are on by placing the counter on the hex on one side of the river or other
                         (you don't place them on the hexlines). It costs one MP to move to the other side of a river.
-            </div><div>
-                        If moving along a canal, there is only "one" side to the canal.
-            </div><div>
-                        Flotillas can be "overrun" by enemy units on the same side of the river as the flotilla. They can be attacked as if a regular unit, and they can participate on attacks on enemy units that are in a hex adjacent to the river (either side).
-            </div><div>
-                        Flotillas do not require Attack Supply, and do not require General Supply. <span className="rule-ref">(22.56)</span>
-            </div><div>
-                Flotillas cannot attack in Storm weather. If Storm weather is rolled, flotillas must be repositioned to the nearest friendly port within its movement allowance. If no port
-                is in reach, then the flotilla stays in place. Place a "Do Not Move One GT" on the flotillas.
-                </div><div>
-                    Flotillas cannot move in Snow weather. Flotillas cannot move in sea or coastal sea hexes in Arctic weather <span className="rule-ref">(10.77b)</span>.
                     </div><div>
-                    Flotillas do not get the fortification benefit if alone in the hex. They cannot get defensive artillery support if alone in a hex.
+                        If moving along a canal, there is only "one" side to the canal.
+                    </div><div>
+                        Flotillas can be "overrun" by enemy units on the same side of the river as the flotilla. They can be attacked as if a regular unit, and they can participate on attacks on enemy units that are in a hex adjacent to the river (either side).
+                    </div><div>
+                        Flotillas do not require Attack Supply, and do not require General Supply. <span className="rule-ref">(22.56)</span>
+                    </div><div>
+                        Flotillas cannot attack in Storm weather. If Storm weather is rolled, flotillas must be repositioned to the nearest friendly port within its movement allowance. If no port
+                        is in reach, then the flotilla stays in place. Place a "Do Not Move One GT" on the flotillas.
+                    </div><div>
+                        Flotillas cannot move in Snow weather. Flotillas cannot move in sea or coastal sea hexes in Arctic weather <span className="rule-ref">(10.77b)</span>.
+                    </div><div>
+                        Flotillas do not get the fortification benefit if alone in the hex. They cannot get defensive artillery support if alone in a hex.
                     </div><div>
 
                         Flotillas are especially useful in swampy areas, as they are not affected by the difficult terrain. Flotillas often force players to use up some units to garrison rear areas that are reachable by river, since flotillas are rather difficult to track down and kill, especially in swamp.
-            </div>
+                    </div>
 
                     <span className="spacer3rem" />
 
@@ -345,29 +365,29 @@ export default class Special extends Component {
                         <canvas id="naval_info_container_canvas" width="800" height="400" className="naval-info-container-canvas" />
                     </div>
 
-                
+
 
 
 
 
                     <div className="subheader-normal">
                         Naval
-            </div>
+                    </div>
                     <div className="pdiv">
                         The naval rules (8.0) are extensive, but this is a summary:
-            <ul className="ul-no-top">
+                        <ul className="ul-no-top">
                             <li>Naval units are not combat units. They have no stacking value. They do, however, need General Supply and Attack Supply as combat units do.</li>
                             <li>Naval units only move in sea hexes, but they can be in a port hex, where they prevent the entry of non-combat enemy units into the hex.</li>
                             <li>Naval units do not have steps, but do take damage points. Only "T" type naval units can be rebuilt.</li>
                             <li>Naval units provide AA fire, but only for themselves.</li>
                             <li>Naval units with Artillery Support values can provide offensive artillery fire, if they are in range of a Defender Hex.</li>
                             <li>Naval units have two sides - "Ready" and "Sailed". A "Ready" naval unit is eligible to be moved, and it considered armed and fueled. A "Sailed" naval unit will need
-                    to roll for readiness during the Naval Readiness Phase of the Strategic Segment. A naval unit can be moved in any movement phase, even the enemy movement phases.</li>
+                                to roll for readiness during the Naval Readiness Phase of the Strategic Segment. A naval unit can be moved in any movement phase, even the enemy movement phases.</li>
                             <li>Naval units with a Transport Capacity can transport ground units.</li>
                             <li>Naval units can transport units to enable an Amphibious Assault.</li>
                         </ul>
                         Naval unit types:
-            <ul className="ul-no-top">
+                        <ul className="ul-no-top">
                             <li>BB - Battleship</li>
                             <li>CL - Light Cruiser</li>
                             <li>DL - Destroyer Leader</li>
@@ -384,7 +404,7 @@ export default class Special extends Component {
                     <div className="pdiv">
                         In the Crimea game the Soviet player has two Naval Base units that can be may be placed on any Soviet controlled port hex. The unit doubles the port capacity
                         of the port. After placement, a naval base can be moved only by sea transport.
-                </div>
+                    </div>
 
                     <span className="spacer2rem" />
 
@@ -397,19 +417,19 @@ export default class Special extends Component {
 
                     <div>
                         Both sides have super-heavy artillery. They have significant movement restrictions, common to both Axis and Soviets, as outlined in the Movement section of this site.
-                </div><div>
+                    </div><div>
                         Super-heavy artillery are designed for reduction of significant fortifications and cities.
-                </div><div>
+                    </div><div>
                         Super-heavy artillery require some setup, and therefore have two sides. A mobile side and a firing side. They can only flip during the Engineering phase, furthermore - they can only flip to their firing sides if they did not move during that turn (you may want to mark a super-heavy you intend to flip to firing with some marker so you don't accidentally move it, and so you don't forget to flip it later).
-                </div><div>
+                    </div><div>
                         Super-heavy artillery (when firing) contribute their support values to an attack, plus an additional -1 drm if attacking city, major city, fortified line, or strongpoint terrain. Note that for the fortified line, the -1 drm only applies if the attacker is being charged a +1 drm for attacking across a fortified line.
-                </div>
+                    </div>
 
                     <div className="gray-box">
-                       <div className="subsubheader">Soviet super-heavy artillery</div>
+                        <div className="subsubheader">Soviet super-heavy artillery</div>
                         <ul>
                             <li>Soviet coastal defense units and railroad artillery are are treated as super-heavy artillery.
-                </li>
+                            </li>
                             <li>Soviet super-heavy artillery bearing Activated markers cannot contribute their support values to any combat.</li>
                             <li>Soviet super-heavy artillery DO count towards the maximum of artillery units allowed to participate in a combat.</li>
                             <li>Soviet super-heavy artillery can add support to attacks and defense.</li>
@@ -418,10 +438,10 @@ export default class Special extends Component {
 
 
                     <div className="gray-box">
-                       <div className="subsubheader">Axis super-heavy artillery</div>
+                        <div className="subsubheader">Axis super-heavy artillery</div>
                         <ul>
                             <li>Axis super-heavy artillery DO NOT count towards the maximum of artillery units allowed to participate in a combat.
-                </li>
+                            </li>
                             <li>Axis super-heavy artillery can only provide their supports to attacks, not defense. On defense they only provide their defense value (typically 1).</li>
                         </ul>
                     </div>
@@ -440,9 +460,9 @@ export default class Special extends Component {
 
                     <div>
                         The Soviets began a program of designating Guards units out of battle tested and well performing units (or grouping survivors into units). They would often get preference in equipment, including lend lease equipment. These units were more dependable and had better leadership.
-            </div><div>
+                    </div><div>
                         The Soviets can activate one Guards unit that is within Command Range of a HQ's without Command point cost. The HQ's can activate the Guards unit even if its Command value is reduced to 0 due to air interdiction. Non-op HQ's cancel this though if the Guards unit is in Command range of it. Guards units provide a beneficial die-roll modifier for surrender die rolls in its hex.
-            </div>
+                    </div>
 
 
 
@@ -456,17 +476,17 @@ export default class Special extends Component {
 
                     <div>
                         The Peoples Commissariat for Internal Affairs, known by the initials NKVD, formed special political troops. The feared "NKVD Commissars" of these units could overrule the decisions of commanders on the ground. Historically, Commissars were infamous for demanding that units defend their positions to the death.
-            </div><div>
+                    </div><div>
                         Whenever a NKVD unit is defending in a major city, city, or town hex, it issues a mandatory NO RETREAT order on all units in the hex - unless the hex is under the command span of a Non-Op HQ. You cannot counter-order this NKVD NO RETREAT order (other than by moving a non-op HQ to within range of the hex).
-            </div><div>
+                    </div><div>
                         You cannot apply step losses to the NKVD unit which issued the NO RETREAT order unless there are no other units available to take losses. If there are two or more NKVD units in the hex, then only one of them is the "active" NKVD unit - the others are treated as regular units. The Soviet player chooses which NKVD unit will be the "active" one. NKVD units can only issue the NO RETREAT order - they never issue an ADDITIONAL RETREAT order.
-            </div><div>
+                    </div><div>
                         NKVD units that are not in a major city, city, or town, do not issue any orders on their own, and are just like other infantry units.
-            </div><div>
+                    </div><div>
                         There are NKVD train units that are very helpful when you need to get a city hex to mount a stout defense.
-            </div><div>
+                    </div><div>
                         NKVD units provide a beneficial die-roll modifier for Surrender rolls in its hex.
-            </div>
+                    </div>
 
 
 
@@ -483,15 +503,15 @@ export default class Special extends Component {
 
                     <div>
                         Ukreplyonni Raion (UR) units are groups of machine gun units and other fortress defense troops. These units, and the militia, have untried sides (reminiscent of Panzergruppe Guderian).
-                </div><div>
+                    </div><div>
                         They are typically placed in an opaque cup and drawn randomly and placed untried side up. Supposedly their tried sides are supposed to be secret to the Soviet player as well as the Axis, so you gotta be a little careful in pulling and placing these units.
-                </div><div>
+                    </div><div>
                         Some may be placed in the beginning of the scenario, some may come up on the reinforcement chart, and the Soviet player may expend infantry (type "I") replacement points to pull them out of the cup and place them on the map.
-                </div><div>
+                    </div><div>
                         In the Replacement Phase the UR/MG unit(s) are placed on any friendly Soviet city or major city in General Supply, or on any friendly Soviet fortification hexes in General Supply. They cannot be placed in a hex with a UR/MG unit already in it, and they cannot be placed in enemy ZOC (remember though that ZOCs do not extend into Major Cities).
-            </div><div>
+                    </div><div>
                         These units remain on their untried sides until the moment of combat or when the Soviet player moves them. Any UR/MG unit that is found to be a 0-0-0 is removed from the map and placed back in the cup.
-            </div>
+                    </div>
 
 
                     <span className="spacer2rem" />
@@ -503,15 +523,15 @@ export default class Special extends Component {
                     <span className="spacer1rem" />
                     <div>
                         Militia units are scratch units that were thrown together by the Soviet military. These units tended to be highly unreliable.
-            </div><div>
+                    </div><div>
                         The Soviet player cannot move these units further than five hexes from their placement city. If forced to retreat further than five hexes then they are released from this restriction.
-            </div><div>
+                    </div><div>
                         Unlike UR/MG units, these do not get flipped when moved, only when attacked. If, when flipped, they turn out to be a 0-0-0, they are removed from play.
-            </div><div>
+                    </div><div>
                         When eliminated, they go to the Soviet rebuilding chart, not the cup.
-            </div><div>
+                    </div><div>
                         Militia with infantry or cavalry symbols can be removed voluntarily from the map by the Soviet player in the Replacement Phase, which gives the Soviet player 1 "I" Type replacement point. They can only be removed from a hex in General Supply. This exchange is generally a good idea when you've got valuable infantry units you want to build back up.
-            </div>
+                    </div>
 
                     <span className="spacer2rem" />
                     <div className="subheader-image">
@@ -524,7 +544,7 @@ export default class Special extends Component {
                         Zap units represent groups of recruits that are in basic training. They are combat units, and can be used as they are, or used for replacements.
                         <ul className="ul-no-top">
                             <li>They can be expended to recreate a unit in the Cadre Box which requires a Type I Replacement. Replace the Zap unit with the cadre unit in the same hex. Place a "Do Not Move One GT" marker on it.
-                        The Do Not Move counter will be removed during the Soviet Engineering Phase.</li>
+                                The Do Not Move counter will be removed during the Soviet Engineering Phase.</li>
                             <li>They can also be used to provide a Type I Replacement to an eligible reduced Soviet unit that is on the map. The unit being built up then gets the "Do Not Move One GT" marker placed on it.</li>
                         </ul>
                     </div>
@@ -538,16 +558,16 @@ export default class Special extends Component {
                     <span className="spacer1rem" />
                     <div>
                         In several scenarios the Soviet player may have some, or many, units restricted to "garrison duty", which means they can't move from the hex they start from.
-            </div><div>
+                    </div><div>
                         These troops were controlled by "higher headquarters", who only begrudgingly would release them, piece meal, to the front.
-            </div><div>
+                    </div><div>
                         All units that are under a garrison marker are deemed to be garrison units. Other units can enter and leave the hex without being "garrisonned".
-            </div><div>
+                    </div><div>
                         Once a garrison is released, all units under that garrison marker are released and can move normally. Non-op HQs that are under a garrison marker can roll each turn for activation. Non-op HQs and activated HQs still operate as the HQs rules specify - even if they can't move due to being under a garrison marker.
-            </div>
+                    </div>
                     <div className="pdiv">
                         Garrison units are released when any of these occur:
-            <ul className="ul-no-top">
+                        <ul className="ul-no-top">
                             <li>The hex is attacked.</li>
                             <li>An enemy unit moves adjacent to it.</li>
                             <li>It goes out of General Supply.</li>

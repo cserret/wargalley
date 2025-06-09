@@ -4,6 +4,8 @@ import './Index.scss';
 import logo from "../../images/easternfrontseries.png";
 import hex from "../../images/snaphex.png";
 import snapcounter from "../../images/snapcounter.png";
+import snapcounterv2 from "../../images/snapappcounter.png";
+import snapcounterv3 from "../../images/snapcounterv3.png";
 
 const Index = (props) => {
     return (
@@ -19,7 +21,7 @@ const Index = (props) => {
                 <rect width='120%' x='-10%' y='-10%' height='120%' fill='url(#g)' />
             </svg>
             <div className="overlay">
-                <div className="index-title">WARGALLEY.COM, some links:</div>
+                <div className="index-title">WARGALLEY.COM</div>
                 <div className="links">
                     <Link to="/efs">
                         <div className="link">
@@ -27,18 +29,49 @@ const Index = (props) => {
                             <div><span>Fan site for GMT's East Front Series</span></div>
                         </div>
                     </Link>
-                    <a href="https://snaphex.com/setup">
+                    <a href="https://snaphex.com">
                         <div className="link">
                             <img className="hex-logo" src={hex} alt="logo" width="118" height="105" />
-                            <div><span>Hex grid map generator</span></div>
+                            <div><span>Snap Map - hex grid map generator</span></div>
                         </div>
                     </a>
+                    <a href="https://snaphex.com">
+                        <div className="link">
+                            <img className="counter-logo" src={snapcounter} alt="logo" width="118" height="118" />
+                            <div><span>Snap Counter v1 (deprecated)</span></div>
+                        </div>
+                    </a>
+                    <a href="https://snapcounter.site">
+                        <div className="link">
+                            <img className="counter-logo" src={snapcounterv2} alt="logo" width="118" height="118" />
+                            <div><span>Snap Counter v2 (deprecated)</span></div>
+                        </div>
+                    </a>
+                    <a href="https://snapcounter.app">
+                        <div className="link">
+                            <img className="counter-logo" src={snapcounterv3} alt="logo" width="118" height="118" />
+                            <div><span>Snap Counter v3</span></div>
+                        </div>
+                    </a>
+                    {/* 
                     <a href="https://snaphex.com/snap_counter">
                         <div className="link">
                             <img className="counter-logo" src={snapcounter} alt="logo" width="118" height="118" />
-                            <div><span>Counter designer</span></div>
+                            <div><span>Counter designer v1 (will soon be removed)</span></div>
                         </div>
                     </a>
+                    <a href="https://snapcounter.app">
+                        <div className="link">
+                            <img className="counter-logo" src={snapcounter} alt="logo" width="118" height="118" />
+                            <div><span>Snap App counter designer v2</span></div>
+                        </div>
+                    </a>
+                    <a href="https://snaphex.app">
+                        <div className="link">
+                            <img className="counter-logo" src={snapcounterv3} alt="logo" width="118" height="118" />
+                            <div><span>Snap Counter v3 (beta)</span></div>
+                        </div>
+                    </a> */}
                 </div>
             </div>
         </div>

@@ -25,15 +25,31 @@ const Supply = (props) => {
             <div>
                 <span>
                     There are two types of supply represented in the East Front Series. The first
-                    is <span className="b">General Supply</span>, and the other is called <span className="b">Attack Supply</span>. General
-                    Supply represents the constant stream of food, fuel, bullets and other necessities required
-                    in keeping an army in the field. Attack Supply represents an accumulation of supplies, present on the ground near combat
-                    units, to be used for for intensive offensive combat operations - supplies like a large cache of artillery shells, large
-                    amounts of bullets, grenades, etc. Units need to be in General Supply to avoid various penalties, such as reduced mobility.
-                    Units need Attack Supply in order to perform to their top capability in combat. Attack Supply is represented on the map by
-                    supply counters that you need to move to be near the units that are fighting and that need to consume the Attack Supply.
-                    General Supply is not represented on the map, but rather is traced by counting hexes from a supply source to a unit. How
-                    you count "hexes" for General Supply is explained below.
+                    is 
+                    <div className="stand-out green">General Supply</div> 
+                    and the other is called 
+                    <div className="stand-out red">Attack Supply</div>
+                    
+                    For a military unit to be in "General Supply" means that the unit has a steady stream of goods that are needed daily by an army 
+                    in the field - items such as
+                    food, medical supplies, blankets, shoes, coats, fuels, grease and oils, etc etc.
+
+                    "Attack Supply" represents a concentration of items that have been positioned near the attacking unit(s) when a major military operation is planned. 
+                    Items such as
+                    ammunition, shells, rockets, extra fuel, replacement vehicles and parts. Although military units usually carry with them quantities 
+                    ammunition and other military supplies needed to perform in combat, for a 
+                    planned attack where the unit(s) is needed to perform at full capacity, they will need a surplus of these items, 
+                    because they can be expended at a very fast rate during combat. In this EFS game system, most units can attack without
+                    being provided Attack Supply, but they will not perform at full capacity. Attacking without Attack Supply can cause
+                    increased risk of losses, and also means that artillery support will probably not be provided.
+
+                    Units need to be in General Supply to avoid various penalties, such as reduced mobility.
+                    General Supply is not represented by counters on the map - instead it is an abstract mechanic where by a LOS is traced
+                    out on the map, following roads, railroads, and a limited number of hexes "off road", that reaches to the units.
+
+                   Attack Supply is represented on the map by
+                    Attack Supply counters that you need to move to be near the units that are fighting and that need to consume the Attack Supply.
+
                 </span>
             </div>
 

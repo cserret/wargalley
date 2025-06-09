@@ -33,7 +33,7 @@ import hexFortifiedBelt from "../../../images/efs/combat/hex_fortified_belt.png"
 import hexCitadel from "../../../images/efs/combat/hex_citadel.png";
 import destroyedFortification from "../../../images/efs/combat/destroyed_fortification_120.png";
 import mandatedAttack from "../../../images/efs/combat/mandated_attack_120.png";
-import dasReich from "../../../images/efs/combat/dasreich_80.png";
+import ssLAH from "../../../images/efs/combat/SS_LAH_80.png";
 import './Combat.scss';
 
 const Combat = (props) => {
@@ -1104,7 +1104,7 @@ const Combat = (props) => {
                                     <div>
                                         <ul>
                                             <li>For the Defender with a No Retreat order, apply +1 DRM to the combat die roll. Attacker with No Retreat does not get a DRM.</li>
-                                            <li>Units under a No Retreat order do not retreat. Change a "R" result to a step loss. Then apply any numerical step loss result. (R turns to a "1", R1 turns to effectively a "2", etc).</li>
+                                            <li>Units under a No Retreat order do not retreat. Change a "R" result to a step loss. Then apply any numerical step loss result. (R turns to a "1", 1R turns to effectively a "2", etc).</li>
                                             <li>In addition, any non-German units suffer an additional step loss unless they are in a city, major city, hill, mountain, alpine, woods, or non-destroyed fortification hex.</li>
                                         </ul>
                                     </div>
@@ -1275,8 +1275,8 @@ const Combat = (props) => {
                         <div className="indented-box-title">Qualifying terrain for the Defender hex:</div>
                         <ul>
                             <li>non-destroyed strongpoint</li>
-                            <li>fortified belt</li>
-                            <li>fortified lines</li>
+                            <li>Fortified Belt</li>
+                            <li>Fortified Lines</li>
                             <li>city</li>
                             <li>Major city</li>
                         </ul>
@@ -1403,9 +1403,11 @@ const Combat = (props) => {
                         </li>
                     </ul>
                     <span className="spacer0_5rem" />
-                    <div className="small-counters-left">
-                        <img src={dasReich} alt="Das Reich counters" />
-                        <span>The Das Reich motorized division only has two regiments, and therefore cannot qualify for the Panzer Divisional Integrity Bonus.</span>
+                    <div className="small-counters-left2">
+                        <div>
+                        <img src={ssLAH} alt="SS LAH counters" />
+                        </div>
+                        <div>Exception: The SS LAH motorized division only has two units, and still qualifies for the Panzer Divisional Integrity Bonus.</div>
                     </div>
                 </div>
 
@@ -1432,7 +1434,7 @@ const Combat = (props) => {
                             <li>The Defender hex was a non-destroyed Fortification and/or all attackers were attacking across Fortified Lines.</li>
                         </ul>
                         <span className="spacer0_5rem" />
-                        Attacking a non-destroyed Fortification *and* across fortified lines does not count as 2 additional losses, it counts as 1 additional loss.
+                        Attacking a non-destroyed Fortification *and* across Fortified Lines does not count as 2 additional losses, it counts as 1 additional loss.
                         <span className="spacer0_5rem" />
                         <b>Additionally:</b>
                         <span className="spacer0_5rem" />
@@ -1558,7 +1560,7 @@ const Combat = (props) => {
                     Fortifications refer to Strongpoints, Fortified Lines, Fortified Belts, and Citadels.
                     <span className="spacer0_5rem" />
                     They give a defensive benefit to all friendly troops in the hex, although for Fortified Lines, all attackers have to be
-                    coming across the Fortified Line hexside(s).
+                    coming across the Fortified Line hexside(s) and the Fortified Line has to be in the hex of the defender.
                     <span className="spacer0_5rem" />
                     Strongpoints are represented by counters, while Fortified Lines, Fortified Belts and Citadels are printed on the map.
                     <span className="spacer0_5rem" />
@@ -1577,6 +1579,10 @@ const Combat = (props) => {
                     <span className="spacer0_5rem" />
                     Fortified Lines are a hexside feature, and represent a continuous line of pill boxes and bunkers.
                     They provide defensive benefits to the defender if all attackers are across a Fortified Line hexside.
+                    <span className="spacer0_5rem" />
+                    A Fortified Line in a hex is a "one-way" fortification, it exists in the hex it is printed on (although it is near a hexside). Effects of
+                    a Fortified Line only exist when a unit(s) is crossing, or attacking, into a hex that has a fortified line printed on it next to the hexside of
+                    the unit(s) attempting to enter or attack into.<BsrLink page="49" rule="18.21" />
                     <span className="spacer0_5rem" />
                     Fortified Belts  are extensive area of pill boxes and bunkers and other defensive features. They provide
                     a defensive benefit to all friendly units in the hex, from attackers in all 6 hexes around it.
@@ -1605,9 +1611,9 @@ const Combat = (props) => {
                         </div>
                         <ul>
                             <li>Fortifications block the non-owning player's tracing of supply and railroad conversion through the fortified hex, or at the
-                                hexline where there is a fortified line.</li>
-                            <li>Movement into a fortified hex costs +1 MP, and movement across a fortified line (along a hexside), costs +1 MP to
-                                cross it (regardless of any road or railroad). However, moving across a fortified line to enter a
+                                hexline where there is a Fortified Line.</li>
+                            <li>Movement into a fortified hex costs +1 MP, and movement across a Fortified Line (which is printed inside the hex being entered), costs +1 MP to
+                                cross it (regardless of any road or railroad). However, moving across a Fortified Line (which is inside the hex being entered) to enter a
                                 fortified hex only costs +1 MP, not 2.</li>
                         </ul>
                     </div>
@@ -1626,7 +1632,7 @@ const Combat = (props) => {
                             <li>Overrun and Combined Arms Bonus (CAB) are not allowed against an active Fortified Belt or Citadel.
                             </li>
 
-                            <li>Overruns where the enemy is behind a fortified line or in a enemy Strongpoint needs odds of at least 12-1
+                            <li>Overruns where the enemy is behind a Fortified Line (printed in the hex the enemy unit is in) or in a enemy Strongpoint needs odds of at least 12-1
                                 and the overrunning units includes a motorized Engineer unit.</li>
 
                             <li>Axis ZOC does not extend into a Fortified Belt hex.</li>
@@ -1650,13 +1656,14 @@ const Combat = (props) => {
                         </div>
                         <div className="secondary-heading">Fortified Line:</div>
                         <ul>
-                            <li>if all attacking Axis units are across a fortified line hexside(s), then there is a +1 DRM
+                            <li>if all attacking Axis units are across a Fortified Line hexside(s), (remember, Fortified Lines are "one-way", they only
+                                have their effects along the hexside if the Fortified Line is printed inside the target hex) then there is a +1 DRM
                                 to the combat (cumulative with other terrain DRMs). Exception - when at least one Axis unit is attacking
                                 across a Fortified Line, and other Axis unit(s) are attacking from a different hex(es) - if those hexsides
                                 confer a DRM due to other terrain, then a +1 DRM will apply.</li>
 
                             <li>Axis Combined Arms Bonus (CAB) is not allowed if all Axis units, that are claiming CAB, are attacking across Fortified Line
-                                hexsides.</li>
+                                hexsides (with the Fortified Line printed inside the target hex).</li>
                         </ul>
 
 
@@ -1676,11 +1683,11 @@ const Combat = (props) => {
                             <li>A Strongpoint on a active Fortified Belt hex confers no DRM of its own.</li>
                             <li>The +1 DRM of a Strongpoint is not cumulative with Fortified Lines (except as noted below). However, it can
                                 still have a +1 DRM if enemy units are attacking the hex from a hexside that does not
-                                have a fortified line.
+                                have a Fortified Line.
                             </li>
                             <li>If all Axis units are attacking across a Fortified Line into a hex with a Strongpoint,
                                 and the Defender hex is within four (4) hexes of a Soviet-controlled City or Major City,
-                                apply a +2 DRM.</li>
+                                apply a +1 DRM.</li>
                         </ul>
 
 
@@ -1757,17 +1764,10 @@ const Combat = (props) => {
                 <div className="subheader2">Additional Combat Rules</div>
                 <div className="pdiv">
                     <ul className="ul-no-top">
-                        <li>The maximum DRMs that can be applied to a combat are +3 or -3. Additional DRMs are discarded <span className="rule-ref">11.43h, 15.7</span></li>
-                        <li>Combat odds are rounded off in favor of the defender. <span className="rule-ref">15.57</span></li>
-                        <li>If the odds turn out to be less than 1-4, the attacker is eliminated. Odds greater than 10-1 are resolved on the 10-1 column. <span className="rule-ref">15.57</span></li>
-                        <li>The attacker cannot arbitrarily reduce the odds, other than the ability to choose which units are attacking. <span className="rule-ref">15.57</span></li>
-                        <li>Armor is halved when attacking into City or Major City hexes. <span className="rule-ref">15.52c</span></li>
-                        <li>Defender in City causes +1 DRM. Soviet Defender in Major City causes +2 DRM. <span className="rule-ref">15.52c</span></li>
-                        <li>Combat strength of units (other than artillery) are halved when attacking <span className="b">from</span> swamp hexes in Dry, Mud, and Frost turns. <span className="rule-ref">15.52a</span></li>
-                        <li>Artillery support strengths are halved when firing into swamp hexes in Dry, Mud, and Frost turns. <span className="rule-ref">15.52a</span></li>
-                        <li>Combat strength of units are halved when attacking across major river during non-Snow/Arctic weather. Bridges have no effect. <span className="rule-ref">15.52b</span></li>
-                        <li>Towns confer a +1 DRM during Mud (or if a town is in Woods in Lingering Mud) and in Snow turns.</li>
-                        <li>Attackers that are under an Additional Retreat order cannot advance if they make the enemy retreat or eliminate them in combat. </li>
+                        <li>The maximum DRMs that can be applied to a combat are +3 or -3. Additional DRMs are discarded <BsrLink page="40" rule="15.5" /></li>
+                        <li>Attacker's attack strength may be subject to halving. The Defense strength is never halved.<BsrLink page="7" rule="3.41" /></li>
+                        <li>If the odds turn out to be less than 1-4, resolve the combat at 1-4. with a +2 DRM. Odds greater than 10-1 are resolved on the 10-1 column. <BsrLink page="40" rule="15.45c,e" /></li>
+                        <li>The attacker cannot arbitrarily reduce the odds, other than the ability to choose which units are attacking. <BsrLink page="40" rule="15.45d" /></li>
                     </ul>
                 </div>
 
@@ -1883,8 +1883,9 @@ const Combat = (props) => {
                                     </li>
                                     <li>
                                         (non-major) River and Canal - If Weather condition is Frozen, then Rivers and Canals have no combat effects.
-                                        Otherwise: all attacking units are across a River and/or Canal, then apply +1 DRM. Note that Fortified Line can
-                                        also be used "as" a River, for this DRM determination. Bridges have no effect.
+                                        Otherwise: all attacking units are across a River and/or Canal, then apply +1 DRM. Note that a Fortified Line can
+                                        also be used "as" a River (if the target hex has the Fortified Line printed near the hexside that the attacking unit(s) are attacking from), 
+                                        for this DRM determination. Bridges have no effect.
                                     </li>
                                     <li>
                                         Major River - if Weather condition is Frozen, then

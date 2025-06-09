@@ -1,12 +1,12 @@
 a.bsr-link {
      font-size: 14px;
      position: relative;
-     top: -5px;
+     top: -1px;
      &.title {
          top: -10px;
      }
      text-decoration: none;
-     border: 1px solid rgba(0,0,0,0.2);
+     border: 1px solid rgba(0,0,0,0);
      padding: 1px 2px;
      white-space: nowrap;
      border-radius: 3px;
@@ -18,14 +18,19 @@ a.bsr-link {
          margin-right: 3px;
          letter-spacing: 0.02rem;
      }
+     span.bsr-link-page {
+        color: #000;
+        margin-right: 3px;
+        font-size: 90%;
+    }
      span.bsr-link-rule {
          color: #f00;
-         text-shadow: 0.01rem 0.01rem #b00;
+         text-shadow: 0.01rem 0.01rem #a00;
      }
  
      &:hover {
-         border: 1px solid #33f;
-         background-color: rgba(255,255,0,0.4);
+         border: 1px solid #dd9;
+         background-color: rgba(255,255,0,0.9);
          text-shadow: 0.01rem 0.01rem black;
      }
 

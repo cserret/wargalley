@@ -4,7 +4,6 @@ import ScrollToTopOnMount from "../../ScrollToTopOnMount";
 import german_aircraft_big from "../../../images/efs/overview/german_bf109_120.png";
 import german_artillery_big from "../../../images/efs/overview/german_artillery_120.png";
 import german_infantry_division from "../../../images/efs/overview/german_infantry_120.png";
-import german_supply_big from "../../../images/efs/overview/german_supply_big.jpg";
 import italian_infantry_division from "../../../images/efs/overview/italian_infantry_120.png";
 import map_sample from "../../../images/efs/overview/map_sample.jpg";
 import romanian_infantry_div from "../../../images/efs/overview/romanian_infantry_120.png";

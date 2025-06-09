@@ -93,6 +93,10 @@
         padding-bottom: 0.15rem;
         border-bottom: 0.15rem solid #82202a;
 
+        @media only screen and (max-width: 1199px) {
+          width: 75%;
+        }
+
       }
       .line2 {
         width: 82%;
@@ -100,6 +104,10 @@
         display: flex;
         justify-content: space-evenly;
         padding-top: 0.25rem;
+
+        @media only screen and (max-width: 1199px) {
+          width: 70%;
+        }
       }
       a {
         color: white;
@@ -111,6 +119,12 @@
         }
         &:active {
           color: cyan;
+        }
+        @media only screen and (max-width: 1199px) {
+          font-size: 90%;
+        }
+        @media only screen and (max-width: 899px) {
+          font-size: 80%;
         }
 
       }
