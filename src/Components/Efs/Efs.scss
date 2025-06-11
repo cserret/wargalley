@@ -197,11 +197,15 @@
     }
     .gray-box {
       clear: all;
-      background-color: #edeeed;
+      background-color: #edeaea;
       display: inline-block;
-      margin: 0 0 0 5rem;
+      margin: 2px 2px 2px 5rem;
       font-size: 1.3rem;
       border: 1px solid #555;
+      box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6), 2px 2px 2px rgba(0, 0, 0, 0.3);
+      @media only screen and (max-width: 1199px) {
+        font-size: 90%;
+      }
       .subsubheader {
         font-weight: bold;
         position: relative;
@@ -415,7 +419,7 @@
     color: #333;
     text-shadow: 0 0 rgba(0, 0, 100, 0.4);
     font-size: 96%;
-    box-shadow: 2px 4px 8px 2px rgba(0, 0, 60, 0.2);
+    //box-shadow: 2px 4px 8px 2px rgba(0, 0, 60, 0.2);
   }
   .rules-clarification {
     display: inline-block;

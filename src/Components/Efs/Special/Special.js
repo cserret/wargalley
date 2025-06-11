@@ -178,25 +178,9 @@ export default class Special extends Component {
                             <li>exceed the stacking limit.<BsrLink page="41" rule="15.53c" /></li>
                         </ul>
                         <div className="adjusted-up">
-                        An Engineer can also be subject to Engineer Loss in a combat.<BsrLink page="43" rule="16.32,3b" />
+                            An Engineer can also be subject to Engineer Loss in a combat.<BsrLink page="43" rule="16.32,3b" />
+                        </div>
                     </div>
-                    </div><div>
-                        Strongpoints can be built by both sides . 
-                        There can only be a maximum of one strongpoint in a hex, although a strongpoint can 
-                        be built behind a fortified hexline.
-                    </div><div>
-                        The German player needs engineers to place strongpoints on the map. 
-                        The Soviet doesn't, although engineers can speed the placement of strongpoints by 
-                        allowing the Soviet player to place a "completed", rather than "under construction", 
-                        strongpoint on the map.
-                    </div><div>
-                        Strongpoints give a +1 drm to the defender in a strongpoint, along with some other benefits. Strongpoints can go out of supply and "die" if cut off. Strongpoints can be built in any hex in General Supply, even in enemy ZOC.
-                    </div><div>
-                        Usually the Soviet player will put strongpoints in victory point towns and cities, behind rivers and other defensible terrain, and cluster them around very important cities like Smolensk or Kiev. Although the +1 drm may not sound like a big deal, strongpoints also cause asterisk results to be levied against the attacker, greatly reduces the chance of being overrun, and continues to cause the Axis player problems even after you've abandoned the strongpoint by blocking roads, railroad conversion, and supply routes until destroyed.
-                    </div><div>
-                        To destroy a strongpoint a division or engineer unit needs to be in the hex with the strongpoint in the Engineering phase, which often causes the Axis player to slow down or divert their units for fortification destruction duties.
-                    </div>
-
                     <span className="spacer1rem" />
 
 
@@ -206,12 +190,15 @@ export default class Special extends Component {
                         <div className="subsubheader">Soviet Engineer - Strongpoints</div>
                         <img src={soviet_fort} alt="Soviet fort counter" />
                         <ul>
-                            <li>Can build a completed strongpoint the turn it is received, via the Replacements Table. Soviet Engineers cannot build strongpoints of their own free will, they must be supplied from the Replacements Table. Note that the Soviet player can place "under construction" strongpoints without an engineer present.
+                            <li>Can build a completed strongpoint the turn it is received, via the Replacements
+                                Table<BsrLink page="56" rule="22.11" />.
                             </li>
-                            <li>The engineer must be in General Supply.</li>
-                            <li>The engineer must not have moved in strategic or rail movement in the turn.</li>
-                            <li>The engineer must not have converted any rail hexes.</li>
-                            <li>If the engineer is in Command Range of a non-op HQ's, it cannot place strongpoints.</li>
+                            <li>The engineer must be in General Supply.<BsrLink page="50" rule="18.43b" /></li>
+                            <li>The engineer must not have moved in strategic or rail movement, specialized movement,-
+                                assisted in air or naval transportation, or converted or cut any rail hexes in the current turn.<BsrLink page="56" rule="22.11" /></li>
+                            <li>A non-op HQ prevents the construction of a Strongpoint if within 5 hexes of the HQ - exception: type
+                                E Strongpoints can be built even if within range of a non-op HQ.<BsrLink page="50" rule="18.43e" />
+                            </li>
                         </ul>
                     </div>
 
@@ -227,9 +214,8 @@ export default class Special extends Component {
                         <div className="subsubheader">German Engineer - Strongpoints</div>
                         <img src={german_fort} alt="German fort counter" />
                         <ul>
-                            <li>Can place a "under construction" strongpoint on the hex they are on.</li>
-                            <li>The engineer must remain in the hex until the next Engineering Phase, when the strongpoint is flipped to its completed side. If the engineer leaves the hex before then, the under construction strongpoint is removed.</li>
-                            <li>The engineer must be in General Supply.</li>
+                            <li>Can place a completed strongpoint on the turn the strongpoint is received.<BsrLink page="56" rule="22.11" /></li>
+                            <li>The engineer must be in General Supply.<BsrLink page="56" rule="22.11" /></li>
                             <li>Scenario rules may prohibit the construction of German strongpoints.</li>
                         </ul>
                     </div>
@@ -247,33 +233,54 @@ export default class Special extends Component {
 
 
                     <div className="subheader-image">
-                        <span>23.2</span>
-                        <div>Bridges</div>
+                        <div>Bridges<BsrLink page="56" rule="22.2" /></div>
                         <img src={german_bridge} alt="German bridge counter" />
                     </div>
                     <span className="spacer1rem" />
 
-                    <div>
-                        Bridge units are available to both sides. They actually represent engineer units that are capable of building bridges. These bridges (actually pontoon bridges) allow units (of their side) to cross rivers and major rivers.
-                    </div><div>
-                        A bridge unit at a river negates the "crossing the river" cost for that hexside. Note that the counter has an arrow. It points to the hexside that gets the bridge.
-                    </div><div>
-                        Bridge unit placement is very fast and loose in EFS. Basically you can place it in any hex in General Supply, regardless of any affiliation marked on the counter. No more than two friendly bridge units can be active per map. You can move a bridge unit at *any time* (once) during each friendly Movement Phase. This means units can use it to cross a river at one spot, then you can move the bridge unit to another river, and other units can then run across its bridge at the new location.
-                    </div><div>
-                        Non-op HQ's interfere with Bridge units - they prohibit placement of bridges within their Command Range, and bridge units cannot leave a hex while under Command Range of a non-op HQ's.
-                    </div><div>
-                        Bridge units cannot be captured or destroyed by the enemy. Bridge units cannot retreat. If the hex they are in is entered by an enemy unit, then the bridge unit is moved off the map. They can be placed back on the map in the owner's regular Movement phase.
+                    <ul className="ul-no-top">
+                        <li>Bridge units are available to both sides. They actually represent bridge-specialist engineer units, but are not "Engineer" units for any other purpose. These bridges (actually pontoon bridges) allow units (of their side) to cross canals, rivers and major rivers<BsrLink page="56" rule="22.2" />.
+                    </li>
+                    <li> A bridge unit at a river negates the "crossing the river" cost for that hexside.<BsrLink page="56" rule="22.21" />.
+                    </li>
+                    <li> You can place an available bridge marker in any hex adjacent to a valid water hexside in your side's General Supply, or in Temporary Supply. The destination hex (across the water hexside the arrow is pointing to) does not need to be in supply<BsrLink page="56" rule="22.23" />. 
+                    </li>
+                    <li>Bridges can be built within range of a Soviet Non-Op HQ, but it costs 1 of the HQ's Recovery Points on the limit of units that can be moved within that range<BsrLink page="54" rule="21.27d" />.
+                    </li>
+                    <li>To start construction of a bridge, place the bridge marker with the "under construction" side up (for major rivers)
+                        during the German movement phase, or for the Soviet - during the Soviet Motorized Movement Phase. 
+                        The hex the bridge marker is placed in must be in General or Temporary supply. The destination hex does
+                        not have to be. The destination must be free of enemy unit(s), although enemy ZOC is allowable.<BsrLink page="56" rule="22.23c" />. 
+                        </li>
+                    <li>When placing a bridge on a non-major river or canal hexside, the bridge is placed immediately on its completed side.<BsrLink page="56" rule="22.24a" />
+                    </li>
+                    <li>A bridge that is under construction on a major river gets flipped to its completed side in that side's Engineering Phase.<BsrLink page="56" rule="22.24b" /><BsrLink page="56" rule="22.24c" />
+                    </li>
+                    <li>The Soviet player cannot construct bridges until turn 98, unless the scenario special rules allow it.<BsrLink page="56" rule="22.25" />
+                    </li>
+                    <li>If a hex a friendly bridge is in is entered by an enemy unit, then the bridge unit is removed and will be available
+                        in the owner's next allowed Movement phase (remember Soviets place bridges during their Soviet Motorized Movement Phase). The benefits of a bridge can only be used by the owning side.<BsrLink page="56" rule="22.26" />
+                        </li>
+                        </ul>
+
+                    <div className="rules-note">
+                       Note that an enemy unit must enter the hex the bridge counter is actually in.
+                       Being across the river in the hex the bridge is "bringing" to does not cause removal of the bridge unit.
+                       I'm not sure of the reasoning behind this, but perhaps it represents the bridging engineers being on
+                       one side of the bridge, taking pot shots at any enemy trying to destroy the bridge.
                     </div>
 
                     <span className="spacer2rem" />
 
                     <div className="subheader-image">
-                        <span>7.25</span>
-                        <div>Armored trains</div>
+                        <div>Armored trains<BsrLink page="54" rule="21.3" /></div>
                         <img src={armored_train} alt="Soviet armored train counter" />
                     </div>
                     <span className="spacer1rem" />
-
+                    <div>
+Although both Axis and Soviets had armored trains, only the Soviet armored trains are represented in EFS.
+Axis armored trains were not very common, and were primarily used for internal security.
+                        </div>
                     <div>
                         A armored train travels up to 48 rail hexes per turn (subject to interdiction effects). They can move in either the Motorized Phase or the regular Movement Phase (but not both in the same turn). They do not require any supply to move, and do not count against the rail capacity. They cannot transport anything.
                     </div><div>
