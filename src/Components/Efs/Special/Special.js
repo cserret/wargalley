@@ -191,7 +191,7 @@ export default class Special extends Component {
                         <img src={soviet_fort} alt="Soviet fort counter" />
                         <ul>
                             <li>Can build a completed strongpoint the turn it is received, via the Replacements
-                                Table<BsrLink page="56" rule="22.11" />.
+                                Table.<BsrLink page="56" rule="22.11" />
                             </li>
                             <li>The engineer must be in General Supply.<BsrLink page="50" rule="18.43b" /></li>
                             <li>The engineer must not have moved in strategic or rail movement, specialized movement,-
@@ -239,35 +239,35 @@ export default class Special extends Component {
                     <span className="spacer1rem" />
 
                     <ul className="ul-no-top">
-                        <li>Bridge units are available to both sides. They actually represent bridge-specialist engineer units, but are not "Engineer" units for any other purpose. These bridges (actually pontoon bridges) allow units (of their side) to cross canals, rivers and major rivers<BsrLink page="56" rule="22.2" />.
-                    </li>
-                    <li> A bridge unit at a river negates the "crossing the river" cost for that hexside.<BsrLink page="56" rule="22.21" />.
-                    </li>
-                    <li> You can place an available bridge marker in any hex adjacent to a valid water hexside in your side's General Supply, or in Temporary Supply. The destination hex (across the water hexside the arrow is pointing to) does not need to be in supply<BsrLink page="56" rule="22.23" />. 
-                    </li>
-                    <li>Bridges can be built within range of a Soviet Non-Op HQ, but it costs 1 of the HQ's Recovery Points on the limit of units that can be moved within that range<BsrLink page="54" rule="21.27d" />.
-                    </li>
-                    <li>To start construction of a bridge, place the bridge marker with the "under construction" side up (for major rivers)
-                        during the German movement phase, or for the Soviet - during the Soviet Motorized Movement Phase. 
-                        The hex the bridge marker is placed in must be in General or Temporary supply. The destination hex does
-                        not have to be. The destination must be free of enemy unit(s), although enemy ZOC is allowable.<BsrLink page="56" rule="22.23c" />. 
+                        <li>Bridge units are available to both sides. They actually represent bridge-specialist engineer units, but are not "Engineer" units for any other purpose. These bridges (actually pontoon bridges) allow units (of their side) to cross canals, rivers and major rivers.<BsrLink page="56" rule="22.2" />
                         </li>
-                    <li>When placing a bridge on a non-major river or canal hexside, the bridge is placed immediately on its completed side.<BsrLink page="56" rule="22.24a" />
-                    </li>
-                    <li>A bridge that is under construction on a major river gets flipped to its completed side in that side's Engineering Phase.<BsrLink page="56" rule="22.24b" /><BsrLink page="56" rule="22.24c" />
-                    </li>
-                    <li>The Soviet player cannot construct bridges until turn 98, unless the scenario special rules allow it.<BsrLink page="56" rule="22.25" />
-                    </li>
-                    <li>If a hex a friendly bridge is in is entered by an enemy unit, then the bridge unit is removed and will be available
-                        in the owner's next allowed Movement phase (remember Soviets place bridges during their Soviet Motorized Movement Phase). The benefits of a bridge can only be used by the owning side.<BsrLink page="56" rule="22.26" />
+                        <li> A bridge unit at a river negates the "crossing the river" cost for that hexside.<BsrLink page="56" rule="22.21" />
                         </li>
-                        </ul>
+                        <li> You can place an available bridge marker in any hex adjacent to a valid water hexside in your side's General Supply, or in Temporary Supply. The destination hex (across the water hexside the arrow is pointing to) does not need to be in supply.<BsrLink page="56" rule="22.23" />
+                        </li>
+                        <li>Bridges can be built within range of a Soviet Non-Op HQ, but it costs 1 of the HQ's Recovery Points on the limit of units that can be moved within that range.<BsrLink page="54" rule="21.27d" />
+                        </li>
+                        <li>To start construction of a bridge, place the bridge marker with the "under construction" side up (for major rivers)
+                            during the German movement phase, or for the Soviet - during the Soviet Motorized Movement Phase.
+                            The hex the bridge marker is placed in must be in General or Temporary supply. The destination hex does
+                            not have to be. The destination must be free of enemy unit(s), although enemy ZOC is allowable.<BsrLink page="56" rule="22.23c" />
+                        </li>
+                        <li>When placing a bridge on a non-major river or canal hexside, the bridge is placed immediately on its completed side.<BsrLink page="56" rule="22.24a" />
+                        </li>
+                        <li>A bridge that is under construction on a major river gets flipped to its completed side in that side's Engineering Phase.<BsrLink page="56" rule="22.24b" /><BsrLink page="56" rule="22.24c" />
+                        </li>
+                        <li>The Soviet player cannot construct bridges until turn 98, unless the scenario special rules allow it.<BsrLink page="56" rule="22.25" />
+                        </li>
+                        <li>If a hex a friendly bridge is in is entered by an enemy unit, then the bridge unit is removed and will be available
+                            in the owner's next allowed Movement phase (remember Soviets place bridges during their Soviet Motorized Movement Phase). The benefits of a bridge can only be used by the owning side.<BsrLink page="56" rule="22.26" />
+                        </li>
+                    </ul>
 
                     <div className="rules-note">
-                       Note that an enemy unit must enter the hex the bridge counter is actually in.
-                       Being across the river in the hex the bridge is "bringing" to does not cause removal of the bridge unit.
-                       I'm not sure of the reasoning behind this, but perhaps it represents the bridging engineers being on
-                       one side of the bridge, taking pot shots at any enemy trying to destroy the bridge.
+                        Note that an enemy unit must enter the hex the bridge counter is actually in.
+                        Being across the river in the hex the bridge is "bringing" to does not cause removal of the bridge unit.
+                        I'm not sure of the reasoning behind this, but perhaps it represents the bridging engineers being on
+                        one side of the bridge, taking pot shots at any enemy trying to destroy the bridge.
                     </div>
 
                     <span className="spacer2rem" />
@@ -278,22 +278,41 @@ export default class Special extends Component {
                     </div>
                     <span className="spacer1rem" />
                     <div>
-Although both Axis and Soviets had armored trains, only the Soviet armored trains are represented in EFS.
-Axis armored trains were not very common, and were primarily used for internal security.
-                        </div>
-                    <div>
-                        A armored train travels up to 48 rail hexes per turn (subject to interdiction effects). They can move in either the Motorized Phase or the regular Movement Phase (but not both in the same turn). They do not require any supply to move, and do not count against the rail capacity. They cannot transport anything.
-                    </div><div>
-                        German armored trains can only run on converted track (converted to German closer width train rails and more closely spaced water towers), while Soviet armored trains can only run on non-converted track.
-                    </div><div>
-                        Armored trains can move into enemy ZOC, but not through them. They can run on tracks "behind" enemy lines (as long as the track is the proper type for it).
-                    </div><div>
-                        Armored trains do not possess any "armor" benefits. They do not disqualify attacking units from getting CAB.
-                    </div><div>
-                        Some Soviet trains are NKVD trains, and act as NKVD units for the purposes of the No Retreat automatic orders for NKVD. They can drive through Command Ranges of non-op HQ's.
-                    </div><div>
-                        Although weak, lacking ZOC, and relegated to staying on rail lines, armored trains can help out with defending an area you have difficulty getting any regular ground troops to, as they can go a long ways on a track. Sending a NKVD armored train into a city about to get surrounded is a great way to improve the defense, since the units there will get a beneficial modifier for surrender rolls.
+                        Although both Axis and Soviets had armored trains, only the Soviet armored trains are represented in EFS.
+                        Axis armored trains were not very common, and were primarily used for internal security.
                     </div>
+                    <ul className="ul-no-top">
+                        <li>An armored train can only be in a hex by itself at the end of any phase. If forced to be stacked with
+                            any other unit, it is eliminated.<BsrLink page="54" rule="21.31" />
+                        </li>
+                        <li>An armored train can only travel only rail hexes (except rail hexes that are converted to German rail hexes<BsrLink page="54" rule="21.32b" />)
+                            up to its printed movement points, although they do suffer any interdiction costs.<BsrLink page="37" rule="14.65" /> They
+                            move either in the friendly Movement Phase or the friendly Motorized Movement Phase (but not both in a turn).<BsrLink page="54" rule="21.32" />
+                            They cannot move into a Strongpoint that is under construction.<BsrLink page="50" rule="18.46" />
+                            An armored train can enter and stop in an enemy ZOC, and can retreat through
+                            and enemy ZOC only if a friendly unit is in the hex.<BsrLink page="54" rule="21.31b" /><BsrLink page="45" rule="16.47b" />
+                        </li>
+                        <li>Armored train movement does not count against rail capacity.<BsrLink page="54" rule="21.31c" />
+                        </li>
+                        <li>Armored trains cannot do Specialized Movement<BsrLink page="54" rule="21.31d" /> or
+                            Strategic Movement.<BsrLink page="25" rule="11.24" />
+                        </li>
+                        <li>Armored trains block enemy supply through the hex they occupy.<BsrLink page="54" rule="21.33" />
+                        </li>
+                        <li>Armored trains operate normally without Attack Supply or General Supply.<BsrLink page="54" rule="21.34" />
+                        </li>
+                        <li>Armored trains, despite the name, are not treated as "Armored" for movement,
+                            combat, or vp calculation. They are rebuilt only with Armored Train RPs, and when
+                            eliminated are always put in the Cadre box.<BsrLink page="54" rule="21.35" />
+                        </li>
+                        <li>Armored trains do not surrender.<BsrLink page="52" rule="20.12" />
+                        </li>
+                        <li>Many Soviet Armored Trains are also NKVD units (so-marked on the counter).
+                            </li>
+                            <li>NKVD Armored trains are rebuilt in the Soviet Engineering Phase.<BsrLink page="14" rule="7.42a" />
+                                They are not subject to the 7 turn delay that applies to other NKVD units.<BsrLink page="14" rule="7.42b" />
+                            </li>
+                    </ul>
 
                     <span className="spacer2rem" />
 
@@ -306,15 +325,15 @@ Axis armored trains were not very common, and were primarily used for internal s
                     <span className="spacer1rem" />
 
                     <div className="subheader-image">
-                        <span>11.2, 23.3</span>
-                        <div>Flotillas</div>
+                        <div>Flotillas<BsrLink page="58" rule="22.5" /></div>
                         <img src={c3} alt="Soviet flotilla counter" />
                     </div>
                     <span className="spacer1rem" />
 
                     <div>
                         Flotillas are armored boats. They can travel along rivers, coastal hexes, and even sea hexes. They can move up to in
-                        16 hexes in both the friendly Movement Phase and the friendly Motorized Movement Phase. Flotillas cannot use strategic movement.
+                        16 hexes in both the friendly Movement Phase or the friendly Motorized Movement Phase (but not both). 
+                        Flotillas cannot use Strategic Movement nor be activated for Reaction Movement.<BsrLink page="58" rule="22.51" />
                     </div><div>
                         When moving a flotilla, you keep along the river. No "jumping" over land to continue on another river. Flotillas do not benefit from fortified lines or strongpoints, by themselves. Axis flotillas are AA Fire capable.
                     </div><div>
