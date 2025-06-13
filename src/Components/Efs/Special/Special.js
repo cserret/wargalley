@@ -29,11 +29,11 @@ export default class Special extends Component {
     }
 
     componentDidMount = () => {
-        this.drawCanvas();
+     //   this.drawCanvas();
     }
 
     componentWillReceiveProps = (props) => {
-        this.drawCanvas();
+    //    this.drawCanvas();
     }
 
 
@@ -308,10 +308,10 @@ export default class Special extends Component {
                         <li>Armored trains do not surrender.<BsrLink page="52" rule="20.12" />
                         </li>
                         <li>Many Soviet Armored Trains are also NKVD units (so-marked on the counter).
-                            </li>
-                            <li>NKVD Armored trains are rebuilt in the Soviet Engineering Phase.<BsrLink page="14" rule="7.42a" />
-                                They are not subject to the 7 turn delay that applies to other NKVD units.<BsrLink page="14" rule="7.42b" />
-                            </li>
+                        </li>
+                        <li>NKVD Armored trains are rebuilt in the Soviet Engineering Phase.<BsrLink page="14" rule="7.42a" />
+                            They are not subject to the 7 turn delay that applies to other NKVD units.<BsrLink page="14" rule="7.42b" />
+                        </li>
                     </ul>
 
                     <span className="spacer2rem" />
@@ -330,44 +330,55 @@ export default class Special extends Component {
                     </div>
                     <span className="spacer1rem" />
 
-                    <div>
-                        Flotillas are armored boats. They can travel along rivers, coastal hexes, and even sea hexes. They can move up to in
-                        16 hexes in both the friendly Movement Phase or the friendly Motorized Movement Phase (but not both). 
-                        Flotillas cannot use Strategic Movement nor be activated for Reaction Movement.<BsrLink page="58" rule="22.51" />
-                    </div><div>
-                        When moving a flotilla, you keep along the river. No "jumping" over land to continue on another river. Flotillas do not benefit from fortified lines or strongpoints, by themselves. Axis flotillas are AA Fire capable.
-                    </div><div>
-                        Flotillas do not extend ZOC, but do have ZOC in the hex they are in. They block enemy supply in the hex they occupy.
-                    </div><div>
-                        They are subject to air interdiction. Moving through an interdicted hex cost 4 mps. <span className="rule-ref">(11.2)</span>
-                    </div><div>
-                        They can move into ZOC, but not through them. Since ZOCs don't extend across Major Rivers, flotillas can freely move along Major Rivers.
-                    </div><div>
-                        When they move along a river you need to indicate the "side" of the river they are on by placing the counter on the hex on one side of the river or other
-                        (you don't place them on the hexlines). It costs one MP to move to the other side of a river.
-                    </div><div>
-                        If moving along a canal, there is only "one" side to the canal.
-                    </div><div>
-                        Flotillas can be "overrun" by enemy units on the same side of the river as the flotilla. They can be attacked as if a regular unit, and they can participate on attacks on enemy units that are in a hex adjacent to the river (either side).
-                    </div><div>
-                        Flotillas do not require Attack Supply, and do not require General Supply. <span className="rule-ref">(22.56)</span>
-                    </div><div>
-                        Flotillas cannot attack in Storm weather. If Storm weather is rolled, flotillas must be repositioned to the nearest friendly port within its movement allowance. If no port
-                        is in reach, then the flotilla stays in place. Place a "Do Not Move One GT" on the flotillas.
-                    </div><div>
-                        Flotillas cannot move in Snow weather. Flotillas cannot move in sea or coastal sea hexes in Arctic weather <span className="rule-ref">(10.77b)</span>.
-                    </div><div>
-                        Flotillas do not get the fortification benefit if alone in the hex. They cannot get defensive artillery support if alone in a hex.
-                    </div><div>
+                    <ul className="ul-no-top">
+                        <li>
+                            Flotillas are armored boats with weapons. They travel along water connected features,
+                            which are specified for each scenario, where flotillas are used.
+                            They move in either the Regular Movement Phase or the Motorized Movement Phase (but not both). They cannot move during
+                            the Reaction Phase.<BsrLink page="58" rule="22.51a" />They cannot do Specialized Movement.<BsrLink page="58" rule="22.51f" />
+                            Flotillas cannot move into hexes where Frozen conditions exist.<BsrLink page="58" rule="22.54a" />
+                            Flotillas cannot move during Storm weather, and are subject to repositioning.<BsrLink page="58" rule="22.54b" />
+                        </li>
+                        <li>
+                            Flotillas must stop when entering an enemy ZOC. Movement can be restricted by Air Interdiction.<BsrLink page="58" rule="22.51b" />
+                        </li>
+                        <li>
+                            As Flotilla's move along a major river, the owner determines which side of the hexside they are on.<BsrLink page="58" rule="22.51c" />
+                        </li>
+                        <li>
+                            On canals, Flotillas can only be on the side that has the canal hashed hexside graphic.<BsrLink page="58" rule="22.51d" />
+                        </li>
+                        <li>Flotillas can move on coastal or shallow sea or regular sea hexes at a MP cost of 1 per hex.<BsrLink page="58" rule="22.51e" />
+                        </li>
+                        <li>
+                            Flotillas block enemy supply in the hex they occupy.<BsrLink page="58" rule="22.52" />
+                        </li>
+                        <li>
+                            Flotillas cannot attack during Storm weather, but can defend and retreat.<BsrLink page="58" rule="22.54c" />
+                            </li>
+                        <li>During Storm weather, Flotillas on shallow water, lake, insland sea, all-sea, or coastal hexes can be
+                            subject to Repositioning. During the werather Phase, each such Flotilla must be repositioned
+                            at the nearest friendly port within its movement allowance. If no port is in reach, then the Flotilla stays in place.
+                            <BsrLink page="58" rule="22.55" />
+                        </li>
+                        <li>Flotillas in ground combat <BsrLink page="58" rule="22.56" /><br />
+                            - do not require Attack Supply nor General Supply.<br />
+                            - are not subject to Surrender.<br />
+                            - cannot conduct Anti-Aircraft Fire.<br />
+                            - cannon receive Defensive Artillery Support unless they are stacked with other units that can.<br />
+                            - do not receive fortification DRM benefits unless they are stacked with other units that can.<br />
+                            - are subject too all combat results and can be removed as a step loss.<br />
+                            - can retreat to an all-sea hex.
+                            </li>
+                    </ul>
 
-                        Flotillas are especially useful in swampy areas, as they are not affected by the difficult terrain. Flotillas often force players to use up some units to garrison rear areas that are reachable by river, since flotillas are rather difficult to track down and kill, especially in swamp.
-                    </div>
+
 
                     <span className="spacer3rem" />
 
 
 
-                    <div id="naval_info_container" className="naval-info-container">
+                    {/* <div id="naval_info_container" className="naval-info-container">
                         <div className="title">NAVAL UNIT INFORMATION</div>
                         <div className="floater range">Range</div>
                         <div className="floater arty">Arty<br />Support<br />Factor</div>
@@ -389,54 +400,12 @@ export default class Special extends Component {
                             </div>
                         </div>
                         <canvas id="naval_info_container_canvas" width="800" height="400" className="naval-info-container-canvas" />
-                    </div>
-
-
-
-
-
-
-                    <div className="subheader-normal">
-                        Naval
-                    </div>
-                    <div className="pdiv">
-                        The naval rules (8.0) are extensive, but this is a summary:
-                        <ul className="ul-no-top">
-                            <li>Naval units are not combat units. They have no stacking value. They do, however, need General Supply and Attack Supply as combat units do.</li>
-                            <li>Naval units only move in sea hexes, but they can be in a port hex, where they prevent the entry of non-combat enemy units into the hex.</li>
-                            <li>Naval units do not have steps, but do take damage points. Only "T" type naval units can be rebuilt.</li>
-                            <li>Naval units provide AA fire, but only for themselves.</li>
-                            <li>Naval units with Artillery Support values can provide offensive artillery fire, if they are in range of a Defender Hex.</li>
-                            <li>Naval units have two sides - "Ready" and "Sailed". A "Ready" naval unit is eligible to be moved, and it considered armed and fueled. A "Sailed" naval unit will need
-                                to roll for readiness during the Naval Readiness Phase of the Strategic Segment. A naval unit can be moved in any movement phase, even the enemy movement phases.</li>
-                            <li>Naval units with a Transport Capacity can transport ground units.</li>
-                            <li>Naval units can transport units to enable an Amphibious Assault.</li>
-                        </ul>
-                        Naval unit types:
-                        <ul className="ul-no-top">
-                            <li>BB - Battleship</li>
-                            <li>CL - Light Cruiser</li>
-                            <li>DL - Destroyer Leader</li>
-                            <li>DD - Destroyer</li>
-                            <li>T<span className="white-text">D</span> - Transport</li>
-                        </ul>
-                    </div>
-
-                    <span className="spacer1rem" />
-                    <div className="subheader-counter base">
-                        <div>Soviet Naval Base</div>
-                        <img src={base} alt="Soviet naval base counter" />
-                    </div>
-                    <div className="pdiv">
-                        In the Crimea game the Soviet player has two Naval Base units that can be may be placed on any Soviet controlled port hex. The unit doubles the port capacity
-                        of the port. After placement, a naval base can be moved only by sea transport.
-                    </div>
+                    </div> */}
 
                     <span className="spacer2rem" />
 
                     <div className="subheader-image">
-                        <span>23.4</span>
-                        <div>Super-Heavy artillery</div>
+                        <div>Super-Heavy artillery<BsrLink page="32" rule="13.4" /></div>
                         <img src={super_heavy_artillery} alt="Super heavy artillery counters" />
                     </div>
                     <span className="spacer1rem" />
