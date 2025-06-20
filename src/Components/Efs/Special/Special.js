@@ -2,23 +2,29 @@ import React, { Component } from 'react';
 import ScrollToTopOnMount from "../../ScrollToTopOnMount";
 import BsrLink from "../BsrLink/BsrLink";
 import armored_train from "../../../images/efs/special/armored_train.gif";
+import armored_train3 from "../../../images/efs/special/counter_soviet_nkvd_train_v3.jpg";
 import armored_train_top from "../../../images/efs/special/armored_train.jpg";
 import c3 from "../../../images/efs/special/c3.jpg";
 import garrison from "../../../images/efs/special/garrison_hex.gif";
-import german_bridge from "../../../images/efs/special/german_bridge.gif";
+import german_bridge from "../../../images/efs/special/v3_german_bridge.jpg";
 import german_fort from "../../../images/efs/special/german_fort.gif";
-import german_engineer2 from "../../../images/efs/special/german_engineer2.gif";
-import guards_rocket from "../../../images/efs/special/guards_rocket.gif";
-import militia from "../../../images/efs/special/militia.gif";
+import german_engineer2 from "../../../images/efs/special/v3_german_engineer.jpg";
+import guards_rocket3 from "../../../images/efs/special/v3_soviet_guards_rocket.jpg";
+import guards_inf3 from "../../../images/efs/special/v3_soviet_guards_inf.jpg";
+import militia3 from "../../../images/efs/special/counter_soviet_militia_v3.jpg";
+import counter_untried3 from "../../../images/efs/special/counter_soviet_untried_v3.jpg";
 import soviet_fort from "../../../images/efs/special/soviet_fort.gif";
-import soviet_nkvd from "../../../images/efs/special/soviet_nkvd.jpg";
+import soviet_nkvd from "../../../images/efs/special/counter_soviet_nkvd_v3.jpg";
 import super_heavy_artillery from "../../../images/efs/special/super-heavy_artillery.gif";
 import ur_mg from "../../../images/efs/special/ur_mg.gif";
 import flotilla from "../../../images/efs/special/flotilla.jpg";
-import ship from "../../../images/efs/special/ship.png";
-import ship_back from "../../../images/efs/special/ship_back.png";
-import base from "../../../images/efs/special/counter_base.png";
+//import ship from "../../../images/efs/special/ship.png";
+//import ship_back from "../../../images/efs/special/ship_back.png";
+//import base from "../../../images/efs/special/counter_base.png";
 import counter_zap from "../../../images/efs/special/counter_zap.png";
+import counter_zap3 from "../../../images/efs/special/counter_soviet_zap_v3.jpg";
+import super_heavy_artillery_front_rear from "../../../images/efs/special/super_heavy_artillery_front_rear.jpg";
+import counter_flotilla3 from "../../../images/efs/special/counter_soviet_flotilla_v3.jpg";
 import './Special.scss';
 
 export default class Special extends Component {
@@ -29,11 +35,11 @@ export default class Special extends Component {
     }
 
     componentDidMount = () => {
-     //   this.drawCanvas();
+        //   this.drawCanvas();
     }
 
     componentWillReceiveProps = (props) => {
-    //    this.drawCanvas();
+        //    this.drawCanvas();
     }
 
 
@@ -274,10 +280,10 @@ export default class Special extends Component {
 
                     <div className="subheader-image">
                         <div>Armored trains<BsrLink page="54" rule="21.3" /></div>
-                        <img src={armored_train} alt="Soviet armored train counter" />
+                        <img src={armored_train3} alt="Soviet armored train counter" />
                     </div>
                     <span className="spacer1rem" />
-                    <div>
+                    <div className="adjusted-up">
                         Although both Axis and Soviets had armored trains, only the Soviet armored trains are represented in EFS.
                         Axis armored trains were not very common, and were primarily used for internal security.
                     </div>
@@ -326,7 +332,7 @@ export default class Special extends Component {
 
                     <div className="subheader-image">
                         <div>Flotillas<BsrLink page="58" rule="22.5" /></div>
-                        <img src={c3} alt="Soviet flotilla counter" />
+                        <img src={counter_flotilla3} alt="Soviet flotilla counter" />
                     </div>
                     <span className="spacer1rem" />
 
@@ -355,26 +361,59 @@ export default class Special extends Component {
                         </li>
                         <li>
                             Flotillas cannot attack during Storm weather, but can defend and retreat.<BsrLink page="58" rule="22.54c" />
-                            </li>
+                        </li>
                         <li>During Storm weather, Flotillas on shallow water, lake, insland sea, all-sea, or coastal hexes can be
                             subject to Repositioning. During the werather Phase, each such Flotilla must be repositioned
                             at the nearest friendly port within its movement allowance. If no port is in reach, then the Flotilla stays in place.
                             <BsrLink page="58" rule="22.55" />
                         </li>
-                        <li>Flotillas in ground combat <BsrLink page="58" rule="22.56" /><br />
-                            - do not require Attack Supply nor General Supply.<br />
-                            - are not subject to Surrender.<br />
-                            - cannot conduct Anti-Aircraft Fire.<br />
-                            - cannon receive Defensive Artillery Support unless they are stacked with other units that can.<br />
-                            - do not receive fortification DRM benefits unless they are stacked with other units that can.<br />
-                            - are subject too all combat results and can be removed as a step loss.<br />
-                            - can retreat to an all-sea hex.
-                            </li>
+                        <li className="special-li yellow">Flotillas in ground combat <BsrLink page="58" rule="22.56" /><br />
+
+                            <div className="flex-dashes">
+                                <div>
+                                    <div>-</div>
+                                    <div>do not require Attack Supply nor General Supply.</div>
+                                </div>
+                                <div>
+                                    <div>-</div>
+                                    <div>are not subject to Surrender.
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>-</div>
+                                    <div>cannot conduct Anti-Aircraft Fire.
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div>-</div>
+                                    <div>cannot receive Defensive Artillery Support unless they are stacked with other units that can.
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>-</div>
+                                    <div>do not receive fortification DRM benefits unless they are stacked with other units that can.
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>-</div>
+                                    <div>are subject too all combat results and can be removed as a step loss.
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>-</div>
+                                    <div>can retreat to an all-sea hex.
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </li>
                     </ul>
 
 
 
-                    <span className="spacer3rem" />
+                    <span className="spacer2rem" />
 
 
 
@@ -402,85 +441,176 @@ export default class Special extends Component {
                         <canvas id="naval_info_container_canvas" width="800" height="400" className="naval-info-container-canvas" />
                     </div> */}
 
-                    <span className="spacer2rem" />
 
                     <div className="subheader-image">
-                        <div>Super-Heavy artillery<BsrLink page="32" rule="13.4" /></div>
-                        <img src={super_heavy_artillery} alt="Super heavy artillery counters" />
+                        <div>Super-Heavy Artillery (S-HA)<BsrLink page="32" rule="13.4" /></div>
+                        <img src={super_heavy_artillery_front_rear} alt="super heavy artillery front and back" />
                     </div>
                     <span className="spacer1rem" />
-
-                    <div>
-                        Both sides have super-heavy artillery. They have significant movement restrictions, common to both Axis and Soviets, as outlined in the Movement section of this site.
-                    </div><div>
-                        Super-heavy artillery are designed for reduction of significant fortifications and cities.
-                    </div><div>
-                        Super-heavy artillery require some setup, and therefore have two sides. A mobile side and a firing side. They can only flip during the Engineering phase, furthermore - they can only flip to their firing sides if they did not move during that turn (you may want to mark a super-heavy you intend to flip to firing with some marker so you don't accidentally move it, and so you don't forget to flip it later).
-                    </div><div>
-                        Super-heavy artillery (when firing) contribute their support values to an attack, plus an additional -1 drm if attacking city, major city, fortified line, or strongpoint terrain. Note that for the fortified line, the -1 drm only applies if the attacker is being charged a +1 drm for attacking across a fortified line.
-                    </div>
-
-                    <div className="gray-box">
-                        <div className="subsubheader">Soviet super-heavy artillery</div>
-                        <ul>
-                            <li>Soviet coastal defense units and railroad artillery are are treated as super-heavy artillery.
-                            </li>
-                            <li>Soviet super-heavy artillery bearing Activated markers cannot contribute their support values to any combat.</li>
-                            <li>Soviet super-heavy artillery DO count towards the maximum of artillery units allowed to participate in a combat.</li>
-                            <li>Soviet super-heavy artillery can add support to attacks and defense.</li>
-                        </ul>
-                    </div>
+                    <div className="adjusted-up">Super-Heavy Artillery generally follow the rules for regular artillery, except for the following special rules.</div>
 
 
-                    <div className="gray-box">
-                        <div className="subsubheader">Axis super-heavy artillery</div>
-                        <ul>
-                            <li>Axis super-heavy artillery DO NOT count towards the maximum of artillery units allowed to participate in a combat.
-                            </li>
-                            <li>Axis super-heavy artillery can only provide their supports to attacks, not defense. On defense they only provide their defense value (typically 1).</li>
-                        </ul>
-                    </div>
+                    <ul className="ul-no-top">
+
+                        <li>Super-Heavy Artillery that have two modes, a Mobile side and a Firing side, can only move when on its Mobile side,
+                            and can only provide combat support when on its Firing side.<BsrLink page="32" rule="13.42a" />
+                            They only have one step for combat loss.<BsrLink page="32" rule="13.42a" />
+                        </li>
+                        <li>Super-Heavy Artillery, which are not Railroad-type, can only move along main hexsides connected with a road, minor road.<BsrLink page="32" rule="13.41a" />
+                        </li>
+                        <li>Movement along minor road hexes are only allowed in Dry or Frost weather.<BsrLink page="32" rule="13.41b" />
+                        </li>
+                        <li>Strategic Movement is allowed.<BsrLink page="32" rule="13.41c" /></li>
+                        <li>S-HA units with a Mobile and Firing side can change modes during the friendly Engineering Phase, if it did not move that turn.
+                            <BsrLink page="32" rule="13.42b" />
+                        </li>
+                        <li class="special-li yellow">Super-Heavy Artillery in combat <BsrLink page="58" rule="22.56" /><br />
+                            <div className="flex-dashes">
+                                <div>
+                                    <div>-</div>
+                                    <div>S-HA units can only apply their support strength,
+                                        and any drms, against a Defensive Hex that contains
+                                        any type of fortification.<BsrLink page="32" rule="13.42e" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>-</div>
+                                    <div>S-HA units with an "A" next to their support strength cannot
+                                        use their support strength in Defense. If in a hex being
+                                        attacked, they only contribute their defense strength.<BsrLink page="32" rule="13.42c" /></div>
+                                </div>
+                                <div>
+                                    <div>-</div>
+                                    <div>Axis S-HA does not count against the artillery combination
+                                        limit.<BsrLink page="48" rule="17.54" /><BsrLink page="32" rule="13.42d" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>-</div>
+                                    <div>S-HA that are in their Firing side cannot retreat in combat. <BsrLink page="32" rule="13.42f" />
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="special-li blue">Super-Heavy Artillery Bombardment <BsrLink page="32" rule="13.43" /><br />
+                            <div className="flex-dashes">
+                                <div>
+                                    <div>-</div>
+                                    <div>Bombardment is performed before regular combat.<BsrLink page="32" rule="13.43d" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>-</div>
+                                    <div>When Axis S-HA are targeting an active fortification that is in a Defender Hex (during regular combat), it may
+                                        conduct Bombardment. Soviet S-HA can not do Bombardment.<BsrLink page="32" rule="13.43" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>-</div>
+                                    <div>When doing Bombardment, refer to the Super-Heavy Artillery Effects Table.<BsrLink page="32" rule="13.43a" />
+                                        If there is more than one S-HA doing Bombardment on the same hex, combine all into one resolution die roll.<BsrLink page="32" rule="13.43b" /></div>
+                                </div>
+                                <div>
+                                    <div>-</div>
+                                    <div>S-HA with an asterisk for strength can only destroy citadels or fortified lines.
+                                        S-HA with an asterisk for strength only provide a DRM for support in combat.<BsrLink page="32" rule="13.43c" />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        {/* <li>Super-Heavy Artillery Mode <BsrLink page="32" rule="13.42" /><br />
+                            <div className="flex-dashes">
+                                <div>
+                                    <div>-</div>
+                                    <div>The two sides of the Axis S-HA units show different modes the Mobile side, with a blank range box and zero support strength,
+                                    and the Firing side, showing its combat characteristics.<BsrLink page="32" rule="13.42a" /></div>
+                                </div>
+                                <div>
+                                    <div>-</div>
+                                    <div>S-HA units need to be in their Mobile side in order to move, and in Firing mode to provide combat support.
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>-</div>
+                                    <div>S-HA units can change modes during the friendly Engineering Phase, if it did not move that turn.
+                                    </div>
+                                </div>
+                            </div>
+                        </li> */}
+                    </ul>
+
+
+
+
 
 
 
                     <span className="spacer3rem" />
 
-
                     <div className="subheader-image">
-                        <span>22.4</span>
-                        <div>Guards</div>
-                        <img src={guards_rocket} alt="Soviet guards rocket counter" />
+                        <div>Guards units<BsrLink page="54" rule="21.4" /></div>
+                        <img src={guards_rocket3} alt="Soviet guards rocket counter" />
+                        <img src={guards_inf3} alt="Soviet guards infantry counter" />
                     </div>
                     <span className="spacer1rem" />
+                    <div className="adjusted-up">
+                        Only the Soviet player has Guards units. They are denoted by the Gd identifier
+                        and the red unit box on the counter. Guards units would get priority on the best equipment.</div>
 
+                    <span className="spacer1rem" />
+
+                    <div className="adjusted-up">
+                        Guards Activation - The Soviets can activate one Guards unit that is within Command Range of a HQ's without Command point cost,
+                        during the Soviet Motorized Movement Phase.
+                        The HQ's can activate the Guards unit even if its Command value is reduced to 0 due to air interdiction.<BsrLink page="54" rule="21.41" />
+                    </div>
                     <div>
-                        The Soviets began a program of designating Guards units out of battle tested and well performing units (or grouping survivors into units). They would often get preference in equipment, including lend lease equipment. These units were more dependable and had better leadership.
-                    </div><div>
-                        The Soviets can activate one Guards unit that is within Command Range of a HQ's without Command point cost. The HQ's can activate the Guards unit even if its Command value is reduced to 0 due to air interdiction. Non-op HQ's cancel this though if the Guards unit is in Command range of it. Guards units provide a beneficial die-roll modifier for surrender die rolls in its hex.
+                        Guards units within range of a Non-Op HQ cannot be activated with Guards Activation.<BsrLink page="54" rule="21.42" />
                     </div>
 
 
 
                     <span className="spacer2rem" />
                     <div className="subheader-image">
-                        <span>22.4</span>
-                        <div>NKVD</div>
+                        <div>NKVD<BsrLink page="55" rule="21.5" /></div>
                         <img src={soviet_nkvd} alt="Soviet NKVD counter" />
                     </div>
                     <span className="spacer1rem" />
 
                     <div>
-                        The Peoples Commissariat for Internal Affairs, known by the initials NKVD, formed special political troops. The feared "NKVD Commissars" of these units could overrule the decisions of commanders on the ground. Historically, Commissars were infamous for demanding that units defend their positions to the death.
-                    </div><div>
-                        Whenever a NKVD unit is defending in a major city, city, or town hex, it issues a mandatory NO RETREAT order on all units in the hex - unless the hex is under the command span of a Non-Op HQ. You cannot counter-order this NKVD NO RETREAT order (other than by moving a non-op HQ to within range of the hex).
-                    </div><div>
-                        You cannot apply step losses to the NKVD unit which issued the NO RETREAT order unless there are no other units available to take losses. If there are two or more NKVD units in the hex, then only one of them is the "active" NKVD unit - the others are treated as regular units. The Soviet player chooses which NKVD unit will be the "active" one. NKVD units can only issue the NO RETREAT order - they never issue an ADDITIONAL RETREAT order.
-                    </div><div>
-                        NKVD units that are not in a major city, city, or town, do not issue any orders on their own, and are just like other infantry units.
-                    </div><div>
-                        There are NKVD train units that are very helpful when you need to get a city hex to mount a stout defense.
-                    </div><div>
-                        NKVD units provide a beneficial die-roll modifier for Surrender rolls in its hex.
+                        The Peoples Commissariat for Internal Affairs, known by the initials NKVD,
+                        formed special political troops. They were independent units, and
+                        not formally under Soviet army control.
+                        The feared "NKVD Commissars" of these units
+                        could overrule the decisions of commanders on the ground. Historically,
+                        Commissars were infamous for demanding that units defend their positions to the death,
+                        and in the game they may issue the NO RETREAT order under the following conditions.
+
+                    </div><span className="spacer1rem" /><div>
+                        Whenever a NKVD unit is defending in a city, it
+                        issues a mandatory NO RETREAT order on all units in the hex - unless the hex is
+                        under the command span of a Non-Op HQ. You cannot counter-order this
+                        NKVD NO RETREAT order (other than by moving a non-op HQ to within range of the hex).
+                        Towns also fall under this rule when the weather is Mud or Snow.<BsrLink page="55" rule="21.51" />
+                    </div><span className="spacer1rem" /><div>
+                        You cannot apply step losses to the NKVD unit which issued the NO RETREAT order unless there are no
+                        other units available to take losses. If there are two or more NKVD units in the hex,
+                        then only one of them is the "active" NKVD unit - the others are treated as regular units.
+                        The Soviet player chooses which NKVD unit will be the "active" one.<BsrLink page="55" rule="21.51b" />
+                    </div>
+                    <span className="spacer1rem" /><div>
+                        An active Soviet HQ that is in range of a hex that recived the NO RETREAT under from a NKVD unit,
+                        can cancel the order by expending an available command point.<BsrLink page="55" rule="21.51c" />
+                    </div><span className="spacer1rem" /><div>
+                        Beginning GT 31, only motorized NKVD units can issue the NO RETREAT order.<BsrLink page="55" rule="21.51d" />
+                    </div><span className="spacer1rem" /><div>
+                        Surrender die rolls get an added benefit if NKVD is present in the hex.<BsrLink page="55" rule="21.52" />
+                    </div><span className="spacer1rem" />
+                    <div>
+                        Motorized NKVD units cannot conduct Reaction or Overrun movement.<BsrLink page="55" rule="21.53" />
                     </div>
 
 
@@ -512,35 +642,86 @@ export default class Special extends Component {
                     <span className="spacer2rem" />
                     <div className="subheader-image">
                         <span>22.6</span>
-                        <div>Militia</div>
-                        <img src={militia} alt="Soviet militia counters" />
+                        <div>Militia<BsrLink page="18" rule="8.43" /><BsrLink page="55" rule="21.7" /></div>
+                        <img src={militia3} alt="Soviet militia counter" />
                     </div>
                     <span className="spacer1rem" />
+                    <div >Soviet Militia units are put in an opaque cup for drawing randomly, per scenario instructions.
+                        <BsrLink page="55" rule="21.71" />
+                    </div>
                     <div>
-                        Militia units are scratch units that were thrown together by the Soviet military. These units tended to be highly unreliable.
-                    </div><div>
-                        The Soviet player cannot move these units further than five hexes from their placement city. If forced to retreat further than five hexes then they are released from this restriction.
-                    </div><div>
-                        Unlike UR/MG units, these do not get flipped when moved, only when attacked. If, when flipped, they turn out to be a 0-0-0, they are removed from play.
-                    </div><div>
-                        When eliminated, they go to the Soviet rebuilding chart, not the cup.
-                    </div><div>
-                        Militia with infantry or cavalry symbols can be removed voluntarily from the map by the Soviet player in the Replacement Phase, which gives the Soviet player 1 "I" Type replacement point. They can only be removed from a hex in General Supply. This exchange is generally a good idea when you've got valuable infantry units you want to build back up.
+                        The Soviet player has Militia units which represents men who have been quickly assembled from an
+                        urban area, and who probably have had
+                        inadequate training. They tended to be unreliable. They have unit boxes with a yellow background,
+                        and have an untried side.
+                    </div><div className="upper-space">
+                        When militia units become available, place them, untried side up, up to five hexes away from their city (indicated on the counter).
+                        <BsrLink page="18" rule="8.43a" />
+                        They can be placed in enemy ZOC only if other friendly unit already occupies the hex.<BsrLink page="18" rule="8.43b" />
+                    </div><div className="upper-space">
+                        If the city the militia unit is te be placed is controlled by the Axis, then put the
+                        militia unit back in the draw cup and draw another.<BsrLink page="18" rule="8.43c" />
+                    </div>
+                    <div className="upper-space">Militia units can be converted into Zap units at will during the Soviet Engineering Phase.
+                        <BsrLink page="55" rule="21.72" />
+                    </div>
+                    <div className="upper-space">Eliminated, or otherwise removed, Militia units are removed from the game.
+                        <BsrLink page="55" rule="21.73" />
+                    </div>
+                    <div className="upper-space">If a Militia units is forced to retreat more than 5 hexes away from its city or town,
+                        then it is removed from the game.
+                        <BsrLink page="55" rule="21.74" />
+                    </div>
+                    <span className="spacer2rem" />
+                    <div className="subheader-image">
+                        <div>Zap units<BsrLink page="14" rule="7.43" /></div>
+                        <img src={counter_zap3} alt="Soviet Zap counter" />
+                    </div>
+                    <span className="spacer1rem" />
+                    <div className="pdiv">
+                        Zap units represent groups of recruits that are in basic training, or
+                        collections of soldiers retreating from their destroyed units. They can
+                        be used as they are for combat as regular units, or can be used
+                        as a Type 1 replacement steps for regular units that can absorb Type 1 RPs.
+                        <ul className="ul-no-top">
+                            <li>1 RP step can be used to create a Zap unit during the Engineering Phase.
+                                They are placed in the Active Box.<BsrLink page="14" rule="7.43a" />
+                            </li>
+                            <li>Zap units that start the turn in the Active Box can
+                                be placed in any eligible on-map locations during
+                                the friendly Movement Phase - one per location.
+                                Eligible locations:
+                                Any friendly town, city, or major city, and not in
+                                enemy ZOC, unless a friendly unit is already
+                                present in the hex.
+                                At any friendly map-edge supply source.<BsrLink page="14" rule="7.43b" />
+                            </li>
+                            <li>A Zap unit can provide a Type 1 replacement step.<BsrLink page="14" rule="7.43c" />
+                            </li>
+                            <li>On-map use of Zap units as steps for existing deleted units -
+                                At the start of the Soviet Engineering Phase, the Soviet player can
+                                expend a Zap unit to restore a reduced-strenth unit that takes Type 1 RPs
+                                <BsrLink page="14" rule="7.43d" />,
+                                or expend a Zap unit on the map, and restore a unit that is in the Cadre Box,
+                                and then place that restored unit in the hex the Zap unit was in.<BsrLink page="14" rule="7.43e" />
+                            </li>
+                            <li>Zap units removed from the map are placed in the Cadre Box.
+                                unless it is used as a Type 1 replacement step, eliminated in combat, or surrendered.<BsrLink page="14" rule="7.43f" />
+                            </li>
+                        </ul>
                     </div>
 
                     <span className="spacer2rem" />
                     <div className="subheader-image">
-                        <span>22.7</span>
-                        <div>Zap units</div>
-                        <img src={counter_zap} alt="Soviet Zap counter" />
+                        <div>Untried units<BsrLink page="17" rule="8.4" /></div>
+                        <img src={counter_untried3} alt="Soviet Untried counter" />
                     </div>
                     <span className="spacer1rem" />
                     <div className="pdiv">
-                        Zap units represent groups of recruits that are in basic training. They are combat units, and can be used as they are, or used for replacements.
+                        Untried units are Soviet units that are not yet fully trained and ready for combat. They are represented by the untried counter, which is placed on the map when the unit is first deployed.
                         <ul className="ul-no-top">
-                            <li>They can be expended to recreate a unit in the Cadre Box which requires a Type I Replacement. Replace the Zap unit with the cadre unit in the same hex. Place a "Do Not Move One GT" marker on it.
-                                The Do Not Move counter will be removed during the Soviet Engineering Phase.</li>
-                            <li>They can also be used to provide a Type I Replacement to an eligible reduced Soviet unit that is on the map. The unit being built up then gets the "Do Not Move One GT" marker placed on it.</li>
+                            <li>bbb</li>
+                            <li>bbb</li>
                         </ul>
                     </div>
 
