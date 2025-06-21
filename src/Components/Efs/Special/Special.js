@@ -222,7 +222,7 @@ export default class Special extends Component {
                         <ul>
                             <li>Can place a completed strongpoint on the turn the strongpoint is received.<BsrLink page="56" rule="22.11" /></li>
                             <li>The engineer must be in General Supply.<BsrLink page="56" rule="22.11" /></li>
-                            <li>Scenario rules may prohibit the construction of German strongpoints.</li>
+                            <li>Scenario rules may have additional rules for Strongpoints.</li>
                         </ul>
                     </div>
 
@@ -613,31 +613,25 @@ export default class Special extends Component {
                         Motorized NKVD units cannot conduct Reaction or Overrun movement.<BsrLink page="55" rule="21.53" />
                     </div>
 
-
-
-
-
                     <span className="spacer2rem" />
-
                     <div className="subheader-image">
-                        <span>22.5</span>
-                        <div>UR/MG units</div>
-                        <img src={ur_mg} alt="Soviet UR counters" />
+                        <div>Untried units<BsrLink page="17" rule="8.4" /></div>
+                        <img src={counter_untried3} alt="Soviet Untried counter" />
                     </div>
                     <span className="spacer1rem" />
-
-                    <div>
-                        Ukreplyonni Raion (UR) units are groups of machine gun units and other fortress defense troops. These units, and the militia, have untried sides (reminiscent of Panzergruppe Guderian).
-                    </div><div>
-                        They are typically placed in an opaque cup and drawn randomly and placed untried side up. Supposedly their tried sides are supposed to be secret to the Soviet player as well as the Axis, so you gotta be a little careful in pulling and placing these units.
-                    </div><div>
-                        Some may be placed in the beginning of the scenario, some may come up on the reinforcement chart, and the Soviet player may expend infantry (type "I") replacement points to pull them out of the cup and place them on the map.
-                    </div><div>
-                        In the Replacement Phase the UR/MG unit(s) are placed on any friendly Soviet city or major city in General Supply, or on any friendly Soviet fortification hexes in General Supply. They cannot be placed in a hex with a UR/MG unit already in it, and they cannot be placed in enemy ZOC (remember though that ZOCs do not extend into Major Cities).
-                    </div><div>
-                        These units remain on their untried sides until the moment of combat or when the Soviet player moves them. Any UR/MG unit that is found to be a 0-0-0 is removed from the map and placed back in the cup.
+                    <div className="pdiv">
+                         Soviet MG units and Militia have Tried and Untried sides.
+                        <ul className="ul-no-top">
+                            <li>The Untried side shows ? symbols for their combat values.<BsrLink page="17" rule="8.41" /></li>
+                            <li>The front side is its Tried side, and once on its front side
+                                it stays on that side until eliminated or otherwise removed from the game.<BsrLink page="17" rule="8.41" />
+                            </li>
+                        </ul>
+                        <div className="adjusted-up">Untried units are placed in an opaque cup, and drawn randomly,
+                            with their Untried sides up, and placed on the map according to
+                            scenario instructions..<BsrLink page="17" rule="8.42" />
+                        </div>
                     </div>
-
 
                     <span className="spacer2rem" />
                     <div className="subheader-image">
@@ -646,7 +640,7 @@ export default class Special extends Component {
                         <img src={militia3} alt="Soviet militia counter" />
                     </div>
                     <span className="spacer1rem" />
-                    <div >Soviet Militia units are put in an opaque cup for drawing randomly, per scenario instructions.
+                    <div >Soviet Militia brigade-sized units are put in an opaque cup for drawing randomly, per scenario instructions.
                         <BsrLink page="55" rule="21.71" />
                     </div>
                     <div>
@@ -662,7 +656,8 @@ export default class Special extends Component {
                         If the city the militia unit is te be placed is controlled by the Axis, then put the
                         militia unit back in the draw cup and draw another.<BsrLink page="18" rule="8.43c" />
                     </div>
-                    <div className="upper-space">Militia units can be converted into Zap units at will during the Soviet Engineering Phase.
+                    <div className="upper-space">Militia units can be converted into Zap units at will during the Soviet Engineering Phase,
+                    <BsrLink page="15" rule="7.44" /> unless they are under a Garrison marker.<BsrLink page="15" rule="7.44a" />
                         <BsrLink page="55" rule="21.72" />
                     </div>
                     <div className="upper-space">Eliminated, or otherwise removed, Militia units are removed from the game.
@@ -681,7 +676,7 @@ export default class Special extends Component {
                     <div className="pdiv">
                         Zap units represent groups of recruits that are in basic training, or
                         collections of soldiers retreating from their destroyed units. They can
-                        be used as they are for combat as regular units, or can be used
+                        be used as they are for combat as regular regimental-sized units, or can be used
                         as a Type 1 replacement steps for regular units that can absorb Type 1 RPs.
                         <ul className="ul-no-top">
                             <li>1 RP step can be used to create a Zap unit during the Engineering Phase.
@@ -711,44 +706,34 @@ export default class Special extends Component {
                         </ul>
                     </div>
 
-                    <span className="spacer2rem" />
-                    <div className="subheader-image">
-                        <div>Untried units<BsrLink page="17" rule="8.4" /></div>
-                        <img src={counter_untried3} alt="Soviet Untried counter" />
-                    </div>
-                    <span className="spacer1rem" />
-                    <div className="pdiv">
-                        Untried units are Soviet units that are not yet fully trained and ready for combat. They are represented by the untried counter, which is placed on the map when the unit is first deployed.
-                        <ul className="ul-no-top">
-                            <li>bbb</li>
-                            <li>bbb</li>
-                        </ul>
-                    </div>
+
 
                     <span className="spacer1rem" />
                     <div className="subheader-image">
-                        <span>22.8</span>
-                        <div>Garrisons</div>
+                        <div>Garrisons<BsrLink page="55" rule="21.8" /></div>
                         <img src={garrison} alt="Soviet garrison counters" />
                     </div>
                     <span className="spacer1rem" />
                     <div>
-                        In several scenarios the Soviet player may have some, or many, units restricted to "garrison duty", which means they can't move from the hex they start from.
+                         Some Soviet units in a scenario may be declared as a Garrison, 
+                         signified by a Garrison counter being placed on top of them, which means they can't move from the hex they start from, unless
+                         a situation occurs that lets them move normally.<BsrLink page="55" rule="21.81" />
+                    </div>
+                    <div>
+                        Units under Garrison status cannot move, and cannot attack, but still defend normally, and can use their artillery
+                        strength for defense. When released from Garrison, units can then be used normally.<BsrLink page="55" rule="21.82" />
                     </div><div>
-                        These troops were controlled by "higher headquarters", who only begrudgingly would release them, piece meal, to the front.
                     </div><div>
-                        All units that are under a garrison marker are deemed to be garrison units. Other units can enter and leave the hex without being "garrisonned".
-                    </div><div>
-                        Once a garrison is released, all units under that garrison marker are released and can move normally. Non-op HQs that are under a garrison marker can roll each turn for activation. Non-op HQs and activated HQs still operate as the HQs rules specify - even if they can't move due to being under a garrison marker.
                     </div>
                     <div className="pdiv">
                         Garrison units are released when any of these occur:
                         <ul className="ul-no-top">
                             <li>The hex is attacked.</li>
-                            <li>An enemy unit moves adjacent to it.</li>
-                            <li>It goes out of General Supply.</li>
-                            <li>Is released by a "R" result on the Replacements Table.</li>
-                            <li>Is released by a turn specified in the scenario. </li>
+                            <li>An enemy zoc projects onto the hex under Garrison at the
+                                end of any phase.<BsrLink page="55" rule="21.83" /></li>
+                            <li>Is released by a turn specified in the scenario.<BsrLink page="55" rule="21.83" /> </li>
+                            <li>If a "R" result is recieved from the Soviet Replacements Table
+                                then one or two Garrisons can be released (no VP penalty applied).<BsrLink page="55" rule="21.84" /> </li>
                         </ul>
                     </div>
 
