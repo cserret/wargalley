@@ -56,13 +56,11 @@
     }
   }
 
-
-
   .update-notice {
-      padding: 10px;
-      margin: 10px 0 5px 0;
-      border: 1px solid rgba(0,0,0,0.1);
-      line-height: 120%;
+    padding: 10px;
+    margin: 10px 0 5px 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    line-height: 120%;
   }
   .notice-box {
     width: 550px;
@@ -114,7 +112,81 @@
     max-width: 1200px;
     height: auto;
   }
-  .contents {
+  .home-contents {
+    //border: 2px solid red;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 80px;
+    margin-top: 1%;
+    //width: 100%;
+    div:first-child {
+      white-space: nowrap;
+      //width: 70%;
+      padding: 0 1rem 0 0.4rem;
+      box-sizing: border-box;
+    }
+    div:nth-child(2) {
+      //border: 2px solid blue;
+    //  border-right: 2px solid red;
+    }
+    img {
+      width: 100%;
+      text-align: left;
+    }
+    .contents-list {
+      align-self: left;
+     // margin-left: 10%;
+      div:first-child {
+        position: relative;
+        top: 2%;
+
+      }
+      ul {
+        list-style: none;
+        li {
+          text-align: left;
+          line-height: calc((1.2rem - 2.8rem) + 3rem);
+          line-height: 1em;
+          @media only screen and (min-width: 650px) {
+            line-height: calc((1.2rem - 2.8rem) + 3rem);
+          }
+          // @media only screen and (min-width: 710px) {
+          //   line-height: 1.2em;
+          // }
+          // @media only screen and (min-width: 760px) {
+          //   line-height:1.3em;
+          // }
+          // @media only screen and (min-width: 810px) {
+          //   line-height:1.4em;
+          // }
+          // @media only screen and (min-width: 840px) {
+          //   line-height:1.5em;
+          // }
+        }
+      }
+
+      ul li:before {
+        content: "•";
+        font-size: 170%; /* or whatever */
+        padding-right: 5px;
+      }
+      a {
+        color: #24e;
+        //font-size: 1.7rem;
+        font-size: 3vw;
+        @media only screen and (min-width: 750px) {
+          font-size: calc((1.2rem - 2.8rem) + 3rem);
+        }
+        font-weight: bold;
+        text-decoration: none;
+        &:hover {
+          color: red;
+        }
+      }
+    }
+  }
+  .contentss {
     margin-top: 1.8rem;
     background: #fae9b2;
     margin-bottom: 3.5rem;

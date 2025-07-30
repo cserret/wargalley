@@ -17,6 +17,7 @@ import soviet_dump_120 from "../../../images/efs/overview/soviet_dump_120.png";
 import german_truck_120 from "../../../images/efs/overview/german_truck_120.png";
 import german_dump_120 from "../../../images/efs/overview/german_dump_120.png";
 import german_panzer_division_120 from "../../../images/efs/overview/panzer_division.png";
+import german_mech_division_120 from "../../../images/efs/overview/german_mech_division_120.jpg";
 
 import './Overview.scss';
 
@@ -53,12 +54,13 @@ const Overview = (props) => {
                     were to be obeyed, despite the realities on the ground.
                     <div className="spacer0_5rem" />
                     The Germans, of course, were indoctrinated through their military training to take
-                    initiative all the way down the line, and as a result they had great flexibility in battle, along with excellent coordination between the various elements of
+                    initiative all the way down the command chain, and as a result they had great flexibility in battle, along with excellent coordination between the various elements of
                     their armed forces.
                 </span>
             </div>
 
             <span className="spacer1rem" />
+            <div className="side-by-side-comment-box">
             <div>
                 <div className="title_img_comment_box">
                     <div className="title">GERMAN PANZER DIVISION</div>
@@ -71,14 +73,24 @@ const Overview = (props) => {
                     </div>
                 </div>
             </div>
+            <div>
+                <div className="title_img_comment_box">
+                    <div className="title">GERMAN MECH DIVISION</div>
+                    <div className="image">&nbsp;<img src={german_mech_division_120} alt="German mech division" /></div>
+                    <div className="comment">
 
+                        A typical German mech division, consists<br/> 
+                        of two mechanized regiments.
+
+                    </div>
+                </div>
+            </div>
+            </div>
             <span className="spacer1rem" />
             <div>
                 <span>
                     In this game system, the panzer division is king. Often a panzer division gets the dual combat benefits of "divisional integrity" and "combined arms",
-                    which makes them very combat effective.
-                    <div className="spacer0_5rem" />
-                    Add into the mix engineers and air support, and panzer divisions can pretty much chew into any defense
+                    which makes them very combat effective. Add into the mix engineers and air support, and panzer divisions can pretty much chew into any defense
                     the Soviets can put up.
                     <div className="spacer0_5rem" />
                     But the main problem for the Axis player is that there are not enough panzer divisions, and with the lack of time the
@@ -89,7 +101,9 @@ const Overview = (props) => {
                     his panzer divisions and other units is what gives this game system its excitement level.
                     <div className="spacer0_5rem" />
                     The Soviet player will need to strategically trade space for time, and come up with ways to slow down the German onslaught, while striking
-                    back when the Germans get careless.
+                    back when the Axis player get careless or leave an important position weakly defended.
+                    The Axis player may have more powerful and capable units, but they have far less units
+                    that the Soviet player does, which means the Axis lines will be thin in spots.
                 </span>
             </div>
 
@@ -308,14 +322,15 @@ const Overview = (props) => {
                 <img src={map_sample} alt="map sample" />
             </div>
 
-            <div>
-                <span>
-                    There are several types of terrain in EFS. Terrain is important for determining movement costs and for combat effects.
-                    EFS has perhaps one of the most complex terrain effects of all time. Plus the costs and restrictions change for different
-                    weather conditions. Weather can be clear, or mud, or snow, with the possibility of storms thrown in. The lengthy terrain
-                    effects chart will be consulted constantly, even by veteran EFS players. The sophistication of the terrain effects significantly
-                    improves the realism of the game system, at some cost in complexity.
-                </span>
+            <div className="padded">
+                    There are several types of terrain in EFS. Terrain is important for determining movement 
+                    costs and for combat effects.
+            </div>
+            <div className="padded">
+                    The movement costs and restrictions change for different weather conditions and different unit types. 
+               </div>
+               <div className="padded">     
+                    Weather can be clear, mud, lingering mud, frost, snow, and lingering snow, with the possibility of storms thrown in.
             </div>
 
             <ScrollToTopOnMount />

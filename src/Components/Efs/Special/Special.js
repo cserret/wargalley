@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import ScrollToTopOnMount from "../../ScrollToTopOnMount";
 import BsrLink from "../BsrLink/BsrLink";
-import armored_train from "../../../images/efs/special/armored_train.gif";
 import armored_train3 from "../../../images/efs/special/counter_soviet_nkvd_train_v3.jpg";
 import armored_train_top from "../../../images/efs/special/armored_train.jpg";
-import c3 from "../../../images/efs/special/c3.jpg";
-import garrison from "../../../images/efs/special/garrison_hex.gif";
+import garrison from "../../../images/efs/special/garrison_counter.jpg";
 import german_bridge from "../../../images/efs/special/v3_german_bridge.jpg";
 import german_fort from "../../../images/efs/special/german_fort.gif";
 import german_engineer2 from "../../../images/efs/special/v3_german_engineer.jpg";
@@ -15,16 +13,12 @@ import militia3 from "../../../images/efs/special/counter_soviet_militia_v3.jpg"
 import counter_untried3 from "../../../images/efs/special/counter_soviet_untried_v3.jpg";
 import soviet_fort from "../../../images/efs/special/soviet_fort.gif";
 import soviet_nkvd from "../../../images/efs/special/counter_soviet_nkvd_v3.jpg";
-import super_heavy_artillery from "../../../images/efs/special/super-heavy_artillery.gif";
-import ur_mg from "../../../images/efs/special/ur_mg.gif";
 import flotilla from "../../../images/efs/special/flotilla.jpg";
-//import ship from "../../../images/efs/special/ship.png";
-//import ship_back from "../../../images/efs/special/ship_back.png";
-//import base from "../../../images/efs/special/counter_base.png";
-import counter_zap from "../../../images/efs/special/counter_zap.png";
 import counter_zap3 from "../../../images/efs/special/counter_soviet_zap_v3.jpg";
 import super_heavy_artillery_front_rear from "../../../images/efs/special/super_heavy_artillery_front_rear.jpg";
 import counter_flotilla3 from "../../../images/efs/special/counter_soviet_flotilla_v3.jpg";
+import soviet_bridge_building from "../../../images/efs/special/soviet_bridge_building.jpg";
+import super_heavy_artillery from "../../../images/efs/special/superheavy.jpg";
 import './Special.scss';
 
 export default class Special extends Component {
@@ -153,7 +147,7 @@ export default class Special extends Component {
                         <div></div>
                     </div>
 
-                    <div className="image-caption">
+                    <div className="image-caption2">
                         <img src={armored_train_top} alt="armored train" />
                         <div>Armored trains with T-28 and T-34 turrets</div>
                     </div>
@@ -173,19 +167,31 @@ export default class Special extends Component {
                         Engineers provide various benefits in EFS, they:
                         <ul className="ul-no-top">
                             <li>build strongpoints and destroy enemy strongpoints.<BsrLink page="56" rule="22.11" /></li>
-                            <li>aid movement and attack across shallow water hexsides.<BsrLink page="41" rule="15.53d" /></li>
+                            <li>aid movement and attack across shallow water hexsides.<BsrLink page="23" rule="10.47b" /><BsrLink page="41" rule="15.53d" /></li>
                             <li>convert rail hexes.<BsrLink page="41" rule="15.53c" /></li>
                             <li>aid or participate in overruns.<BsrLink page="25" rule="11.3" /></li>
                             <li>allow construction of a Ferry.<BsrLink page="57" rule="22.32b" /></li>
+                            <li>allow Bridge Repair.<BsrLink page="57" rule="22.44b" /></li>
                         </ul>
                         Engineers can also
                         <ul className="ul-no-top">
-                            <li>can provide Engineer Effects in combat in certain situations.<BsrLink page="23" rule="10.47b" /><BsrLink page="41" rule="15.53" /></li>
-                            <li>exceed the stacking limit.<BsrLink page="41" rule="15.53c" /></li>
+                            <li>provide Engineer Effects in combat in certain situations.<BsrLink page="23" rule="10.47b" /><BsrLink page="41" rule="15.53" /></li>
+                            <li>exceed the stacking limit.<BsrLink page="41" rule="15.53c" /><BsrLink page="7" rule="3.33" /></li>
                         </ul>
-                        <div className="adjusted-up">
+                        <div>To conduct an overrun during the Movement or Motorized Movement Phase.
+                            across a fortified hexside or against a strongpoint, requires
+                            a motorized engineer to be participating, and that the odds are at least 12-1.<BsrLink page="26" rule="11.35c" />
+                        </div>
+                        <span className="spacer1rem" />
+                        <div>When conducting an attack against a fortified defender hex, the DRMs from
+                            any Super-Heavy Artillery and Engineer units are combined, and that number
+                            cannot exceed the defender DRMs.<BsrLink page="32" rule="13.42e" />
+                        </div>
+                        <span className="spacer1rem" />
+                        <div>
                             An Engineer can also be subject to Engineer Loss in a combat.<BsrLink page="43" rule="16.32,3b" />
                         </div>
+                      
                     </div>
                     <span className="spacer1rem" />
 
@@ -193,8 +199,8 @@ export default class Special extends Component {
 
 
                     <div className="gray-box">
-                        <div className="subsubheader">Soviet Engineer - Strongpoints</div>
-                        <img src={soviet_fort} alt="Soviet fort counter" />
+                        <div className="subsubheader">Engineer - Strongpoints</div>
+                        <img src={soviet_fort} alt="Soviet fort counter" /><img src={german_fort} alt="German fort counter" />
                         <ul>
                             <li>Can build a completed strongpoint the turn it is received, via the Replacements
                                 Table.<BsrLink page="56" rule="22.11" />
@@ -212,23 +218,6 @@ export default class Special extends Component {
 
 
 
-                    <span className="spacer1rem" />
-
-
-
-                    <div className="gray-box">
-                        <div className="subsubheader">German Engineer - Strongpoints</div>
-                        <img src={german_fort} alt="German fort counter" />
-                        <ul>
-                            <li>Can place a completed strongpoint on the turn the strongpoint is received.<BsrLink page="56" rule="22.11" /></li>
-                            <li>The engineer must be in General Supply.<BsrLink page="56" rule="22.11" /></li>
-                            <li>Scenario rules may have additional rules for Strongpoints.</li>
-                        </ul>
-                    </div>
-
-
-
-
 
 
 
@@ -236,8 +225,11 @@ export default class Special extends Component {
 
                     <span className="spacer2rem" />
 
-
-
+                    <div className="image-caption2">
+                        <img src={soviet_bridge_building} alt="Soviet engineers building pontoon bridge" />
+                        <div>Soviet engineers building pontoon bridge</div>
+                    </div>
+                    <span className="spacer1rem" />
                     <div className="subheader-image">
                         <div>Bridges<BsrLink page="56" rule="22.2" /></div>
                         <img src={german_bridge} alt="German bridge counter" />
@@ -267,13 +259,16 @@ export default class Special extends Component {
                         <li>If a hex a friendly bridge is in is entered by an enemy unit, then the bridge unit is removed and will be available
                             in the owner's next allowed Movement phase (remember Soviets place bridges during their Soviet Motorized Movement Phase). The benefits of a bridge can only be used by the owning side.<BsrLink page="56" rule="22.26" />
                         </li>
+                        <li>In case of a successful Overrun on a hex with a Bridge marker in it, the Bridge marker
+                            is removed.<BsrLink page="26" rule="11.37i" />
+                            </li>
                     </ul>
 
                     <div className="rules-note">
                         Note that an enemy unit must enter the hex the bridge counter is actually in.
-                        Being across the river in the hex the bridge is "bringing" to does not cause removal of the bridge unit.
-                        I'm not sure of the reasoning behind this, but perhaps it represents the bridging engineers being on
-                        one side of the bridge, taking pot shots at any enemy trying to destroy the bridge.
+                        Being across the river in the hex the bridge is "bridging" to does not cause removal 
+                        of the bridge unit.
+                        
                     </div>
 
                     <span className="spacer2rem" />
@@ -322,7 +317,7 @@ export default class Special extends Component {
 
                     <span className="spacer2rem" />
 
-                    <div className="image-caption flotilla">
+                    <div className="image-caption2">
                         <img src={flotilla} alt="flotilla" />
                         <div>Camouflaged BK-1125, rear platform, 12.7mm<br />
                             DSHK Heavy Machine Gun. (cmchant.com)</div>
@@ -440,6 +435,11 @@ export default class Special extends Component {
                         </div>
                         <canvas id="naval_info_container_canvas" width="800" height="400" className="naval-info-container-canvas" />
                     </div> */}
+                    <div className="image-caption2">
+                        <img src={super_heavy_artillery} alt="super heavy artillery" />
+                        <div>Schwerer Gustav railway gun</div>
+                    </div>
+                    <span className="spacer1rem" />
 
 
                     <div className="subheader-image">
@@ -620,7 +620,7 @@ export default class Special extends Component {
                     </div>
                     <span className="spacer1rem" />
                     <div className="pdiv">
-                         Soviet MG units and Militia have Tried and Untried sides.
+                        Soviet MG units and Militia have Tried and Untried sides.
                         <ul className="ul-no-top">
                             <li>The Untried side shows ? symbols for their combat values.<BsrLink page="17" rule="8.41" /></li>
                             <li>The front side is its Tried side, and once on its front side
@@ -635,12 +635,11 @@ export default class Special extends Component {
 
                     <span className="spacer2rem" />
                     <div className="subheader-image">
-                        <span>22.6</span>
                         <div>Militia<BsrLink page="18" rule="8.43" /><BsrLink page="55" rule="21.7" /></div>
                         <img src={militia3} alt="Soviet militia counter" />
                     </div>
                     <span className="spacer1rem" />
-                    <div >Soviet Militia brigade-sized units are put in an opaque cup for drawing randomly, per scenario instructions.
+                    <div >Soviet Militia are brigade-sized units, which are put in an opaque cup for drawing randomly, per scenario instructions.
                         <BsrLink page="55" rule="21.71" />
                     </div>
                     <div>
@@ -657,7 +656,7 @@ export default class Special extends Component {
                         militia unit back in the draw cup and draw another.<BsrLink page="18" rule="8.43c" />
                     </div>
                     <div className="upper-space">Militia units can be converted into Zap units at will during the Soviet Engineering Phase,
-                    <BsrLink page="15" rule="7.44" /> unless they are under a Garrison marker.<BsrLink page="15" rule="7.44a" />
+                        <BsrLink page="15" rule="7.44" /> unless they are under a Garrison marker.<BsrLink page="15" rule="7.44a" />
                         <BsrLink page="55" rule="21.72" />
                     </div>
                     <div className="upper-space">Eliminated, or otherwise removed, Militia units are removed from the game.
@@ -715,9 +714,9 @@ export default class Special extends Component {
                     </div>
                     <span className="spacer1rem" />
                     <div>
-                         Some Soviet units in a scenario may be declared as a Garrison, 
-                         signified by a Garrison counter being placed on top of them, which means they can't move from the hex they start from, unless
-                         a situation occurs that lets them move normally.<BsrLink page="55" rule="21.81" />
+                        Some Soviet units in a scenario may be declared as a Garrison,
+                        signified by a Garrison counter being placed on top of them, which means they can't move from the hex they start from, unless
+                        a situation occurs that lets them move normally.<BsrLink page="55" rule="21.81" />
                     </div>
                     <div>
                         Units under Garrison status cannot move, and cannot attack, but still defend normally, and can use their artillery
@@ -733,7 +732,11 @@ export default class Special extends Component {
                                 end of any phase.<BsrLink page="55" rule="21.83" /></li>
                             <li>Is released by a turn specified in the scenario.<BsrLink page="55" rule="21.83" /> </li>
                             <li>If a "R" result is recieved from the Soviet Replacements Table
-                                then one or two Garrisons can be released (no VP penalty applied).<BsrLink page="55" rule="21.84" /> </li>
+                                then one or two Garrisons can be released (no VP penalty applied).<BsrLink page="55" rule="21.84" />
+                                <BsrLink page="15" rule="7.52" /> </li>
+                            <li>Soviet Reservists who are placed in any friendly (in Russia, Belorussia, or Ukraine) town,
+                                city or major city becomes a Garrison - put a Garrison marker on top of them.<BsrLink page="16" rule="7.82" />
+                                </li>
                         </ul>
                     </div>
 

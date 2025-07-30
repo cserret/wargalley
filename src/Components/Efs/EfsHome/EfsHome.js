@@ -38,7 +38,7 @@ const EfsHome = (props) => {
             </div>
             <img src={gamesGroup} alt="games group" />
 
-            <div className="contents">
+            <div className="home-contents">
                 <div className="contents-list">
                     <div>CONTENTS</div>
                     <span>

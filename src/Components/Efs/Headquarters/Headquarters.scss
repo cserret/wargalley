@@ -1,6 +1,12 @@
 .content {
   .top-image {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    width: auto;
+    max-width: 1000px;
+    justify-content: center;
     div {
       padding: 0.3rem 1.7rem;
       box-sizing: border-box;
@@ -8,7 +14,7 @@
       top: -0.3rem;
       background-color: #eee;
       font-size: 1.2rem;
-      width: 845px;
+      max-width: 1000px;
       text-align: left;
       margin: auto;
       border: 1px solid gray;

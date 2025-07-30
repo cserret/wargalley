@@ -2,8 +2,10 @@ a.bsr-link {
      font-size: 14px;
      position: relative;
      top: -1px;
+     text-shadow: none;
      &.title {
          top: -10px;
+         font-weight: normal;
      }
      text-decoration: none;
      border: 1px solid rgba(0,0,0,0);
@@ -11,27 +13,32 @@ a.bsr-link {
      white-space: nowrap;
      border-radius: 3px;
      margin: 0 2px;
-     font-weight: 100;
+     font-weight: normal;
      span.bsr-link-title {
          color: blue;
          font-size: 90%;
          margin-right: 3px;
          letter-spacing: 0.02rem;
+         font-weight: normal;
+         
      }
      span.bsr-link-page {
         color: #000;
         margin-right: 3px;
         font-size: 90%;
+        font-weight: normal;
     }
      span.bsr-link-rule {
          color: #f00;
          text-shadow: 0.01rem 0.01rem #a00;
+         font-weight: normal;
      }
  
      &:hover {
          border: 1px solid #dd9;
          background-color: rgba(255,255,0,0.9);
          text-shadow: 0.01rem 0.01rem black;
+         font-weight: normal;
      }
 
  }
