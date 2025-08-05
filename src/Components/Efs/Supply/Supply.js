@@ -13,6 +13,15 @@ import germanrations_pic from "../../../images/efs/supply/germanrations_pic.jpg"
 import sovietrations from "../../../images/efs/supply/sovietrations.jpg"
 import efs_minsk_map from "../../../images/efs/supply/efs_minsk_map.jpg"
 import efs_minsk_map_mainroad from "../../../images/efs/supply/efs_minsk_map_mainroad.jpg";
+import efs_minsk_map_road from "../../../images/efs/supply/efs_minsk_roadsc.jpg";
+import efs_minsk_map_minorRoads from "../../../images/efs/supply/efs_minsk_map_minorRoads.jpg";
+import efs_minsk_map_rail from "../../../images/efs/supply/efs_minsk_map_rail.jpg";
+import town_connect from "../../../images/efs/supply/town_connect.jpg";
+import town_connected from "../../../images/efs/supply/town_connected.jpg";
+import town_connect2 from "../../../images/efs/supply/town_connect2.jpg";
+import town_connected2 from "../../../images/efs/supply/town_connected2.jpg";
+import town_connect3 from "../../../images/efs/supply/town_connect3.jpg";
+import town_connected3 from "../../../images/efs/supply/town_connected3.jpg";
 import './Supply.scss';
 
 
@@ -83,7 +92,7 @@ const Supply = (props) => {
             fn: () => {
                 let g = paper.g()
                 let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(14, 13, 930, 98).attr({
+                let whiteRect = g.rect(14, 13, 931, 98).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
                     stroke: "black",
@@ -148,12 +157,87 @@ const Supply = (props) => {
             }
         }
 
+
+        let page1b = {
+            label: 'description',
+            delay: 1100,
+            duration: 5000,
+            remove: true,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                let windowWidth = window.innerWidth;
+                let whiteRect = g.rect(14, 13, 1725, 98).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                whiteRect.animate({ opacity: 1 }, 500);
+                setTimeout(() => {
+                    whiteRect.animate({ opacity: 0 }, 500);
+                }, 4500);
+
+                let msText = g.text(47, 61, "Let's look at the map features that are important for supply").attr({
+                    "textAnchor": "left",
+                    "dominant-baseline": "central",
+                    "fontSize": 65,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                msText.animate({ opacity: 1 }, 500);
+                setTimeout(() => {
+                    msText.animate({ opacity: 0 }, 500);
+                }, 4500);
+
+
+
+                let msText2 = g.text(48, 62, "Let's look at the map features that are important for supply").attr({
+                    "textAnchor": "left",
+                    "dominant-baseline": "central",
+                    "fontSize": 65,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                msText2.animate({ opacity: 0.2 }, 500);
+                setTimeout(() => {
+                    msText2.animate({ opacity: 0 }, 500);
+                }, 4500);
+
+                let msText3 = g.text(49, 63, "Let's look at the map features that are important for supply").attr({
+                    "textAnchor": "left",
+                    "dominant-baseline": "central",
+                    "fontSize": 65,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                msText3.animate({ opacity: 0.2 }, 500);
+                setTimeout(() => {
+                    msText3.animate({ opacity: 0 }, 500);
+                }, 4500);
+
+                //g.transform(`s${300 / windowWidth}, ${300 / windowWidth}, 0, 0`)
+                return { discrete: g, percentage: null }
+            }
+        }
+
         let page2 = {
             label: 'fade in main road',
             delay: 0,
             duration: 5000,
             remove: true,
-            async: false,
+            async: true,
             fn: () => {
                 let g2 = paper.g()
                 let g = paper.g()
@@ -178,7 +262,7 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                let zocText = g.text(360, 320, "Major Road").attr({
+                let zocText = g.text(360, 360, "Major Road").attr({
                     "textAnchor": "middle",
                     "dominant-baseline": "central",
                     "fontSize": 54,
@@ -189,9 +273,39 @@ const Supply = (props) => {
                     opacity: 0,
                 })
 
+                let rotateGroup = g.g();
+
+                let arrow1 = rotateGroup.path("M 0 6 L -16 6 -16 14 0 14 Z").attr({
+                    fill: "red",
+                    "strokeWidth": 1,
+                    stroke: "black",
+                    opacity: 1,
+                    transform: `t460, 420 s3, 3 `
+                });
+
+
+                let arrow2 = rotateGroup.path("M 0,0 L 18,8 L 0,18 Z").attr({
+                    fill: "red",
+                    "strokeWidth": 1,
+                    stroke: "black",
+                    opacity: 1,
+                    transform: `t475, 420 s3, 3`
+                });
+
+                let arrow1c = rotateGroup.path("M 5 7 L -5 7 -5 13 5 13 Z").attr({
+                    fill: "red",
+                    stroke: "none",
+                    opacity: 1,
+                    transform: `t460, 420 s3, 3 `
+                });
+
+                arrow2.animate({ transform: `s3 t480, 420` }, 500);
+                rotateGroup.transform(`r33`)
+
+
                 setTimeout(() => {
                     image2.animate({ opacity: 1 }, 500);
-                }, 1000);
+                }, 100);
                 setTimeout(() => {
                     image2.animate({ opacity: 0 }, 500);
                 }, 4500)
@@ -201,7 +315,412 @@ const Supply = (props) => {
                     zocText.animate({ opacity: 0 }, 500);
                 }, 4500)
 
+
+                setTimeout(() => {
+                    rotateGroup.animate({ opacity: 0 }, 500);
+                }, 4500)
+
                 return { discrete: g, percentage: g2 }
+            }
+        }
+
+        let page3 = {
+            label: 'fade in road',
+            delay: 0,
+            duration: 6000,
+            remove: true,
+            async: true,
+            fn: () => {
+                let g2 = paper.g()
+                let g = paper.g()
+
+                sgLastPageGroup.value = g
+
+                var image2 = g2.image(efs_minsk_map_road, 0, 0, 0, 0);
+                image2.attr({
+                    'xlink:href': efs_minsk_map_road,
+                    'width': "100%",
+                    'height': "100%",
+                    'opacity': 0
+                });
+
+                let zocText = g.text(379, 344, "Road").attr({
+                    "textAnchor": "middle",
+                    "dominant-baseline": "central",
+                    "fontSize": 54,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let rotateGroup = g.g();
+
+                let arrow1 = rotateGroup.path("M 0 6 L -16 6 -16 14 0 14 Z").attr({
+                    fill: "red",
+                    "strokeWidth": 1,
+                    stroke: "black",
+                    opacity: 1,
+                    transform: `t170, 300 s3, 3 `
+                });
+
+
+                let arrow2 = rotateGroup.path("M 0,0 L 18,8 L 0,18 Z").attr({
+                    fill: "red",
+                    "strokeWidth": 1,
+                    stroke: "black",
+                    opacity: 1,
+                    transform: `t185, 300 s3, 3`
+                });
+
+                let arrow1c = rotateGroup.path("M 5 7 L -5 7 -5 13 5 13 Z").attr({
+                    fill: "red",
+                    stroke: "none",
+                    opacity: 1,
+                    transform: `t170, 300 s3, 3 `
+                });
+
+                arrow2.animate({ transform: `s3 t188, 300` }, 500);
+                rotateGroup.transform(`t60 38 r180`)
+
+
+                setTimeout(() => {
+                    image2.animate({ opacity: 1 }, 500);
+                }, 500);
+                setTimeout(() => {
+                    image2.animate({ opacity: 0 }, 500);
+                }, 5000)
+
+                zocText.animate({ opacity: 1 }, 500);
+                setTimeout(() => {
+                    zocText.animate({ opacity: 0 }, 500);
+                }, 5000)
+
+                setTimeout(() => {
+                    rotateGroup.animate({ opacity: 0 }, 500);
+                }, 5000)
+
+                return { discrete: g, percentage: g2 }
+            }
+        }
+
+
+        let page4 = {
+            label: 'fade in minor roads',
+            delay: 0,
+            duration: 6000,
+            remove: true,
+            async: true,
+            fn: () => {
+                let g2 = paper.g()
+                let g = paper.g()
+
+                sgLastPageGroup.value = g
+
+                var image2 = g2.image(efs_minsk_map_minorRoads, 0, 0, 0, 0);
+                image2.attr({
+                    'xlink:href': efs_minsk_map_minorRoads,
+                    'width': "100%",
+                    'height': "100%",
+                    'opacity': 0
+                });
+
+                let zocText = g.text(410, 194, "Minor road").attr({
+                    "textAnchor": "middle",
+                    "dominant-baseline": "central",
+                    "fontSize": 54,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let rotateGroup = g.g();
+
+                let arrow1 = rotateGroup.path("M 0 6 L -16 6 -16 14 0 14 Z").attr({
+                    fill: "red",
+                    "strokeWidth": 1,
+                    stroke: "black",
+                    opacity: 1,
+                    transform: `t540, 150 s3, 3 `
+                });
+
+
+                let arrow2 = rotateGroup.path("M 0,0 L 18,8 L 0,18 Z").attr({
+                    fill: "red",
+                    "strokeWidth": 1,
+                    stroke: "black",
+                    opacity: 1,
+                    transform: `t545, 150 s3, 3`
+                });
+
+                let arrow1c = rotateGroup.path("M 5 7 L -5 7 -5 13 5 13 Z").attr({
+                    fill: "red",
+                    stroke: "none",
+                    opacity: 1,
+                    transform: `t540, 150 s3, 3 `
+                });
+
+                arrow2.animate({ transform: `s3 t548, 150` }, 500);
+                rotateGroup.transform(`t58 38`)
+
+
+                setTimeout(() => {
+                    image2.animate({ opacity: 1 }, 500);
+                }, 500);
+                setTimeout(() => {
+                    image2.animate({ opacity: 0 }, 500);
+                }, 5000)
+
+                zocText.animate({ opacity: 1 }, 500);
+                setTimeout(() => {
+                    zocText.animate({ opacity: 0 }, 500);
+                }, 5000)
+
+                setTimeout(() => {
+                    rotateGroup.animate({ opacity: 0 }, 500);
+                }, 5000)
+
+                return { discrete: g, percentage: g2 }
+            }
+        }
+
+
+        let page5 = {
+            label: 'fade in rails',
+            delay: 0,
+            duration: 6000,
+            remove: true,
+            async: true,
+            fn: () => {
+                let g2 = paper.g()
+                let g = paper.g()
+
+                sgLastPageGroup.value = g
+
+                var image2 = g2.image(efs_minsk_map_rail, 0, 0, 0, 0);
+                image2.attr({
+                    'xlink:href': efs_minsk_map_rail,
+                    'width': "100%",
+                    'height': "100%",
+                    'opacity': 0
+                });
+
+                let zocText = g.text(704, 234, "Railroad").attr({
+                    "textAnchor": "middle",
+                    "dominant-baseline": "central",
+                    "fontSize": 54,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let rotateGroup = g.g();
+
+                let arrow1 = rotateGroup.path("M 0 6 L -16 6 -16 14 0 14 Z").attr({
+                    fill: "red",
+                    "strokeWidth": 1,
+                    stroke: "black",
+                    opacity: 1,
+                    transform: `t540, 250 s3, 3 `
+                });
+
+
+                let arrow2 = rotateGroup.path("M 0,0 L 18,8 L 0,18 Z").attr({
+                    fill: "red",
+                    "strokeWidth": 1,
+                    stroke: "black",
+                    opacity: 1,
+                    transform: `t545, 250 s3, 3`
+                });
+
+                let arrow1c = rotateGroup.path("M 5 7 L -5 7 -5 13 5 13 Z").attr({
+                    fill: "red",
+                    stroke: "none",
+                    opacity: 1,
+                    transform: `t540, 250 s3, 3 `
+                });
+
+                arrow2.animate({ transform: `s3 t548, 250` }, 500);
+          
+                rotateGroup.transform(`t160 58 r90`)
+
+                setTimeout(() => {
+                    image2.animate({ opacity: 1 }, 500);
+                }, 500);
+                setTimeout(() => {
+                    image2.animate({ opacity: 0 }, 500);
+                }, 5000)
+
+                zocText.animate({ opacity: 1 }, 500);
+                setTimeout(() => {
+                    zocText.animate({ opacity: 0 }, 500);
+                }, 5000)
+
+                setTimeout(() => {
+                    rotateGroup.animate({ opacity: 0 }, 500);
+                }, 5000)
+
+                return { discrete: g, percentage: g2 }
+            }
+        }
+
+
+        let page6 = {
+            label: 'roads go through cities and towns',
+            delay: 0,
+            duration: 15000,
+            remove: true,
+            async: false,
+            fn: () => {
+
+                let g = paper.g()
+                let g2 = paper.g()
+
+
+                sgLastPageGroup.value = g
+
+                let whiteRect = g.rect(186, 173, 1525, 498).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                whiteRect.animate({ opacity: 1 }, 500);
+
+
+                let textX = 934
+                let textY = 244
+
+                let text1 = g.text(textX, textY, "Although the roads and railroads are not printed inside the").attr({
+                    "textAnchor": "middle",
+                    "dominant-baseline": "central",
+                    "fontSize": 54,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let text2 = g.text(textX, textY + 60, "town and city graphics, it is assumed they still connect to").attr({
+                    "textAnchor": "middle",
+                    "dominant-baseline": "central",
+                    "fontSize": 54,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let text3 = g.text(textX, textY + 120, "any other roads or railroads entering the same hex.").attr({
+                    "textAnchor": "middle",
+                    "dominant-baseline": "central",
+                    "fontSize": 54,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                text1.animate({ opacity: 1 }, 500);
+                setTimeout(() => {
+                    text2.animate({ opacity: 1 }, 500);
+                }, 100);
+                setTimeout(() => {
+                    text3.animate({ opacity: 1 }, 500);
+                }, 200);
+                setTimeout(() => {
+                    text1.animate({ opacity: 0 }, 500);
+                    text2.animate({ opacity: 0 }, 500);
+                    text3.animate({ opacity: 0 }, 500);
+                    whiteRect.animate({ opacity: 0 }, 500);
+                }, 13000)
+
+                let posX = 450
+                var town = g.image(town_connect, posX, 410, 0, 0);
+                town.attr({
+                    'xlink:href': town_connect,
+                    'width': "233",
+                    'height': "233",
+                    'opacity': 1
+                });
+                var town2 = g.image(town_connect2, posX + 370, 410, 0, 0);
+                town2.attr({
+                    'xlink:href': town_connect2,
+                    'width': "233",
+                    'height': "233",
+                    'opacity': 1
+                });
+                var town3 = g.image(town_connect3, posX + 740, 410, 0, 0);
+                town3.attr({
+                    'xlink:href': town_connect3,
+                    'width': "233",
+                    'height': "233",
+                    'opacity': 1
+                });
+                var townConnected = g.image(town_connected, posX, 410, 0, 0);
+                townConnected.attr({
+                    'xlink:href': town_connected,
+                    'width': "233",
+                    'height': "233",
+                    'opacity': 0
+                });
+                var townConnected2 = g.image(town_connected2, posX + 370, 410, 0, 0);
+                townConnected2.attr({
+                    'xlink:href': town_connected2,
+                    'width': "233",
+                    'height': "233",
+                    'opacity': 0
+                });
+                var townConnected3 = g.image(town_connected3, posX + 740, 410, 0, 0);
+                townConnected3.attr({
+                    'xlink:href': town_connected3,
+                    'width': "233",
+                    'height': "233",
+                    'opacity': 0
+                });
+                setTimeout(() => {
+                    townConnected.animate({ opacity: 1 }, 500);
+                    townConnected2.animate({ opacity: 1 }, 500);
+                    townConnected3.animate({ opacity: 1 }, 500);
+                    setTimeout(() => {
+                        townConnected.animate({ opacity: 0 }, 500);
+                        townConnected2.animate({ opacity: 0 }, 500);
+                        townConnected3.animate({ opacity: 0 }, 500);
+                        setTimeout(() => {
+                            townConnected.animate({ opacity: 1 }, 500);
+                            townConnected2.animate({ opacity: 1 }, 500);
+                            townConnected3.animate({ opacity: 1 }, 500);
+                            setTimeout(() => {
+                                townConnected.animate({ opacity: 0 }, 500);
+                                townConnected2.animate({ opacity: 0 }, 500);
+                                townConnected3.animate({ opacity: 0 }, 500);
+                                setTimeout(() => {
+                                    townConnected.animate({ opacity: 1 }, 500);
+                                    townConnected2.animate({ opacity: 1 }, 500);
+                                    townConnected3.animate({ opacity: 1 }, 500);
+                                    setTimeout(() => {
+                                        town.animate({ opacity: 0 }, 500);
+                                        town2.animate({ opacity: 0 }, 500);
+                                        town3.animate({ opacity: 0 }, 500);
+                                        townConnected.animate({ opacity: 0 }, 500);
+                                        townConnected2.animate({ opacity: 0 }, 500);
+                                        townConnected3.animate({ opacity: 0 }, 500);
+                                    }, 2000);
+                                }, 2000);
+                            }, 2000);
+                        }, 2000);
+                    }, 2000);
+                }, 2000);
+
+                return { discrete: g, percentage: null }
             }
         }
 
@@ -209,7 +728,12 @@ const Supply = (props) => {
 
         let _storyBoard = []
         _storyBoard.push(page1)
+        _storyBoard.push(page1b)
         _storyBoard.push(page2)
+        _storyBoard.push(page3)
+        _storyBoard.push(page4)
+        _storyBoard.push(page5)
+        _storyBoard.push(page6)
         sgStoryBoard.value = _storyBoard
         sequence()
     }
@@ -235,14 +759,9 @@ const Supply = (props) => {
             setTimeout(() => {
                 let result = null
                 if (page.fn) {
+                    console.log('starting page fn', page.label);
                     result = page.fn();
                     if (result.discrete) {
-                        let cw = paper.clientWidth
-                        let ch = paper.clientHeight
-                        console.log('dimensInitial.value.width:', sgDimensInitial.value.width, 
-                            'dimensInitial.value.height:', sgDimensInitial.value.height)
-                        console.log('window.innerWidth:', window.innerWidth, 'window.innerHeight:', window.innerHeight)
-                       // let ratio = 1900
                         result.discrete.transform(`s${sgDimensInitial.value.width / 1900}, ${sgDimensInitial.value.height / 852}, 0, 0`)
                     }
                 }
