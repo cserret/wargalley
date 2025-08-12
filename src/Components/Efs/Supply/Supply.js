@@ -22,7 +22,9 @@ import town_connect2 from "../../../images/efs/supply/town_connect2.jpg";
 import town_connected2 from "../../../images/efs/supply/town_connected2.jpg";
 import town_connect3 from "../../../images/efs/supply/town_connect3.jpg";
 import town_connected3 from "../../../images/efs/supply/town_connected3.jpg";
+import german_infantry_unit from "../../../images/efs/supply/german_infantry_division_120.png";
 import './Supply.scss';
+let mina = window.mina
 
 
 const Supply = (props) => {
@@ -30,9 +32,182 @@ const Supply = (props) => {
     const sgStoryBoard = useSignal([]);
     const sgLastPageGroup = useSignal(null);
     const sgDimensInitial = useSignal({ width: 0, height: 0 });
+    const sgAxisCombatUnit = useSignal(null);
     const [storyBoardStarted, setStoryBoardStarted] = useState(false)
 
+    // Snap SVG Easing
+    // 
+    // Extends Snap SVG easing functions with Robert Penner's easing equations
+    // http://www.robertpenner.com/easing/
+    // 
 
+    // Quad
+    // 
+
+
+    /*   
+       let mina = Snap.mina || {};
+       mina.easeInQuad = function (n) {
+           return Math.pow(n, 2);
+       };
+       mina.easeOutQuad = function (n) {
+           return -1 * n * (n - 2);
+       };
+       mina.easeInOutQuad = function (n) {
+           if ((n *= 2) < 1) return 0.5 * Math.pow(n, 2);
+           return -0.5 * ((--n) * (n - 2) - 1);
+       };
+   
+   
+       // Cubic
+       // 
+       mina.easeInCubic = function (n) {
+           return Math.pow(n, 3);
+       };
+       mina.easeOutCubic = function (n) {
+           return Math.pow(n - 1, 3) + 1;
+       };
+       mina.easeInOutCubic = function (n) {
+           if ((n *= 2) < 1) return 0.5 * Math.pow(n, 3);
+           return 0.5 * (Math.pow(n - 2, 3) + 2);
+       };
+   
+   
+       // Quart
+       // 
+       mina.easeInQuart = function (n) {
+           return Math.pow(n, 4);
+       };
+       mina.easeOutQuart = function (n) {
+           return -1 * (Math.pow(n - 1, 4) - 1);
+       };
+       mina.easeInOutQuart = function (n) {
+           if ((n *= 2) < 1) return 0.5 * Math.pow(n, 4);
+           return -0.5 * (Math.pow(n - 2, 4) - 2);
+       };
+   
+   
+       // Quint
+       // 
+       mina.easeInQuint = function (n) {
+           return Math.pow(n, 5);
+       };
+       mina.easeOutQuint = function (n) {
+           return Math.pow(n - 1, 5) + 1;
+       };
+       mina.easeInOutQuint = function (n) {
+           if ((n *= 2) < 1) return 0.5 * Math.pow(n, 5);
+           return 0.5 * (Math.pow(n - 2, 5) + 2);
+       };
+   
+   
+       // Sine
+       // 
+       mina.easeInSine = function (n) {
+           return -1 * Math.cos(n * (Math.PI / 2)) + 1;
+       };
+       mina.easeOutSine = function (n) {
+           return Math.sin(n * (Math.PI / 2));
+       };
+       mina.easeInOutSine = function (n) {
+           return -0.5 * (Math.cos(Math.PI * n) - 1);
+       };
+   
+   
+       // Circ
+       // 
+       mina.easeInCirc = function (n) {
+           return -1 * (Math.sqrt(1 - n * n) - 1);
+       };
+       mina.easeOutCirc = function (n) {
+           return Math.sqrt(1 - Math.pow(n - 1, 2));
+       };
+       mina.easeInOutCirc = function (n) {
+           if ((n *= 2) < 1) return -0.5 * (Math.sqrt(1 - n * n) - 1);
+           return 0.5 * (Math.sqrt(1 - (n -= 2) * n) + 1);
+       };
+   
+   
+       // Expo
+       // 
+       mina.easeInExpo = function (n) {
+           return (n == 0) ? 0 : Math.pow(2, 10 * (n - 1));
+       };
+       mina.easeOutExpo = function (n) {
+           return (n == 1) ? 1 : -Math.pow(2, -10 * n) + 1;
+       };
+       mina.easeInOutExpo = function (n) {
+           if (n == 0) return 0;
+           if (n == 1) return 1;
+           if ((n *= 2) < 1) return 0.5 * Math.pow(2, 10 * (n - 1));
+           return 0.5 * (-Math.pow(2, -10 * --n) + 2);
+       };
+   
+   
+       // Elastic
+       // 
+       mina.easeInElastic = function (n) {
+           var s = 1.70158, p = 0.3;
+           if (n == 0) return 0;
+           if (n == 1) return 1;
+           s = p / (2 * Math.PI) * Math.asin(1);
+           return -(Math.pow(2, 10 * (n -= 1)) * Math.sin((n - s) * (2 * Math.PI) / p));
+       };
+       mina.easeOutElastic = function (n) {
+           var s = 1.70158, p = 0.3;
+           if (n == 0) return 0;
+           if (n == 1) return 1;
+           s = p / (2 * Math.PI) * Math.asin(1);
+           return Math.pow(2, -10 * n) * Math.sin((n - s) * (2 * Math.PI) / p) + 1;
+       };
+       mina.easeInOutElastic = function (n) {
+           var p = 0.45, s = p / (2 * Math.PI) * Math.asin(1);
+           if (n == 0) return 0;
+           if ((n *= 2) == 2) return 1;
+           if (n < 1) return -0.5 * (Math.pow(2, 10 * (n -= 1)) * Math.sin((n - s) * (2 * Math.PI) / p));
+           return Math.pow(2, -10 * (n -= 1)) * Math.sin((n - s) * (2 * Math.PI) / p) * 0.5 + 1;
+       };
+   
+   
+       // Back
+       // 
+       mina.easeInBack = function (n, s) {
+           if (s == undefined) s = 1.70158;
+           return Math.pow(n, 2) * ((s + 1) * n - s);
+       };
+       mina.easeOutBack = function (n, s) {
+           if (s == undefined) s = 1.70158;
+           return (Math.pow(--n, 2) * ((s + 1) * n + s) + 1);
+       };
+       mina.easeInOutBack = function (n, s) {
+           if (s == undefined) s = 1.70158;
+           if ((n *= 2) < 1) return 0.5 * (Math.pow(n, 2) * (((s *= 1.525) + 1) * n - s));
+           return 0.5 * (Math.pow((n -= 2), 2) * (((s *= 1.525) + 1) * n + s) + 2);
+       };
+   
+   
+       // Bounce
+       // 
+       mina.easeInBounce = function (n) {
+           return 1 - mina.easeOutBounce(1 - n);
+       };
+       mina.easeOutBounce = function (n) {
+           if (n < (1 / 2.75)) {
+               return 7.5625 * n * n;
+           } else if (n < (2 / 2.75)) {
+               return 7.5625 * (n -= (1.5 / 2.75)) * n + 0.75;
+           } else if (n < (2.5 / 2.75)) {
+               return 7.5625 * (n -= (2.25 / 2.75)) * n + 0.9375;
+           } else {
+               return 7.5625 * (n -= (2.625 / 2.75)) * n + 0.984375;
+           }
+       };
+       mina.easeInOutBounce = function (n) {
+           if (n < 0.5) return mina.easeInBounce(n * 2) * 0.5;
+           return mina.easeOutBounce(n * 2 - 1) * 0.5 + 1 * 0.5;
+       };
+   
+   */
     useEffect(() => {
         let _paper = Snap('#supply_examples');
         if (_paper) {
@@ -262,7 +437,7 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                let zocText = g.text(360, 360, "Major Road").attr({
+                let zocText = g.text(360, 360, "Motorway").attr({
                     "textAnchor": "middle",
                     "dominant-baseline": "central",
                     "fontSize": 54,
@@ -344,7 +519,7 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                let zocText = g.text(379, 344, "Road").attr({
+                let zocText = g.text(429, 344, "Main road").attr({
                     "textAnchor": "middle",
                     "dominant-baseline": "central",
                     "fontSize": 54,
@@ -546,7 +721,7 @@ const Supply = (props) => {
                 });
 
                 arrow2.animate({ transform: `s3 t548, 250` }, 500);
-          
+
                 rotateGroup.transform(`t160 58 r90`)
 
                 setTimeout(() => {
@@ -575,7 +750,7 @@ const Supply = (props) => {
             delay: 0,
             duration: 15000,
             remove: true,
-            async: false,
+            async: true,
             fn: () => {
 
                 let g = paper.g()
@@ -596,7 +771,7 @@ const Supply = (props) => {
                 let textX = 934
                 let textY = 244
 
-                let text1 = g.text(textX, textY, "Although the roads and railroads are not printed inside the").attr({
+                let text1 = g.text(textX, textY, "Although the roads and railroads are not printed inside").attr({
                     "textAnchor": "middle",
                     "dominant-baseline": "central",
                     "fontSize": 54,
@@ -607,7 +782,7 @@ const Supply = (props) => {
                     opacity: 0,
                 })
 
-                let text2 = g.text(textX, textY + 60, "town and city graphics, it is assumed they still connect to").attr({
+                let text2 = g.text(textX, textY + 60, "the town and city graphics, it is assumed they still connect").attr({
                     "textAnchor": "middle",
                     "dominant-baseline": "central",
                     "fontSize": 54,
@@ -618,7 +793,7 @@ const Supply = (props) => {
                     opacity: 0,
                 })
 
-                let text3 = g.text(textX, textY + 120, "any other roads or railroads entering the same hex.").attr({
+                let text3 = g.text(textX, textY + 120, "to any other roads or railroads exiting the same hex.").attr({
                     "textAnchor": "middle",
                     "dominant-baseline": "central",
                     "fontSize": 54,
@@ -724,6 +899,1163 @@ const Supply = (props) => {
             }
         }
 
+        let page7 = {
+            label: 'Minsk',
+            delay: 1100,
+            duration: 5000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                let whiteRect = g.rect(162, 691, 1640, 98).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                whiteRect.animate({ opacity: 1 }, 500);
+                setTimeout(() => {
+                    whiteRect.animate({ opacity: 0 }, 500);
+                }, 4500);
+                setTimeout(() => {
+                    whiteRect.remove();
+                }, 5000);
+
+                let msText = g.text(199, 741, "We will consider Minsk as the supply source for the Axis").attr({
+                    "textAnchor": "left",
+                    "dominant-baseline": "central",
+                    "fontSize": 65,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                msText.animate({ opacity: 1 }, 500);
+                setTimeout(() => {
+                    msText.animate({ opacity: 0 }, 500);
+                }, 4500);
+                setTimeout(() => {
+                    msText.remove();
+                }, 5000);
+
+
+                let supplyWhiteCircle = g.circle(5, 625, 24).attr({
+                    stroke: "black",
+                    strokeWidth: 1,
+                    fill: "#ffffff",
+                    opacity: 0
+                })
+
+
+                let blackHalfCircle = g.path("M  45,713 A 26,26 0 1,1 45,813 Z").attr({
+                    fill: "#000000",
+                    stroke: "black",
+                    strokeWidth: 1,
+                    opacity: 0
+                })
+
+                blackHalfCircle.transform(`s 0.49, 0.49 t -108 -281`)
+
+                let supplyCircle = g.group(supplyWhiteCircle, blackHalfCircle)
+                supplyCircle.transform(`t 40, 189`)
+
+                setTimeout(() => {
+                    supplyWhiteCircle.animate({ opacity: 1 }, 500);
+                    blackHalfCircle.animate({ opacity: 1 }, 500);
+                }, 3000);
+
+
+                //g.transform(`s${300 / windowWidth}, ${300 / windowWidth}, 0, 0`)
+                return { discrete: g, percentage: null }
+            }
+        }
+
+        let page8 = {
+            label: 'Dry weather',
+            delay: 1100,
+            duration: 1000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                let whiteRect = g.rect(12, 11, 390, 66).attr({
+                    fill: "#aadaff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                whiteRect.animate({ opacity: 1 }, 500);
+                // setTimeout(() => {
+                //     whiteRect.animate({ opacity: 0 }, 500);
+                // }, 4500);
+                // setTimeout(() => {
+                //     whiteRect.remove();
+                // }, 5000);
+
+                let msText = g.text(102, 44, "Dry weather").attr({
+                    "textAnchor": "left",
+                    "dominant-baseline": "central",
+                    "fontSize": 50,
+                    "fontWeight": "normal",
+                    "fontFamily": "sans-serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                msText.animate({ opacity: 1 }, 500);
+                // setTimeout(() => {
+                //     msText.animate({ opacity: 0 }, 500);
+                // }, 4500);
+                // setTimeout(() => {
+                //     msText.remove();
+                // }, 5000);
+
+                let sun = g.circle(0, 0, 20).attr({
+                    fill: "#ffff00",
+                    stroke: "none",
+                    strokeWidth: 0,
+                    opacity: 1
+                })
+                let sunRay = g.path("M -10,15 L 10, 15 0 -15 z").attr({
+                    fill: "#ffff00",
+                    stroke: "none",
+                    strokeWidth: 0,
+                    opacity: 1
+                })
+                // let sunRay2 = sunRay.clone()
+                // //let sunRay3 = sunRay.clone()
+                // sunRay2.attr({
+                //     fill: "#0000ff",
+                // })
+                let sunGroup = g.group(sun)
+                for (let i = 0; i < 8; i++) {
+                    let angle = i * 45;
+                    let ray = sunRay.clone(true);
+                    ray.transform(`r${angle} t 0, -15`);
+                    sunGroup.append(ray);
+                }
+
+                sunRay.transform(`t 0, -15`)
+                //sunRay2.transform(`r 45 t 0, -15`)
+                //sunRay3.transform(`r 90 t 0, -15`)
+                //sun.transform(`t `)
+
+
+
+                sunGroup.transform(`t 55, 45 s 1, 1`)
+
+                //sun.transform(`t 55, 45 s 1, 1`)
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+
+        let page9 = {
+            label: 'start with dry weather',
+            delay: 0,
+            duration: 8000,
+            remove: true,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                let posX = 100
+                let posY = 365
+                let boxWidth = 1000
+                let windowWidth = window.innerWidth;
+                let whiteRect = g.rect(444, posY, boxWidth, 190).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                whiteRect.animate({ opacity: 1 }, 500);
+                setTimeout(() => {
+                    //   whiteRect.animate({ opacity: 0 }, 500);
+                }, 4500);
+
+
+                let msText = g.text(490, posY + 70, "The weather conditions affect the supply rules.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let msText2 = g.text(490, posY + 121, "Lets start with Dry weather.").attr({
+                    "textAnchor": "left",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                msText.animate({ opacity: 1 }, 500);
+
+                setTimeout(() => {
+                    msText2.animate({ opacity: 1 }, 500);
+                }, 1500);
+
+                setTimeout(() => {
+                    msText.animate({ opacity: 0 }, 500);
+                    msText2.animate({ opacity: 0 }, 500);
+                    whiteRect.animate({ opacity: 0 }, 500);
+                }, 4500);
+
+
+
+                //g.transform(`s${300 / windowWidth}, ${300 / windowWidth}, 0, 0`)
+                return { discrete: g, percentage: null }
+            }
+        }
+
+
+        let page10 = {
+            label: 'combat unit',
+            delay: 0,
+            duration: 6000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g2 = paper.g()
+                let g = paper.g()
+
+
+
+
+                let posX = 100
+                let posY = 365
+                let boxWidth = 810
+                let windowWidth = window.innerWidth;
+                let whiteRect = g.rect(554, posY, boxWidth, 190).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                whiteRect.animate({ opacity: 1 }, 500);
+                setTimeout(() => {
+                    //   whiteRect.animate({ opacity: 0 }, 500);
+                }, 4500);
+
+
+                let msText = g.text(760, posY + 70, "Let's take this Axis combat").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let msText2 = g.text(760, posY + 121, "unit and put it in Minsk").attr({
+                    "textAnchor": "left",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                msText.animate({ opacity: 1 }, 500);
+
+                setTimeout(() => {
+                    msText2.animate({ opacity: 1 }, 500);
+                }, 1500);
+
+                setTimeout(() => {
+                    msText.animate({ opacity: 0 }, 500);
+                    msText2.animate({ opacity: 0 }, 500);
+                    whiteRect.animate({ opacity: 0 }, 500);
+                }, 4500);
+
+                sgLastPageGroup.value = g
+
+                sgAxisCombatUnit.value = g.image(german_infantry_unit, 613, 410, 0, 0);
+                sgAxisCombatUnit.value.attr({
+                    'xlink:href': german_infantry_unit,
+                    'width': "120",
+                    'height': "120",
+                    'opacity': 1
+                });
+
+                setTimeout(() => {
+                    //  combat_unit.animate({ width: 35, height: 35, transform: 't 44, 44 ' }, 500);
+                    sgAxisCombatUnit.value.animate({ width: 58, height: 58, transform: 't -596, 374 ' }, 500);
+                }, 2500);
+
+
+
+                return { discrete: g, percentage: g2 }
+            }
+        }
+
+
+        let page11 = {
+            label: 'supply in Minsk',
+            delay: 0,
+            duration: 10000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g2 = paper.g()
+                let g = paper.g()
+
+
+
+
+                let posX = 300
+                let posY = 270
+                let boxWidth = 1360
+                let windowWidth = window.innerWidth;
+                let whiteRect = g.rect(posX - 30, posY + 12, boxWidth, 218).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                whiteRect.animate({ opacity: 1 }, 500);
+                setTimeout(() => {
+                    //   whiteRect.animate({ opacity: 0 }, 500);
+                }, 4500);
+
+
+                let msText = g.text(posX, posY + 70, "In the General Supply Status phase, supply is determined for each").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let msText2 = g.text(posX, posY + 121, "combat unit on the board. Since Minsk is a Axis supply source,").attr({
+                    "textAnchor": "left",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let msText3 = g.text(posX, posY + 173, "General Supply will be traced from Minsk out to units on the map.").attr({
+                    "textAnchor": "left",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                msText.animate({ opacity: 1 }, 500);
+                msText2.animate({ opacity: 1 }, 500);
+                msText3.animate({ opacity: 1 }, 500);
+
+
+                setTimeout(() => {
+                    msText.animate({ opacity: 0 }, 500);
+                    msText2.animate({ opacity: 0 }, 500);
+                    msText3.animate({ opacity: 0 }, 500);
+                    whiteRect.animate({ opacity: 0 }, 500);
+                }, 9500);
+                setTimeout(() => {
+                    msText.remove();
+                    msText2.remove();
+                    msText3.remove();
+                    whiteRect.remove();
+                }, 10000);
+
+                sgLastPageGroup.value = g
+
+
+
+
+                return { discrete: g, percentage: g2 }
+            }
+        }
+
+        let page12 = {
+            label: 'supply in Minsk',
+            delay: 0,
+            duration: 10000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g2 = paper.g()
+                let g = paper.g()
+
+
+
+
+                let posX = 440
+                let posY = 270
+                let boxWidth = 1103
+                let windowWidth = window.innerWidth;
+                let whiteRect = g.rect(posX - 30, posY + 12, boxWidth, 218).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                whiteRect.animate({ opacity: 1 }, 500);
+                setTimeout(() => {
+                    //   whiteRect.animate({ opacity: 0 }, 500);
+                }, 4500);
+
+
+                let msText = g.text(posX, posY + 70, "So let's say it's the Supply Status phase. Check supply").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let msText2 = g.text(posX, posY + 121, "for that (one) unit on the map. It is of course in supply").attr({
+                    "textAnchor": "left",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let msText3 = g.text(posX, posY + 173, "because it is sitting directly on a supply source.").attr({
+                    "textAnchor": "left",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                msText.animate({ opacity: 1 }, 500);
+                msText2.animate({ opacity: 1 }, 500);
+                msText3.animate({ opacity: 1 }, 500);
+
+
+                setTimeout(() => {
+                    msText.animate({ opacity: 0 }, 500);
+                    msText2.animate({ opacity: 0 }, 500);
+                    msText3.animate({ opacity: 0 }, 500);
+                    whiteRect.animate({ opacity: 0 }, 500);
+                }, 9000);
+                setTimeout(() => {
+                    msText.remove();
+                    msText2.remove();
+                    msText3.remove();
+                    whiteRect.remove();
+                }, 9500);
+
+                sgLastPageGroup.value = g
+
+
+
+
+                return { discrete: g, percentage: g2 }
+            }
+        }
+
+        let page13 = {
+            label: 'check supply',
+            delay: 0,
+            duration: 6000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+
+                let posX = 560
+                let posY = 300
+                let boxWidth = 762
+                let windowWidth = window.innerWidth;
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 110).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                whiteRect.animate({ opacity: 1 }, 500);
+
+
+
+                let msText = g.text(posX, posY + 70, "Now let's say that unit is over here...").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+
+                msText.animate({ opacity: 1 }, 500);
+                setTimeout(() => {
+                    whiteRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                }, 4500);
+
+                sgLastPageGroup.value = g
+                setTimeout(() => {
+                    sgAxisCombatUnit.value.animate({ transform: 't -193, 374' }, 500, mina.easeinout);
+                }, 2500);
+
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+        let page14 = {
+            label: 'is it now in supply',
+            delay: 0,
+            duration: 6000,
+            remove: true,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+
+                let posX = 560
+                let posY = 300
+                let boxWidth = 762
+                let windowWidth = window.innerWidth;
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 110).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                whiteRect.animate({ opacity: 1 }, 500);
+
+
+
+                let msText = g.text(posX, posY + 70, "Will that unit be in general supply?").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+
+                msText.animate({ opacity: 1 }, 500);
+
+                setTimeout(() => {
+                    whiteRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                }, 5000);
+
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+        let page15 = {
+            label: 'LOC',
+            delay: 0,
+            duration: 15000,
+            remove: true,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+
+                let posX = 464
+                let posY = 323
+                let boxWidth = 1043
+                let windowWidth = window.innerWidth;
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 170).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                whiteRect.animate({ opacity: 1 }, 500);
+
+                setTimeout(() => {
+                    whiteRect.animate({
+                        height: 238
+                    }, 500, mina.easein);
+                }, 9000);
+
+
+                let msText = g.text(posX, posY + 70, "A Line of Communications (LOC) in Dry Weather").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let msText2 = g.text(posX, posY + 130, "is usually 7 hexes. So let's count the hexes...").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let msText3 = g.text(posX, posY + 190, "The distance is 6 hexes, so the unit is in supply.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let number1 = null
+                let number2 = null
+                let numX = 380
+                let numY = 773
+                let numY2 = 812
+                let numbersGroups = []
+                for (let i = 1; i < 7; i++) {
+                    let numMY = (i % 2 === 0) ? numY2 : numY;
+                    let circleN = g.circle(numX, numMY, 30).attr({
+                        fill: "#ffffff",
+                        stroke: "black",
+                        strokeWidth: 1,
+                        opacity: 1
+                    })
+                    let msTextN = g.text(numX - 11, numMY, i).attr({
+                        "textAnchor": "center",
+                        "dominant-baseline": "central",
+                        "fontSize": 45,
+                        "fontWeight": "bold",
+                        "fontFamily": "serif",
+                        stroke: "none",
+                        fill: "black",
+                        opacity: 1,
+                    })
+                    //number1 = g.group(circle1, msTextN1)
+                    let circleAndNumber = g.group(circleN, msTextN)
+                    circleAndNumber.attr({
+                        opacity: 0
+                    })
+                    numbersGroups.push(circleAndNumber)
+                    numX -= 67;
+                    //  numY -= 44;
+                    //numY2 -= 44;
+                }
+
+                setTimeout(() => {
+                    for (let i = 0; i < numbersGroups.length; i++) {
+                        let numGroup = numbersGroups[i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 1 }, 500);
+                        }, i * 500);
+                    }
+                }, 6000);
+
+                msText.animate({ opacity: 1 }, 500);
+                msText2.animate({ opacity: 1 }, 500);
+                setTimeout(() => {
+                    msText3.animate({ opacity: 1 }, 500);
+                }, 10000)
+
+                console.log('ok...')
+                setTimeout(() => {
+                    for (let i = numbersGroups.length; i > 0; i--) {
+                        let numGroup = numbersGroups[numbersGroups.length - i];
+                        console.log(i, 'numGroup', numGroup);
+                        setTimeout(() => {
+                            console.log('numGroup animated to 0 opacity number ', i);
+                            numGroup.animate({ opacity: 0 }, 80);
+                        }, i * 80);
+                    }
+                }, 14000);
+
+                // setTimeout(() => {
+                //     whiteRect.animate({ opacity: 0 }, 500);
+                //     msText.animate({ opacity: 0 }, 500);
+                //     msText2.animate({ opacity: 0 }, 500);
+                //   }, 7500);
+                //   setTimeout(() => {
+                //     whiteRect.remove()
+                //     msText.remove()
+                //     msText2.remove()
+                //   }, 8000);
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+        let page16 = {
+            label: 'Road',
+            delay: 0,
+            duration: 10000,
+            remove: true,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+
+                let posX = 92
+                let posY = 266
+                let boxWidth = 1790
+                let windowWidth = window.innerWidth;
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 299).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                whiteRect.animate({ opacity: 1 }, 450);
+
+                // setTimeout(() => {
+                //     whiteRect.animate({
+                //         height: 238
+                //     }, 500, mina.easein);
+                // }, 9000);
+
+
+                let msText = g.text(posX, posY + 70, "A Motorway or Road (not minor road) hex this is connected to a supply source can extend").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let msText2 = g.text(posX, posY + 130, "the supply source along the road, up to 21 hexes in dry weather. However, enemy unit(s)").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let msText3 = g.text(posX, posY + 190, "or enemy zocs on the road blocks the tracing of supply at that hex. Friendly units can").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let msText4 = g.text(posX, posY + 250, "trace a LOC to a road hex that is connected to a supply source to get its general supply.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let number1 = null
+                let number2 = null
+                let numX = 380
+                let numY = 773
+                let numY2 = 812
+                let numbersGroups = []
+                // for (let i = 1; i < 7; i++) {
+                //     let numMY = (i % 2 === 0) ? numY2 : numY;
+                //     let circleN = g.circle(numX, numMY, 30).attr({
+                //         fill: "#ffffff",
+                //         stroke: "black",
+                //         strokeWidth: 1,
+                //         opacity: 1
+                //     })
+                //     let msTextN = g.text(numX - 11, numMY, i).attr({
+                //         "textAnchor": "center",
+                //         "dominant-baseline": "central",
+                //         "fontSize": 45,
+                //         "fontWeight": "bold",
+                //         "fontFamily": "serif",
+                //         stroke: "none",
+                //         fill: "black",
+                //         opacity: 1,
+                //     })
+                //     //number1 = g.group(circle1, msTextN1)
+                //     let circleAndNumber = g.group(circleN, msTextN)
+                //     circleAndNumber.attr({
+                //         opacity: 0
+                //     })
+                //     numbersGroups.push(circleAndNumber)
+                //     numX -= 67;
+                //     //  numY -= 44;
+                //     //numY2 -= 44;
+                // }
+
+                // setTimeout(() => {
+                //     for (let i = 0; i < numbersGroups.length; i++) {
+                //         let numGroup = numbersGroups[i];
+                //         setTimeout(() => {
+                //             numGroup.animate({ opacity: 1 }, 500);
+                //         }, i * 500);
+                //     }
+                // }, 6000);
+
+                msText.animate({ opacity: 1 }, 500);
+                msText2.animate({ opacity: 1 }, 520);
+                msText3.animate({ opacity: 1 }, 540);
+                msText4.animate({ opacity: 1 }, 560);
+
+
+                // console.log('ok...')
+                // setTimeout(() => {
+                //     for (let i = numbersGroups.length; i > 0; i--) {
+                //         let numGroup = numbersGroups[numbersGroups.length - i];
+                //         console.log(i, 'numGroup', numGroup);
+                //         setTimeout(() => {
+                //             console.log('numGroup animated to 0 opacity number ', i);
+                //             numGroup.animate({ opacity: 0 }, 80);
+                //         }, i * 80);
+                //     }
+                // }, 14000);
+
+                // setTimeout(() => {
+                //     whiteRect.animate({ opacity: 0 }, 500);
+                //     msText.animate({ opacity: 0 }, 500);
+                //     msText2.animate({ opacity: 0 }, 500);
+                //   }, 7500);
+                //   setTimeout(() => {
+                //     whiteRect.remove()
+                //     msText.remove()
+                //     msText2.remove()
+                //   }, 8000);
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+        let page17 = {
+            label: 'supply to Road',
+            delay: 0,
+            duration: 10000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+
+                let posX = 400
+                let posY = 670
+                let boxWidth = 1480
+                let windowWidth = window.innerWidth;
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 119).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                whiteRect.animate({ opacity: 1 }, 450);
+
+                let msText = g.text(posX, posY + 70, "So let's show the road hexes that are extending the supply source (Minsk).").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                msText.animate({ opacity: 1 }, 500);
+
+
+
+
+
+
+
+
+
+                posX = 300
+                posY = 100
+                boxWidth = 470
+                windowWidth = window.innerWidth;
+                let whiteRect2 = g.rect(posX - 24, posY + 27, boxWidth, 89).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+
+
+                let msText2 = g.text(posX, posY + 70, "And the other road...").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    whiteRect2.animate({ opacity: 1 }, 450);
+                    msText2.animate({ opacity: 1 }, 500);
+                }, 5000);
+
+
+                setTimeout(() => {
+                    whiteRect.animate({ opacity: 0 }, 450);
+                    msText.animate({ opacity: 0 }, 500);
+                    whiteRect2.animate({ opacity: 0 }, 450);
+                    msText2.animate({ opacity: 0 }, 500);
+                }, 9500);
+
+                setTimeout(() => {
+                    whiteRect.remove();
+                    msText.remove();
+                    whiteRect2.remove();
+                    msText2.remove();
+                }, 10000);
+
+
+
+
+
+
+
+                let numX = 380
+                let numY = 773
+                let numY2 = 812
+                let numbersGroups = []
+                let numberCoords = []
+                numberCoords.push({ x: 46, y: 812 }); // 1
+                numberCoords.push({ x: 112, y: 774 }); // 1
+                numberCoords.push({ x: 112, y: 697 }); // 2
+                numberCoords.push({ x: 180, y: 658 }); // 3
+                numberCoords.push({ x: 246, y: 620 }); // 4
+                numberCoords.push({ x: 313, y: 658 }); // 5
+                numberCoords.push({ x: 380, y: 620 }); // 6
+                numberCoords.push({ x: 448, y: 581 }); // 7
+                numberCoords.push({ x: 515, y: 543 }); // 8
+                numberCoords.push({ x: 515, y: 465 }); // 9
+                let x = 515
+                x += 67;
+                numberCoords.push({ x: x, y: 465 - 39 }); // 10
+                x += 67
+                numberCoords.push({ x: x, y: 465 - 78 }); // 11
+                x += 67
+                numberCoords.push({ x: x, y: 465 - 113 }); // 12
+                x += 67
+                numberCoords.push({ x: x, y: 465 - 79 }); // 13
+                x += 67
+                numberCoords.push({ x: x, y: 465 - 113 }); // 14
+                x += 67
+                numberCoords.push({ x: x, y: 465 - 152 }); // 15
+                x += 67
+                numberCoords.push({ x: x, y: 465 - 190 }); // 16
+                x += 67
+                numberCoords.push({ x: x, y: 465 - 152 }); // 17
+                x += 67
+                numberCoords.push({ x: x, y: 465 - 190 }); // 18
+                x += 67
+                numberCoords.push({ x: x, y: 465 - 152 }); // 19
+                x += 67
+                numberCoords.push({ x: x, y: 465 - 190 }); // 20
+
+                for (let i = 0; i < numberCoords.length; i++) {
+
+                    let circleN = g.circle(numberCoords[i].x, numberCoords[i].y, 30).attr({
+                        fill: "#ffffff",
+                        stroke: "black",
+                        strokeWidth: 1,
+                        opacity: 0.8
+                    })
+                    let adjustX = (i < 9) ? 11 : 22;
+                    let msTextN = g.text(numberCoords[i].x - adjustX, numberCoords[i].y - 2, i + 1).attr({
+                        "textAnchor": "center",
+                        "dominant-baseline": "central",
+                        "fontSize": 45,
+                        "fontWeight": "bold",
+                        "fontFamily": "serif",
+                        stroke: "none",
+                        fill: "black",
+                        opacity: 1,
+                    })
+                    //number1 = g.group(circle1, msTextN1)
+                    let circleAndNumber = g.group(circleN, msTextN)
+                    circleAndNumber.attr({
+                        opacity: 0
+                    })
+                    numbersGroups.push(circleAndNumber)
+                    numX -= 67;
+                    //  numY -= 44;
+                    //numY2 -= 44;
+                }
+
+                setTimeout(() => {
+                    for (let i = 0; i < numbersGroups.length; i++) {
+                        let numGroup = numbersGroups[i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 1 }, 70);
+                        }, i * 70);
+                    }
+                }, 3000);
+
+
+                numX = 380
+                numY = 773
+                numY2 = 812
+                let numbersGroups2 = []
+                let numberCoords2 = []
+                numberCoords2.push({ x: 112, y: 619 }); // 3
+                numberCoords2.push({ x: 180, y: 619 - 37 }); // 4
+                numberCoords2.push({ x: 180, y: 619 - (58 * 2) }); // 5
+                numberCoords2.push({ x: 180, y: 619 - 192 }); // 6
+                numberCoords2.push({ x: 180, y: 619 - 268 }); // 7
+                numberCoords2.push({ x: 180, y: 619 - 345 }); // 8
+                numberCoords2.push({ x: 180, y: 619 - 422 }); // 9
+                numberCoords2.push({ x: 180, y: 619 - 499 }); // 10
+                //   numberCoords2.push({ x: 180, y: 619 - 576 }); // 11
+
+                for (let i = 0; i < numberCoords2.length; i++) {
+
+                    let circleN = g.circle(numberCoords2[i].x, numberCoords2[i].y, 30).attr({
+                        fill: "#ffffff",
+                        stroke: "black",
+                        strokeWidth: 1,
+                        opacity: 0.4
+                    })
+                    let adjustX = (i + 3 < 9) ? 11 : 22;
+                    let msTextN = g.text(numberCoords2[i].x - adjustX, numberCoords2[i].y - 2, i + 4).attr({
+                        "textAnchor": "center",
+                        "dominant-baseline": "central",
+                        "fontSize": 45,
+                        "fontWeight": "bold",
+                        "fontFamily": "serif",
+                        stroke: "none",
+                        fill: "black",
+                        opacity: 1,
+                    })
+                    //number1 = g.group(circle1, msTextN1)
+                    let circleAndNumber2 = g.group(circleN, msTextN)
+                    circleAndNumber2.attr({
+                        opacity: 0
+                    })
+                    numbersGroups2.push(circleAndNumber2)
+                    numX -= 67;
+                    //  numY -= 44;
+                    //numY2 -= 44;
+                }
+
+                setTimeout(() => {
+                    for (let i = 0; i < numbersGroups2.length; i++) {
+                        let numGroup = numbersGroups2[i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 1 }, 70);
+                        }, i * 70);
+                    }
+                }, 6000);
+
+
+
+
+
+
+
+
+
+
+
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+
+        let page18 = {
+            label: 'unit supply to Road',
+            delay: 0,
+            duration: 10000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+
+                let posX = 400
+                let posY = 500
+                let boxWidth = 1480
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 164).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                whiteRect.animate({ opacity: 1 }, 450);
+
+                let msText = g.text(posX, posY + 70, "So if we re-consider how that Axis unit gets supply, we see that it can get").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let msText2 = g.text(posX, posY + 120, "General Supply from a closer source - the motorway that is near it.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    whiteRect.animate({ opacity: 1 }, 450);
+                    msText.animate({ opacity: 1 }, 500);
+                    msText2.animate({ opacity: 1 }, 500);
+                }, 1000);
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
 
 
         let _storyBoard = []
@@ -734,6 +2066,18 @@ const Supply = (props) => {
         _storyBoard.push(page4)
         _storyBoard.push(page5)
         _storyBoard.push(page6)
+        _storyBoard.push(page7)
+        _storyBoard.push(page8)
+        _storyBoard.push(page9)
+        _storyBoard.push(page10)
+        _storyBoard.push(page11)
+        _storyBoard.push(page12)
+        _storyBoard.push(page13)
+        _storyBoard.push(page14)
+        _storyBoard.push(page15)
+        _storyBoard.push(page16)
+        _storyBoard.push(page17)
+        _storyBoard.push(page18)
         sgStoryBoard.value = _storyBoard
         sequence()
     }
@@ -769,7 +2113,10 @@ const Supply = (props) => {
                     console.log('runPage done', page.label);
                     if (page.remove && result) {
                         if (result.discrete) {
-                            result.discrete.remove();
+                            result.discrete.animate({ opacity: 0 }, 100);
+                            setTimeout(() => {
+                                result.discrete.remove();
+                            }, 100);
                         }
                         if (result.percentage) {
                             result.percentage.remove();
