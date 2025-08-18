@@ -12,10 +12,11 @@ import supplystrip from "../../../images/efs/supply/supplystrip.gif"
 import germanrations_pic from "../../../images/efs/supply/germanrations_pic.jpg"
 import sovietrations from "../../../images/efs/supply/sovietrations.jpg"
 import efs_minsk_map from "../../../images/efs/supply/efs_minsk_map.jpg"
-import efs_minsk_map_mainroad from "../../../images/efs/supply/efs_minsk_map_mainroad.jpg";
-import efs_minsk_map_road from "../../../images/efs/supply/efs_minsk_roadsc.jpg";
+import efs_minsk_map_motorway from "../../../images/efs/supply/efs_minsk_map_motorway.jpg";
+import efs_minsk_map_roads from "../../../images/efs/supply/efs_minsk_roads.jpg";
 import efs_minsk_map_minorRoads from "../../../images/efs/supply/efs_minsk_map_minorRoads.jpg";
 import efs_minsk_map_rail from "../../../images/efs/supply/efs_minsk_map_rail.jpg";
+import efs_minsk_map_rail_glow from "../../../images/efs/supply/efs_minsk_map_rail_glow.jpg";
 import town_connect from "../../../images/efs/supply/town_connect.jpg";
 import town_connected from "../../../images/efs/supply/town_connected.jpg";
 import town_connect2 from "../../../images/efs/supply/town_connect2.jpg";
@@ -23,6 +24,8 @@ import town_connected2 from "../../../images/efs/supply/town_connected2.jpg";
 import town_connect3 from "../../../images/efs/supply/town_connect3.jpg";
 import town_connected3 from "../../../images/efs/supply/town_connected3.jpg";
 import german_infantry_unit from "../../../images/efs/supply/german_infantry_division_120.png";
+import soviet_cavalry_unit from "../../../images/efs/supply/soviet_cavalry_division_120.png";
+import german_rail_end from "../../../images/efs/supply/german_rail_end_120.jpg";
 import './Supply.scss';
 let mina = window.mina
 
@@ -33,7 +36,9 @@ const Supply = (props) => {
     const sgLastPageGroup = useSignal(null);
     const sgDimensInitial = useSignal({ width: 0, height: 0 });
     const sgAxisCombatUnit = useSignal(null);
+    const sgSovietCombatUnit = useSignal(null);
     const [storyBoardStarted, setStoryBoardStarted] = useState(false)
+    const [backgroundMap, setBackgroundMap] = useState(null);
 
     // Snap SVG Easing
     // 
@@ -45,169 +50,169 @@ const Supply = (props) => {
     // 
 
 
-    /*   
-       let mina = Snap.mina || {};
-       mina.easeInQuad = function (n) {
-           return Math.pow(n, 2);
-       };
-       mina.easeOutQuad = function (n) {
-           return -1 * n * (n - 2);
-       };
-       mina.easeInOutQuad = function (n) {
-           if ((n *= 2) < 1) return 0.5 * Math.pow(n, 2);
-           return -0.5 * ((--n) * (n - 2) - 1);
-       };
-   
-   
-       // Cubic
-       // 
-       mina.easeInCubic = function (n) {
-           return Math.pow(n, 3);
-       };
-       mina.easeOutCubic = function (n) {
-           return Math.pow(n - 1, 3) + 1;
-       };
-       mina.easeInOutCubic = function (n) {
-           if ((n *= 2) < 1) return 0.5 * Math.pow(n, 3);
-           return 0.5 * (Math.pow(n - 2, 3) + 2);
-       };
-   
-   
-       // Quart
-       // 
-       mina.easeInQuart = function (n) {
-           return Math.pow(n, 4);
-       };
-       mina.easeOutQuart = function (n) {
-           return -1 * (Math.pow(n - 1, 4) - 1);
-       };
-       mina.easeInOutQuart = function (n) {
-           if ((n *= 2) < 1) return 0.5 * Math.pow(n, 4);
-           return -0.5 * (Math.pow(n - 2, 4) - 2);
-       };
-   
-   
-       // Quint
-       // 
-       mina.easeInQuint = function (n) {
-           return Math.pow(n, 5);
-       };
-       mina.easeOutQuint = function (n) {
-           return Math.pow(n - 1, 5) + 1;
-       };
-       mina.easeInOutQuint = function (n) {
-           if ((n *= 2) < 1) return 0.5 * Math.pow(n, 5);
-           return 0.5 * (Math.pow(n - 2, 5) + 2);
-       };
-   
-   
-       // Sine
-       // 
-       mina.easeInSine = function (n) {
-           return -1 * Math.cos(n * (Math.PI / 2)) + 1;
-       };
-       mina.easeOutSine = function (n) {
-           return Math.sin(n * (Math.PI / 2));
-       };
-       mina.easeInOutSine = function (n) {
-           return -0.5 * (Math.cos(Math.PI * n) - 1);
-       };
-   
-   
-       // Circ
-       // 
-       mina.easeInCirc = function (n) {
-           return -1 * (Math.sqrt(1 - n * n) - 1);
-       };
-       mina.easeOutCirc = function (n) {
-           return Math.sqrt(1 - Math.pow(n - 1, 2));
-       };
-       mina.easeInOutCirc = function (n) {
-           if ((n *= 2) < 1) return -0.5 * (Math.sqrt(1 - n * n) - 1);
-           return 0.5 * (Math.sqrt(1 - (n -= 2) * n) + 1);
-       };
-   
-   
-       // Expo
-       // 
-       mina.easeInExpo = function (n) {
-           return (n == 0) ? 0 : Math.pow(2, 10 * (n - 1));
-       };
-       mina.easeOutExpo = function (n) {
-           return (n == 1) ? 1 : -Math.pow(2, -10 * n) + 1;
-       };
-       mina.easeInOutExpo = function (n) {
-           if (n == 0) return 0;
-           if (n == 1) return 1;
-           if ((n *= 2) < 1) return 0.5 * Math.pow(2, 10 * (n - 1));
-           return 0.5 * (-Math.pow(2, -10 * --n) + 2);
-       };
-   
-   
-       // Elastic
-       // 
-       mina.easeInElastic = function (n) {
-           var s = 1.70158, p = 0.3;
-           if (n == 0) return 0;
-           if (n == 1) return 1;
-           s = p / (2 * Math.PI) * Math.asin(1);
-           return -(Math.pow(2, 10 * (n -= 1)) * Math.sin((n - s) * (2 * Math.PI) / p));
-       };
-       mina.easeOutElastic = function (n) {
-           var s = 1.70158, p = 0.3;
-           if (n == 0) return 0;
-           if (n == 1) return 1;
-           s = p / (2 * Math.PI) * Math.asin(1);
-           return Math.pow(2, -10 * n) * Math.sin((n - s) * (2 * Math.PI) / p) + 1;
-       };
-       mina.easeInOutElastic = function (n) {
-           var p = 0.45, s = p / (2 * Math.PI) * Math.asin(1);
-           if (n == 0) return 0;
-           if ((n *= 2) == 2) return 1;
-           if (n < 1) return -0.5 * (Math.pow(2, 10 * (n -= 1)) * Math.sin((n - s) * (2 * Math.PI) / p));
-           return Math.pow(2, -10 * (n -= 1)) * Math.sin((n - s) * (2 * Math.PI) / p) * 0.5 + 1;
-       };
-   
-   
-       // Back
-       // 
-       mina.easeInBack = function (n, s) {
-           if (s == undefined) s = 1.70158;
-           return Math.pow(n, 2) * ((s + 1) * n - s);
-       };
-       mina.easeOutBack = function (n, s) {
-           if (s == undefined) s = 1.70158;
-           return (Math.pow(--n, 2) * ((s + 1) * n + s) + 1);
-       };
-       mina.easeInOutBack = function (n, s) {
-           if (s == undefined) s = 1.70158;
-           if ((n *= 2) < 1) return 0.5 * (Math.pow(n, 2) * (((s *= 1.525) + 1) * n - s));
-           return 0.5 * (Math.pow((n -= 2), 2) * (((s *= 1.525) + 1) * n + s) + 2);
-       };
-   
-   
-       // Bounce
-       // 
-       mina.easeInBounce = function (n) {
-           return 1 - mina.easeOutBounce(1 - n);
-       };
-       mina.easeOutBounce = function (n) {
-           if (n < (1 / 2.75)) {
-               return 7.5625 * n * n;
-           } else if (n < (2 / 2.75)) {
-               return 7.5625 * (n -= (1.5 / 2.75)) * n + 0.75;
-           } else if (n < (2.5 / 2.75)) {
-               return 7.5625 * (n -= (2.25 / 2.75)) * n + 0.9375;
-           } else {
-               return 7.5625 * (n -= (2.625 / 2.75)) * n + 0.984375;
-           }
-       };
-       mina.easeInOutBounce = function (n) {
-           if (n < 0.5) return mina.easeInBounce(n * 2) * 0.5;
-           return mina.easeOutBounce(n * 2 - 1) * 0.5 + 1 * 0.5;
-       };
-   
-   */
+
+    //  let mina = Snap.mina || {};
+    mina.easeInQuad = function (n) {
+        return Math.pow(n, 2);
+    };
+    mina.easeOutQuad = function (n) {
+        return -1 * n * (n - 2);
+    };
+    mina.easeInOutQuad = function (n) {
+        if ((n *= 2) < 1) return 0.5 * Math.pow(n, 2);
+        return -0.5 * ((--n) * (n - 2) - 1);
+    };
+
+
+    // Cubic
+    // 
+    mina.easeInCubic = function (n) {
+        return Math.pow(n, 3);
+    };
+    mina.easeOutCubic = function (n) {
+        return Math.pow(n - 1, 3) + 1;
+    };
+    mina.easeInOutCubic = function (n) {
+        if ((n *= 2) < 1) return 0.5 * Math.pow(n, 3);
+        return 0.5 * (Math.pow(n - 2, 3) + 2);
+    };
+
+
+    // Quart
+    // 
+    mina.easeInQuart = function (n) {
+        return Math.pow(n, 4);
+    };
+    mina.easeOutQuart = function (n) {
+        return -1 * (Math.pow(n - 1, 4) - 1);
+    };
+    mina.easeInOutQuart = function (n) {
+        if ((n *= 2) < 1) return 0.5 * Math.pow(n, 4);
+        return -0.5 * (Math.pow(n - 2, 4) - 2);
+    };
+
+
+    // Quint
+    // 
+    mina.easeInQuint = function (n) {
+        return Math.pow(n, 5);
+    };
+    mina.easeOutQuint = function (n) {
+        return Math.pow(n - 1, 5) + 1;
+    };
+    mina.easeInOutQuint = function (n) {
+        if ((n *= 2) < 1) return 0.5 * Math.pow(n, 5);
+        return 0.5 * (Math.pow(n - 2, 5) + 2);
+    };
+
+
+    // Sine
+    // 
+    mina.easeInSine = function (n) {
+        return -1 * Math.cos(n * (Math.PI / 2)) + 1;
+    };
+    mina.easeOutSine = function (n) {
+        return Math.sin(n * (Math.PI / 2));
+    };
+    mina.easeInOutSine = function (n) {
+        return -0.5 * (Math.cos(Math.PI * n) - 1);
+    };
+
+
+    // Circ
+    // 
+    mina.easeInCirc = function (n) {
+        return -1 * (Math.sqrt(1 - n * n) - 1);
+    };
+    mina.easeOutCirc = function (n) {
+        return Math.sqrt(1 - Math.pow(n - 1, 2));
+    };
+    mina.easeInOutCirc = function (n) {
+        if ((n *= 2) < 1) return -0.5 * (Math.sqrt(1 - n * n) - 1);
+        return 0.5 * (Math.sqrt(1 - (n -= 2) * n) + 1);
+    };
+
+
+    // Expo
+    // 
+    mina.easeInExpo = function (n) {
+        return (n == 0) ? 0 : Math.pow(2, 10 * (n - 1));
+    };
+    mina.easeOutExpo = function (n) {
+        return (n == 1) ? 1 : -Math.pow(2, -10 * n) + 1;
+    };
+    mina.easeInOutExpo = function (n) {
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+        if ((n *= 2) < 1) return 0.5 * Math.pow(2, 10 * (n - 1));
+        return 0.5 * (-Math.pow(2, -10 * --n) + 2);
+    };
+
+
+    // Elastic
+    // 
+    mina.easeInElastic = function (n) {
+        var s = 1.70158, p = 0.3;
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+        s = p / (2 * Math.PI) * Math.asin(1);
+        return -(Math.pow(2, 10 * (n -= 1)) * Math.sin((n - s) * (2 * Math.PI) / p));
+    };
+    mina.easeOutElastic = function (n) {
+        var s = 1.70158, p = 0.3;
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+        s = p / (2 * Math.PI) * Math.asin(1);
+        return Math.pow(2, -10 * n) * Math.sin((n - s) * (2 * Math.PI) / p) + 1;
+    };
+    mina.easeInOutElastic = function (n) {
+        var p = 0.45, s = p / (2 * Math.PI) * Math.asin(1);
+        if (n == 0) return 0;
+        if ((n *= 2) == 2) return 1;
+        if (n < 1) return -0.5 * (Math.pow(2, 10 * (n -= 1)) * Math.sin((n - s) * (2 * Math.PI) / p));
+        return Math.pow(2, -10 * (n -= 1)) * Math.sin((n - s) * (2 * Math.PI) / p) * 0.5 + 1;
+    };
+
+
+    // Back
+    // 
+    mina.easeInBack = function (n, s) {
+        if (s == undefined) s = 1.70158;
+        return Math.pow(n, 2) * ((s + 1) * n - s);
+    };
+    mina.easeOutBack = function (n, s) {
+        if (s == undefined) s = 1.70158;
+        return (Math.pow(--n, 2) * ((s + 1) * n + s) + 1);
+    };
+    mina.easeInOutBack = function (n, s) {
+        if (s == undefined) s = 1.70158;
+        if ((n *= 2) < 1) return 0.5 * (Math.pow(n, 2) * (((s *= 1.525) + 1) * n - s));
+        return 0.5 * (Math.pow((n -= 2), 2) * (((s *= 1.525) + 1) * n + s) + 2);
+    };
+
+
+    // Bounce
+    // 
+    mina.easeInBounce = function (n) {
+        return 1 - mina.easeOutBounce(1 - n);
+    };
+    mina.easeOutBounce = function (n) {
+        if (n < (1 / 2.75)) {
+            return 7.5625 * n * n;
+        } else if (n < (2 / 2.75)) {
+            return 7.5625 * (n -= (1.5 / 2.75)) * n + 0.75;
+        } else if (n < (2.5 / 2.75)) {
+            return 7.5625 * (n -= (2.25 / 2.75)) * n + 0.9375;
+        } else {
+            return 7.5625 * (n -= (2.625 / 2.75)) * n + 0.984375;
+        }
+    };
+    mina.easeInOutBounce = function (n) {
+        if (n < 0.5) return mina.easeInBounce(n * 2) * 0.5;
+        return mina.easeOutBounce(n * 2 - 1) * 0.5 + 1 * 0.5;
+    };
+
+
     useEffect(() => {
         let _paper = Snap('#supply_examples');
         if (_paper) {
@@ -244,6 +249,7 @@ const Supply = (props) => {
             'height': '100%',
             'opacity': 1
         });
+        setBackgroundMap(backgroundImage);
 
         var dimensInitial = backgroundImage.node.getBoundingClientRect();
         console.log('initial backgroundImage:', dimensInitial.width, dimensInitial.height)
@@ -429,9 +435,9 @@ const Supply = (props) => {
                 sgLastPageGroup.value = g
                 console.log('fn for page1, sgLastPageGroup.value:', sgLastPageGroup.value)
 
-                var image2 = g2.image(efs_minsk_map_mainroad, 0, 0, 0, 0);
+                var image2 = g2.image(efs_minsk_map_motorway, 0, 0, 0, 0);
                 image2.attr({
-                    'xlink:href': efs_minsk_map_mainroad,
+                    'xlink:href': efs_minsk_map_motorway,
                     'width': "100%",
                     'height': "100%",
                     'opacity': 0
@@ -480,9 +486,11 @@ const Supply = (props) => {
 
                 setTimeout(() => {
                     image2.animate({ opacity: 1 }, 500);
+                    backgroundImage.animate({ opacity: 0 }, 500);
                 }, 100);
                 setTimeout(() => {
                     image2.animate({ opacity: 0 }, 500);
+                    backgroundImage.animate({ opacity: 1 }, 500);
                 }, 4500)
 
                 zocText.animate({ opacity: 1 }, 500);
@@ -511,9 +519,9 @@ const Supply = (props) => {
 
                 sgLastPageGroup.value = g
 
-                var image2 = g2.image(efs_minsk_map_road, 0, 0, 0, 0);
+                var image2 = g2.image(efs_minsk_map_roads, 0, 0, 0, 0);
                 image2.attr({
-                    'xlink:href': efs_minsk_map_road,
+                    'xlink:href': efs_minsk_map_roads,
                     'width': "100%",
                     'height': "100%",
                     'opacity': 0
@@ -562,9 +570,11 @@ const Supply = (props) => {
 
                 setTimeout(() => {
                     image2.animate({ opacity: 1 }, 500);
+                    backgroundImage.animate({ opacity: 0 }, 500);
                 }, 500);
                 setTimeout(() => {
                     image2.animate({ opacity: 0 }, 500);
+                    backgroundImage.animate({ opacity: 1 }, 500);
                 }, 5000)
 
                 zocText.animate({ opacity: 1 }, 500);
@@ -644,9 +654,11 @@ const Supply = (props) => {
 
                 setTimeout(() => {
                     image2.animate({ opacity: 1 }, 500);
+                    backgroundImage.animate({ opacity: 0 }, 500);
                 }, 500);
                 setTimeout(() => {
                     image2.animate({ opacity: 0 }, 500);
+                    backgroundImage.animate({ opacity: 1 }, 500);
                 }, 5000)
 
                 zocText.animate({ opacity: 1 }, 500);
@@ -726,9 +738,11 @@ const Supply = (props) => {
 
                 setTimeout(() => {
                     image2.animate({ opacity: 1 }, 500);
+                    backgroundImage.animate({ opacity: 0 }, 500);
                 }, 500);
                 setTimeout(() => {
                     image2.animate({ opacity: 0 }, 500);
+                    backgroundImage.animate({ opacity: 1 }, 500);
                 }, 5000)
 
                 zocText.animate({ opacity: 1 }, 500);
@@ -1191,7 +1205,7 @@ const Supply = (props) => {
 
                 setTimeout(() => {
                     //  combat_unit.animate({ width: 35, height: 35, transform: 't 44, 44 ' }, 500);
-                    sgAxisCombatUnit.value.animate({ width: 58, height: 58, transform: 't -596, 374 ' }, 500);
+                    sgAxisCombatUnit.value.animate({ width: 64, height: 64, transform: 't -597, 371 ' }, 500, mina.easeout);
                 }, 2500);
 
 
@@ -1422,7 +1436,7 @@ const Supply = (props) => {
 
                 sgLastPageGroup.value = g
                 setTimeout(() => {
-                    sgAxisCombatUnit.value.animate({ transform: 't -193, 374' }, 500, mina.easeinout);
+                    sgAxisCombatUnit.value.animate({ transform: 't -197, 372' }, 500, mina.easeinout);
                 }, 2500);
 
 
@@ -1592,24 +1606,11 @@ const Supply = (props) => {
                 setTimeout(() => {
                     for (let i = numbersGroups.length; i > 0; i--) {
                         let numGroup = numbersGroups[numbersGroups.length - i];
-                        console.log(i, 'numGroup', numGroup);
                         setTimeout(() => {
-                            console.log('numGroup animated to 0 opacity number ', i);
                             numGroup.animate({ opacity: 0 }, 80);
                         }, i * 80);
                     }
                 }, 14000);
-
-                // setTimeout(() => {
-                //     whiteRect.animate({ opacity: 0 }, 500);
-                //     msText.animate({ opacity: 0 }, 500);
-                //     msText2.animate({ opacity: 0 }, 500);
-                //   }, 7500);
-                //   setTimeout(() => {
-                //     whiteRect.remove()
-                //     msText.remove()
-                //     msText2.remove()
-                //   }, 8000);
 
                 return { discrete: g, percentage: null }
             }
@@ -1643,7 +1644,7 @@ const Supply = (props) => {
                 // }, 9000);
 
 
-                let msText = g.text(posX, posY + 70, "A Motorway or Road (not minor road) hex this is connected to a supply source can extend").attr({
+                let msText = g.text(posX, posY + 70, "A Motorway or Road (not minor road) hex that is connected to a supply source can extend").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -1654,7 +1655,7 @@ const Supply = (props) => {
                     opacity: 0,
                 })
 
-                let msText2 = g.text(posX, posY + 130, "the supply source along the road, up to 21 hexes in dry weather. However, enemy unit(s)").attr({
+                let msText2 = g.text(posX, posY + 130, "the supply source along the road, up to 21 hexes in dry weather. Friendly units can trace").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -1665,7 +1666,7 @@ const Supply = (props) => {
                     opacity: 0,
                 })
 
-                let msText3 = g.text(posX, posY + 190, "or enemy zocs on the road blocks the tracing of supply at that hex. Friendly units can").attr({
+                let msText3 = g.text(posX, posY + 190, "a LOC to such a road hex that's connected to a supply source to get its general supply.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -1676,7 +1677,7 @@ const Supply = (props) => {
                     opacity: 0,
                 })
 
-                let msText4 = g.text(posX, posY + 250, "trace a LOC to a road hex that is connected to a supply source to get its general supply.").attr({
+                let msText4 = g.text(posX, posY + 250, "However, enemy unit(s) or enemy zocs on the road blocks the tracing of supply at that hex.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -1686,6 +1687,8 @@ const Supply = (props) => {
                     fill: "black",
                     opacity: 0,
                 })
+
+
 
                 let number1 = null
                 let number2 = null
@@ -1735,7 +1738,6 @@ const Supply = (props) => {
                 msText2.animate({ opacity: 1 }, 520);
                 msText3.animate({ opacity: 1 }, 540);
                 msText4.animate({ opacity: 1 }, 560);
-
 
                 // console.log('ok...')
                 // setTimeout(() => {
@@ -1842,12 +1844,6 @@ const Supply = (props) => {
                     msText2.animate({ opacity: 0 }, 500);
                 }, 9500);
 
-                setTimeout(() => {
-                    whiteRect.remove();
-                    msText.remove();
-                    whiteRect2.remove();
-                    msText2.remove();
-                }, 10000);
 
 
 
@@ -1991,7 +1987,40 @@ const Supply = (props) => {
 
 
 
+                setTimeout(() => {
+                    whiteRect.remove();
+                    msText.remove();
+                    whiteRect2.remove();
+                    msText2.remove();
+                }, 10000);
 
+
+                setTimeout(() => {
+                    for (let i = 0; i < numbersGroups.length; i++) {
+                        let numGroup = numbersGroups[i];
+                        numGroup.animate({ opacity: 0 }, 70);
+
+                    }
+                    for (let i = 0; i < numbersGroups2.length; i++) {
+                        let numGroup = numbersGroups2[i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 0 }, 70);
+                        }, i * 70);
+                    }
+                }, 16000);
+
+                setTimeout(() => {
+                    for (let i = 0; i < numbersGroups.length; i++) {
+                        let numGroup = numbersGroups[i];
+                        numGroup.remove()
+
+                    }
+                    for (let i = 0; i < numbersGroups2.length; i++) {
+                        let numGroup = numbersGroups2[i];
+                        numGroup.remove()
+
+                    }
+                }, 17000);
 
 
 
@@ -2007,7 +2036,7 @@ const Supply = (props) => {
         let page18 = {
             label: 'unit supply to Road',
             delay: 0,
-            duration: 10000,
+            duration: 5000,
             remove: false,
             async: true,
             fn: () => {
@@ -2052,32 +2081,619 @@ const Supply = (props) => {
                     msText2.animate({ opacity: 1 }, 500);
                 }, 1000);
 
+                setTimeout(() => {
+                    msText.animate({ opacity: 0 }, 450);
+                    msText2.animate({ opacity: 0 }, 500);
+                    whiteRect.animate({ opacity: 0 }, 550);
+                }, 4500);
+
                 return { discrete: g, percentage: null }
             }
         }
 
 
+        let page19 = {
+            label: 'LOC',
+            delay: 0,
+            duration: 12000,
+            remove: true,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+
+                let posX = 464
+                let posY = 323
+                let boxWidth = 1200
+                let windowWidth = window.innerWidth;
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 115).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                whiteRect.animate({ opacity: 1 }, 500);
+
+                setTimeout(() => {
+                    whiteRect.animate({
+                        height: 194
+                    }, 500, mina.easein);
+                }, 2500);
+
+
+                let msText = g.text(posX, posY + 70, "By tracing to the road that is connected to a supply source,").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                let msText2 = g.text(posX, posY + 140, "the unit has successfully reached General Supply.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let numberPositions = []
+                numberPositions.push({ x: 380, y: 774 }); // 1
+                numberPositions.push({ x: 314, y: 735 }); // 2
+                numberPositions.push({ x: 314, y: 658 }); // 3
+                let numbersGroups = []
+                for (let i = 0; i < numberPositions.length; i++) {
+                    console.log('i:', i)
+                    let circleN = g.circle(numberPositions[i].x, numberPositions[i].y, 30).attr({
+                        fill: "#ffffff",
+                        stroke: "black",
+                        strokeWidth: 1,
+                        opacity: 1
+                    })
+                    let msTextN = g.text(numberPositions[i].x - 11, numberPositions[i].y, i + 1).attr({
+                        "textAnchor": "center",
+                        "dominant-baseline": "central",
+                        "fontSize": 45,
+                        "fontWeight": "bold",
+                        "fontFamily": "serif",
+                        stroke: "none",
+                        fill: "black",
+                        opacity: 1,
+                    })
+                    //number1 = g.group(circle1, msTextN1)
+                    let circleAndNumber = g.group(circleN, msTextN)
+                    circleAndNumber.attr({
+                        opacity: 0
+                    })
+                    numbersGroups.push(circleAndNumber)
+                }
+
+                setTimeout(() => {
+                    for (let i = 0; i < numbersGroups.length; i++) {
+                        let numGroup = numbersGroups[i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 1 }, 500);
+                        }, i * 500);
+                    }
+                }, 1500);
+
+                msText.animate({ opacity: 1 }, 500);
+                setTimeout(() => {
+                    msText2.animate({ opacity: 1 }, 500);
+                }, 3100);
+
+                setTimeout(() => {
+                    whiteRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                    msText2.animate({ opacity: 0 }, 500);
+                }, 9500);
+                // msText2.animate({ opacity: 1 }, 500);
+                // setTimeout(() => {
+                //     msText3.animate({ opacity: 1 }, 500);
+                // }, 10000)
+
+                setTimeout(() => {
+                    for (let i = numbersGroups.length; i > 0; i--) {
+                        let numGroup = numbersGroups[numbersGroups.length - i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 0 }, 80);
+                        }, i * 80);
+                    }
+                }, 11000);
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+
+        let page20 = {
+            label: 'Railroads',
+            delay: 0,
+            duration: 18000,
+            remove: true,
+            async: true,
+            fn: () => {
+
+
+
+
+                let posX = 54
+                let posY = 255
+                let boxWidth = 1865
+                let windowWidth = window.innerWidth;
+
+
+
+
+                let g = paper.g()
+
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 324).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+
+                whiteRect.animate({ opacity: 1 }, 500);
+
+                let msText = g.text(posX, posY + 70, "Railroads can extend a supply source with no set limit on number of hexes, however the route").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                let msText2 = g.text(posX, posY + 140, "traced can only travel along railroads that have been converted (for Axis) or not converted").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                let msText3 = g.text(posX, posY + 210, "(for Soviet) use. Enemy units, unblocked enemy zocs and rail breaks terminate").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                let msText4 = g.text(posX, posY + 280, "the tracing of supply at that rail hex.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                msText.animate({ opacity: 1 }, 500);
+                msText2.animate({ opacity: 1 }, 500);
+                msText3.animate({ opacity: 1 }, 500);
+                msText4.animate({ opacity: 1 }, 500);
+
+                setTimeout(() => {
+                    whiteRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                    msText2.animate({ opacity: 0 }, 500);
+                    msText3.animate({ opacity: 0 }, 500);
+                    msText4.animate({ opacity: 0 }, 500);
+                }, 14500);
+
+                setTimeout(() => {
+                    whiteRect.remove();
+                    msText.remove();
+                    msText2.remove();
+                    msText3.remove();
+                    msText4.remove();
+                }, 15000);
+
+                let g2 = paper.g()
+                var imageRailGlow = g2.image(efs_minsk_map_rail_glow, 0, 0, 0, 0);
+                imageRailGlow.attr({
+                    'xlink:href': efs_minsk_map_rail_glow,
+                    'width': "100%",
+                    'height': "100%",
+                    'opacity': 0
+                });
+
+                var backgroundImage2 = g2.image(efs_minsk_map, 0, 0, 0, 0);
+                backgroundImage2.attr({
+                    'xlink:href': efs_minsk_map,
+                    'width': '100%',
+                    'height': '100%',
+                    'opacity': 0
+                });
+
+                setTimeout(() => {
+                    imageRailGlow.animate({ opacity: 1 }, 100);
+                    backgroundImage2.animate({ opacity: 0.2 }, 100);
+                }, 15500)
+
+
+                // setTimeout(() => {
+                //     backgroundImage2.animate({ opacity: 1 }, 1);
+                // }, 16500)
+                setTimeout(() => {
+                    imageRailGlow.animate({ opacity: 0 }, 1000);
+                }, 16500);
+                setTimeout(() => {
+                    imageRailGlow.remove();
+                    backgroundImage2.remove();
+                }, 17500);
+
+
+
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+        let page21 = {
+            label: 'rail end',
+            delay: 0,
+            duration: 4500,
+            remove: true,
+            async: true,
+            fn: () => {
+
+                let g = paper.g()
+                let g3 = paper.g()
+
+
+
+
+                let posX = 595
+                let posY = 550
+                let boxWidth = 1050
+                let windowWidth = window.innerWidth;
+                let whiteRect = g.rect(posX, posY, boxWidth, 190).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                whiteRect.animate({ opacity: 1 }, 500);
+
+
+
+                let msText = g.text(posX + 211, posY + 90, "Let's put this rail end marker over here...").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                setTimeout(() => {
+                    msText.animate({ opacity: 1 }, 500);
+                }, 200);
+
+
+                setTimeout(() => {
+                    msText.animate({ opacity: 0 }, 500);
+                    whiteRect.animate({ opacity: 0 }, 500);
+                }, 4000);
+
+
+                //let sgRailEnd = g2.image(german_rail_end, posX + 48, posY + 38, 0, 0);
+                let sgRailEnd = g3.image(german_rail_end, posX - 258, posY - 236, 0);
+                sgRailEnd.attr({
+                    'xlink:href': german_rail_end,
+                    'width': "120",
+                    'height': "120",
+                    'opacity': 1
+                });
+                sgRailEnd.transform(`s 0.7`)
+
+                setTimeout(() => {
+                    sgRailEnd.animate({ transform: 's 0.30 0.30 t 1283, -873 ' }, 500, mina.easeInOutElastic);
+                }, 1800);
+
+                for (let a = 0; a <= 7.5; a += 0.5) {
+                    setTimeout(() => {
+                        let measureG = g3.getBBox()
+                        let currentMatrix = g3.transform().localMatrix;
+                        let addMatrix = new Snap.Matrix()
+                        addMatrix.rotate(a, measureG.cx, measureG.cy)
+                        addMatrix.add(currentMatrix)
+                        g3.transform(addMatrix)
+                    }, 2400 + a * 40);
+                }
+                return { discrete: g, percentage: null }
+            }
+        }
+
+
+        let page22 = {
+            label: 'move Axis unit again for railroad supply',
+            delay: 0,
+            duration: 6000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+
+                let posX = 160
+                let posY = 100
+                let boxWidth = 762
+                let windowWidth = window.innerWidth;
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 110).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                whiteRect.animate({ opacity: 1 }, 500);
+
+
+
+                let msText = g.text(posX, posY + 70, "Let's put that Axis unit over here...").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                msText.animate({ opacity: 1 }, 500);
+                setTimeout(() => {
+                    whiteRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                }, 4500);
+
+                sgLastPageGroup.value = g
+                setTimeout(() => {
+                    sgAxisCombatUnit.value.animate({ transform: 't 943, 102' }, 500, mina.easeout);
+                }, 2500);
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+        let page23 = {
+            label: 'introduce soviet cavalry division',
+            delay: 0,
+            duration: 6000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+
+                let posX = 760
+                let posY = 400
+                let boxWidth = 977
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 110).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                whiteRect.animate({ opacity: 1 }, 500);
+
+
+
+                let msText = g.text(posX, posY + 70, "And here comes a pesky Soviet cavalry division").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                msText.animate({ opacity: 1 }, 500);
+                setTimeout(() => {
+                    whiteRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                }, 4500);
+
+                sgSovietCombatUnit.value = g.image(soviet_cavalry_unit, 951, -100, 0, 0);
+                sgSovietCombatUnit.value.attr({
+                    'xlink:href': soviet_cavalry_unit,
+                    'width': "64",
+                    'height': "64",
+                    'opacity': 1
+                });
+
+                sgLastPageGroup.value = g
+                setTimeout(() => {
+                    sgSovietCombatUnit.value.animate({ transform: 't 0, 115' }, 500, mina.easeout);
+                }, 2500);
+                setTimeout(() => {
+                    sgSovietCombatUnit.value.animate({ transform: 't 0, 190' }, 500, mina.easeout);
+                }, 3000);
+                setTimeout(() => {
+                    sgSovietCombatUnit.value.animate({ transform: 't 0, 264' }, 500, mina.easeout);
+                }, 3500);
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+
+        let page24 = {
+            label: 'show zoc of cavalry division',
+            delay: 0,
+            duration: 6000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+
+                let posX = 560
+                let posY = 400
+                let boxWidth = 1151
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 192).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+
+
+
+
+                let msText = g.text(posX, posY + 70, "The Zone of Control (ZOC) from the Soviet cavalry unit").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                let msText2 = g.text(posX, posY + 140, "extends to the Motorway hex, blocking road supply.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                whiteRect.animate({ opacity: 1 }, 500);
+                msText.animate({ opacity: 1 }, 500);
+                msText2.animate({ opacity: 1 }, 500);
+                // setTimeout(() => {
+                //     whiteRect.animate({ opacity: 0 }, 500);
+                //     msText.animate({ opacity: 0 }, 500);
+                // }, 4500);
+
+
+                // let angleMult = 60
+                // let zocPaths = ``
+                // for (let i = 0; i < 7; i++) {
+                //     let x = Math.cos(i * angleMult * Math.PI / 180) * 46
+                //     let y = Math.sin(i * angleMult * Math.PI / 180) * 46
+                //     if (i === 0) {
+                //         zocPaths += `M ${x} ${y} `
+                //     }
+                //     else {
+                //         zocPaths += ` L ${x} ${y} `
+                //     }
+                // };
+                // zocPaths += ` Z `
+                // let zocPath = g.path(zocPaths).attr({
+                //     fill: "yellow",
+                //     stroke: "black",
+                //     strokeWidth: 1,
+                //     opacity: 0.5
+                // });
+                // zocPath.transform(`t 984, 196`);
+
+                
+                let angleMult = 60
+                let zocPaths = ``
+                for (let i = 0; i < 7; i++) {
+                    let x = Math.cos(i * angleMult * Math.PI / 180) * 46
+                    let y = Math.sin(i * angleMult * Math.PI / 180) * 46
+                    if (i === 0) {
+                        zocPaths += `M ${x} ${y} `
+                    }
+                    else {
+                        zocPaths += ` L ${x} ${y} `
+                    }
+                };
+                zocPaths += ` Z `
+                console.log('zocPaths:', zocPaths)
+                let zocPath = g.path(zocPaths).attr({
+                    fill: "none",
+                    stroke: "black",
+                    strokeWidth: 1,
+                    opacity: 0.5
+                });
+                zocPath.transform(`t 984, 196`);
+                zocPath.animate({ opacity: 1 }, 500);
+                let gHexes = paper.g()
+                for (let i = 0; i < 6; i++) {
+                    setTimeout(() => {
+                        let x = Math.sin( (i * (angleMult)) * Math.PI / 180) * 78
+                        let y = Math.cos( (i * (angleMult)) * Math.PI / 180) * 78
+                        let zocClone = zocPath.clone(true);
+                          
+                        zocClone.transform(`t ${984 + x}, ${196 + y}`);
+                        zocClone.attr({
+                            fill: "yellow",
+                            stroke: "black",
+                            strokeWidth: 1,
+                            opacity: 0.5
+                        })
+
+
+                        let msText = g.text(-25, 0, "ZOC").attr({
+                            "textAnchor": "center",
+                            "dominant-baseline": "central",
+                            "fontSize": 25,
+                            "fontWeight": "bold",
+                            "fontFamily": "serif",
+                            stroke: "none",
+                            fill: "black",
+                            opacity: 1,
+                        })
+                        msText.transform(`t ${984 + x}, ${196 + y}`, 500);
+
+
+
+
+                    }, i * 50);
+                }
+               // zocPath.animate({ opacity: 0 }, 100);
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
 
         let _storyBoard = []
-        _storyBoard.push(page1)
-        _storyBoard.push(page1b)
-        _storyBoard.push(page2)
-        _storyBoard.push(page3)
-        _storyBoard.push(page4)
-        _storyBoard.push(page5)
-        _storyBoard.push(page6)
-        _storyBoard.push(page7)
-        _storyBoard.push(page8)
-        _storyBoard.push(page9)
-        _storyBoard.push(page10)
-        _storyBoard.push(page11)
-        _storyBoard.push(page12)
-        _storyBoard.push(page13)
-        _storyBoard.push(page14)
-        _storyBoard.push(page15)
-        _storyBoard.push(page16)
-        _storyBoard.push(page17)
-        _storyBoard.push(page18)
+        // _storyBoard.push(page1)
+        // _storyBoard.push(page1b)
+        // _storyBoard.push(page2)
+        // _storyBoard.push(page3)
+        // _storyBoard.push(page4)
+        // _storyBoard.push(page5)
+        // _storyBoard.push(page6)
+        // _storyBoard.push(page7)
+        // _storyBoard.push(page8)
+        // _storyBoard.push(page9)
+        // _storyBoard.push(page10)
+        // _storyBoard.push(page11)
+        // _storyBoard.push(page12)
+        // _storyBoard.push(page13)
+        // _storyBoard.push(page14)
+        // _storyBoard.push(page15)
+        // _storyBoard.push(page16)
+        // _storyBoard.push(page17)
+        // _storyBoard.push(page18)
+        // _storyBoard.push(page19)
+        // _storyBoard.push(page20)
+        // _storyBoard.push(page21)
+        // _storyBoard.push(page22)
+        _storyBoard.push(page23)
+        _storyBoard.push(page24)
         sgStoryBoard.value = _storyBoard
         sequence()
     }
