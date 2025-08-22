@@ -26,6 +26,7 @@ import town_connected3 from "../../../images/efs/supply/town_connected3.jpg";
 import german_infantry_unit from "../../../images/efs/supply/german_infantry_division_120.png";
 import soviet_cavalry_unit from "../../../images/efs/supply/soviet_cavalry_division_120.png";
 import german_rail_end from "../../../images/efs/supply/german_rail_end_120.jpg";
+import swampHex from "../../../images/efs/supply/swampHex.jpg";
 import './Supply.scss';
 let mina = window.mina
 
@@ -1436,7 +1437,7 @@ const Supply = (props) => {
                 let posY = 323
                 let boxWidth = 1043
                 let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 170).attr({
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 174).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
                     stroke: "black",
@@ -2036,7 +2037,7 @@ const Supply = (props) => {
                 let posX = 464
                 let posY = 323
                 let boxWidth = 1200
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 95).attr({
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 118).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
                     stroke: "black",
@@ -2046,7 +2047,7 @@ const Supply = (props) => {
 
                 setTimeout(() => {
                     whiteRect.animate({
-                        height: 194
+                        height: 170
                     }, 500, mina.easein);
                 }, 2500);
 
@@ -2292,6 +2293,7 @@ const Supply = (props) => {
                 let posY = 400
                 let boxWidth = 1050
                 let windowWidth = window.innerWidth;
+                let windowHeight = window.innerHeight;
                 let whiteRect = g.rect(posX, posY, boxWidth, 140).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
@@ -2324,27 +2326,38 @@ const Supply = (props) => {
 
 
                 //let sgRailEnd = g2.image(german_rail_end, posX + 48, posY + 38, 0, 0);
-                sgAxisRailEndUnit.value = railEndGroup.image(german_rail_end, posX - 208, posY - 142, 0);
+                // let width = windowWidth * 0.06
+                // let railPosX = windowWidth * 0.312
+                // let railPosY = windowWidth * 0.208
+                // sgAxisRailEndUnit.value = railEndGroup.image(german_rail_end, railPosX, railPosY, width, width );
+                // sgAxisRailEndUnit.value.attr({
+                //     'opacity': 1
+                // });
+                // let xScale = 0.5
+                // let yScale = 0.5
+                // // setTimeout(() => {
+                // // sgAxisRailEndUnit.value.transform(`s ${xScale} ${yScale}`)
+                // // }, 2000);
+                // let distanceX =   100 * (windowWidth / 1900)
+                // let distanceY =   100 * (windowHeight / 852)
+                // setTimeout(() => {
+                //     sgAxisRailEndUnit.value.animate({ transform: `s 0.5 0.5 t ${width * 2} ${width * 2}` }, 500, mina.easeIn);
+                // }, 1800);
+
+
+                sgAxisRailEndUnit.value = g.image(german_rail_end, 613, 410, 0, 0);
                 sgAxisRailEndUnit.value.attr({
                     'xlink:href': german_rail_end,
+                    'width': "120",
+                    'height': "120",
                     'opacity': 1
                 });
-                sgAxisRailEndUnit.value.transform(`s 0.5`)
 
                 setTimeout(() => {
-                    sgAxisRailEndUnit.value.animate({ transform: 's 0.32 0.32 t 1267, -555 ' }, 500, mina.easeIn);
-                }, 1800);
+                    sgAxisRailEndUnit.value.animate({ width: 64, height: 64, transform: 't 705, -235 r 58' }, 500, mina.easeout);
+                }, 2500);
 
-                for (let a = 0; a <= 7.5; a += 0.5) {
-                    setTimeout(() => {
-                        let measureG = sgAxisRailEndUnit.value.getBBox()
-                        let currentMatrix = sgAxisRailEndUnit.value.transform().localMatrix;
-                        let addMatrix = new Snap.Matrix()
-                        addMatrix.rotate(a, measureG.cx, measureG.cy)
-                        addMatrix.add(currentMatrix)
-                        sgAxisRailEndUnit.value.transform(addMatrix)
-                    }, 2400 + a * 40);
-                }
+
                 return { discrete: g, percentage: null }
             }
         }
@@ -2403,7 +2416,7 @@ const Supply = (props) => {
             label: 'introduce soviet cavalry division',
             delay: 0,
             duration: 6000,
-            remove: true,
+            remove: false,
             async: true,
             fn: () => {
                 let g = paper.g()
@@ -2439,25 +2452,67 @@ const Supply = (props) => {
                     msText.animate({ opacity: 0 }, 500);
                 }, 4500);
 
-                sgSovietCombatUnit.value = sovietCavGroup.image(soviet_cavalry_unit, 570, -38, 0, 0);
+                // sgSovietCombatUnit.value = sovietCavGroup.image(soviet_cavalry_unit, 570, -38, 0, 0);
+                // sgSovietCombatUnit.value.attr({
+                //     'xlink:href': soviet_cavalry_unit,
+                //     width: 38,
+                //     height: 38,
+                //     'opacity': 1
+                // });
+
+
+                // sgAxisCombatUnit.value = g.image(german_infantry_unit, 613, 410, 0, 0);
+                // sgAxisCombatUnit.value.attr({
+                //     'xlink:href': german_infantry_unit,
+                //     'width': "120",
+                //     'height': "120",
+                //     'opacity': 1
+                // });
+
+                // setTimeout(() => {
+                //     //  combat_unit.animate({ width: 35, height: 35, transform: 't 44, 44 ' }, 500);
+                //     sgAxisCombatUnit.value.animate({ width: 64, height: 64, transform: 't -597, 371 ' }, 500, mina.easeout);
+                // }, 2500);
+
+
+
+                sgSovietCombatUnit.value = g.image(soviet_cavalry_unit, 951, -64, 0, 0);
                 sgSovietCombatUnit.value.attr({
                     'xlink:href': soviet_cavalry_unit,
-                    width: 38,
-                    height: 38,
+                    'width': "64",
+                    'height': "64",
                     'opacity': 1
-                });
-                //sgSovietCombatUnit.value.transform(`s 0.3`)                
-
-                sgLastPageGroup.value = g
+                });      
+                
                 setTimeout(() => {
-                    sgSovietCombatUnit.value.animate({ transform: 't 0, 46' }, 500, mina.easeout);
+                    sgSovietCombatUnit.value.animate({ width: 64, height: 64, transform: 't 0, 74 ' }, 500, mina.easeout);
+                }, 2500);    
+                setTimeout(() => {
+                    sgSovietCombatUnit.value.animate({ width: 64, height: 64, transform: 't 0, 150 ' }, 500, mina.easeout);
+                }, 3200);   
+                setTimeout(() => {
+                    sgSovietCombatUnit.value.animate({ width: 64, height: 64, transform: 't 0, 228 ' }, 500, mina.easeout);
+                }, 3800); 
+                // // sgLastPageGroup.value = g
+                setTimeout(() => {
+                    //sgSovietCombatUnit.value.animate({ transform: 't 0, 54' }, 500, mina.easeout);
                 }, 2500);
-                setTimeout(() => {
-                    sgSovietCombatUnit.value.animate({ transform: 't 0, 94' }, 500, mina.easeout);
-                }, 3000);
-                setTimeout(() => {
-                    sgSovietCombatUnit.value.animate({ transform: 't 0, 139' }, 500, mina.easeout);
-                }, 3500);
+                // setTimeout(() => {
+                //     sgSovietCombatUnit.value.animate({ transform: 't 0, 111' }, 500, mina.easeout);
+                // }, 3000);
+                // setTimeout(() => {
+                //     sgSovietCombatUnit.value.animate({ transform: 't 0, 168' }, 500, mina.easeout);
+                // }, 3500);
+
+
+
+
+                // setTimeout(() => {
+                //     sgSovietCombatUnit.value.animate({ width: 45, height: 45, transform: 't 0, 35' }, 500, mina.easeout);
+                // }, 2500);
+
+
+
 
                 return { discrete: g, percentage: null }
             }
@@ -2933,19 +2988,19 @@ const Supply = (props) => {
 
                 let posX = 160
                 let posY = 330
-                let boxWidth = 1362
+                let boxWidth = 1625
                 let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 310).attr({
+                let whiteRect = g.rect(posX - 35, posY, boxWidth, 200).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
                     stroke: "black",
                     opacity: 0
                 });
-                whiteRect.animate({ opacity: 1 }, 500);
+               // whiteRect.animate({ opacity: 1 }, 500);
 
 
 
-                let msText = g.text(posX, posY + 50,        "Swamp is very restrictive - during Dry or Mud weather a LOC is").attr({
+                let msText = g.text(posX + 270, posY + 50,        "Swamp is very restrictive - during Dry or Mud weather a LOC is").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -2955,7 +3010,7 @@ const Supply = (props) => {
                     fill: "black",
                     opacity: 0,
                 })
-                let msText2 = g.text(posX, posY + (2 * 50), "reduced to 5 hexes and also can only be used if it follows, and stays,").attr({
+                let msText2 = g.text(posX + 270, posY + (2 * 50), "reduced to 5 hexes and also can only be used if it follows, and stays,").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -2965,7 +3020,7 @@ const Supply = (props) => {
                     fill: "black",
                     opacity: 0,
                 })
-                let msText3 = g.text(posX, posY + (3 * 50), "on the road or railroad that reaches the hex providing supply.").attr({
+                let msText3 = g.text(posX + 270, posY + (3 * 50), "on the road or railroad that reaches the hex providing supply.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -2975,6 +3030,11 @@ const Supply = (props) => {
                     fill: "black",
                     opacity: 0,
                 })
+
+                let swamp_Hex = g.image(swampHex, posX, posY + 3, 225, 190);
+                swamp_Hex.attr({
+                    'opacity': 0
+                });
 
 
 
@@ -2983,6 +3043,7 @@ const Supply = (props) => {
                     msText.animate({ opacity: 1 }, 500);
                     msText2.animate({ opacity: 1 }, 500);
                     msText3.animate({ opacity: 1 }, 500);
+                    swamp_Hex.animate({ opacity: 1 }, 500);
                 }, 1000);
 
 
@@ -2991,33 +3052,33 @@ const Supply = (props) => {
         }
 
         let _storyBoard = []
-        // _storyBoard.push(page1)
-        // _storyBoard.push(page1b)
-        // _storyBoard.push(page2)
-        // _storyBoard.push(page3)
-        // _storyBoard.push(page4)
-        // _storyBoard.push(page5)
-        // _storyBoard.push(page6)
-        // _storyBoard.push(page7)
-        // _storyBoard.push(page8)
-        // _storyBoard.push(page9)
-        // _storyBoard.push(page10)
-        // _storyBoard.push(page11)
-        // _storyBoard.push(page12)
-        // _storyBoard.push(page13)
-        // _storyBoard.push(page14)
-        // _storyBoard.push(page15)
-        // _storyBoard.push(page16)
-        // _storyBoard.push(page17)
-        // _storyBoard.push(page18)
-        // _storyBoard.push(page19)
-        // _storyBoard.push(page20)
-        // _storyBoard.push(page21)
-        // _storyBoard.push(page22)
-        // _storyBoard.push(page23)
-        // _storyBoard.push(page24)
-        //_storyBoard.push(page25)
-        //_storyBoard.push(page26)
+        _storyBoard.push(page1)
+        _storyBoard.push(page1b)
+        _storyBoard.push(page2)
+        _storyBoard.push(page3)
+        _storyBoard.push(page4)
+        _storyBoard.push(page5)
+        _storyBoard.push(page6)
+        _storyBoard.push(page7)
+        _storyBoard.push(page8)
+        _storyBoard.push(page9)
+        _storyBoard.push(page10)
+        _storyBoard.push(page11)
+        _storyBoard.push(page12)
+        _storyBoard.push(page13)
+        _storyBoard.push(page14)
+        _storyBoard.push(page15)
+        _storyBoard.push(page16)
+        _storyBoard.push(page17)
+        _storyBoard.push(page18)
+        _storyBoard.push(page19)
+        _storyBoard.push(page20)
+        _storyBoard.push(page21)
+        _storyBoard.push(page22)
+        _storyBoard.push(page23)
+        _storyBoard.push(page24)
+        _storyBoard.push(page25)
+        _storyBoard.push(page26)
         _storyBoard.push(page27)
         sgStoryBoard.value = _storyBoard
         sequence()
