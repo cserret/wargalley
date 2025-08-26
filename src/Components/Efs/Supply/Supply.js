@@ -23,10 +23,14 @@ import town_connect2 from "../../../images/efs/supply/town_connect2.jpg";
 import town_connected2 from "../../../images/efs/supply/town_connected2.jpg";
 import town_connect3 from "../../../images/efs/supply/town_connect3.jpg";
 import town_connected3 from "../../../images/efs/supply/town_connected3.jpg";
-import german_infantry_unit from "../../../images/efs/supply/german_infantry_division_120.png";
-import soviet_cavalry_unit from "../../../images/efs/supply/soviet_cavalry_division_120.png";
+import german_infantry_unit from "../../../images/efs/supply/german_infantry_division_120.jpg";
+import soviet_cavalry_unit from "../../../images/efs/supply/soviet_cavalry_division_120.jpg";
+import soviet_mdno_unit from "../../../images/efs/supply/soviet_mdno_division_120.jpg";
+import soviet_infantry_unit from "../../../images/efs/supply/soviet_infantry_division_120.jpg";
 import german_rail_end from "../../../images/efs/supply/german_rail_end_120.jpg";
 import swampHex from "../../../images/efs/supply/swampHex.jpg";
+import emergencySupply from "../../../images/efs/supply/emergency_supply.jpg";
+import outOfSupply from "../../../images/efs/supply/out_of_supply.jpg";
 import './Supply.scss';
 let mina = window.mina
 
@@ -39,6 +43,8 @@ const Supply = (props) => {
     const sgAxisCombatUnit = useSignal(null);
     const sgSovietCombatUnit = useSignal(null);
     const sgAxisRailEndUnit = useSignal(null);
+    const sgSovietMdnoUnit = useSignal(null);
+    const sgSovietInfantryUnit = useSignal(null);
     const [storyBoardStarted, setStoryBoardStarted] = useState(false)
     const [backgroundMap, setBackgroundMap] = useState(null);
 
@@ -268,6 +274,7 @@ const Supply = (props) => {
 
         let page1 = {
             label: 'intro',
+            pageInt: 1,
             delay: 1100,
             duration: 5000,
             remove: true,
@@ -307,6 +314,7 @@ const Supply = (props) => {
 
         let page1b = {
             label: 'description',
+            pageInt: '1b',
             delay: 1100,
             duration: 5000,
             remove: true,
@@ -348,6 +356,7 @@ const Supply = (props) => {
 
         let page2 = {
             label: 'fade in main road',
+            pageInt: 2,
             delay: 0,
             duration: 5000,
             remove: true,
@@ -442,6 +451,7 @@ const Supply = (props) => {
 
         let page3 = {
             label: 'fade in road',
+            pageInt: 3,
             delay: 0,
             duration: 6000,
             remove: true,
@@ -526,6 +536,7 @@ const Supply = (props) => {
 
         let page4 = {
             label: 'fade in minor roads',
+            pageInt: 4,
             delay: 0,
             duration: 6000,
             remove: true,
@@ -610,6 +621,7 @@ const Supply = (props) => {
 
         let page5 = {
             label: 'fade in rails',
+            pageInt: 5,
             delay: 0,
             duration: 6000,
             remove: true,
@@ -694,6 +706,7 @@ const Supply = (props) => {
 
         let page6 = {
             label: 'roads go through cities and towns',
+            pageInt: 6,
             delay: 0,
             duration: 15000,
             remove: true,
@@ -848,6 +861,7 @@ const Supply = (props) => {
 
         let page7 = {
             label: 'Minsk',
+            pageInt: 7,
             delay: 0,
             duration: 5500,
             remove: false,
@@ -920,6 +934,7 @@ const Supply = (props) => {
 
         let page8 = {
             label: 'Dry weather',
+            pageInt: 8,
             delay: 0,
             duration: 1000,
             remove: false,
@@ -1001,6 +1016,7 @@ const Supply = (props) => {
 
         let page9 = {
             label: 'start with dry weather',
+            pageInt: 9,
             delay: 0,
             duration: 8000,
             remove: true,
@@ -1011,7 +1027,7 @@ const Supply = (props) => {
                 let posY = 365
                 let boxWidth = 1000
                 let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(444, posY, boxWidth, 190).attr({
+                let whiteRect = g.rect(444, posY, boxWidth, 188).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
                     stroke: "black",
@@ -1066,6 +1082,7 @@ const Supply = (props) => {
 
         let page10 = {
             label: 'combat unit',
+            pageInt: 10,
             delay: 0,
             duration: 6000,
             remove: false,
@@ -1150,6 +1167,7 @@ const Supply = (props) => {
 
         let page11 = {
             label: 'supply in Minsk',
+            pageInt: 11,
             delay: 0,
             duration: 10000,
             remove: false,
@@ -1239,6 +1257,7 @@ const Supply = (props) => {
 
         let page12 = {
             label: 'supply in Minsk',
+            pageInt: 12,
             delay: 0,
             duration: 10000,
             remove: false,
@@ -1328,6 +1347,7 @@ const Supply = (props) => {
 
         let page13 = {
             label: 'check supply',
+            pageInt: 13,
             delay: 0,
             duration: 6000,
             remove: false,
@@ -1379,6 +1399,7 @@ const Supply = (props) => {
 
         let page14 = {
             label: 'is it now in supply',
+            pageInt: 14,
             delay: 0,
             duration: 6000,
             remove: true,
@@ -1426,6 +1447,7 @@ const Supply = (props) => {
 
         let page15 = {
             label: 'LOC',
+            pageInt: 15,
             delay: 0,
             duration: 15000,
             remove: true,
@@ -1551,6 +1573,7 @@ const Supply = (props) => {
 
         let page16 = {
             label: 'Road',
+            pageInt: 16,
             delay: 0,
             duration: 10000,
             remove: true,
@@ -1701,7 +1724,8 @@ const Supply = (props) => {
 
         let page17 = {
             label: 'supply to Road',
-            delay: 0,
+            pageInt: 17,
+            delay: 1000,
             duration: 10000,
             remove: false,
             async: true,
@@ -1968,6 +1992,7 @@ const Supply = (props) => {
 
         let page18 = {
             label: 'unit supply to Road',
+            pageInt: 18,
             delay: 0,
             duration: 5000,
             remove: false,
@@ -2027,6 +2052,7 @@ const Supply = (props) => {
 
         let page19 = {
             label: 'LOC',
+            pageInt: 19,
             delay: 0,
             duration: 12000,
             remove: true,
@@ -2144,6 +2170,7 @@ const Supply = (props) => {
 
         let page20 = {
             label: 'Railroads',
+            pageInt: 20,
             delay: 0,
             duration: 18000,
             remove: true,
@@ -2163,7 +2190,7 @@ const Supply = (props) => {
 
                 let g = paper.g()
 
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 280).attr({
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 270).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
                     stroke: "black",
@@ -2277,6 +2304,7 @@ const Supply = (props) => {
 
         let page21 = {
             label: 'rail end',
+            pageInt: 21,
             delay: 0,
             duration: 4500,
             remove: false,
@@ -2365,6 +2393,7 @@ const Supply = (props) => {
 
         let page22 = {
             label: 'move Axis unit again for railroad supply',
+            pageInt: 22,
             delay: 0,
             duration: 6000,
             remove: false,
@@ -2414,6 +2443,7 @@ const Supply = (props) => {
 
         let page23 = {
             label: 'introduce soviet cavalry division',
+            pageInt: 23,
             delay: 0,
             duration: 6000,
             remove: false,
@@ -2482,17 +2512,17 @@ const Supply = (props) => {
                     'width': "64",
                     'height': "64",
                     'opacity': 1
-                });      
-                
+                });
+
                 setTimeout(() => {
                     sgSovietCombatUnit.value.animate({ width: 64, height: 64, transform: 't 0, 74 ' }, 500, mina.easeout);
-                }, 2500);    
+                }, 2500);
                 setTimeout(() => {
                     sgSovietCombatUnit.value.animate({ width: 64, height: 64, transform: 't 0, 150 ' }, 500, mina.easeout);
-                }, 3200);   
+                }, 3200);
                 setTimeout(() => {
                     sgSovietCombatUnit.value.animate({ width: 64, height: 64, transform: 't 0, 228 ' }, 500, mina.easeout);
-                }, 3800); 
+                }, 3800);
                 // // sgLastPageGroup.value = g
                 setTimeout(() => {
                     //sgSovietCombatUnit.value.animate({ transform: 't 0, 54' }, 500, mina.easeout);
@@ -2521,6 +2551,7 @@ const Supply = (props) => {
 
         let page24 = {
             label: 'show zoc of cavalry division',
+            pageInt: 24,
             delay: 0,
             duration: 12000,
             remove: false,
@@ -2564,32 +2595,8 @@ const Supply = (props) => {
                 whiteRect.animate({ opacity: 1 }, 500);
                 msText.animate({ opacity: 1 }, 500);
                 msText2.animate({ opacity: 1 }, 500);
-                // setTimeout(() => {
-                //     whiteRect.animate({ opacity: 0 }, 500);
-                //     msText.animate({ opacity: 0 }, 500);
-                // }, 4500);
 
 
-                // let angleMult = 60
-                // let zocPaths = ``
-                // for (let i = 0; i < 7; i++) {
-                //     let x = Math.cos(i * angleMult * Math.PI / 180) * 46
-                //     let y = Math.sin(i * angleMult * Math.PI / 180) * 46
-                //     if (i === 0) {
-                //         zocPaths += `M ${x} ${y} `
-                //     }
-                //     else {
-                //         zocPaths += ` L ${x} ${y} `
-                //     }
-                // };
-                // zocPaths += ` Z `
-                // let zocPath = g.path(zocPaths).attr({
-                //     fill: "yellow",
-                //     stroke: "black",
-                //     strokeWidth: 1,
-                //     opacity: 0.5
-                // });
-                // zocPath.transform(`t 984, 196`);
 
 
                 let angleMult = 60
@@ -2673,10 +2680,18 @@ const Supply = (props) => {
                 // zocPath.animate({ opacity: 0 }, 100);
 
                 setTimeout(() => {
-                    whiteRect.animate({ opacity: 0 }, 500);
-                    msText.animate({ opacity: 0 }, 500);
-                    msText2.animate({ opacity: 0 }, 500);
+                    whiteRect.animate({ opacity: 0 }, 500)
+                    msText.animate({ opacity: 0 }, 500)
+                    msText2.animate({ opacity: 0 }, 500)
                 }, 8500);
+
+                setTimeout(() => {
+                    zocPath.animate({ opacity: 0 }, 500)
+                }, 22000)
+
+                setTimeout(() => {
+                    g.remove()
+                }, 23000);
 
                 return { discrete: g, percentage: null }
             }
@@ -2686,6 +2701,7 @@ const Supply = (props) => {
 
         let page25 = {
             label: 'show path of supply to rr',
+            pageInt: 25,
             delay: 0,
             duration: 14000,
             remove: true,
@@ -2810,27 +2826,27 @@ const Supply = (props) => {
             }
         }
 
-
         let page26 = {
-            label: 'marsh with no road cuts LOC to 5',
+            label: 'move in two soviet units to block supply',
+            pageInt: 26,
             delay: 1000,
-            duration: 12000,
-            remove: true,
+            duration: 16500,
+            remove: false,
             async: true,
             fn: () => {
                 let g = paper.g()
 
-                let posX = 220
-                let posY = 440
-                let boxWidth = 1150
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 211).attr({
+                let posX = 80
+                let posY = 358
+                let boxWidth = 1236
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 111).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
                     stroke: "black",
                     opacity: 0
                 });
 
-                let msText = g.text(posX, posY + 70, "Beware - if the LOC you trace goes into a Marsh, during").attr({
+                let msText = g.text(posX, posY + 70, "Let's move some Soviets onto the map to cause some trouble.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -2840,61 +2856,127 @@ const Supply = (props) => {
                     fill: "black",
                     opacity: 0,
                 })
-                let msText2 = g.text(posX, posY + 120, "Dry or Mud weather, hex and it is not following a road,").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                let msText3 = g.text(posX, posY + 170, " the maximum LOS length is reduced to 5 hexes.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
+
                 whiteRect.animate({ opacity: 1 }, 500);
                 msText.animate({ opacity: 1 }, 500);
-                msText2.animate({ opacity: 1 }, 500);
-                msText3.animate({ opacity: 1 }, 500);
 
-                // g.circle(1498, 389, 11).attr({
-                //     fill: "none",
-                //     stroke: "red",
-                //     strokeWidth: 2,     
-                // })
-                // g.circle(1543, 389, 11).attr({
-                //     fill: "none",
-                //     stroke: "red",
-                //     strokeWidth: 2,     
-                // })
-                // g.circle(1564, 428, 11).attr({
-                //     fill: "none",
-                //     stroke: "red",
-                //     strokeWidth: 2,     
-                // })
-                // g.circle(1543, 465, 11).attr({
-                //     fill: "none",
-                //     stroke: "red",
-                //     strokeWidth: 2,     
-                // })
-                // g.circle(1498, 465, 11).attr({
-                //     fill: "none",
-                //     stroke: "red",
-                //     strokeWidth: 2,     
-                // })
-                // g.circle(1476, 428, 11).attr({
-                //     fill: "none",
-                //     stroke: "red",
-                //     strokeWidth: 2,     
-                // })
+                setTimeout(() => {
+                    whiteRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                }, 4000);
+
+
+
+
+
+
+
+
+                posX = 520
+
+                boxWidth = 575
+                let whiteRect2 = g.rect(posX - 35, posY + 12, boxWidth, 111).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+
+                let msText2 = g.text(posX, posY + 70, "And here are their ZOCs...").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    whiteRect2.animate({ opacity: 1 }, 500);
+                    msText2.animate({ opacity: 1 }, 500);
+                }, 5000);
+
+                setTimeout(() => {
+                    whiteRect2.animate({ opacity: 0 }, 500);
+                    msText2.animate({ opacity: 0 }, 500);
+                }, 9500);
+
+
+
+
+
+
+
+
+                posX = 75
+
+                boxWidth = 1205
+                let whiteRect3 = g.rect(posX - 35, posY + 12, boxWidth, 111).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+
+                let msText3 = g.text(posX, posY + 70, "There is a path for supply, but it goes through a marsh hex.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    whiteRect3.animate({ opacity: 1 }, 500);
+                    msText3.animate({ opacity: 1 }, 500);
+                }, 10000);
+
+                setTimeout(() => {
+                    whiteRect3.animate({ opacity: 0 }, 500);
+                    msText3.animate({ opacity: 0 }, 500);
+                }, 15000);
+
+
+
+
+
+
+
+
+
+
+
+
+                sgSovietMdnoUnit.value = g.image(soviet_mdno_unit, 1622, -62, 0, 0);
+                sgSovietMdnoUnit.value.attr({
+                    'xlink:href': soviet_mdno_unit,
+                    'width': "62",
+                    'height': "62",
+                    'opacity': 1
+                });
+
+                setTimeout(() => {
+                    sgSovietMdnoUnit.value.animate({ width: 64, height: 64, transform: 't 0, 458' }, 500, mina.easeout);
+                }, 2500);
+
+                sgSovietInfantryUnit.value = g.image(soviet_infantry_unit, 1352, -62, 0, 0);
+                sgSovietInfantryUnit.value.attr({
+                    'xlink:href': soviet_infantry_unit,
+                    'width': "62",
+                    'height': "62",
+                    'opacity': 1
+                });
+
+                setTimeout(() => {
+                    sgSovietInfantryUnit.value.animate({ width: 64, height: 64, transform: 't 0, 458' }, 500, mina.easeout);
+                }, 2500)
+
+
                 let hexPath = g.path('M 1498 389 L 1543 389 L 1564 428 L 1543 465 L 1498 465 L 1476 428 Z').attr({
                     fill: "none",
                     stroke: "red",
@@ -2922,15 +3004,172 @@ const Supply = (props) => {
                             }, 500);
                         }, 500);
                     }, 500);
-                }, 2500);
+                }, 12000);
+
+                setTimeout(() => {
+                    let z1 = displayZocs(g, 1386, 428)
+                    let z2 = displayZocs(g, 1654, 428)
+                    setTimeout(() => {
+                        z1.remove()
+                        z2.remove()
+                    }, 9300);
+                }, 6500);
+
+
+
+                // let numberPositions = []
+                // let xM = 67
+                // let yM5 = 39
+                // let shiftX = 100
+                // let shiftY = 100
+                // numberPositions.push({ x: 1521 + shiftX, y: 505 + shiftX }); // 1
+                // numberPositions.push({ x: 1521 + shiftX, y: 428 + shiftX }); // 2
+                // numberPositions.push({ x: 1454 + shiftX, y: 389 + shiftX }); // 3
+                // numberPositions.push({ x: 1386 + shiftX, y: 428 + shiftX - (yM5 * 2) }); // 4
+                // numberPositions.push({ x: 1386 + shiftX, y: 390 + shiftX - (yM5 * 3) }); // 5
+
+
+                // let numbersGroups = []
+                // for (let i = 0; i < numberPositions.length; i++) {
+                //     let numX = numberPositions[i].x
+                //     let numMY = numberPositions[i].y
+                //     let circleN = g.circle(numX, numMY, 30).attr({
+                //         fill: "#ffffff",
+                //         stroke: "black",
+                //         strokeWidth: 1,
+                //         opacity: 1
+                //     })
+                //     let msTextN = g.text(numX - 11, numMY, i + 1).attr({
+                //         "textAnchor": "center",
+                //         "dominant-baseline": "central",
+                //         "fontSize": 45,
+                //         "fontWeight": "bold",
+                //         "fontFamily": "serif",
+                //         stroke: "none",
+                //         fill: "black",
+                //         opacity: 1,
+                //     })
+                //     //number1 = g.group(circle1, msTextN1)
+                //     let circleAndNumber = g.group(circleN, msTextN)
+                //     circleAndNumber.attr({
+                //         opacity: 0
+                //     })
+                //     numbersGroups.push(circleAndNumber)
+
+                // }
+
+                // setTimeout(() => {
+                //     for (let i = 0; i < numbersGroups.length; i++) {
+                //         let numGroup = numbersGroups[i];
+                //         setTimeout(() => {
+                //             numGroup.animate({ opacity: 1 }, 500);
+                //         }, i * 500);
+                //     }
+                // }, 6000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                // let emergencySupplyMarker = g.image(emergencySupply, 613, 410, 0, 0);
+                // emergencySupplyMarker.attr({
+                //     'xlink:href': emergencySupply,
+                //     'width': "120",
+                //     'height': "120",
+                //     'opacity': 1
+                // });
+
+                // setTimeout(() => {
+                //     emergencySupplyMarker.animate({ width: 64, height: 64, transform: 't 705, 235' }, 500, mina.easeout);
+                // }, 2500);
+
+                // soviet_mdno_unit
+
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+        let page27 = {
+            label: 'marsh with no road cuts LOC to 5',
+            pageInt: 27,
+            delay: 600,
+            duration: 40500,
+            remove: true,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+
+                let posX = 110
+                let posY = 300
+                let boxWidth = 1120
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 203).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+
+                let msText = g.text(posX, posY + 70, "Beware - if the LOC you trace goes into a Marsh hex,").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                let msText2 = g.text(posX, posY + 120, "in Dry or Mud weather, and it is not following a road,").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                let msText3 = g.text(posX, posY + 170, "the maximum LOS length is reduced to 5 hexes.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                whiteRect.animate({ opacity: 1 }, 500);
+                msText.animate({ opacity: 1 }, 500);
+                msText2.animate({ opacity: 1 }, 500);
+                msText3.animate({ opacity: 1 }, 500);
+
+
+
 
                 let numberPositions = []
                 let xM = 67
                 let yM5 = 39
                 numberPositions.push({ x: 1521, y: 505 }); // 1
                 numberPositions.push({ x: 1521, y: 428 }); // 2
-                numberPositions.push({ x: 1454, y: 389 }); // 3
-                numberPositions.push({ x: 1386, y: 428 - (yM5 * 2) }); // 4
+                numberPositions.push({ x: 1521, y: 428 - (yM5 * 2) }); // 3
+                numberPositions.push({ x: 1454, y: 428 - (yM5 * 3) }); // 4
                 numberPositions.push({ x: 1386, y: 390 - (yM5 * 3) }); // 5
 
 
@@ -2967,18 +3206,250 @@ const Supply = (props) => {
                     for (let i = 0; i < numbersGroups.length; i++) {
                         let numGroup = numbersGroups[i];
                         setTimeout(() => {
-                            numGroup.animate({ opacity: 1 }, 500);
+                            let opa = i === 1 ? 0.3 : 1
+                            numGroup.animate({ opacity: opa }, 500);
                         }, i * 500);
                     }
-                }, 6000);
+                }, 9000);
+
+                setTimeout(() => {
+                    for (let i = numbersGroups.length - 1; i >= 0; i--) {
+                        let numGroup = numbersGroups[i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 0 }, 500);
+                        }, i * 50);
+                    }
+                }, 18000);
+
+
+                posX = 40
+                posY = 300
+                boxWidth = 1200
+                let whiteRect2 = g.rect(posX - 35, posY + 12, boxWidth, 160).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+
+                setTimeout(() => {
+                    whiteRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                    msText2.animate({ opacity: 0 }, 500);
+                    msText3.animate({ opacity: 0 }, 500);
+                }, 7500);
+
+                let msText4 = g.text(posX, posY + 70, "The Axis unit cannot reach General Supply in 5").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                let msText5 = g.text(posX, posY + 120, "hexes. Place an Emergency Supply marker on it.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    whiteRect2.animate({ opacity: 1 }, 500);
+                    msText4.animate({ opacity: 1 }, 500);
+                    msText5.animate({ opacity: 1 }, 500);
+                }, 12500);
+
+                setTimeout(() => {
+                    whiteRect2.animate({ opacity: 0 }, 500);
+                    msText4.animate({ opacity: 0 }, 500);
+                    msText5.animate({ opacity: 0 }, 500);
+                }, 18000);
+
+                let emergencySupplyMarker = g.image(emergencySupply, 1013, 333, 0, 0);
+                emergencySupplyMarker.attr({
+                    'xlink:href': emergencySupply,
+                    'width': "120",
+                    'height': "120",
+                    'opacity': 0
+                });
+
+                setTimeout(() => {
+                    emergencySupplyMarker.animate({ opacity: 1 }, 500);
+                }, 14000);
+
+                setTimeout(() => {
+                    emergencySupplyMarker.animate({ width: 64, height: 64, transform: 't 538, 173' }, 500, mina.easeout);
+                }, 16500);
+
+
+
+                posX = 40
+                posY = 300
+                boxWidth = 1300
+                let whiteRect3 = g.rect(posX - 35, posY + 12, boxWidth, 221).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+
+
+                let msText6 = g.text(posX, posY + 70, "Being in Emergency Supply does not cause any issues.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                let msText7 = g.text(posX, posY + 120, "However, if the unit already has an Emergency Supply").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                let msText8 = g.text(posX, posY + 170, "marker on it, it instead gets an Out Of Supply marker.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    whiteRect3.animate({ opacity: 1 }, 500);
+                    msText6.animate({ opacity: 1 }, 500);
+                    msText7.animate({ opacity: 1 }, 500);
+                    msText8.animate({ opacity: 1 }, 500);
+                }, 19500);
+
+
+
+                let outOfSupplyMarker = g.image(outOfSupply, 1132, 364, 0, 0);
+                outOfSupplyMarker.attr({
+                    'xlink:href': outOfSupply,
+                    'width': "120",
+                    'height': "120",
+                    'opacity': 0
+                });
+
+                setTimeout(() => {
+                    outOfSupplyMarker.animate({ opacity: 1 }, 500);
+                }, 23000);
+
+                setTimeout(() => {
+                    outOfSupplyMarker.animate({ width: 64, height: 64, transform: 't 421, 142' }, 500, mina.easeout);
+                }, 24500);
+                setTimeout(() => {
+                    emergencySupplyMarker.animate({ transform: 't 540, -1140', opacity: 0 }, 300);
+                }, 24800);
+
+                setTimeout(() => {
+                    whiteRect3.animate({ opacity: 0 }, 500);
+                    msText6.animate({ opacity: 0 }, 500);
+                    msText7.animate({ opacity: 0 }, 500);
+                    msText8.animate({ opacity: 0 }, 500);
+                }, 28000);
+
+
+
+
+                posX = 40
+                posY = 300
+                boxWidth = 1310
+                let whiteRect4 = g.rect(posX - 35, posY + 12, boxWidth, 221).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+
+
+                let msText9 = g.text(posX, posY + 70, "For a unit is marked Out of Supply or Emergency Supply, and").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                let msText10 = g.text(posX, posY + 120, "if in a General Supply phase is deemed to be back in supply, then").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                let msText11 = g.text(posX, posY + 170, "remove the markers, even if it's the Out of Supply marker.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    whiteRect4.animate({ opacity: 1 }, 500);
+                    msText9.animate({ opacity: 1 }, 500);
+                    msText10.animate({ opacity: 1 }, 500);
+                    msText11.animate({ opacity: 1 }, 500);
+                }, 30000);
+
+
+                setTimeout(() => {
+                    whiteRect4.animate({ opacity: 0 }, 500);
+                    msText9.animate({ opacity: 0 }, 500);
+                    msText10.animate({ opacity: 0 }, 500);
+                    msText11.animate({ opacity: 0 }, 500);
+                }, 40000);
+
+                setTimeout(() => {
+                    sgSovietMdnoUnit.value.remove()
+                    sgSovietMdnoUnit.value = null;
+                    sgSovietInfantryUnit.value.remove()
+                    sgSovietInfantryUnit.value = null;
+                    emergencySupplyMarker.remove()
+                    outOfSupplyMarker.remove()
+                    sgAxisRailEndUnit.value.remove()
+                    sgAxisRailEndUnit.value = null;
+                    sgSovietCombatUnit.value.remove()
+                    sgSovietCombatUnit.value = null;
+                    sgAxisCombatUnit.value.remove()
+                    sgAxisCombatUnit.value = null;
+                }, 40500);
 
 
                 return { discrete: g, percentage: null }
             }
         }
 
-        let page27 = {
+        let page28 = {
             label: 'swamp is worse',
+            pageInt: 28,
             delay: 0,
             duration: 14000,
             remove: true,
@@ -2996,11 +3467,11 @@ const Supply = (props) => {
                     stroke: "black",
                     opacity: 0
                 });
-               // whiteRect.animate({ opacity: 1 }, 500);
+                // whiteRect.animate({ opacity: 1 }, 500);
 
 
 
-                let msText = g.text(posX + 270, posY + 50,        "Swamp is very restrictive - during Dry or Mud weather a LOC is").attr({
+                let msText = g.text(posX + 270, posY + 50, "Swamp is very restrictive - during Dry or Mud weather a LOC is").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -3038,6 +3509,7 @@ const Supply = (props) => {
 
 
 
+
                 setTimeout(() => {
                     whiteRect.animate({ opacity: 1 }, 500);
                     msText.animate({ opacity: 1 }, 500);
@@ -3051,37 +3523,233 @@ const Supply = (props) => {
             }
         }
 
+
+        let page30 = {
+            label: 'Mud weather',
+            pageInt: 8,
+            delay: 0,
+            duration: 1000,
+            remove: false,
+            async: false,
+            fn: () => {
+                let g = paper.g()
+                let weatherRect = g.rect(12, 11, 395, 66).attr({
+                    fill: "#70543E",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+
+
+                let msText = g.text(102, 44, "Mud weather").attr({
+                    "textAnchor": "left",
+                    "dominant-baseline": "central",
+                    "fontSize": 50,
+                    "fontWeight": "normal",
+                    "fontFamily": "sans-serif",
+                    stroke: "none",
+                    fill: "white",
+                    opacity: 0,
+                })
+
+                let mudEllipse = g.ellipse(55, 35, 15, 11).attr({
+                    fill: "#A0A0A0",
+                    stroke: "none",
+                    strokeWidth: 0,
+                    opacity: 0.4
+                })
+                let mudEllipse2 = g.ellipse(75, 64, 19, 9).attr({
+                    fill: "#A0A0A0",
+                    stroke: "none",
+                    strokeWidth: 0,
+                    opacity: 0.3
+                })
+                let mudEllipse3 = g.ellipse(47, 53, 15, 9).attr({
+                    fill: "#A0A0A0",
+                    stroke: "none",
+                    strokeWidth: 0,
+                    opacity: 0.3
+                })
+                let mudGroup = g.group(mudEllipse, mudEllipse2, mudEllipse3)
+                mudGroup.attr({
+                    opacity: 0
+                })
+
+                setTimeout(() => {
+                    weatherRect.animate({ opacity: 1 }, 500);
+                    //sunGroup.animate({ opacity: 1 }, 500);
+                    msText.animate({ opacity: 1 }, 500);
+                    mudGroup.animate({ opacity: 1 }, 500);
+                }, 500);
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+
+        let page31 = {
+            label: 'Mud weather details',
+            pageInt: 8,
+            delay: 0,
+            duration: 1000,
+            remove: false,
+            async: false,
+            fn: () => {
+                let g = paper.g()
+                let posX = 338
+                let posY = 329
+                let boxWidth = 1295
+                let windowWidth = window.innerWidth;
+                let textRect = g.rect(posX - 35, posY, boxWidth, 200).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                // whiteRect.animate({ opacity: 1 }, 500);
+
+                let textXpos = posX + 20
+                let textYpos = posY + 50
+                let msText = g.text(textXpos, textYpos, "During Mud weather, the LOC path is reduced to 5 hexes,").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                textYpos += 50
+                let msText2 = g.text(textXpos, textYpos, "railroad supply length remains the same as with Dry weather,").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                textYpos += 50
+                let msText3 = g.text(textXpos, textYpos, "and Motorway and (not minor) roads are reduced to 15 hexes.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 1 }, 500);
+                    msText.animate({ opacity: 1 }, 500);
+                    msText2.animate({ opacity: 1 }, 500);
+                    msText3.animate({ opacity: 1 }, 500);
+                }, 1000);
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
         let _storyBoard = []
-        _storyBoard.push(page1)
-        _storyBoard.push(page1b)
-        _storyBoard.push(page2)
-        _storyBoard.push(page3)
-        _storyBoard.push(page4)
-        _storyBoard.push(page5)
-        _storyBoard.push(page6)
-        _storyBoard.push(page7)
-        _storyBoard.push(page8)
-        _storyBoard.push(page9)
-        _storyBoard.push(page10)
-        _storyBoard.push(page11)
-        _storyBoard.push(page12)
-        _storyBoard.push(page13)
-        _storyBoard.push(page14)
-        _storyBoard.push(page15)
-        _storyBoard.push(page16)
-        _storyBoard.push(page17)
-        _storyBoard.push(page18)
-        _storyBoard.push(page19)
-        _storyBoard.push(page20)
-        _storyBoard.push(page21)
-        _storyBoard.push(page22)
-        _storyBoard.push(page23)
-        _storyBoard.push(page24)
-        _storyBoard.push(page25)
-        _storyBoard.push(page26)
-        _storyBoard.push(page27)
+        // _storyBoard.push(page1)
+        // _storyBoard.push(page1b)
+        // _storyBoard.push(page2)
+        // _storyBoard.push(page3)
+        // _storyBoard.push(page4)
+        // _storyBoard.push(page5)
+        // _storyBoard.push(page6)
+        // _storyBoard.push(page7)
+        // _storyBoard.push(page8)
+        // _storyBoard.push(page9)
+        // _storyBoard.push(page10)
+        // _storyBoard.push(page11)
+        // _storyBoard.push(page12)
+        // _storyBoard.push(page13)
+        // _storyBoard.push(page14)
+        // _storyBoard.push(page15)
+        // _storyBoard.push(page16)
+        // _storyBoard.push(page17)
+        // _storyBoard.push(page18)
+        // _storyBoard.push(page19)
+        // _storyBoard.push(page20)
+        // _storyBoard.push(page21)
+        // _storyBoard.push(page22)
+        // _storyBoard.push(page23)
+        // _storyBoard.push(page24)
+        // _storyBoard.push(page25)
+        // _storyBoard.push(page26)
+        // _storyBoard.push(page27)
+        // _storyBoard.push(page28)
+        // _storyBoard.push(page29)
+        _storyBoard.push(page30)
+        _storyBoard.push(page31)
         sgStoryBoard.value = _storyBoard
         sequence()
+    }
+
+    const displayZocs = (g, xShift, yShift) => {
+        let zocGroup = g.group()
+        let angleMult = 60
+        let zocPaths = ``
+        for (let i = 0; i < 7; i++) {
+            let x = Math.cos(i * angleMult * Math.PI / 180) * 46
+            let y = Math.sin(i * angleMult * Math.PI / 180) * 46
+            if (i === 0) {
+                zocPaths += `M ${x} ${y} `
+            }
+            else {
+                zocPaths += ` L ${x} ${y} `
+            }
+        };
+        zocPaths += ` Z `
+        console.log('zocPaths:', zocPaths)
+        let zocPath = g.path(zocPaths).attr({
+            fill: "none",
+            stroke: "black",
+            strokeWidth: 1,
+            opacity: 0.5
+        });
+        zocGroup.add(zocPath)
+        zocPath.transform(`t ${xShift}, ${yShift}`);
+        zocPath.animate({ opacity: 1 }, 500);
+        let gHexes = paper.g()
+        for (let i = 0; i < 6; i++) {
+            setTimeout(() => {
+                let x = Math.sin((i * (angleMult)) * Math.PI / 180) * 78
+                let y = Math.cos((i * (angleMult)) * Math.PI / 180) * 78
+                let zocClone = zocPath.clone(true);
+                zocGroup.add(zocClone)
+                zocClone.transform(`t ${xShift + x}, ${yShift + y}`);
+                zocClone.attr({
+                    fill: "yellow",
+                    stroke: "black",
+                    strokeWidth: 1,
+                    opacity: 0.5
+                })
+
+
+                let msText = g.text(-25, 0, "ZOC").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 25,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 1,
+                })
+                msText.transform(`t ${xShift + x}, ${yShift + y}`, 500);
+                zocGroup.add(msText)
+
+
+            }, i * 50);
+        }
+
+        return zocGroup
     }
 
     const sequence = async () => {
