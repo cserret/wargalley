@@ -24,9 +24,11 @@ import town_connected2 from "../../../images/efs/supply/town_connected2.jpg";
 import town_connect3 from "../../../images/efs/supply/town_connect3.jpg";
 import town_connected3 from "../../../images/efs/supply/town_connected3.jpg";
 import german_infantry_unit from "../../../images/efs/supply/german_infantry_division_120.jpg";
+import german_antiair_unit from "../../../images/efs/supply/german_antiair_120.jpg";
 import soviet_cavalry_unit from "../../../images/efs/supply/soviet_cavalry_division_120.jpg";
 import soviet_mdno_unit from "../../../images/efs/supply/soviet_mdno_division_120.jpg";
 import soviet_infantry_unit from "../../../images/efs/supply/soviet_infantry_division_120.jpg";
+import soviet_armor_unit from "../../../images/efs/supply/soviet_armor_division_120.jpg";
 import german_rail_end from "../../../images/efs/supply/german_rail_end_120.jpg";
 import swampHex from "../../../images/efs/supply/swampHex.jpg";
 import emergencySupply from "../../../images/efs/supply/emergency_supply.jpg";
@@ -45,6 +47,7 @@ const Supply = (props) => {
     const sgAxisRailEndUnit = useSignal(null);
     const sgSovietMdnoUnit = useSignal(null);
     const sgSovietInfantryUnit = useSignal(null);
+    const sgSovietArmorUnit = useSignal(null);
     const [storyBoardStarted, setStoryBoardStarted] = useState(false)
     const [backgroundMap, setBackgroundMap] = useState(null);
 
@@ -272,6 +275,22 @@ const Supply = (props) => {
             return window.innerHeight * perc
         }
 
+        const showPageNumber = (g, pageInt) => {
+            let pageNumber = g.text(1800, 800, pageInt).attr({
+                "textAnchor": "middle",
+                "dominant-baseline": "central",
+                "fontSize": 54,
+                "fontWeight": "bold",
+                "fontFamily": "serif",
+                stroke: "none",
+                fill: "black",
+                opacity: 0.5,
+            })
+            setTimeout(() => {
+                pageNumber.remove()
+            }, 3000)
+        }
+
         let page1 = {
             label: 'intro',
             pageInt: 1,
@@ -281,6 +300,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
+                showPageNumber(g, "1")
                 let whiteRect = g.rect(14, 13, 931, 96).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
@@ -321,6 +341,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
+                showPageNumber(g, "1b")
                 let windowWidth = window.innerWidth;
                 let whiteRect = g.rect(14, 13, 1725, 98).attr({
                     fill: "#ddffff",
@@ -364,6 +385,9 @@ const Supply = (props) => {
             fn: () => {
                 let g2 = paper.g()
                 let g = paper.g()
+
+
+                showPageNumber(g, "2")
 
                 let cw = paper.clientHeight
                 let ch = paper.clientWidth
@@ -460,6 +484,7 @@ const Supply = (props) => {
                 let g2 = paper.g()
                 let g = paper.g()
 
+                showPageNumber(g, "3")
                 sgLastPageGroup.value = g
 
                 var image2 = g2.image(efs_minsk_map_roads, 0, 0, 0, 0);
@@ -544,7 +569,7 @@ const Supply = (props) => {
             fn: () => {
                 let g2 = paper.g()
                 let g = paper.g()
-
+                showPageNumber(g, "4")
                 sgLastPageGroup.value = g
 
                 var image2 = g2.image(efs_minsk_map_minorRoads, 0, 0, 0, 0);
@@ -629,7 +654,7 @@ const Supply = (props) => {
             fn: () => {
                 let g2 = paper.g()
                 let g = paper.g()
-
+                showPageNumber(g, "5")
                 sgLastPageGroup.value = g
 
                 var image2 = g2.image(efs_minsk_map_rail, 0, 0, 0, 0);
@@ -715,7 +740,7 @@ const Supply = (props) => {
 
                 let g = paper.g()
                 let g2 = paper.g()
-
+                showPageNumber(g, "6")
 
                 sgLastPageGroup.value = g
 
@@ -868,6 +893,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
+                showPageNumber(g, "7")
                 let whiteRect = g.rect(162, 691, 1640, 98).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
@@ -941,6 +967,7 @@ const Supply = (props) => {
             async: false,
             fn: () => {
                 let g = paper.g()
+                showPageNumber(g, "8")
                 let weatherRect = g.rect(12, 11, 390, 66).attr({
                     fill: "#aadaff",
                     strokeWidth: 1,
@@ -1023,6 +1050,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
+                showPageNumber(g, "9")
                 let posX = 100
                 let posY = 365
                 let boxWidth = 1000
@@ -1091,7 +1119,7 @@ const Supply = (props) => {
                 let g2 = paper.g()
                 let g = paper.g()
 
-
+                showPageNumber(g, "10")
 
 
                 let posX = 100
@@ -1175,7 +1203,7 @@ const Supply = (props) => {
             fn: () => {
                 let g2 = paper.g()
                 let g = paper.g()
-
+                showPageNumber(g, "11")
 
 
 
@@ -1265,7 +1293,7 @@ const Supply = (props) => {
             fn: () => {
                 let g2 = paper.g()
                 let g = paper.g()
-
+                showPageNumber(g, "12")
 
 
 
@@ -1354,7 +1382,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
-
+                showPageNumber(g, "13")
                 let posX = 560
                 let posY = 300
                 let boxWidth = 762
@@ -1406,7 +1434,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
-
+                showPageNumber(g, "14")
                 let posX = 560
                 let posY = 300
                 let boxWidth = 762
@@ -1454,7 +1482,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
-
+                showPageNumber(g, "15")
                 let posX = 464
                 let posY = 323
                 let boxWidth = 1043
@@ -1580,7 +1608,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
-
+                showPageNumber(g, "16")
                 let posX = 92
                 let posY = 266
                 let boxWidth = 1790
@@ -1731,7 +1759,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
-
+                showPageNumber(g, "17")
                 let posX = 400
                 let posY = 670
                 let boxWidth = 1480
@@ -1855,7 +1883,8 @@ const Supply = (props) => {
                         strokeWidth: 1,
                         opacity: 0.8
                     })
-                    let adjustX = (i < 9) ? 11 : 22;
+                    let adjustX = (i < 9) ? 11 : 23;
+                    adjustX = (i === 10) ? 22 : adjustX;
                     let msTextN = g.text(numberCoords[i].x - adjustX, numberCoords[i].y - 2, i + 1).attr({
                         "textAnchor": "center",
                         "dominant-baseline": "central",
@@ -1908,9 +1937,10 @@ const Supply = (props) => {
                         fill: "#ffffff",
                         stroke: "black",
                         strokeWidth: 1,
-                        opacity: 0.4
+                        opacity: 0.8
                     })
-                    let adjustX = (i + 3 < 9) ? 11 : 22;
+                    let adjustX = (i < 9) ? 11 : 23;
+                    adjustX = (i === 10) ? 22 : adjustX;
                     let msTextN = g.text(numberCoords2[i].x - adjustX, numberCoords2[i].y - 2, i + 4).attr({
                         "textAnchor": "center",
                         "dominant-baseline": "central",
@@ -1999,7 +2029,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
-
+                showPageNumber(g, "18")
                 let posX = 400
                 let posY = 500
                 let boxWidth = 1480
@@ -2059,7 +2089,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
-
+                showPageNumber(g, "19")
                 let posX = 464
                 let posY = 323
                 let boxWidth = 1200
@@ -2189,7 +2219,7 @@ const Supply = (props) => {
 
 
                 let g = paper.g()
-
+                showPageNumber(g, "20")
                 let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 270).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
@@ -2312,6 +2342,7 @@ const Supply = (props) => {
             fn: () => {
 
                 let g = paper.g()
+                showPageNumber(g, "21")
                 let railEndGroup = paper.g()
 
 
@@ -2400,7 +2431,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
-
+                showPageNumber(g, "22")
                 let posX = 160
                 let posY = 100
                 let boxWidth = 762
@@ -2450,6 +2481,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
+                showPageNumber(g, "23")
                 let sovietCavGroup = paper.g()
 
                 let posX = 760
@@ -2558,7 +2590,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
-
+                showPageNumber(g, "24")
                 let posX = 560
                 let posY = 400
                 let boxWidth = 1151
@@ -2708,7 +2740,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
-
+                showPageNumber(g, "25")
                 let posX = 240
                 let posY = 500
                 let boxWidth = 1100
@@ -2835,7 +2867,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
-
+                showPageNumber(g, "26")
                 let posX = 80
                 let posY = 358
                 let boxWidth = 1236
@@ -3114,7 +3146,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
-
+                showPageNumber(g, "27")
                 let posX = 110
                 let posY = 300
                 let boxWidth = 1120
@@ -3456,7 +3488,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
-
+                showPageNumber(g, "28")
                 let posX = 160
                 let posY = 330
                 let boxWidth = 1625
@@ -3524,7 +3556,7 @@ const Supply = (props) => {
         }
 
 
-        let page30 = {
+        let page29 = {
             label: 'Mud weather',
             pageInt: 8,
             delay: 0,
@@ -3533,6 +3565,7 @@ const Supply = (props) => {
             async: false,
             fn: () => {
                 let g = paper.g()
+                showPageNumber(g, "30")
                 let weatherRect = g.rect(12, 11, 395, 66).attr({
                     fill: "#70543E",
                     strokeWidth: 1,
@@ -3577,7 +3610,6 @@ const Supply = (props) => {
 
                 setTimeout(() => {
                     weatherRect.animate({ opacity: 1 }, 500);
-                    //sunGroup.animate({ opacity: 1 }, 500);
                     msText.animate({ opacity: 1 }, 500);
                     mudGroup.animate({ opacity: 1 }, 500);
                 }, 500);
@@ -3587,20 +3619,21 @@ const Supply = (props) => {
         }
 
 
-        let page31 = {
+        let page30 = {
             label: 'Mud weather details',
-            pageInt: 8,
+            pageInt: 30,
             delay: 0,
-            duration: 1000,
-            remove: false,
-            async: false,
+            duration: 14000,
+            remove: true,
+            async: true,
             fn: () => {
                 let g = paper.g()
+                showPageNumber(g, "30")
                 let posX = 338
                 let posY = 329
-                let boxWidth = 1295
+                let boxWidth = 1292
                 let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 200).attr({
+                let textRect = g.rect(posX - 35, posY, boxWidth, 197).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
                     stroke: "black",
@@ -3621,7 +3654,7 @@ const Supply = (props) => {
                     opacity: 0,
                 })
                 textYpos += 50
-                let msText2 = g.text(textXpos, textYpos, "railroad supply length remains the same as with Dry weather,").attr({
+                let msText2 = g.text(textXpos, textYpos, "motorway and (not minor) roads are reduced to 15 hexes, but").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -3632,7 +3665,7 @@ const Supply = (props) => {
                     opacity: 0,
                 })
                 textYpos += 50
-                let msText3 = g.text(textXpos, textYpos, "and Motorway and (not minor) roads are reduced to 15 hexes.").attr({
+                let msText3 = g.text(textXpos, textYpos, "railroad supply rules remain the same as with Dry weather.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -3649,6 +3682,876 @@ const Supply = (props) => {
                     msText2.animate({ opacity: 1 }, 500);
                     msText3.animate({ opacity: 1 }, 500);
                 }, 1000);
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+
+
+
+
+        let page31 = {
+            label: 'Show mud weather road hexes',
+            pageInt: 31,
+            delay: 0,
+            duration: 14000,
+            remove: false,
+            async: false,
+            fn: () => {
+                let g = paper.g()
+                showPageNumber(g, "31")
+
+
+
+                let numX = 380
+                let numY = 773
+                let numY2 = 812
+                let numbersGroups = []
+                let numberCoords = []
+                numberCoords.push({ x: 46, y: 812 }); // 1
+                numberCoords.push({ x: 112, y: 774 }); // 1
+                numberCoords.push({ x: 112, y: 697 }); // 2
+                numberCoords.push({ x: 180, y: 658 }); // 3
+                numberCoords.push({ x: 246, y: 620 }); // 4
+                numberCoords.push({ x: 313, y: 658 }); // 5
+                numberCoords.push({ x: 380, y: 620 }); // 6
+                numberCoords.push({ x: 448, y: 581 }); // 7
+                numberCoords.push({ x: 515, y: 543 }); // 8
+                numberCoords.push({ x: 515, y: 465 }); // 9
+                let x = 515
+                x += 67;
+                numberCoords.push({ x: x, y: 465 - 39 }); // 10
+                x += 67
+                numberCoords.push({ x: x, y: 465 - 78 }); // 11
+                x += 67
+                numberCoords.push({ x: x, y: 465 - 113 }); // 12
+                x += 67
+                numberCoords.push({ x: x, y: 465 - 79 }); // 13
+                x += 67
+                numberCoords.push({ x: x, y: 465 - 113 }); // 14
+
+                for (let i = 0; i < numberCoords.length; i++) {
+
+                    let circleN = g.circle(numberCoords[i].x, numberCoords[i].y, 30).attr({
+                        fill: "#70543E",
+                        stroke: "black",
+                        strokeWidth: 1,
+                        opacity: 0.8
+                    })
+                    let adjustX = (i < 9) ? 11 : 23;
+                    adjustX = (i === 10) ? 22 : adjustX;
+                    let msTextN = g.text(numberCoords[i].x - adjustX, numberCoords[i].y - 2, i + 1).attr({
+                        "textAnchor": "center",
+                        "dominant-baseline": "central",
+                        "fontSize": 45,
+                        "fontWeight": "bold",
+                        "fontFamily": "serif",
+                        stroke: "none",
+                        fill: "white",
+                        opacity: 1,
+                    })
+                    //number1 = g.group(circle1, msTextN1)
+                    let circleAndNumber = g.group(circleN, msTextN)
+                    circleAndNumber.attr({
+                        opacity: 0
+                    })
+                    numbersGroups.push(circleAndNumber)
+                    numX -= 67;
+                    //  numY -= 44;
+                    //numY2 -= 44;
+                }
+
+                setTimeout(() => {
+                    for (let i = 0; i < numbersGroups.length; i++) {
+                        let numGroup = numbersGroups[i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 1 }, 70);
+                        }, i * 70);
+                    }
+                }, 1000);
+
+
+                numX = 380
+                numY = 773
+                numY2 = 812
+                let numbersGroups2 = []
+                let numberCoords2 = []
+                numberCoords2.push({ x: 112, y: 619 }); // 3
+                numberCoords2.push({ x: 180, y: 619 - 37 }); // 4
+                numberCoords2.push({ x: 180, y: 619 - (58 * 2) }); // 5
+                numberCoords2.push({ x: 180, y: 619 - 192 }); // 6
+                numberCoords2.push({ x: 180, y: 619 - 268 }); // 7
+                numberCoords2.push({ x: 180, y: 619 - 345 }); // 8
+                numberCoords2.push({ x: 180, y: 619 - 422 }); // 9
+                numberCoords2.push({ x: 180, y: 619 - 499 }); // 10
+                //   numberCoords2.push({ x: 180, y: 619 - 576 }); // 11
+
+                for (let i = 0; i < numberCoords2.length; i++) {
+
+                    let circleN = g.circle(numberCoords2[i].x, numberCoords2[i].y, 30).attr({
+                        fill: "#70543E",
+                        stroke: "black",
+                        strokeWidth: 1,
+                        opacity: 0.8
+                    })
+                    let adjustX = (i + 3 < 9) ? 11 : 22;
+                    let msTextN = g.text(numberCoords2[i].x - adjustX, numberCoords2[i].y - 2, i + 4).attr({
+                        "textAnchor": "center",
+                        "dominant-baseline": "central",
+                        "fontSize": 45,
+                        "fontWeight": "bold",
+                        "fontFamily": "serif",
+                        stroke: "none",
+                        fill: "white",
+                        opacity: 1,
+                    })
+                    //number1 = g.group(circle1, msTextN1)
+                    let circleAndNumber2 = g.group(circleN, msTextN)
+                    circleAndNumber2.attr({
+                        opacity: 0
+                    })
+                    numbersGroups2.push(circleAndNumber2)
+                    numX -= 67;
+                    //  numY -= 44;
+                    //numY2 -= 44;
+                }
+
+                setTimeout(() => {
+                    for (let i = 0; i < numbersGroups2.length; i++) {
+                        let numGroup = numbersGroups2[i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 1 }, 70);
+                        }, i * 70);
+                    }
+                }, 3000);
+
+
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+
+
+
+        let page32 = {
+            label: 'soviet armor division',
+            pageInt: 32,
+            delay: 4000,
+            duration: 4000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                showPageNumber(g, "32")
+
+                let posX = 1038
+                let posY = 329
+                let boxWidth = 825
+                let windowWidth = window.innerWidth;
+                let textRect = g.rect(posX - 35, posY, boxWidth, 100).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                // whiteRect.animate({ opacity: 1 }, 500);
+
+                let textXpos = posX + 15
+                let textYpos = posY + 50
+                let msText = g.text(textXpos, textYpos, "Let's bring in a Soviet armor division.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 1 }, 500);
+                    msText.animate({ opacity: 1 }, 500);
+                }, 1000);
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                }, 3500);
+
+                setTimeout(() => {
+                    textRect.remove()
+                    msText.remove()
+                }, 4000);
+                sgSovietArmorUnit.value = g.image(soviet_armor_unit, 751, -62, 0, 0);
+                sgSovietArmorUnit.value.attr({
+                    'xlink:href': soviet_armor_unit,
+                    'width': "62",
+                    'height': "62",
+                    'opacity': 1
+                });
+
+                setTimeout(() => {
+                    sgSovietArmorUnit.value.animate({ width: 64, height: 64, transform: 't 0, 342' }, 500, mina.easeout);
+                }, 2500)
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+
+
+
+        let page33 = {
+            label: 'mud and red orange box units zocs',
+            pageInt: 33,
+            delay: 0,
+            duration: 12000,
+            remove: true,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                showPageNumber(g, "33")
+
+                let posX = 130
+                let posY = 426
+                let boxWidth = 1724
+                let windowWidth = window.innerWidth;
+                let textRect = g.rect(posX - 35, posY, boxWidth, 365).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                // whiteRect.animate({ opacity: 1 }, 500);
+
+                let textXpos = posX + 15
+                let textYpos = posY + 50
+                let msText = g.text(textXpos, textYpos, "During Mud conditions, the ZOCs of units with Red boxed and Orange movement").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                let msText2 = g.text(textXpos, textYpos + 50, "points do not extend into adjacent hexes, unless the unit's ZOC enters a town or city,").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                let msText3 = g.text(textXpos, textYpos + 100, "or its ZOC enters the adjacent hex along motorway/road/minor road/railroad.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let msRedBoxText = g.text(textXpos + 467, textYpos + 242, "Red Box MP").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 36,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+
+
+
+
+                let leftArrow = g.text(textXpos + 1110, textYpos + 241, "↼").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 56,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let leftArrow2 = g.text(textXpos + 1110, textYpos + 244, "↽").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 56,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let leftArrow3 = g.text(textXpos + 412, textYpos + 241, "↼").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 56,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let leftArrow4 = g.text(textXpos + 412, textYpos + 244, "↽").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 56,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let msOrangeMPText = g.text(textXpos + 1165, textYpos + 242, "Orange MP").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 36,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let displayRedBox = g.image(soviet_armor_unit, posX + 300, posY + 200, 0, 0);
+                displayRedBox.attr({
+                    'xlink:href': soviet_armor_unit,
+                    'width': "120",
+                    'height': "120",
+                    'opacity': 0
+                });
+
+                let displayOrangeMP = g.image(german_antiair_unit, posX + 1000, posY + 200, 0, 0);
+                displayOrangeMP.attr({
+                    'xlink:href': german_antiair_unit,
+                    'width': "120",
+                    'height': "120",
+                    'opacity': 0
+                });
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 1 }, 500);
+                    msText.animate({ opacity: 1 }, 500);
+                    msText2.animate({ opacity: 1 }, 500);
+                    msText3.animate({ opacity: 1 }, 500);
+                    displayRedBox.animate({ opacity: 1 }, 500);
+                    displayOrangeMP.animate({ opacity: 1 }, 500);
+                    msRedBoxText.animate({ opacity: 1 }, 500);
+                    msOrangeMPText.animate({ opacity: 1 }, 500);
+                    leftArrow.animate({ opacity: 1 }, 500);
+                    leftArrow2.animate({ opacity: 1 }, 500);
+                    leftArrow3.animate({ opacity: 1 }, 500);
+                    leftArrow4.animate({ opacity: 1 }, 500);
+                }, 1000);
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+
+        let page34 = {
+            label: 'explain lack of ZOC',
+            pageInt: 34,
+            delay: 0,
+            duration: 12000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                showPageNumber(g, "34")
+
+                let posX = 930
+                let posY = 24
+                let boxWidth = 1000
+                let windowWidth = window.innerWidth;
+                let textRect = g.rect(posX - 35, posY, boxWidth, 298).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+
+                let textXpos = posX + 15
+                let textYpos = posY + 50
+                let msText = g.text(textXpos, textYpos, "Since it is Mud weather, that Soviet armor unit").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                textYpos += 50
+                let msText2 = g.text(textXpos, textYpos, "does not exert any ZOCs. It is not on any road,").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                textYpos += 50
+                let msText3 = g.text(textXpos, textYpos, "and there is no adjacent town or city hex.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                textYpos += 50
+                let msText4 = g.text(textXpos, textYpos, "The road hexes at distances 13, 14, and 15 are").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                textYpos += 50
+                let msText5 = g.text(textXpos, textYpos, "still valid Axis General Supply sources.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 1 }, 500)
+                    msText.animate({ opacity: 1 }, 500)
+                    msText2.animate({ opacity: 1 }, 500)
+                    msText3.animate({ opacity: 1 }, 500)
+                    msText4.animate({ opacity: 1 }, 500)
+                    msText5.animate({ opacity: 1 }, 500)
+                }, 1300)
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 0 }, 500)
+                    msText.animate({ opacity: 0 }, 500)
+                    msText2.animate({ opacity: 0 }, 500)
+                    msText3.animate({ opacity: 0 }, 500)
+                    msText4.animate({ opacity: 0 }, 500)
+                    msText5.animate({ opacity: 0 }, 500)
+                }, 11500)
+
+                let numbersGroups2 = []
+                let numCoords = [{ x: 693, y: 351 }, { x: 760, y: 384 }, { x: 827, y: 351 }]
+                for (let i = 0; i < numCoords.length; i++) {
+                    let msTextN = g.text(numCoords[i].x, numCoords[i].y, i + 13).attr({
+                        "textAnchor": "center",
+                        "dominant-baseline": "central",
+                        "fontSize": 45,
+                        "fontWeight": "bold",
+                        "fontFamily": "serif",
+                        stroke: "yellow",
+                        "strokeWidth": 1,
+                        fill: "yellow",
+                        opacity: 1,
+                    })
+
+                    let circleAndNumber2 = g.group(msTextN)
+                    circleAndNumber2.attr({
+                        opacity: 0
+                    })
+                    numbersGroups2.push(circleAndNumber2)
+
+                }
+
+                setTimeout(() => {
+                    for (let i = 0; i < numbersGroups2.length; i++) {
+                        let numGroup = numbersGroups2[i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 1 }, 300);
+                        }, i * 300);
+                    }
+                }, 5000);
+
+                setTimeout(() => {
+                    for (let i = 0; i < numbersGroups2.length; i++) {
+                        let numGroup = numbersGroups2[i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 0 }, 300);
+                        }, i * 300);
+                    }
+                }, 11500);
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+        let page35 = {
+            label: 'place German unit for 5 LOC length',
+            pageInt: 35,
+            delay: 0,
+            duration: 5000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                showPageNumber(g, "35")
+
+                let posX = 1000
+                let posY = 488
+                let boxWidth = 620
+                let windowWidth = window.innerWidth;
+                let textRect = g.rect(posX - 35, posY, boxWidth, 95).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+
+                let textXpos = posX + 15
+                let textYpos = posY + 50
+                let msText = g.text(textXpos, textYpos, "Let's put an Axis unit here.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+
+                sgAxisCombatUnit.value = g.image(german_infantry_unit, 1220, -64, 0, 0);
+                sgAxisCombatUnit.value.attr({
+                    'xlink:href': german_infantry_unit,
+                    'width': "64",
+                    'height': "64",
+                    'opacity': 1
+                });
+
+                setTimeout(() => {
+                    //  combat_unit.animate({ width: 35, height: 35, transform: 't 44, 44 ' }, 500);
+                    sgAxisCombatUnit.value.animate({ transform: 't 0, 382 ' }, 500, mina.easeout);
+                }, 2500);
+                setTimeout(() => {
+                    textRect.animate({ opacity: 1 }, 500)
+                    msText.animate({ opacity: 1 }, 500)
+                }, 1300)
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 0 }, 500)
+                    msText.animate({ opacity: 0 }, 500)
+                }, 4500)
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+        let page36 = {
+            label: 'failed LOC',
+            pageInt: 36,
+            delay: 0,
+            duration: 15000,
+            remove: true,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                showPageNumber(g, "36")
+                let posX = 674
+                let posY = 433
+                let boxWidth = 1070
+                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 115).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+
+
+
+
+
+                let msText = g.text(posX, posY + 70, "Due to Mud weather, the LOC is reduced to 5 hexes.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                let msText2 = g.text(posX, posY + 120, "The unit cannot reach General Supply.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 1 }, 500);
+                    msText.animate({ opacity: 1 }, 500);
+
+                }, 4000);
+                setTimeout(() => {
+                    textRect.animate({
+                        height: 161
+                    }, 500, mina.easein);
+                }, 9500);
+                setTimeout(() => {
+                    msText2.animate({ opacity: 1 }, 500);
+                }, 10000)
+
+                let numberPositions = []
+                numberPositions.push({ x: 1184, y: 313 }); // 1
+                numberPositions.push({ x: 1118, y: 274 }); // 2
+                numberPositions.push({ x: 1051, y: 313 }); // 3
+                numberPositions.push({ x: 984, y: 350 }); // 4
+                numberPositions.push({ x: 917, y: 313 }); // 5
+                let numbersGroups = []
+                for (let i = 0; i < numberPositions.length; i++) {
+                    console.log('i:', i)
+                    let circleN = g.circle(numberPositions[i].x, numberPositions[i].y, 30).attr({
+                        fill: "#ffffff",
+                        stroke: "black",
+                        strokeWidth: 1,
+                        opacity: 1
+                    })
+                    let msTextN = g.text(numberPositions[i].x - 11, numberPositions[i].y, i + 1).attr({
+                        "textAnchor": "center",
+                        "dominant-baseline": "central",
+                        "fontSize": 45,
+                        "fontWeight": "bold",
+                        "fontFamily": "serif",
+                        stroke: "none",
+                        fill: "black",
+                        opacity: 1,
+                    })
+                    //number1 = g.group(circle1, msTextN1)
+                    let circleAndNumber = g.group(circleN, msTextN)
+                    circleAndNumber.attr({
+                        opacity: 0
+                    })
+                    numbersGroups.push(circleAndNumber)
+                }
+
+                setTimeout(() => {
+                    for (let i = 0; i < numbersGroups.length; i++) {
+                        let numGroup = numbersGroups[i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 1 }, 300);
+                        }, i * 300);
+                    }
+                }, 7500);
+
+
+
+
+
+
+                setTimeout(() => {
+                    for (let i = numbersGroups.length; i > 0; i--) {
+                        let numGroup = numbersGroups[numbersGroups.length - i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 0 }, 90);
+                        }, i * 90);
+                    }
+                }, 14000);
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                    msText2.animate({ opacity: 0 }, 500);
+                }, 14500);
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+
+        let page37 = {
+            label: 'shift German unit into 5 LOC length',
+            pageInt: 37,
+            delay: 0,
+            duration: 5000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                showPageNumber(g, "37")
+
+                let posX = 1000
+                let posY = 488
+                let boxWidth = 790
+                let windowWidth = window.innerWidth;
+                let textRect = g.rect(posX - 35, posY, boxWidth, 95).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+
+                let textXpos = posX + 15
+                let textYpos = posY + 50
+                let msText = g.text(textXpos, textYpos, "Let's shift that Axis unit over a hex.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    //  combat_unit.animate({ width: 35, height: 35, transform: 't 44, 44 ' }, 500);
+                    sgAxisCombatUnit.value.animate({ transform: 't -68, 344 ' }, 500, mina.easeout);
+                }, 2500);
+                setTimeout(() => {
+                    textRect.animate({ opacity: 1 }, 500)
+                    msText.animate({ opacity: 1 }, 500)
+                }, 1300)
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 0 }, 500)
+                    msText.animate({ opacity: 0 }, 500)
+                }, 4500)
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+        let page38 = {
+            label: 'successful LOC in mud',
+            pageInt: 36,
+            delay: 0,
+            duration: 15000,
+            remove: true,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                showPageNumber(g, "36")
+                let posX = 874
+                let posY = 433
+                let boxWidth = 690
+                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 115).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+
+
+
+
+
+                let msText = g.text(posX, posY + 70, "Now it can reach the General Supply.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 1 }, 500);
+                    msText.animate({ opacity: 1 }, 500);
+
+                }, 4000);
+
+
+                let numberPositions = []
+
+                numberPositions.push({ x: 1118, y: 274 }); // 2
+                numberPositions.push({ x: 1051, y: 313 }); // 3
+                numberPositions.push({ x: 984, y: 350 }); // 4
+                numberPositions.push({ x: 917, y: 313 }); // 5
+                numberPositions.push({ x: 851, y: 351 }); // 5
+                let numbersGroups = []
+                for (let i = 0; i < numberPositions.length; i++) {
+                    console.log('i:', i)
+                    let circleN = g.circle(numberPositions[i].x, numberPositions[i].y, 30).attr({
+                        fill: "#ffffff",
+                        stroke: "black",
+                        strokeWidth: 1,
+                        opacity: 1
+                    })
+                    let msTextN = g.text(numberPositions[i].x - 11, numberPositions[i].y, i + 1).attr({
+                        "textAnchor": "center",
+                        "dominant-baseline": "central",
+                        "fontSize": 45,
+                        "fontWeight": "bold",
+                        "fontFamily": "serif",
+                        stroke: "none",
+                        fill: "black",
+                        opacity: 1,
+                    })
+                    //number1 = g.group(circle1, msTextN1)
+                    let circleAndNumber = g.group(circleN, msTextN)
+                    circleAndNumber.attr({
+                        opacity: 0
+                    })
+                    numbersGroups.push(circleAndNumber)
+                }
+
+                setTimeout(() => {
+                    for (let i = 0; i < numbersGroups.length; i++) {
+                        let numGroup = numbersGroups[i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 1 }, 300);
+                        }, i * 300);
+                    }
+                }, 1500);
+
+
+
+
+
+
+                setTimeout(() => {
+                    for (let i = numbersGroups.length; i > 0; i--) {
+                        let numGroup = numbersGroups[numbersGroups.length - i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 0 }, 90);
+                        }, i * 90);
+                    }
+                }, 14000);
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                }, 14500);
 
                 return { discrete: g, percentage: null }
             }
@@ -3683,10 +4586,17 @@ const Supply = (props) => {
         // _storyBoard.push(page25)
         // _storyBoard.push(page26)
         // _storyBoard.push(page27)
-        // _storyBoard.push(page28)
-        // _storyBoard.push(page29)
-        _storyBoard.push(page30)
+        //_storyBoard.push(page28)
+        //_storyBoard.push(page29)
+        //_storyBoard.push(page30)
         _storyBoard.push(page31)
+        _storyBoard.push(page32)
+        _storyBoard.push(page33)
+        _storyBoard.push(page34)
+        _storyBoard.push(page35)
+        _storyBoard.push(page36)
+        _storyBoard.push(page37)
+        _storyBoard.push(page38)
         sgStoryBoard.value = _storyBoard
         sequence()
     }
