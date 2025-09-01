@@ -48,6 +48,7 @@ const Supply = (props) => {
     const sgSovietMdnoUnit = useSignal(null);
     const sgSovietInfantryUnit = useSignal(null);
     const sgSovietArmorUnit = useSignal(null);
+    const sgZocGroup = useSignal(null)
     const [storyBoardStarted, setStoryBoardStarted] = useState(false)
     const [backgroundMap, setBackgroundMap] = useState(null);
 
@@ -4319,7 +4320,7 @@ const Supply = (props) => {
                     textRect.animate({ opacity: 1 }, 500);
                     msText.animate({ opacity: 1 }, 500);
 
-                }, 4000);
+                }, 2000);
                 setTimeout(() => {
                     textRect.animate({
                         height: 161
@@ -4453,7 +4454,7 @@ const Supply = (props) => {
             label: 'successful LOC in mud',
             pageInt: 36,
             delay: 0,
-            duration: 15000,
+            duration: 10000,
             remove: true,
             async: true,
             fn: () => {
@@ -4461,7 +4462,7 @@ const Supply = (props) => {
                 showPageNumber(g, "36")
                 let posX = 874
                 let posY = 433
-                let boxWidth = 690
+                let boxWidth = 740
                 let textRect = g.rect(posX - 35, posY + 12, boxWidth, 115).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
@@ -4473,7 +4474,7 @@ const Supply = (props) => {
 
 
 
-                let msText = g.text(posX, posY + 70, "Now it can reach the General Supply.").attr({
+                let msText = g.text(posX, posY + 70, "Now it can reach General Supply.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -4546,12 +4547,499 @@ const Supply = (props) => {
                             numGroup.animate({ opacity: 0 }, 90);
                         }, i * 90);
                     }
-                }, 14000);
+                }, 9000);
 
                 setTimeout(() => {
                     textRect.animate({ opacity: 0 }, 500);
                     msText.animate({ opacity: 0 }, 500);
-                }, 14500);
+                }, 9500);
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+
+        let page39 = {
+            label: 'shift soviet armor division over',
+            pageInt: 39,
+            delay: 1000,
+            duration: 4000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                showPageNumber(g, "39")
+
+                let posX = 938
+                let posY = 119
+                let boxWidth = 801
+                let windowWidth = window.innerWidth;
+                let textRect = g.rect(posX - 35, posY, boxWidth, 100).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                // whiteRect.animate({ opacity: 1 }, 500);
+
+                let textXpos = posX + 15
+                let textYpos = posY + 50
+                let msText = g.text(textXpos, textYpos, "So say the Soviet unit is over here...").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 1 }, 500);
+                    msText.animate({ opacity: 1 }, 500);
+                }, 1000);
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                }, 3500);
+
+                setTimeout(() => {
+                    textRect.remove()
+                    msText.remove()
+                }, 4000);
+
+                setTimeout(() => {
+                    sgSovietArmorUnit.value.animate({ width: 64, height: 64, transform: 't 67, 303' }, 500, mina.easeout);
+                }, 2500)
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+
+        let page40 = {
+            label: 'show soviet armor zoc into town',
+            pageInt: 40,
+            delay: 1000,
+            duration: 10000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                showPageNumber(g, "40")
+
+                let posX = 768
+                let posY = 419
+                let boxWidth = 834
+                let windowWidth = window.innerWidth;
+                let textRect = g.rect(posX - 35, posY, boxWidth, 100).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                // whiteRect.animate({ opacity: 1 }, 500);
+
+                let textXpos = posX + 15
+                let textYpos = posY + 50
+                let msText = g.text(textXpos, textYpos, "Does the Soviet unit does have a ZOC? -").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                let msText2 = g.text(textXpos, textYpos + 50, "Yes, now the ZOC extends to the adjacent town.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 1 }, 500);
+                    msText.animate({ opacity: 1 }, 500);
+                }, 1000);
+                setTimeout(() => {
+                    msText2.animate({ opacity: 1 }, 500);
+                }, 3000);
+                setTimeout(() => {
+                    textRect.animate({
+                        width: boxWidth + 260,
+                        height: 150
+                    }, 500, mina.easein);
+                }, 2500);
+
+
+
+                let angleMult = 60
+                let zocPaths = ``
+                for (let i = 0; i < 7; i++) {
+                    let x = Math.cos(i * angleMult * Math.PI / 180) * 46
+                    let y = Math.sin(i * angleMult * Math.PI / 180) * 46
+                    if (i === 0) {
+                        zocPaths += `M ${x} ${y} `
+                    }
+                    else {
+                        zocPaths += ` L ${x} ${y} `
+                    }
+                };
+                zocPaths += ` Z `
+                console.log('zocPaths:', zocPaths)
+                let zocPath = g.path(zocPaths).attr({
+                    fill: "yellow",
+                    stroke: "red",
+                    strokeWidth: 2,
+                    opacity: 0.5
+                });
+                let msZocText = g.text(-25, 0, "ZOC").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 25,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 1,
+                })
+                let zocGroup = g.group()
+                zocGroup.attr({ opacity: 0 })
+                zocGroup.add(zocPath, msZocText)
+                zocGroup.transform('t 850, 272 s 0.5')
+                setTimeout(() => {
+                    zocGroup.animate({ width: 64, height: 64, transform: 't 917, 313', opacity: 1 }, 500, mina.easeout);
+                }, 5000)
+                sgZocGroup.value = zocGroup
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                    msText2.animate({ opacity: 0 }, 500);
+                }, 9500);
+
+                setTimeout(() => {
+                    textRect.remove()
+                    msText.remove()
+                    msText2.remove()
+                }, 10000);
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+        let page41 = {
+            label: 'can the Axis unit still reach supply',
+            pageInt: 41,
+            delay: 0,
+            duration: 16000,
+            remove: true,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                showPageNumber(g, "41")
+                let posX = 874
+                let posY = 433
+                let boxWidth = 950
+                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 115).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+
+                let msText = g.text(posX, posY + 70, "Can the Axis unit still reach General Supply?").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                let msText2 = g.text(posX, posY + 120, "Yes it can, by diverting through the woods.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 1 }, 500);
+                    msText.animate({ opacity: 1 }, 500);
+                }, 1000);
+
+
+                let numberPositions = []
+
+                numberPositions.push({ x: 1118, y: 274 }); // 1
+                numberPositions.push({ x: 1051, y: 313 }); // 2
+                numberPositions.push({ x: 984, y: 350 }); // 3
+                numberPositions.push({ x: 917, y: 388 }); // 4
+                numberPositions.push({ x: 851, y: 351 }); // 5
+                let numbersGroups = []
+                for (let i = 0; i < numberPositions.length; i++) {
+                    console.log('i:', i)
+                    let circleN = g.circle(numberPositions[i].x, numberPositions[i].y, 30).attr({
+                        fill: "#ffffff",
+                        stroke: "black",
+                        strokeWidth: 1,
+                        opacity: 1
+                    })
+                    let msTextN = g.text(numberPositions[i].x - 11, numberPositions[i].y, i + 1).attr({
+                        "textAnchor": "center",
+                        "dominant-baseline": "central",
+                        "fontSize": 45,
+                        "fontWeight": "bold",
+                        "fontFamily": "serif",
+                        stroke: "none",
+                        fill: "black",
+                        opacity: 1,
+                    })
+                    //number1 = g.group(circle1, msTextN1)
+                    let circleAndNumber = g.group(circleN, msTextN)
+                    circleAndNumber.attr({
+                        opacity: 0
+                    })
+                    numbersGroups.push(circleAndNumber)
+                }
+
+                setTimeout(() => {
+                    for (let i = 0; i < numbersGroups.length; i++) {
+                        let numGroup = numbersGroups[i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 1 }, 300);
+                        }, i * 300);
+                    }
+                }, 4000);
+
+                setTimeout(() => {
+                    textRect.animate({
+                        width: boxWidth,
+                        height: 160
+                    }, 500, mina.easein);
+                }, 7000);
+                setTimeout(() => {
+                    msText2.animate({ opacity: 1 }, 500)
+                }, 7500)
+
+
+
+
+                setTimeout(() => {
+                    for (let i = numbersGroups.length; i > 0; i--) {
+                        let numGroup = numbersGroups[numbersGroups.length - i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 0 }, 90);
+                        }, i * 90);
+                    }
+                }, 11000);
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                    msText2.animate({ opacity: 0 }, 500);
+                    sgZocGroup.value.animate({ opacity: 0 }, 500)
+                }, 15000);
+
+                setTimeout(() => {
+                    sgZocGroup.value.remove()
+                    sgZocGroup.value = null
+                }, 15500)
+
+
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+
+        let page42 = {
+            label: 'move soviet armor division to motorway',
+            pageInt: 42,
+            delay: 0,
+            duration: 4000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                showPageNumber(g, "42")
+
+                let posX = 1038
+                let posY = 369
+                let boxWidth = 825
+                let windowWidth = window.innerWidth;
+                let textRect = g.rect(posX - 35, posY, boxWidth, 100).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                // whiteRect.animate({ opacity: 1 }, 500);
+
+                let textXpos = posX + 15
+                let textYpos = posY + 50
+                let msText = g.text(textXpos, textYpos, "Let's move that Soviet unit one hex over.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 1 }, 500);
+                    msText.animate({ opacity: 1 }, 500);
+                }, 1000);
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                }, 3500);
+
+                setTimeout(() => {
+                    textRect.remove()
+                    msText.remove()
+                }, 4000);
+
+
+                setTimeout(() => {
+                    sgSovietArmorUnit.value.animate({ transform: 't 66, 381' }, 200, mina.easeout);
+                }, 2500)
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+
+        let page43 = {
+            label: 'show soviet armor zocs on motorway',
+            pageInt: 43,
+            delay: 1000,
+            duration: 10000,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                showPageNumber(g, "43")
+
+                let posX = 788
+                let posY = 493
+                let boxWidth = 1042
+                let windowWidth = window.innerWidth;
+                let textRect = g.rect(posX - 35, posY, boxWidth, 154).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                // whiteRect.animate({ opacity: 1 }, 500);
+
+                let textXpos = posX + 15
+                let textYpos = posY + 50
+                let msText = g.text(textXpos, textYpos, "Since the unit is on a motorway, it's ZOC extends").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                let msText2 = g.text(textXpos, textYpos + 50, "into the two adjacent and connected road hexes.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 1 }, 500);
+                    msText.animate({ opacity: 1 }, 500);
+                    msText2.animate({ opacity: 1 }, 500);
+                }, 1000);
+
+                let angleMult = 60
+                let zocPaths = ``
+                for (let i = 0; i < 7; i++) {
+                    let x = Math.cos(i * angleMult * Math.PI / 180) * 46
+                    let y = Math.sin(i * angleMult * Math.PI / 180) * 46
+                    if (i === 0) {
+                        zocPaths += `M ${x} ${y} `
+                    }
+                    else {
+                        zocPaths += ` L ${x} ${y} `
+                    }
+                };
+                zocPaths += ` Z `
+                console.log('zocPaths:', zocPaths)
+                let zocPath = g.path(zocPaths).attr({
+                    fill: "yellow",
+                    stroke: "none",
+                    strokeWidth: 2,
+                    opacity: 0.5
+                });
+                let zocPath2 = g.path(zocPaths).attr({
+                    fill: "none",
+                    stroke: "red",
+                    strokeWidth: 2,
+                    opacity: 1
+                });
+
+                let msZocText = g.text(-25, 0, "ZOC").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 25,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 1,
+                })
+                let zocGroup = g.group()
+                zocGroup.attr({ opacity: 1 })
+                zocGroup.add(zocPath, zocPath2, msZocText)
+                zocGroup.transform('t 850, 349 s 0.5')
+                let zocClone = zocGroup.clone(true);
+                zocClone.transform('t 850, 349 s 0.5')
+                setTimeout(() => {
+                    zocGroup.animate({ width: 64, height: 64, transform: 't 917, 313', opacity: 1 }, 500, mina.easeout);
+                    zocClone.animate({ width: 59, height: 59, transform: 't 783, 390', opacity: 1 }, 500, mina.easeout);
+                }, 5000)
+                sgZocGroup.value = zocGroup
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                    msText2.animate({ opacity: 0 }, 500);
+                }, 9500);
+
+                setTimeout(() => {
+                    textRect.remove()
+                    msText.remove()
+                    msText2.remove()
+                }, 10000);
 
                 return { discrete: g, percentage: null }
             }
@@ -4589,14 +5077,19 @@ const Supply = (props) => {
         //_storyBoard.push(page28)
         //_storyBoard.push(page29)
         //_storyBoard.push(page30)
-        _storyBoard.push(page31)
-        _storyBoard.push(page32)
-        _storyBoard.push(page33)
-        _storyBoard.push(page34)
-        _storyBoard.push(page35)
-        _storyBoard.push(page36)
-        _storyBoard.push(page37)
-        _storyBoard.push(page38)
+        // _storyBoard.push(page31)
+        // _storyBoard.push(page32)
+        // _storyBoard.push(page33)
+        // _storyBoard.push(page34)
+        // _storyBoard.push(page35)
+        // _storyBoard.push(page36)
+        // _storyBoard.push(page37)
+        // _storyBoard.push(page38)
+        // _storyBoard.push(page39)
+        // _storyBoard.push(page40)
+        // _storyBoard.push(page41)
+        // _storyBoard.push(page42)
+        _storyBoard.push(page43)
         sgStoryBoard.value = _storyBoard
         sequence()
     }
