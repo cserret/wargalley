@@ -33,6 +33,7 @@ import german_rail_end from "../../../images/efs/supply/german_rail_end_120.jpg"
 import swampHex from "../../../images/efs/supply/swampHex.jpg";
 import emergencySupply from "../../../images/efs/supply/emergency_supply.jpg";
 import outOfSupply from "../../../images/efs/supply/out_of_supply.jpg";
+import sovietRailBreak from "../../../images/efs/supply/soviet_rail_break_120.jpg";
 import './Supply.scss';
 let mina = window.mina
 
@@ -49,6 +50,7 @@ const Supply = (props) => {
     const sgSovietInfantryUnit = useSignal(null);
     const sgSovietArmorUnit = useSignal(null);
     const sgZocGroup = useSignal(null)
+    const sgSovietRailBreak = useSignal(null)
     const [storyBoardStarted, setStoryBoardStarted] = useState(false)
     const [backgroundMap, setBackgroundMap] = useState(null);
 
@@ -965,7 +967,7 @@ const Supply = (props) => {
             delay: 0,
             duration: 1000,
             remove: false,
-            async: false,
+            async: true,
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "8")
@@ -1184,7 +1186,7 @@ const Supply = (props) => {
 
                 setTimeout(() => {
                     //  combat_unit.animate({ width: 35, height: 35, transform: 't 44, 44 ' }, 500);
-                    sgAxisCombatUnit.value.animate({ width: 64, height: 64, transform: 't -597, 371 ' }, 500, mina.easeout);
+                    sgAxisCombatUnit.value.animate({ width: 64, height: 64, transform: 't -598, 370 ' }, 500, mina.easeout);
                 }, 2500);
 
 
@@ -1418,7 +1420,7 @@ const Supply = (props) => {
 
                 sgLastPageGroup.value = g
                 setTimeout(() => {
-                    sgAxisCombatUnit.value.animate({ transform: 't -197, 372' }, 500, mina.easeinout);
+                    sgAxisCombatUnit.value.animate({ transform: 't -197, 371' }, 500, mina.easeinout);
                 }, 2500);
 
 
@@ -1438,7 +1440,7 @@ const Supply = (props) => {
                 showPageNumber(g, "14")
                 let posX = 560
                 let posY = 300
-                let boxWidth = 762
+                let boxWidth = 760
                 let windowWidth = window.innerWidth;
                 let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 110).attr({
                     fill: "#ddffff",
@@ -1604,15 +1606,15 @@ const Supply = (props) => {
             label: 'Road',
             pageInt: 16,
             delay: 0,
-            duration: 10000,
+            duration: 12000,
             remove: true,
             async: true,
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "16")
-                let posX = 92
+                let posX = 82
                 let posY = 266
-                let boxWidth = 1790
+                let boxWidth = 1800
                 let windowWidth = window.innerWidth;
                 let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 299).attr({
                     fill: "#ddffff",
@@ -1762,8 +1764,8 @@ const Supply = (props) => {
                 let g = paper.g()
                 showPageNumber(g, "17")
                 let posX = 400
-                let posY = 670
-                let boxWidth = 1480
+                let posY = 630
+                let boxWidth = 1483
                 let windowWidth = window.innerWidth;
                 let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 119).attr({
                     fill: "#ddffff",
@@ -1940,7 +1942,9 @@ const Supply = (props) => {
                         strokeWidth: 1,
                         opacity: 0.8
                     })
-                    let adjustX = (i < 9) ? 11 : 23;
+
+
+                    let adjustX = (i < 6) ? 11 : 23;
                     adjustX = (i === 10) ? 22 : adjustX;
                     let msTextN = g.text(numberCoords2[i].x - adjustX, numberCoords2[i].y - 2, i + 4).attr({
                         "textAnchor": "center",
@@ -2250,7 +2254,7 @@ const Supply = (props) => {
                     fill: "black",
                     opacity: 0,
                 })
-                let msText3 = g.text(posX, posY + 170, "(for Soviet) use. Enemy units, unblocked enemy zocs and rail breaks terminate").attr({
+                let msText3 = g.text(posX, posY + 170, "(for Soviet) use. Enemy units, unblocked enemy zocs and rail breaks stop the tracing of").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -2260,7 +2264,7 @@ const Supply = (props) => {
                     fill: "black",
                     opacity: 0,
                 })
-                let msText4 = g.text(posX, posY + 220, "the tracing of supply at that rail hex.").attr({
+                let msText4 = g.text(posX, posY + 220, "supply at that rail hex.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -2486,8 +2490,8 @@ const Supply = (props) => {
                 let sovietCavGroup = paper.g()
 
                 let posX = 760
-                let posY = 400
-                let boxWidth = 977
+                let posY = 370
+                let boxWidth = 980
                 let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 110).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
@@ -2498,7 +2502,7 @@ const Supply = (props) => {
 
 
 
-                let msText = g.text(posX, posY + 70, "And here comes a pesky Soviet cavalry division").attr({
+                let msText = g.text(posX, posY + 70, "And here comes a sneaky Soviet cavalry division.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -2744,7 +2748,7 @@ const Supply = (props) => {
                 showPageNumber(g, "25")
                 let posX = 240
                 let posY = 500
-                let boxWidth = 1100
+                let boxWidth = 1148
                 let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 213).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
@@ -2870,8 +2874,8 @@ const Supply = (props) => {
                 let g = paper.g()
                 showPageNumber(g, "26")
                 let posX = 80
-                let posY = 358
-                let boxWidth = 1236
+                let posY = 448
+                let boxWidth = 1349
                 let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 111).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
@@ -2879,7 +2883,7 @@ const Supply = (props) => {
                     opacity: 0
                 });
 
-                let msText = g.text(posX, posY + 70, "Let's move some Soviets onto the map to cause some trouble.").attr({
+                let msText = g.text(posX, posY + 70, "Let's move some more Soviets onto the map to cause some trouble.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -2907,7 +2911,7 @@ const Supply = (props) => {
 
                 posX = 520
 
-                boxWidth = 575
+                boxWidth = 580
                 let whiteRect2 = g.rect(posX - 35, posY + 12, boxWidth, 111).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
@@ -2945,7 +2949,7 @@ const Supply = (props) => {
 
                 posX = 75
 
-                boxWidth = 1205
+                boxWidth = 1215
                 let whiteRect3 = g.rect(posX - 35, posY + 12, boxWidth, 111).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
@@ -3150,8 +3154,8 @@ const Supply = (props) => {
                 showPageNumber(g, "27")
                 let posX = 110
                 let posY = 300
-                let boxWidth = 1120
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 203).attr({
+                let boxWidth = 1110
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 213).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
                     stroke: "black",
@@ -3315,7 +3319,7 @@ const Supply = (props) => {
 
                 setTimeout(() => {
                     emergencySupplyMarker.animate({ opacity: 1 }, 500);
-                }, 14000);
+                }, 13000);
 
                 setTimeout(() => {
                     emergencySupplyMarker.animate({ width: 64, height: 64, transform: 't 538, 173' }, 500, mina.easeout);
@@ -3384,7 +3388,7 @@ const Supply = (props) => {
 
                 setTimeout(() => {
                     outOfSupplyMarker.animate({ opacity: 1 }, 500);
-                }, 23000);
+                }, 20000);
 
                 setTimeout(() => {
                     outOfSupplyMarker.animate({ width: 64, height: 64, transform: 't 421, 142' }, 500, mina.easeout);
@@ -3405,7 +3409,7 @@ const Supply = (props) => {
 
                 posX = 40
                 posY = 300
-                boxWidth = 1310
+                boxWidth = 1325
                 let whiteRect4 = g.rect(posX - 35, posY + 12, boxWidth, 221).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
@@ -3414,7 +3418,7 @@ const Supply = (props) => {
                 });
 
 
-                let msText9 = g.text(posX, posY + 70, "For a unit is marked Out of Supply or Emergency Supply, and").attr({
+                let msText9 = g.text(posX, posY + 70, "If a unit is previously marked Out of Supply or Emergency Supply, and").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -3424,7 +3428,7 @@ const Supply = (props) => {
                     fill: "black",
                     opacity: 0,
                 })
-                let msText10 = g.text(posX, posY + 120, "if in a General Supply phase is deemed to be back in supply, then").attr({
+                let msText10 = g.text(posX, posY + 120, "in a General Supply phase is deemed to be back in supply,").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -3434,7 +3438,7 @@ const Supply = (props) => {
                     fill: "black",
                     opacity: 0,
                 })
-                let msText11 = g.text(posX, posY + 170, "remove the markers, even if it's the Out of Supply marker.").attr({
+                let msText11 = g.text(posX, posY + 170, "then remove the markers, even if it's the Out of Supply marker.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -3458,6 +3462,13 @@ const Supply = (props) => {
                     msText9.animate({ opacity: 0 }, 500);
                     msText10.animate({ opacity: 0 }, 500);
                     msText11.animate({ opacity: 0 }, 500);
+                    sgSovietMdnoUnit.value.animate({ opacity: 0 }, 500);
+                    sgSovietInfantryUnit.value.animate({ opacity: 0 }, 500);
+                    emergencySupplyMarker.animate({ opacity: 0 }, 500);
+                    outOfSupplyMarker.animate({ opacity: 0 }, 500);
+                    sgAxisRailEndUnit.value.animate({ opacity: 0 }, 500);
+                    sgSovietCombatUnit.value.animate({ opacity: 0 }, 500);
+                    sgAxisCombatUnit.value.animate({ opacity: 0 }, 500);
                 }, 40000);
 
                 setTimeout(() => {
@@ -3492,7 +3503,7 @@ const Supply = (props) => {
                 showPageNumber(g, "28")
                 let posX = 160
                 let posY = 330
-                let boxWidth = 1625
+                let boxWidth = 1640
                 let windowWidth = window.innerWidth;
                 let whiteRect = g.rect(posX - 35, posY, boxWidth, 200).attr({
                     fill: "#ddffff",
@@ -3563,7 +3574,7 @@ const Supply = (props) => {
             delay: 0,
             duration: 1000,
             remove: false,
-            async: false,
+            async: true,
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "30")
@@ -3688,7 +3699,95 @@ const Supply = (props) => {
             }
         }
 
+        let page30b = {
+            label: 'place a rail break',
+            pageInt: 30,
+            delay: 0,
+            duration: 8000,
+            remove: true,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                showPageNumber(g, "30b")
+                
+                let posX = 421
+                let posY = 580
+                let boxWidth = 1156
+                let windowWidth = window.innerWidth;
+                let textRect = g.rect(posX - 35, posY, boxWidth, 157).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+                // whiteRect.animate({ opacity: 1 }, 500);
 
+                let textXpos = posX + 20
+                let textYpos = posY + 50
+                let msText = g.text(textXpos, textYpos, "Since the next couple of examples will trace to the road").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                textYpos += 50
+                let msText2 = g.text(textXpos, textYpos, "network, lets say the Soviets broke the rail line here.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 1 }, 500);
+                    msText.animate({ opacity: 1 }, 500);
+                    msText2.animate({ opacity: 1 }, 500);
+                   //msText3.animate({ opacity: 1 }, 500);
+                }, 500);
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 1 }, 500);
+                    msText.animate({ opacity: 1 }, 500);
+                    msText2.animate({ opacity: 1 }, 500);
+                   //msText3.animate({ opacity: 1 }, 500);
+                }, 7500);
+
+                // sgAxisRailEndUnit.value = g.image(german_rail_end, 613, 410, 0, 0);
+                // sgAxisRailEndUnit.value.attr({
+                //     'xlink:href': german_rail_end,
+                //     'width': "120",
+                //     'height': "120",
+                //     'opacity': 1
+                // });
+
+                // setTimeout(() => {
+                //     sgAxisRailEndUnit.value.animate({ width: 64, height: 64, transform: 't 705, -235 r 58' }, 500, mina.easeout);
+                // }, 2500);
+
+                sgSovietRailBreak.value = paper.group().image(sovietRailBreak, 163, -62, 42, 42);
+                sgSovietRailBreak.value.attr({
+                    'xlink:href': sovietRailBreak,
+                    'width': "42",
+                    'height': "42",
+                    'opacity': 1
+                });
+
+                setTimeout(() => {
+                    sgSovietRailBreak.value.animate({ transform: 't 21, 478' }, 500, mina.easeout);
+                }, 2500);
+
+
+                return { discrete: g, percentage: null }
+            }
+        }
 
 
 
@@ -3698,7 +3797,7 @@ const Supply = (props) => {
             delay: 0,
             duration: 14000,
             remove: false,
-            async: false,
+            async: true,
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "31")
@@ -3835,12 +3934,14 @@ const Supply = (props) => {
 
 
 
+        
+
 
         let page32 = {
             label: 'soviet armor division',
             pageInt: 32,
-            delay: 4000,
-            duration: 4000,
+            delay: 0,
+            duration: 4500,
             remove: false,
             async: true,
             fn: () => {
@@ -4410,7 +4511,7 @@ const Supply = (props) => {
 
                 let posX = 1000
                 let posY = 488
-                let boxWidth = 790
+                let boxWidth = 787
                 let windowWidth = window.innerWidth;
                 let textRect = g.rect(posX - 35, posY, boxWidth, 95).attr({
                     fill: "#ddffff",
@@ -4563,8 +4664,8 @@ const Supply = (props) => {
             label: 'shift soviet armor division over',
             pageInt: 39,
             delay: 1000,
-            duration: 4000,
-            remove: false,
+            duration: 5000,
+            remove: true,
             async: true,
             fn: () => {
                 let g = paper.g()
@@ -4622,8 +4723,8 @@ const Supply = (props) => {
         let page40 = {
             label: 'show soviet armor zoc into town',
             pageInt: 40,
-            delay: 1000,
-            duration: 10000,
+            delay: 0,
+            duration: 10100,
             remove: false,
             async: true,
             fn: () => {
@@ -4632,7 +4733,7 @@ const Supply = (props) => {
 
                 let posX = 768
                 let posY = 419
-                let boxWidth = 834
+                let boxWidth = 830
                 let windowWidth = window.innerWidth;
                 let textRect = g.rect(posX - 35, posY, boxWidth, 100).attr({
                     fill: "#ddffff",
@@ -4668,16 +4769,16 @@ const Supply = (props) => {
                 setTimeout(() => {
                     textRect.animate({ opacity: 1 }, 500);
                     msText.animate({ opacity: 1 }, 500);
-                }, 1000);
-                setTimeout(() => {
-                    msText2.animate({ opacity: 1 }, 500);
                 }, 3000);
                 setTimeout(() => {
+                    msText2.animate({ opacity: 1 }, 500);
+                }, 5000);
+                setTimeout(() => {
                     textRect.animate({
-                        width: boxWidth + 260,
+                        width: boxWidth + 240,
                         height: 150
                     }, 500, mina.easein);
-                }, 2500);
+                }, 4500);
 
 
 
@@ -4740,7 +4841,7 @@ const Supply = (props) => {
             label: 'can the Axis unit still reach supply',
             pageInt: 41,
             delay: 0,
-            duration: 16000,
+            duration: 16100,
             remove: true,
             async: true,
             fn: () => {
@@ -4780,7 +4881,7 @@ const Supply = (props) => {
                 setTimeout(() => {
                     textRect.animate({ opacity: 1 }, 500);
                     msText.animate({ opacity: 1 }, 500);
-                }, 1000);
+                }, 500);
 
 
                 let numberPositions = []
@@ -4828,7 +4929,6 @@ const Supply = (props) => {
 
                 setTimeout(() => {
                     textRect.animate({
-                        width: boxWidth,
                         height: 160
                     }, 500, mina.easein);
                 }, 7000);
@@ -4852,12 +4952,16 @@ const Supply = (props) => {
                     textRect.animate({ opacity: 0 }, 500);
                     msText.animate({ opacity: 0 }, 500);
                     msText2.animate({ opacity: 0 }, 500);
-                    sgZocGroup.value.animate({ opacity: 0 }, 500)
-                }, 15000);
+                    if (sgZocGroup.value) {
+                        sgZocGroup.value.animate({ opacity: 0 }, 500)
+                    }
+                }, 10000);
 
                 setTimeout(() => {
-                    sgZocGroup.value.remove()
-                    sgZocGroup.value = null
+                    if (sgZocGroup.value) {
+                        sgZocGroup.value.remove()
+                        sgZocGroup.value = null
+                    }
                 }, 15500)
 
 
@@ -4871,7 +4975,7 @@ const Supply = (props) => {
             label: 'move soviet armor division to motorway',
             pageInt: 42,
             delay: 0,
-            duration: 4000,
+            duration: 5000,
             remove: false,
             async: true,
             fn: () => {
@@ -4941,9 +5045,9 @@ const Supply = (props) => {
 
                 let posX = 788
                 let posY = 493
-                let boxWidth = 1042
+                let boxWidth = 1049
                 let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 154).attr({
+                let textRect = g.rect(posX - 35, posY, boxWidth, 153).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
                     stroke: "black",
@@ -5018,7 +5122,7 @@ const Supply = (props) => {
                     opacity: 1,
                 })
                 let zocGroup = g.group()
-                zocGroup.attr({ opacity: 1 })
+                zocGroup.attr({ opacity: 0 })
                 zocGroup.add(zocPath, zocPath2, msZocText)
                 zocGroup.transform('t 850, 349 s 0.5')
                 let zocClone = zocGroup.clone(true);
@@ -5027,7 +5131,8 @@ const Supply = (props) => {
                     zocGroup.animate({ width: 64, height: 64, transform: 't 917, 313', opacity: 1 }, 500, mina.easeout);
                     zocClone.animate({ width: 59, height: 59, transform: 't 783, 390', opacity: 1 }, 500, mina.easeout);
                 }, 5000)
-                sgZocGroup.value = zocGroup
+
+                sgZocGroup.value = g.group(zocGroup, zocClone)
 
                 setTimeout(() => {
                     textRect.animate({ opacity: 0 }, 500);
@@ -5040,6 +5145,173 @@ const Supply = (props) => {
                     msText.remove()
                     msText2.remove()
                 }, 10000);
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+        let page44 = {
+            label: 'the Axis unit now cannot reach supply',
+            pageInt: 44,
+            delay: 0,
+            duration: 18500,
+            remove: false,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                showPageNumber(g, "44")
+                let posX = 860
+                let posY = 483
+                let boxWidth = 1010
+                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 115).attr({
+                    fill: "#ddffff",
+                    strokeWidth: 1,
+                    stroke: "black",
+                    opacity: 0
+                });
+
+                let msText = g.text(posX, posY + 70, "The Axis unit now cannot reach General Supply.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 1 }, 500);
+                    msText.animate({ opacity: 1 }, 500);
+                }, 1000);
+
+                //sgZocGroup.value.animate({ width: 64, height: 64, transform: 't 317, 313', opacity: 1 }, 500, mina.easeout);
+
+                let numberPositions = []
+
+                numberPositions.push({ x: 1118, y: 274 }); // 1
+                numberPositions.push({ x: 1051, y: 313 }); // 2
+                numberPositions.push({ x: 984, y: 350 }); // 3
+                numberPositions.push({ x: 917, y: 388 }); // 4
+                numberPositions.push({ x: 851, y: 428 }); // 5
+                let numbersGroups = []
+                for (let i = 0; i < numberPositions.length; i++) {
+                    console.log('i:', i)
+                    let circleN = g.circle(numberPositions[i].x, numberPositions[i].y, 30).attr({
+                        fill: "#ffffff",
+                        stroke: "black",
+                        strokeWidth: 1,
+                        opacity: 1
+                    })
+                    let msTextN = g.text(numberPositions[i].x - 11, numberPositions[i].y, i + 1).attr({
+                        "textAnchor": "center",
+                        "dominant-baseline": "central",
+                        "fontSize": 45,
+                        "fontWeight": "bold",
+                        "fontFamily": "serif",
+                        stroke: "none",
+                        fill: "black",
+                        opacity: 1,
+                    })
+                    //number1 = g.group(circle1, msTextN1)
+                    let circleAndNumber = g.group(circleN, msTextN)
+                    circleAndNumber.attr({
+                        opacity: 0
+                    })
+                    numbersGroups.push(circleAndNumber)
+                }
+
+                setTimeout(() => {
+                    for (let i = 0; i < numbersGroups.length; i++) {
+                        let numGroup = numbersGroups[i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 1 }, 300);
+                        }, i * 300);
+                    }
+                }, 4000);
+
+                let numberPositions2 = []
+                numberPositions2.push({ x: 1118, y: 274 }); // 1
+                numberPositions2.push({ x: 1051, y: 313 }); // 2
+                numberPositions2.push({ x: 984, y: 274 }); // 3
+                numberPositions2.push({ x: 917, y: 233 }); // 4
+                numberPositions2.push({ x: 851, y: 274 }); // 5
+                let numbersGroups2 = []
+                for (let i = 0; i < numberPositions2.length; i++) {
+                    console.log('i:', i)
+                    let circleN = g.circle(numberPositions2[i].x, numberPositions2[i].y, 30).attr({
+                        fill: "#ffffff",
+                        stroke: "black",
+                        strokeWidth: 1,
+                        opacity: 1
+                    })
+                    let msTextN = g.text(numberPositions2[i].x - 11, numberPositions2[i].y, i + 1).attr({
+                        "textAnchor": "center",
+                        "dominant-baseline": "central",
+                        "fontSize": 45,
+                        "fontWeight": "bold",
+                        "fontFamily": "serif",
+                        stroke: "none",
+                        fill: "black",
+                        opacity: 1,
+                    })
+                    //number1 = g.group(circle1, msTextN1)
+                    let circleAndNumber = g.group(circleN, msTextN)
+                    circleAndNumber.attr({
+                        opacity: 0
+                    })
+                    numbersGroups2.push(circleAndNumber)
+                }
+
+
+
+
+                setTimeout(() => {
+                    for (let i = numbersGroups.length; i > 0; i--) {
+                        let numGroup = numbersGroups[numbersGroups.length - i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 0 }, 90);
+                        }, i * 90);
+                    }
+                }, 9000);
+
+                setTimeout(() => {
+                    for (let i = 0; i < numbersGroups2.length; i++) {
+                        let numGroup = numbersGroups2[i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 1 }, 300);
+                        }, i * 300);
+                    }
+                }, 10000);
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                }, 15000);
+
+
+                setTimeout(() => {
+                    if (sgZocGroup.value) {
+                        sgZocGroup.value.animate({ opacity: 0 }, 500)
+                    }
+                }, 17500)
+
+                setTimeout(() => {
+                    if (sgZocGroup.value) {
+                        sgZocGroup.value.remove()
+                        sgZocGroup.value = null
+                    }
+                }, 18100)
+                setTimeout(() => {
+                    for (let i = numbersGroups2.length; i > 0; i--) {
+                        let numGroup = numbersGroups2[numbersGroups2.length - i];
+                        setTimeout(() => {
+                            numGroup.animate({ opacity: 0 }, 300);
+                        }, i * 90);
+                    }
+                }, 17000);
+
 
                 return { discrete: g, percentage: null }
             }
@@ -5074,22 +5346,24 @@ const Supply = (props) => {
         // _storyBoard.push(page25)
         // _storyBoard.push(page26)
         // _storyBoard.push(page27)
-        //_storyBoard.push(page28)
-        //_storyBoard.push(page29)
-        //_storyBoard.push(page30)
-        // _storyBoard.push(page31)
-        // _storyBoard.push(page32)
-        // _storyBoard.push(page33)
-        // _storyBoard.push(page34)
-        // _storyBoard.push(page35)
-        // _storyBoard.push(page36)
-        // _storyBoard.push(page37)
-        // _storyBoard.push(page38)
-        // _storyBoard.push(page39)
-        // _storyBoard.push(page40)
-        // _storyBoard.push(page41)
-        // _storyBoard.push(page42)
+        // _storyBoard.push(page28)
+        // _storyBoard.push(page29)
+        // _storyBoard.push(page30)
+        _storyBoard.push(page30b)
+        _storyBoard.push(page31)
+        _storyBoard.push(page32)
+        _storyBoard.push(page33)
+        _storyBoard.push(page34)
+        _storyBoard.push(page35)
+        _storyBoard.push(page36)
+        _storyBoard.push(page37)
+        _storyBoard.push(page38)
+        _storyBoard.push(page39)
+        _storyBoard.push(page40)
+        _storyBoard.push(page41)
+        _storyBoard.push(page42)
         _storyBoard.push(page43)
+        _storyBoard.push(page44)
         sgStoryBoard.value = _storyBoard
         sequence()
     }
