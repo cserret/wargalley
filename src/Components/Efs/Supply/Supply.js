@@ -53,6 +53,22 @@ const Supply = (props) => {
     const sgSovietRailBreak = useSignal(null)
     const [storyBoardStarted, setStoryBoardStarted] = useState(false)
     const [backgroundMap, setBackgroundMap] = useState(null);
+    let textAttrs = {
+        "textAnchor": "center",
+        "dominant-baseline": "central",
+        "fontSize": 45,
+        "fontWeight": "bold",
+        "fontFamily": "serif",
+        stroke: "none",
+        fill: "black",
+        opacity: 0,
+    }
+    let textRectAttrs = {
+        fill: "#ddffff",
+        strokeWidth: 1,
+        stroke: "black",
+        opacity: 0
+    }
 
     // Snap SVG Easing
     // 
@@ -304,12 +320,7 @@ const Supply = (props) => {
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "1")
-                let whiteRect = g.rect(14, 13, 931, 96).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(14, 13, 931, 96).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 500);
                 setTimeout(() => {
                     whiteRect.animate({ opacity: 0 }, 500);
@@ -346,12 +357,7 @@ const Supply = (props) => {
                 let g = paper.g()
                 showPageNumber(g, "1b")
                 let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(14, 13, 1725, 98).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(14, 13, 1725, 98).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 500);
                 setTimeout(() => {
                     whiteRect.animate({ opacity: 0 }, 500);
@@ -412,16 +418,7 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                let zocText = g.text(360, 360, "Motorway").attr({
-                    "textAnchor": "middle",
-                    "dominant-baseline": "central",
-                    "fontSize": 54,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
+                let zocText = g.text(360, 360, "Motorway").attr(textAttrs)
 
                 let rotateGroup = g.g();
 
@@ -498,16 +495,7 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                let zocText = g.text(429, 344, "Main road").attr({
-                    "textAnchor": "middle",
-                    "dominant-baseline": "central",
-                    "fontSize": 54,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
+                let zocText = g.text(429, 344, "Main road").attr(textAttrs)
 
                 let rotateGroup = g.g();
 
@@ -583,16 +571,7 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                let zocText = g.text(410, 194, "Minor road").attr({
-                    "textAnchor": "middle",
-                    "dominant-baseline": "central",
-                    "fontSize": 54,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
+                let zocText = g.text(410, 194, "Minor road").attr(textAttrs)
 
                 let rotateGroup = g.g();
 
@@ -668,16 +647,7 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                let zocText = g.text(704, 234, "Railroad").attr({
-                    "textAnchor": "middle",
-                    "dominant-baseline": "central",
-                    "fontSize": 54,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
+                let zocText = g.text(704, 234, "Railroad").attr(textAttrs)
 
                 let rotateGroup = g.g();
 
@@ -747,50 +717,18 @@ const Supply = (props) => {
 
                 sgLastPageGroup.value = g
 
-                let whiteRect = g.rect(186, 173, 1525, 498).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(186, 173, 1525, 498).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 500);
 
 
                 let textX = 934
                 let textY = 244
 
-                let text1 = g.text(textX, textY, "Although the roads and railroads are not printed inside").attr({
-                    "textAnchor": "middle",
-                    "dominant-baseline": "central",
-                    "fontSize": 54,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
+                let text1 = g.text(textX, textY, "Although the roads and railroads are not printed inside").attr(textAttrs)
 
-                let text2 = g.text(textX, textY + 60, "the town and city graphics, it is assumed they still connect").attr({
-                    "textAnchor": "middle",
-                    "dominant-baseline": "central",
-                    "fontSize": 54,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
+                let text2 = g.text(textX, textY + 60, "the town and city graphics, it is assumed they still connect").attr(textAttrs)
 
-                let text3 = g.text(textX, textY + 120, "to any other roads or railroads exiting the same hex.").attr({
-                    "textAnchor": "middle",
-                    "dominant-baseline": "central",
-                    "fontSize": 54,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
+                let text3 = g.text(textX, textY + 120, "to any other roads or railroads exiting the same hex.").attr(textAttrs)
 
                 text1.animate({ opacity: 1 }, 500);
                 setTimeout(() => {
@@ -897,12 +835,7 @@ const Supply = (props) => {
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "7")
-                let whiteRect = g.rect(162, 691, 1640, 98).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(162, 691, 1640, 98).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 500);
                 setTimeout(() => {
                     whiteRect.animate({ opacity: 0 }, 500);
@@ -1058,12 +991,7 @@ const Supply = (props) => {
                 let posY = 365
                 let boxWidth = 1000
                 let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(444, posY, boxWidth, 188).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(444, posY, boxWidth, 188).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 500);
                 setTimeout(() => {
                     //   whiteRect.animate({ opacity: 0 }, 500);
@@ -1129,12 +1057,7 @@ const Supply = (props) => {
                 let posY = 365
                 let boxWidth = 810
                 let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(554, posY, boxWidth, 190).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(554, posY, boxWidth, 190).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 500);
                 setTimeout(() => {
                     //   whiteRect.animate({ opacity: 0 }, 500);
@@ -1214,12 +1137,7 @@ const Supply = (props) => {
                 let posY = 270
                 let boxWidth = 1360
                 let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 30, posY + 12, boxWidth, 218).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(posX - 30, posY + 12, boxWidth, 218).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 500);
                 setTimeout(() => {
                     //   whiteRect.animate({ opacity: 0 }, 500);
@@ -1251,7 +1169,7 @@ const Supply = (props) => {
                 let msText3 = g.text(posX, posY + 173, "General Supply will be traced from Minsk out to units on the map.").attr({
                     "textAnchor": "left",
                     "dominant-baseline": "central",
-                    "fontSize": 45,
+                "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -1264,19 +1182,18 @@ const Supply = (props) => {
                 msText3.animate({ opacity: 1 }, 500);
 
 
-                setTimeout(() => {
+            setTimeout(() => {
                     msText.animate({ opacity: 0 }, 500);
                     msText2.animate({ opacity: 0 }, 500);
                     msText3.animate({ opacity: 0 }, 500);
                     whiteRect.animate({ opacity: 0 }, 500);
-                }, 9500);
+               }, 89500);
                 setTimeout(() => {
                     msText.remove();
                     msText2.remove();
                     msText3.remove();
                     whiteRect.remove();
                 }, 10000);
-
                 sgLastPageGroup.value = g
 
 
@@ -1304,12 +1221,7 @@ const Supply = (props) => {
                 let posY = 270
                 let boxWidth = 1103
                 let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 30, posY + 12, boxWidth, 218).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(posX - 30, posY + 12, boxWidth, 218).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 500);
                 setTimeout(() => {
                     //   whiteRect.animate({ opacity: 0 }, 500);
@@ -1341,7 +1253,7 @@ const Supply = (props) => {
                 let msText3 = g.text(posX, posY + 173, "because it is sitting directly on a supply source.").attr({
                     "textAnchor": "left",
                     "dominant-baseline": "central",
-                    "fontSize": 45,
+                "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -1354,19 +1266,18 @@ const Supply = (props) => {
                 msText3.animate({ opacity: 1 }, 500);
 
 
-                setTimeout(() => {
+            setTimeout(() => {
                     msText.animate({ opacity: 0 }, 500);
                     msText2.animate({ opacity: 0 }, 500);
                     msText3.animate({ opacity: 0 }, 500);
                     whiteRect.animate({ opacity: 0 }, 500);
-                }, 9000);
+               }, 89000);
                 setTimeout(() => {
                     msText.remove();
                     msText2.remove();
                     msText3.remove();
                     whiteRect.remove();
                 }, 9500);
-
                 sgLastPageGroup.value = g
 
 
@@ -1390,12 +1301,7 @@ const Supply = (props) => {
                 let posY = 300
                 let boxWidth = 762
                 let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 110).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 110).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 500);
 
 
@@ -1442,12 +1348,7 @@ const Supply = (props) => {
                 let posY = 300
                 let boxWidth = 760
                 let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 110).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 110).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 500);
 
 
@@ -1490,12 +1391,7 @@ const Supply = (props) => {
                 let posY = 323
                 let boxWidth = 1043
                 let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 174).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 174).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 500);
 
                 setTimeout(() => {
@@ -1530,7 +1426,7 @@ const Supply = (props) => {
                 let msText3 = g.text(posX, posY + 190, "The distance is 6 hexes, so the unit is in supply.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                    "fontSize": 45,
+                "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -1588,7 +1484,7 @@ const Supply = (props) => {
                     msText3.animate({ opacity: 1 }, 500);
                 }, 10000)
 
-                console.log('ok...')
+        
                 setTimeout(() => {
                     for (let i = numbersGroups.length; i > 0; i--) {
                         let numGroup = numbersGroups[numbersGroups.length - i];
@@ -1616,12 +1512,7 @@ const Supply = (props) => {
                 let posY = 266
                 let boxWidth = 1800
                 let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 299).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 299).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 450);
 
                 // setTimeout(() => {
@@ -1649,14 +1540,14 @@ const Supply = (props) => {
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
-                    fill: "black",
+                   fill: "black",
                     opacity: 0,
                 })
 
                 let msText3 = g.text(posX, posY + 190, "a LOC to such a road hex that's connected to a supply source to get its general supply.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                    "fontSize": 45,
+                "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -1726,7 +1617,7 @@ const Supply = (props) => {
                 msText3.animate({ opacity: 1 }, 540);
                 msText4.animate({ opacity: 1 }, 560);
 
-                // console.log('ok...')
+            // console.log('ok...')
                 // setTimeout(() => {
                 //     for (let i = numbersGroups.length; i > 0; i--) {
                 //         let numGroup = numbersGroups[numbersGroups.length - i];
@@ -1767,12 +1658,7 @@ const Supply = (props) => {
                 let posY = 630
                 let boxWidth = 1483
                 let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 119).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 119).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 450);
 
                 let msText = g.text(posX, posY + 70, "So let's show the road hexes that are extending the supply source (Minsk).").attr({
@@ -1800,12 +1686,7 @@ const Supply = (props) => {
                 posY = 100
                 boxWidth = 470
                 windowWidth = window.innerWidth;
-                let whiteRect2 = g.rect(posX - 24, posY + 27, boxWidth, 89).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect2 = g.rect(posX - 24, posY + 27, boxWidth, 89).attr(textRectAttrs);
 
 
                 let msText2 = g.text(posX, posY + 70, "And the other road...").attr({
@@ -2038,12 +1919,7 @@ const Supply = (props) => {
                 let posX = 400
                 let posY = 500
                 let boxWidth = 1480
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 164).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 164).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 450);
 
                 let msText = g.text(posX, posY + 70, "So if we re-consider how that Axis unit gets supply, we see that it can get").attr({
@@ -2098,12 +1974,7 @@ const Supply = (props) => {
                 let posX = 464
                 let posY = 323
                 let boxWidth = 1200
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 118).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 118).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 500);
 
                 setTimeout(() => {
@@ -2225,12 +2096,7 @@ const Supply = (props) => {
 
                 let g = paper.g()
                 showPageNumber(g, "20")
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 270).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 270).attr(textRectAttrs);
 
                 whiteRect.animate({ opacity: 1 }, 500);
 
@@ -2257,7 +2123,7 @@ const Supply = (props) => {
                 let msText3 = g.text(posX, posY + 170, "(for Soviet) use. Enemy units, unblocked enemy zocs and rail breaks stop the tracing of").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                    "fontSize": 45,
+                "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -2280,13 +2146,13 @@ const Supply = (props) => {
                 msText3.animate({ opacity: 1 }, 500);
                 msText4.animate({ opacity: 1 }, 500);
 
-                setTimeout(() => {
+            setTimeout(() => {
                     whiteRect.animate({ opacity: 0 }, 500);
                     msText.animate({ opacity: 0 }, 500);
                     msText2.animate({ opacity: 0 }, 500);
                     msText3.animate({ opacity: 0 }, 500);
                     msText4.animate({ opacity: 0 }, 500);
-                }, 14500);
+               }, 14500);
 
                 setTimeout(() => {
                     whiteRect.remove();
@@ -2294,7 +2160,7 @@ const Supply = (props) => {
                     msText2.remove();
                     msText3.remove();
                     msText4.remove();
-                }, 15000);
+              }, 15000);
 
                 let g2 = paper.g()
                 var imageRailGlow = g2.image(efs_minsk_map_rail_glow, 0, 0, 0, 0);
@@ -2358,12 +2224,7 @@ const Supply = (props) => {
                 let boxWidth = 1050
                 let windowWidth = window.innerWidth;
                 let windowHeight = window.innerHeight;
-                let whiteRect = g.rect(posX, posY, boxWidth, 140).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(posX, posY, boxWidth, 140).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 500);
 
 
@@ -2441,12 +2302,7 @@ const Supply = (props) => {
                 let posY = 100
                 let boxWidth = 762
                 let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 110).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 110).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 500);
 
 
@@ -2492,12 +2348,7 @@ const Supply = (props) => {
                 let posX = 760
                 let posY = 370
                 let boxWidth = 980
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 110).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 110).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 500);
 
 
@@ -2599,12 +2450,7 @@ const Supply = (props) => {
                 let posX = 560
                 let posY = 400
                 let boxWidth = 1151
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 172).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 172).attr(textRectAttrs);
 
 
 
@@ -2749,12 +2595,7 @@ const Supply = (props) => {
                 let posX = 240
                 let posY = 500
                 let boxWidth = 1148
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 213).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 213).attr(textRectAttrs);
 
 
 
@@ -2775,25 +2616,24 @@ const Supply = (props) => {
                     "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
-                    stroke: "none",
+                  stroke: "none",
                     fill: "black",
                     opacity: 0,
                 })
                 let msText3 = g.text(posX, posY + 170, "the rail cut marker is in is not a supply source.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                    "fontSize": 45,
+              "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
                     fill: "black",
                     opacity: 0,
-                })
+           })
                 whiteRect.animate({ opacity: 1 }, 500);
                 msText.animate({ opacity: 1 }, 500);
                 msText2.animate({ opacity: 1 }, 500);
                 msText3.animate({ opacity: 1 }, 500);
-
 
 
                 let numberPositions = []
@@ -2876,12 +2716,7 @@ const Supply = (props) => {
                 let posX = 80
                 let posY = 448
                 let boxWidth = 1349
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 111).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 111).attr(textRectAttrs);
 
                 let msText = g.text(posX, posY + 70, "Let's move some more Soviets onto the map to cause some trouble.").attr({
                     "textAnchor": "center",
@@ -2912,12 +2747,7 @@ const Supply = (props) => {
                 posX = 520
 
                 boxWidth = 580
-                let whiteRect2 = g.rect(posX - 35, posY + 12, boxWidth, 111).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect2 = g.rect(posX - 35, posY + 12, boxWidth, 111).attr(textRectAttrs);
 
                 let msText2 = g.text(posX, posY + 70, "And here are their ZOCs...").attr({
                     "textAnchor": "center",
@@ -2953,14 +2783,14 @@ const Supply = (props) => {
                 let whiteRect3 = g.rect(posX - 35, posY + 12, boxWidth, 111).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
-                    stroke: "black",
+                   stroke: "black",
                     opacity: 0
                 });
 
                 let msText3 = g.text(posX, posY + 70, "There is a path for supply, but it goes through a marsh hex.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                    "fontSize": 45,
+                "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -2971,13 +2801,12 @@ const Supply = (props) => {
                 setTimeout(() => {
                     whiteRect3.animate({ opacity: 1 }, 500);
                     msText3.animate({ opacity: 1 }, 500);
-                }, 10000);
+                }, 810000);
 
                 setTimeout(() => {
                     whiteRect3.animate({ opacity: 0 }, 500);
                     msText3.animate({ opacity: 0 }, 500);
                 }, 15000);
-
 
 
 
@@ -3155,12 +2984,7 @@ const Supply = (props) => {
                 let posX = 110
                 let posY = 300
                 let boxWidth = 1110
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 213).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 213).attr(textRectAttrs);
 
                 let msText = g.text(posX, posY + 70, "Beware - if the LOC you trace goes into a Marsh hex,").attr({
                     "textAnchor": "center",
@@ -3178,14 +3002,14 @@ const Supply = (props) => {
                     "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
-                    stroke: "none",
+                   stroke: "none",
                     fill: "black",
                     opacity: 0,
                 })
                 let msText3 = g.text(posX, posY + 170, "the maximum LOS length is reduced to 5 hexes.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                    "fontSize": 45,
+                "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -3196,7 +3020,6 @@ const Supply = (props) => {
                 msText.animate({ opacity: 1 }, 500);
                 msText2.animate({ opacity: 1 }, 500);
                 msText3.animate({ opacity: 1 }, 500);
-
 
 
 
@@ -3262,12 +3085,7 @@ const Supply = (props) => {
                 posX = 40
                 posY = 300
                 boxWidth = 1200
-                let whiteRect2 = g.rect(posX - 35, posY + 12, boxWidth, 160).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect2 = g.rect(posX - 35, posY + 12, boxWidth, 160).attr(textRectAttrs);
 
                 setTimeout(() => {
                     whiteRect.animate({ opacity: 0 }, 500);
@@ -3275,7 +3093,6 @@ const Supply = (props) => {
                     msText2.animate({ opacity: 0 }, 500);
                     msText3.animate({ opacity: 0 }, 500);
                 }, 7500);
-
                 let msText4 = g.text(posX, posY + 70, "The Axis unit cannot reach General Supply in 5").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
@@ -3330,12 +3147,7 @@ const Supply = (props) => {
                 posX = 40
                 posY = 300
                 boxWidth = 1300
-                let whiteRect3 = g.rect(posX - 35, posY + 12, boxWidth, 221).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect3 = g.rect(posX - 35, posY + 12, boxWidth, 221).attr(textRectAttrs);
 
 
                 let msText6 = g.text(posX, posY + 70, "Being in Emergency Supply does not cause any issues.").attr({
@@ -3410,12 +3222,7 @@ const Supply = (props) => {
                 posX = 40
                 posY = 300
                 boxWidth = 1325
-                let whiteRect4 = g.rect(posX - 35, posY + 12, boxWidth, 221).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect4 = g.rect(posX - 35, posY + 12, boxWidth, 221).attr(textRectAttrs);
 
 
                 let msText9 = g.text(posX, posY + 70, "If a unit is previously marked Out of Supply or Emergency Supply, and").attr({
@@ -3505,12 +3312,7 @@ const Supply = (props) => {
                 let posY = 330
                 let boxWidth = 1640
                 let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 35, posY, boxWidth, 200).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let whiteRect = g.rect(posX - 35, posY, boxWidth, 200).attr(textRectAttrs);
                 // whiteRect.animate({ opacity: 1 }, 500);
 
 
@@ -3538,7 +3340,7 @@ const Supply = (props) => {
                 let msText3 = g.text(posX + 270, posY + (3 * 50), "on the road or railroad that reaches the hex providing supply.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                    "fontSize": 45,
+                "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -3560,7 +3362,7 @@ const Supply = (props) => {
                     msText2.animate({ opacity: 1 }, 500);
                     msText3.animate({ opacity: 1 }, 500);
                     swamp_Hex.animate({ opacity: 1 }, 500);
-                }, 1000);
+              }, 1000);
 
 
                 return { discrete: g, percentage: null }
@@ -3645,12 +3447,7 @@ const Supply = (props) => {
                 let posY = 329
                 let boxWidth = 1292
                 let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 197).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let textRect = g.rect(posX - 35, posY, boxWidth, 197).attr(textRectAttrs);
                 // whiteRect.animate({ opacity: 1 }, 500);
 
                 let textXpos = posX + 20
@@ -3673,14 +3470,14 @@ const Supply = (props) => {
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
-                    fill: "black",
+                fill: "black",
                     opacity: 0,
                 })
                 textYpos += 50
                 let msText3 = g.text(textXpos, textYpos, "railroad supply rules remain the same as with Dry weather.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                    "fontSize": 45,
+                "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -3694,7 +3491,6 @@ const Supply = (props) => {
                     msText2.animate({ opacity: 1 }, 500);
                     msText3.animate({ opacity: 1 }, 500);
                 }, 1000);
-
                 return { discrete: g, percentage: null }
             }
         }
@@ -3712,14 +3508,9 @@ const Supply = (props) => {
                 
                 let posX = 421
                 let posY = 580
-                let boxWidth = 1156
+                let boxWidth = 1170
                 let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 157).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let textRect = g.rect(posX - 35, posY, boxWidth, 155).attr(textRectAttrs);
                 // whiteRect.animate({ opacity: 1 }, 500);
 
                 let textXpos = posX + 20
@@ -3759,7 +3550,6 @@ const Supply = (props) => {
                     msText2.animate({ opacity: 1 }, 500);
                    //msText3.animate({ opacity: 1 }, 500);
                 }, 7500);
-
                 // sgAxisRailEndUnit.value = g.image(german_rail_end, 613, 410, 0, 0);
                 // sgAxisRailEndUnit.value.attr({
                 //     'xlink:href': german_rail_end,
@@ -3783,6 +3573,12 @@ const Supply = (props) => {
                 setTimeout(() => {
                     sgSovietRailBreak.value.animate({ transform: 't 21, 478' }, 500, mina.easeout);
                 }, 2500);
+
+                posX = 421
+                posY = 580
+                boxWidth = 1156
+                let textRect2 = g.rect(posX - 35, posY, boxWidth, 157).attr(textRectAttrs);
+                //8 whiteRect.animate({ opacity: 1 }, 500);
 
 
                 return { discrete: g, percentage: null }
@@ -3927,6 +3723,52 @@ const Supply = (props) => {
                 }, 3000);
 
 
+                let posX = 500
+                let posY = 600
+                let textXpos = posX + 20
+                let textYpos = posY + 70
+
+                let boxWidth = 1370
+                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 170).attr(textRectAttrs);
+
+                let msText = g.text(textXpos, textYpos, "Now the rail supply ends at the hex marked '5' on the motorway,").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                 "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                textYpos += 50
+                let msText2 = g.text(textXpos, textYpos, "but supply still flows on the motorway, up to the hex marked '15'.").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+                setTimeout(() => {
+                    textRect.animate({ opacity: 1 }, 500);
+                    msText.animate({ opacity: 1 }, 500);
+                    msText2.animate({ opacity: 1 }, 500);
+                }, 4500);
+
+                setTimeout(() => {
+                    textRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                    msText2.animate({ opacity: 0 }, 500);
+                }, 13500);
+
+                setTimeout(() => {
+                    textRect.remove()
+                    msText.remove()
+                    msText2.remove()
+                }, 14000);
 
                 return { discrete: g, percentage: null }
             }
@@ -3952,12 +3794,7 @@ const Supply = (props) => {
                 let posY = 329
                 let boxWidth = 825
                 let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 100).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let textRect = g.rect(posX - 35, posY, boxWidth, 100).attr(textRectAttrs);
                 // whiteRect.animate({ opacity: 1 }, 500);
 
                 let textXpos = posX + 15
@@ -4021,12 +3858,7 @@ const Supply = (props) => {
                 let posY = 426
                 let boxWidth = 1724
                 let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 365).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let textRect = g.rect(posX - 35, posY, boxWidth, 365).attr(textRectAttrs);
                 // whiteRect.animate({ opacity: 1 }, 500);
 
                 let textXpos = posX + 15
@@ -4054,7 +3886,7 @@ const Supply = (props) => {
                 let msText3 = g.text(textXpos, textYpos + 100, "or its ZOC enters the adjacent hex along motorway/road/minor road/railroad.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                    "fontSize": 45,
+                "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -4154,7 +3986,7 @@ const Supply = (props) => {
                     msText2.animate({ opacity: 1 }, 500);
                     msText3.animate({ opacity: 1 }, 500);
                     displayRedBox.animate({ opacity: 1 }, 500);
-                    displayOrangeMP.animate({ opacity: 1 }, 500);
+                   displayOrangeMP.animate({ opacity: 1 }, 500);
                     msRedBoxText.animate({ opacity: 1 }, 500);
                     msOrangeMPText.animate({ opacity: 1 }, 500);
                     leftArrow.animate({ opacity: 1 }, 500);
@@ -4183,12 +4015,7 @@ const Supply = (props) => {
                 let posY = 24
                 let boxWidth = 1000
                 let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 298).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let textRect = g.rect(posX - 35, posY, boxWidth, 298).attr(textRectAttrs);
 
                 let textXpos = posX + 15
                 let textYpos = posY + 50
@@ -4210,14 +4037,14 @@ const Supply = (props) => {
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
-                    fill: "black",
+                   fill: "black",
                     opacity: 0,
                 })
                 textYpos += 50
                 let msText3 = g.text(textXpos, textYpos, "and there is no adjacent town or city hex.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                    "fontSize": 45,
+                "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -4253,7 +4080,7 @@ const Supply = (props) => {
                     msText2.animate({ opacity: 1 }, 500)
                     msText3.animate({ opacity: 1 }, 500)
                     msText4.animate({ opacity: 1 }, 500)
-                    msText5.animate({ opacity: 1 }, 500)
+                   msText5.animate({ opacity: 1 }, 500)
                 }, 1300)
 
                 setTimeout(() => {
@@ -4262,7 +4089,7 @@ const Supply = (props) => {
                     msText2.animate({ opacity: 0 }, 500)
                     msText3.animate({ opacity: 0 }, 500)
                     msText4.animate({ opacity: 0 }, 500)
-                    msText5.animate({ opacity: 0 }, 500)
+                   msText5.animate({ opacity: 0 }, 500)
                 }, 11500)
 
                 let numbersGroups2 = []
@@ -4325,12 +4152,7 @@ const Supply = (props) => {
                 let posY = 488
                 let boxWidth = 620
                 let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 95).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let textRect = g.rect(posX - 35, posY, boxWidth, 95).attr(textRectAttrs);
 
                 let textXpos = posX + 15
                 let textYpos = posY + 50
@@ -4385,12 +4207,7 @@ const Supply = (props) => {
                 let posX = 674
                 let posY = 433
                 let boxWidth = 1070
-                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 115).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 115).attr(textRectAttrs);
 
 
 
@@ -4513,12 +4330,7 @@ const Supply = (props) => {
                 let posY = 488
                 let boxWidth = 787
                 let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 95).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let textRect = g.rect(posX - 35, posY, boxWidth, 95).attr(textRectAttrs);
 
                 let textXpos = posX + 15
                 let textYpos = posY + 50
@@ -4563,13 +4375,8 @@ const Supply = (props) => {
                 showPageNumber(g, "36")
                 let posX = 874
                 let posY = 433
-                let boxWidth = 740
-                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 115).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let boxWidth = 733
+                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 115).attr(textRectAttrs);
 
 
 
@@ -4675,12 +4482,7 @@ const Supply = (props) => {
                 let posY = 119
                 let boxWidth = 801
                 let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 100).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let textRect = g.rect(posX - 35, posY, boxWidth, 100).attr(textRectAttrs);
                 // whiteRect.animate({ opacity: 1 }, 500);
 
                 let textXpos = posX + 15
@@ -4733,14 +4535,9 @@ const Supply = (props) => {
 
                 let posX = 768
                 let posY = 419
-                let boxWidth = 830
+                let boxWidth = 835
                 let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 100).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let textRect = g.rect(posX - 35, posY, boxWidth, 100).attr(textRectAttrs);
                 // whiteRect.animate({ opacity: 1 }, 500);
 
                 let textXpos = posX + 15
@@ -4775,7 +4572,7 @@ const Supply = (props) => {
                 }, 5000);
                 setTimeout(() => {
                     textRect.animate({
-                        width: boxWidth + 240,
+                        width: boxWidth + 210,
                         height: 150
                     }, 500, mina.easein);
                 }, 4500);
@@ -4850,12 +4647,7 @@ const Supply = (props) => {
                 let posX = 874
                 let posY = 433
                 let boxWidth = 950
-                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 115).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 115).attr(textRectAttrs);
 
                 let msText = g.text(posX, posY + 70, "Can the Axis unit still reach General Supply?").attr({
                     "textAnchor": "center",
@@ -4986,12 +4778,7 @@ const Supply = (props) => {
                 let posY = 369
                 let boxWidth = 825
                 let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 100).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let textRect = g.rect(posX - 35, posY, boxWidth, 100).attr(textRectAttrs);
                 // whiteRect.animate({ opacity: 1 }, 500);
 
                 let textXpos = posX + 15
@@ -5047,12 +4834,7 @@ const Supply = (props) => {
                 let posY = 493
                 let boxWidth = 1049
                 let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 153).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let textRect = g.rect(posX - 35, posY, boxWidth, 153).attr(textRectAttrs);
                 // whiteRect.animate({ opacity: 1 }, 500);
 
                 let textXpos = posX + 15
@@ -5163,12 +4945,7 @@ const Supply = (props) => {
                 let posX = 860
                 let posY = 483
                 let boxWidth = 1010
-                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 115).attr({
-                    fill: "#ddffff",
-                    strokeWidth: 1,
-                    stroke: "black",
-                    opacity: 0
-                });
+                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 115).attr(textRectAttrs);
 
                 let msText = g.text(posX, posY + 70, "The Axis unit now cannot reach General Supply.").attr({
                     "textAnchor": "center",
