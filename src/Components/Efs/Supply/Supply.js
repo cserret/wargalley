@@ -51,6 +51,8 @@ const Supply = (props) => {
     const sgSovietArmorUnit = useSignal(null);
     const sgZocGroup = useSignal(null)
     const sgSovietRailBreak = useSignal(null)
+    const sgTimers = useSignal([])
+    const sgMudRoadIndicators = useSignal([])
     const [storyBoardStarted, setStoryBoardStarted] = useState(false)
     const [backgroundMap, setBackgroundMap] = useState(null);
     let textAttrs = {
@@ -266,7 +268,18 @@ const Supply = (props) => {
         }
     }, [paper])
 
-
+    const pause = () => {
+        console.log('pause clicked, sgTimers:', sgTimers.value)
+        if (sgTimers.value.length > 0) {
+            sgTimers.value.forEach(t => {
+                console.log('found timer:', t)
+                if (t.running) {
+                    console.log('pausing timer:', t.timerId, 'timeLeft:', t.timeLeft)
+                    clearTimeout(t.timerId)
+                }
+            })
+        }
+    }
 
     const setupStoryboard = () => {
         console.log('setupStoryboard called');
@@ -309,6 +322,56 @@ const Supply = (props) => {
                 pageNumber.remove()
             }, 3000)
         }
+  
+
+
+        setInterval(() => {
+            if (sgTimers.value.length > 0) {
+                sgTimers.value.forEach(t => {
+                    if (t.running) {
+                        let now = Date.now()
+                        let elapsed = now - t.msStart
+                        let timeLeft = t.timeout - elapsed
+                        if (timeLeft < 0) {
+                            timeLeft = 0
+                        }
+                        t.timeLeft = timeLeft
+                    }
+                })
+                
+            }
+        }, 100)
+
+        const registerTimer = (fn, timeout) => {
+            const msStart = Date.now();
+            let timerId = setTimeout(() => {
+                fn.call()
+                let idx = sgTimers.value.findIndex(t => t.timerId === timerId)
+                sgTimers.value.splice(idx, 1)
+            }, timeout)
+            sgTimers.value.push({ timerId, timeout, msStart, running: true })
+        }
+
+        const pauseTimers = () => {
+            if (sgTimers.value.length > 0) {
+                sgTimers.value.forEach(t => {
+                    if (t.running) {
+                        let now = Date.now()
+                        let elapsed = now - t.msStart
+                        let timeLeft = t.timeout - elapsed
+                        if (timeLeft < 0) {
+                            timeLeft = 0
+                        }
+                        t.timeLeft = timeLeft
+                        clearTimeout(t.timerId)
+                        t.timerId = null
+                        t.running = false
+                        console.log('pausing timer:', t.timerId, 'timeLeft:', t.timeLeft)
+                    }
+                })
+            }
+        }
+
 
         let page1 = {
             label: 'intro',
@@ -356,12 +419,8 @@ const Supply = (props) => {
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "1b")
-                let windowWidth = window.innerWidth;
                 let whiteRect = g.rect(14, 13, 1725, 98).attr(textRectAttrs);
                 whiteRect.animate({ opacity: 1 }, 500);
-                setTimeout(() => {
-                    whiteRect.animate({ opacity: 0 }, 500);
-                }, 4500);
 
                 let msText = g.text(47, 61, "Let's look at the map features that are important for supply").attr({
                     "textAnchor": "left",
@@ -374,10 +433,10 @@ const Supply = (props) => {
                     opacity: 0,
                 })
                 msText.animate({ opacity: 1 }, 500);
-                setTimeout(() => {
-                    msText.animate({ opacity: 0 }, 500);
-                }, 4500);
-
+                registerTimer(() => {
+                    whiteRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500)
+                }, 4500)
 
                 //g.transform(`s${300 / windowWidth}, ${300 / windowWidth}, 0, 0`)
                 return { discrete: g, percentage: null }
@@ -418,7 +477,7 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                let zocText = g.text(360, 360, "Motorway").attr(textAttrs)
+                let zocText = g.text(310, 360, "Motorway").attr(textAttrs)
 
                 let rotateGroup = g.g();
 
@@ -449,23 +508,26 @@ const Supply = (props) => {
                 arrow2.animate({ transform: `s3 t480, 420` }, 500);
                 rotateGroup.transform(`r33`)
 
-
-                setTimeout(() => {
+                registerTimer(() => {
                     image2.animate({ opacity: 1 }, 500);
                     backgroundImage.animate({ opacity: 0 }, 500);
                 }, 100);
-                setTimeout(() => {
+                // setTimeout(() => {
+                //     image2.animate({ opacity: 1 }, 500);
+                //     backgroundImage.animate({ opacity: 0 }, 500);
+                // }, 100);
+                registerTimer(() => {
                     image2.animate({ opacity: 0 }, 500);
                     backgroundImage.animate({ opacity: 1 }, 500);
                 }, 4500)
 
                 zocText.animate({ opacity: 1 }, 500);
-                setTimeout(() => {
+                registerTimer(() => {
                     zocText.animate({ opacity: 0 }, 500);
                 }, 4500)
 
 
-                setTimeout(() => {
+                registerTimer(() => {
                     rotateGroup.animate({ opacity: 0 }, 500);
                 }, 4500)
 
@@ -495,7 +557,7 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                let zocText = g.text(429, 344, "Main road").attr(textAttrs)
+                let zocText = g.text(319, 344, "Main road").attr(textAttrs)
 
                 let rotateGroup = g.g();
 
@@ -527,21 +589,21 @@ const Supply = (props) => {
                 rotateGroup.transform(`t60 38 r180`)
 
 
-                setTimeout(() => {
+                registerTimer(() => {
                     image2.animate({ opacity: 1 }, 500);
                     backgroundImage.animate({ opacity: 0 }, 500);
                 }, 500);
-                setTimeout(() => {
+                registerTimer(() => {
                     image2.animate({ opacity: 0 }, 500);
                     backgroundImage.animate({ opacity: 1 }, 500);
                 }, 5000)
 
                 zocText.animate({ opacity: 1 }, 500);
-                setTimeout(() => {
+                registerTimer(() => {
                     zocText.animate({ opacity: 0 }, 500);
                 }, 5000)
 
-                setTimeout(() => {
+                registerTimer(() => {
                     rotateGroup.animate({ opacity: 0 }, 500);
                 }, 5000)
 
@@ -571,7 +633,7 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                let zocText = g.text(410, 194, "Minor road").attr(textAttrs)
+                let zocText = g.text(310, 194, "Minor road").attr(textAttrs)
 
                 let rotateGroup = g.g();
 
@@ -603,21 +665,21 @@ const Supply = (props) => {
                 rotateGroup.transform(`t58 38`)
 
 
-                setTimeout(() => {
+                registerTimer(() => {
                     image2.animate({ opacity: 1 }, 500);
                     backgroundImage.animate({ opacity: 0 }, 500);
                 }, 500);
-                setTimeout(() => {
+                registerTimer(() => {
                     image2.animate({ opacity: 0 }, 500);
                     backgroundImage.animate({ opacity: 1 }, 500);
                 }, 5000)
 
                 zocText.animate({ opacity: 1 }, 500);
-                setTimeout(() => {
+                registerTimer(() => {
                     zocText.animate({ opacity: 0 }, 500);
                 }, 5000)
 
-                setTimeout(() => {
+                registerTimer(() => {
                     rotateGroup.animate({ opacity: 0 }, 500);
                 }, 5000)
 
@@ -647,7 +709,7 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                let zocText = g.text(704, 234, "Railroad").attr(textAttrs)
+                let zocText = g.text(615, 234, "Railroad").attr(textAttrs)
 
                 let rotateGroup = g.g();
 
@@ -1169,7 +1231,7 @@ const Supply = (props) => {
                 let msText3 = g.text(posX, posY + 173, "General Supply will be traced from Minsk out to units on the map.").attr({
                     "textAnchor": "left",
                     "dominant-baseline": "central",
-                "fontSize": 45,
+                    "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -1182,12 +1244,12 @@ const Supply = (props) => {
                 msText3.animate({ opacity: 1 }, 500);
 
 
-            setTimeout(() => {
+                setTimeout(() => {
                     msText.animate({ opacity: 0 }, 500);
                     msText2.animate({ opacity: 0 }, 500);
                     msText3.animate({ opacity: 0 }, 500);
                     whiteRect.animate({ opacity: 0 }, 500);
-               }, 89500);
+                }, 89500);
                 setTimeout(() => {
                     msText.remove();
                     msText2.remove();
@@ -1253,7 +1315,7 @@ const Supply = (props) => {
                 let msText3 = g.text(posX, posY + 173, "because it is sitting directly on a supply source.").attr({
                     "textAnchor": "left",
                     "dominant-baseline": "central",
-                "fontSize": 45,
+                    "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -1266,12 +1328,12 @@ const Supply = (props) => {
                 msText3.animate({ opacity: 1 }, 500);
 
 
-            setTimeout(() => {
+                setTimeout(() => {
                     msText.animate({ opacity: 0 }, 500);
                     msText2.animate({ opacity: 0 }, 500);
                     msText3.animate({ opacity: 0 }, 500);
                     whiteRect.animate({ opacity: 0 }, 500);
-               }, 89000);
+                }, 89000);
                 setTimeout(() => {
                     msText.remove();
                     msText2.remove();
@@ -1426,7 +1488,7 @@ const Supply = (props) => {
                 let msText3 = g.text(posX, posY + 190, "The distance is 6 hexes, so the unit is in supply.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                "fontSize": 45,
+                    "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -1484,7 +1546,7 @@ const Supply = (props) => {
                     msText3.animate({ opacity: 1 }, 500);
                 }, 10000)
 
-        
+
                 setTimeout(() => {
                     for (let i = numbersGroups.length; i > 0; i--) {
                         let numGroup = numbersGroups[numbersGroups.length - i];
@@ -1540,14 +1602,14 @@ const Supply = (props) => {
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
-                   fill: "black",
+                    fill: "black",
                     opacity: 0,
                 })
 
                 let msText3 = g.text(posX, posY + 190, "a LOC to such a road hex that's connected to a supply source to get its general supply.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                "fontSize": 45,
+                    "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -1617,7 +1679,7 @@ const Supply = (props) => {
                 msText3.animate({ opacity: 1 }, 540);
                 msText4.animate({ opacity: 1 }, 560);
 
-            // console.log('ok...')
+                // console.log('ok...')
                 // setTimeout(() => {
                 //     for (let i = numbersGroups.length; i > 0; i--) {
                 //         let numGroup = numbersGroups[numbersGroups.length - i];
@@ -2123,7 +2185,7 @@ const Supply = (props) => {
                 let msText3 = g.text(posX, posY + 170, "(for Soviet) use. Enemy units, unblocked enemy zocs and rail breaks stop the tracing of").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                "fontSize": 45,
+                    "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -2146,13 +2208,13 @@ const Supply = (props) => {
                 msText3.animate({ opacity: 1 }, 500);
                 msText4.animate({ opacity: 1 }, 500);
 
-            setTimeout(() => {
+                setTimeout(() => {
                     whiteRect.animate({ opacity: 0 }, 500);
                     msText.animate({ opacity: 0 }, 500);
                     msText2.animate({ opacity: 0 }, 500);
                     msText3.animate({ opacity: 0 }, 500);
                     msText4.animate({ opacity: 0 }, 500);
-               }, 14500);
+                }, 14500);
 
                 setTimeout(() => {
                     whiteRect.remove();
@@ -2160,7 +2222,7 @@ const Supply = (props) => {
                     msText2.remove();
                     msText3.remove();
                     msText4.remove();
-              }, 15000);
+                }, 15000);
 
                 let g2 = paper.g()
                 var imageRailGlow = g2.image(efs_minsk_map_rail_glow, 0, 0, 0, 0);
@@ -2269,7 +2331,6 @@ const Supply = (props) => {
                 //     sgAxisRailEndUnit.value.animate({ transform: `s 0.5 0.5 t ${width * 2} ${width * 2}` }, 500, mina.easeIn);
                 // }, 1800);
 
-
                 sgAxisRailEndUnit.value = g.image(german_rail_end, 613, 410, 0, 0);
                 sgAxisRailEndUnit.value.attr({
                     'xlink:href': german_rail_end,
@@ -2326,7 +2387,9 @@ const Supply = (props) => {
 
                 sgLastPageGroup.value = g
                 setTimeout(() => {
-                    sgAxisCombatUnit.value.animate({ transform: 't 943, 102' }, 500, mina.easeout);
+                    if (sgAxisCombatUnit.value) {
+                        sgAxisCombatUnit.value.animate({ transform: 't 943, 102' }, 500, mina.easeout);
+                    }
                 }, 2500);
 
                 return { discrete: g, percentage: null }
@@ -2616,20 +2679,20 @@ const Supply = (props) => {
                     "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
-                  stroke: "none",
+                    stroke: "none",
                     fill: "black",
                     opacity: 0,
                 })
                 let msText3 = g.text(posX, posY + 170, "the rail cut marker is in is not a supply source.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-              "fontSize": 45,
+                    "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
                     fill: "black",
                     opacity: 0,
-           })
+                })
                 whiteRect.animate({ opacity: 1 }, 500);
                 msText.animate({ opacity: 1 }, 500);
                 msText2.animate({ opacity: 1 }, 500);
@@ -2783,14 +2846,14 @@ const Supply = (props) => {
                 let whiteRect3 = g.rect(posX - 35, posY + 12, boxWidth, 111).attr({
                     fill: "#ddffff",
                     strokeWidth: 1,
-                   stroke: "black",
+                    stroke: "black",
                     opacity: 0
                 });
 
                 let msText3 = g.text(posX, posY + 70, "There is a path for supply, but it goes through a marsh hex.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                "fontSize": 45,
+                    "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -2983,10 +3046,10 @@ const Supply = (props) => {
                 showPageNumber(g, "27")
                 let posX = 110
                 let posY = 300
-                let boxWidth = 1110
+                let boxWidth = 1290
                 let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 213).attr(textRectAttrs);
 
-                let msText = g.text(posX, posY + 70, "Beware - if the LOC you trace goes into a Marsh hex,").attr({
+                let msText = g.text(posX, posY + 70, "Beware - if the LOC you trace goes through a Marsh hex, the").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -2996,26 +3059,27 @@ const Supply = (props) => {
                     fill: "black",
                     opacity: 0,
                 })
-                let msText2 = g.text(posX, posY + 120, "in Dry or Mud weather, and it is not following a road,").attr({
+                let msText2 = g.text(posX, posY + 120, "maximum LOS length is reduced to 5 hexes, unless you are").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                   stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                let msText3 = g.text(posX, posY + 170, "the maximum LOS length is reduced to 5 hexes.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
                     fill: "black",
                     opacity: 0,
                 })
+                let msText3 = g.text(posX, posY + 170, "tracing along a road (minor roads or railroads don't count).").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 45,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
                 whiteRect.animate({ opacity: 1 }, 500);
                 msText.animate({ opacity: 1 }, 500);
                 msText2.animate({ opacity: 1 }, 500);
@@ -3225,7 +3289,7 @@ const Supply = (props) => {
                 let whiteRect4 = g.rect(posX - 35, posY + 12, boxWidth, 221).attr(textRectAttrs);
 
 
-                let msText9 = g.text(posX, posY + 70, "If a unit is previously marked Out of Supply or Emergency Supply, and").attr({
+                let msText9 = g.text(posX, posY + 70, "If a unit is previously marked Out of Supply or Emergency Supply,").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -3235,7 +3299,7 @@ const Supply = (props) => {
                     fill: "black",
                     opacity: 0,
                 })
-                let msText10 = g.text(posX, posY + 120, "in a General Supply phase is deemed to be back in supply,").attr({
+                let msText10 = g.text(posX, posY + 120, "and in a General Supply phase is deemed to be back in supply,").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 45,
@@ -3275,7 +3339,9 @@ const Supply = (props) => {
                     outOfSupplyMarker.animate({ opacity: 0 }, 500);
                     sgAxisRailEndUnit.value.animate({ opacity: 0 }, 500);
                     sgSovietCombatUnit.value.animate({ opacity: 0 }, 500);
-                    sgAxisCombatUnit.value.animate({ opacity: 0 }, 500);
+                    if (sgAxisCombatUnit.value) {
+                        sgAxisCombatUnit.value.animate({ opacity: 0 }, 500);
+                    }
                 }, 40000);
 
                 setTimeout(() => {
@@ -3289,8 +3355,10 @@ const Supply = (props) => {
                     sgAxisRailEndUnit.value = null;
                     sgSovietCombatUnit.value.remove()
                     sgSovietCombatUnit.value = null;
-                    sgAxisCombatUnit.value.remove()
-                    sgAxisCombatUnit.value = null;
+                    if (sgAxisCombatUnit.value) {
+                        sgAxisCombatUnit.value.remove()
+                        sgAxisCombatUnit.value = null;
+                    }
                 }, 40500);
 
 
@@ -3340,7 +3408,7 @@ const Supply = (props) => {
                 let msText3 = g.text(posX + 270, posY + (3 * 50), "on the road or railroad that reaches the hex providing supply.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                "fontSize": 45,
+                    "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -3362,7 +3430,7 @@ const Supply = (props) => {
                     msText2.animate({ opacity: 1 }, 500);
                     msText3.animate({ opacity: 1 }, 500);
                     swamp_Hex.animate({ opacity: 1 }, 500);
-              }, 1000);
+                }, 1000);
 
 
                 return { discrete: g, percentage: null }
@@ -3470,14 +3538,14 @@ const Supply = (props) => {
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
-                fill: "black",
+                    fill: "black",
                     opacity: 0,
                 })
                 textYpos += 50
                 let msText3 = g.text(textXpos, textYpos, "railroad supply rules remain the same as with Dry weather.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                "fontSize": 45,
+                    "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -3500,17 +3568,17 @@ const Supply = (props) => {
             pageInt: 30,
             delay: 0,
             duration: 8000,
-            remove: true,
+            remove: false,
             async: true,
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "30b")
-                
+
                 let posX = 421
                 let posY = 580
                 let boxWidth = 1170
                 let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 155).attr(textRectAttrs);
+                let textRect = g.rect(posX - 35, posY, boxWidth, 150).attr(textRectAttrs);
                 // whiteRect.animate({ opacity: 1 }, 500);
 
                 let textXpos = posX + 20
@@ -3541,14 +3609,14 @@ const Supply = (props) => {
                     textRect.animate({ opacity: 1 }, 500);
                     msText.animate({ opacity: 1 }, 500);
                     msText2.animate({ opacity: 1 }, 500);
-                   //msText3.animate({ opacity: 1 }, 500);
+                    //msText3.animate({ opacity: 1 }, 500);
                 }, 500);
 
                 setTimeout(() => {
                     textRect.animate({ opacity: 1 }, 500);
                     msText.animate({ opacity: 1 }, 500);
                     msText2.animate({ opacity: 1 }, 500);
-                   //msText3.animate({ opacity: 1 }, 500);
+                    //msText3.animate({ opacity: 1 }, 500);
                 }, 7500);
                 // sgAxisRailEndUnit.value = g.image(german_rail_end, 613, 410, 0, 0);
                 // sgAxisRailEndUnit.value.attr({
@@ -3561,25 +3629,44 @@ const Supply = (props) => {
                 // setTimeout(() => {
                 //     sgAxisRailEndUnit.value.animate({ width: 64, height: 64, transform: 't 705, -235 r 58' }, 500, mina.easeout);
                 // }, 2500);
+                // let railBreakGroup = paper.g()
+                // sgSovietRailBreak.value = railBreakGroup.image(sovietRailBreak, 163, -62, 0, 0);
+                // sgSovietRailBreak.value.attr({
+                //     'xlink:href': sovietRailBreak,
+                //     'width': "42",
+                //     'height': "42",
+                //     'opacity': 1
+                // });
 
-                sgSovietRailBreak.value = paper.group().image(sovietRailBreak, 163, -62, 42, 42);
+                // setTimeout(() => {
+                //     sgSovietRailBreak.value.animate({ width: 64, height: 64, transform: 't 21, 178' }, 500, mina.easeout);
+                // }, 2500);
+
+
+
+                sgSovietRailBreak.value = g.image(sovietRailBreak, 282, -62, 0, 0);
                 sgSovietRailBreak.value.attr({
                     'xlink:href': sovietRailBreak,
-                    'width': "42",
-                    'height': "42",
+                    'width': "62",
+                    'height': "62",
                     'opacity': 1
                 });
 
                 setTimeout(() => {
-                    sgSovietRailBreak.value.animate({ transform: 't 21, 478' }, 500, mina.easeout);
-                }, 2500);
+                    sgSovietRailBreak.value.animate({ width: 64, height: 64, transform: 't 0, 688' }, 500, mina.easeout);
+                }, 2500)
 
-                posX = 421
-                posY = 580
-                boxWidth = 1156
-                let textRect2 = g.rect(posX - 35, posY, boxWidth, 157).attr(textRectAttrs);
-                //8 whiteRect.animate({ opacity: 1 }, 500);
+                setTimeout(() => {
+                    textRect.animate({ opacity: 0 }, 500);
+                    msText.animate({ opacity: 0 }, 500);
+                    msText2.animate({ opacity: 0 }, 500);
+                }, 7000);
 
+                setTimeout(() => {
+                    textRect.remove()
+                    msText.remove()
+                    msText2.remove()
+                }, 7500);
 
                 return { discrete: g, percentage: null }
             }
@@ -3657,6 +3744,7 @@ const Supply = (props) => {
                     //  numY -= 44;
                     //numY2 -= 44;
                 }
+                sgMudRoadIndicators.value = numbersGroups
 
                 setTimeout(() => {
                     for (let i = 0; i < numbersGroups.length; i++) {
@@ -3712,6 +3800,7 @@ const Supply = (props) => {
                     //  numY -= 44;
                     //numY2 -= 44;
                 }
+                sgMudRoadIndicators.value = sgMudRoadIndicators.value.concat(numbersGroups2)
 
                 setTimeout(() => {
                     for (let i = 0; i < numbersGroups2.length; i++) {
@@ -3723,18 +3812,18 @@ const Supply = (props) => {
                 }, 3000);
 
 
-                let posX = 500
+                let posX = 550
                 let posY = 600
                 let textXpos = posX + 20
                 let textYpos = posY + 70
 
                 let boxWidth = 1370
-                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 170).attr(textRectAttrs);
+                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 165).attr(textRectAttrs);
 
                 let msText = g.text(textXpos, textYpos, "Now the rail supply ends at the hex marked '5' on the motorway,").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                 "fontSize": 45,
+                    "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -3776,7 +3865,7 @@ const Supply = (props) => {
 
 
 
-        
+
 
 
         let page32 = {
@@ -3858,7 +3947,7 @@ const Supply = (props) => {
                 let posY = 426
                 let boxWidth = 1724
                 let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 365).attr(textRectAttrs);
+                let textRect = g.rect(posX - 35, posY, boxWidth, 360).attr(textRectAttrs);
                 // whiteRect.animate({ opacity: 1 }, 500);
 
                 let textXpos = posX + 15
@@ -3886,7 +3975,7 @@ const Supply = (props) => {
                 let msText3 = g.text(textXpos, textYpos + 100, "or its ZOC enters the adjacent hex along motorway/road/minor road/railroad.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                "fontSize": 45,
+                    "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -3986,7 +4075,7 @@ const Supply = (props) => {
                     msText2.animate({ opacity: 1 }, 500);
                     msText3.animate({ opacity: 1 }, 500);
                     displayRedBox.animate({ opacity: 1 }, 500);
-                   displayOrangeMP.animate({ opacity: 1 }, 500);
+                    displayOrangeMP.animate({ opacity: 1 }, 500);
                     msRedBoxText.animate({ opacity: 1 }, 500);
                     msOrangeMPText.animate({ opacity: 1 }, 500);
                     leftArrow.animate({ opacity: 1 }, 500);
@@ -4037,14 +4126,14 @@ const Supply = (props) => {
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
-                   fill: "black",
+                    fill: "black",
                     opacity: 0,
                 })
                 textYpos += 50
                 let msText3 = g.text(textXpos, textYpos, "and there is no adjacent town or city hex.").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                "fontSize": 45,
+                    "fontSize": 45,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -4080,7 +4169,7 @@ const Supply = (props) => {
                     msText2.animate({ opacity: 1 }, 500)
                     msText3.animate({ opacity: 1 }, 500)
                     msText4.animate({ opacity: 1 }, 500)
-                   msText5.animate({ opacity: 1 }, 500)
+                    msText5.animate({ opacity: 1 }, 500)
                 }, 1300)
 
                 setTimeout(() => {
@@ -4089,7 +4178,7 @@ const Supply = (props) => {
                     msText2.animate({ opacity: 0 }, 500)
                     msText3.animate({ opacity: 0 }, 500)
                     msText4.animate({ opacity: 0 }, 500)
-                   msText5.animate({ opacity: 0 }, 500)
+                    msText5.animate({ opacity: 0 }, 500)
                 }, 11500)
 
                 let numbersGroups2 = []
@@ -5089,18 +5178,33 @@ const Supply = (props) => {
                     }
                 }, 17000);
 
+                setTimeout(() => {
+                    sgMudRoadIndicators.value.forEach(ind => {
+                        ind.animate({ opacity: 0 }, 500)
+                    })
+                }, 18000)
+                setTimeout(() => {
+                    sgMudRoadIndicators.value.forEach(ind => {
+                        ind.remove()
+                    })
+                    sgMudRoadIndicators.value = []
+                }, 18500)
+                setTimeout(() => {
+                    textRect.remove()
+                    msText.remove()
+                }, 18600);
 
                 return { discrete: g, percentage: null }
             }
         }
 
         let _storyBoard = []
-        // _storyBoard.push(page1)
-        // _storyBoard.push(page1b)
-        // _storyBoard.push(page2)
-        // _storyBoard.push(page3)
-        // _storyBoard.push(page4)
-        // _storyBoard.push(page5)
+        _storyBoard.push(page1)
+        _storyBoard.push(page1b)
+        _storyBoard.push(page2)
+        _storyBoard.push(page3)
+        _storyBoard.push(page4)
+        _storyBoard.push(page5)
         // _storyBoard.push(page6)
         // _storyBoard.push(page7)
         // _storyBoard.push(page8)
@@ -5126,21 +5230,21 @@ const Supply = (props) => {
         // _storyBoard.push(page28)
         // _storyBoard.push(page29)
         // _storyBoard.push(page30)
-        _storyBoard.push(page30b)
-        _storyBoard.push(page31)
-        _storyBoard.push(page32)
-        _storyBoard.push(page33)
-        _storyBoard.push(page34)
-        _storyBoard.push(page35)
-        _storyBoard.push(page36)
-        _storyBoard.push(page37)
-        _storyBoard.push(page38)
-        _storyBoard.push(page39)
-        _storyBoard.push(page40)
-        _storyBoard.push(page41)
-        _storyBoard.push(page42)
-        _storyBoard.push(page43)
-        _storyBoard.push(page44)
+        // _storyBoard.push(page30b)
+        // _storyBoard.push(page31)
+        // _storyBoard.push(page32)
+        // _storyBoard.push(page33)
+        // _storyBoard.push(page34)
+        // _storyBoard.push(page35)
+        // _storyBoard.push(page36)
+        // _storyBoard.push(page37)
+        // _storyBoard.push(page38)
+        // _storyBoard.push(page39)
+        // _storyBoard.push(page40)
+        // _storyBoard.push(page41)
+        // _storyBoard.push(page42)
+        // _storyBoard.push(page43)
+        // _storyBoard.push(page44)
         sgStoryBoard.value = _storyBoard
         sequence()
     }
@@ -5385,7 +5489,7 @@ const Supply = (props) => {
             <svg id="supply_examples" className="supply-svg">
 
             </svg>
-
+            <div className="" onClick={pause}>pause</div>
             a. A unit traces its LOC over hexes of any type to a Supply
             Source, or to a hex in a road net [6.15] or railroad net [6.16]
             leading to a Supply Source.
