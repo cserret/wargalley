@@ -42,7 +42,7 @@ const Supply = (props) => {
     const [paper, setPaper] = useState(null)
     const sgStoryBoard = useSignal([]);
     const sgLastPageGroup = useSignal(null);
-    const sgDimensInitial = useSignal({ width: 0, height: 0 });
+    const sgDimensions = useSignal({ width: 0, height: 0 });
     const sgAxisCombatUnit = useSignal(null);
     const sgSovietCombatUnit = useSignal(null);
     const sgAxisRailEndUnit = useSignal(null);
@@ -53,6 +53,9 @@ const Supply = (props) => {
     const sgSovietRailBreak = useSignal(null)
     const sgTimers = useSignal([])
     const sgMudRoadIndicators = useSignal([])
+    const sgBackgroundImage = useSignal(null)
+    const sgPlayPauseStatus = useSignal('play') // play, paused
+
     const [storyBoardStarted, setStoryBoardStarted] = useState(false)
     const [backgroundMap, setBackgroundMap] = useState(null);
     let textAttrs = {
@@ -293,10 +296,101 @@ const Supply = (props) => {
             'opacity': 1
         });
         setBackgroundMap(backgroundImage);
+        sgBackgroundImage.value = backgroundImage
 
-        var dimensInitial = backgroundImage.node.getBoundingClientRect();
-        console.log('initial backgroundImage:', dimensInitial.width, dimensInitial.height)
-        sgDimensInitial.value = { width: dimensInitial.width, height: dimensInitial.height }
+        const showPlayPauseButton = () => {
+            let g = paper.group()
+            let controlRect = g.rect("95.7%", "91%", "4%", "8.5%", "1%", "2%").attr({
+                fill: "#eef4ff",
+                strokeWidth: 1,
+                stroke: "black",
+
+            })
+
+            let pauseBar1 = g.rect("96.7%", "92.9%", "0.8%", "4.8%").attr({
+                fill: "black",
+                strokeWidth: 0,
+            })
+            let pauseBar2 = g.rect("97.9%", "92.9%", "0.8%", "4.8%").attr({
+                fill: "black",
+                strokeWidth: 0,
+            })
+            let pauseWrapper = g.rect("96.5%", "92.5%", "2.4%", "5.6%").attr({
+                fill: "transparent",
+                strokeWidth: 0,
+            })
+            let pauseButton = g.group(pauseBar1, pauseBar2, pauseWrapper).click(() => {
+                if (sgPlayPauseStatus.value === 'pause') {
+                    sgPlayPauseStatus.value = 'play'
+                    playButton.attr({ 
+                        visibility: "visible",
+                        pointerEvents: "visiblePainted"
+                     })
+                    pauseButton.attr({ 
+                        visibility: "hidden", 
+                        pointerEvents: "none" 
+                    })
+                    console.log('play!')
+                }
+            }).attr({ cursor: "pointer" })
+
+
+
+            // let playButton = playGroup.group(playLine1, playLine2, playLine3)
+            let playGroup = g.group()
+            let playLine1 = playGroup.line("96.8%", "93.1%", "98.9%", "95.3%").attr({
+                stroke: "blue",
+                strokeWidth: 3,
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeMiterlimit: 10,
+            })
+            let playLine2 = playGroup.line("96.8%", "97.5%", "98.9%", "95.3%").attr({
+                stroke: "blue",
+                strokeWidth: 3,
+                //strokeLinecap: "miter",
+                strokeLinejoin: "miter",
+                strokeMiterlimit: 10,
+            })
+            let playLine3 = playGroup.line("96.8%", "97.5%", "96.8%", "93.1%").attr({
+                stroke: "blue",
+                strokeWidth: 3,
+                //strokeLinecap: "miter",
+                strokeLinejoin: "miter",
+                strokeMiterlimit: 10
+            })
+            let playButton = playGroup.group(playLine1, playLine2, playLine3)
+            for (let i = 932; i < 975; i++) {
+                let nextLine = playGroup.line("96.8%", `${i / 10}%`, "98.9%", "95.3%").attr({
+                    stroke: "blue",
+                    strokeWidth: 2,
+                })
+                playButton.add(nextLine)
+            }
+
+            playButton.click(() => {
+                console.log('play button clicked, sgPlayPauseStatus:', sgPlayPauseStatus.value)
+                if (sgPlayPauseStatus.value === 'play') {
+                console.log('play button clicked')
+                sgPlayPauseStatus.value = 'pause'
+                pauseButton.attr({ 
+                    visibility: "visible",
+                    pointerEvents: "visiblePainted"
+                 })
+                playButton.attr({ 
+                    visibility: "hidden", 
+                    pointerEvents: "none" 
+                })
+                console.log('pause!')
+            }
+        })
+
+        }
+
+        showPlayPauseButton(paper.group());
+
+        var dimensions = sgBackgroundImage.value.node.getBoundingClientRect();
+        sgDimensions.value = { width: dimensions.width, height: dimensions.height }
 
         const nsw = perc => {
             console.log('window.innerWidth:', window.innerWidth, 'perc:', perc)
@@ -307,8 +401,10 @@ const Supply = (props) => {
             return window.innerHeight * perc
         }
 
+
+
         const showPageNumber = (g, pageInt) => {
-            let pageNumber = g.text(1800, 800, pageInt).attr({
+            let pageNumber = g.text(1700, 800, pageInt).attr({
                 "textAnchor": "middle",
                 "dominant-baseline": "central",
                 "fontSize": 54,
@@ -322,7 +418,7 @@ const Supply = (props) => {
                 pageNumber.remove()
             }, 3000)
         }
-  
+
 
 
         setInterval(() => {
@@ -338,7 +434,7 @@ const Supply = (props) => {
                         t.timeLeft = timeLeft
                     }
                 })
-                
+
             }
         }, 100)
 
@@ -5200,11 +5296,11 @@ const Supply = (props) => {
 
         let _storyBoard = []
         _storyBoard.push(page1)
-        _storyBoard.push(page1b)
-        _storyBoard.push(page2)
-        _storyBoard.push(page3)
-        _storyBoard.push(page4)
-        _storyBoard.push(page5)
+        // _storyBoard.push(page1b)
+        // _storyBoard.push(page2)
+        // _storyBoard.push(page3)
+        // _storyBoard.push(page4)
+        // _storyBoard.push(page5)
         // _storyBoard.push(page6)
         // _storyBoard.push(page7)
         // _storyBoard.push(page8)
@@ -5334,7 +5430,8 @@ const Supply = (props) => {
                     console.log('starting page fn', page.label);
                     result = page.fn();
                     if (result.discrete) {
-                        result.discrete.transform(`s${sgDimensInitial.value.width / 1900}, ${sgDimensInitial.value.height / 852}, 0, 0`)
+                        sgDimensions.value = sgBackgroundImage.value.node.getBoundingClientRect();
+                        result.discrete.transform(`s${sgDimensions.value.width / 1900}, ${sgDimensions.value.height / 852}, 0, 0`)
                     }
                 }
                 setTimeout(() => {
