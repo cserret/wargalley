@@ -55,6 +55,8 @@ const Supply = (props) => {
     const sgMudRoadIndicators = useSignal([])
     const sgBackgroundImage = useSignal(null)
     const sgPlayPauseStatus = useSignal('play') // play, paused
+    const sgUseTextSize = useSignal(45)
+    const sgUseLineBreak = useSignal(20)
 
     const [storyBoardStarted, setStoryBoardStarted] = useState(false)
     const [backgroundMap, setBackgroundMap] = useState(null);
@@ -284,9 +286,35 @@ const Supply = (props) => {
         }
     }
 
+    const testTextWidth = g => {
+        let text = 'abcdefg hijklmnop, , $()!@#$% qrst uvwxyz ABCDEF GHIJK LMNOP_ -QRS TUVWXYZ 01234 56789'
+        let textLine = g.text(0, 0, text).attr({
+            "textAnchor": "start",
+            "dominant-baseline": "text-before-edge",
+            "fontSize": 45,
+            "fontWeight": "bold",
+            "fontFamily": "serif",
+            opacity: 0
+        })
+
+        let bbox = textLine.getBBox()
+        console.log('bbox width:', bbox.width)
+        console.log('bbox height:', bbox.height)
+        let useTextSizeRatio = 1707 / bbox.width
+        let useTextSize = Math.round(45 * useTextSizeRatio)
+        console.log('useTextSize:', useTextSize)
+        sgUseTextSize.value = useTextSize
+    
+        let useTextHeightRatio = 50 / bbox.height
+        let useTextHeight = Math.round(50 * useTextSizeRatio)
+        console.log('useTextHeight:', useTextHeight)
+        sgUseLineBreak.value = Math.round(useTextHeight / 1.9)
+    
+    }
+
     const setupStoryboard = () => {
         console.log('setupStoryboard called');
-
+        testTextWidth(paper.g()) 
 
         var backgroundImage = paper.image(efs_minsk_map, 0, 0, 0, 0);
         backgroundImage.attr({
@@ -320,17 +348,19 @@ const Supply = (props) => {
                 strokeWidth: 0,
             })
             let pauseButton = g.group(pauseBar1, pauseBar2, pauseWrapper).click(() => {
-                if (sgPlayPauseStatus.value === 'pause') {
-                    sgPlayPauseStatus.value = 'play'
-                    playButton.attr({ 
+                if (sgPlayPauseStatus.value === 'play') {
+                    console.log('setting to pause')
+                    sgPlayPauseStatus.value = 'pause'
+                    playButton.attr({
                         visibility: "visible",
-                        pointerEvents: "visiblePainted"
-                     })
-                    pauseButton.attr({ 
-                        visibility: "hidden", 
-                        pointerEvents: "none" 
+                        pointerEvents: "visiblePainted",
+                        opacity: 1
                     })
-                    console.log('play!')
+                    pauseButton.attr({
+                        visibility: "hidden",
+                        pointerEvents: "none"
+                    })
+                    console.log('pause!')
                 }
             }).attr({ cursor: "pointer" })
 
@@ -368,22 +398,44 @@ const Supply = (props) => {
                 playButton.add(nextLine)
             }
 
+
             playButton.click(() => {
                 console.log('play button clicked, sgPlayPauseStatus:', sgPlayPauseStatus.value)
-                if (sgPlayPauseStatus.value === 'play') {
-                console.log('play button clicked')
-                sgPlayPauseStatus.value = 'pause'
-                pauseButton.attr({ 
-                    visibility: "visible",
-                    pointerEvents: "visiblePainted"
-                 })
-                playButton.attr({ 
-                    visibility: "hidden", 
-                    pointerEvents: "none" 
+                if (sgPlayPauseStatus.value === 'pause') {
+                    console.log('setting to play')
+                    sgPlayPauseStatus.value = 'play'
+                    pauseButton.attr({
+                        visibility: "visible",
+                        pointerEvents: "visiblePainted"
+                    })
+                    playButton.attr({
+                        visibility: "hidden",
+                        pointerEvents: "none"
+                    })
+                    console.log('play!')
+                }
+                else {
+                    console.log('setting to pause')
+                    sgPlayPauseStatus.value = 'pause'
+                    playButton.attr({
+                        visibility: "visible",
+                        pointerEvents: "visiblePainted",
+                        opacity: 1
+                    })
+                    pauseButton.attr({
+                        visibility: "hidden",
+                        pointerEvents: "none"
+                    })
+                    console.log('pause!')
+
+                }
+            })
+
+            setTimeout(() => {
+                playButton.attr({
+                    opacity: 0
                 })
-                console.log('pause!')
-            }
-        })
+            }, 10)
 
         }
 
@@ -407,7 +459,7 @@ const Supply = (props) => {
             let pageNumber = g.text(1700, 800, pageInt).attr({
                 "textAnchor": "middle",
                 "dominant-baseline": "central",
-                "fontSize": 54,
+                "fontSize": 45,
                 "fontWeight": "bold",
                 "fontFamily": "serif",
                 stroke: "none",
@@ -468,6 +520,43 @@ const Supply = (props) => {
             }
         }
 
+        const textBox = (g, text, x, y, delay = 500, removeTimeout = 4000, extraRight=0, extraBottom=0) => {
+            let textBoxGroup = g.group()
+            let textLines = text.split('\n')
+            let textLinesGroup = g.group()
+            let textX = x
+            let textY = y
+            textLines.forEach((line, idx) => {
+                let textLine = g.text(textX, textY, line).attr({
+                    "textAnchor": "start",
+                    "dominant-baseline": "text-before-edge",
+                    "fontSize": sgUseTextSize.value,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    opacity: 1
+                })
+                textLinesGroup.add(textLine)
+                textY += sgUseLineBreak.value
+            })
+            let bbox = textLinesGroup.getBBox()
+            textLinesGroup.remove()
+            let borderPadding = 24
+            let textBoxEl = g.rect(x - borderPadding, y - borderPadding, bbox.width + (2 * borderPadding) + extraRight, bbox.height + (1.9 * borderPadding)).attr(textRectAttrs);
+            textBoxEl.attr({ opacity: 1 })
+            textBoxGroup.add(textBoxEl, textLinesGroup)
+            textBoxGroup.attr({ opacity: 0 })
+            registerTimer(() => {
+                textBoxGroup.animate({ opacity: 1 }, 500);
+            }, delay)
+            if (removeTimeout > 0) {
+                registerTimer(() => {
+                    textBoxGroup.animate({ opacity: 0 }, 500);
+                    registerTimer(() => {
+                        textBoxGroup.remove()
+                    }, 500)
+                }, removeTimeout - 500)
+            }
+        }
 
         let page1 = {
             label: 'intro',
@@ -478,27 +567,36 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
+                //textBox(g, "This is just a test\n of multiblines lines\n did it work", 300, 300)
                 showPageNumber(g, "1")
-                let whiteRect = g.rect(14, 13, 931, 96).attr(textRectAttrs);
-                whiteRect.animate({ opacity: 1 }, 500);
-                setTimeout(() => {
-                    whiteRect.animate({ opacity: 0 }, 500);
-                }, 4500);
+                // let whiteRect = g.rect(14, 13, 0, 96).attr(textRectAttrs);
+                // whiteRect.animate({ opacity: 1 }, 500);
+                // setTimeout(() => {
+                //     whiteRect.animate({ opacity: 0 }, 500);
+                // }, 4500);
 
-                let msText = g.text(47, 61, "This is a map sample from EFS").attr({
-                    "textAnchor": "left",
-                    "dominant-baseline": "central",
-                    "fontSize": 65,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                msText.animate({ opacity: 1 }, 500);
-                setTimeout(() => {
-                    msText.animate({ opacity: 0 }, 500);
-                }, 4500);
+                // let msText = g.text(47, 61, "This is a map sample from EFS").attr({
+                //     "textAnchor": "left",
+                //     "dominant-baseline": "central",
+                //     "fontSize": 65,
+                //     "fontWeight": "bold",
+                //     "fontFamily": "serif",
+                //     stroke: "none",
+                //     fill: "black",
+                //     opacity: 0,
+                // })
+                textBox(g, "This is a map sample from EFS", 54, 53, 300, 4500)
+
+                // msText.animate({ opacity: 1 }, 500);
+                // let boxx = msText.getBBox()
+                // whiteRect.attr({
+                //     width: (boxx.width + 48) + 'px'
+                // });
+
+
+                // setTimeout(() => {
+                //     msText.animate({ opacity: 0 }, 500);
+                // }, 4500);
 
                 return { discrete: g, percentage: null }
             }
@@ -515,26 +613,12 @@ const Supply = (props) => {
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "1b")
-                let whiteRect = g.rect(14, 13, 1725, 98).attr(textRectAttrs);
-                whiteRect.animate({ opacity: 1 }, 500);
 
-                let msText = g.text(47, 61, "Let's look at the map features that are important for supply").attr({
-                    "textAnchor": "left",
-                    "dominant-baseline": "central",
-                    "fontSize": 65,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                msText.animate({ opacity: 1 }, 500);
-                registerTimer(() => {
-                    whiteRect.animate({ opacity: 0 }, 500);
-                    msText.animate({ opacity: 0 }, 500)
-                }, 4500)
 
-                //g.transform(`s${300 / windowWidth}, ${300 / windowWidth}, 0, 0`)
+                textBox(g,
+                    "Let's look at the map features that are important for supply",
+                    54, 53, 300, 4500)
+
                 return { discrete: g, percentage: null }
             }
         }
@@ -875,32 +959,38 @@ const Supply = (props) => {
 
                 sgLastPageGroup.value = g
 
-                let whiteRect = g.rect(186, 173, 1525, 498).attr(textRectAttrs);
-                whiteRect.animate({ opacity: 1 }, 500);
+                textBox(g, 
+                    `Although the roads and railroads are not printed inside,\n
+                    the town and city graphics, it is assumed they still connect\n
+                    to any other roads or railroads exiting the same hex.`,
+                    379, 241, 500, 5000)
+
+                // let whiteRect = g.rect(186, 173, 1525, 498).attr(textRectAttrs);
+                // whiteRect.animate({ opacity: 1 }, 500);
 
 
-                let textX = 934
-                let textY = 244
+                // let textX = 934
+                // let textY = 244
 
-                let text1 = g.text(textX, textY, "Although the roads and railroads are not printed inside").attr(textAttrs)
+                // let text1 = g.text(textX, textY, "Although the roads and railroads are not printed inside").attr(textAttrs)
 
-                let text2 = g.text(textX, textY + 60, "the town and city graphics, it is assumed they still connect").attr(textAttrs)
+                // let text2 = g.text(textX, textY + 60, "the town and city graphics, it is assumed they still connect").attr(textAttrs)
 
-                let text3 = g.text(textX, textY + 120, "to any other roads or railroads exiting the same hex.").attr(textAttrs)
+                // let text3 = g.text(textX, textY + 120, "to any other roads or railroads exiting the same hex.").attr(textAttrs)
 
-                text1.animate({ opacity: 1 }, 500);
-                setTimeout(() => {
-                    text2.animate({ opacity: 1 }, 500);
-                }, 100);
-                setTimeout(() => {
-                    text3.animate({ opacity: 1 }, 500);
-                }, 200);
-                setTimeout(() => {
-                    text1.animate({ opacity: 0 }, 500);
-                    text2.animate({ opacity: 0 }, 500);
-                    text3.animate({ opacity: 0 }, 500);
-                    whiteRect.animate({ opacity: 0 }, 500);
-                }, 12500)
+                // text1.animate({ opacity: 1 }, 500);
+                // setTimeout(() => {
+                //     text2.animate({ opacity: 1 }, 500);
+                // }, 100);
+                // setTimeout(() => {
+                //     text3.animate({ opacity: 1 }, 500);
+                // }, 200);
+                // setTimeout(() => {
+                //     text1.animate({ opacity: 0 }, 500);
+                //     text2.animate({ opacity: 0 }, 500);
+                //     text3.animate({ opacity: 0 }, 500);
+                //     whiteRect.animate({ opacity: 0 }, 500);
+                // }, 12500)
 
                 let posX = 450
                 var town = g.image(town_connect, posX, 410, 0, 0);
@@ -1002,23 +1092,25 @@ const Supply = (props) => {
                     whiteRect.remove();
                 }, 5000);
 
-                let msText = g.text(199, 741, "We will consider Minsk as the supply source for the Axis").attr({
-                    "textAnchor": "left",
-                    "dominant-baseline": "central",
-                    "fontSize": 65,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                msText.animate({ opacity: 1 }, 500);
-                setTimeout(() => {
-                    msText.animate({ opacity: 0 }, 500);
-                }, 4500);
-                setTimeout(() => {
-                    msText.remove();
-                }, 5000);
+                // let msText = g.text(199, 741, "We will consider Minsk as the supply source for the Axis").attr({
+                //     "textAnchor": "left",
+                //     "dominant-baseline": "central",
+                //     "fontSize": 65,
+                //     "fontWeight": "bold",
+                //     "fontFamily": "serif",
+                //     stroke: "none",
+                //     fill: "black",
+                //     opacity: 0,
+                // })
+                // msText.animate({ opacity: 1 }, 500);
+                // setTimeout(() => {
+                //     msText.animate({ opacity: 0 }, 500);
+                // }, 4500);
+                // setTimeout(() => {
+                //     msText.remove();
+                // }, 5000);
+
+                textBox(g, "We will consider Minsk as the supply source for the Axis.", 199, 741, 500, 5000)
 
 
                 let supplyWhiteCircle = g.circle(5, 625, 24).attr({
@@ -1062,7 +1154,7 @@ const Supply = (props) => {
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "8")
-                let weatherRect = g.rect(12, 11, 390, 66).attr({
+                let weatherRect = g.rect(12, 11, 420, 66).attr({
                     fill: "#aadaff",
                     strokeWidth: 1,
                     stroke: "black",
@@ -1145,53 +1237,12 @@ const Supply = (props) => {
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "9")
-                let posX = 100
-                let posY = 365
-                let boxWidth = 1000
-                let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(444, posY, boxWidth, 188).attr(textRectAttrs);
-                whiteRect.animate({ opacity: 1 }, 500);
-                setTimeout(() => {
-                    //   whiteRect.animate({ opacity: 0 }, 500);
-                }, 4500);
+               
+                textBox(g, 
+                    `The weather conditions affect the supply rules.\n
+                    Lets start with Dry weather.`,
+                    100, 365, 500, 7000)
 
-
-                let msText = g.text(490, posY + 70, "The weather conditions affect the supply rules.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                let msText2 = g.text(490, posY + 121, "Lets start with Dry weather.").attr({
-                    "textAnchor": "left",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                msText.animate({ opacity: 1 }, 500);
-
-                setTimeout(() => {
-                    msText2.animate({ opacity: 1 }, 500);
-                }, 1500);
-
-                setTimeout(() => {
-                    msText.animate({ opacity: 0 }, 500);
-                    msText2.animate({ opacity: 0 }, 500);
-                    whiteRect.animate({ opacity: 0 }, 500);
-                }, 4500);
-
-
-
-                //g.transform(`s${300 / windowWidth}, ${300 / windowWidth}, 0, 0`)
                 return { discrete: g, percentage: null }
             }
         }
@@ -1210,50 +1261,10 @@ const Supply = (props) => {
 
                 showPageNumber(g, "10")
 
-
-                let posX = 100
-                let posY = 365
-                let boxWidth = 810
-                let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(554, posY, boxWidth, 190).attr(textRectAttrs);
-                whiteRect.animate({ opacity: 1 }, 500);
-                setTimeout(() => {
-                    //   whiteRect.animate({ opacity: 0 }, 500);
-                }, 4500);
-
-
-                let msText = g.text(760, posY + 70, "Let's take this Axis combat").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                let msText2 = g.text(760, posY + 121, "unit and put it in Minsk").attr({
-                    "textAnchor": "left",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                msText.animate({ opacity: 1 }, 500);
-
-                setTimeout(() => {
-                    msText2.animate({ opacity: 1 }, 500);
-                }, 1500);
-
-                setTimeout(() => {
-                    msText.animate({ opacity: 0 }, 500);
-                    msText2.animate({ opacity: 0 }, 500);
-                    whiteRect.animate({ opacity: 0 }, 500);
-                }, 4500);
+                textBox(g, 
+                    `Let's take this Axis combat\n
+                    unit and put it in Minsk.`,
+                    100, 365, 500, 5000)
 
                 sgLastPageGroup.value = g
 
@@ -1269,8 +1280,6 @@ const Supply = (props) => {
                     //  combat_unit.animate({ width: 35, height: 35, transform: 't 44, 44 ' }, 500);
                     sgAxisCombatUnit.value.animate({ width: 64, height: 64, transform: 't -598, 370 ' }, 500, mina.easeout);
                 }, 2500);
-
-
 
                 return { discrete: g, percentage: g2 }
             }
@@ -5296,16 +5305,16 @@ const Supply = (props) => {
 
         let _storyBoard = []
         _storyBoard.push(page1)
-        // _storyBoard.push(page1b)
-        // _storyBoard.push(page2)
-        // _storyBoard.push(page3)
-        // _storyBoard.push(page4)
-        // _storyBoard.push(page5)
-        // _storyBoard.push(page6)
-        // _storyBoard.push(page7)
-        // _storyBoard.push(page8)
-        // _storyBoard.push(page9)
-        // _storyBoard.push(page10)
+        _storyBoard.push(page1b)
+        _storyBoard.push(page2)
+        _storyBoard.push(page3)
+        _storyBoard.push(page4)
+        _storyBoard.push(page5)
+        _storyBoard.push(page6)
+        _storyBoard.push(page7)
+        _storyBoard.push(page8)
+        _storyBoard.push(page9)
+        _storyBoard.push(page10)
         // _storyBoard.push(page11)
         // _storyBoard.push(page12)
         // _storyBoard.push(page13)
