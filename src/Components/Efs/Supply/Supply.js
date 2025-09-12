@@ -556,6 +556,8 @@ const Supply = (props) => {
                     }, 500)
                 }, removeTimeout - 500)
             }
+
+            return textBoxGroup.getBBox()
         }
 
         let page1 = {
@@ -616,7 +618,7 @@ const Supply = (props) => {
 
 
                 textBox(g,
-                    "Let's look at the map features that are important for supply",
+                    "Let's look at the map features that are important for supply.",
                     54, 53, 300, 4500)
 
                 return { discrete: g, percentage: null }
@@ -813,7 +815,7 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                let zocText = g.text(310, 194, "Minor road").attr(textAttrs)
+                let zocText = g.text(530, 194, "Minor road").attr({...textAttrs, textAnchor: "end"})
 
                 let rotateGroup = g.g();
 
@@ -889,7 +891,7 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                let zocText = g.text(615, 234, "Railroad").attr(textAttrs)
+                let zocText = g.text(700, 234, "Railroad").attr({...textAttrs, textAnchor: "middle"})
 
                 let rotateGroup = g.g();
 
@@ -959,11 +961,11 @@ const Supply = (props) => {
 
                 sgLastPageGroup.value = g
 
-                textBox(g, 
+                let textBoxPosition = textBox(g, 
                     `Although the roads and railroads are not printed inside,\n
                     the town and city graphics, it is assumed they still connect\n
                     to any other roads or railroads exiting the same hex.`,
-                    379, 241, 500, 5000)
+                    429, 241, 500, 12500)
 
                 // let whiteRect = g.rect(186, 173, 1525, 498).attr(textRectAttrs);
                 // whiteRect.animate({ opacity: 1 }, 500);
@@ -992,49 +994,59 @@ const Supply = (props) => {
                 //     whiteRect.animate({ opacity: 0 }, 500);
                 // }, 12500)
 
-                let posX = 450
-                var town = g.image(town_connect, posX, 410, 0, 0);
+                console.log('textBoxPosition:', textBoxPosition)
+                let posX = textBoxPosition.x
+                let posY = textBoxPosition.y2 + 20
+                let townsBox = g.rect(posX, posY - 30, textBoxPosition.width, 233 + 80).attr(textRectAttrs);
+                townsBox.attr({ fill: "#ffffdd" })
+             
+                let lfPadding = (textBoxPosition.width - (233 * 3) ) / 4
+                console.log('lfPadding:', lfPadding)
+                var town = g.image(town_connect, posX + lfPadding, 410, 0, 0);
                 town.attr({
                     'xlink:href': town_connect,
                     'width': "233",
                     'height': "233",
                     'opacity': 1
                 });
-                var town2 = g.image(town_connect2, posX + 370, 410, 0, 0);
+                var town2 = g.image(town_connect2,  posX + (2 * lfPadding) + 233, 410, 0, 0);
                 town2.attr({
                     'xlink:href': town_connect2,
                     'width': "233",
                     'height': "233",
                     'opacity': 1
                 });
-                var town3 = g.image(town_connect3, posX + 740, 410, 0, 0);
+                var town3 = g.image(town_connect3,  posX + (3 * lfPadding) + 466, 410, 0, 0);
                 town3.attr({
                     'xlink:href': town_connect3,
                     'width': "233",
                     'height': "233",
                     'opacity': 1
                 });
-                var townConnected = g.image(town_connected, posX, 410, 0, 0);
+                var townConnected = g.image(town_connected,  posX + lfPadding, 410, 0, 0);
                 townConnected.attr({
                     'xlink:href': town_connected,
                     'width': "233",
                     'height': "233",
                     'opacity': 0
                 });
-                var townConnected2 = g.image(town_connected2, posX + 370, 410, 0, 0);
+                var townConnected2 = g.image(town_connected2, posX + (2 * lfPadding) + 233, 410, 0, 0);
                 townConnected2.attr({
                     'xlink:href': town_connected2,
                     'width': "233",
                     'height': "233",
                     'opacity': 0
                 });
-                var townConnected3 = g.image(town_connected3, posX + 740, 410, 0, 0);
+                var townConnected3 = g.image(town_connected3,  posX + (3 * lfPadding) + 466, 410, 0, 0);
                 townConnected3.attr({
                     'xlink:href': town_connected3,
                     'width': "233",
                     'height': "233",
                     'opacity': 0
                 });
+                setTimeout(() => {
+                    townsBox.animate({ opacity: 1 }, 500);
+                }, 1000)
                 setTimeout(() => {
                     townConnected.animate({ opacity: 1 }, 500);
                     townConnected2.animate({ opacity: 1 }, 500);
@@ -1056,6 +1068,7 @@ const Supply = (props) => {
                                     townConnected2.animate({ opacity: 1 }, 500);
                                     townConnected3.animate({ opacity: 1 }, 500);
                                     setTimeout(() => {
+                                        townsBox.animate({ opacity: 0 }, 500);
                                         town.animate({ opacity: 0 }, 500);
                                         town2.animate({ opacity: 0 }, 500);
                                         town3.animate({ opacity: 0 }, 500);
@@ -1083,35 +1096,8 @@ const Supply = (props) => {
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "7")
-                let whiteRect = g.rect(162, 691, 1640, 98).attr(textRectAttrs);
-                whiteRect.animate({ opacity: 1 }, 500);
-                setTimeout(() => {
-                    whiteRect.animate({ opacity: 0 }, 500);
-                }, 4500);
-                setTimeout(() => {
-                    whiteRect.remove();
-                }, 5000);
-
-                // let msText = g.text(199, 741, "We will consider Minsk as the supply source for the Axis").attr({
-                //     "textAnchor": "left",
-                //     "dominant-baseline": "central",
-                //     "fontSize": 65,
-                //     "fontWeight": "bold",
-                //     "fontFamily": "serif",
-                //     stroke: "none",
-                //     fill: "black",
-                //     opacity: 0,
-                // })
-                // msText.animate({ opacity: 1 }, 500);
-                // setTimeout(() => {
-                //     msText.animate({ opacity: 0 }, 500);
-                // }, 4500);
-                // setTimeout(() => {
-                //     msText.remove();
-                // }, 5000);
 
                 textBox(g, "We will consider Minsk as the supply source for the Axis.", 199, 741, 500, 5000)
-
 
                 let supplyWhiteCircle = g.circle(5, 625, 24).attr({
                     stroke: "black",
@@ -1264,7 +1250,7 @@ const Supply = (props) => {
                 textBox(g, 
                     `Let's take this Axis combat\n
                     unit and put it in Minsk.`,
-                    100, 365, 500, 5000)
+                    100, 435, 500, 5000)
 
                 sgLastPageGroup.value = g
 
@@ -1298,73 +1284,11 @@ const Supply = (props) => {
                 let g = paper.g()
                 showPageNumber(g, "11")
 
-
-
-                let posX = 300
-                let posY = 270
-                let boxWidth = 1360
-                let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 30, posY + 12, boxWidth, 218).attr(textRectAttrs);
-                whiteRect.animate({ opacity: 1 }, 500);
-                setTimeout(() => {
-                    //   whiteRect.animate({ opacity: 0 }, 500);
-                }, 4500);
-
-
-                let msText = g.text(posX, posY + 70, "In the General Supply Status phase, supply is determined for each").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                let msText2 = g.text(posX, posY + 121, "combat unit on the board. Since Minsk is a Axis supply source,").attr({
-                    "textAnchor": "left",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                let msText3 = g.text(posX, posY + 173, "General Supply will be traced from Minsk out to units on the map.").attr({
-                    "textAnchor": "left",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                msText.animate({ opacity: 1 }, 500);
-                msText2.animate({ opacity: 1 }, 500);
-                msText3.animate({ opacity: 1 }, 500);
-
-
-                setTimeout(() => {
-                    msText.animate({ opacity: 0 }, 500);
-                    msText2.animate({ opacity: 0 }, 500);
-                    msText3.animate({ opacity: 0 }, 500);
-                    whiteRect.animate({ opacity: 0 }, 500);
-                }, 89500);
-                setTimeout(() => {
-                    msText.remove();
-                    msText2.remove();
-                    msText3.remove();
-                    whiteRect.remove();
-                }, 10000);
-                sgLastPageGroup.value = g
-
-
-
+                let textBoxPosition = textBox(g, 
+                    `In the General Supply Status phase, supply is determined for each\n
+                    combat unit on the board. Since Minsk is a Axis supply source,\n
+                    General Supply will be traced from Minsk out to units on the map.`,
+                    300, 270, 500, 9500)
 
                 return { discrete: g, percentage: g2 }
             }
@@ -1374,7 +1298,7 @@ const Supply = (props) => {
             label: 'supply in Minsk',
             pageInt: 12,
             delay: 0,
-            duration: 10000,
+            duration: 8000,
             remove: false,
             async: true,
             fn: () => {
@@ -1382,73 +1306,11 @@ const Supply = (props) => {
                 let g = paper.g()
                 showPageNumber(g, "12")
 
-
-
-                let posX = 440
-                let posY = 270
-                let boxWidth = 1103
-                let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 30, posY + 12, boxWidth, 218).attr(textRectAttrs);
-                whiteRect.animate({ opacity: 1 }, 500);
-                setTimeout(() => {
-                    //   whiteRect.animate({ opacity: 0 }, 500);
-                }, 4500);
-
-
-                let msText = g.text(posX, posY + 70, "So let's say it's the Supply Status phase. Check supply").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                let msText2 = g.text(posX, posY + 121, "for that (one) unit on the map. It is of course in supply").attr({
-                    "textAnchor": "left",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                let msText3 = g.text(posX, posY + 173, "because it is sitting directly on a supply source.").attr({
-                    "textAnchor": "left",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                msText.animate({ opacity: 1 }, 500);
-                msText2.animate({ opacity: 1 }, 500);
-                msText3.animate({ opacity: 1 }, 500);
-
-
-                setTimeout(() => {
-                    msText.animate({ opacity: 0 }, 500);
-                    msText2.animate({ opacity: 0 }, 500);
-                    msText3.animate({ opacity: 0 }, 500);
-                    whiteRect.animate({ opacity: 0 }, 500);
-                }, 89000);
-                setTimeout(() => {
-                    msText.remove();
-                    msText2.remove();
-                    msText3.remove();
-                    whiteRect.remove();
-                }, 9500);
-                sgLastPageGroup.value = g
-
-
-
+                let textBoxPosition = textBox(g, 
+                    `So let's say it's the Supply Status phase. Check supply\n
+                    for that (one) unit on the map. It is of course in supply\n
+                    because it is sitting directly on a supply source.`,
+                    440, 270, 500, 7500)
 
                 return { discrete: g, percentage: g2 }
             }
@@ -1466,30 +1328,11 @@ const Supply = (props) => {
                 showPageNumber(g, "13")
                 let posX = 560
                 let posY = 300
-                let boxWidth = 762
-                let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 110).attr(textRectAttrs);
-                whiteRect.animate({ opacity: 1 }, 500);
-
-
-
-                let msText = g.text(posX, posY + 70, "Now let's say that unit is over here...").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-
-                msText.animate({ opacity: 1 }, 500);
-                setTimeout(() => {
-                    whiteRect.animate({ opacity: 0 }, 500);
-                    msText.animate({ opacity: 0 }, 500);
-                }, 4500);
+                let textBoxPosition = textBox(g, 
+                    `So let's say it's the Supply Status phase. Check supply\n
+                    for that (one) unit on the map. It is of course in supply\n
+                    because it is sitting directly on a supply source.`,
+                    posX, posY, 500, 5500)
 
                 sgLastPageGroup.value = g
                 setTimeout(() => {
@@ -1513,32 +1356,9 @@ const Supply = (props) => {
                 showPageNumber(g, "14")
                 let posX = 560
                 let posY = 300
-                let boxWidth = 760
-                let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 110).attr(textRectAttrs);
-                whiteRect.animate({ opacity: 1 }, 500);
-
-
-
-                let msText = g.text(posX, posY + 70, "Will that unit be in general supply?").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-
-                msText.animate({ opacity: 1 }, 500);
-
-                setTimeout(() => {
-                    whiteRect.animate({ opacity: 0 }, 500);
-                    msText.animate({ opacity: 0 }, 500);
-                }, 5000);
-
+                let textBoxPosition = textBox(g, 
+                    `Will that unit be in general supply?`,
+                    posX, posY, 500, 5500)
 
                 return { discrete: g, percentage: null }
             }
@@ -1556,53 +1376,13 @@ const Supply = (props) => {
                 showPageNumber(g, "15")
                 let posX = 464
                 let posY = 323
-                let boxWidth = 1043
-                let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 174).attr(textRectAttrs);
-                whiteRect.animate({ opacity: 1 }, 500);
-
-                setTimeout(() => {
-                    whiteRect.animate({
-                        height: 238
-                    }, 500, mina.easein);
-                }, 9000);
+                let textBoxPosition = textBox(g, 
+                    `A Line of Communications (LOC) in Dry Weather\n
+                    is usually 7 hexes. So let's count the hexes...\n,
+                    The distance is 6 hexes, so the unit is in supply.`,
+                    posX, posY, 500, this.duration - 500)
 
 
-                let msText = g.text(posX, posY + 70, "A Line of Communications (LOC) in Dry Weather").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                let msText2 = g.text(posX, posY + 130, "is usually 7 hexes. So let's count the hexes...").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                let msText3 = g.text(posX, posY + 190, "The distance is 6 hexes, so the unit is in supply.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                let number1 = null
-                let number2 = null
                 let numX = 380
                 let numY = 773
                 let numY2 = 812
@@ -1645,13 +1425,6 @@ const Supply = (props) => {
                     }
                 }, 6000);
 
-                msText.animate({ opacity: 1 }, 500);
-                msText2.animate({ opacity: 1 }, 500);
-                setTimeout(() => {
-                    msText3.animate({ opacity: 1 }, 500);
-                }, 10000)
-
-
                 setTimeout(() => {
                     for (let i = numbersGroups.length; i > 0; i--) {
                         let numGroup = numbersGroups[numbersGroups.length - i];
@@ -1677,135 +1450,13 @@ const Supply = (props) => {
                 showPageNumber(g, "16")
                 let posX = 82
                 let posY = 266
-                let boxWidth = 1800
-                let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 299).attr(textRectAttrs);
-                whiteRect.animate({ opacity: 1 }, 450);
 
-                // setTimeout(() => {
-                //     whiteRect.animate({
-                //         height: 238
-                //     }, 500, mina.easein);
-                // }, 9000);
-
-
-                let msText = g.text(posX, posY + 70, "A Motorway or Road (not minor road) hex that is connected to a supply source can extend").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                let msText2 = g.text(posX, posY + 130, "the supply source along the road, up to 21 hexes in dry weather. Friendly units can trace").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                let msText3 = g.text(posX, posY + 190, "a LOC to such a road hex that's connected to a supply source to get its general supply.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                let msText4 = g.text(posX, posY + 250, "However, enemy unit(s) or enemy zocs on the road blocks the tracing of supply at that hex.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-
-
-                let number1 = null
-                let number2 = null
-                let numX = 380
-                let numY = 773
-                let numY2 = 812
-                let numbersGroups = []
-                // for (let i = 1; i < 7; i++) {
-                //     let numMY = (i % 2 === 0) ? numY2 : numY;
-                //     let circleN = g.circle(numX, numMY, 30).attr({
-                //         fill: "#ffffff",
-                //         stroke: "black",
-                //         strokeWidth: 1,
-                //         opacity: 1
-                //     })
-                //     let msTextN = g.text(numX - 11, numMY, i).attr({
-                //         "textAnchor": "center",
-                //         "dominant-baseline": "central",
-                //         "fontSize": 45,
-                //         "fontWeight": "bold",
-                //         "fontFamily": "serif",
-                //         stroke: "none",
-                //         fill: "black",
-                //         opacity: 1,
-                //     })
-                //     //number1 = g.group(circle1, msTextN1)
-                //     let circleAndNumber = g.group(circleN, msTextN)
-                //     circleAndNumber.attr({
-                //         opacity: 0
-                //     })
-                //     numbersGroups.push(circleAndNumber)
-                //     numX -= 67;
-                //     //  numY -= 44;
-                //     //numY2 -= 44;
-                // }
-
-                // setTimeout(() => {
-                //     for (let i = 0; i < numbersGroups.length; i++) {
-                //         let numGroup = numbersGroups[i];
-                //         setTimeout(() => {
-                //             numGroup.animate({ opacity: 1 }, 500);
-                //         }, i * 500);
-                //     }
-                // }, 6000);
-
-                msText.animate({ opacity: 1 }, 500);
-                msText2.animate({ opacity: 1 }, 520);
-                msText3.animate({ opacity: 1 }, 540);
-                msText4.animate({ opacity: 1 }, 560);
-
-                // console.log('ok...')
-                // setTimeout(() => {
-                //     for (let i = numbersGroups.length; i > 0; i--) {
-                //         let numGroup = numbersGroups[numbersGroups.length - i];
-                //         console.log(i, 'numGroup', numGroup);
-                //         setTimeout(() => {
-                //             console.log('numGroup animated to 0 opacity number ', i);
-                //             numGroup.animate({ opacity: 0 }, 80);
-                //         }, i * 80);
-                //     }
-                // }, 14000);
-
-                // setTimeout(() => {
-                //     whiteRect.animate({ opacity: 0 }, 500);
-                //     msText.animate({ opacity: 0 }, 500);
-                //     msText2.animate({ opacity: 0 }, 500);
-                //   }, 7500);
-                //   setTimeout(() => {
-                //     whiteRect.remove()
-                //     msText.remove()
-                //     msText2.remove()
-                //   }, 8000);
+                let textBoxPosition = textBox(g, 
+                    `A Motorway or Road (not minor road) hex that is connected to a supply source can extend\n
+                    the supply source along the road, up to 21 hexes in dry weather. Friendly units can trace\n,
+                    a LOC to such a road hex that's connected to a supply source to get its general supply.\n
+                    However, enemy unit(s) or enemy zocs on the road blocks the tracing of supply at that hex.`,
+                    posX, posY, 500, this.duration - 500)
 
                 return { discrete: g, percentage: null }
             }
@@ -1823,69 +1474,10 @@ const Supply = (props) => {
                 showPageNumber(g, "17")
                 let posX = 400
                 let posY = 630
-                let boxWidth = 1483
-                let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 119).attr(textRectAttrs);
-                whiteRect.animate({ opacity: 1 }, 450);
-
-                let msText = g.text(posX, posY + 70, "So let's show the road hexes that are extending the supply source (Minsk).").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                msText.animate({ opacity: 1 }, 500);
-
-
-
-
-
-
-
-
-
-                posX = 300
-                posY = 100
-                boxWidth = 470
-                windowWidth = window.innerWidth;
-                let whiteRect2 = g.rect(posX - 24, posY + 27, boxWidth, 89).attr(textRectAttrs);
-
-
-                let msText2 = g.text(posX, posY + 70, "And the other road...").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                setTimeout(() => {
-                    whiteRect2.animate({ opacity: 1 }, 450);
-                    msText2.animate({ opacity: 1 }, 500);
-                }, 5000);
-
-
-                setTimeout(() => {
-                    whiteRect.animate({ opacity: 0 }, 450);
-                    msText.animate({ opacity: 0 }, 500);
-                    whiteRect2.animate({ opacity: 0 }, 450);
-                    msText2.animate({ opacity: 0 }, 500);
-                }, 9500);
-
-
-
-
-
-
-
+                let textBoxPosition = textBox(g, 
+                    `So let's show the road hexes that are extending the supply source (Minsk).\n
+                    And the other road...`,
+                    posX, posY, 500, this.duration - 500)
 
                 let numX = 380
                 let numY = 773
@@ -2028,14 +1620,6 @@ const Supply = (props) => {
 
 
                 setTimeout(() => {
-                    whiteRect.remove();
-                    msText.remove();
-                    whiteRect2.remove();
-                    msText2.remove();
-                }, 10000);
-
-
-                setTimeout(() => {
                     for (let i = 0; i < numbersGroups.length; i++) {
                         let numGroup = numbersGroups[i];
                         numGroup.animate({ opacity: 0 }, 70);
@@ -2085,43 +1669,10 @@ const Supply = (props) => {
                 showPageNumber(g, "18")
                 let posX = 400
                 let posY = 500
-                let boxWidth = 1480
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 164).attr(textRectAttrs);
-                whiteRect.animate({ opacity: 1 }, 450);
-
-                let msText = g.text(posX, posY + 70, "So if we re-consider how that Axis unit gets supply, we see that it can get").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                let msText2 = g.text(posX, posY + 120, "General Supply from a closer source - the motorway that is near it.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                setTimeout(() => {
-                    whiteRect.animate({ opacity: 1 }, 450);
-                    msText.animate({ opacity: 1 }, 500);
-                    msText2.animate({ opacity: 1 }, 500);
-                }, 1000);
-
-                setTimeout(() => {
-                    msText.animate({ opacity: 0 }, 450);
-                    msText2.animate({ opacity: 0 }, 500);
-                    whiteRect.animate({ opacity: 0 }, 550);
-                }, 4500);
+                let textBoxPosition = textBox(g, 
+                    `So if we re-consider how that Axis unit gets supply, we see that it can get\n
+                    General Supply from a closer source - the motorway that is near it.`,
+                    posX, posY, 500, this.duration - 500)
 
                 return { discrete: g, percentage: null }
             }
@@ -2140,37 +1691,12 @@ const Supply = (props) => {
                 showPageNumber(g, "19")
                 let posX = 464
                 let posY = 323
-                let boxWidth = 1200
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 118).attr(textRectAttrs);
-                whiteRect.animate({ opacity: 1 }, 500);
-
-                setTimeout(() => {
-                    whiteRect.animate({
-                        height: 170
-                    }, 500, mina.easein);
-                }, 2500);
+                let textBoxPosition = textBox(g, 
+                    `By tracing to the road that is connected to a supply source,\n
+                    the unit has successfully reached General Supply.`,
+                    posX, posY, 500, this.duration - 500)
 
 
-                let msText = g.text(posX, posY + 70, "By tracing to the road that is connected to a supply source,").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                let msText2 = g.text(posX, posY + 120, "the unit has successfully reached General Supply.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
 
                 let numberPositions = []
                 numberPositions.push({ x: 380, y: 774 }); // 1
@@ -2212,21 +1738,6 @@ const Supply = (props) => {
                     }
                 }, 1500);
 
-                msText.animate({ opacity: 1 }, 500);
-                setTimeout(() => {
-                    msText2.animate({ opacity: 1 }, 500);
-                }, 3100);
-
-                setTimeout(() => {
-                    whiteRect.animate({ opacity: 0 }, 500);
-                    msText.animate({ opacity: 0 }, 500);
-                    msText2.animate({ opacity: 0 }, 500);
-                }, 9500);
-                // msText2.animate({ opacity: 1 }, 500);
-                // setTimeout(() => {
-                //     msText3.animate({ opacity: 1 }, 500);
-                // }, 10000)
-
                 setTimeout(() => {
                     for (let i = numbersGroups.length; i > 0; i--) {
                         let numGroup = numbersGroups[numbersGroups.length - i];
@@ -2249,85 +1760,17 @@ const Supply = (props) => {
             remove: true,
             async: true,
             fn: () => {
-
-
-
-
                 let posX = 54
                 let posY = 255
-                let boxWidth = 1865
-                let windowWidth = window.innerWidth;
-
-
-
-
                 let g = paper.g()
                 showPageNumber(g, "20")
-                let whiteRect = g.rect(posX - 35, posY + 12, boxWidth, 270).attr(textRectAttrs);
+                let textBoxPosition = textBox(g, 
+                    `Railroads can extend a supply source with no set limit on number of hexes, however the route\n
+                    traced can only travel along railroads that have been converted (for Axis) or not converted\n
+                    (for Soviet) use. Enemy units, unblocked enemy zocs and rail breaks stop the tracing of\n
+                    supply at that rail hex.`,
+                    posX, posY, 500, this.duration - 500)
 
-                whiteRect.animate({ opacity: 1 }, 500);
-
-                let msText = g.text(posX, posY + 70, "Railroads can extend a supply source with no set limit on number of hexes, however the route").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                let msText2 = g.text(posX, posY + 120, "traced can only travel along railroads that have been converted (for Axis) or not converted").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                let msText3 = g.text(posX, posY + 170, "(for Soviet) use. Enemy units, unblocked enemy zocs and rail breaks stop the tracing of").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                let msText4 = g.text(posX, posY + 220, "supply at that rail hex.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                msText.animate({ opacity: 1 }, 500);
-                msText2.animate({ opacity: 1 }, 500);
-                msText3.animate({ opacity: 1 }, 500);
-                msText4.animate({ opacity: 1 }, 500);
-
-                setTimeout(() => {
-                    whiteRect.animate({ opacity: 0 }, 500);
-                    msText.animate({ opacity: 0 }, 500);
-                    msText2.animate({ opacity: 0 }, 500);
-                    msText3.animate({ opacity: 0 }, 500);
-                    msText4.animate({ opacity: 0 }, 500);
-                }, 14500);
-
-                setTimeout(() => {
-                    whiteRect.remove();
-                    msText.remove();
-                    msText2.remove();
-                    msText3.remove();
-                    msText4.remove();
-                }, 15000);
 
                 let g2 = paper.g()
                 var imageRailGlow = g2.image(efs_minsk_map_rail_glow, 0, 0, 0, 0);
@@ -5304,17 +4747,17 @@ const Supply = (props) => {
         }
 
         let _storyBoard = []
-        _storyBoard.push(page1)
-        _storyBoard.push(page1b)
-        _storyBoard.push(page2)
-        _storyBoard.push(page3)
-        _storyBoard.push(page4)
-        _storyBoard.push(page5)
+        // _storyBoard.push(page1)
+        // _storyBoard.push(page1b)
+        // _storyBoard.push(page2)
+        // _storyBoard.push(page3)
+        // _storyBoard.push(page4)
+        // _storyBoard.push(page5)
         _storyBoard.push(page6)
-        _storyBoard.push(page7)
-        _storyBoard.push(page8)
-        _storyBoard.push(page9)
-        _storyBoard.push(page10)
+        // _storyBoard.push(page7)
+        // _storyBoard.push(page8)
+        // _storyBoard.push(page9)
+        // _storyBoard.push(page10)
         // _storyBoard.push(page11)
         // _storyBoard.push(page12)
         // _storyBoard.push(page13)
