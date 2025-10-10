@@ -50,6 +50,7 @@ const Supply = (props) => {
     const sgSovietInfantryUnit = useSignal(null);
     const sgSovietArmorUnit = useSignal(null);
     const sgZocGroup = useSignal(null)
+    const sgSunGroup = useSignal(null)
     const sgSovietRailBreak = useSignal(null)
     const sgTimers = useSignal([])
     const sgMudRoadIndicators = useSignal([])
@@ -57,6 +58,7 @@ const Supply = (props) => {
     const sgPlayPauseStatus = useSignal('play') // play, paused
     const sgUseTextSize = useSignal(45)
     const sgUseLineBreak = useSignal(20)
+    const sgEmergencySupplyMarker = useSignal(null)
 
     const [storyBoardStarted, setStoryBoardStarted] = useState(false)
     const [backgroundMap, setBackgroundMap] = useState(null);
@@ -304,17 +306,17 @@ const Supply = (props) => {
         let useTextSize = Math.round(45 * useTextSizeRatio)
         console.log('useTextSize:', useTextSize)
         sgUseTextSize.value = useTextSize
-    
+
         let useTextHeightRatio = 50 / bbox.height
         let useTextHeight = Math.round(50 * useTextSizeRatio)
         console.log('useTextHeight:', useTextHeight)
         sgUseLineBreak.value = Math.round(useTextHeight)
-    
+
     }
 
     const setupStoryboard = () => {
         console.log('setupStoryboard called');
-        testTextWidth(paper.g()) 
+        testTextWidth(paper.g())
 
         var backgroundImage = paper.image(efs_minsk_map, 0, 0, 0, 0);
         backgroundImage.attr({
@@ -520,11 +522,11 @@ const Supply = (props) => {
             }
         }
 
-        const textBox = (g, text, x, y, delay = 500, removeTimeout = 4000, extraRight=0, extraBottom=0) => {
+        const textBox = (g, text, x, y, delay = 500, removeTimeout = 4000, extraRight = 0, extraBottom = 0, extraLeft = 0) => {
             let textBoxGroup = g.group()
             let textLines = text.split('\n')
             let textLinesGroup = g.group()
-            let textX = x
+            let textX = x + extraLeft
             let textY = y
             textLines.forEach((line, idx) => {
                 let textLine = g.text(textX, textY, line).attr({
@@ -541,12 +543,14 @@ const Supply = (props) => {
             let bbox = textLinesGroup.getBBox()
             textLinesGroup.remove()
             let borderPadding = 24
-            let textBoxEl = g.rect(x - borderPadding, y - borderPadding, bbox.width + (2 * borderPadding) + extraRight, bbox.height + (1.9 * borderPadding)).attr(textRectAttrs);
+            let textBoxEl = g.rect(x - borderPadding, y - borderPadding,
+                bbox.width + (2 * borderPadding) + extraRight + extraLeft,
+                bbox.height + (1.9 * borderPadding) + extraBottom).attr(textRectAttrs);
             textBoxEl.attr({ opacity: 1 })
             textBoxGroup.add(textBoxEl, textLinesGroup)
             textBoxGroup.attr({ opacity: 0 })
             registerTimer(() => {
-                textBoxGroup.animate({ opacity: 1}, 500);
+                textBoxGroup.animate({ opacity: 1 }, 500);
             }, delay)
             if (removeTimeout > 0) {
                 registerTimer(() => {
@@ -815,7 +819,7 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                let zocText = g.text(530, 194, "Minor road").attr({...textAttrs, textAnchor: "end"})
+                let zocText = g.text(530, 194, "Minor road").attr({ ...textAttrs, textAnchor: "end" })
 
                 let rotateGroup = g.g();
 
@@ -891,7 +895,7 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                let zocText = g.text(703, 234, "Railroad").attr({...textAttrs, textAnchor: "middle"})
+                let zocText = g.text(703, 234, "Railroad").attr({ ...textAttrs, textAnchor: "middle" })
 
                 let rotateGroup = g.g();
 
@@ -961,7 +965,7 @@ const Supply = (props) => {
 
                 sgLastPageGroup.value = g
 
-                let textBoxPosition = textBox(g, 
+                let textBoxPosition = textBox(g,
                     `Although the roads and railroads are not printed inside,
                     the town and city graphics, it is assumed they still connect
                     to any other roads or railroads exiting the same hex.`,
@@ -999,8 +1003,8 @@ const Supply = (props) => {
                 let posY = textBoxPosition.y2 + 20
                 let townsBox = g.rect(posX, posY - 30, textBoxPosition.width, 233 + 80).attr(textRectAttrs);
                 townsBox.attr({ fill: "#ffffdd" })
-             
-                let lfPadding = (textBoxPosition.width - (233 * 3) ) / 4
+
+                let lfPadding = (textBoxPosition.width - (233 * 3)) / 4
                 console.log('lfPadding:', lfPadding)
                 var town = g.image(town_connect, posX + lfPadding, 410, 0, 0);
                 town.attr({
@@ -1009,21 +1013,21 @@ const Supply = (props) => {
                     'height': "233",
                     'opacity': 0
                 });
-                var town2 = g.image(town_connect2,  posX + (2 * lfPadding) + 233, 410, 0, 0);
+                var town2 = g.image(town_connect2, posX + (2 * lfPadding) + 233, 410, 0, 0);
                 town2.attr({
                     'xlink:href': town_connect2,
                     'width': "233",
                     'height': "233",
                     'opacity': 0
                 });
-                var town3 = g.image(town_connect3,  posX + (3 * lfPadding) + 466, 410, 0, 0);
+                var town3 = g.image(town_connect3, posX + (3 * lfPadding) + 466, 410, 0, 0);
                 town3.attr({
                     'xlink:href': town_connect3,
                     'width': "233",
                     'height': "233",
                     'opacity': 0
                 });
-                var townConnected = g.image(town_connected,  posX + lfPadding, 410, 0, 0);
+                var townConnected = g.image(town_connected, posX + lfPadding, 410, 0, 0);
                 townConnected.attr({
                     'xlink:href': town_connected,
                     'width': "233",
@@ -1037,7 +1041,7 @@ const Supply = (props) => {
                     'height': "233",
                     'opacity': 0
                 });
-                var townConnected3 = g.image(town_connected3,  posX + (3 * lfPadding) + 466, 410, 0, 0);
+                var townConnected3 = g.image(town_connected3, posX + (3 * lfPadding) + 466, 410, 0, 0);
                 townConnected3.attr({
                     'xlink:href': town_connected3,
                     'width': "233",
@@ -1208,6 +1212,7 @@ const Supply = (props) => {
 
 
                 sunGroup.transform(`t 55, 45 s 1, 1`)
+                sgSunGroup.value = g.group(weatherRect, msText, sunGroup)
 
                 //sun.transform(`t 55, 45 s 1, 1`)
 
@@ -1226,8 +1231,8 @@ const Supply = (props) => {
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "9")
-               
-                textBox(g, 
+
+                textBox(g,
                     `The weather conditions affect the supply rules.
                     Lets start with Dry weather.`,
                     100, 365, 500, 7000)
@@ -1250,7 +1255,7 @@ const Supply = (props) => {
 
                 showPageNumber(g, "10")
 
-                textBox(g, 
+                textBox(g,
                     `Let's take this Axis combat
                     unit and put it in Minsk.`,
                     100, 435, 500, 5000)
@@ -1287,7 +1292,7 @@ const Supply = (props) => {
                 let g = paper.g()
                 showPageNumber(g, "11")
 
-                let textBoxPosition = textBox(g, 
+                let textBoxPosition = textBox(g,
                     `In the General Supply Status phase, supply is determined for each
                     combat unit on the board. Since Minsk is a Axis supply source,
                     General Supply will be traced from Minsk out to units on the map.`,
@@ -1309,7 +1314,7 @@ const Supply = (props) => {
                 let g = paper.g()
                 showPageNumber(g, "12")
 
-                let textBoxPosition = textBox(g, 
+                let textBoxPosition = textBox(g,
                     `So let's say it's the Supply Status phase. Check supply
                     for that (one) unit on the map. It is of course in supply
                     because it is sitting directly on a supply source.`,
@@ -1331,8 +1336,8 @@ const Supply = (props) => {
                 showPageNumber(g, "13")
                 let posX = 560
                 let posY = 300
-                let textBoxPosition = textBox(g, 
-                    `Let's move that unit over here...`,
+                let textBoxPosition = textBox(g,
+                    `Let's move that unit over here...   `,
                     posX, posY, 500, 5500)
 
                 sgLastPageGroup.value = g
@@ -1357,7 +1362,7 @@ const Supply = (props) => {
                 showPageNumber(g, "14")
                 let posX = 560
                 let posY = 300
-                let textBoxPosition = textBox(g, 
+                let textBoxPosition = textBox(g,
                     `Will that unit be in general supply?`,
                     posX, posY, 500, 5500)
 
@@ -1369,7 +1374,7 @@ const Supply = (props) => {
             label: 'LOC',
             pageInt: 15,
             delay: 0,
-            duration: 15000,
+            duration: 14800,
             remove: true,
             async: true,
             fn: () => {
@@ -1377,9 +1382,9 @@ const Supply = (props) => {
                 showPageNumber(g, "15")
                 let posX = 464
                 let posY = 323
-                let textBoxPosition = textBox(g, 
+                let textBoxPosition = textBox(g,
                     `A Line of Communications (LOC) in Dry Weather
-                    is usually 7 hexes. So let's count the hexes...,
+                    is usually 7 hexes. So let's count the hexes...
                     The distance is 6 hexes, so the unit is in supply.`,
                     posX, posY, 1500, 10000)
 
@@ -1449,10 +1454,10 @@ const Supply = (props) => {
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "16")
-                let posX = 182
-                let posY = 266
+                let posX = 222
+                let posY = 276
 
-                let textBoxPosition = textBox(g, 
+                let textBoxPosition = textBox(g,
                     `A Motorway or Road (not minor road) hex that is connected to a supply source can extend
                     the supply source along the road, up to 21 hexes in dry weather. Friendly units can trace
                     a LOC to such a road hex that's connected to a supply source to get its general supply.
@@ -1473,11 +1478,12 @@ const Supply = (props) => {
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "17")
-                let posX = 460
-                let posY = 636
-                let textBoxPosition = textBox(g, 
+                let posX = 560
+                let posY = 606
+                let textBoxPosition = textBox(g,
                     `So let's show the road hexes that are extending the supply source (Minsk).
-                    And the other road...`,
+                    For now we will ignore the railroad (pretend its not there, or it hasn't
+                    been converted past Minsk yet.)`,
                     posX, posY, 500, 9500)
 
                 let numX = 380
@@ -1670,7 +1676,7 @@ const Supply = (props) => {
                 showPageNumber(g, "18")
                 let posX = 400
                 let posY = 500
-                let textBoxPosition = textBox(g, 
+                let textBoxPosition = textBox(g,
                     `So if we re-consider how that Axis unit gets supply, we see that it can get
                     General Supply from a closer source - the motorway that is near it.`,
                     posX, posY, 500, 5500)
@@ -1692,7 +1698,7 @@ const Supply = (props) => {
                 showPageNumber(g, "19")
                 let posX = 464
                 let posY = 323
-                let textBoxPosition = textBox(g, 
+                let textBoxPosition = textBox(g,
                     `By tracing to the road that is connected to a supply source,
                     the unit has successfully reached General Supply.`,
                     posX, posY, 1200, 11500)
@@ -1765,7 +1771,7 @@ const Supply = (props) => {
                 let posY = 255
                 let g = paper.g()
                 showPageNumber(g, "20")
-                let textBoxPosition = textBox(g, 
+                let textBoxPosition = textBox(g,
                     `Railroads can extend a supply source with no set limit on number of hexes, however the route
                     traced can only travel along railroads that have been converted (for Axis) or not converted
                     (for Soviet) use. Enemy units, unblocked enemy zocs and rail breaks stop the tracing of
@@ -1832,7 +1838,7 @@ const Supply = (props) => {
 
                 let posX = 815
                 let posY = 450
-                textBox(g, 
+                textBox(g,
                     `Let's put this rail end marker over here...`,
                     posX, posY, 500, 4000)
 
@@ -1866,7 +1872,7 @@ const Supply = (props) => {
                 showPageNumber(g, "22")
                 let posX = 380
                 let posY = 350
-                textBox(g, 
+                textBox(g,
                     `Let's put that Axis unit over here...`,
                     posX, posY, 500, 5500)
 
@@ -1895,7 +1901,7 @@ const Supply = (props) => {
 
                 let posX = 760
                 let posY = 370
-                textBox(g, 
+                textBox(g,
                     `And here comes a sneaky Soviet cavalry division.`,
                     posX, posY, 500, 5500)
 
@@ -1934,7 +1940,7 @@ const Supply = (props) => {
                 showPageNumber(g, "24")
                 let posX = 560
                 let posY = 400
-                textBox(g, 
+                textBox(g,
                     `The Zone of Control (ZOC) from the Soviet cavalry unit
                     extends to the Motorway hex, blocking road supply.`,
                     posX, posY, 500, 11500)
@@ -2045,7 +2051,7 @@ const Supply = (props) => {
                 showPageNumber(g, "25")
                 let posX = 240
                 let posY = 500
-                textBox(g, 
+                textBox(g,
                     `The unit now can't use the motorway here for supply,
                     but it can get supply via the railroad. Note that the hex
                     the rail cut marker is in is not a supply source.`,
@@ -2130,7 +2136,7 @@ const Supply = (props) => {
                 showPageNumber(g, "26")
                 let posX = 80
                 let posY = 448
-                textBox(g, 
+                textBox(g,
                     `Let's move some more Soviets onto the map to cause some trouble.`,
                     posX, posY, 500, 4500)
 
@@ -2138,7 +2144,7 @@ const Supply = (props) => {
 
                 posX = 550
                 posY = 600
-                textBox(g, 
+                textBox(g,
                     `And here are their ZOCs...
                     There is a path for supply, but it goes through a marsh hex.`,
                     posX, posY, 5500, 12500)
@@ -2223,7 +2229,7 @@ const Supply = (props) => {
                 let posX = 110
                 let posY = 300
 
-                textBox(g, 
+                textBox(g,
                     `Beware - if the LOC you trace goes through a Marsh hex, the
                     maximum LOS length is reduced to 5 hexes, unless you are
                     tracing along a road (minor roads or railroads don't count).`,
@@ -2290,15 +2296,15 @@ const Supply = (props) => {
 
                 posX = 150
                 posY = 350
-                textBox(g, 
+                textBox(g,
                     `The Axis unit cannot reach General Supply in 5
                     hexes. Place an Emergency Supply marker on it.`,
                     posX, posY, 13500, 18500)
 
 
 
-                let emergencySupplyMarker = g.image(emergencySupply, 1013, 333, 0, 0);
-                emergencySupplyMarker.attr({
+                sgEmergencySupplyMarker.value = g.image(emergencySupply, 1013, 333, 0, 0);
+                sgEmergencySupplyMarker.value.attr({
                     'xlink:href': emergencySupply,
                     'width': "120",
                     'height': "120",
@@ -2306,18 +2312,18 @@ const Supply = (props) => {
                 });
 
                 setTimeout(() => {
-                    emergencySupplyMarker.animate({ opacity: 1 }, 500);
+                    sgEmergencySupplyMarker.value.animate({ opacity: 1 }, 500);
                 }, 16000);
 
                 setTimeout(() => {
-                    emergencySupplyMarker.animate({ width: 64, height: 64, transform: 't 540, 176' }, 500, mina.easeout);
+                    sgEmergencySupplyMarker.value.animate({ width: 64, height: 64, transform: 't 540, 176' }, 500, mina.easeout);
                 }, 18500);
 
 
 
                 posX = 150
                 posY = 360
-                textBox(g, 
+                textBox(g,
                     `Being in Emergency Supply does not cause any issues.
                     However, if the unit already has an Emergency Supply
                     marker on it, it instead gets an Out Of Supply marker.`,
@@ -2340,21 +2346,21 @@ const Supply = (props) => {
                     outOfSupplyMarker.animate({ width: 64, height: 64, transform: 't 422, 145' }, 500, mina.easeout);
                 }, 26500);
                 setTimeout(() => {
-                    emergencySupplyMarker.animate({ transform: 't 540, -1140', opacity: 0 }, 300);
+                    sgEmergencySupplyMarker.value.animate({ transform: 't 540, -1140', opacity: 0 }, 300);
                 }, 26500);
 
 
-                posX = 240
+                posX = 220
                 posY = 300
-                textBox(g, 
+                textBox(g,
                     `If a unit is previously marked Out of Supply or Emergency Supply,
                     and in a General Supply phase is deemed to be back in supply,
                     then remove the markers, even if it's the Out of Supply marker.`,
-                    posX, posY, 30000, 40000)
+                    posX, posY, 29000, 40000)
 
-                    setTimeout(() => {
-                        outOfSupplyMarker.animate({ transform: 't 538, -1141', opacity: 0 }, 300);
-                    }, 40500);
+                setTimeout(() => {
+                    outOfSupplyMarker.animate({ transform: 't 422, -1141', opacity: 0 }, 300);
+                }, 40500);
 
 
 
@@ -2362,7 +2368,7 @@ const Supply = (props) => {
                 setTimeout(() => {
                     sgSovietMdnoUnit.value.animate({ opacity: 0 }, 500);
                     sgSovietInfantryUnit.value.animate({ opacity: 0 }, 500);
-                    emergencySupplyMarker.animate({ opacity: 0 }, 500);
+                    sgEmergencySupplyMarker.value.animate({ opacity: 0 }, 500);
                     outOfSupplyMarker.animate({ opacity: 0 }, 500);
                     sgAxisRailEndUnit.value.animate({ opacity: 0 }, 500);
                     sgSovietCombatUnit.value.animate({ opacity: 0 }, 500);
@@ -2376,7 +2382,8 @@ const Supply = (props) => {
                     sgSovietMdnoUnit.value = null;
                     sgSovietInfantryUnit.value.remove()
                     sgSovietInfantryUnit.value = null;
-                    emergencySupplyMarker.remove()
+                    sgEmergencySupplyMarker.value.remove()
+                    sgEmergencySupplyMarker.value = null;
                     outOfSupplyMarker.remove()
                     sgAxisRailEndUnit.value.remove()
                     sgAxisRailEndUnit.value = null;
@@ -2397,7 +2404,7 @@ const Supply = (props) => {
             label: 'swamp is worse',
             pageInt: 28,
             delay: 0,
-            duration: 14000,
+            duration: 12000,
             remove: true,
             async: true,
             fn: () => {
@@ -2405,61 +2412,27 @@ const Supply = (props) => {
                 showPageNumber(g, "28")
                 let posX = 160
                 let posY = 330
-                let boxWidth = 1640
-                let windowWidth = window.innerWidth;
-                let whiteRect = g.rect(posX - 35, posY, boxWidth, 200).attr(textRectAttrs);
-                // whiteRect.animate({ opacity: 1 }, 500);
 
-
-
-                let msText = g.text(posX + 270, posY + 50, "Swamp is very restrictive - during Dry or Mud weather a LOC is").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                let msText2 = g.text(posX + 270, posY + (2 * 50), "reduced to 5 hexes and also can only be used if it follows, and stays,").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                let msText3 = g.text(posX + 270, posY + (3 * 50), "on the road or railroad that reaches the hex providing supply.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
+                textBox(g,
+                    `Swamp is very restrictive - during Dry or Mud weather a LOC is
+                    reduced to 5 hexes and also can only be used if it follows, and stays,
+                    on the road or railroad that reaches the hex providing supply.`,
+                    posX, posY, 500, 11500, 0, 70, 250)
 
                 let swamp_Hex = g.image(swampHex, posX, posY + 3, 225, 190);
                 swamp_Hex.attr({
                     'opacity': 0
                 });
 
-
-
-
                 setTimeout(() => {
-                    whiteRect.animate({ opacity: 1 }, 500);
-                    msText.animate({ opacity: 1 }, 500);
-                    msText2.animate({ opacity: 1 }, 500);
-                    msText3.animate({ opacity: 1 }, 500);
                     swamp_Hex.animate({ opacity: 1 }, 500);
-                }, 1000);
-
-
+                }, 500);
+                setTimeout(() => {
+                    swamp_Hex.animate({ opacity: 0 }, 500);
+                }, 11000);
+                setTimeout(() => {
+                    swamp_Hex.remove()
+                }, 11500);
                 return { discrete: g, percentage: null }
             }
         }
@@ -2517,10 +2490,15 @@ const Supply = (props) => {
                     opacity: 0
                 })
 
+                sgSunGroup.value.animate({ opacity: 0 }, 500);
+
+
                 setTimeout(() => {
                     weatherRect.animate({ opacity: 1 }, 500);
                     msText.animate({ opacity: 1 }, 500);
                     mudGroup.animate({ opacity: 1 }, 500);
+                    sgSunGroup.value.remove()
+                    sgSunGroup.value = null;
                 }, 500);
 
                 return { discrete: g, percentage: null }
@@ -2532,7 +2510,7 @@ const Supply = (props) => {
             label: 'Mud weather details',
             pageInt: 30,
             delay: 0,
-            duration: 14000,
+            duration: 9000,
             remove: true,
             async: true,
             fn: () => {
@@ -2540,52 +2518,16 @@ const Supply = (props) => {
                 showPageNumber(g, "30")
                 let posX = 338
                 let posY = 329
-                let boxWidth = 1292
-                let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 197).attr(textRectAttrs);
-                // whiteRect.animate({ opacity: 1 }, 500);
-
                 let textXpos = posX + 20
                 let textYpos = posY + 50
-                let msText = g.text(textXpos, textYpos, "During Mud weather, the LOC path is reduced to 5 hexes,").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                textYpos += 50
-                let msText2 = g.text(textXpos, textYpos, "motorway and (not minor) roads are reduced to 15 hexes, but").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                textYpos += 50
-                let msText3 = g.text(textXpos, textYpos, "railroad supply rules remain the same as with Dry weather.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
 
-                setTimeout(() => {
-                    textRect.animate({ opacity: 1 }, 500);
-                    msText.animate({ opacity: 1 }, 500);
-                    msText2.animate({ opacity: 1 }, 500);
-                    msText3.animate({ opacity: 1 }, 500);
-                }, 1000);
+
+                textBox(g,
+                    `During Mud weather, the LOC path is reduced to 5 hexes,
+                    motorway and (not minor) roads are reduced to 15 hexes, but
+                    railroad supply rules remain the same as with Dry weather.`,
+                    textXpos, textYpos, 500, 8500)
+
                 return { discrete: g, percentage: null }
             }
         }
@@ -2594,8 +2536,8 @@ const Supply = (props) => {
             label: 'place a rail break',
             pageInt: 30,
             delay: 0,
-            duration: 8000,
-            remove: false,
+            duration: 9000,
+            remove: true,
             async: true,
             fn: () => {
                 let g = paper.g()
@@ -2610,66 +2552,12 @@ const Supply = (props) => {
 
                 let textXpos = posX + 20
                 let textYpos = posY + 50
-                let msText = g.text(textXpos, textYpos, "Since the next couple of examples will trace to the road").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                textYpos += 50
-                let msText2 = g.text(textXpos, textYpos, "network, lets say the Soviets broke the rail line here.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                setTimeout(() => {
-                    textRect.animate({ opacity: 1 }, 500);
-                    msText.animate({ opacity: 1 }, 500);
-                    msText2.animate({ opacity: 1 }, 500);
-                    //msText3.animate({ opacity: 1 }, 500);
-                }, 500);
-
-                setTimeout(() => {
-                    textRect.animate({ opacity: 1 }, 500);
-                    msText.animate({ opacity: 1 }, 500);
-                    msText2.animate({ opacity: 1 }, 500);
-                    //msText3.animate({ opacity: 1 }, 500);
-                }, 7500);
-                // sgAxisRailEndUnit.value = g.image(german_rail_end, 613, 410, 0, 0);
-                // sgAxisRailEndUnit.value.attr({
-                //     'xlink:href': german_rail_end,
-                //     'width': "120",
-                //     'height': "120",
-                //     'opacity': 1
-                // });
-
-                // setTimeout(() => {
-                //     sgAxisRailEndUnit.value.animate({ width: 64, height: 64, transform: 't 705, -235 r 58' }, 500, mina.easeout);
-                // }, 2500);
-                // let railBreakGroup = paper.g()
-                // sgSovietRailBreak.value = railBreakGroup.image(sovietRailBreak, 163, -62, 0, 0);
-                // sgSovietRailBreak.value.attr({
-                //     'xlink:href': sovietRailBreak,
-                //     'width': "42",
-                //     'height': "42",
-                //     'opacity': 1
-                // });
-
-                // setTimeout(() => {
-                //     sgSovietRailBreak.value.animate({ width: 64, height: 64, transform: 't 21, 178' }, 500, mina.easeout);
-                // }, 2500);
 
 
+                textBox(g,
+                    `Since the next couple of examples will trace to the road,
+                    network, lets say the Soviets broke the rail line here.`,
+                    textXpos, textYpos, 500, 8500)
 
                 sgSovietRailBreak.value = g.image(sovietRailBreak, 282, -62, 0, 0);
                 sgSovietRailBreak.value.attr({
@@ -2683,18 +2571,6 @@ const Supply = (props) => {
                     sgSovietRailBreak.value.animate({ width: 64, height: 64, transform: 't 0, 688' }, 500, mina.easeout);
                 }, 2500)
 
-                setTimeout(() => {
-                    textRect.animate({ opacity: 0 }, 500);
-                    msText.animate({ opacity: 0 }, 500);
-                    msText2.animate({ opacity: 0 }, 500);
-                }, 7000);
-
-                setTimeout(() => {
-                    textRect.remove()
-                    msText.remove()
-                    msText2.remove()
-                }, 7500);
-
                 return { discrete: g, percentage: null }
             }
         }
@@ -2705,7 +2581,7 @@ const Supply = (props) => {
             label: 'Show mud weather road hexes',
             pageInt: 31,
             delay: 0,
-            duration: 14000,
+            duration: 9000,
             remove: false,
             async: true,
             fn: () => {
@@ -2780,7 +2656,7 @@ const Supply = (props) => {
                             numGroup.animate({ opacity: 1 }, 70);
                         }, i * 70);
                     }
-                }, 1000);
+                }, 3000);
 
 
                 numX = 380
@@ -2836,55 +2712,20 @@ const Supply = (props) => {
                             numGroup.animate({ opacity: 1 }, 70);
                         }, i * 70);
                     }
-                }, 3000);
+                }, 5000);
 
 
                 let posX = 550
-                let posY = 600
+                let posY = 590
                 let textXpos = posX + 20
                 let textYpos = posY + 70
 
-                let boxWidth = 1370
-                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 165).attr(textRectAttrs);
 
-                let msText = g.text(textXpos, textYpos, "Now the rail supply ends at the hex marked '5' on the motorway,").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                textYpos += 50
-                let msText2 = g.text(textXpos, textYpos, "but supply still flows on the motorway, up to the hex marked '15'.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                setTimeout(() => {
-                    textRect.animate({ opacity: 1 }, 500);
-                    msText.animate({ opacity: 1 }, 500);
-                    msText2.animate({ opacity: 1 }, 500);
-                }, 4500);
+                textBox(g,
+                    `Now the rail supply ends at the hex marked '5' on the motorway,
+                    but supply still flows on the motorway, up to the hex marked '15'.`,
+                    textXpos, textYpos, 500, 10000)
 
-                setTimeout(() => {
-                    textRect.animate({ opacity: 0 }, 500);
-                    msText.animate({ opacity: 0 }, 500);
-                    msText2.animate({ opacity: 0 }, 500);
-                }, 13500);
-
-                setTimeout(() => {
-                    textRect.remove()
-                    msText.remove()
-                    msText2.remove()
-                }, 14000);
 
                 return { discrete: g, percentage: null }
             }
@@ -2899,7 +2740,7 @@ const Supply = (props) => {
             label: 'soviet armor division',
             pageInt: 32,
             delay: 0,
-            duration: 4500,
+            duration: 6000,
             remove: false,
             async: true,
             fn: () => {
@@ -2908,38 +2749,13 @@ const Supply = (props) => {
 
                 let posX = 1038
                 let posY = 329
-                let boxWidth = 825
-                let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 100).attr(textRectAttrs);
-                // whiteRect.animate({ opacity: 1 }, 500);
-
                 let textXpos = posX + 15
                 let textYpos = posY + 50
-                let msText = g.text(textXpos, textYpos, "Let's bring in a Soviet armor division.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
 
-                setTimeout(() => {
-                    textRect.animate({ opacity: 1 }, 500);
-                    msText.animate({ opacity: 1 }, 500);
-                }, 1000);
+                textBox(g,
+                    `Let's bring in a Soviet armor division.`,
+                    textXpos, textYpos, 500, 5500)
 
-                setTimeout(() => {
-                    textRect.animate({ opacity: 0 }, 500);
-                    msText.animate({ opacity: 0 }, 500);
-                }, 3500);
-
-                setTimeout(() => {
-                    textRect.remove()
-                    msText.remove()
-                }, 4000);
                 sgSovietArmorUnit.value = g.image(soviet_armor_unit, 751, -62, 0, 0);
                 sgSovietArmorUnit.value.attr({
                     'xlink:href': soviet_armor_unit,
@@ -2963,7 +2779,7 @@ const Supply = (props) => {
             label: 'mud and red orange box units zocs',
             pageInt: 33,
             delay: 0,
-            duration: 12000,
+            duration: 15000,
             remove: true,
             async: true,
             fn: () => {
@@ -2972,45 +2788,21 @@ const Supply = (props) => {
 
                 let posX = 130
                 let posY = 426
-                let boxWidth = 1724
-                let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 360).attr(textRectAttrs);
-                // whiteRect.animate({ opacity: 1 }, 500);
 
                 let textXpos = posX + 15
                 let textYpos = posY + 50
-                let msText = g.text(textXpos, textYpos, "During Mud conditions, the ZOCs of units with Red boxed and Orange movement").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                let msText2 = g.text(textXpos, textYpos + 50, "points do not extend into adjacent hexes, unless the unit's ZOC enters a town or city,").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                let msText3 = g.text(textXpos, textYpos + 100, "or its ZOC enters the adjacent hex along motorway/road/minor road/railroad.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
 
-                let msRedBoxText = g.text(textXpos + 467, textYpos + 242, "Red Box MP").attr({
+                let bbox = textBox(g,
+                    `During Mud conditions, the ZOCs of units with Red boxed and Orange movement
+                    points do not extend into adjacent hexes, unless the unit's ZOC enters a town or city,
+                    or its ZOC enters the adjacent hex along motorway/road/minor road/railroad.`,
+                    textXpos, textYpos, 500, 0, 0, 155)
+
+
+                let boxWidth = bbox.width
+                let spacing = boxWidth / 4
+
+                let msRedBoxText = g.text(textXpos + spacing + 175, textYpos + 242, "Red Box MP").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 36,
@@ -3023,9 +2815,18 @@ const Supply = (props) => {
 
 
 
+                let leftArrow3 = g.text(textXpos + spacing + 120, textYpos + 241, "↼").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 56,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "black",
+                    fill: "black",
+                    opacity: 0,
+                })
 
-
-                let leftArrow = g.text(textXpos + 1110, textYpos + 241, "↼").attr({
+                let leftArrow4 = g.text(textXpos + spacing + 120, textYpos + 244, "↽").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
                     "fontSize": 56,
@@ -3036,51 +2837,10 @@ const Supply = (props) => {
                     opacity: 0,
                 })
 
-                let leftArrow2 = g.text(textXpos + 1110, textYpos + 244, "↽").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 56,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
 
-                let leftArrow3 = g.text(textXpos + 412, textYpos + 241, "↼").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 56,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
 
-                let leftArrow4 = g.text(textXpos + 412, textYpos + 244, "↽").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 56,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                let msOrangeMPText = g.text(textXpos + 1165, textYpos + 242, "Orange MP").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 36,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                let displayRedBox = g.image(soviet_armor_unit, posX + 300, posY + 200, 0, 0);
+                posX = textXpos + spacing
+                let displayRedBox = g.image(soviet_armor_unit, posX, posY + 200, 0, 0);
                 displayRedBox.attr({
                     'xlink:href': soviet_armor_unit,
                     'width': "120",
@@ -3088,7 +2848,8 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                let displayOrangeMP = g.image(german_antiair_unit, posX + 1000, posY + 200, 0, 0);
+                posX += spacing + 120
+                let displayOrangeMP = g.image(german_antiair_unit, posX, posY + 200, 0, 0);
                 displayOrangeMP.attr({
                     'xlink:href': german_antiair_unit,
                     'width': "120",
@@ -3096,11 +2857,40 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
+                let leftArrow = g.text(posX + 120, textYpos + 241, "↼").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 56,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let leftArrow2 = g.text(posX + 120, textYpos + 244, "↽").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 56,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
+                let msOrangeMPText = g.text(posX + 120 + 54, textYpos + 242, "Orange MP").attr({
+                    "textAnchor": "center",
+                    "dominant-baseline": "central",
+                    "fontSize": 36,
+                    "fontWeight": "bold",
+                    "fontFamily": "serif",
+                    stroke: "none",
+                    fill: "black",
+                    opacity: 0,
+                })
+
                 setTimeout(() => {
-                    textRect.animate({ opacity: 1 }, 500);
-                    msText.animate({ opacity: 1 }, 500);
-                    msText2.animate({ opacity: 1 }, 500);
-                    msText3.animate({ opacity: 1 }, 500);
                     displayRedBox.animate({ opacity: 1 }, 500);
                     displayOrangeMP.animate({ opacity: 1 }, 500);
                     msRedBoxText.animate({ opacity: 1 }, 500);
@@ -3121,7 +2911,7 @@ const Supply = (props) => {
             pageInt: 34,
             delay: 0,
             duration: 12000,
-            remove: false,
+            remove: true,
             async: true,
             fn: () => {
                 let g = paper.g()
@@ -3129,84 +2919,25 @@ const Supply = (props) => {
 
                 let posX = 930
                 let posY = 24
-                let boxWidth = 1000
+                let boxWidth = 990
                 let windowWidth = window.innerWidth;
                 let textRect = g.rect(posX - 35, posY, boxWidth, 298).attr(textRectAttrs);
 
                 let textXpos = posX + 15
                 let textYpos = posY + 50
-                let msText = g.text(textXpos, textYpos, "Since it is Mud weather, that Soviet armor unit").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                textYpos += 50
-                let msText2 = g.text(textXpos, textYpos, "does not exert any ZOCs. It is not on any road,").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                textYpos += 50
-                let msText3 = g.text(textXpos, textYpos, "and there is no adjacent town or city hex.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                textYpos += 50
-                let msText4 = g.text(textXpos, textYpos, "The road hexes at distances 13, 14, and 15 are").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                textYpos += 50
-                let msText5 = g.text(textXpos, textYpos, "still valid Axis General Supply sources.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
 
-                setTimeout(() => {
-                    textRect.animate({ opacity: 1 }, 500)
-                    msText.animate({ opacity: 1 }, 500)
-                    msText2.animate({ opacity: 1 }, 500)
-                    msText3.animate({ opacity: 1 }, 500)
-                    msText4.animate({ opacity: 1 }, 500)
-                    msText5.animate({ opacity: 1 }, 500)
-                }, 1300)
+                textBox(g,
+                    `Since it is Mud weather, that Soviet armor unit
+                    does not exert any ZOCs. It is not on any road,
+                    and there is no adjacent town or city hex.`,
+                    textXpos - 50, textYpos - 20, 500, 5000)
 
-                setTimeout(() => {
-                    textRect.animate({ opacity: 0 }, 500)
-                    msText.animate({ opacity: 0 }, 500)
-                    msText2.animate({ opacity: 0 }, 500)
-                    msText3.animate({ opacity: 0 }, 500)
-                    msText4.animate({ opacity: 0 }, 500)
-                    msText5.animate({ opacity: 0 }, 500)
-                }, 11500)
+                textBox(g,
+                    `The road hexes at distances 13, 14, and 15 are
+                        still valid Axis General Supply sources.`,
+                    textXpos, textYpos + 110, 5000, 11500)
+
+
 
                 let numbersGroups2 = []
                 let numCoords = [{ x: 693, y: 351 }, { x: 760, y: 384 }, { x: 827, y: 351 }]
@@ -3257,31 +2988,26 @@ const Supply = (props) => {
             label: 'place German unit for 5 LOC length',
             pageInt: 35,
             delay: 0,
-            duration: 5000,
+            duration: 13000,
             remove: false,
             async: true,
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "35")
 
-                let posX = 1000
-                let posY = 488
-                let boxWidth = 620
-                let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 95).attr(textRectAttrs);
+                let textXpos = 1000
+                let textYpos = 488
 
-                let textXpos = posX + 15
-                let textYpos = posY + 50
-                let msText = g.text(textXpos, textYpos, "Let's put an Axis unit here.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
+                textBox(g,
+                    `Since it is Mud weather, that Soviet armor unit
+                    does not exert any ZOCs. It is not on any road,
+                    and there is no adjacent town or city hex.`,
+                    textXpos - 50, textYpos - 50, 500, 8000)
+
+                textBox(g,
+                    `Let's put an Axis unit here.`,
+                    textXpos + 350, textYpos - 160, 8000, 12000)
+
 
 
                 sgAxisCombatUnit.value = g.image(german_infantry_unit, 1220, -64, 0, 0);
@@ -3295,16 +3021,7 @@ const Supply = (props) => {
                 setTimeout(() => {
                     //  combat_unit.animate({ width: 35, height: 35, transform: 't 44, 44 ' }, 500);
                     sgAxisCombatUnit.value.animate({ transform: 't 0, 382 ' }, 500, mina.easeout);
-                }, 2500);
-                setTimeout(() => {
-                    textRect.animate({ opacity: 1 }, 500)
-                    msText.animate({ opacity: 1 }, 500)
-                }, 1300)
-
-                setTimeout(() => {
-                    textRect.animate({ opacity: 0 }, 500)
-                    msText.animate({ opacity: 0 }, 500)
-                }, 4500)
+                }, 9500);
 
                 return { discrete: g, percentage: null }
             }
@@ -3321,48 +3038,16 @@ const Supply = (props) => {
                 let g = paper.g()
                 showPageNumber(g, "36")
                 let posX = 674
-                let posY = 433
-                let boxWidth = 1070
-                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 115).attr(textRectAttrs);
+                let posY = 443
 
+                textBox(g,
+                    `Due to Mud weather, the LOC is reduced to 5 hexes.`,
+                    posX, posY, 500, 9500)
 
-
-
-
-                let msText = g.text(posX, posY + 70, "Due to Mud weather, the LOC is reduced to 5 hexes.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                let msText2 = g.text(posX, posY + 120, "The unit cannot reach General Supply.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                setTimeout(() => {
-                    textRect.animate({ opacity: 1 }, 500);
-                    msText.animate({ opacity: 1 }, 500);
-
-                }, 2000);
-                setTimeout(() => {
-                    textRect.animate({
-                        height: 161
-                    }, 500, mina.easein);
-                }, 9500);
-                setTimeout(() => {
-                    msText2.animate({ opacity: 1 }, 500);
-                }, 10000)
+                textBox(g,
+                    `Due to Mud weather, the LOC is reduced to 5 hexes.
+                    The unit cannot reach General Supply.`,
+                    posX, posY, 8500, 12000)
 
                 let numberPositions = []
                 numberPositions.push({ x: 1184, y: 313 }); // 1
@@ -3404,7 +3089,7 @@ const Supply = (props) => {
                             numGroup.animate({ opacity: 1 }, 300);
                         }, i * 300);
                     }
-                }, 7500);
+                }, 5500);
 
 
 
@@ -3419,12 +3104,6 @@ const Supply = (props) => {
                         }, i * 90);
                     }
                 }, 14000);
-
-                setTimeout(() => {
-                    textRect.animate({ opacity: 0 }, 500);
-                    msText.animate({ opacity: 0 }, 500);
-                    msText2.animate({ opacity: 0 }, 500);
-                }, 14500);
 
                 return { discrete: g, percentage: null }
             }
@@ -3450,30 +3129,16 @@ const Supply = (props) => {
 
                 let textXpos = posX + 15
                 let textYpos = posY + 50
-                let msText = g.text(textXpos, textYpos, "Let's shift that Axis unit over a hex.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
+
+
+                textBox(g,
+                    `Let's shift that Axis unit over a hex.`,
+                    textXpos, textYpos, 500, 4500)
 
                 setTimeout(() => {
                     //  combat_unit.animate({ width: 35, height: 35, transform: 't 44, 44 ' }, 500);
                     sgAxisCombatUnit.value.animate({ transform: 't -68, 344 ' }, 500, mina.easeout);
                 }, 2500);
-                setTimeout(() => {
-                    textRect.animate({ opacity: 1 }, 500)
-                    msText.animate({ opacity: 1 }, 500)
-                }, 1300)
-
-                setTimeout(() => {
-                    textRect.animate({ opacity: 0 }, 500)
-                    msText.animate({ opacity: 0 }, 500)
-                }, 4500)
 
                 return { discrete: g, percentage: null }
             }
@@ -3489,31 +3154,13 @@ const Supply = (props) => {
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "36")
-                let posX = 874
-                let posY = 433
-                let boxWidth = 733
-                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 115).attr(textRectAttrs);
+                let posX = 870
+                let posY = 490
 
+                textBox(g,
+                    `Now it can reach General Supply.`,
+                    posX, posY, 500, 9500)
 
-
-
-
-                let msText = g.text(posX, posY + 70, "Now it can reach General Supply.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                setTimeout(() => {
-                    textRect.animate({ opacity: 1 }, 500);
-                    msText.animate({ opacity: 1 }, 500);
-
-                }, 4000);
 
 
                 let numberPositions = []
@@ -3573,10 +3220,7 @@ const Supply = (props) => {
                     }
                 }, 9000);
 
-                setTimeout(() => {
-                    textRect.animate({ opacity: 0 }, 500);
-                    msText.animate({ opacity: 0 }, 500);
-                }, 9500);
+
 
                 return { discrete: g, percentage: null }
             }
@@ -3596,38 +3240,13 @@ const Supply = (props) => {
 
                 let posX = 938
                 let posY = 119
-                let boxWidth = 801
-                let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 100).attr(textRectAttrs);
-                // whiteRect.animate({ opacity: 1 }, 500);
-
                 let textXpos = posX + 15
                 let textYpos = posY + 50
-                let msText = g.text(textXpos, textYpos, "So say the Soviet unit is over here...").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
 
-                setTimeout(() => {
-                    textRect.animate({ opacity: 1 }, 500);
-                    msText.animate({ opacity: 1 }, 500);
-                }, 1000);
+                textBox(g,
+                    `So say the Soviet unit is over here..`,
+                    textXpos, textYpos, 500, 3500)
 
-                setTimeout(() => {
-                    textRect.animate({ opacity: 0 }, 500);
-                    msText.animate({ opacity: 0 }, 500);
-                }, 3500);
-
-                setTimeout(() => {
-                    textRect.remove()
-                    msText.remove()
-                }, 4000);
 
                 setTimeout(() => {
                     sgSovietArmorUnit.value.animate({ width: 64, height: 64, transform: 't 67, 303' }, 500, mina.easeout);
@@ -3650,7 +3269,7 @@ const Supply = (props) => {
                 showPageNumber(g, "40")
 
                 let posX = 768
-                let posY = 419
+                let posY = 422
                 let boxWidth = 835
                 let windowWidth = window.innerWidth;
                 let textRect = g.rect(posX - 35, posY, boxWidth, 100).attr(textRectAttrs);
@@ -3658,42 +3277,16 @@ const Supply = (props) => {
 
                 let textXpos = posX + 15
                 let textYpos = posY + 50
-                let msText = g.text(textXpos, textYpos, "Does the Soviet unit does have a ZOC? -").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                let msText2 = g.text(textXpos, textYpos + 50, "Yes, now the ZOC extends to the adjacent town.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                setTimeout(() => {
-                    textRect.animate({ opacity: 1 }, 500);
-                    msText.animate({ opacity: 1 }, 500);
-                }, 3000);
-                setTimeout(() => {
-                    msText2.animate({ opacity: 1 }, 500);
-                }, 5000);
-                setTimeout(() => {
-                    textRect.animate({
-                        width: boxWidth + 210,
-                        height: 150
-                    }, 500, mina.easein);
-                }, 4500);
 
 
+                textBox(g,
+                    `Does the Soviet unit have a ZOC? -`,
+                    textXpos, textYpos, 500, 3500)
+
+                textBox(g,
+                    `Does the Soviet unit have a ZOC? -
+                        Yes, now the ZOC extends to the adjacent town.`,
+                    textXpos, textYpos, 3000, 9000)
 
                 let angleMult = 60
                 let zocPaths = ``
@@ -3734,18 +3327,6 @@ const Supply = (props) => {
                 }, 5000)
                 sgZocGroup.value = zocGroup
 
-                setTimeout(() => {
-                    textRect.animate({ opacity: 0 }, 500);
-                    msText.animate({ opacity: 0 }, 500);
-                    msText2.animate({ opacity: 0 }, 500);
-                }, 9500);
-
-                setTimeout(() => {
-                    textRect.remove()
-                    msText.remove()
-                    msText2.remove()
-                }, 10000);
-
                 return { discrete: g, percentage: null }
             }
         }
@@ -3762,35 +3343,15 @@ const Supply = (props) => {
                 showPageNumber(g, "41")
                 let posX = 874
                 let posY = 433
-                let boxWidth = 950
-                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 115).attr(textRectAttrs);
 
-                let msText = g.text(posX, posY + 70, "Can the Axis unit still reach General Supply?").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                let msText2 = g.text(posX, posY + 120, "Yes it can, by diverting through the woods.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
+                textBox(g,
+                    `Can the Axis unit still reach General Supply?`,
+                    posX, posY, 500, 7500)
 
-                setTimeout(() => {
-                    textRect.animate({ opacity: 1 }, 500);
-                    msText.animate({ opacity: 1 }, 500);
-                }, 500);
-
+                textBox(g,
+                    `Can the Axis unit still reach General Supply?
+                    Yes it can, by diverting through the woods.`,
+                    posX, posY, 7000, 14500)
 
                 let numberPositions = []
 
@@ -3836,18 +3397,6 @@ const Supply = (props) => {
                 }, 4000);
 
                 setTimeout(() => {
-                    textRect.animate({
-                        height: 160
-                    }, 500, mina.easein);
-                }, 7000);
-                setTimeout(() => {
-                    msText2.animate({ opacity: 1 }, 500)
-                }, 7500)
-
-
-
-
-                setTimeout(() => {
                     for (let i = numbersGroups.length; i > 0; i--) {
                         let numGroup = numbersGroups[numbersGroups.length - i];
                         setTimeout(() => {
@@ -3857,9 +3406,6 @@ const Supply = (props) => {
                 }, 11000);
 
                 setTimeout(() => {
-                    textRect.animate({ opacity: 0 }, 500);
-                    msText.animate({ opacity: 0 }, 500);
-                    msText2.animate({ opacity: 0 }, 500);
                     if (sgZocGroup.value) {
                         sgZocGroup.value.animate({ opacity: 0 }, 500)
                     }
@@ -3892,42 +3438,15 @@ const Supply = (props) => {
 
                 let posX = 1038
                 let posY = 369
-                let boxWidth = 825
-                let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 100).attr(textRectAttrs);
-                // whiteRect.animate({ opacity: 1 }, 500);
 
-                let textXpos = posX + 15
-                let textYpos = posY + 50
-                let msText = g.text(textXpos, textYpos, "Let's move that Soviet unit one hex over.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
+                textBox(g,
+                    `Let's move that Soviet unit down one hex.`,
+                    posX, posY, 100, 3000)
 
                 setTimeout(() => {
-                    textRect.animate({ opacity: 1 }, 500);
-                    msText.animate({ opacity: 1 }, 500);
-                }, 1000);
-
-                setTimeout(() => {
-                    textRect.animate({ opacity: 0 }, 500);
-                    msText.animate({ opacity: 0 }, 500);
-                }, 3500);
-
-                setTimeout(() => {
-                    textRect.remove()
-                    msText.remove()
-                }, 4000);
-
-
-                setTimeout(() => {
-                    sgSovietArmorUnit.value.animate({ transform: 't 66, 381' }, 200, mina.easeout);
+                    if (sgSovietArmorUnit.value) {
+                        sgSovietArmorUnit.value.animate({ transform: 't 66, 381' }, 200, mina.easeout);
+                    }
                 }, 2500)
 
                 return { discrete: g, percentage: null }
@@ -3948,39 +3467,12 @@ const Supply = (props) => {
 
                 let posX = 788
                 let posY = 493
-                let boxWidth = 1049
-                let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 153).attr(textRectAttrs);
-                // whiteRect.animate({ opacity: 1 }, 500);
 
-                let textXpos = posX + 15
-                let textYpos = posY + 50
-                let msText = g.text(textXpos, textYpos, "Since the unit is on a motorway, it's ZOC extends").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                let msText2 = g.text(textXpos, textYpos + 50, "into the two adjacent and connected road hexes.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
+                textBox(g,
+                    `Since the unit is on a motorway, it's ZOC extends
+                    into the two adjacent and connected road hexes.`,
+                    posX, posY, 500, 9500)
 
-                setTimeout(() => {
-                    textRect.animate({ opacity: 1 }, 500);
-                    msText.animate({ opacity: 1 }, 500);
-                    msText2.animate({ opacity: 1 }, 500);
-                }, 1000);
 
                 let angleMult = 60
                 let zocPaths = ``
@@ -4032,18 +3524,6 @@ const Supply = (props) => {
 
                 sgZocGroup.value = g.group(zocGroup, zocClone)
 
-                setTimeout(() => {
-                    textRect.animate({ opacity: 0 }, 500);
-                    msText.animate({ opacity: 0 }, 500);
-                    msText2.animate({ opacity: 0 }, 500);
-                }, 9500);
-
-                setTimeout(() => {
-                    textRect.remove()
-                    msText.remove()
-                    msText2.remove()
-                }, 10000);
-
                 return { discrete: g, percentage: null }
             }
         }
@@ -4052,7 +3532,7 @@ const Supply = (props) => {
             label: 'the Axis unit now cannot reach supply',
             pageInt: 44,
             delay: 0,
-            duration: 18500,
+            duration: 38500,
             remove: false,
             async: true,
             fn: () => {
@@ -4060,26 +3540,10 @@ const Supply = (props) => {
                 showPageNumber(g, "44")
                 let posX = 860
                 let posY = 483
-                let boxWidth = 1010
-                let textRect = g.rect(posX - 35, posY + 12, boxWidth, 115).attr(textRectAttrs);
 
-                let msText = g.text(posX, posY + 70, "The Axis unit now cannot reach General Supply.").attr({
-                    "textAnchor": "center",
-                    "dominant-baseline": "central",
-                    "fontSize": 45,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-
-                setTimeout(() => {
-                    textRect.animate({ opacity: 1 }, 500);
-                    msText.animate({ opacity: 1 }, 500);
-                }, 1000);
-
-                //sgZocGroup.value.animate({ width: 64, height: 64, transform: 't 317, 313', opacity: 1 }, 500, mina.easeout);
+                textBox(g,
+                    `The Axis unit now cannot reach General Supply.`,
+                    posX, posY, 500, 15000)
 
                 let numberPositions = []
 
@@ -4178,11 +3642,6 @@ const Supply = (props) => {
                     }
                 }, 10000);
 
-                setTimeout(() => {
-                    textRect.animate({ opacity: 0 }, 500);
-                    msText.animate({ opacity: 0 }, 500);
-                }, 15000);
-
 
                 setTimeout(() => {
                     if (sgZocGroup.value) {
@@ -4216,62 +3675,71 @@ const Supply = (props) => {
                     })
                     sgMudRoadIndicators.value = []
                 }, 18500)
+
+                // emergency supplyxxx
+                sgEmergencySupplyMarker.value = g.image(emergencySupply, 1146, -64, 0, 0);
+                sgEmergencySupplyMarker.value.attr({
+                    'xlink:href': emergencySupply,
+                    'width': "64",
+                    'height': "64",
+                    'opacity': 1
+                });
+
                 setTimeout(() => {
-                    textRect.remove()
-                    msText.remove()
-                }, 18600);
+                    sgEmergencySupplyMarker.value.animate({ width: 64, height: 64, transform: 't 0, 337' }, 500, mina.easeout);
+                }, 18500);
 
                 return { discrete: g, percentage: null }
             }
         }
 
         let _storyBoard = []
-        // _storyBoard.push(page1)
-        // _storyBoard.push(page1b)
-        // _storyBoard.push(page2)
-        // _storyBoard.push(page3)
-        // _storyBoard.push(page4)
-        // _storyBoard.push(page5)
-        // _storyBoard.push(page6)
-        // _storyBoard.push(page7)
-        // _storyBoard.push(page8)
-        // _storyBoard.push(page9)
-        // _storyBoard.push(page10)
-        // _storyBoard.push(page11)
-        // _storyBoard.push(page12)
-        // _storyBoard.push(page13)
-        // _storyBoard.push(page14)
-        // _storyBoard.push(page15)
-        // _storyBoard.push(page16)
-        // _storyBoard.push(page17)
-        // _storyBoard.push(page18)
-        // _storyBoard.push(page19)
-        // _storyBoard.push(page20)
-        // _storyBoard.push(page21)
-        // _storyBoard.push(page22)
-        // _storyBoard.push(page23)
-        // _storyBoard.push(page24)
-        // _storyBoard.push(page25)
-        // _storyBoard.push(page26)
+        _storyBoard.push(page1)
+        _storyBoard.push(page1b)
+        _storyBoard.push(page2)
+        _storyBoard.push(page3)
+        _storyBoard.push(page4)
+        _storyBoard.push(page5)
+        _storyBoard.push(page6)
+        _storyBoard.push(page7)
+        _storyBoard.push(page8)
+        _storyBoard.push(page9)
+        _storyBoard.push(page10)
+        _storyBoard.push(page11)
+        _storyBoard.push(page12)
+        _storyBoard.push(page13)
+        _storyBoard.push(page14)
+        _storyBoard.push(page15)
+        _storyBoard.push(page16)
+        _storyBoard.push(page17)
+        _storyBoard.push(page18)
+        _storyBoard.push(page19)
+        _storyBoard.push(page20)
+        _storyBoard.push(page21)
+        _storyBoard.push(page22)
+        _storyBoard.push(page23)
+        _storyBoard.push(page24)
+        _storyBoard.push(page25)
+        _storyBoard.push(page26)
         _storyBoard.push(page27)
-        // _storyBoard.push(page28)
-        // _storyBoard.push(page29)
-        // _storyBoard.push(page30)
-        // _storyBoard.push(page30b)
-        // _storyBoard.push(page31)
-        // _storyBoard.push(page32)
-        // _storyBoard.push(page33)
-        // _storyBoard.push(page34)
-        // _storyBoard.push(page35)
-        // _storyBoard.push(page36)
-        // _storyBoard.push(page37)
-        // _storyBoard.push(page38)
-        // _storyBoard.push(page39)
-        // _storyBoard.push(page40)
-        // _storyBoard.push(page41)
-        // _storyBoard.push(page42)
-        // _storyBoard.push(page43)
-        // _storyBoard.push(page44)
+        _storyBoard.push(page28)
+        _storyBoard.push(page29)
+        _storyBoard.push(page30)
+        _storyBoard.push(page30b)
+        _storyBoard.push(page31)
+        _storyBoard.push(page32)
+        _storyBoard.push(page33)
+        _storyBoard.push(page34)
+        _storyBoard.push(page35)
+        _storyBoard.push(page36)
+        _storyBoard.push(page37)
+        _storyBoard.push(page38)
+        _storyBoard.push(page39)
+        _storyBoard.push(page40)
+        _storyBoard.push(page41)
+        _storyBoard.push(page42)
+        _storyBoard.push(page43)
+        _storyBoard.push(page44)
         sgStoryBoard.value = _storyBoard
         sequence()
     }
@@ -4398,6 +3866,7 @@ const Supply = (props) => {
             <div>
                 <span>
                     There are two types of supply represented in the East Front Series.
+                    They represent two different things.
 
                     <span className="spacer1rem" />
                     <div className="stand-out green">General Supply<BsrLink page="10" rule="6.32" /></div>
@@ -4413,7 +3882,11 @@ const Supply = (props) => {
                         Units need to be in General Supply to avoid various penalties, such as reduced mobility and combat abilities.
                     </div>
                     <div className="padded">
-                        Units get General Supply by being on a General Supply route.
+                        There are no counters or charts for representing General Supply.
+                    </div>
+                    <div className="padded">
+                        Units are determined to have General Supply by being on a General Supply route
+                        which is determined by counting hexes from the unit to a hex that is providing General Supply.
                     </div>
                     <div className="padded">
                         General Supply routes are initially traced from a supply source, as specified in the scenario instructions.
@@ -4445,14 +3918,15 @@ const Supply = (props) => {
             </div>
 
 
-
+            <div className="padded">
+            </div>
 
 
 
             <span>
                 <div className="subheader-image">
                     <div>General Supply<BsrLink page="10" rule="6.32" /></div>
-                    <img src={barrels} alt="general supply barrels" />
+                    <img className="barrels-image" src={barrels} alt="general supply barrels" />
                 </div>
 
                 <div className="padded-top">
@@ -4472,6 +3946,16 @@ const Supply = (props) => {
                         <li>a Road Net</li>
                         <li>a Line of Communications (LOC)</li>
                     </ul>
+
+
+                    <div className="subsubheader">How they can connect:<BsrLink page="9" rule="6.12" /></div>
+                    <ul>
+                        <li>Supply source -> Railroad Net -> Road Net -> LOC</li>
+                        <li>Supply source -> Railroad Net -> LOC</li>
+                        <li>Supply source -> Road Net -> LOC</li>
+                        <li>Supply source -> LOC</li>
+                    </ul>
+
                 </div>
             </div>
 
@@ -4503,21 +3987,45 @@ const Supply = (props) => {
 
 
             <div className="subheader-rule">
-                <div>Line of Communications (LOC)<BsrLink page="10" rule="6.14" /></div>
+                <div>General Supply Route<BsrLink page="10" rule="6.1" /></div>
             </div>
 
             <div className="padded">
-                A LOC is a path of contiguous hexes that connects a ground unit to:
+                A General Supply route is traced along a path of contiguous hexes from a ground unit to:
                 <ul className="spread-list">
                     <li>a Supply Source.</li>
-                    <li>a Road Net<BsrLink page="10" rule="6.15" /> that connects to a Supply Source.</li>
-                    <li>a Railroad Net<BsrLink page="9" rule="10.16" /> which connects to a Supply Source.</li>
+                    <li>a Line of Communications (LOC)<BsrLink page="10" rule="6.14" /> that connects (7 or 5 hexes max) to a Supply Source.</li>
+                    <li>a Road Net<BsrLink page="10" rule="6.15" /> that connects (24 or 15 hexes max) to a Supply Source.</li>
+                    <li>a Road Net<BsrLink page="10" rule="6.15" /> that connects (24 or 15 hexes max) to a railroad that connects to a Supply Source.</li>
+                    <li>a Railroad Net<BsrLink page="10" rule="6.16" /> which connects to a Supply Source.</li>
                 </ul>
             </div>
+
+
+            <div className="subheader-rule">
+                <div>Line of Communications (LOC)<BsrLink page="10" rule="6.14" /></div>
+            </div>
+            <div className="padded">
+                A Line of Communications (LOC) is the portion of a General Supply route that connects
+                from a unit to a Supply Source, which can be the actual General Supply source hex,
+                or via a Road Net or Railroad Net that connects to a General Supply Source. You can
+                consider it as the "off road" portion that can cross most hexes to reach a hex
+                that is providing General Supply. The LOC isn't required to follow a road or railroad.
+            </div>
+            <div className="padded">
+                The length of the LOC is normally 7 hexes, but it is reduced to 5 hexes under these conditions:<BsrLink page="10" rule="6.14c" />
+                <ul className="spread-list">
+                    <li>The current weather is Mud.</li>
+                    <li>The current weather is Dry and the LOC enters or crosses a hex that is under the Lingering Mud condition.</li>
+                    <li>The LOC enters or crosses a marsh hex (unless along a regular road or railroad) in Dry Weather.</li>
+                    <li>The LOC enters or crosses a swamp hex (unless along a regular road) in Dry or Mud Weather.</li>
+                </ul>
+            </div>
+
             <svg id="supply_examples" className="supply-svg">
 
             </svg>
-            <div className="" onClick={pause}>pause</div>
+
             a. A unit traces its LOC over hexes of any type to a Supply
             Source, or to a hex in a road net [6.15] or railroad net [6.16]
             leading to a Supply Source.
