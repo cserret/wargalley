@@ -59,6 +59,8 @@ const Supply = (props) => {
     const sgUseTextSize = useSignal(45)
     const sgUseLineBreak = useSignal(20)
     const sgEmergencySupplyMarker = useSignal(null)
+    const sgShadowFilter = useSignal(null)
+    const sgCrossBrowserFontSizeRatio = useSignal(1)
 
     const [storyBoardStarted, setStoryBoardStarted] = useState(false)
     const [backgroundMap, setBackgroundMap] = useState(null);
@@ -275,19 +277,6 @@ const Supply = (props) => {
         }
     }, [paper])
 
-    const pause = () => {
-        console.log('pause clicked, sgTimers:', sgTimers.value)
-        if (sgTimers.value.length > 0) {
-            sgTimers.value.forEach(t => {
-                console.log('found timer:', t)
-                if (t.running) {
-                    console.log('pausing timer:', t.timerId, 'timeLeft:', t.timeLeft)
-                    clearTimeout(t.timerId)
-                }
-            })
-        }
-    }
-
     const testTextWidth = g => {
         let text = 'abcdefg hijklmnop, , $()!@#$% qrst uvwxyz ABCDEF GHIJK LMNOP_ -QRS TUVWXYZ 01234 56789'
         let textLine = g.text(0, 0, text).attr({
@@ -300,18 +289,36 @@ const Supply = (props) => {
         })
 
         let bbox = textLine.getBBox()
-        console.log('bbox width:', bbox.width)
-        console.log('bbox height:', bbox.height)
+        console.log('text bbox:', bbox)
+
+        console.log('using fontSize 45, we have a text height of:', bbox.height)
+        sgCrossBrowserFontSizeRatio.value = 45 / bbox.height
+console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.value)
+
         let useTextSizeRatio = 1707 / bbox.width
         let useTextSize = Math.round(45 * useTextSizeRatio)
-        console.log('useTextSize:', useTextSize)
         sgUseTextSize.value = useTextSize
-
-        let useTextHeightRatio = 50 / bbox.height
+        console.log('useTextSize:', useTextSize)
+        console.log('useTextSizeRatio:', useTextSizeRatio)
         let useTextHeight = Math.round(50 * useTextSizeRatio)
         console.log('useTextHeight:', useTextHeight)
-        sgUseLineBreak.value = Math.round(useTextHeight)
+        sgUseLineBreak.value =  Math.round(useTextHeight)
+        
+    }
 
+    const registerTimer = (fn, timeout) => {
+        const msStart = Date.now();
+        let timerId = setTimeout(() => {
+            if (sgPlayPauseStatus.value === 'play') {
+                fn.call()
+                console.log('inside firing of timeout, just called fn. timerId is:', timerId, 'sgTimers.value:', sgTimers.value)
+                let idx = sgTimers.value.findIndex(t => t.timerId === timerId)
+                console.log('timerId:', timerId, ' idx is:', idx, 'which is timer:', sgTimers.value[idx])
+                sgTimers.value.splice(idx, 1)
+            }
+        }, timeout)
+        console.log('timerId:', timerId)
+        sgTimers.value.push({ timerId, timeout, msStart, running: true, fn })
     }
 
     const setupStoryboard = () => {
@@ -362,7 +369,7 @@ const Supply = (props) => {
                         visibility: "hidden",
                         pointerEvents: "none"
                     })
-                    console.log('pause!')
+
                 }
             }).attr({ cursor: "pointer" })
 
@@ -415,6 +422,7 @@ const Supply = (props) => {
                         pointerEvents: "none"
                     })
                     console.log('play!')
+                    restartTimers()
                 }
                 else {
                     console.log('setting to pause')
@@ -429,7 +437,7 @@ const Supply = (props) => {
                         pointerEvents: "none"
                     })
                     console.log('pause!')
-
+                    pauseTimers()
                 }
             })
 
@@ -492,17 +500,36 @@ const Supply = (props) => {
             }
         }, 100)
 
-        const registerTimer = (fn, timeout) => {
-            const msStart = Date.now();
-            let timerId = setTimeout(() => {
-                fn.call()
-                let idx = sgTimers.value.findIndex(t => t.timerId === timerId)
-                sgTimers.value.splice(idx, 1)
-            }, timeout)
-            sgTimers.value.push({ timerId, timeout, msStart, running: true })
+        // const registerTimer = (fn, timeout) => {
+        //     const msStart = Date.now();
+        //     let timerId = setTimeout(() => {
+        //         if (sgPlayPauseStatus.value === 'play') {
+        //             fn.call()
+        //             console.log('inside firing of timeout, just called fn. timerId is:', timerId, 'sgTimers.value:', sgTimers.value)
+        //             let idx = sgTimers.value.findIndex(t => t.timerId === timerId)
+        //             console.log('timerId:', timerId, ' idx is:', idx, 'which is timer:', sgTimers.value[idx])
+        //             sgTimers.value.splice(idx, 1)
+        //         }
+        //     }, timeout)
+        //     console.log('timerId:', timerId)
+        //     sgTimers.value.push({ timerId, timeout, msStart, running: true })
+        // }
+
+        const restartTimers = () => {
+            console.log('restartTimers, weze got:', sgTimers.value)
+            sgPlayPauseStatus.value = 'play'
+            if (sgTimers.value.length > 0) {
+                sgTimers.value.forEach(t => {
+                    if (!t.running) {
+                        console.log('restarting timer:', t.timerId, 'timeLeft:', t.timeLeft)
+                        registerTimer(t.fn, t.timeLeft)
+                    }
+                })
+            }
         }
 
         const pauseTimers = () => {
+            sgPlayPauseStatus.value = 'pause'
             if (sgTimers.value.length > 0) {
                 sgTimers.value.forEach(t => {
                     if (t.running) {
@@ -513,6 +540,7 @@ const Supply = (props) => {
                             timeLeft = 0
                         }
                         t.timeLeft = timeLeft
+                        console.log('pausing timeout t.timerId:', t.timerId, 'timeLeft:', t.timeLeft)
                         clearTimeout(t.timerId)
                         t.timerId = null
                         t.running = false
@@ -520,6 +548,7 @@ const Supply = (props) => {
                     }
                 })
             }
+            console.log('paused all timers, sgTimers:', sgTimers.value)
         }
 
         const textBox = (g, text, x, y, delay = 500, removeTimeout = 4000, extraRight = 0, extraBottom = 0, extraLeft = 0) => {
@@ -546,11 +575,21 @@ const Supply = (props) => {
             let textBoxEl = g.rect(x - borderPadding, y - borderPadding,
                 bbox.width + (2 * borderPadding) + extraRight + extraLeft,
                 bbox.height + (1.9 * borderPadding) + extraBottom).attr(textRectAttrs);
+            //textBoxEl.attr({ opacity: 1 })
+            if (sgShadowFilter.value == null) {
+                var f = paper.filter(Snap.filter.blur(1, 2));
+                var shadow = paper.filter(Snap.filter.shadow(4, 4, 3, '#000000', 0.5));
+                sgShadowFilter.value = shadow
+            }
+            // seems to cause the text box to get narrower. textBoxEl.attr({ opacity: 1, filter: sgShadowFilter.value })
             textBoxEl.attr({ opacity: 1 })
+
+
+
             textBoxGroup.add(textBoxEl, textLinesGroup)
             textBoxGroup.attr({ opacity: 0 })
             registerTimer(() => {
-                textBoxGroup.animate({ opacity: 1 }, 500);
+                textBoxGroup.animate({ opacity: 1 }, delay);
             }, delay)
             if (removeTimeout > 0) {
                 registerTimer(() => {
@@ -560,6 +599,9 @@ const Supply = (props) => {
                     }, 500)
                 }, removeTimeout - 500)
             }
+
+
+
 
             return textBoxGroup.getBBox()
         }
@@ -927,21 +969,21 @@ const Supply = (props) => {
 
                 rotateGroup.transform(`t160 58 r90`)
 
-                setTimeout(() => {
+                registerTimer(() => {
                     image2.animate({ opacity: 1 }, 500);
                     backgroundImage.animate({ opacity: 0 }, 500);
                 }, 500);
-                setTimeout(() => {
+                registerTimer(() => {
                     image2.animate({ opacity: 0 }, 500);
                     backgroundImage.animate({ opacity: 1 }, 500);
                 }, 5000)
 
                 zocText.animate({ opacity: 1 }, 500);
-                setTimeout(() => {
+                registerTimer(() => {
                     zocText.animate({ opacity: 0 }, 500);
                 }, 5000)
 
-                setTimeout(() => {
+                registerTimer(() => {
                     rotateGroup.animate({ opacity: 0 }, 500);
                 }, 5000)
 
@@ -985,13 +1027,13 @@ const Supply = (props) => {
                 // let text3 = g.text(textX, textY + 120, "to any other roads or railroads exiting the same hex.").attr(textAttrs)
 
                 // text1.animate({ opacity: 1 }, 500);
-                // setTimeout(() => {
+                // registerTimer(() => {
                 //     text2.animate({ opacity: 1 }, 500);
                 // }, 100);
-                // setTimeout(() => {
+                // registerTimer(() => {
                 //     text3.animate({ opacity: 1 }, 500);
                 // }, 200);
-                // setTimeout(() => {
+                // registerTimer(() => {
                 //     text1.animate({ opacity: 0 }, 500);
                 //     text2.animate({ opacity: 0 }, 500);
                 //     text3.animate({ opacity: 0 }, 500);
@@ -1048,33 +1090,33 @@ const Supply = (props) => {
                     'height': "233",
                     'opacity': 0
                 });
-                setTimeout(() => {
+                registerTimer(() => {
                     townsBox.animate({ opacity: 1 }, 500);
                     town.animate({ opacity: 1 }, 500);
                     town2.animate({ opacity: 1 }, 500);
                     town3.animate({ opacity: 1 }, 500);
                 }, 500)
-                setTimeout(() => {
+                registerTimer(() => {
                     townConnected.animate({ opacity: 1 }, 500);
                     townConnected2.animate({ opacity: 1 }, 500);
                     townConnected3.animate({ opacity: 1 }, 500);
-                    setTimeout(() => {
+                    registerTimer(() => {
                         townConnected.animate({ opacity: 0 }, 500);
                         townConnected2.animate({ opacity: 0 }, 500);
                         townConnected3.animate({ opacity: 0 }, 500);
-                        setTimeout(() => {
+                        registerTimer(() => {
                             townConnected.animate({ opacity: 1 }, 500);
                             townConnected2.animate({ opacity: 1 }, 500);
                             townConnected3.animate({ opacity: 1 }, 500);
-                            setTimeout(() => {
+                            registerTimer(() => {
                                 townConnected.animate({ opacity: 0 }, 500);
                                 townConnected2.animate({ opacity: 0 }, 500);
                                 townConnected3.animate({ opacity: 0 }, 500);
-                                setTimeout(() => {
+                                registerTimer(() => {
                                     townConnected.animate({ opacity: 1 }, 500);
                                     townConnected2.animate({ opacity: 1 }, 500);
                                     townConnected3.animate({ opacity: 1 }, 500);
-                                    setTimeout(() => {
+                                    registerTimer(() => {
                                         townsBox.animate({ opacity: 0 }, 500);
                                         town.animate({ opacity: 0 }, 500);
                                         town2.animate({ opacity: 0 }, 500);
@@ -1126,7 +1168,7 @@ const Supply = (props) => {
                 let supplyCircle = g.group(supplyWhiteCircle, blackHalfCircle)
                 supplyCircle.transform(`t 40, 189`)
 
-                setTimeout(() => {
+                registerTimer(() => {
                     supplyWhiteCircle.animate({ opacity: 1 }, 500);
                     blackHalfCircle.animate({ opacity: 1 }, 500);
                 }, 3000);
@@ -1155,10 +1197,10 @@ const Supply = (props) => {
                 });
 
 
-                let msText = g.text(102, 44, "Dry weather").attr({
-                    "textAnchor": "left",
+                let msText = g.text(120, 44, "Dry weather").attr({
+                    "textAnchor": "center",
                     "dominant-baseline": "central",
-                    "fontSize": 50,
+                    "fontSize": 50 * sgCrossBrowserFontSizeRatio.value, //* xxxsgUseTextSize.value 
                     "fontWeight": "normal",
                     "fontFamily": "sans-serif",
                     stroke: "none",
@@ -1167,7 +1209,7 @@ const Supply = (props) => {
                 })
                 //msText.animate({ opacity: 1 }, 500);
 
-                // setTimeout(() => {
+                // registerTimer(() => {
                 //     msText.remove();
                 // }, 5000);
 
@@ -1198,7 +1240,7 @@ const Supply = (props) => {
                 sunGroup.attr({
                     opacity: 0
                 })
-                setTimeout(() => {
+                registerTimer(() => {
                     weatherRect.animate({ opacity: 1 }, 500);
                     sunGroup.animate({ opacity: 1 }, 500);
                     msText.animate({ opacity: 1 }, 500);
@@ -1270,7 +1312,7 @@ const Supply = (props) => {
                     'opacity': 1
                 });
 
-                setTimeout(() => {
+                registerTimer(() => {
                     //  combat_unit.animate({ width: 35, height: 35, transform: 't 44, 44 ' }, 500);
                     sgAxisCombatUnit.value.animate({ width: 64, height: 64, transform: 't -598, 370 ' }, 500, mina.easeout);
                 }, 2500);
@@ -1341,7 +1383,7 @@ const Supply = (props) => {
                     posX, posY, 500, 5500)
 
                 sgLastPageGroup.value = g
-                setTimeout(() => {
+                registerTimer(() => {
                     sgAxisCombatUnit.value.animate({ transform: 't -197, 371' }, 500, mina.easeinout);
                 }, 2500);
 
@@ -1404,7 +1446,7 @@ const Supply = (props) => {
                     let msTextN = g.text(numX - 11, numMY, i).attr({
                         "textAnchor": "center",
                         "dominant-baseline": "central",
-                        "fontSize": 45,
+                        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -1422,19 +1464,19 @@ const Supply = (props) => {
                     //numY2 -= 44;
                 }
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups.length; i++) {
                         let numGroup = numbersGroups[i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 1 }, 500);
                         }, i * 500);
                     }
                 }, 3500);
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = numbersGroups.length; i > 0; i--) {
                         let numGroup = numbersGroups[numbersGroups.length - i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 0 }, 80);
                         }, i * 80);
                     }
@@ -1556,10 +1598,10 @@ const Supply = (props) => {
                     //numY2 -= 44;
                 }
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups.length; i++) {
                         let numGroup = numbersGroups[i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 1 }, 70);
                         }, i * 70);
                     }
@@ -1614,10 +1656,10 @@ const Supply = (props) => {
                     //numY2 -= 44;
                 }
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups2.length; i++) {
                         let numGroup = numbersGroups2[i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 1 }, 70);
                         }, i * 70);
                     }
@@ -1626,7 +1668,7 @@ const Supply = (props) => {
 
 
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups.length; i++) {
                         let numGroup = numbersGroups[i];
                         numGroup.animate({ opacity: 0 }, 70);
@@ -1634,13 +1676,13 @@ const Supply = (props) => {
                     }
                     for (let i = 0; i < numbersGroups2.length; i++) {
                         let numGroup = numbersGroups2[i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 0 }, 70);
                         }, i * 70);
                     }
                 }, 16000);
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups.length; i++) {
                         let numGroup = numbersGroups[i];
                         numGroup.remove()
@@ -1736,19 +1778,19 @@ const Supply = (props) => {
                     numbersGroups.push(circleAndNumber)
                 }
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups.length; i++) {
                         let numGroup = numbersGroups[i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 1 }, 500);
                         }, i * 500);
                     }
                 }, 1500);
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = numbersGroups.length; i > 0; i--) {
                         let numGroup = numbersGroups[numbersGroups.length - i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 0 }, 80);
                         }, i * 80);
                     }
@@ -1796,19 +1838,19 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                setTimeout(() => {
+                registerTimer(() => {
                     imageRailGlow.animate({ opacity: 1 }, 100);
                     backgroundImage2.animate({ opacity: 0.2 }, 100);
                 }, 15500)
 
 
-                // setTimeout(() => {
+                // registerTimer(() => {
                 //     backgroundImage2.animate({ opacity: 1 }, 1);
                 // }, 16500)
-                setTimeout(() => {
+                registerTimer(() => {
                     imageRailGlow.animate({ opacity: 0 }, 1000);
                 }, 16500);
-                setTimeout(() => {
+                registerTimer(() => {
                     imageRailGlow.remove();
                     backgroundImage2.remove();
                 }, 17500);
@@ -1850,7 +1892,7 @@ const Supply = (props) => {
                     'opacity': 1
                 });
 
-                setTimeout(() => {
+                registerTimer(() => {
                     sgAxisRailEndUnit.value.animate({ width: 64, height: 64, transform: 't 705, -235 r 58' }, 500, mina.easeout);
                 }, 2500);
 
@@ -1877,7 +1919,7 @@ const Supply = (props) => {
                     posX, posY, 500, 5500)
 
                 sgLastPageGroup.value = g
-                setTimeout(() => {
+                registerTimer(() => {
                     if (sgAxisCombatUnit.value) {
                         sgAxisCombatUnit.value.animate({ transform: 't 943, 102' }, 500, mina.easeout);
                     }
@@ -1913,15 +1955,17 @@ const Supply = (props) => {
                     'opacity': 1
                 });
 
-                setTimeout(() => {
+                registerTimer(() => {
                     sgSovietCombatUnit.value.animate({ width: 64, height: 64, transform: 't 0, 74 ' }, 500, mina.easeout);
+                    registerTimer(() => {
+                        sgSovietCombatUnit.value.animate({ width: 64, height: 64, transform: 't 0, 150 ' }, 500, mina.easeout);
+                        registerTimer(() => {
+                            sgSovietCombatUnit.value.animate({ width: 64, height: 64, transform: 't 0, 228 ' }, 500, mina.easeout);
+                        }, 500);
+                    }, 500);
+
                 }, 2500);
-                setTimeout(() => {
-                    sgSovietCombatUnit.value.animate({ width: 64, height: 64, transform: 't 0, 150 ' }, 500, mina.easeout);
-                }, 3200);
-                setTimeout(() => {
-                    sgSovietCombatUnit.value.animate({ width: 64, height: 64, transform: 't 0, 228 ' }, 500, mina.easeout);
-                }, 3800);
+
 
                 return { discrete: g, percentage: null }
             }
@@ -1969,7 +2013,7 @@ const Supply = (props) => {
                 zocPath.animate({ opacity: 1 }, 500);
                 let gHexes = paper.g()
                 for (let i = 0; i < 6; i++) {
-                    setTimeout(() => {
+                    registerTimer(() => {
                         let x = Math.sin((i * (angleMult)) * Math.PI / 180) * 78
                         let y = Math.cos((i * (angleMult)) * Math.PI / 180) * 78
                         let zocClone = zocPath.clone(true);
@@ -2007,15 +2051,15 @@ const Supply = (props) => {
                     opacity: 0
                 });
                 blockedHexside.transform('t 939, 270');
-                setTimeout(() => {
+                registerTimer(() => {
                     blockedHexside.animate({ opacity: 1 }, 500, mina.easeInOut);
-                    setTimeout(() => {
+                    registerTimer(() => {
                         blockedHexside.animate({ opacity: 0 }, 500, mina.easeInOut);
-                        setTimeout(() => {
+                        registerTimer(() => {
                             blockedHexside.animate({ opacity: 1 }, 500, mina.easeInOut);
-                            setTimeout(() => {
+                            registerTimer(() => {
                                 blockedHexside.animate({ opacity: 0 }, 500, mina.easeInOut);
-                                setTimeout(() => {
+                                registerTimer(() => {
                                     blockedHexside.animate({ opacity: 1 }, 500, mina.easeInOut);
                                 }, 500);
                             }, 1000);
@@ -2025,11 +2069,11 @@ const Supply = (props) => {
 
                 // zocPath.animate({ opacity: 0 }, 100);
 
-                setTimeout(() => {
+                registerTimer(() => {
                     zocPath.animate({ opacity: 0 }, 500)
                 }, 22000)
 
-                setTimeout(() => {
+                registerTimer(() => {
                     g.remove()
                 }, 23000);
 
@@ -2096,24 +2140,24 @@ const Supply = (props) => {
 
                 }
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups.length; i++) {
                         let numGroup = numbersGroups[i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 1 }, 500);
                         }, i * 500);
                     }
                 }, 6000);
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups.length; i++) {
                         let numGroup = numbersGroups[i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 0 }, 50);
                         }, i * 50);
                     }
                 }, 10000);
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups.length; i++) {
                         let numGroup = numbersGroups[i];
                         numGroup.remove()
@@ -2157,7 +2201,7 @@ const Supply = (props) => {
                     'opacity': 1
                 });
 
-                setTimeout(() => {
+                registerTimer(() => {
                     sgSovietMdnoUnit.value.animate({ width: 64, height: 64, transform: 't 0, 458' }, 500, mina.easeout);
                 }, 2500);
 
@@ -2169,7 +2213,7 @@ const Supply = (props) => {
                     'opacity': 1
                 });
 
-                setTimeout(() => {
+                registerTimer(() => {
                     sgSovietInfantryUnit.value.animate({ width: 64, height: 64, transform: 't 0, 458' }, 500, mina.easeout);
                 }, 2500)
 
@@ -2181,19 +2225,19 @@ const Supply = (props) => {
                     opacity: 0
                 })
 
-                setTimeout(() => {
+                registerTimer(() => {
                     hexPath.animate({ opacity: 1 }, 500);
-                    setTimeout(() => {
+                    registerTimer(() => {
                         hexPath.animate({ opacity: 0 }, 500);
-                        setTimeout(() => {
+                        registerTimer(() => {
                             hexPath.animate({ opacity: 1 }, 500);
-                            setTimeout(() => {
+                            registerTimer(() => {
                                 hexPath.animate({ opacity: 0 }, 500);
-                                setTimeout(() => {
+                                registerTimer(() => {
                                     hexPath.animate({ opacity: 1 }, 500);
-                                    setTimeout(() => {
+                                    registerTimer(() => {
                                         hexPath.animate({ opacity: 0 }, 500);
-                                        setTimeout(() => {
+                                        registerTimer(() => {
                                             hexPath.remove()
                                         }, 500);
                                     }, 1500);
@@ -2203,10 +2247,10 @@ const Supply = (props) => {
                     }, 500);
                 }, 12000);
 
-                setTimeout(() => {
+                registerTimer(() => {
                     let z1 = displayZocs(g, 1386, 428)
                     let z2 = displayZocs(g, 1654, 428)
-                    setTimeout(() => {
+                    registerTimer(() => {
                         z1.remove()
                         z2.remove()
                     }, 9300);
@@ -2274,20 +2318,20 @@ const Supply = (props) => {
 
                 }
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups.length; i++) {
                         let numGroup = numbersGroups[i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             let opa = i === 1 ? 0.3 : 1
                             numGroup.animate({ opacity: opa }, 500);
                         }, i * 500);
                     }
                 }, 10000);
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = numbersGroups.length - 1; i >= 0; i--) {
                         let numGroup = numbersGroups[i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 0 }, 500);
                         }, i * 50);
                     }
@@ -2311,11 +2355,11 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                setTimeout(() => {
+                registerTimer(() => {
                     sgEmergencySupplyMarker.value.animate({ opacity: 1 }, 500);
                 }, 16000);
 
-                setTimeout(() => {
+                registerTimer(() => {
                     sgEmergencySupplyMarker.value.animate({ width: 64, height: 64, transform: 't 540, 176' }, 500, mina.easeout);
                 }, 18500);
 
@@ -2338,14 +2382,14 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                setTimeout(() => {
+                registerTimer(() => {
                     outOfSupplyMarker.animate({ opacity: 1 }, 500);
                 }, 24000);
 
-                setTimeout(() => {
+                registerTimer(() => {
                     outOfSupplyMarker.animate({ width: 64, height: 64, transform: 't 422, 145' }, 500, mina.easeout);
                 }, 26500);
-                setTimeout(() => {
+                registerTimer(() => {
                     sgEmergencySupplyMarker.value.animate({ transform: 't 540, -1140', opacity: 0 }, 300);
                 }, 26500);
 
@@ -2358,14 +2402,14 @@ const Supply = (props) => {
                     then remove the markers, even if it's the Out of Supply marker.`,
                     posX, posY, 29000, 40000)
 
-                setTimeout(() => {
+                registerTimer(() => {
                     outOfSupplyMarker.animate({ transform: 't 422, -1141', opacity: 0 }, 300);
                 }, 40500);
 
 
 
 
-                setTimeout(() => {
+                registerTimer(() => {
                     sgSovietMdnoUnit.value.animate({ opacity: 0 }, 500);
                     sgSovietInfantryUnit.value.animate({ opacity: 0 }, 500);
                     sgEmergencySupplyMarker.value.animate({ opacity: 0 }, 500);
@@ -2377,7 +2421,7 @@ const Supply = (props) => {
                     }
                 }, 41000);
 
-                setTimeout(() => {
+                registerTimer(() => {
                     sgSovietMdnoUnit.value.remove()
                     sgSovietMdnoUnit.value = null;
                     sgSovietInfantryUnit.value.remove()
@@ -2424,13 +2468,13 @@ const Supply = (props) => {
                     'opacity': 0
                 });
 
-                setTimeout(() => {
+                registerTimer(() => {
                     swamp_Hex.animate({ opacity: 1 }, 500);
                 }, 500);
-                setTimeout(() => {
+                registerTimer(() => {
                     swamp_Hex.animate({ opacity: 0 }, 500);
                 }, 11000);
-                setTimeout(() => {
+                registerTimer(() => {
                     swamp_Hex.remove()
                 }, 11500);
                 return { discrete: g, percentage: null }
@@ -2493,7 +2537,7 @@ const Supply = (props) => {
                 sgSunGroup.value.animate({ opacity: 0 }, 500);
 
 
-                setTimeout(() => {
+                registerTimer(() => {
                     weatherRect.animate({ opacity: 1 }, 500);
                     msText.animate({ opacity: 1 }, 500);
                     mudGroup.animate({ opacity: 1 }, 500);
@@ -2567,7 +2611,7 @@ const Supply = (props) => {
                     'opacity': 1
                 });
 
-                setTimeout(() => {
+                registerTimer(() => {
                     sgSovietRailBreak.value.animate({ width: 64, height: 64, transform: 't 0, 688' }, 500, mina.easeout);
                 }, 2500)
 
@@ -2649,10 +2693,10 @@ const Supply = (props) => {
                 }
                 sgMudRoadIndicators.value = numbersGroups
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups.length; i++) {
                         let numGroup = numbersGroups[i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 1 }, 70);
                         }, i * 70);
                     }
@@ -2705,10 +2749,10 @@ const Supply = (props) => {
                 }
                 sgMudRoadIndicators.value = sgMudRoadIndicators.value.concat(numbersGroups2)
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups2.length; i++) {
                         let numGroup = numbersGroups2[i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 1 }, 70);
                         }, i * 70);
                     }
@@ -2764,7 +2808,7 @@ const Supply = (props) => {
                     'opacity': 1
                 });
 
-                setTimeout(() => {
+                registerTimer(() => {
                     sgSovietArmorUnit.value.animate({ width: 64, height: 64, transform: 't 0, 342' }, 500, mina.easeout);
                 }, 2500)
 
@@ -2890,7 +2934,7 @@ const Supply = (props) => {
                     opacity: 0,
                 })
 
-                setTimeout(() => {
+                registerTimer(() => {
                     displayRedBox.animate({ opacity: 1 }, 500);
                     displayOrangeMP.animate({ opacity: 1 }, 500);
                     msRedBoxText.animate({ opacity: 1 }, 500);
@@ -2962,19 +3006,19 @@ const Supply = (props) => {
 
                 }
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups2.length; i++) {
                         let numGroup = numbersGroups2[i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 1 }, 300);
                         }, i * 300);
                     }
                 }, 5000);
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups2.length; i++) {
                         let numGroup = numbersGroups2[i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 0 }, 300);
                         }, i * 300);
                     }
@@ -3006,7 +3050,7 @@ const Supply = (props) => {
 
                 textBox(g,
                     `Let's put an Axis unit here.`,
-                    textXpos + 350, textYpos - 160, 8000, 12000)
+                    textXpos + 350, textYpos - 160, 7000, 12000)
 
 
 
@@ -3018,7 +3062,7 @@ const Supply = (props) => {
                     'opacity': 1
                 });
 
-                setTimeout(() => {
+                registerTimer(() => {
                     //  combat_unit.animate({ width: 35, height: 35, transform: 't 44, 44 ' }, 500);
                     sgAxisCombatUnit.value.animate({ transform: 't 0, 382 ' }, 500, mina.easeout);
                 }, 9500);
@@ -3082,10 +3126,10 @@ const Supply = (props) => {
                     numbersGroups.push(circleAndNumber)
                 }
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups.length; i++) {
                         let numGroup = numbersGroups[i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 1 }, 300);
                         }, i * 300);
                     }
@@ -3096,10 +3140,10 @@ const Supply = (props) => {
 
 
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = numbersGroups.length; i > 0; i--) {
                         let numGroup = numbersGroups[numbersGroups.length - i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 0 }, 90);
                         }, i * 90);
                     }
@@ -3135,7 +3179,7 @@ const Supply = (props) => {
                     `Let's shift that Axis unit over a hex.`,
                     textXpos, textYpos, 500, 4500)
 
-                setTimeout(() => {
+                registerTimer(() => {
                     //  combat_unit.animate({ width: 35, height: 35, transform: 't 44, 44 ' }, 500);
                     sgAxisCombatUnit.value.animate({ transform: 't -68, 344 ' }, 500, mina.easeout);
                 }, 2500);
@@ -3197,10 +3241,10 @@ const Supply = (props) => {
                     numbersGroups.push(circleAndNumber)
                 }
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups.length; i++) {
                         let numGroup = numbersGroups[i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 1 }, 300);
                         }, i * 300);
                     }
@@ -3211,10 +3255,10 @@ const Supply = (props) => {
 
 
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = numbersGroups.length; i > 0; i--) {
                         let numGroup = numbersGroups[numbersGroups.length - i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 0 }, 90);
                         }, i * 90);
                     }
@@ -3248,7 +3292,7 @@ const Supply = (props) => {
                     textXpos, textYpos, 500, 3500)
 
 
-                setTimeout(() => {
+                registerTimer(() => {
                     sgSovietArmorUnit.value.animate({ width: 64, height: 64, transform: 't 67, 303' }, 500, mina.easeout);
                 }, 2500)
 
@@ -3322,7 +3366,7 @@ const Supply = (props) => {
                 zocGroup.attr({ opacity: 0 })
                 zocGroup.add(zocPath, msZocText)
                 zocGroup.transform('t 850, 272 s 0.5')
-                setTimeout(() => {
+                registerTimer(() => {
                     zocGroup.animate({ width: 64, height: 64, transform: 't 917, 313', opacity: 1 }, 500, mina.easeout);
                 }, 5000)
                 sgZocGroup.value = zocGroup
@@ -3387,31 +3431,31 @@ const Supply = (props) => {
                     numbersGroups.push(circleAndNumber)
                 }
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups.length; i++) {
                         let numGroup = numbersGroups[i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 1 }, 300);
                         }, i * 300);
                     }
                 }, 4000);
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = numbersGroups.length; i > 0; i--) {
                         let numGroup = numbersGroups[numbersGroups.length - i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 0 }, 90);
                         }, i * 90);
                     }
                 }, 11000);
 
-                setTimeout(() => {
+                registerTimer(() => {
                     if (sgZocGroup.value) {
                         sgZocGroup.value.animate({ opacity: 0 }, 500)
                     }
                 }, 10000);
 
-                setTimeout(() => {
+                registerTimer(() => {
                     if (sgZocGroup.value) {
                         sgZocGroup.value.remove()
                         sgZocGroup.value = null
@@ -3443,7 +3487,7 @@ const Supply = (props) => {
                     `Let's move that Soviet unit down one hex.`,
                     posX, posY, 100, 3000)
 
-                setTimeout(() => {
+                registerTimer(() => {
                     if (sgSovietArmorUnit.value) {
                         sgSovietArmorUnit.value.animate({ transform: 't 66, 381' }, 200, mina.easeout);
                     }
@@ -3517,7 +3561,7 @@ const Supply = (props) => {
                 zocGroup.transform('t 850, 349 s 0.5')
                 let zocClone = zocGroup.clone(true);
                 zocClone.transform('t 850, 349 s 0.5')
-                setTimeout(() => {
+                registerTimer(() => {
                     zocGroup.animate({ width: 64, height: 64, transform: 't 917, 313', opacity: 1 }, 500, mina.easeout);
                     zocClone.animate({ width: 59, height: 59, transform: 't 783, 390', opacity: 1 }, 500, mina.easeout);
                 }, 5000)
@@ -3579,10 +3623,10 @@ const Supply = (props) => {
                     numbersGroups.push(circleAndNumber)
                 }
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups.length; i++) {
                         let numGroup = numbersGroups[i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 1 }, 300);
                         }, i * 300);
                     }
@@ -3624,59 +3668,59 @@ const Supply = (props) => {
 
 
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = numbersGroups.length; i > 0; i--) {
                         let numGroup = numbersGroups[numbersGroups.length - i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 0 }, 90);
                         }, i * 90);
                     }
                 }, 9000);
 
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = 0; i < numbersGroups2.length; i++) {
                         let numGroup = numbersGroups2[i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 1 }, 300);
                         }, i * 300);
                     }
                 }, 10000);
 
 
-                setTimeout(() => {
+                registerTimer(() => {
                     if (sgZocGroup.value) {
                         sgZocGroup.value.animate({ opacity: 0 }, 500)
                     }
                 }, 17500)
 
-                setTimeout(() => {
+                registerTimer(() => {
                     if (sgZocGroup.value) {
                         sgZocGroup.value.remove()
                         sgZocGroup.value = null
                     }
                 }, 18100)
-                setTimeout(() => {
+                registerTimer(() => {
                     for (let i = numbersGroups2.length; i > 0; i--) {
                         let numGroup = numbersGroups2[numbersGroups2.length - i];
-                        setTimeout(() => {
+                        registerTimer(() => {
                             numGroup.animate({ opacity: 0 }, 300);
                         }, i * 90);
                     }
                 }, 17000);
 
-                setTimeout(() => {
+                registerTimer(() => {
                     sgMudRoadIndicators.value.forEach(ind => {
                         ind.animate({ opacity: 0 }, 500)
                     })
                 }, 18000)
-                setTimeout(() => {
+                registerTimer(() => {
                     sgMudRoadIndicators.value.forEach(ind => {
                         ind.remove()
                     })
                     sgMudRoadIndicators.value = []
                 }, 18500)
 
-                // emergency supplyxxx
+                // emergency supply
                 sgEmergencySupplyMarker.value = g.image(emergencySupply, 1146, -64, 0, 0);
                 sgEmergencySupplyMarker.value.attr({
                     'xlink:href': emergencySupply,
@@ -3685,7 +3729,7 @@ const Supply = (props) => {
                     'opacity': 1
                 });
 
-                setTimeout(() => {
+                registerTimer(() => {
                     sgEmergencySupplyMarker.value.animate({ width: 64, height: 64, transform: 't 0, 337' }, 500, mina.easeout);
                 }, 18500);
 
@@ -3771,7 +3815,7 @@ const Supply = (props) => {
         zocPath.animate({ opacity: 1 }, 500);
         let gHexes = paper.g()
         for (let i = 0; i < 6; i++) {
-            setTimeout(() => {
+            registerTimer(() => {
                 let x = Math.sin((i * (angleMult)) * Math.PI / 180) * 78
                 let y = Math.cos((i * (angleMult)) * Math.PI / 180) * 78
                 let zocClone = zocPath.clone(true);
@@ -3808,7 +3852,6 @@ const Supply = (props) => {
     const sequence = async () => {
         while (sgStoryBoard.value.length > 0) {
             let _storyBoard = [...sgStoryBoard.value];
-            console.log('storyboard has:', _storyBoard)
             let page = _storyBoard.shift()
             sgStoryBoard.value = _storyBoard
             if (page.async) {
@@ -3823,7 +3866,8 @@ const Supply = (props) => {
     const runPage = async page => {
         console.log('runPage', page.label);
         return new Promise((resolve) => {
-            setTimeout(() => {
+
+            registerTimer(() => {
                 let result = null
                 if (page.fn) {
                     console.log('starting page fn', page.label);
@@ -3833,12 +3877,14 @@ const Supply = (props) => {
                         result.discrete.transform(`s${sgDimensions.value.width / 1900}, ${sgDimensions.value.height / 852}, 0, 0`)
                     }
                 }
-                setTimeout(() => {
-                    console.log('runPage done', page.label);
+
+
+
+                registerTimer(() => {
                     if (page.remove && result) {
                         if (result.discrete) {
                             result.discrete.animate({ opacity: 0 }, 100);
-                            setTimeout(() => {
+                            registerTimer(() => {
                                 result.discrete.remove();
                             }, 100);
                         }
@@ -3849,7 +3895,9 @@ const Supply = (props) => {
                     resolve(result);
                 }, page.duration)
 
-            }, page.delay);
+
+            }, page.delay)
+
         });
 
     }
