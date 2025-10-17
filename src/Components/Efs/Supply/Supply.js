@@ -61,6 +61,8 @@ const Supply = (props) => {
     const sgEmergencySupplyMarker = useSignal(null)
     const sgShadowFilter = useSignal(null)
     const sgCrossBrowserFontSizeRatio = useSignal(1)
+    const sgMudWeatherGroup = useSignal(null)
+    const sgSupplyCircle = useSignal(null)
 
     const [storyBoardStarted, setStoryBoardStarted] = useState(false)
     const [backgroundMap, setBackgroundMap] = useState(null);
@@ -81,177 +83,6 @@ const Supply = (props) => {
         opacity: 0
     }
 
-    // Snap SVG Easing
-    // 
-    // Extends Snap SVG easing functions with Robert Penner's easing equations
-    // http://www.robertpenner.com/easing/
-    // 
-
-    // Quad
-    // 
-
-
-
-    //  let mina = Snap.mina || {};
-    mina.easeInQuad = function (n) {
-        return Math.pow(n, 2);
-    };
-    mina.easeOutQuad = function (n) {
-        return -1 * n * (n - 2);
-    };
-    mina.easeInOutQuad = function (n) {
-        if ((n *= 2) < 1) return 0.5 * Math.pow(n, 2);
-        return -0.5 * ((--n) * (n - 2) - 1);
-    };
-
-
-    // Cubic
-    // 
-    mina.easeInCubic = function (n) {
-        return Math.pow(n, 3);
-    };
-    mina.easeOutCubic = function (n) {
-        return Math.pow(n - 1, 3) + 1;
-    };
-    mina.easeInOutCubic = function (n) {
-        if ((n *= 2) < 1) return 0.5 * Math.pow(n, 3);
-        return 0.5 * (Math.pow(n - 2, 3) + 2);
-    };
-
-
-    // Quart
-    // 
-    mina.easeInQuart = function (n) {
-        return Math.pow(n, 4);
-    };
-    mina.easeOutQuart = function (n) {
-        return -1 * (Math.pow(n - 1, 4) - 1);
-    };
-    mina.easeInOutQuart = function (n) {
-        if ((n *= 2) < 1) return 0.5 * Math.pow(n, 4);
-        return -0.5 * (Math.pow(n - 2, 4) - 2);
-    };
-
-
-    // Quint
-    // 
-    mina.easeInQuint = function (n) {
-        return Math.pow(n, 5);
-    };
-    mina.easeOutQuint = function (n) {
-        return Math.pow(n - 1, 5) + 1;
-    };
-    mina.easeInOutQuint = function (n) {
-        if ((n *= 2) < 1) return 0.5 * Math.pow(n, 5);
-        return 0.5 * (Math.pow(n - 2, 5) + 2);
-    };
-
-
-    // Sine
-    // 
-    mina.easeInSine = function (n) {
-        return -1 * Math.cos(n * (Math.PI / 2)) + 1;
-    };
-    mina.easeOutSine = function (n) {
-        return Math.sin(n * (Math.PI / 2));
-    };
-    mina.easeInOutSine = function (n) {
-        return -0.5 * (Math.cos(Math.PI * n) - 1);
-    };
-
-
-    // Circ
-    // 
-    mina.easeInCirc = function (n) {
-        return -1 * (Math.sqrt(1 - n * n) - 1);
-    };
-    mina.easeOutCirc = function (n) {
-        return Math.sqrt(1 - Math.pow(n - 1, 2));
-    };
-    mina.easeInOutCirc = function (n) {
-        if ((n *= 2) < 1) return -0.5 * (Math.sqrt(1 - n * n) - 1);
-        return 0.5 * (Math.sqrt(1 - (n -= 2) * n) + 1);
-    };
-
-
-    // Expo
-    // 
-    mina.easeInExpo = function (n) {
-        return (n == 0) ? 0 : Math.pow(2, 10 * (n - 1));
-    };
-    mina.easeOutExpo = function (n) {
-        return (n == 1) ? 1 : -Math.pow(2, -10 * n) + 1;
-    };
-    mina.easeInOutExpo = function (n) {
-        if (n == 0) return 0;
-        if (n == 1) return 1;
-        if ((n *= 2) < 1) return 0.5 * Math.pow(2, 10 * (n - 1));
-        return 0.5 * (-Math.pow(2, -10 * --n) + 2);
-    };
-
-
-    // Elastic
-    // 
-    mina.easeInElastic = function (n) {
-        var s = 1.70158, p = 0.3;
-        if (n == 0) return 0;
-        if (n == 1) return 1;
-        s = p / (2 * Math.PI) * Math.asin(1);
-        return -(Math.pow(2, 10 * (n -= 1)) * Math.sin((n - s) * (2 * Math.PI) / p));
-    };
-    mina.easeOutElastic = function (n) {
-        var s = 1.70158, p = 0.3;
-        if (n == 0) return 0;
-        if (n == 1) return 1;
-        s = p / (2 * Math.PI) * Math.asin(1);
-        return Math.pow(2, -10 * n) * Math.sin((n - s) * (2 * Math.PI) / p) + 1;
-    };
-    mina.easeInOutElastic = function (n) {
-        var p = 0.45, s = p / (2 * Math.PI) * Math.asin(1);
-        if (n == 0) return 0;
-        if ((n *= 2) == 2) return 1;
-        if (n < 1) return -0.5 * (Math.pow(2, 10 * (n -= 1)) * Math.sin((n - s) * (2 * Math.PI) / p));
-        return Math.pow(2, -10 * (n -= 1)) * Math.sin((n - s) * (2 * Math.PI) / p) * 0.5 + 1;
-    };
-
-
-    // Back
-    // 
-    mina.easeInBack = function (n, s) {
-        if (s == undefined) s = 1.70158;
-        return Math.pow(n, 2) * ((s + 1) * n - s);
-    };
-    mina.easeOutBack = function (n, s) {
-        if (s == undefined) s = 1.70158;
-        return (Math.pow(--n, 2) * ((s + 1) * n + s) + 1);
-    };
-    mina.easeInOutBack = function (n, s) {
-        if (s == undefined) s = 1.70158;
-        if ((n *= 2) < 1) return 0.5 * (Math.pow(n, 2) * (((s *= 1.525) + 1) * n - s));
-        return 0.5 * (Math.pow((n -= 2), 2) * (((s *= 1.525) + 1) * n + s) + 2);
-    };
-
-
-    // Bounce
-    // 
-    mina.easeInBounce = function (n) {
-        return 1 - mina.easeOutBounce(1 - n);
-    };
-    mina.easeOutBounce = function (n) {
-        if (n < (1 / 2.75)) {
-            return 7.5625 * n * n;
-        } else if (n < (2 / 2.75)) {
-            return 7.5625 * (n -= (1.5 / 2.75)) * n + 0.75;
-        } else if (n < (2.5 / 2.75)) {
-            return 7.5625 * (n -= (2.25 / 2.75)) * n + 0.9375;
-        } else {
-            return 7.5625 * (n -= (2.625 / 2.75)) * n + 0.984375;
-        }
-    };
-    mina.easeInOutBounce = function (n) {
-        if (n < 0.5) return mina.easeInBounce(n * 2) * 0.5;
-        return mina.easeOutBounce(n * 2 - 1) * 0.5 + 1 * 0.5;
-    };
 
 
     useEffect(() => {
@@ -289,19 +120,13 @@ const Supply = (props) => {
         })
 
         let bbox = textLine.getBBox()
-        console.log('text bbox:', bbox)
 
-        console.log('using fontSize 45, we have a text height of:', bbox.height)
         sgCrossBrowserFontSizeRatio.value = 45 / bbox.height
-console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.value)
 
         let useTextSizeRatio = 1707 / bbox.width
         let useTextSize = Math.round(45 * useTextSizeRatio)
         sgUseTextSize.value = useTextSize
-        console.log('useTextSize:', useTextSize)
-        console.log('useTextSizeRatio:', useTextSizeRatio)
         let useTextHeight = Math.round(50 * useTextSizeRatio)
-        console.log('useTextHeight:', useTextHeight)
         sgUseLineBreak.value =  Math.round(useTextHeight)
         
     }
@@ -311,18 +136,14 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
         let timerId = setTimeout(() => {
             if (sgPlayPauseStatus.value === 'play') {
                 fn.call()
-                console.log('inside firing of timeout, just called fn. timerId is:', timerId, 'sgTimers.value:', sgTimers.value)
                 let idx = sgTimers.value.findIndex(t => t.timerId === timerId)
-                console.log('timerId:', timerId, ' idx is:', idx, 'which is timer:', sgTimers.value[idx])
                 sgTimers.value.splice(idx, 1)
             }
         }, timeout)
-        console.log('timerId:', timerId)
         sgTimers.value.push({ timerId, timeout, msStart, running: true, fn })
     }
 
     const setupStoryboard = () => {
-        console.log('setupStoryboard called');
         testTextWidth(paper.g())
 
         var backgroundImage = paper.image(efs_minsk_map, 0, 0, 0, 0);
@@ -358,7 +179,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             })
             let pauseButton = g.group(pauseBar1, pauseBar2, pauseWrapper).click(() => {
                 if (sgPlayPauseStatus.value === 'play') {
-                    console.log('setting to pause')
                     sgPlayPauseStatus.value = 'pause'
                     playButton.attr({
                         visibility: "visible",
@@ -409,9 +229,7 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
 
 
             playButton.click(() => {
-                console.log('play button clicked, sgPlayPauseStatus:', sgPlayPauseStatus.value)
                 if (sgPlayPauseStatus.value === 'pause') {
-                    console.log('setting to play')
                     sgPlayPauseStatus.value = 'play'
                     pauseButton.attr({
                         visibility: "visible",
@@ -421,11 +239,9 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                         visibility: "hidden",
                         pointerEvents: "none"
                     })
-                    console.log('play!')
                     restartTimers()
                 }
                 else {
-                    console.log('setting to pause')
                     sgPlayPauseStatus.value = 'pause'
                     playButton.attr({
                         visibility: "visible",
@@ -436,7 +252,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                         visibility: "hidden",
                         pointerEvents: "none"
                     })
-                    console.log('pause!')
                     pauseTimers()
                 }
             })
@@ -455,8 +270,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
         sgDimensions.value = { width: dimensions.width, height: dimensions.height }
 
         const nsw = perc => {
-            console.log('window.innerWidth:', window.innerWidth, 'perc:', perc)
-            console.log('result:', window.innerWidth * perc)
             return window.innerWidth * perc
         }
         const nsh = perc => {
@@ -500,28 +313,11 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             }
         }, 100)
 
-        // const registerTimer = (fn, timeout) => {
-        //     const msStart = Date.now();
-        //     let timerId = setTimeout(() => {
-        //         if (sgPlayPauseStatus.value === 'play') {
-        //             fn.call()
-        //             console.log('inside firing of timeout, just called fn. timerId is:', timerId, 'sgTimers.value:', sgTimers.value)
-        //             let idx = sgTimers.value.findIndex(t => t.timerId === timerId)
-        //             console.log('timerId:', timerId, ' idx is:', idx, 'which is timer:', sgTimers.value[idx])
-        //             sgTimers.value.splice(idx, 1)
-        //         }
-        //     }, timeout)
-        //     console.log('timerId:', timerId)
-        //     sgTimers.value.push({ timerId, timeout, msStart, running: true })
-        // }
-
         const restartTimers = () => {
-            console.log('restartTimers, weze got:', sgTimers.value)
             sgPlayPauseStatus.value = 'play'
             if (sgTimers.value.length > 0) {
                 sgTimers.value.forEach(t => {
                     if (!t.running) {
-                        console.log('restarting timer:', t.timerId, 'timeLeft:', t.timeLeft)
                         registerTimer(t.fn, t.timeLeft)
                     }
                 })
@@ -540,15 +336,12 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                             timeLeft = 0
                         }
                         t.timeLeft = timeLeft
-                        console.log('pausing timeout t.timerId:', t.timerId, 'timeLeft:', t.timeLeft)
                         clearTimeout(t.timerId)
                         t.timerId = null
                         t.running = false
-                        console.log('pausing timer:', t.timerId, 'timeLeft:', t.timeLeft)
                     }
                 })
             }
-            console.log('paused all timers, sgTimers:', sgTimers.value)
         }
 
         const textBox = (g, text, x, y, delay = 500, removeTimeout = 4000, extraRight = 0, extraBottom = 0, extraLeft = 0) => {
@@ -650,7 +443,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             }
         }
 
-
         let page1b = {
             label: 'description',
             pageInt: '1b',
@@ -687,15 +479,10 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
 
                 let cw = paper.clientHeight
                 let ch = paper.clientWidth
-                console.log('paper:', paper.node.clientWidth)
-
 
                 let windowWidth = window.innerWidth;
-                console.log('paper:', paper.node.clientWidth)
-
 
                 sgLastPageGroup.value = g
-                console.log('fn for page1, sgLastPageGroup.value:', sgLastPageGroup.value)
 
                 var image2 = g2.image(efs_minsk_map_motorway, 0, 0, 0, 0);
                 image2.attr({
@@ -839,7 +626,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             }
         }
 
-
         let page4 = {
             label: 'fade in minor roads',
             pageInt: 4,
@@ -914,7 +700,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 return { discrete: g, percentage: g2 }
             }
         }
-
 
         let page5 = {
             label: 'fade in rails',
@@ -991,7 +776,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             }
         }
 
-
         let page6 = {
             label: 'roads go through cities and towns',
             pageInt: 6,
@@ -1013,41 +797,12 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                     to any other roads or railroads exiting the same hex.`,
                     489, 241, 500, 12500)
 
-                // let whiteRect = g.rect(186, 173, 1525, 498).attr(textRectAttrs);
-                // whiteRect.animate({ opacity: 1 }, 500);
-
-
-                // let textX = 934
-                // let textY = 244
-
-                // let text1 = g.text(textX, textY, "Although the roads and railroads are not printed inside").attr(textAttrs)
-
-                // let text2 = g.text(textX, textY + 60, "the town and city graphics, it is assumed they still connect").attr(textAttrs)
-
-                // let text3 = g.text(textX, textY + 120, "to any other roads or railroads exiting the same hex.").attr(textAttrs)
-
-                // text1.animate({ opacity: 1 }, 500);
-                // registerTimer(() => {
-                //     text2.animate({ opacity: 1 }, 500);
-                // }, 100);
-                // registerTimer(() => {
-                //     text3.animate({ opacity: 1 }, 500);
-                // }, 200);
-                // registerTimer(() => {
-                //     text1.animate({ opacity: 0 }, 500);
-                //     text2.animate({ opacity: 0 }, 500);
-                //     text3.animate({ opacity: 0 }, 500);
-                //     whiteRect.animate({ opacity: 0 }, 500);
-                // }, 12500)
-
-                console.log('textBoxPosition:', textBoxPosition)
                 let posX = textBoxPosition.x
                 let posY = textBoxPosition.y2 + 20
                 let townsBox = g.rect(posX, posY - 30, textBoxPosition.width, 233 + 80).attr(textRectAttrs);
                 townsBox.attr({ fill: "#ffffdd" })
 
                 let lfPadding = (textBoxPosition.width - (233 * 3)) / 4
-                console.log('lfPadding:', lfPadding)
                 var town = g.image(town_connect, posX + lfPadding, 410, 0, 0);
                 town.attr({
                     'xlink:href': town_connect,
@@ -1165,8 +920,8 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
 
                 blackHalfCircle.transform(`s 0.49, 0.49 t -108 -281`)
 
-                let supplyCircle = g.group(supplyWhiteCircle, blackHalfCircle)
-                supplyCircle.transform(`t 40, 189`)
+                sgSupplyCircle.value = g.group(supplyWhiteCircle, blackHalfCircle)
+                sgSupplyCircle.value.transform(`t 40, 189`)
 
                 registerTimer(() => {
                     supplyWhiteCircle.animate({ opacity: 1 }, 500);
@@ -1262,7 +1017,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             }
         }
 
-
         let page9 = {
             label: 'start with dry weather',
             pageInt: 9,
@@ -1282,7 +1036,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 return { discrete: g, percentage: null }
             }
         }
-
 
         let page10 = {
             label: 'combat unit',
@@ -1321,9 +1074,8 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             }
         }
 
-
         let page11 = {
-            label: 'supply in Minsk',
+            label: 'explain supply in Minsk',
             pageInt: 11,
             delay: 0,
             duration: 10000,
@@ -1705,7 +1457,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             }
         }
 
-
         let page18 = {
             label: 'unit supply to Road',
             pageInt: 18,
@@ -1726,7 +1477,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 return { discrete: g, percentage: null }
             }
         }
-
 
         let page19 = {
             label: 'LOC',
@@ -1753,7 +1503,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 numberPositions.push({ x: 314, y: 658 }); // 3
                 let numbersGroups = []
                 for (let i = 0; i < numberPositions.length; i++) {
-                    console.log('i:', i)
                     let circleN = g.circle(numberPositions[i].x, numberPositions[i].y, 30).attr({
                         fill: "#ffffff",
                         stroke: "black",
@@ -1799,7 +1548,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 return { discrete: g, percentage: null }
             }
         }
-
 
         let page20 = {
             label: 'Railroads',
@@ -1901,7 +1649,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             }
         }
 
-
         let page22 = {
             label: 'move Axis unit again for railroad supply',
             pageInt: 22,
@@ -1971,7 +1718,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             }
         }
 
-
         let page24 = {
             label: 'show zoc of cavalry division',
             pageInt: 24,
@@ -2002,7 +1748,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                     }
                 };
                 zocPaths += ` Z `
-                console.log('zocPaths:', zocPaths)
                 let zocPath = g.path(zocPaths).attr({
                     fill: "none",
                     stroke: "black",
@@ -2080,8 +1825,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 return { discrete: g, percentage: null }
             }
         }
-
-
 
         let page25 = {
             label: 'show path of supply to rr',
@@ -2481,7 +2224,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             }
         }
 
-
         let page29 = {
             label: 'Mud weather',
             pageInt: 8,
@@ -2500,7 +2242,7 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 });
 
 
-                let msText = g.text(102, 44, "Mud weather").attr({
+                let mudText = g.text(102, 44, "Mud weather").attr({
                     "textAnchor": "left",
                     "dominant-baseline": "central",
                     "fontSize": 50,
@@ -2529,8 +2271,8 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                     strokeWidth: 0,
                     opacity: 0.3
                 })
-                let mudGroup = g.group(mudEllipse, mudEllipse2, mudEllipse3)
-                mudGroup.attr({
+                sgMudWeatherGroup.value = g.group(weatherRect, mudText, mudEllipse, mudEllipse2, mudEllipse3)
+                sgMudWeatherGroup.value.attr({
                     opacity: 0
                 })
 
@@ -2538,9 +2280,7 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
 
 
                 registerTimer(() => {
-                    weatherRect.animate({ opacity: 1 }, 500);
-                    msText.animate({ opacity: 1 }, 500);
-                    mudGroup.animate({ opacity: 1 }, 500);
+                    sgMudWeatherGroup.value.animate({ opacity: 1 }, 500);
                     sgSunGroup.value.remove()
                     sgSunGroup.value = null;
                 }, 500);
@@ -2548,7 +2288,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 return { discrete: g, percentage: null }
             }
         }
-
 
         let page30 = {
             label: 'Mud weather details',
@@ -2618,8 +2357,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 return { discrete: g, percentage: null }
             }
         }
-
-
 
         let page31 = {
             label: 'Show mud weather road hexes',
@@ -2775,11 +2512,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             }
         }
 
-
-
-
-
-
         let page32 = {
             label: 'soviet armor division',
             pageInt: 32,
@@ -2815,9 +2547,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 return { discrete: g, percentage: null }
             }
         }
-
-
-
 
         let page33 = {
             label: 'mud and red orange box units zocs',
@@ -2948,7 +2677,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 return { discrete: g, percentage: null }
             }
         }
-
 
         let page34 = {
             label: 'explain lack of ZOC',
@@ -3101,7 +2829,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 numberPositions.push({ x: 917, y: 313 }); // 5
                 let numbersGroups = []
                 for (let i = 0; i < numberPositions.length; i++) {
-                    console.log('i:', i)
                     let circleN = g.circle(numberPositions[i].x, numberPositions[i].y, 30).attr({
                         fill: "#ffffff",
                         stroke: "black",
@@ -3152,7 +2879,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 return { discrete: g, percentage: null }
             }
         }
-
 
         let page37 = {
             label: 'shift German unit into 5 LOC length',
@@ -3216,7 +2942,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 numberPositions.push({ x: 851, y: 351 }); // 5
                 let numbersGroups = []
                 for (let i = 0; i < numberPositions.length; i++) {
-                    console.log('i:', i)
                     let circleN = g.circle(numberPositions[i].x, numberPositions[i].y, 30).attr({
                         fill: "#ffffff",
                         stroke: "black",
@@ -3270,7 +2995,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             }
         }
 
-
         let page39 = {
             label: 'shift soviet armor division over',
             pageInt: 39,
@@ -3300,7 +3024,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             }
         }
 
-
         let page40 = {
             label: 'show soviet armor zoc into town',
             pageInt: 40,
@@ -3325,12 +3048,12 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
 
                 textBox(g,
                     `Does the Soviet unit have a ZOC? -`,
-                    textXpos, textYpos, 500, 3500)
+                    textXpos, textYpos, 500, 5000)
 
                 textBox(g,
                     `Does the Soviet unit have a ZOC? -
                         Yes, now the ZOC extends to the adjacent town.`,
-                    textXpos, textYpos, 3000, 9000)
+                    textXpos, textYpos, 4000, 9000)
 
                 let angleMult = 60
                 let zocPaths = ``
@@ -3345,7 +3068,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                     }
                 };
                 zocPaths += ` Z `
-                console.log('zocPaths:', zocPaths)
                 let zocPath = g.path(zocPaths).attr({
                     fill: "yellow",
                     stroke: "red",
@@ -3406,7 +3128,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 numberPositions.push({ x: 851, y: 351 }); // 5
                 let numbersGroups = []
                 for (let i = 0; i < numberPositions.length; i++) {
-                    console.log('i:', i)
                     let circleN = g.circle(numberPositions[i].x, numberPositions[i].y, 30).attr({
                         fill: "#ffffff",
                         stroke: "black",
@@ -3468,7 +3189,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             }
         }
 
-
         let page42 = {
             label: 'move soviet armor division to motorway',
             pageInt: 42,
@@ -3496,7 +3216,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 return { discrete: g, percentage: null }
             }
         }
-
 
         let page43 = {
             label: 'show soviet armor zocs on motorway',
@@ -3531,7 +3250,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                     }
                 };
                 zocPaths += ` Z `
-                console.log('zocPaths:', zocPaths)
                 let zocPath = g.path(zocPaths).attr({
                     fill: "yellow",
                     stroke: "none",
@@ -3576,7 +3294,7 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             label: 'the Axis unit now cannot reach supply',
             pageInt: 44,
             delay: 0,
-            duration: 38500,
+            duration: 19500,
             remove: false,
             async: true,
             fn: () => {
@@ -3598,7 +3316,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 numberPositions.push({ x: 851, y: 428 }); // 5
                 let numbersGroups = []
                 for (let i = 0; i < numberPositions.length; i++) {
-                    console.log('i:', i)
                     let circleN = g.circle(numberPositions[i].x, numberPositions[i].y, 30).attr({
                         fill: "#ffffff",
                         stroke: "black",
@@ -3640,7 +3357,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 numberPositions2.push({ x: 851, y: 274 }); // 5
                 let numbersGroups2 = []
                 for (let i = 0; i < numberPositions2.length; i++) {
-                    console.log('i:', i)
                     let circleN = g.circle(numberPositions2[i].x, numberPositions2[i].y, 30).attr({
                         fill: "#ffffff",
                         stroke: "black",
@@ -3737,7 +3453,8 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             }
         }
 
-        let _storyBoard = []
+        const populateStoryBoard = () => {
+            let _storyBoard = []
         _storyBoard.push(page1)
         _storyBoard.push(page1b)
         _storyBoard.push(page2)
@@ -3784,7 +3501,9 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
         _storyBoard.push(page42)
         _storyBoard.push(page43)
         _storyBoard.push(page44)
-        sgStoryBoard.value = _storyBoard
+        return _storyBoard
+        }
+        sgStoryBoard.value = populateStoryBoard()
         sequence()
     }
 
@@ -3803,7 +3522,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             }
         };
         zocPaths += ` Z `
-        console.log('zocPaths:', zocPaths)
         let zocPath = g.path(zocPaths).attr({
             fill: "none",
             stroke: "black",
@@ -3861,6 +3579,87 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
                 runPage(page)
             }
         }
+        console.log('sequence complete');
+        
+        restartSequence()
+    }
+
+    const restartSequence = () => {
+        sgStoryBoard.value = []
+        if( sgLastPageGroup.value ) {
+            sgLastPageGroup.value.remove()
+            sgLastPageGroup.value = null
+        }
+        if( sgLastPageGroup.value ) {
+            sgLastPageGroup.value.remove()
+            sgLastPageGroup.value = null
+        }
+        if( sgAxisCombatUnit.value ) {
+            sgAxisCombatUnit.value.remove()
+            sgAxisCombatUnit.value = null
+        }
+        if( sgSovietArmorUnit.value ) {
+            sgSovietArmorUnit.value.remove()
+            sgSovietArmorUnit.value = null
+        }
+        if( sgSovietCombatUnit.value ) {
+            sgSovietCombatUnit.value.remove()
+            sgSovietCombatUnit.value = null
+        }
+        if( sgAxisRailEndUnit.value ) {
+            sgAxisRailEndUnit.value.remove()
+            sgAxisRailEndUnit.value = null
+        }
+        if( sgSovietRailBreak.value ) {
+            sgSovietRailBreak.value.remove()
+            sgSovietRailBreak.value = null
+        }
+        if( sgSovietMdnoUnit.value ) {
+            sgSovietMdnoUnit.value.remove()
+            sgSovietMdnoUnit.value = null
+        }
+        if( sgSovietInfantryUnit.value ) {
+            sgSovietInfantryUnit.value.remove()
+            sgSovietInfantryUnit.value = null
+        }
+        if( sgSovietArmorUnit.value ) {
+            sgSovietArmorUnit.value.remove()
+            sgSovietArmorUnit.value = null
+        }
+        if( sgZocGroup.value ) {
+            sgZocGroup.value.remove()
+            sgZocGroup.value = null
+        }
+        if( sgSunGroup.value ) {
+            sgSunGroup.value.remove()
+            sgSunGroup.value = null
+        }
+        if( sgSovietRailBreak.value ) {
+            sgSovietRailBreak.value.remove()
+            sgSovietRailBreak.value = null
+        }
+        sgTimers.value = []
+        sgMudRoadIndicators.value = []
+        if( sgBackgroundImage.value ) {
+            sgBackgroundImage.value.remove()
+            sgBackgroundImage.value = null
+        }
+        if( sgMudWeatherGroup.value ) {
+            sgMudWeatherGroup.value.remove()
+            sgMudWeatherGroup.value = null
+        }
+        sgUseTextSize.value = null
+        sgUseLineBreak.value = null
+        if( sgEmergencySupplyMarker.value ) {
+            sgEmergencySupplyMarker.value.remove()
+            sgEmergencySupplyMarker.value = null
+        }
+        if( sgSupplyCircle.value ) {
+            sgSupplyCircle.value.remove()
+            sgSupplyCircle.value = null
+        }
+        sgShadowFilter.value = null
+        setupStoryboard()
     }
 
     const runPage = async page => {
@@ -3870,7 +3669,6 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
             registerTimer(() => {
                 let result = null
                 if (page.fn) {
-                    console.log('starting page fn', page.label);
                     result = page.fn();
                     if (result.discrete) {
                         sgDimensions.value = sgBackgroundImage.value.node.getBoundingClientRect();
@@ -3998,10 +3796,10 @@ console.log('sgCrossBrowserFontSizeRatio.value:', sgCrossBrowserFontSizeRatio.va
 
                     <div className="subsubheader">How they can connect:<BsrLink page="9" rule="6.12" /></div>
                     <ul>
-                        <li>Supply source -> Railroad Net -> Road Net -> LOC</li>
-                        <li>Supply source -> Railroad Net -> LOC</li>
-                        <li>Supply source -> Road Net -> LOC</li>
-                        <li>Supply source -> LOC</li>
+                        <li>Supply source &#10137; Railroad Net &#10137; Road Net &#10137; LOC</li>
+                        <li>Supply source &#10137; Railroad Net &#10137; LOC</li>
+                        <li>Supply source &#10137; Road Net &#10137; LOC</li>
+                        <li>Supply source &#10137; LOC</li>
                     </ul>
 
                 </div>
