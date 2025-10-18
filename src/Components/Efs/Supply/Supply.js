@@ -127,8 +127,8 @@ const Supply = (props) => {
         let useTextSize = Math.round(45 * useTextSizeRatio)
         sgUseTextSize.value = useTextSize
         let useTextHeight = Math.round(50 * useTextSizeRatio)
-        sgUseLineBreak.value =  Math.round(useTextHeight)
-        
+        sgUseLineBreak.value = Math.round(useTextHeight)
+
     }
 
     const registerTimer = (fn, timeout) => {
@@ -346,8 +346,9 @@ const Supply = (props) => {
 
         const textBox = (g, text, x, y, delay = 500, removeTimeout = 4000, extraRight = 0, extraBottom = 0, extraLeft = 0) => {
             let textBoxGroup = g.group()
-            let textLines = text.split('\n')
             let textLinesGroup = g.group()
+            let textLines = text.split('\n')
+
             let textX = x + extraLeft
             let textY = y
             textLines.forEach((line, idx) => {
@@ -367,22 +368,12 @@ const Supply = (props) => {
             let borderPadding = 24
             let textBoxEl = g.rect(x - borderPadding, y - borderPadding,
                 bbox.width + (2 * borderPadding) + extraRight + extraLeft,
-                bbox.height + (1.9 * borderPadding) + extraBottom).attr(textRectAttrs);
-            //textBoxEl.attr({ opacity: 1 })
-            if (sgShadowFilter.value == null) {
-                var f = paper.filter(Snap.filter.blur(1, 2));
-                var shadow = paper.filter(Snap.filter.shadow(4, 4, 3, '#000000', 0.5));
-                sgShadowFilter.value = shadow
-            }
-            // seems to cause the text box to get narrower. textBoxEl.attr({ opacity: 1, filter: sgShadowFilter.value })
-            textBoxEl.attr({ opacity: 1 })
-
-
+                bbox.height + (1.9 * borderPadding) + extraBottom).attr({ ...textRectAttrs, opacity: 1 });
 
             textBoxGroup.add(textBoxEl, textLinesGroup)
             textBoxGroup.attr({ opacity: 0 })
             registerTimer(() => {
-                textBoxGroup.animate({ opacity: 1 }, delay);
+                textBoxGroup.animate({ opacity: 1 }, 500);
             }, delay)
             if (removeTimeout > 0) {
                 registerTimer(() => {
@@ -955,7 +946,7 @@ const Supply = (props) => {
                 let msText = g.text(120, 44, "Dry weather").attr({
                     "textAnchor": "center",
                     "dominant-baseline": "central",
-                    "fontSize": 50 * sgCrossBrowserFontSizeRatio.value, //* xxxsgUseTextSize.value 
+                    "fontSize": 50 * sgCrossBrowserFontSizeRatio.value, //* sgUseTextSize.value 
                     "fontWeight": "normal",
                     "fontFamily": "sans-serif",
                     stroke: "none",
@@ -1062,8 +1053,12 @@ const Supply = (props) => {
                     'xlink:href': german_infantry_unit,
                     'width': "120",
                     'height': "120",
-                    'opacity': 1
+                    'opacity': 0
                 });
+
+                registerTimer(() => {
+                    sgAxisCombatUnit.value.animate({opacity: 1}, 300);
+                }, 500);
 
                 registerTimer(() => {
                     //  combat_unit.animate({ width: 35, height: 35, transform: 't 44, 44 ' }, 500);
@@ -2012,6 +2007,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let g = paper.g()
+                let g2 = paper.g()
                 showPageNumber(g, "27")
                 let posX = 110
                 let posY = 300
@@ -2083,10 +2079,11 @@ const Supply = (props) => {
 
                 posX = 150
                 posY = 350
+
                 textBox(g,
                     `The Axis unit cannot reach General Supply in 5
                     hexes. Place an Emergency Supply marker on it.`,
-                    posX, posY, 13500, 18500)
+                    posX, posY, 12500, 18500)
 
 
 
@@ -2228,7 +2225,7 @@ const Supply = (props) => {
             label: 'Mud weather',
             pageInt: 8,
             delay: 0,
-            duration: 1000,
+            duration: 1500,
             remove: false,
             async: true,
             fn: () => {
@@ -2238,19 +2235,19 @@ const Supply = (props) => {
                     fill: "#70543E",
                     strokeWidth: 1,
                     stroke: "black",
-                    opacity: 0
+                    opacity: 1
                 });
 
 
                 let mudText = g.text(102, 44, "Mud weather").attr({
                     "textAnchor": "left",
                     "dominant-baseline": "central",
-                    "fontSize": 50,
+                    "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
                     "fontWeight": "normal",
                     "fontFamily": "sans-serif",
                     stroke: "none",
                     fill: "white",
-                    opacity: 0,
+                    opacity: 1,
                 })
 
                 let mudEllipse = g.ellipse(55, 35, 15, 11).attr({
@@ -2276,13 +2273,16 @@ const Supply = (props) => {
                     opacity: 0
                 })
 
-                sgSunGroup.value.animate({ opacity: 0 }, 500);
-
+                if (sgSunGroup.value) {
+                    sgSunGroup.value.animate({ opacity: 0 }, 500);
+                }
 
                 registerTimer(() => {
                     sgMudWeatherGroup.value.animate({ opacity: 1 }, 500);
-                    sgSunGroup.value.remove()
-                    sgSunGroup.value = null;
+                    if (sgSunGroup.value) {
+                        sgSunGroup.value.remove()
+                        sgSunGroup.value = null;
+                    }
                 }, 500);
 
                 return { discrete: g, percentage: null }
@@ -3108,7 +3108,7 @@ const Supply = (props) => {
                 let g = paper.g()
                 showPageNumber(g, "41")
                 let posX = 874
-                let posY = 433
+                let posY = 443
 
                 textBox(g,
                     `Can the Axis unit still reach General Supply?`,
@@ -3295,7 +3295,7 @@ const Supply = (props) => {
             pageInt: 44,
             delay: 0,
             duration: 19500,
-            remove: false,
+            remove: true,
             async: true,
             fn: () => {
                 let g = paper.g()
@@ -3455,53 +3455,53 @@ const Supply = (props) => {
 
         const populateStoryBoard = () => {
             let _storyBoard = []
-        _storyBoard.push(page1)
-        _storyBoard.push(page1b)
-        _storyBoard.push(page2)
-        _storyBoard.push(page3)
-        _storyBoard.push(page4)
-        _storyBoard.push(page5)
-        _storyBoard.push(page6)
-        _storyBoard.push(page7)
-        _storyBoard.push(page8)
-        _storyBoard.push(page9)
-        _storyBoard.push(page10)
-        _storyBoard.push(page11)
-        _storyBoard.push(page12)
-        _storyBoard.push(page13)
-        _storyBoard.push(page14)
-        _storyBoard.push(page15)
-        _storyBoard.push(page16)
-        _storyBoard.push(page17)
-        _storyBoard.push(page18)
-        _storyBoard.push(page19)
-        _storyBoard.push(page20)
-        _storyBoard.push(page21)
-        _storyBoard.push(page22)
-        _storyBoard.push(page23)
-        _storyBoard.push(page24)
-        _storyBoard.push(page25)
-        _storyBoard.push(page26)
-        _storyBoard.push(page27)
-        _storyBoard.push(page28)
-        _storyBoard.push(page29)
-        _storyBoard.push(page30)
-        _storyBoard.push(page30b)
-        _storyBoard.push(page31)
-        _storyBoard.push(page32)
-        _storyBoard.push(page33)
-        _storyBoard.push(page34)
-        _storyBoard.push(page35)
-        _storyBoard.push(page36)
-        _storyBoard.push(page37)
-        _storyBoard.push(page38)
-        _storyBoard.push(page39)
-        _storyBoard.push(page40)
-        _storyBoard.push(page41)
-        _storyBoard.push(page42)
-        _storyBoard.push(page43)
-        _storyBoard.push(page44)
-        return _storyBoard
+            _storyBoard.push(page1)
+            _storyBoard.push(page1b)
+            _storyBoard.push(page2)
+            _storyBoard.push(page3)
+            _storyBoard.push(page4)
+            _storyBoard.push(page5)
+            _storyBoard.push(page6)
+            _storyBoard.push(page7)
+            _storyBoard.push(page8)
+            _storyBoard.push(page9)
+            _storyBoard.push(page10)
+            _storyBoard.push(page11)
+            _storyBoard.push(page12)
+            _storyBoard.push(page13)
+            _storyBoard.push(page14)
+            _storyBoard.push(page15)
+            _storyBoard.push(page16)
+            _storyBoard.push(page17)
+            _storyBoard.push(page18)
+            _storyBoard.push(page19)
+            _storyBoard.push(page20)
+            _storyBoard.push(page21)
+            _storyBoard.push(page22)
+            _storyBoard.push(page23)
+            _storyBoard.push(page24)
+            _storyBoard.push(page25)
+            _storyBoard.push(page26)
+            _storyBoard.push(page27)
+            _storyBoard.push(page28)
+            _storyBoard.push(page29)
+            _storyBoard.push(page30)
+            _storyBoard.push(page30b)
+            _storyBoard.push(page31)
+            _storyBoard.push(page32)
+            _storyBoard.push(page33)
+            _storyBoard.push(page34)
+            _storyBoard.push(page35)
+            _storyBoard.push(page36)
+            _storyBoard.push(page37)
+            _storyBoard.push(page38)
+            _storyBoard.push(page39)
+            _storyBoard.push(page40)
+            _storyBoard.push(page41)
+            _storyBoard.push(page42)
+            _storyBoard.push(page43)
+            _storyBoard.push(page44)
+            return _storyBoard
         }
         sgStoryBoard.value = populateStoryBoard()
         sequence()
@@ -3580,81 +3580,81 @@ const Supply = (props) => {
             }
         }
         console.log('sequence complete');
-        
+
         restartSequence()
     }
 
     const restartSequence = () => {
         sgStoryBoard.value = []
-        if( sgLastPageGroup.value ) {
+        if (sgLastPageGroup.value) {
             sgLastPageGroup.value.remove()
             sgLastPageGroup.value = null
         }
-        if( sgLastPageGroup.value ) {
+        if (sgLastPageGroup.value) {
             sgLastPageGroup.value.remove()
             sgLastPageGroup.value = null
         }
-        if( sgAxisCombatUnit.value ) {
+        if (sgAxisCombatUnit.value) {
             sgAxisCombatUnit.value.remove()
             sgAxisCombatUnit.value = null
         }
-        if( sgSovietArmorUnit.value ) {
+        if (sgSovietArmorUnit.value) {
             sgSovietArmorUnit.value.remove()
             sgSovietArmorUnit.value = null
         }
-        if( sgSovietCombatUnit.value ) {
+        if (sgSovietCombatUnit.value) {
             sgSovietCombatUnit.value.remove()
             sgSovietCombatUnit.value = null
         }
-        if( sgAxisRailEndUnit.value ) {
+        if (sgAxisRailEndUnit.value) {
             sgAxisRailEndUnit.value.remove()
             sgAxisRailEndUnit.value = null
         }
-        if( sgSovietRailBreak.value ) {
+        if (sgSovietRailBreak.value) {
             sgSovietRailBreak.value.remove()
             sgSovietRailBreak.value = null
         }
-        if( sgSovietMdnoUnit.value ) {
+        if (sgSovietMdnoUnit.value) {
             sgSovietMdnoUnit.value.remove()
             sgSovietMdnoUnit.value = null
         }
-        if( sgSovietInfantryUnit.value ) {
+        if (sgSovietInfantryUnit.value) {
             sgSovietInfantryUnit.value.remove()
             sgSovietInfantryUnit.value = null
         }
-        if( sgSovietArmorUnit.value ) {
+        if (sgSovietArmorUnit.value) {
             sgSovietArmorUnit.value.remove()
             sgSovietArmorUnit.value = null
         }
-        if( sgZocGroup.value ) {
+        if (sgZocGroup.value) {
             sgZocGroup.value.remove()
             sgZocGroup.value = null
         }
-        if( sgSunGroup.value ) {
+        if (sgSunGroup.value) {
             sgSunGroup.value.remove()
             sgSunGroup.value = null
         }
-        if( sgSovietRailBreak.value ) {
+        if (sgSovietRailBreak.value) {
             sgSovietRailBreak.value.remove()
             sgSovietRailBreak.value = null
         }
         sgTimers.value = []
         sgMudRoadIndicators.value = []
-        if( sgBackgroundImage.value ) {
+        if (sgBackgroundImage.value) {
             sgBackgroundImage.value.remove()
             sgBackgroundImage.value = null
         }
-        if( sgMudWeatherGroup.value ) {
+        if (sgMudWeatherGroup.value) {
             sgMudWeatherGroup.value.remove()
             sgMudWeatherGroup.value = null
         }
         sgUseTextSize.value = null
         sgUseLineBreak.value = null
-        if( sgEmergencySupplyMarker.value ) {
+        if (sgEmergencySupplyMarker.value) {
             sgEmergencySupplyMarker.value.remove()
             sgEmergencySupplyMarker.value = null
         }
-        if( sgSupplyCircle.value ) {
+        if (sgSupplyCircle.value) {
             sgSupplyCircle.value.remove()
             sgSupplyCircle.value = null
         }
