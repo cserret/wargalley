@@ -67,9 +67,9 @@ const Supply = (props) => {
     const [storyBoardStarted, setStoryBoardStarted] = useState(false)
     const [backgroundMap, setBackgroundMap] = useState(null);
     let textAttrs = {
-        "textAnchor": "center",
+        "textAnchor": "left",
         "dominant-baseline": "central",
-        "fontSize": 45,
+        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
         "fontWeight": "bold",
         "fontFamily": "serif",
         stroke: "none",
@@ -127,7 +127,7 @@ const Supply = (props) => {
         let useTextSize = Math.round(45 * useTextSizeRatio)
         sgUseTextSize.value = useTextSize
         let useTextHeight = Math.round(50 * useTextSizeRatio)
-        sgUseLineBreak.value = Math.round(useTextHeight)
+        sgUseLineBreak.value = 50 * sgCrossBrowserFontSizeRatio.value// Math.round(useTextHeight) + 10
 
     }
 
@@ -943,8 +943,8 @@ const Supply = (props) => {
                 });
 
 
-                let msText = g.text(120, 44, "Dry weather").attr({
-                    "textAnchor": "center",
+                let msText = g.text(240, 44, "Dry weather").attr({
+                    "textAnchor": "middle",
                     "dominant-baseline": "central",
                     "fontSize": 50 * sgCrossBrowserFontSizeRatio.value, //* sgUseTextSize.value 
                     "fontWeight": "normal",
@@ -1190,8 +1190,8 @@ const Supply = (props) => {
                         strokeWidth: 1,
                         opacity: 1
                     })
-                    let msTextN = g.text(numX - 11, numMY, i).attr({
-                        "textAnchor": "center",
+                    let msTextN = g.text(numX, numMY, i).attr({
+                        "textAnchor": "middle",
                         "dominant-baseline": "central",
                         "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
@@ -1324,10 +1324,12 @@ const Supply = (props) => {
                     })
                     let adjustX = (i < 9) ? 11 : 23;
                     adjustX = (i === 10) ? 22 : adjustX;
-                    let msTextN = g.text(numberCoords[i].x - adjustX, numberCoords[i].y - 2, i + 1).attr({
-                        "textAnchor": "center",
+                    adjustX = 0
+                    let msTextN = g.text(numberCoords[i].x - adjustX, numberCoords[i].y, i + 1).attr({
+                        "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 45,
+                        "letter-spacing": "-1px",
+                        "fontSize": 45 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -1382,10 +1384,12 @@ const Supply = (props) => {
 
                     let adjustX = (i < 6) ? 11 : 23;
                     adjustX = (i === 10) ? 22 : adjustX;
-                    let msTextN = g.text(numberCoords2[i].x - adjustX, numberCoords2[i].y - 2, i + 4).attr({
-                        "textAnchor": "center",
+                    adjustX = 0
+                    let msTextN = g.text(numberCoords2[i].x - adjustX, numberCoords2[i].y, i + 4).attr({
+                        "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 45,
+                        "letter-spacing": "-1px",
+                        "fontSize": 45 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -1504,10 +1508,11 @@ const Supply = (props) => {
                         strokeWidth: 1,
                         opacity: 1
                     })
-                    let msTextN = g.text(numberPositions[i].x - 11, numberPositions[i].y, i + 1).attr({
-                        "textAnchor": "center",
+                    let msTextN = g.text(numberPositions[i].x, numberPositions[i].y, i + 1).attr({
+                        "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 45,
+                        "letter-spacing": "-1px",
+                        "fontSize": 45 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -1767,9 +1772,11 @@ const Supply = (props) => {
                         })
 
 
-                        let msText = g.text(-25, 0, "ZOC").attr({
-                            "textAnchor": "center",
+                        let msText = g.text(0, 0, "ZOC").attr({
+                            "textAnchor": "middle",
                             "dominant-baseline": "central",
+                            "letter-spacing": "-1px",
+                            "fontSize": 30 * sgCrossBrowserFontSizeRatio.value,
                             "fontSize": 25,
                             "fontWeight": "bold",
                             "fontFamily": "serif",
@@ -1859,10 +1866,11 @@ const Supply = (props) => {
                         strokeWidth: 1,
                         opacity: 1
                     })
-                    let msTextN = g.text(numX - 11, numMY, i + 1).attr({
-                        "textAnchor": "center",
+                    let msTextN = g.text(numX, numMY, i).attr({
+                        "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 45,
+                        "letter-spacing": "-1px",
+                        "fontSize": 45 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -2038,10 +2046,11 @@ const Supply = (props) => {
                         strokeWidth: 1,
                         opacity: 1
                     })
-                    let msTextN = g.text(numX - 11, numMY, i + 1).attr({
-                        "textAnchor": "center",
+                    let msTextN = g.text(numX, numMY, i + 1).attr({
+                        "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 45,
+                        "letter-spacing": "-1px",
+                        "fontSize": 45 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -2320,7 +2329,7 @@ const Supply = (props) => {
             pageInt: 30,
             delay: 0,
             duration: 9000,
-            remove: true,
+            remove: false,
             async: true,
             fn: () => {
                 let g = paper.g()
@@ -2328,14 +2337,8 @@ const Supply = (props) => {
 
                 let posX = 421
                 let posY = 580
-                let boxWidth = 1170
-                let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 150).attr(textRectAttrs);
-                // whiteRect.animate({ opacity: 1 }, 500);
-
                 let textXpos = posX + 20
                 let textYpos = posY + 50
-
 
                 textBox(g,
                     `Since the next couple of examples will trace to the road,
@@ -2406,12 +2409,10 @@ const Supply = (props) => {
                         strokeWidth: 1,
                         opacity: 0.8
                     })
-                    let adjustX = (i < 9) ? 11 : 23;
-                    adjustX = (i === 10) ? 22 : adjustX;
-                    let msTextN = g.text(numberCoords[i].x - adjustX, numberCoords[i].y - 2, i + 1).attr({
-                        "textAnchor": "center",
+                    let msTextN = g.text(numberCoords[i].x, numberCoords[i].y - 2, i + 1).attr({
+                        "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 45,
+                        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -2463,11 +2464,11 @@ const Supply = (props) => {
                         strokeWidth: 1,
                         opacity: 0.8
                     })
-                    let adjustX = (i + 3 < 9) ? 11 : 22;
-                    let msTextN = g.text(numberCoords2[i].x - adjustX, numberCoords2[i].y - 2, i + 4).attr({
-                        "textAnchor": "center",
+                    
+                    let msTextN = g.text(numberCoords2[i].x, numberCoords2[i].y - 2, i + 4).attr({
+                        "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 45,
+                        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -2576,7 +2577,7 @@ const Supply = (props) => {
                 let spacing = boxWidth / 4
 
                 let msRedBoxText = g.text(textXpos + spacing + 175, textYpos + 242, "Red Box MP").attr({
-                    "textAnchor": "center",
+                    "textAnchor": "start",
                     "dominant-baseline": "central",
                     "fontSize": 36,
                     "fontWeight": "bold",
@@ -2589,7 +2590,7 @@ const Supply = (props) => {
 
 
                 let leftArrow3 = g.text(textXpos + spacing + 120, textYpos + 241, "↼").attr({
-                    "textAnchor": "center",
+                    "textAnchor": "start",
                     "dominant-baseline": "central",
                     "fontSize": 56,
                     "fontWeight": "bold",
@@ -2600,7 +2601,7 @@ const Supply = (props) => {
                 })
 
                 let leftArrow4 = g.text(textXpos + spacing + 120, textYpos + 244, "↽").attr({
-                    "textAnchor": "center",
+                    "textAnchor": "start",
                     "dominant-baseline": "central",
                     "fontSize": 56,
                     "fontWeight": "bold",
@@ -2631,7 +2632,7 @@ const Supply = (props) => {
                 });
 
                 let leftArrow = g.text(posX + 120, textYpos + 241, "↼").attr({
-                    "textAnchor": "center",
+                    "textAnchor": "start",
                     "dominant-baseline": "central",
                     "fontSize": 56,
                     "fontWeight": "bold",
@@ -2642,7 +2643,7 @@ const Supply = (props) => {
                 })
 
                 let leftArrow2 = g.text(posX + 120, textYpos + 244, "↽").attr({
-                    "textAnchor": "center",
+                    "textAnchor": "start",
                     "dominant-baseline": "central",
                     "fontSize": 56,
                     "fontWeight": "bold",
@@ -2653,7 +2654,7 @@ const Supply = (props) => {
                 })
 
                 let msOrangeMPText = g.text(posX + 120 + 54, textYpos + 242, "Orange MP").attr({
-                    "textAnchor": "center",
+                    "textAnchor": "start",
                     "dominant-baseline": "central",
                     "fontSize": 36,
                     "fontWeight": "bold",
@@ -2691,10 +2692,6 @@ const Supply = (props) => {
 
                 let posX = 930
                 let posY = 24
-                let boxWidth = 990
-                let windowWidth = window.innerWidth;
-                let textRect = g.rect(posX - 35, posY, boxWidth, 298).attr(textRectAttrs);
-
                 let textXpos = posX + 15
                 let textYpos = posY + 50
 
@@ -2712,12 +2709,13 @@ const Supply = (props) => {
 
 
                 let numbersGroups2 = []
-                let numCoords = [{ x: 693, y: 351 }, { x: 760, y: 384 }, { x: 827, y: 351 }]
+                let adjust = 22
+                let numCoords = [{ x: 693 + adjust, y: 351 }, { x: 760 + adjust, y: 384 }, { x: 827 + adjust, y: 351 }]
                 for (let i = 0; i < numCoords.length; i++) {
                     let msTextN = g.text(numCoords[i].x, numCoords[i].y, i + 13).attr({
-                        "textAnchor": "center",
+                        "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 45,
+                        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "yellow",
@@ -2836,9 +2834,9 @@ const Supply = (props) => {
                         opacity: 1
                     })
                     let msTextN = g.text(numberPositions[i].x - 11, numberPositions[i].y, i + 1).attr({
-                        "textAnchor": "center",
+                        "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 45,
+                        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -2948,10 +2946,10 @@ const Supply = (props) => {
                         strokeWidth: 1,
                         opacity: 1
                     })
-                    let msTextN = g.text(numberPositions[i].x - 11, numberPositions[i].y, i + 1).attr({
-                        "textAnchor": "center",
+                    let msTextN = g.text(numberPositions[i].x, numberPositions[i].y, i + 1).attr({
+                        "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 45,
+                        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -3074,8 +3072,8 @@ const Supply = (props) => {
                     strokeWidth: 2,
                     opacity: 0.5
                 });
-                let msZocText = g.text(-25, 0, "ZOC").attr({
-                    "textAnchor": "center",
+                let msZocText = g.text(0, 0, "ZOC").attr({
+                    "textAnchor": "middle",
                     "dominant-baseline": "central",
                     "fontSize": 25,
                     "fontWeight": "bold",
@@ -3135,9 +3133,9 @@ const Supply = (props) => {
                         opacity: 1
                     })
                     let msTextN = g.text(numberPositions[i].x - 11, numberPositions[i].y, i + 1).attr({
-                        "textAnchor": "center",
+                        "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 45,
+                        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -3263,8 +3261,8 @@ const Supply = (props) => {
                     opacity: 1
                 });
 
-                let msZocText = g.text(-25, 0, "ZOC").attr({
-                    "textAnchor": "center",
+                let msZocText = g.text(0, 0, "ZOC").attr({
+                    "textAnchor": "middle",
                     "dominant-baseline": "central",
                     "fontSize": 25,
                     "fontWeight": "bold",
@@ -3322,10 +3320,10 @@ const Supply = (props) => {
                         strokeWidth: 1,
                         opacity: 1
                     })
-                    let msTextN = g.text(numberPositions[i].x - 11, numberPositions[i].y, i + 1).attr({
-                        "textAnchor": "center",
+                    let msTextN = g.text(numberPositions[i].x, numberPositions[i].y, i + 1).attr({
+                        "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 45,
+                        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -3363,10 +3361,10 @@ const Supply = (props) => {
                         strokeWidth: 1,
                         opacity: 1
                     })
-                    let msTextN = g.text(numberPositions2[i].x - 11, numberPositions2[i].y, i + 1).attr({
-                        "textAnchor": "center",
+                    let msTextN = g.text(numberPositions2[i].x, numberPositions2[i].y, i + 1).attr({
+                        "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 45,
+                        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -3455,52 +3453,52 @@ const Supply = (props) => {
 
         const populateStoryBoard = () => {
             let _storyBoard = []
-            _storyBoard.push(page1)
-            _storyBoard.push(page1b)
-            _storyBoard.push(page2)
-            _storyBoard.push(page3)
-            _storyBoard.push(page4)
-            _storyBoard.push(page5)
-            _storyBoard.push(page6)
-            _storyBoard.push(page7)
-            _storyBoard.push(page8)
-            _storyBoard.push(page9)
-            _storyBoard.push(page10)
-            _storyBoard.push(page11)
-            _storyBoard.push(page12)
-            _storyBoard.push(page13)
-            _storyBoard.push(page14)
-            _storyBoard.push(page15)
-            _storyBoard.push(page16)
-            _storyBoard.push(page17)
-            _storyBoard.push(page18)
-            _storyBoard.push(page19)
-            _storyBoard.push(page20)
-            _storyBoard.push(page21)
-            _storyBoard.push(page22)
-            _storyBoard.push(page23)
-            _storyBoard.push(page24)
-            _storyBoard.push(page25)
-            _storyBoard.push(page26)
-            _storyBoard.push(page27)
-            _storyBoard.push(page28)
-            _storyBoard.push(page29)
-            _storyBoard.push(page30)
-            _storyBoard.push(page30b)
+            // _storyBoard.push(page1)
+            // _storyBoard.push(page1b)
+            // _storyBoard.push(page2)
+            // _storyBoard.push(page3)
+            // _storyBoard.push(page4)
+            // _storyBoard.push(page5)
+            // _storyBoard.push(page6)
+            // _storyBoard.push(page7)
+            // _storyBoard.push(page8)
+            // _storyBoard.push(page9)
+            // _storyBoard.push(page10)
+            // _storyBoard.push(page11)
+            // _storyBoard.push(page12)
+            // _storyBoard.push(page13)
+            // _storyBoard.push(page14)
+            // _storyBoard.push(page15)
+            // _storyBoard.push(page16)
+            // _storyBoard.push(page17)
+            // _storyBoard.push(page18)
+            // _storyBoard.push(page19)
+            // _storyBoard.push(page20)
+            // _storyBoard.push(page21)
+            // _storyBoard.push(page22)
+            // _storyBoard.push(page23)
+            // _storyBoard.push(page24)
+            // _storyBoard.push(page25)
+            // _storyBoard.push(page26)
+            // _storyBoard.push(page27)
+            // _storyBoard.push(page28)
+            // _storyBoard.push(page29)
+            // _storyBoard.push(page30)
+            // _storyBoard.push(page30b)
             _storyBoard.push(page31)
             _storyBoard.push(page32)
             _storyBoard.push(page33)
             _storyBoard.push(page34)
-            _storyBoard.push(page35)
-            _storyBoard.push(page36)
-            _storyBoard.push(page37)
-            _storyBoard.push(page38)
-            _storyBoard.push(page39)
-            _storyBoard.push(page40)
-            _storyBoard.push(page41)
-            _storyBoard.push(page42)
-            _storyBoard.push(page43)
-            _storyBoard.push(page44)
+            // _storyBoard.push(page35)
+            // _storyBoard.push(page36)
+            // _storyBoard.push(page37)
+            // _storyBoard.push(page38)
+            // _storyBoard.push(page39)
+            // _storyBoard.push(page40)
+            // _storyBoard.push(page41)
+            // _storyBoard.push(page42)
+            // _storyBoard.push(page43)
+            // _storyBoard.push(page44)
             return _storyBoard
         }
         sgStoryBoard.value = populateStoryBoard()
@@ -3547,8 +3545,8 @@ const Supply = (props) => {
                 })
 
 
-                let msText = g.text(-25, 0, "ZOC").attr({
-                    "textAnchor": "center",
+                let msText = g.text(0, 0, "ZOC").attr({
+                    "textAnchor": "middle",
                     "dominant-baseline": "central",
                     "fontSize": 25,
                     "fontWeight": "bold",
