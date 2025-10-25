@@ -1123,8 +1123,8 @@ const Supply = (props) => {
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "13")
-                let posX = 560
-                let posY = 300
+                let posX = 200
+                let posY = 580
                 let textBoxPosition = textBox(g,
                     `Let's move that unit over here...   `,
                     posX, posY, 500, 5500)
@@ -1193,7 +1193,7 @@ const Supply = (props) => {
                     let msTextN = g.text(numX, numMY, i).attr({
                         "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
+                        "fontSize": 45 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -1322,10 +1322,8 @@ const Supply = (props) => {
                         strokeWidth: 1,
                         opacity: 0.8
                     })
-                    let adjustX = (i < 9) ? 11 : 23;
-                    adjustX = (i === 10) ? 22 : adjustX;
-                    adjustX = 0
-                    let msTextN = g.text(numberCoords[i].x - adjustX, numberCoords[i].y, i + 1).attr({
+
+                    let msTextN = g.text(numberCoords[i].x, numberCoords[i].y, i + 1).attr({
                         "textAnchor": "middle",
                         "dominant-baseline": "central",
                         "letter-spacing": "-1px",
@@ -1381,11 +1379,7 @@ const Supply = (props) => {
                         opacity: 0.8
                     })
 
-
-                    let adjustX = (i < 6) ? 11 : 23;
-                    adjustX = (i === 10) ? 22 : adjustX;
-                    adjustX = 0
-                    let msTextN = g.text(numberCoords2[i].x - adjustX, numberCoords2[i].y, i + 4).attr({
+                    let msTextN = g.text(numberCoords2[i].x, numberCoords2[i].y, i + 4).attr({
                         "textAnchor": "middle",
                         "dominant-baseline": "central",
                         "letter-spacing": "-1px",
@@ -1866,7 +1860,7 @@ const Supply = (props) => {
                         strokeWidth: 1,
                         opacity: 1
                     })
-                    let msTextN = g.text(numX, numMY, i).attr({
+                    let msTextN = g.text(numX, numMY, i+1).attr({
                         "textAnchor": "middle",
                         "dominant-baseline": "central",
                         "letter-spacing": "-1px",
@@ -2021,9 +2015,9 @@ const Supply = (props) => {
                 let posY = 300
 
                 textBox(g,
-                    `Beware - if the LOC you trace goes through a Marsh hex, the
-                    maximum LOS length is reduced to 5 hexes, unless you are
-                    tracing along a road (minor roads or railroads don't count).`,
+                    `Note - if the LOC you are tracing goes through a Marsh hex in Dry
+                     Weather,  the maximum LOS length is reduced to 5 hexes, unless
+                     you are tracing along a road or railroad (minor road doesn't count).`,
                     posX, posY, 500, 9500)
 
                 let numberPositions = []
@@ -2086,7 +2080,7 @@ const Supply = (props) => {
                 }, 17000);
 
 
-                posX = 150
+                posX = 145
                 posY = 350
 
                 textBox(g,
@@ -2120,7 +2114,7 @@ const Supply = (props) => {
                     `Being in Emergency Supply does not cause any issues.
                     However, if the unit already has an Emergency Supply
                     marker on it, it instead gets an Out Of Supply marker.`,
-                    posX, posY, 20500, 26500)
+                    posX, posY, 20500, 27500)
 
 
                 let outOfSupplyMarker = g.image(outOfSupply, 1132, 364, 0, 0);
@@ -2137,10 +2131,10 @@ const Supply = (props) => {
 
                 registerTimer(() => {
                     outOfSupplyMarker.animate({ width: 64, height: 64, transform: 't 422, 145' }, 500, mina.easeout);
-                }, 26500);
+                }, 27500);
                 registerTimer(() => {
                     sgEmergencySupplyMarker.value.animate({ transform: 't 540, -1140', opacity: 0 }, 300);
-                }, 26500);
+                }, 27500);
 
 
                 posX = 220
@@ -2412,7 +2406,7 @@ const Supply = (props) => {
                     let msTextN = g.text(numberCoords[i].x, numberCoords[i].y - 2, i + 1).attr({
                         "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
+                        "fontSize": 45 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -2468,7 +2462,7 @@ const Supply = (props) => {
                     let msTextN = g.text(numberCoords2[i].x, numberCoords2[i].y - 2, i + 4).attr({
                         "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
+                        "fontSize": 45 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -2715,7 +2709,7 @@ const Supply = (props) => {
                     let msTextN = g.text(numCoords[i].x, numCoords[i].y, i + 13).attr({
                         "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
+                        "fontSize": 45 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "yellow",
@@ -2833,10 +2827,10 @@ const Supply = (props) => {
                         strokeWidth: 1,
                         opacity: 1
                     })
-                    let msTextN = g.text(numberPositions[i].x - 11, numberPositions[i].y, i + 1).attr({
+                    let msTextN = g.text(numberPositions[i].x, numberPositions[i].y, i + 1).attr({
                         "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
+                        "fontSize": 45 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -2949,7 +2943,7 @@ const Supply = (props) => {
                     let msTextN = g.text(numberPositions[i].x, numberPositions[i].y, i + 1).attr({
                         "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
+                        "fontSize": 45 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -3132,10 +3126,10 @@ const Supply = (props) => {
                         strokeWidth: 1,
                         opacity: 1
                     })
-                    let msTextN = g.text(numberPositions[i].x - 11, numberPositions[i].y, i + 1).attr({
+                    let msTextN = g.text(numberPositions[i].x, numberPositions[i].y, i + 1).attr({
                         "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
+                        "fontSize": 45 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -3207,7 +3201,7 @@ const Supply = (props) => {
 
                 registerTimer(() => {
                     if (sgSovietArmorUnit.value) {
-                        sgSovietArmorUnit.value.animate({ transform: 't 66, 381' }, 200, mina.easeout);
+                        sgSovietArmorUnit.value.animate({ transform: 't 66, 381' }, 500, mina.easeout);
                     }
                 }, 2500)
 
@@ -3292,7 +3286,7 @@ const Supply = (props) => {
             label: 'the Axis unit now cannot reach supply',
             pageInt: 44,
             delay: 0,
-            duration: 19500,
+            duration: 25000,
             remove: true,
             async: true,
             fn: () => {
@@ -3323,7 +3317,7 @@ const Supply = (props) => {
                     let msTextN = g.text(numberPositions[i].x, numberPositions[i].y, i + 1).attr({
                         "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
+                        "fontSize": 45 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -3364,7 +3358,7 @@ const Supply = (props) => {
                     let msTextN = g.text(numberPositions2[i].x, numberPositions2[i].y, i + 1).attr({
                         "textAnchor": "middle",
                         "dominant-baseline": "central",
-                        "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
+                        "fontSize": 45 * sgCrossBrowserFontSizeRatio.value,
                         "fontWeight": "bold",
                         "fontFamily": "serif",
                         stroke: "none",
@@ -3405,14 +3399,14 @@ const Supply = (props) => {
                     if (sgZocGroup.value) {
                         sgZocGroup.value.animate({ opacity: 0 }, 500)
                     }
-                }, 17500)
+                }, 18500)
 
                 registerTimer(() => {
                     if (sgZocGroup.value) {
                         sgZocGroup.value.remove()
                         sgZocGroup.value = null
                     }
-                }, 18100)
+                }, 19100)
                 registerTimer(() => {
                     for (let i = numbersGroups2.length; i > 0; i--) {
                         let numGroup = numbersGroups2[numbersGroups2.length - i];
@@ -3420,7 +3414,7 @@ const Supply = (props) => {
                             numGroup.animate({ opacity: 0 }, 300);
                         }, i * 90);
                     }
-                }, 17000);
+                }, 18000);
 
                 registerTimer(() => {
                     sgMudRoadIndicators.value.forEach(ind => {
@@ -3432,7 +3426,7 @@ const Supply = (props) => {
                         ind.remove()
                     })
                     sgMudRoadIndicators.value = []
-                }, 18500)
+                }, 19500)
 
                 // emergency supply
                 sgEmergencySupplyMarker.value = g.image(emergencySupply, 1146, -64, 0, 0);
@@ -3453,52 +3447,52 @@ const Supply = (props) => {
 
         const populateStoryBoard = () => {
             let _storyBoard = []
-            // _storyBoard.push(page1)
-            // _storyBoard.push(page1b)
-            // _storyBoard.push(page2)
-            // _storyBoard.push(page3)
-            // _storyBoard.push(page4)
-            // _storyBoard.push(page5)
-            // _storyBoard.push(page6)
-            // _storyBoard.push(page7)
-            // _storyBoard.push(page8)
-            // _storyBoard.push(page9)
-            // _storyBoard.push(page10)
-            // _storyBoard.push(page11)
-            // _storyBoard.push(page12)
-            // _storyBoard.push(page13)
-            // _storyBoard.push(page14)
-            // _storyBoard.push(page15)
-            // _storyBoard.push(page16)
-            // _storyBoard.push(page17)
-            // _storyBoard.push(page18)
-            // _storyBoard.push(page19)
-            // _storyBoard.push(page20)
-            // _storyBoard.push(page21)
-            // _storyBoard.push(page22)
-            // _storyBoard.push(page23)
-            // _storyBoard.push(page24)
-            // _storyBoard.push(page25)
-            // _storyBoard.push(page26)
-            // _storyBoard.push(page27)
-            // _storyBoard.push(page28)
-            // _storyBoard.push(page29)
-            // _storyBoard.push(page30)
-            // _storyBoard.push(page30b)
+            _storyBoard.push(page1)
+            _storyBoard.push(page1b)
+            _storyBoard.push(page2)
+            _storyBoard.push(page3)
+            _storyBoard.push(page4)
+            _storyBoard.push(page5)
+            _storyBoard.push(page6)
+            _storyBoard.push(page7)
+            _storyBoard.push(page8)
+            _storyBoard.push(page9)
+            _storyBoard.push(page10)
+            _storyBoard.push(page11)
+            _storyBoard.push(page12)
+            _storyBoard.push(page13)
+            _storyBoard.push(page14)
+            _storyBoard.push(page15)
+            _storyBoard.push(page16)
+            _storyBoard.push(page17)
+            _storyBoard.push(page18)
+            _storyBoard.push(page19)
+            _storyBoard.push(page20)
+            _storyBoard.push(page21)
+            _storyBoard.push(page22)
+            _storyBoard.push(page23)
+            _storyBoard.push(page24)
+            _storyBoard.push(page25)
+            _storyBoard.push(page26)
+            _storyBoard.push(page27)
+            _storyBoard.push(page28)
+            _storyBoard.push(page29)
+            _storyBoard.push(page30)
+            _storyBoard.push(page30b)
             _storyBoard.push(page31)
             _storyBoard.push(page32)
             _storyBoard.push(page33)
             _storyBoard.push(page34)
-            // _storyBoard.push(page35)
-            // _storyBoard.push(page36)
-            // _storyBoard.push(page37)
-            // _storyBoard.push(page38)
-            // _storyBoard.push(page39)
-            // _storyBoard.push(page40)
-            // _storyBoard.push(page41)
-            // _storyBoard.push(page42)
-            // _storyBoard.push(page43)
-            // _storyBoard.push(page44)
+            _storyBoard.push(page35)
+            _storyBoard.push(page36)
+            _storyBoard.push(page37)
+            _storyBoard.push(page38)
+            _storyBoard.push(page39)
+            _storyBoard.push(page40)
+            _storyBoard.push(page41)
+            _storyBoard.push(page42)
+            _storyBoard.push(page43)
+            _storyBoard.push(page44)
             return _storyBoard
         }
         sgStoryBoard.value = populateStoryBoard()
