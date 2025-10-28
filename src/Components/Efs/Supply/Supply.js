@@ -34,6 +34,8 @@ import swampHex from "../../../images/efs/supply/swampHex.jpg";
 import emergencySupply from "../../../images/efs/supply/emergency_supply.jpg";
 import outOfSupply from "../../../images/efs/supply/out_of_supply.jpg";
 import sovietRailBreak from "../../../images/efs/supply/soviet_rail_break_120.jpg";
+import majorRiver from "../../../images/efs/supply/river_311x110.jpg";
+import swampMinorRoad from "../../../images/efs/supply/swampMinorRoadHex_230x194.jpg";
 import './Supply.scss';
 let mina = window.mina
 
@@ -261,6 +263,8 @@ const Supply = (props) => {
                     opacity: 0
                 })
             }, 10)
+
+            playButton.attr({ cursor: "pointer" })
 
         }
 
@@ -1057,7 +1061,7 @@ const Supply = (props) => {
                 });
 
                 registerTimer(() => {
-                    sgAxisCombatUnit.value.animate({opacity: 1}, 300);
+                    sgAxisCombatUnit.value.animate({ opacity: 1 }, 300);
                 }, 500);
 
                 registerTimer(() => {
@@ -1552,7 +1556,7 @@ const Supply = (props) => {
             async: true,
             fn: () => {
                 let posX = 194
-                let posY = 255
+                let posY = 275
                 let g = paper.g()
                 showPageNumber(g, "20")
                 let textBoxPosition = textBox(g,
@@ -1860,7 +1864,7 @@ const Supply = (props) => {
                         strokeWidth: 1,
                         opacity: 1
                     })
-                    let msTextN = g.text(numX, numMY, i+1).attr({
+                    let msTextN = g.text(numX, numMY, i + 1).attr({
                         "textAnchor": "middle",
                         "dominant-baseline": "central",
                         "letter-spacing": "-1px",
@@ -2069,6 +2073,8 @@ const Supply = (props) => {
                         }, i * 500);
                     }
                 }, 10000);
+
+                // shake
 
                 registerTimer(() => {
                     for (let i = numbersGroups.length - 1; i >= 0; i--) {
@@ -2458,7 +2464,7 @@ const Supply = (props) => {
                         strokeWidth: 1,
                         opacity: 0.8
                     })
-                    
+
                     let msTextN = g.text(numberCoords2[i].x, numberCoords2[i].y - 2, i + 4).attr({
                         "textAnchor": "middle",
                         "dominant-baseline": "central",
@@ -2770,7 +2776,7 @@ const Supply = (props) => {
 
                 textBox(g,
                     `Let's put an Axis unit here.`,
-                    textXpos + 350, textYpos - 160, 7000, 12000)
+                    textXpos + 350, textYpos - 160, 8000, 12000)
 
 
 
@@ -2811,7 +2817,7 @@ const Supply = (props) => {
                 textBox(g,
                     `Due to Mud weather, the LOC is reduced to 5 hexes.
                     The unit cannot reach General Supply.`,
-                    posX, posY, 8500, 12000)
+                    posX, posY, 8500, 14000)
 
                 let numberPositions = []
                 numberPositions.push({ x: 1184, y: 313 }); // 1
@@ -2854,10 +2860,27 @@ const Supply = (props) => {
                     }
                 }, 5500);
 
-
-
-
-
+                registerTimer(() => {
+                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
+                }, 7500);
+                registerTimer(() => {
+                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't -4, -4 ' }, 100, mina.linear);
+                }, 7600);
+                registerTimer(() => {
+                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
+                }, 7700);
+                registerTimer(() => {
+                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't -2, -2 ' }, 100, mina.linear);
+                }, 7800);
+                registerTimer(() => {
+                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't 4, -4 ' }, 100, mina.linear);
+                }, 7900);
+                registerTimer(() => {
+                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't -2, 2 ' }, 100, mina.linear);
+                }, 8000);
+                registerTimer(() => {
+                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't 1, -1 ' }, 100, mina.linear);
+                }, 8100);
 
                 registerTimer(() => {
                     for (let i = numbersGroups.length; i > 0; i--) {
@@ -2867,6 +2890,19 @@ const Supply = (props) => {
                         }, i * 90);
                     }
                 }, 14000);
+
+                // bring in emergency supply marker
+                sgEmergencySupplyMarker.value = g.image(emergencySupply, 1146, -64, 0, 0);
+                sgEmergencySupplyMarker.value.attr({
+                    'xlink:href': emergencySupply,
+                    'width': "64",
+                    'height': "64",
+                    'opacity': 1
+                });
+
+                registerTimer(() => {
+                    sgEmergencySupplyMarker.value.animate({ width: 64, height: 64, transform: 't 0, 337' }, 500, mina.easeout);
+                }, 18500);
 
                 return { discrete: g, percentage: null }
             }
@@ -3100,7 +3136,7 @@ const Supply = (props) => {
                 let g = paper.g()
                 showPageNumber(g, "41")
                 let posX = 874
-                let posY = 443
+                let posY = 453
 
                 textBox(g,
                     `Can the Axis unit still reach General Supply?`,
@@ -3193,11 +3229,11 @@ const Supply = (props) => {
                 showPageNumber(g, "42")
 
                 let posX = 1038
-                let posY = 369
+                let posY = 379
 
                 textBox(g,
                     `Let's move that Soviet unit down one hex.`,
-                    posX, posY, 100, 3000)
+                    posX, posY, 1000, 4000)
 
                 registerTimer(() => {
                     if (sgSovietArmorUnit.value) {
@@ -3299,6 +3335,12 @@ const Supply = (props) => {
                     `The Axis unit now cannot reach General Supply.`,
                     posX, posY, 500, 15000)
 
+                    textBox(g,
+                        `The Axis unit now cannot reach General Supply.
+                         It gets an Emergency Supply marker.`,
+                        posX, posY, 14500, 24000)
+
+
                 let numberPositions = []
 
                 numberPositions.push({ x: 1118, y: 274 }); // 1
@@ -3340,6 +3382,29 @@ const Supply = (props) => {
                         }, i * 300);
                     }
                 }, 4000);
+
+                
+                registerTimer(() => {
+                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
+                }, 7100);
+                registerTimer(() => {
+                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't -4, -4 ' }, 100, mina.linear);
+                }, 7200);
+                registerTimer(() => {
+                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
+                }, 7300);
+                registerTimer(() => {
+                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't -2, -2 ' }, 100, mina.linear);
+                }, 7400);
+                registerTimer(() => {
+                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't 4, -4 ' }, 100, mina.linear);
+                }, 7500);
+                registerTimer(() => {
+                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't -2, 2 ' }, 100, mina.linear);
+                }, 7600);
+                registerTimer(() => {
+                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't 1, -1 ' }, 100, mina.linear);
+                }, 7700);
 
                 let numberPositions2 = []
                 numberPositions2.push({ x: 1118, y: 274 }); // 1
@@ -3394,6 +3459,27 @@ const Supply = (props) => {
                     }
                 }, 10000);
 
+                registerTimer(() => {
+                    numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
+                }, 18100);
+                registerTimer(() => {
+                    numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't -4, -4 ' }, 100, mina.linear);
+                }, 18200);
+                registerTimer(() => {
+                    numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
+                }, 18300);
+                registerTimer(() => {
+                    numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't -2, -2 ' }, 100, mina.linear);
+                }, 18400);
+                registerTimer(() => {
+                    numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't 4, -4 ' }, 100, mina.linear);
+                }, 18500);
+                registerTimer(() => {
+                    numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't -2, 2 ' }, 100, mina.linear);
+                }, 18600);
+                registerTimer(() => {
+                    numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't 1, -1 ' }, 100, mina.linear);
+                }, 18700);
 
                 registerTimer(() => {
                     if (sgZocGroup.value) {
@@ -3440,6 +3526,75 @@ const Supply = (props) => {
                 registerTimer(() => {
                     sgEmergencySupplyMarker.value.animate({ width: 64, height: 64, transform: 't 0, 337' }, 500, mina.easeout);
                 }, 18500);
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
+
+
+        let page45 = {
+            label: 'Other supply rules',
+            pageInt: 45,
+            delay: 0,
+            duration: 25000,
+            remove: true,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                showPageNumber(g, "45")
+                let posX = 160
+                let posY = 330
+
+                textBox(g,
+                    `Other rules regarding Supply -`,
+                    posX, posY, 500, 2500, 0, 76, 350)
+
+                textBox(g,
+                    `Other rules regarding Supply -
+                     A LOC cannot cross a lake or major river hexside (unless frozen) unless
+                     its across a non-destroyed bridge or a friendly Bridge or Ferry marker.`,
+                    posX, posY, 1500, 14000, 0, 0, 350)
+
+                let majorRiverGraphic = g.image(majorRiver, posX, posY + 5, 311, 110);
+                majorRiverGraphic.attr({
+                    'opacity': 0
+                });
+
+                registerTimer(() => {
+                    majorRiverGraphic.animate({ opacity: 1 }, 500);
+                }, 500);
+                registerTimer(() => {
+                    majorRiverGraphic.animate({ opacity: 0 }, 500);
+                }, 13500);
+                registerTimer(() => {
+                    majorRiverGraphic.remove()
+                }, 14000);
+
+
+
+                textBox(g,
+                    `Other rules regarding Supply -
+                     During Dry or Mud weather, a minor road allows the tracing of 
+                     a LOC through a swamp hex during at a max LOC length of 5 hexes 
+                     (otherwise a LOC cannot go through a swamp hex).`,
+                    posX, posY, 13500, 24000, 0, 30, 280)
+
+                let swampMinorRoadGraphic = g.image(swampMinorRoad, posX, posY + 5, 230, 194);
+                swampMinorRoadGraphic.attr({
+                    'opacity': 0
+                });
+
+                registerTimer(() => {
+                    swampMinorRoadGraphic.animate({ opacity: 1 }, 500);
+                }, 13500);
+                registerTimer(() => {
+                    swampMinorRoadGraphic.animate({ opacity: 0 }, 500);
+                }, 24000);
+                registerTimer(() => {
+                    swampMinorRoadGraphic.remove()
+                }, 29000);
+
 
                 return { discrete: g, percentage: null }
             }
@@ -3493,6 +3648,7 @@ const Supply = (props) => {
             _storyBoard.push(page42)
             _storyBoard.push(page43)
             _storyBoard.push(page44)
+            _storyBoard.push(page45)
             return _storyBoard
         }
         sgStoryBoard.value = populateStoryBoard()
