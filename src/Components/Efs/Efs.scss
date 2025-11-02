@@ -343,6 +343,15 @@
       }
     }
 
+    .image-left {
+      display: flex;
+      align-items: center;
+      img {
+        margin-right: 15px;
+        height: auto;
+      }
+    }
+
     .box-with-image-to-left {
       border: 1px solid black;
       display: inline-block;

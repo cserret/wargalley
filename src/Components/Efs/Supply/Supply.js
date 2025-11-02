@@ -36,6 +36,9 @@ import outOfSupply from "../../../images/efs/supply/out_of_supply.jpg";
 import sovietRailBreak from "../../../images/efs/supply/soviet_rail_break_120.jpg";
 import majorRiver from "../../../images/efs/supply/river_311x110.jpg";
 import swampMinorRoad from "../../../images/efs/supply/swampMinorRoadHex_230x194.jpg";
+import sovietStrongpoint from "../../../images/efs/supply/soviet_strongpoint_120.jpg";
+import sovietCombatSupply from "../../../images/efs/supply/soviet_combat_supply_120.jpg";
+import sovietDump from "../../../images/efs/supply/soviet_dump_120.jpg";
 import './Supply.scss';
 let mina = window.mina
 
@@ -3335,10 +3338,10 @@ const Supply = (props) => {
                     `The Axis unit now cannot reach General Supply.`,
                     posX, posY, 500, 15000)
 
-                    textBox(g,
-                        `The Axis unit now cannot reach General Supply.
+                textBox(g,
+                    `The Axis unit now cannot reach General Supply.
                          It gets an Emergency Supply marker.`,
-                        posX, posY, 14500, 24000)
+                    posX, posY, 14500, 24000)
 
 
                 let numberPositions = []
@@ -3383,7 +3386,7 @@ const Supply = (props) => {
                     }
                 }, 4000);
 
-                
+
                 registerTimer(() => {
                     numbersGroups[numbersGroups.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
                 }, 7100);
@@ -3534,10 +3537,10 @@ const Supply = (props) => {
 
 
         let page45 = {
-            label: 'Other supply rules',
+            label: 'Other supply rules...',
             pageInt: 45,
             delay: 0,
-            duration: 25000,
+            duration: 28500,
             remove: true,
             async: true,
             fn: () => {
@@ -3547,14 +3550,14 @@ const Supply = (props) => {
                 let posY = 330
 
                 textBox(g,
-                    `Other rules regarding Supply -`,
+                    `Other rules regarding Supply...`,
                     posX, posY, 500, 2500, 0, 76, 350)
 
                 textBox(g,
                     `Other rules regarding Supply -
                      A LOC cannot cross a lake or major river hexside (unless frozen) unless
                      its across a non-destroyed bridge or a friendly Bridge or Ferry marker.`,
-                    posX, posY, 1500, 14000, 0, 0, 350)
+                    posX, posY, 1500, 16500, 0, 0, 350)
 
                 let majorRiverGraphic = g.image(majorRiver, posX, posY + 5, 311, 110);
                 majorRiverGraphic.attr({
@@ -3566,19 +3569,19 @@ const Supply = (props) => {
                 }, 500);
                 registerTimer(() => {
                     majorRiverGraphic.animate({ opacity: 0 }, 500);
-                }, 13500);
+                }, 15900);
                 registerTimer(() => {
                     majorRiverGraphic.remove()
-                }, 14000);
+                }, 16400);
 
 
-
+                posX += 69
                 textBox(g,
                     `Other rules regarding Supply -
                      During Dry or Mud weather, a minor road allows the tracing of 
                      a LOC through a swamp hex during at a max LOC length of 5 hexes 
                      (otherwise a LOC cannot go through a swamp hex).`,
-                    posX, posY, 13500, 24000, 0, 30, 280)
+                    posX, posY, 16000, 27000, 0, 30, 280)
 
                 let swampMinorRoadGraphic = g.image(swampMinorRoad, posX, posY + 5, 230, 194);
                 swampMinorRoadGraphic.attr({
@@ -3587,13 +3590,13 @@ const Supply = (props) => {
 
                 registerTimer(() => {
                     swampMinorRoadGraphic.animate({ opacity: 1 }, 500);
-                }, 13500);
+                }, 16000);
                 registerTimer(() => {
                     swampMinorRoadGraphic.animate({ opacity: 0 }, 500);
-                }, 24000);
+                }, 27000);
                 registerTimer(() => {
                     swampMinorRoadGraphic.remove()
-                }, 29000);
+                }, 28000);
 
 
                 return { discrete: g, percentage: null }
@@ -3630,7 +3633,7 @@ const Supply = (props) => {
             _storyBoard.push(page25)
             _storyBoard.push(page26)
             _storyBoard.push(page27)
-            _storyBoard.push(page28)
+
             _storyBoard.push(page29)
             _storyBoard.push(page30)
             _storyBoard.push(page30b)
@@ -4016,249 +4019,96 @@ const Supply = (props) => {
                 </ul>
             </div>
 
-            <svg id="supply_examples" className="supply-svg">
-
-            </svg>
-
-            a. A unit traces its LOC over hexes of any type to a Supply
-            Source, or to a hex in a road net [6.15] or railroad net [6.16]
-            leading to a Supply Source.
-            b. LOC Length. An LOC is traced through no more than seven
-            contiguous hexes to a Supply Source, road net hex, or railroad
-            net hex. Do not count the hex the unit occupies but do count the
-            hex occupied by the Supply Source, road net hex, or railroad net
-            hex. Calculate LOC hexes on an Inset map [17.0] by counting
-            mega hexes [17.13]; disregard the number of Inset hexes within
-            each mega hex.
-            c. Reduce the LOC length to five contiguous hexes when:
-            • Tracing the LOC along a minor road or railroad into or
-            through any swamp hex during Dry or Mud weather
-            • Tracing the LOC into or through even one marsh hex not
-            along road or railroad during Dry weather
-            • Tracing the LOC during Mud or Snow weather
-            • Tracing the LOC into or through even one hex where
-            Lingering Mud or Snow conditions apply [5.2]
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div className="padded">
-                A Railroad Net (for the Axis, all rail hexes used must be "converted") can bring supply to any units on that railroad,
-                or deliver the supply to the start of a road net or LOC.
-            </div>
-            <div className="padded">
-                The railroad can be of any length to a supply source
-                (the ultimate supply source is usually a map edge hex).
-            </div>
-            <div className="padded">
-                If the railroad enters a hex with a main road or motorway road also in it,
-                then the supply can be extended along that road 21 hexes from the point where
-                the railroad met the road. The route can only travel along a railroad once from the supply source.
-                Once it leaves the railroad and goes on a road, it cannot get back on a railroad in order to get the unlimited
-                railroad length again.
-            </div>
-            <div className="padded">
-                A "Road Net" consists of a Main Road or a
-                Motorway (not Minor Roads). If a unit is on that "supply" road, then it is in
-                supply. But often a unit won't be on the road. In that case a LOC needs to
-                reach to the unit for it to be deemed in General Supply. You can consider the LOC to
-                be the "off road" portion of the General Supply path.
-            </div>
-            <div className="padded">
-                The LOC can be up to 7 hexes. The path of General Supply cannot enter an enemy
-                occupied hex, cannot go through a hex with an enemy zone of control (ZOC)
-                unless there is also a friendly combat unit in the hex.
-            </div>
-            <div className="padded">
-                can it cross a river?
-            </div>
-            <div className="generic-flex-space-around rations">
-                <img src={germanrations_pic} alt="Germans eating rations" />
-                <img src={sovietrations} alt="Soviets eating rations" />
-            </div>
-            <div>
-                Supply sources are identified in the scenario instructions. Typically they are a map edge, or range of hexes on a map edge, or a port. The Soviets also get to use Major City Hexes as a source of General Supply.
-            </div>
-
-            <div>
-                <div className="gray-box">
-                    <div className="subsubheader">The types of supply routes that can be traced and how they can connect:</div>
-                    <ul>
-                        <li>Supply source -> Railroad Net -> Road Net -> LOC</li>
-                        <li>Supply source -> Railroad Net -> LOC</li>
-                        <li>Supply source -> Road Net -> LOC</li>
-                        <li>Supply source -> LOC</li>
-                    </ul>
-                </div>
-            </div>
-
-            <span className="spacer1rem" />
-            <div>
-                <span>
-                    General Supply paths cannot go in any other combinations, such as LOC onto a Road Net, or Road Net onto a Railroad Net, or along a Road Net to a LOC then back to a Road Net, etc. Each path has to be <span className="italic">contiguous</span>.
-                </span>
-
-            </div>
-
-
-
-
-
-
             <div>
                 <div className="gray-box">
                     <div className="subsubheader">Lengths of supply routes:</div>
                     <ul>
-                        <li>Railroad - any distance (For Axis, all railroad hexes used must be "converted" railroad hexes).</li>
-                        <li>Main Road (or Motorway) - 21 hexes (not movement points - count only hexes). In Mud or Snow/Arctic this is reduced to 15 hexes.</li>
-                        <li>LOC - 7 hexes (not movement points, count only hexes). In Mud or Snow/Arctic this is reduced to 5 hexes.</li>
-                        <li>LOC (additional restriction) - 5 hexes when tracing along a road or railroad in swamp hex during Dry weather.</li>
-                        <li>LOC (additional restriction) - 5 hexes when tracing through a marsh hex during Dry weather.</li>
-                        <li>LOC (additional restriction) - 5 hexes when tracing through a woods hex during Lingering Mud. If tracing along road or railroad in the woods hex, then this doesn't apply.</li>
+                        <li>Railroad - any distance (For Axis, all railroad hexes used must be "converted" railroad hexes).<BsrLink page="10" rule="6.16" /></li>
+                        <li>Main Road (or Motorway) - 21 hexes (not movement points - count only hexes). In Mud or Snow/Arctic this is reduced to 15 hexes.<BsrLink page="10" rule="6.15" /></li>
+                        <li>LOC - 7 hexes (not movement points, count only hexes). In Mud or Snow/Arctic this is reduced to 5 hexes.<BsrLink page="10" rule="6.14b" /></li>
+                        <li>LOC (additional restriction) - 5 hexes when tracing along a road or railroad in swamp hex during Dry weather.<BsrLink page="10" rule="6.14c" /></li>
+                        <li>LOC (additional restriction) - 5 hexes when tracing through a marsh hex during Dry weather.<BsrLink page="10" rule="6.14c" /></li>
+                        <li>LOC (additional restriction) - 5 hexes when tracing through a woods hex during Lingering Mud. If tracing along road or railroad in the woods hex, then this doesn't apply.<BsrLink page="10" rule="6.14c" /></li>
                     </ul>
                 </div>
             </div>
 
-            <span className="spacer1rem" />
-            <div>
-                <span>
-
-                    The Railroad used in a supply trace has to be contiguous hexes of the same (or connecting) railroad.<br />
-                    The Main Road (or Motorway) used in a supply trace has to be contiguous hexes of the same main road.<br />
-                    The 7 hexes overland (LOC) has to be contiguous hexes.<br />
-                    No "hopping" over hexes is allowed. No leaving a road to go around some obstruction (like an enemy unit) and getting back on the road. Any obstruction on a main road or railroad stops the use of that main road or railroad at the last hex before the obstruction. From there, the LOC goes out up to 7 hexes. A General Supply path can not cross non-frozen lake/inland sea hexsides or unbridged major river. A General Supply path cannot enter a swamp hex during Dry or Mud turns unless the path is along a road or railroad that goes through the hex. A LOC can go along a railroad into a swamp hex during Dry or Mud turns. A General Supply path cannot enter a hex with a undestroyed enemy strongpoint or across a non-destroyed fortified line hexside.
-                </span>
+            <div className="subheader-rule">
+                <div>General Supply specific clarifications</div>
             </div>
 
-
-
+            <div className="padded">
+                <span>
+                    The Railroad used in a supply trace has to be contiguous hexes of the same (or connecting) railroad.<BsrLink page="10" rule="6.16" /><br />
+                    The Main Road (or Motorway) used in a supply trace has to be contiguous hexes of the same main road.<BsrLink page="10" rule="6.15" /><br />
+                    The 7 hexes overland (LOC) has to be contiguous hexes.<BsrLink page="10" rule="6.11" /><br />
+                    No "hopping" over hexes is allowed. No leaving a road to go around some obstruction (like an enemy unit) and getting back on the road. Any obstruction on a main road or railroad stops the use of that main road or railroad at the last hex before the obstruction. From there, the LOC goes out up to 7 hexes.<br/>
+                    A General Supply path can not cross non-frozen lake/inland sea hexsides or unbridged major river. A General Supply path cannot enter a swamp hex during Dry or Mud turns unless the path is along a road or railroad that goes through the hex. A LOC can go along a railroad into a swamp hex during Dry or Mud turns.<br/>
+                    A General Supply path cannot enter a hex with a undestroyed enemy strongpoint or across a non-destroyed fortified line hexside.<BsrLink page="10" rule="6.13" />
+                    The path from a Unit to General Supply can only be in this order: LOC -> Railroad -> Main Road or Motorway, with any of them being optional,
+                    but you cannot trace along more than one path of each type.<BsrLink page="10" rule="6.12" />
+                    Armored trains and flotillas do not require General Supply.<BsrLink page="11" rule="6.37" />
+                </span>
+            </div>
+            <span className="spacer1rem" />
 
 
             <div>
                 <div className="gray-box">
                     <div className="subsubheader">Summary of General Supply stoppers:</div>
                     <ul>
-                        <li>Cannot go into a hex with an enemy unit in it.</li>
-                        <li>Cannot go into a hex with an enemy ZOC in it, unless that hex also has a friendly combat unit in it.</li>
-                        <li>Cannot go across a non-frozen lake/inland sea hexside.</li>
-                        <li>Cannot go across an unbridged major river.</li>
-                        <li>Cannot go into a swamp hex during Dry or Mud turns unless the supply can be traced along road or railroad that goes through the swamp hex(es).</li>
-                        <li>Cannot go through an undestroyed enemy strongpoint (although it can go into it, supplying friendly units in it, but the path stops there).</li>
-                        <li>Cannot go across undestroyed enemy fortified lines. (Friendly units on the "wrong" side of a fortified line, even if in the same hex as the fortified line, do not get supply through the fortified hexside).</li>
-
+                        <li>Cannot go into a hex with an enemy unit in it.<BsrLink page="10" rule="6.13" /></li>
+                        <li>Cannot go into a hex with an enemy ZOC in it, unless that hex also has a friendly combat unit in it.<BsrLink page="10" rule="6.13" /></li>
+                        <li>Cannot go across a non-frozen lake/inland sea hexside.<BsrLink page="10" rule="6.13" /></li>
+                        <li>Cannot go across an unbridged major river.<BsrLink page="10" rule="6.13" /></li>
+                        <li>Cannot go into a swamp hex during Dry or Mud turns unless the supply can be traced along road or railroad that goes through the swamp hex(es).<BsrLink page="10" rule="6.13" /></li>
+                        <li>Cannot go through an undestroyed enemy strongpoint (although it can go into it, supplying friendly units in it, but the path stops there).<BsrLink page="10" rule="6.13" /></li>
+                        <li>Cannot go across undestroyed enemy fortified lines. (Friendly units on the "wrong" side of a fortified line, even if in the same hex as the fortified line, do not get supply through the fortified hexside).<BsrLink page="10" rule="6.13" /></li>
+                        <li>Cannot go into a hex along a railroad with a rail cut marker or a converted railhead marker, on that railroad (multiple railroads may originate from a hex, some converted, some not).<BsrLink page="10" rule="6.16" /></li>
                     </ul>
                 </div>
             </div>
-
             <span className="spacer2rem" />
 
-            <div>
-                <div className="two-column-flex example example1">
-                    <div>
-                        <div className="example-name">Example 1</div>
-                        <div><img src={general_supply_example1} alt="general supply example 1" /></div>
-                    </div>
-                    <div>
-                        <div className="minor">
-                            In this example, the supply source for the Axis is marked "S", in the green circle in the lower left.
-                        </div>
-                        <div className="minor">
-                            The supply on a main road can go up to 21 hexes on a dry weather turn. However, there is a Soviet unit sitting on the road. This stops the supply chain from going further up the road. A supply route can not exit a road then re-enter it further up. Note that Minor Roads (dotted lines) cannot be used in a Road Net. So the supply along the road terminates at the circle marked "A".
-                        </div>
-                        <div className="minor">
-                            The German unit that is at the hex marked "A" is of course in supply. Now the supply can go "off road", otherwise called "LOC".
-                        </div>
-                        <div className="minor">
-                            The LOC can go up to 7 hexes long on a dry turn. But it cannot enter enemy occupied hexes, or enter hexes where the enemy has a ZOC (although if you got a friendly unit there then supply can go through it). Therefore, the route shown is the shortest route possible to the other German units.
-                        </div>
-                        <div className="minor">
-                            The German unit at the hex marked "5" is in supply. It is within 7 hexes of the supplied main road. The German panzer unit in the upper right part of the map, however, is too far away. It would have to move to at least the hex marked "7" to be in General Supply. Therefore, this unit is not in General Supply, and during the supply phase would be marked with the appropriate marker denoting it cannot draw General Supply.
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <svg id="supply_examples" className="supply-svg">
 
-            <span className="spacer2rem" />
+            </svg>
 
-            <div>
-                <div className="two-column-flex example example2">
-                    <div>
-                        <div className="example-name">Example 2</div>
-                        <div><img src={general_supply_example2} alt="general supply example 2" /></div>
-                    </div>
-                    <div>
-                        <div className="minor">
-                            In this example, the supply source for the Axis is marked "S", in the green circle in the lower left. The supply on a main road can go up to 21 hexes on a dry weather turn. However, there is a Soviet unit sitting on the road. This stops the supply chain from going further up the road at hex marked A. The German unit that is at the hex marked "A" is in supply.
-                        </div>
-                        <div className="minor">
-                            Now the supply can go "off road", otherwise called "LOC". The LOC can go up to 7 hexes long on a dry turn. But it cannot enter enemy occupied hexes, or enter hexes where the enemy has a ZOC (although if you got a friendly unit there then supply can go through it). Therefore, the route shown is the shortest route possible to try to reach the unit across the river.
-                        </div>
-                        <div className="minor">
-                            The LOC cannot be traced through the hex marked "B" - a enemy unit is exerting a ZOC on that hex. If a German unit *was* in hex "B", then supply could be traced through that hex. The LOC can not be traced through hex "C" for the same reason. Therefore, the LOC has to extend out as shown.
-                        </div>
-                        <div className="minor">
-                            The LOC cannot go across a unbridged major river, and therefore cannot take the most direct route which would be to hex marked "D". General supply cannot go across a major river unless it is crossed by a bridge, minor or major road, or a railroad (it is assumed that any minor road, or major road, or railroad that crosses any kind of river means there is a bridge there). The LOC shown is the shortest possible to the German recon unit that is across the river. Unfortunately for that unit, the LOC ends one hex short. The German recon unit cannot draw General Supply. During the supply phase it would be marked with the appropriate marker denoting it cannot draw General Supply.
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <span className="spacer2rem" />
-
-            <div>
-                <div className="example example3">
-                    <div>
-                        <div className="example-name">Example 3</div>
-                        <div className="example3"><img src={general_supply_example3} alt="general supply example 3" /></div>
-                    </div>
-                    <div className="row-text">
-                        <span className="spacer1rem" />
-                        <div className="minor">
-                            In this example, the supply source is marked by hex "S". Since there is a converted Axis railroad that extends from "S" to hex "A", we can use the railroad to extend supply. Supply can extend along a railroad as far as the railroad goes.
-                        </div>
-                        <div className="minor">
-                            In this case, the Axis have converted the railroad up to hex "A". So from hex "A" the supply goes off-road, and uses LOC to reach the more distant Axis units. The LOC reaches to the unit at hex "7", but cannot reach the German recon unit that is to the right of that.
-                        </div>
-                        <div className="minor">
-                            All other German units are in General Supply, since they can easily reach the railroad by LOC.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <span className="spacer2rem" />
 
 
             <span>
 
                 <div className="subheader-rule">
-                    <span>6.53</span>
-                    <div>Use of Attack Supply as General Supply</div>
+                    <div>Use of Attack Supply as General Supply<BsrLink page="10" rule="6.26" /></div>
                 </div>
-                <div>
-                    There is one more way for units to get General Supply, but it's something to be avoided unless you have a very good reason. You can use Attack Supply as a source of General Supply. Using a Attack Supply counter for General Supply uses up that Attack Supply, or 1 point of a Dump. This procedure gives General Supply to friendly units that can trace 5 hexes, under the same conditions as tracing a LOC, to the Attack Supply. The units are then considered in General Supply for 1 turn. Typically, only Soviet forces will use this tactic, since they are often cut off by the advancing Germans, and may have some friendly Attack Supply trapped with them. But you may find yourself, as the Axis player, forced to do this if for example a panzer division got cut off - or if you "planned" on a panzer division being cut off while involved in a deep thrust behind enemy lines.
+                <div className="padded">
+                    There is one more way for units (and Strongpoints) to get General Supply - you can use Attack Supply as a source of General Supply. 
+                    Using a Attack Supply counter for General Supply uses up that Attack Supply, or 1 point of a Dump, in the General Supply phase. <br/>
+                    This can be done in up to 5 different hexes per Attack Supply counter or Dump, per turn. <br/>
+
+                    This procedure gives General Supply to friendly units that can trace 7 (or 5 as per LOC limitation) hexes, under the same conditions as tracing a LOC, to the Attack Supply. <br/>
+                    The units are then considered in General Supply for 1 turn. <br/>
+                    This method of gaining General Supply does qualify for removing Emergency Supply markers or Out of Supply markers from units, as per regular
+                    General Supply rules. <br/>
+                    
                 </div>
+                <div className="rules-note">
+                  Soviet forces will often use this tactic, since they are often cut off by advancing Axis units, and may have some friendly Attack Supply trapped with them. But you may find yourself, as the Axis player, forced to do this if for example a panzer division got cut off - or if you "planned" on a panzer division being cut off while involved in a deep thrust behind enemy lines.<br/>
+                    Note that using Attack Supply for General Supply does not give the unit(s) Attack Supply for combat - it only gives them General Supply for the turn.
+                </div>  
             </span>
 
-            <span className="spacer1_5rem" />
+       
 
             <span>
 
                 <div className="subheader-rule">
-                    <span>6.7</span>
+        
                     <div>Effects of not being able to get General Supply</div>
                 </div>
 
-                <div>
+                <div className="padded">
                     Units that were in General Supply but are found to be unable to trace to General Supply are marked with a "Emergency Supply" marker. These units are still considered to be in General Supply. Units that have a "Emergency Supply" marker on them, and are found to still be unable to trace to General Supply during the Supply phase have the "Emergency Supply" marker flipped to "Out of Supply". Strongpoints also suffer from being Out of Supply. Units that are marked "Out of Supply" have the following negative effects:
                 </div>
             </span>
@@ -4285,14 +4135,23 @@ const Supply = (props) => {
                     </ul>
                 </div>
             </div>
+            <span className="spacer1_5rem" />
+
+            <div className="padded image-left">
+                <img src={sovietStrongpoint} alt="Soviet strongpoint" width="80" height="80"/>
+                <div>
+                    Strongpoints that are unoccupied <b>and</b> not adjacent to a friendly combat unit <b>and</b> which are Out of Supply at the end of the Supply Status Phase are removed.
+                    Other types of fortifications are not affected.<BsrLink page="11" rule="6.36" />
+                 </div>
+            </div>
 
             <span className="spacer2rem" />
 
             <span>
                 <div className="subheader-image">
-                    <span>6.8</span>
-                    <div>Attack Supply</div>
-                    <img src={supplystrip} alt="supply counters" />
+                    <div>Supply Units <BsrLink page="11" rule="6.4" /></div>
+                    <img src={sovietCombatSupply} alt="supply counters"  width="80" height="80"/>
+                    <img src={sovietDump} alt="Soviet dump" width="80" height="80"/>
                 </div>
                 <span className="spacer1rem" />
                 <div>
