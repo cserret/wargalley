@@ -4042,12 +4042,12 @@ const Supply = (props) => {
                     The Railroad used in a supply trace has to be contiguous hexes of the same (or connecting) railroad.<BsrLink page="10" rule="6.16" /><br />
                     The Main Road (or Motorway) used in a supply trace has to be contiguous hexes of the same main road.<BsrLink page="10" rule="6.15" /><br />
                     The 7 hexes overland (LOC) has to be contiguous hexes.<BsrLink page="10" rule="6.11" /><br />
-                    No "hopping" over hexes is allowed. No leaving a road to go around some obstruction (like an enemy unit) and getting back on the road. Any obstruction on a main road or railroad stops the use of that main road or railroad at the last hex before the obstruction. From there, the LOC goes out up to 7 hexes.<br/>
-                    A General Supply path can not cross non-frozen lake/inland sea hexsides or unbridged major river. A General Supply path cannot enter a swamp hex during Dry or Mud turns unless the path is along a road or railroad that goes through the hex. A LOC can go along a railroad into a swamp hex during Dry or Mud turns.<br/>
+                    No "hopping" over hexes is allowed. No leaving a road to go around some obstruction (like an enemy unit) and getting back on the road. Any obstruction on a main road or railroad stops the use of that main road or railroad at the last hex before the obstruction. From there, the LOC goes out up to 7 hexes.<br />
+                    A General Supply path can not cross non-frozen lake/inland sea hexsides or unbridged major river. A General Supply path cannot enter a swamp hex during Dry or Mud turns unless the path is along a road or railroad that goes through the hex. A LOC can go along a railroad into a swamp hex during Dry or Mud turns.<br />
                     A General Supply path cannot enter a hex with a undestroyed enemy strongpoint or across a non-destroyed fortified line hexside.<BsrLink page="10" rule="6.13" />
                     The path from a Unit to General Supply can only be in this order: LOC -> Railroad -> Main Road or Motorway, with any of them being optional,
                     but you cannot trace along more than one path of each type.<BsrLink page="10" rule="6.12" />
-                    Armored trains and flotillas do not require General Supply.<BsrLink page="11" rule="6.37" />
+                    Armored trains and flotillas do not require General Supply.<BsrLink page="11" rule="6.37" /><BsrLink page="39" rule="15.22" />
                 </span>
             </div>
             <span className="spacer1rem" />
@@ -4083,33 +4083,41 @@ const Supply = (props) => {
                     <div>Use of Attack Supply as General Supply<BsrLink page="10" rule="6.26" /></div>
                 </div>
                 <div className="padded">
-                    There is one more way for units (and Strongpoints) to get General Supply - you can use Attack Supply as a source of General Supply. 
-                    Using a Attack Supply counter for General Supply uses up that Attack Supply, or 1 point of a Dump, in the General Supply phase. <br/>
-                    This can be done in up to 5 different hexes per Attack Supply counter or Dump, per turn. <br/>
-
-                    This procedure gives General Supply to friendly units that can trace 7 (or 5 as per LOC limitation) hexes, under the same conditions as tracing a LOC, to the Attack Supply. <br/>
-                    The units are then considered in General Supply for 1 turn. <br/>
+                    There is one more way for units (and Strongpoints) to get General Supply - you can use Attack Supply as a source of General Supply.
+                    <span className="spacer0_5rem" />
+                    Using a Attack Supply counter for General Supply uses up that Attack Supply, or 1 point of a Dump, in the General Supply phase. 
+                    This can be done in up to 5 different hexes per Attack Supply counter or Dump, per turn.
+                    <span className="spacer0_5rem" />
+                    This procedure gives General Supply to friendly units that can trace 7 (or 5 as per LOC limitation) hexes, under the same conditions as tracing a LOC, to the Attack Supply. 
+                    The units are then considered in General Supply for 1 turn.
+                    <span className="spacer0_5rem" />
                     This method of gaining General Supply does qualify for removing Emergency Supply markers or Out of Supply markers from units, as per regular
-                    General Supply rules. <br/>
-                    
+                    General Supply rules. <br />
+
                 </div>
                 <div className="rules-note">
-                  Soviet forces will often use this tactic, since they are often cut off by advancing Axis units, and may have some friendly Attack Supply trapped with them. But you may find yourself, as the Axis player, forced to do this if for example a panzer division got cut off - or if you "planned" on a panzer division being cut off while involved in a deep thrust behind enemy lines.<br/>
+                    Soviet forces will often use this tactic, since they are often cut off by advancing Axis units, and may have some friendly Attack Supply trapped with them. But you may find yourself, as the Axis player, forced to do this if for example a panzer division got cut off - or if you "planned" on a panzer division being cut off while involved in a deep thrust behind enemy lines.<br />
                     Note that using Attack Supply for General Supply does not give the unit(s) Attack Supply for combat - it only gives them General Supply for the turn.
-                </div>  
+                </div>
             </span>
 
-       
+
 
             <span>
 
                 <div className="subheader-rule">
-        
+
                     <div>Effects of not being able to get General Supply</div>
                 </div>
 
                 <div className="padded">
-                    Units that were in General Supply but are found to be unable to trace to General Supply are marked with a "Emergency Supply" marker. These units are still considered to be in General Supply. Units that have a "Emergency Supply" marker on them, and are found to still be unable to trace to General Supply during the Supply phase have the "Emergency Supply" marker flipped to "Out of Supply". Strongpoints also suffer from being Out of Supply. Units that are marked "Out of Supply" have the following negative effects:
+                    Units that were in General Supply but are found to be unable to trace to General Supply are marked with a "Emergency Supply" marker.
+                    <span className="spacer0_5rem" />
+                    These units are still considered to be in General Supply. Units that have a "Emergency Supply" marker on them, and are found to still be unable to trace to General Supply during the Supply phase have the "Emergency Supply" marker flipped to "Out of Supply".
+                    <span className="spacer0_5rem" />
+                    Strongpoints also suffer from being Out of Supply.
+                    <span className="spacer0_5rem" />
+                    Units that are marked "Out of Supply" have the following negative effects:
                 </div>
             </span>
 
@@ -4117,7 +4125,7 @@ const Supply = (props) => {
                 <div className="gray-box">
                     <div className="subsubheader">Effects of being Out of Supply<BsrLink page="11" rule="6.35" /></div>
                     <ul>
-                        <li>2 Movement points are subtracted from its normal movement allowance (prior to any halving due to other rules).
+                        <li>2 (two) Movement points are subtracted from its normal movement allowance (prior to any halving due to other rules).
                             Exceptions: Do not reduce the MA of cavalry, flotilla, or armored train units.</li>
                         <li>Out of Supply Axis motorized units are subject to Fuel Shortage.</li>
                         <li>Cannot conduct Railroad or Strategic movement.</li>
@@ -4138,42 +4146,103 @@ const Supply = (props) => {
             <span className="spacer1_5rem" />
 
             <div className="padded image-left">
-                <img src={sovietStrongpoint} alt="Soviet strongpoint" width="80" height="80"/>
+                <img src={sovietStrongpoint} alt="Soviet strongpoint" width="80" height="80" />
                 <div>
                     Strongpoints that are unoccupied <b>and</b> not adjacent to a friendly combat unit <b>and</b> which are Out of Supply at the end of the Supply Status Phase are removed.
                     Other types of fortifications are not affected.<BsrLink page="11" rule="6.36" />
-                 </div>
+                </div>
             </div>
 
             <span className="spacer2rem" />
 
             <span>
                 <div className="subheader-image">
-                    <div>Supply Units <BsrLink page="11" rule="6.4" /></div>
-                    <img src={sovietCombatSupply} alt="supply counters"  width="80" height="80"/>
-                    <img src={sovietDump} alt="Soviet dump" width="80" height="80"/>
+                    <div>Supply Units <BsrLink page="11" rule="6.4" /> and Attack Supply <BsrLink page="39" rule="15." /></div>
+                    <img src={sovietCombatSupply} alt="supply counters" width="80" height="80" />
+                    <img src={sovietDump} alt="Soviet dump" width="80" height="80" />
                 </div>
                 <span className="spacer1rem" />
-                <div>
-                    Attack Supply is <span className="b">not required to conduct combat</span>. However, units that attack without Attack Supply suffer the following negative effects.
-                </div>
+                Attack Supply counters are represented by either the Mobile Supply counter (MSU)
+                or by the Supply Dump counter. They provide combat Attack Supply to combat units.<BsrLink page="11" rule="6.41" />
+                <span className="spacer0_5rem" />
+                They are not considered combat units. They cannot enter an enemy ZOC unless
+                accompanied by combat units. They cannot be captured by the enemy. If an enemy
+                unit enters a hex with only Supply unit(s), the supply units are returned
+                to their side's stock. Supply units can retreat if stacked with
+                friendly retreating combat units.<BsrLink page="11" rule="6.42" />
+                <span className="spacer0_5rem" />
+                When a Supply unit is removed for the map for any reason, it is returned to the
+                owning player's stock.<BsrLink page="11" rule="6.43" />
+                <span className="spacer0_5rem" />
+                Supply counters do not need General Supply.<BsrLink page="11" rule="6.44" />
+                <span className="spacer0_5rem" />
+                The Scenario Rules specify how many Attack Supply points become available
+                during the Reinforcement Phase. The player can decide whether they
+                come onto the map as MSUs, or as Supply Dumps. A player cannot have
+                more supply units on the map that specified by the scenario.<BsrLink page="11" rule="6.45" />
+                <span className="spacer0_5rem" />
+                A Mobile Supply counter can be moved as a normal combat unit, although it
+                does have a green Movement Allowance, so they only move in their
+                side's regular Movement Phase (unless activated by a HQ).<BsrLink page="11" rule="6.46" />
+                <span className="spacer0_5rem" />
+                A Supply Dump counter can be moved from a player's supply to the map via
+                railroad or naval movement. Once a Supply Dump is placed on the map, it cannot move again,
+                unless it's reduced to where a 1 supply point MSU is created by the reduction. The MSU created
+                can then move in the movement phase.<BsrLink page="12" rule="6.48" />
+                <span className="spacer0_5rem" />
             </span>
 
 
 
-
-
-
-
-
-
-
-
-
-
             <div>
+                To use Attack Supply for a combat all units that are participating in the attack, including any artillery units, each unit must be able to trace a LOC (7 or 5 hexes, depending on the current General Supply LOC length <BsrLink page="39" rule="15.21" />) to the Attack Supply counter - either a Mobile Supply counter or a Supply Dump.
+                You do not trace from the hex under attack - you trace from the participating attacking units, including any artillery.
+                <span className="spacer0_5rem" />
+                More than one
+                ASP may be required (and spent) to bring all attacking units
+                into Attack Supply, but no ASP can provide Attack Supply to
+                more than one attack. <BsrLink page="39" rule="15.21" />
+                <span className="spacer0_5rem" />
+
+                Attacking artillery participating in combat need to have Attack Supply to use its support value <BsrLink page="39" rule="15.3" />. 
+                <span className="spacer0_5rem" />
+                Defending artillery does not need Attack Supply. Attacking artillery can provide support, if they
+                are given Attack Supply, even if no combat units that are attacking have Attack Supply - in this
+                case, the combat units are considered to be attacking without Attack Supply, even though it has
+                artillery support.<BsrLink page="39" rule="15.34" />
+                <span className="spacer0_5rem" />
+                The Attack Supply point is consumed (either remove the Mobile Supply counter, or flip a Supply Dump back over to its Mobile Supply side), and then the attack can proceed as a Combat Supplied attack.
+                If tracing to a dump, and more than one attack will be drawing on the dump, the player can wait until all the
+                combats are done, then remove the dump.<BsrLink page="39" rule="15.21" />
+
+                <div className="rules-note">
+                Note that when the odds are 9-1 or greater, the expenditure of Attack Supply is usually not necessary.
+                </div>
+            </div>
+
+            <span className="spacer0_5rem" />
+
+
+            <div className="padded">
+                Attack Supply is <span className="b">not required to conduct combat</span>. However, units that attack without Attack Supply suffer the following negative effects.
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
                 <div className="gray-box">
-                    <div className="subsubheader">Effects of attacking without Attack Supply:</div>
+                    <div className="subsubheader">Effects of attacking without Attack Supply <BsrLink page="39" rule="15.22" />:</div>
                     <ul>
                         <li>+2 die modifier on combat table roll.</li>
                         <li>Artillery cannot provide support.</li>
@@ -4183,32 +4252,7 @@ const Supply = (props) => {
 
                     </ul>
                 </div>
-            </div>
-
-
-            <span className="spacer1_5rem" />
-            <div>
-                <div>
-                    To use Attack Supply for a combat all units that are participating in the attack, including any artillery units, must be able to trace a LOC (7 or 5 hexes, depending on the current General Supply LOC length) to the Attack Supply unit, either a Mobile Supply counter or a Supply Dump. The Attack Supply point is consumed (either remove the Mobile Supply counter, or flip a Supply Dump back over to its Mobile Supply side), and then the attack can proceed as a Combat Supplied attack. It doesn't matter if you have only one unit attacking or 20 with 4 artillery units providing support - 1 attack uses 1 Attack Supply, but you might have to use 2 (or more) in order to reach every attacking unit. Of course, its a good idea to have your Attack Supply close enough so that it reaches all attacking units so you only need to spend 1 Attack Supply.
-                </div><div>
-                    Note that when the odds are 9-1 or greater, the expenditure of Attack Supply is usually not necessary.
-                </div><div>
-                    A Attack Supply counter has two sides to it. One side is the Mobile Attack Supply unit. The other side is a Attack Supply Dump. Mobile Attack Supply units can move on their own, or be transported by rail. If you have two Mobile Attack Supply units in the same hex, they can be flipped to a single Attack Supply Dump. If you wish to move a Attack Supply Dump, then you have to sacrifice a point of Attack Supply by simply flipping the Attack Supply Dump to its Mobile Attack Supply side, then you can move it. You can not later turn this single unit back to its Attack Supply Dump unless it is joined by another Mobile Attack Supply unit later. Once you make the decision to flip a dump to its mobile side, you lose that point of Attack Supply.
-                </div><div>
-                    Attack Supply units cannot be captured. If the hex they are in is entered by an enemy unit, the Attack Supply is removed from the map.
-                </div><div>
-                    Both sides get a maximum number of Attack Supply counters to use in each scenario (except some training scenarios). This is a hard limit, you can not add more Attack Supply counters beyond this limit (although you're free to create dumps as much as you can with the available Mobile Supply units). Each side gets a certain maximum number of Mobile Attack Supply units that can be brought onto the map each turn. If all Attack Supply counters are on the map, then you don't get to bring any new ones onto the map. Typically, the Axis are constantly expending their Attack Supply, and therefore have a constant stream of Mobile Attack Supply units entering the map, often by rail. The Soviets, since they usually don't attack too often, sometimes get "maxxed" out on their Attack Supply units because the limit of Attack Supply units allocated to them are all on the map waiting to get used.
-                </div><div>
-                    For example, lets say your Attack Supply allotment is 4 Attack Supply points a turn. If, on a turn, you only have 1 Attack Supply unit available to be brought in (because the rest are on the map), then you bring only 1 in (the one available, even though you qualify for 4). They do not accumulate to the next turn. The next turn you can still only bring in the set maximum of 4 again.
-                </div><div>
-                    For the Axis, its important to keep attacking (in good odds attacks) and expending your Attack Supply. You don't want to get "maxed" out on Attack Supply sitting on the map because it probably means you are not using your troops effectively enough. Get them up front and attacking. Especially the panzer divisions. An idle panzer division is a bad thing.
-                </div>
-            </div>
-
-
-
-
-
+           
 
 
 
