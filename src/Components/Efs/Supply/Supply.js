@@ -31,6 +31,7 @@ import swampMinorRoad from "../../../images/efs/supply/swampMinorRoadHex_230x194
 import sovietStrongpoint from "../../../images/efs/supply/soviet_strongpoint_120.jpg";
 import sovietCombatSupply from "../../../images/efs/supply/soviet_combat_supply_120.jpg";
 import sovietDump from "../../../images/efs/supply/soviet_dump_120.jpg";
+import germanSupply from "../../../images/efs/supply/german_supply_600x378.jpg";
 import './Supply.scss';
 let mina = window.mina
 
@@ -3330,24 +3331,24 @@ const Supply = (props) => {
                         which is determined by counting hexes from the unit to a hex that is providing General Supply.
                     </div>
                     <div className="padded">
-                        General Supply routes are initially traced from a supply source, as specified in the scenario instructions.
-                        The route is then traced along a Railroad Net, or a Road Net, or a Line of Communications (LOC), or a limited
+                        The supply route is usually traced 
+                         along a Line of Communications (LOC) then to a Railroad or a Road (not minor road), or a limited
                         combination of these.
                     </div>
                     <span className="spacer1rem" />
                     <div className="stand-out red">Attack Supply<BsrLink page="39" rule="15.2" /></div>
                     <div className="padded">
-                        "Attack Supply" represents a concentration of items that have been positioned near the attacking unit(s)
+                        "Attack Supply" represents a concentration of items, identified by Supply units on the map, that have been positioned near the attacking unit(s)
                         when a major military operation is planned -
-                        items such as
+                        the Supply units represent such items as
                         ammunition, shells, rockets, extra fuel, replacement vehicles, etc. Although military units usually carry with them quantities
-                        ammunition and other military supplies needed to perform in combat, for a
+                        ammunition and other military supplies needed to perform in combat - for a
                         planned attack where the unit(s) is needed to perform at full capacity, they will need a surplus of these items,
-                        since the military ordnance will be expended at a much faster rate during combat.
+                        since the military ordnance will be expended at a much faster rate during combat. And this "surplus" of combat supplies
+                        is identified by where the attack Supply units are at. Air missions, however, never need Attack Supply.
                     </div>
                     <div className="padded">
-                        In this EFS game system, most units can attack without
-                        being provided Attack Supply, but they will not perform at full capacity. Attacking without Attack Supply can cause
+                        In the EFS game system, <b><i>ground units can attack without Attack Supply</i></b>, but they will suffer
                         increased risk of losses, and also means that artillery support will probably not be provided.
                     </div>
 
@@ -3371,8 +3372,7 @@ const Supply = (props) => {
                     General Supply for all units is checked during the Supply Status Phase.<BsrLink page="9" rule="6.11" />
                 </div>
                 <div className="padded">
-                    General Supply is delivered to units by tracing a path of contiguous hexes from a supply source
-                    to the hex a unit is in.<BsrLink page="9" rule="6.12" /> The route may consist of 3 different types that can connect to each other:
+                    General Supply is delivered to units by tracing a path of contiguous hexes from a unit to a supply source.<BsrLink page="9" rule="6.12" /> The route may consist of 3 different types that can connect to each other:
                 </div>
             </span>
 
@@ -3394,33 +3394,44 @@ const Supply = (props) => {
 
                 </div>
             </div>
-
+            <span className="spacer1rem" />
+            <div className="rules-note">
+            Although you can visualize a constant stream of trucks and wagons carrying supplies to units on the front lines, the
+            actual tracing of a supply line is done by counting hexes from a hex adjacent to the unit to a hex on the General Supply
+            route.
+            You do not actually count the hex the unit is in - you start counting from an adjacent hex. That adjacent hex will be
+            hex number 1 if you are tracing the hexes of a LOC. One exception - a unit can't reach across a hexside that has
+            an enemy fortified belt hexside.
+</div>
             <span className="spacer1_5rem" />
             6.13 No component of a Supply Route can be traced:<BsrLink page="9" rule="6.13" />
             <ul className="spread-list">
                 <li>Through a hex in an enemy ZOC unless that hex is occupied
-                    by a friendly combat unit
+                    by a friendly combat unit.
                 </li>
                 <li>
                     Across lake or major river hexsides (unless frozen) unless
                     across a non-destroyed bridge or a friendly Bridge or Ferry
-                    marker
+                    marker.
                 </li>
                 <li>Into or through any number of swamp hexes in Dry or Mud
                     weather unless along a road or railroad. If the road or railroad
                     cannot be used to trace an LOC, the hex cannot be a part of
                     the LOC (the road, or railroad, must enter the swamp hex
-                    from a hex in the LOC and exit into a hex in the LOC)
+                    from a hex in the LOC and exit into a hex in the same LOC).
                 </li>
                 <li>Into or through a hex with a non-destroyed enemy citadel,
-                    fortified belt, strongpoint, or strongpoint under-construction
+                    fortified belt, strongpoint, or strongpoint under-construction.
                 </li>
-                <li>Across a non-destroyed enemy fortified line hexside
+                <li>Across a non-destroyed enemy fortified line hexside.
                 </li>
             </ul>
-            <div className="subheader-rule">
+            <span className="spacer1rem" />
+            <img className="" src={germanSupply} alt="German supply trucks" />
+            <div className="subheader-rule" style={{ marginTop: '1rem' }}>
                 <div>General Supply Route<BsrLink page="10" rule="6.1" /></div>
             </div>
+
             <div className="padded">
                 A General Supply route is traced along a path of contiguous hexes from a ground unit to:
                 <ul className="spread-list">
@@ -3431,7 +3442,7 @@ const Supply = (props) => {
                     <li>a Railroad Net<BsrLink page="10" rule="6.16" /> which connects to a Supply Source.</li>
                 </ul>
             </div>
-            <div className="subheader-rule">
+            <div className="subheader-rule" style={{ marginTop: '1rem' }}>
                 <div>Line of Communications (LOC)<BsrLink page="10" rule="6.14" /></div>
             </div>
             <div className="padded">
@@ -3472,12 +3483,14 @@ const Supply = (props) => {
                     The Railroad used in a supply trace has to be contiguous hexes of the same (or connecting) railroad.<BsrLink page="10" rule="6.16" /><br />
                     The Main Road (or Motorway) used in a supply trace has to be contiguous hexes of the same main road.<BsrLink page="10" rule="6.15" /><br />
                     The 7 hexes overland (LOC) has to be contiguous hexes.<BsrLink page="10" rule="6.11" /><br />
-                    No "hopping" over hexes is allowed. No leaving a road to go around some obstruction (like an enemy unit) and getting back on the road. Any obstruction on a main road or railroad stops the use of that main road or railroad at the last hex before the obstruction. From there, the LOC goes out up to 7 hexes.<br />
+                    No "hopping" over hexes is allowed. No leaving a road to go around some obstruction (like an enemy unit) and getting back on the road. Any obstruction on a main road or railroad stops the use of that main road or railroad at the last hex before the obstruction. From there, the LOC goes out up to 7 (or 5) contiguous hexes.<br />
                     A General Supply path can not cross non-frozen lake/inland sea hexsides or unbridged major river. A General Supply path cannot enter a swamp hex during Dry or Mud turns unless the path is along a road or railroad that goes through the hex. A LOC can go along a railroad into a swamp hex during Dry or Mud turns.<br />
-                    A General Supply path cannot enter a hex with a undestroyed enemy strongpoint or across a non-destroyed fortified line hexside.<BsrLink page="10" rule="6.13" />
-                    The path from a Unit to General Supply can only be in this order: LOC -> Railroad -> Main Road or Motorway, with any of them being optional,
-                    but you cannot trace along more than one path of each type.<BsrLink page="10" rule="6.12" />
-                    Armored trains and flotillas do not require General Supply.<BsrLink page="11" rule="6.37" /><BsrLink page="39" rule="15.22" />
+                    A General Supply path cannot enter a hex with a undestroyed enemy strongpoint or cross over a non-destroyed 
+                    fortified line hexside.<BsrLink page="10" rule="6.13" /><br />
+                    The path from a Unit to General Supply can only be in this order: LOC -&gt; Railroad -&gt; Main Road or Motorway, with any of them being optional,
+                    but you cannot trace along more than one path of each type.<BsrLink page="10" rule="6.12" /><br/>
+                    Armored trains and flotillas do not require General Supply.<BsrLink page="11" rule="6.37" /><BsrLink page="39" rule="15.22" /><br />
+                    Supply rules do not apply to air units.
                 </span>
             </div>
             <span className="spacer1rem" />
@@ -3515,6 +3528,7 @@ const Supply = (props) => {
                     This method of gaining General Supply does qualify for removing Emergency Supply markers or Out of Supply markers from units, as per regular
                     General Supply rules. <br />
                 </div>
+                <span className="spacer0_5rem" />
                 <div className="rules-note">
                     Soviet forces will often use this tactic, since they are often cut off by advancing Axis units, and may have some friendly Attack Supply trapped with them. But you may find yourself, as the Axis player, forced to do this if for example a panzer division got cut off - or if you "planned" on a panzer division being cut off while involved in a deep thrust behind enemy lines.<br />
                     Note that using Attack Supply for General Supply does not give the unit(s) Attack Supply for combat - it only gives them General Supply for the turn.
@@ -3525,11 +3539,11 @@ const Supply = (props) => {
                     <div>Effects of not being able to get General Supply</div>
                 </div>
                 <div className="padded">
-                    Units that were in General Supply but are found to be unable to trace to General Supply are marked with a "Emergency Supply" marker.
+                    Units that were in General Supply but are found in the General Supply phase to be unable to trace to General Supply are marked with a "Emergency Supply" marker.
                     <span className="spacer0_5rem" />
                     These units are still considered to be in General Supply. Units that have a "Emergency Supply" marker on them, and are found to still be unable to trace to General Supply during the Supply phase have the "Emergency Supply" marker flipped to "Out of Supply".
                     <span className="spacer0_5rem" />
-                    Strongpoints also suffer from being Out of Supply.
+                    Strongpoints also suffer from being Out of Supply, but they don't get the "Emergency Supply" marker.
                     <span className="spacer0_5rem" />
                     Units that are marked "Out of Supply" have the following negative effects:
                 </div>
@@ -3631,13 +3645,15 @@ const Supply = (props) => {
                 case, the combat units are considered to be attacking without Attack Supply, even though it has
                 artillery support.<BsrLink page="39" rule="15.34" />
                 <span className="spacer0_5rem" />
-                The Attack Supply point is consumed (either remove the Mobile Supply counter, or flip a Supply Dump back over to its Mobile Supply side), and then the attack can proceed as a Combat Supplied attack.
+                After the Attack Supply point is consumed (by either removing the Mobile Supply counter, or flipping a Supply Dump back over to its
+                 Mobile Supply side), then the attack can proceed as a Combat Supplied attack.<br />
                 If tracing to a dump, and more than one attack will be drawing on the dump, the player can wait until all the
-                combats are done, then remove the dump.<BsrLink page="39" rule="15.21" />
-                <div className="rules-note">
+                combats are done (after informing his opponent what he's/she's doing), then remove or reduce the dump (depending on how many supply points were drawn from it).<BsrLink page="39" rule="15.21" />
+            </div>
+            <span className="spacer0_5rem" />
+            <div className="rules-note">
                     Note that when the odds are 9-1 or greater, the expenditure of Attack Supply is usually not necessary.
                 </div>
-            </div>
             <span className="spacer0_5rem" />
             <div className="padded">
                 Attack Supply is <span className="b">not required to conduct combat</span>. However, units that attack 
@@ -3645,6 +3661,7 @@ const Supply = (props) => {
                 that does not have Attack Supply, the entire attack is considered to be undertaken without Attack Supply. You can omit
                 units without Attack Supply from the combat, and use only those with Attack Supply, to avoid this situation.
             </div>
+            <span className="spacer0_5rem" />
             <div className="gray-box">
                 <div className="subsubheader">Effects of attacking without Attack Supply <BsrLink page="39" rule="15.22" />:</div>
                 <ul>
