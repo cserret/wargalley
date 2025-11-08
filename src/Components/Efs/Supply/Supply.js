@@ -2258,13 +2258,13 @@ const Supply = (props) => {
                 let textXpos = posX + 15
                 let textYpos = posY + 50
                 let bbox = textBox(g,
-                    `During Mud conditions, the ZOCs of units with Red or Orange boxed movement
+                    `During Mud conditions, the ZOCs of units with Red boxed or Orange movement
                     points do not extend into adjacent hexes, unless the unit's ZOC enters a town or city,
                     or its ZOC enters the adjacent hex along motorway/road/minor road/railroad.`,
-                    textXpos, textYpos, 500, 0, 0, 155)
+                    textXpos, textYpos, 500, 14500, 0, 155)
                 let boxWidth = bbox.width
                 let spacing = boxWidth / 4
-                let msRedBoxText = g.text(textXpos + spacing + 175, textYpos + 241, "Red Box MP").attr({
+                let msRedBoxText = g.text(textXpos + spacing + 175, textYpos + 241, "Red boxed MP").attr({
                     "textAnchor": "start",
                     "dominant-baseline": "central",
                     "fontSize": 40 * sgCrossBrowserFontSizeRatio.value,
@@ -2274,26 +2274,24 @@ const Supply = (props) => {
                     fill: "black",
                     opacity: 0,
                 })
-                let leftArrow3 = g.text(textXpos + spacing + 120, textYpos + 241, "↼").attr({
-                    "textAnchor": "start",
-                    "dominant-baseline": "central",
-                    "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
+                
+
+                let arrow = g.path("M 0,0 L 18,8 L 0,18 0,12, -18,12, -18,6, 0,6 Z").attr({
+                    fill: "black",
+                    "strokeWidth": 1,
                     stroke: "black",
-                    fill: "black",
                     opacity: 0,
-                })
-                let leftArrow4 = g.text(textXpos + spacing + 120, textYpos + 244, "↽").attr({
-                    "textAnchor": "start",
-                    "dominant-baseline": "central",
-                    "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
+                    transform: `t637,709, s1.2, r180`
+                });
+
+                let arrow2 = g.path("M 0,0 L 18,8 L 0,18 0,12, -18,12, -18,6, 0,6 Z").attr({
                     fill: "black",
+                    "strokeWidth": 1,
+                    stroke: "black",
                     opacity: 0,
-                })
+                    transform: `t1111,709, s1.2, r180`
+                });
+
                 posX = textXpos + spacing
                 let displayRedBox = g.image(soviet_armor_unit, posX, posY + 200, 0, 0);
                 displayRedBox.attr({
@@ -2310,27 +2308,8 @@ const Supply = (props) => {
                     'height': "120",
                     'opacity': 0
                 });
-                let leftArrow = g.text(posX + 120, textYpos + 241, "↼").attr({
-                    "textAnchor": "start",
-                    "dominant-baseline": "central",
-                    "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                let leftArrow2 = g.text(posX + 120, textYpos + 244, "↽").attr({
-                    "textAnchor": "start",
-                    "dominant-baseline": "central",
-                    "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
-                    "fontWeight": "bold",
-                    "fontFamily": "serif",
-                    stroke: "none",
-                    fill: "black",
-                    opacity: 0,
-                })
-                let msOrangeMPText = g.text(posX + 120 + 54, textYpos + 241, "Orange Box MP").attr({
+
+                let msOrangeMPText = g.text(posX + 120 + 54, textYpos + 241, "Orange MP").attr({
                     "textAnchor": "start",
                     "dominant-baseline": "central",
                     "fontSize": 40 * sgCrossBrowserFontSizeRatio.value,
@@ -2345,11 +2324,17 @@ const Supply = (props) => {
                     displayOrangeMP.animate({ opacity: 1 }, 500);
                     msRedBoxText.animate({ opacity: 1 }, 500);
                     msOrangeMPText.animate({ opacity: 1 }, 500);
-                    leftArrow.animate({ opacity: 1 }, 500);
-                    leftArrow2.animate({ opacity: 1 }, 500);
-                    leftArrow3.animate({ opacity: 1 }, 500);
-                    leftArrow4.animate({ opacity: 1 }, 500);
-                }, 1000);
+                    arrow.animate({ opacity: 1 }, 500);
+                    arrow2.animate({ opacity: 1 }, 500);
+                    registerTimer(() => {
+                        displayRedBox.animate({ opacity: 0 }, 500);
+                        displayOrangeMP.animate({ opacity: 0 }, 500);
+                        msRedBoxText.animate({ opacity: 0 }, 500);
+                        msOrangeMPText.animate({ opacity: 0 }, 500);
+                        arrow.animate({ opacity: 0 }, 500);
+                        arrow2.animate({ opacity: 0 }, 500);
+                    }, 13500)
+                }, 500);
 
                 return { discrete: g, percentage: null }
             }
@@ -3148,7 +3133,7 @@ const Supply = (props) => {
                     `Other rules regarding Supply -
                      A LOC cannot cross a lake or major river hexside (unless frozen) unless
                      its across a non-destroyed bridge or a friendly Bridge or Ferry marker.`,
-                    posX, posY, 1500, 16500, 0, 0, 350)
+                    posX, posY, 1500, 12500, 0, 0, 350)
                 let majorRiverGraphic = g.image(majorRiver, posX, posY + 5, 311, 110);
                 majorRiverGraphic.attr({
                     'opacity': 0
@@ -3170,7 +3155,7 @@ const Supply = (props) => {
                       or railroad (which connects to a supply path), or else the LOC is reduced to 5 hexes.
                      For Swamp hexes - a LOC cannot be traced unless along a main road or railroad.
                      In Dry weather, a LOC through Swamp is reduced to 5 hexes unless on a main road.`,
-                    posX, posY, 16000, 27000, 0, 30, 280)
+                    posX, posY, 12000, 27000, 0, 30, 280)
 
                 let swampMinorRoadGraphic = g.image(swampMinorRoad, posX, posY + 5, 230, 194);
                 swampMinorRoadGraphic.attr({
@@ -3214,10 +3199,10 @@ const Supply = (props) => {
             let _storyBoard = []
             _storyBoard.push(page1)
             _storyBoard.push(page1b)
-             _storyBoard.push(page2)
+            _storyBoard.push(page2)
             _storyBoard.push(page3)
             _storyBoard.push(page4)
-             _storyBoard.push(page5)
+            _storyBoard.push(page5)
             _storyBoard.push(page6)
             _storyBoard.push(page7)
             _storyBoard.push(page8)
@@ -3260,6 +3245,7 @@ const Supply = (props) => {
             _storyBoard.push(page44)
             _storyBoard.push(page45)
             _storyBoard.push(page46)
+
             return _storyBoard
         }
         sgStoryBoard.value = populateStoryBoard()
@@ -3645,7 +3631,7 @@ const Supply = (props) => {
                     No "hopping" over hexes is allowed. No leaving a road to go around some obstruction (like an enemy unit) and getting back on the road. Any obstruction on a main road or railroad stops the use of that main road or railroad at the last hex before the obstruction. From there, the LOC goes out up to 7 (or 5) contiguous hexes.<br />
                     A General Supply path can not cross non-frozen lake/inland sea hexsides or unbridged major river. A General Supply path cannot enter a swamp hex during Dry or Mud turns unless the path is along a road or railroad that goes through the hex. A LOC can go along a railroad into a swamp hex during Dry or Mud turns.<br />
                     A General Supply path cannot enter a hex with a undestroyed enemy strongpoint or cross over a non-destroyed
-                    fortified line hexside.<BsrLink page="10" rule="6.13" /><br />
+                    fortified line hexside.<BsrLink page="9" rule="6.13" /><br />
                     The path from a Unit to General Supply can only be in this order: LOC -&gt; Railroad -&gt; Main Road or Motorway, with any of them being optional,
                     but you cannot trace along more than one path of each type.<BsrLink page="10" rule="6.12" /><br />
                     Armored trains and flotillas do not require General Supply.<BsrLink page="11" rule="6.37" /><BsrLink page="39" rule="15.22" /><br />
@@ -3657,13 +3643,13 @@ const Supply = (props) => {
                 <div className="gray-box">
                     <div className="subsubheader">Summary of General Supply stoppers:</div>
                     <ul>
-                        <li>Cannot go into a hex with an enemy unit in it.<BsrLink page="10" rule="6.13" /></li>
+                        <li>Cannot go into a hex with an enemy unit in it.<BsrLink page="9" rule="6.13" /></li>
                         <li>Cannot go into a hex with an enemy ZOC in it, unless that hex also has a friendly combat unit in it.<BsrLink page="10" rule="6.13" /></li>
-                        <li>Cannot go across a non-frozen lake/inland sea hexside.<BsrLink page="10" rule="6.13" /></li>
-                        <li>Cannot go across an unbridged major river.<BsrLink page="10" rule="6.13" /></li>
-                        <li>Cannot go into a swamp hex during Dry or Mud turns unless the supply can be traced along road or railroad that goes through the swamp hex(es).<BsrLink page="10" rule="6.13" /></li>
-                        <li>Cannot go through an undestroyed enemy strongpoint (although it can go into it, supplying friendly units in it, but the path stops there).<BsrLink page="10" rule="6.13" /></li>
-                        <li>Cannot go across undestroyed enemy fortified lines. (Friendly units on the "wrong" side of a fortified line, even if in the same hex as the fortified line, do not get supply through the fortified hexside).<BsrLink page="10" rule="6.13" /></li>
+                        <li>Cannot go across a non-frozen lake/inland sea hexside.<BsrLink page="9" rule="6.13" /></li>
+                        <li>Cannot go across an unbridged major river.<BsrLink page="9" rule="6.13" /></li>
+                        <li>Cannot go into a swamp hex during Dry or Mud turns unless the supply can be traced along road or railroad that goes through the swamp hex(es).<BsrLink page="9" rule="6.13" /></li>
+                        <li>Cannot go through an undestroyed enemy strongpoint (although it can go into it, supplying friendly units in it, but the path stops there).<BsrLink page="9" rule="6.13" /></li>
+                        <li>Cannot go across undestroyed enemy fortified lines. (Friendly units on the "wrong" side of a fortified line, even if in the same hex as the fortified line, do not get supply through the fortified hexside).<BsrLink page="9" rule="6.13" /></li>
                         <li>Cannot go into a hex along a railroad with a rail cut marker or a converted railhead marker, on that railroad (multiple railroads may originate from a hex, some converted, some not).<BsrLink page="10" rule="6.16" /></li>
                     </ul>
                 </div>
