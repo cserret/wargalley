@@ -1030,7 +1030,7 @@ const Supply = (props) => {
                 let posX = 560
                 let posY = 300
                 textBox(g,
-                    `Will that unit be in general supply?`,
+                    `Will that unit be in General Supply?`,
                     posX, posY, 500, 5500)
 
                 return { discrete: g, percentage: null }
@@ -1118,10 +1118,10 @@ const Supply = (props) => {
                 let posX = 222
                 let posY = 276
                 textBox(g,
-                    `A Motorway or Road (not minor road) hex that is connected to a supply source can extend
+                    `A Motorway or main Road (not minor road) hex that is connected to a supply source can extend
                     the supply source along the road, up to 21 hexes in dry weather. Friendly units can trace
-                    a LOC to such a road hex that's connected to a supply source to get its general supply.
-                    However, enemy unit(s) or enemy zocs on the road blocks the tracing of supply at that hex.`,
+                    a LOC to such a road hex that's connected to a supply source to get its General Supply.
+                    However, enemy unit(s) or enemy ZOCs on the road blocks the tracing of supply at that hex.`,
                     posX, posY, 500, 11500)
 
                 return { discrete: g, percentage: null }
@@ -1388,7 +1388,7 @@ const Supply = (props) => {
                 textBox(g,
                     `Railroads can extend a supply source with no set limit on number of hexes, however the route
                     traced can only travel along railroads that have been converted (for Axis) or not converted
-                    (for Soviet) use. Enemy units, unblocked enemy zocs and rail breaks stop the tracing of
+                    (for Soviet) use. Enemy units, unblocked enemy ZOCs and rail breaks stop the tracing of
                     supply at that rail hex.`,
                     posX, posY, 500, 16000)
                 let g2 = paper.g()
@@ -1741,6 +1741,7 @@ const Supply = (props) => {
                     opacity: 0
                 })
 
+                // the blocked hexline anim.
                 registerTimer(() => {
                     hexPath.animate({ opacity: 1 }, 500);
                     registerTimer(() => {
@@ -1765,7 +1766,7 @@ const Supply = (props) => {
 
                 registerTimer(() => {
                     let z1 = displayZocs(g, 1386, 428)
-                    let z2 = displayZocs(g, 1654, 428)
+                    let z2 = displayZocs(g, 1654, 428, 2)
                     registerTimer(() => {
                         z1.remove()
                         z2.remove()
@@ -1791,7 +1792,7 @@ const Supply = (props) => {
                 textBox(g,
                     `Note - if the LOC you are tracing goes through a Marsh hex in Dry
                      Weather,  the maximum LOS length is reduced to 5 hexes, unless
-                     you are tracing along a road or railroad (minor road doesn't count).`,
+                     you are tracing along a road or railroad.`,
                     posX, posY, 500, 9500)
 
                 let numberPositions = []
@@ -2070,7 +2071,7 @@ const Supply = (props) => {
                 let textXpos = posX + 20
                 let textYpos = posY + 50
                 textBox(g,
-                    `Since the next couple of examples will trace to the road,
+                    `Since the next couple of examples will trace to the road
                     network, lets say the Soviets broke the rail line here.`,
                     textXpos, textYpos, 500, 8500)
 
@@ -2257,7 +2258,7 @@ const Supply = (props) => {
                 let textXpos = posX + 15
                 let textYpos = posY + 50
                 let bbox = textBox(g,
-                    `During Mud conditions, the ZOCs of units with Red boxed and Orange movement
+                    `During Mud conditions, the ZOCs of units with Red or Orange boxed movement
                     points do not extend into adjacent hexes, unless the unit's ZOC enters a town or city,
                     or its ZOC enters the adjacent hex along motorway/road/minor road/railroad.`,
                     textXpos, textYpos, 500, 0, 0, 155)
@@ -2329,7 +2330,7 @@ const Supply = (props) => {
                     fill: "black",
                     opacity: 0,
                 })
-                let msOrangeMPText = g.text(posX + 120 + 54, textYpos + 241, "Orange MP").attr({
+                let msOrangeMPText = g.text(posX + 120 + 54, textYpos + 241, "Orange Box MP").attr({
                     "textAnchor": "start",
                     "dominant-baseline": "central",
                     "fontSize": 40 * sgCrossBrowserFontSizeRatio.value,
@@ -3164,9 +3165,11 @@ const Supply = (props) => {
                 posX += 69
                 textBox(g,
                     `Other rules regarding Supply -
-                     During Dry or Mud weather, a minor road allows the tracing of 
-                     a LOC through a swamp hex during at a max LOC length of 5 hexes 
-                     (otherwise a LOC cannot go through a swamp hex).`,
+                     (Keep in mind that the max LOC length in Mud weather is always max 5 hexes.)
+                     For Marsh hexes, tracing a LOC you need to stay on a road (not minor road)
+                      or railroad (which connects to a supply path), or else the LOC is reduced to 5 hexes.
+                     For Swamp hexes - a LOC cannot be traced unless along a main road or railroad.
+                     In Dry weather, a LOC through Swamp is reduced to 5 hexes unless on a main road.`,
                     posX, posY, 16000, 27000, 0, 30, 280)
 
                 let swampMinorRoadGraphic = g.image(swampMinorRoad, posX, posY + 5, 230, 194);
@@ -3263,7 +3266,7 @@ const Supply = (props) => {
         sequence()
     }
 
-    const displayZocs = (g, xShift, yShift) => {
+    const displayZocs = (g, xShift, yShift, omit) => {
         let zocGroup = g.group()
         let angleMult = 60
         let zocPaths = ``
@@ -3310,6 +3313,10 @@ const Supply = (props) => {
                     fill: "black",
                     opacity: 1,
                 })
+                if( i === omit ) {
+                   zocClone.attr({opacity: 0})
+                     msText.attr({opacity: 0})
+                }
                 msText.transform(`t ${xShift + x}, ${yShift + y}`, 500);
                 zocGroup.add(msText)
             }, i * 50);
@@ -3608,8 +3615,8 @@ const Supply = (props) => {
                 <ul className="spread-list">
                     <li>The current weather is Mud.</li>
                     <li>The current weather is Dry and the LOC enters or crosses a hex that is under the Lingering Mud condition.</li>
-                    <li>The LOC enters or crosses a marsh hex (unless along a regular road or railroad) in Dry Weather.</li>
-                    <li>The LOC enters or crosses a swamp hex (unless along a regular road) in Dry or Mud Weather.</li>
+                    <li>The LOC enters or crosses a marsh hex (unless along a main road or railroad) in Dry Weather.</li>
+                    <li>The LOC enters or crosses a swamp hex (unless along a main road) in Dry or Mud Weather.</li>
                 </ul>
             </div>
 
@@ -3631,6 +3638,7 @@ const Supply = (props) => {
             </div>
             <div className="padded">
                 <span>
+                    The term "Road net" refers to connected main road hexes, not minor roads.<BsrLink page="10" rule="6.15" /><br /> 
                     The Railroad used in a supply trace has to be contiguous hexes of the same (or connecting) railroad.<BsrLink page="10" rule="6.16" /><br />
                     The Main Road (or Motorway) used in a supply trace has to be contiguous hexes of the same main road.<BsrLink page="10" rule="6.15" /><br />
                     The 7 hexes overland (LOC) has to be contiguous hexes.<BsrLink page="10" rule="6.11" /><br />
