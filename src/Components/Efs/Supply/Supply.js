@@ -1930,7 +1930,7 @@ const Supply = (props) => {
                 textBox(g,
                     `If a unit is previously marked Out of Supply or Emergency Supply,
                     and in a General Supply phase is deemed to be back in supply,
-                    then remove the markers, even if it's the Out of Supply marker.`,
+                    then remove the marker, even if it's the Out of Supply marker.`,
                     posX, posY, 29000, 40000)
 
                 registerTimer(() => {
@@ -2048,7 +2048,7 @@ const Supply = (props) => {
                 let textYpos = posY + 50
                 textBox(g,
                     `During Mud weather, the LOC path is reduced to 5 hexes,
-                    motorway and (not minor) roads are reduced to 15 hexes, but
+                    motorway and main roads are reduced to 15 hexes, but
                     railroad supply rules remain the same as with Dry weather.`,
                     textXpos, textYpos, 500, 8500)
 
@@ -2203,7 +2203,7 @@ const Supply = (props) => {
                 let textXpos = posX + 20
                 let textYpos = posY + 70
                 textBox(g,
-                    `Now the rail supply ends at the hex marked '5' on the motorway,
+                    `Now the rail supply ends at the hex marked '5' on the supply path,
                     but supply still flows on the motorway, up to the hex marked '15'.`,
                     textXpos, textYpos, 500, 10000)
 
@@ -3124,7 +3124,7 @@ const Supply = (props) => {
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "45")
-                let posX = 160
+                let posX = 40
                 let posY = 330
                 textBox(g,
                     `Other rules regarding Supply...`,
@@ -3163,7 +3163,7 @@ const Supply = (props) => {
                 });
                 registerTimer(() => {
                     swampMinorRoadGraphic.animate({ opacity: 1 }, 500);
-                }, 16000);
+                }, 12000);
                 registerTimer(() => {
                     swampMinorRoadGraphic.animate({ opacity: 0 }, 500);
                 }, 27000);
@@ -3197,54 +3197,54 @@ const Supply = (props) => {
 
         const populateStoryBoard = () => {
             let _storyBoard = []
-            _storyBoard.push(page1)
-            _storyBoard.push(page1b)
-            _storyBoard.push(page2)
-            _storyBoard.push(page3)
-            _storyBoard.push(page4)
-            _storyBoard.push(page5)
-            _storyBoard.push(page6)
-            _storyBoard.push(page7)
-            _storyBoard.push(page8)
-            _storyBoard.push(page9)
-            _storyBoard.push(page10)
-            _storyBoard.push(page11)
-            _storyBoard.push(page12)
-            _storyBoard.push(page13)
-            _storyBoard.push(page14)
-            _storyBoard.push(page15)
-            _storyBoard.push(page16)
-            _storyBoard.push(page17)
-            _storyBoard.push(page18)
-            _storyBoard.push(page19)
-            _storyBoard.push(page20)
-            _storyBoard.push(page21)
-            _storyBoard.push(page22)
-            _storyBoard.push(page23)
-            _storyBoard.push(page24)
-            _storyBoard.push(page25)
-            _storyBoard.push(page26)
-            _storyBoard.push(page27)
+            // _storyBoard.push(page1)
+            // _storyBoard.push(page1b)
+            // _storyBoard.push(page2)
+            // _storyBoard.push(page3)
+            // _storyBoard.push(page4)
+            // _storyBoard.push(page5)
+            // _storyBoard.push(page6)
+            // _storyBoard.push(page7)
+            // _storyBoard.push(page8)
+            // _storyBoard.push(page9)
+            // _storyBoard.push(page10)
+            // _storyBoard.push(page11)
+            // _storyBoard.push(page12)
+            // _storyBoard.push(page13)
+            // _storyBoard.push(page14)
+            // _storyBoard.push(page15)
+            // _storyBoard.push(page16)
+            // _storyBoard.push(page17)
+            // _storyBoard.push(page18)
+            // _storyBoard.push(page19)
+            // _storyBoard.push(page20)
+            // _storyBoard.push(page21)
+            // _storyBoard.push(page22)
+            // _storyBoard.push(page23)
+            // _storyBoard.push(page24)
+            // _storyBoard.push(page25)
+            // _storyBoard.push(page26)
+            // _storyBoard.push(page27)
 
-            _storyBoard.push(page29)
-            _storyBoard.push(page30)
-            _storyBoard.push(page30b)
-            _storyBoard.push(page31)
-            _storyBoard.push(page32)
-            _storyBoard.push(page33)
-            _storyBoard.push(page34)
-            _storyBoard.push(page35)
-            _storyBoard.push(page36)
-            _storyBoard.push(page37)
-            _storyBoard.push(page38)
-            _storyBoard.push(page39)
-            _storyBoard.push(page40)
-            _storyBoard.push(page41)
-            _storyBoard.push(page42)
-            _storyBoard.push(page43)
-            _storyBoard.push(page44)
+            // _storyBoard.push(page29)
+            // _storyBoard.push(page30)
+            // _storyBoard.push(page30b)
+            // _storyBoard.push(page31)
+            // _storyBoard.push(page32)
+            // _storyBoard.push(page33)
+            // _storyBoard.push(page34)
+            // _storyBoard.push(page35)
+            // _storyBoard.push(page36)
+            // _storyBoard.push(page37)
+            // _storyBoard.push(page38)
+            // _storyBoard.push(page39)
+            // _storyBoard.push(page40)
+            // _storyBoard.push(page41)
+            // _storyBoard.push(page42)
+            // _storyBoard.push(page43)
+            // _storyBoard.push(page44)
             _storyBoard.push(page45)
-            _storyBoard.push(page46)
+           // _storyBoard.push(page46)
 
             return _storyBoard
         }
