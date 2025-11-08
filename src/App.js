@@ -25,6 +25,7 @@ class App extends Component {
                         <Route exact path='/efs/weather' component={Efs} />
                         <Redirect from="/efs/efs/overview" to="/efs/overview" />
                         <Redirect from="/efs/efs/units" to="/efs/units" />
+                        <Redirect from="/units" to="/efs/units" />
                         <Redirect from="/efs/efs/sop" to="/efs/sop" />
                         <Redirect from="/efs/efs/supply" to="/efs/supply" />
                         <Redirect from="/efs/efs/movement" to="/efs/movement" />

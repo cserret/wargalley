@@ -145,14 +145,14 @@ const Supply = (props) => {
 
     const setupStoryboard = () => {
         testTextWidth(paper.g())
-        var backgroundImage = paper.image(efs_minsk_map, 0, 0, 0, 0);
-        backgroundImage.attr({
+        sgBackgroundImage.value = paper.image(efs_minsk_map, 0, 0, 0, 0);
+        sgBackgroundImage.value.attr({
             'xlink:href': efs_minsk_map,
             'width': '100%',
             'height': '100%',
             'opacity': 1
         });
-        sgBackgroundImage.value = backgroundImage
+
         var dimensions = sgBackgroundImage.value.node.getBoundingClientRect();
         sgDimensions.value = { width: dimensions.width, height: dimensions.height }
 
@@ -409,52 +409,96 @@ const Supply = (props) => {
             remove: true,
             async: true,
             fn: () => {
+                // let g2 = paper.g()
+                // let g = paper.g()
+                // showPageNumber(g, "2")
+                // sgLastPageGroup.value = g
+                // var image2 = g2.image(efs_minsk_map_motorway, 0, 0, 0, 0);
+                // image2.attr({
+                //     'xlink:href': efs_minsk_map_motorway,
+                //     'width': "100%",
+                //     'height': "100%",
+                //     'opacity': 0
+                // });
+
+                // let zocText = g.text(310, 360, "Motorway").attr(textAttrs)
+                // let rotateGroup = g.g();
+
+                // let arrow2 = rotateGroup.path("M 0,0 L 18,8 L 0,18 Z").attr({
+                //     fill: "red",
+                //     "strokeWidth": 1,
+                //     stroke: "black",
+                //     opacity: 1,
+                //     transform: `t475, 420 s3, 3`
+                // });
+
+                // arrow2.animate({ transform: `s3 t480, 420` }, 500);
+                // rotateGroup.transform(`r33`)
+
+                // registerTimer(() => {
+                //     image2.animate({ opacity: 1 }, 500);
+                //     sgBackgroundImage.value.animate({ opacity: 0 }, 500);
+                // }, 100);
+
+                // registerTimer(() => {
+                //     image2.animate({ opacity: 0 }, 500);
+                //     sgBackgroundImage.value.animate({ opacity: 1 }, 500);
+                // }, 4500)
+
+                // registerTimer(() => {
+                //     image2.remove()
+                // }, 5000)
+
+                // zocText.animate({ opacity: 1 }, 500);
+                // registerTimer(() => {
+                //     zocText.animate({ opacity: 0 }, 500);
+                // }, 4500)
+
+                // registerTimer(() => {
+                //     rotateGroup.animate({ opacity: 0 }, 500);
+                // }, 4500)
+
+                // return { discrete: g, percentage: g2 }
+
                 let g2 = paper.g()
                 let g = paper.g()
                 showPageNumber(g, "2")
                 sgLastPageGroup.value = g
-                var image2 = g2.image(efs_minsk_map_motorway, 0, 0, 0, 0);
-                image2.attr({
+
+
+                sgBackgroundImage.value.animate({ opacity: 0 }, 500);
+                var roadsImage = g2.image(efs_minsk_map_motorway, 0, 0, 0, 0);
+                roadsImage.attr({
                     'xlink:href': efs_minsk_map_motorway,
                     'width': "100%",
                     'height': "100%",
                     'opacity': 0
                 });
-
-                let zocText = g.text(310, 360, "Motorway").attr(textAttrs)
-                let rotateGroup = g.g();
-
-                let arrow2 = rotateGroup.path("M 0,0 L 18,8 L 0,18 Z").attr({
+                roadsImage.animate({ opacity: 1 }, 500);
+                let roadText = g.text(319, 344, "Motorway").attr(textAttrs)
+                roadText.animate({ opacity: 1 }, 500);
+                let arrow = g.path("M 0,0 L 18,8 L 0,18 0,12, -8,12, -8,6, 0,6 Z").attr({
                     fill: "red",
                     "strokeWidth": 1,
                     stroke: "black",
                     opacity: 1,
-                    transform: `t475, 420 s3, 3`
+                    transform: `t440, 396, s3, r45`
                 });
-
-                arrow2.animate({ transform: `s3 t480, 420` }, 500);
-                rotateGroup.transform(`r33`)
-
-                registerTimer(() => {
-                    image2.animate({ opacity: 1 }, 500);
-                    backgroundImage.animate({ opacity: 0 }, 500);
-                }, 100);
+                let arrowGroup = g.g(arrow)
+                arrowGroup.animate({ transform: `t38, 36` }, 500);
 
                 registerTimer(() => {
-                    image2.animate({ opacity: 0 }, 500);
-                    backgroundImage.animate({ opacity: 1 }, 500);
-                }, 4500)
-
-                zocText.animate({ opacity: 1 }, 500);
-                registerTimer(() => {
-                    zocText.animate({ opacity: 0 }, 500);
-                }, 4500)
-
-                registerTimer(() => {
-                    rotateGroup.animate({ opacity: 0 }, 500);
+                    roadText.animate({ opacity: 0 }, 500);
+                    sgBackgroundImage.value.animate({ opacity: 1 }, 500);
+                    arrowGroup.animate({ opacity: 0 }, 500);
+                    roadsImage.animate({ opacity: 0 }, 500);
+                    registerTimer(() => {
+                        roadsImage.remove()
+                    }, 500)
                 }, 4500)
 
                 return { discrete: g, percentage: g2 }
+
             }
         }
 
@@ -470,43 +514,38 @@ const Supply = (props) => {
                 let g = paper.g()
                 showPageNumber(g, "3")
                 sgLastPageGroup.value = g
-                var image2 = g2.image(efs_minsk_map_roads, 0, 0, 0, 0);
-                image2.attr({
+
+
+                sgBackgroundImage.value.animate({ opacity: 0 }, 500);
+                var roadsImage = g2.image(efs_minsk_map_roads, 0, 0, 0, 0);
+                roadsImage.attr({
                     'xlink:href': efs_minsk_map_roads,
                     'width': "100%",
                     'height': "100%",
                     'opacity': 0
                 });
-
-                let zocText = g.text(319, 344, "Main road").attr(textAttrs)
-                let rotateGroup = g.g();
-                let arrow2 = rotateGroup.path("M 0,0 L 18,8 L 0,18 Z").attr({
+                roadsImage.animate({ opacity: 1 }, 500);
+                let roadText = g.text(319, 344, "Main road").attr(textAttrs)
+                roadText.animate({ opacity: 1 }, 500);
+                let arrow = g.path("M 0,0 L 18,8 L 0,18 0,12, -8,12, -8,6, 0,6 Z").attr({
                     fill: "red",
                     "strokeWidth": 1,
                     stroke: "black",
                     opacity: 1,
-                    transform: `t185, 300 s3, 3`
+                    transform: `t260, 336, s3, r180`
                 });
-                arrow2.animate({ transform: `s3 t188, 300` }, 500);
-                rotateGroup.transform(`t60 38 r180`)
+                let arrowGroup = g.g(arrow)
+                arrowGroup.animate({ transform: `t-39, 0` }, 500);
 
                 registerTimer(() => {
-                    image2.animate({ opacity: 1 }, 500);
-                    backgroundImage.animate({ opacity: 0 }, 500);
-                }, 500);
-                registerTimer(() => {
-                    image2.animate({ opacity: 0 }, 500);
-                    backgroundImage.animate({ opacity: 1 }, 500);
-                }, 5000)
-
-                zocText.animate({ opacity: 1 }, 500);
-                registerTimer(() => {
-                    zocText.animate({ opacity: 0 }, 500);
-                }, 5000)
-
-                registerTimer(() => {
-                    rotateGroup.animate({ opacity: 0 }, 500);
-                }, 5000)
+                    roadText.animate({ opacity: 0 }, 500);
+                    sgBackgroundImage.value.animate({ opacity: 1 }, 500);
+                    arrowGroup.animate({ opacity: 0 }, 500);
+                    roadsImage.animate({ opacity: 0 }, 500);
+                    registerTimer(() => {
+                        roadsImage.remove()
+                    }, 500)
+                }, 4500)
 
                 return { discrete: g, percentage: g2 }
             }
@@ -522,41 +561,40 @@ const Supply = (props) => {
             fn: () => {
                 let g2 = paper.g()
                 let g = paper.g()
+
                 showPageNumber(g, "4")
                 sgLastPageGroup.value = g
-                var image2 = g2.image(efs_minsk_map_minorRoads, 0, 0, 0, 0);
-                image2.attr({
+
+                sgBackgroundImage.value.animate({ opacity: 0 }, 500);
+                var minorRoadsImage = g2.image(efs_minsk_map_minorRoads, 0, 0, 0, 0);
+                minorRoadsImage.attr({
                     'xlink:href': efs_minsk_map_minorRoads,
                     'width': "100%",
                     'height': "100%",
                     'opacity': 0
                 });
-                let zocText = g.text(530, 194, "Minor road").attr({ ...textAttrs, textAnchor: "end" })
-                let rotateGroup = g.g();
-                let arrow2 = rotateGroup.path("M 0,0 L 18,8 L 0,18 Z").attr({
+                minorRoadsImage.animate({ opacity: 1 }, 500);
+                let minorRoadText = g.text(520, 194, "Minor road").attr({ ...textAttrs, textAnchor: "end" })
+                minorRoadText.animate({ opacity: 1 }, 500);
+                let arrow = g.path("M 0,0 L 18,8 L 0,18 0,12, -8,12, -8,6, 0,6 Z").attr({
                     fill: "red",
                     "strokeWidth": 1,
                     stroke: "black",
                     opacity: 1,
-                    transform: `t545, 150 s3, 3`
+                    transform: `t565, 190, s3`
                 });
-                arrow2.animate({ transform: `s3 t548, 150` }, 500);
-                rotateGroup.transform(`t58 38`)
+                let arrowGroup = g.g(arrow)
+                arrowGroup.animate({ transform: `t39, 0` }, 500);
+
                 registerTimer(() => {
-                    image2.animate({ opacity: 1 }, 500);
-                    backgroundImage.animate({ opacity: 0 }, 500);
-                }, 500);
-                registerTimer(() => {
-                    image2.animate({ opacity: 0 }, 500);
-                    backgroundImage.animate({ opacity: 1 }, 500);
-                }, 5000)
-                zocText.animate({ opacity: 1 }, 500);
-                registerTimer(() => {
-                    zocText.animate({ opacity: 0 }, 500);
-                }, 5000)
-                registerTimer(() => {
-                    rotateGroup.animate({ opacity: 0 }, 500);
-                }, 5000)
+                    minorRoadText.animate({ opacity: 0 }, 500);
+                    sgBackgroundImage.value.animate({ opacity: 1 }, 500);
+                    arrowGroup.animate({ opacity: 0 }, 500);
+                    minorRoadsImage.animate({ opacity: 0 }, 500);
+                    registerTimer(() => {
+                        minorRoadsImage.remove()
+                    }, 500)
+                }, 4500)
 
                 return { discrete: g, percentage: g2 }
             }
@@ -570,45 +608,85 @@ const Supply = (props) => {
             remove: true,
             async: true,
             fn: () => {
+
+
+                // sgLastPageGroup.value = g
+                // var image2 = g2.image(efs_minsk_map_rail, 0, 0, 0, 0);
+                // image2.attr({
+                //     'xlink:href': efs_minsk_map_rail,
+                //     'width': "100%",
+                //     'height': "100%",
+                //     'opacity': 0
+                // });
+                // let zocText = g.text(703, 234, "Railroad").attr({ ...textAttrs, textAnchor: "middle" })
+                // let rotateGroup = g.g();
+                // let arrow2 = rotateGroup.path("M 0,0 L 18,8 L 0,18 Z").attr({
+                //     fill: "red",
+                //     "strokeWidth": 1,
+                //     stroke: "black",
+                //     opacity: 1,
+                //     transform: `t545, 250 s3, 3`
+                // });
+                // arrow2.animate({ transform: `s3 t548, 250` }, 500);
+                // rotateGroup.transform(`t160 58 r90`)
+                // registerTimer(() => {
+                //     image2.animate({ opacity: 1 }, 500);
+                //     sgBackgroundImage.value.animate({ opacity: 0 }, 500);
+                // }, 500);
+                // registerTimer(() => {
+                //     image2.animate({ opacity: 0 }, 500);
+                //     sgBackgroundImage.value.animate({ opacity: 1 }, 500);
+                // }, 5000)
+                // zocText.animate({ opacity: 1 }, 500);
+                // registerTimer(() => {
+                //     zocText.animate({ opacity: 0 }, 500);
+                // }, 5000)
+                // registerTimer(() => {
+                //     rotateGroup.animate({ opacity: 0 }, 500);
+                // }, 5000)
+
+                // return { discrete: g, percentage: g2 }
+
+
                 let g2 = paper.g()
                 let g = paper.g()
+
                 showPageNumber(g, "5")
                 sgLastPageGroup.value = g
-                var image2 = g2.image(efs_minsk_map_rail, 0, 0, 0, 0);
-                image2.attr({
+
+                sgBackgroundImage.value.animate({ opacity: 0 }, 500);
+                var railsImage = g2.image(efs_minsk_map_rail, 0, 0, 0, 0);
+                railsImage.attr({
                     'xlink:href': efs_minsk_map_rail,
                     'width': "100%",
                     'height': "100%",
                     'opacity': 0
                 });
-                let zocText = g.text(703, 234, "Railroad").attr({ ...textAttrs, textAnchor: "middle" })
-                let rotateGroup = g.g();
-                let arrow2 = rotateGroup.path("M 0,0 L 18,8 L 0,18 Z").attr({
+                railsImage.animate({ opacity: 1 }, 500);
+                let railText = g.text(703, 224, "Railroad").attr({ ...textAttrs, textAnchor: "middle" })
+                railText.animate({ opacity: 1 }, 500);
+                let arrow = g.path("M 0,0 L 18,8 L 0,18 0,12, -8,12, -8,6, 0,6 Z").attr({
                     fill: "red",
                     "strokeWidth": 1,
                     stroke: "black",
                     opacity: 1,
-                    transform: `t545, 250 s3, 3`
+                    transform: `t705 280 r90 s3`
                 });
-                arrow2.animate({ transform: `s3 t548, 250` }, 500);
-                rotateGroup.transform(`t160 58 r90`)
+                let arrowGroup = g.g(arrow)
+                arrowGroup.animate({ transform: `t0, 39` }, 500);
+
                 registerTimer(() => {
-                    image2.animate({ opacity: 1 }, 500);
-                    backgroundImage.animate({ opacity: 0 }, 500);
-                }, 500);
-                registerTimer(() => {
-                    image2.animate({ opacity: 0 }, 500);
-                    backgroundImage.animate({ opacity: 1 }, 500);
-                }, 5000)
-                zocText.animate({ opacity: 1 }, 500);
-                registerTimer(() => {
-                    zocText.animate({ opacity: 0 }, 500);
-                }, 5000)
-                registerTimer(() => {
-                    rotateGroup.animate({ opacity: 0 }, 500);
-                }, 5000)
+                    railText.animate({ opacity: 0 }, 500);
+                    sgBackgroundImage.value.animate({ opacity: 1 }, 500);
+                    arrowGroup.animate({ opacity: 0 }, 500);
+                    railsImage.animate({ opacity: 0 }, 500);
+                    registerTimer(() => {
+                        railsImage.remove()
+                    }, 500)
+                }, 4500)
 
                 return { discrete: g, percentage: g2 }
+
             }
         }
 
@@ -1763,7 +1841,39 @@ const Supply = (props) => {
                         }, i * 500);
                     }
                 }, 10000);
-                // shake
+                // shake last supply hex
+                registerTimer(() => {
+                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
+                    registerTimer(() => {
+                        numbersGroups[numbersGroups.length - 1].animate({ transform: 't -4, -4 ' }, 100, mina.linear);
+                        registerTimer(() => {
+                            numbersGroups[numbersGroups.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
+                            registerTimer(() => {
+                                numbersGroups[numbersGroups.length - 1].animate({ transform: 't -2, -2 ' }, 100, mina.linear);
+                                registerTimer(() => {
+                                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't 4, -4 ' }, 100, mina.linear);
+                                    registerTimer(() => {
+                                        numbersGroups[numbersGroups.length - 1].animate({ transform: 't -2, 2 ' }, 100, mina.linear);
+                                        registerTimer(() => {
+                                            numbersGroups[numbersGroups.length - 1].animate({ transform: 't 1, -1 ' }, 100, mina.linear);
+                                        }, 100);
+                                    }, 100);
+                                }, 100);
+                            }, 100);
+                        }, 100);
+                    }, 100);
+                }, 13000);
+
+
+
+
+
+
+
+
+
+
+
                 registerTimer(() => {
                     for (let i = numbersGroups.length - 1; i >= 0; i--) {
                         let numGroup = numbersGroups[i];
@@ -2153,10 +2263,10 @@ const Supply = (props) => {
                     textXpos, textYpos, 500, 0, 0, 155)
                 let boxWidth = bbox.width
                 let spacing = boxWidth / 4
-                let msRedBoxText = g.text(textXpos + spacing + 175, textYpos + 242, "Red Box MP").attr({
+                let msRedBoxText = g.text(textXpos + spacing + 175, textYpos + 241, "Red Box MP").attr({
                     "textAnchor": "start",
                     "dominant-baseline": "central",
-                    "fontSize": 36,
+                    "fontSize": 40 * sgCrossBrowserFontSizeRatio.value,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -2166,7 +2276,7 @@ const Supply = (props) => {
                 let leftArrow3 = g.text(textXpos + spacing + 120, textYpos + 241, "↼").attr({
                     "textAnchor": "start",
                     "dominant-baseline": "central",
-                    "fontSize": 56,
+                    "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "black",
@@ -2176,7 +2286,7 @@ const Supply = (props) => {
                 let leftArrow4 = g.text(textXpos + spacing + 120, textYpos + 244, "↽").attr({
                     "textAnchor": "start",
                     "dominant-baseline": "central",
-                    "fontSize": 56,
+                    "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -2202,7 +2312,7 @@ const Supply = (props) => {
                 let leftArrow = g.text(posX + 120, textYpos + 241, "↼").attr({
                     "textAnchor": "start",
                     "dominant-baseline": "central",
-                    "fontSize": 56,
+                    "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -2212,17 +2322,17 @@ const Supply = (props) => {
                 let leftArrow2 = g.text(posX + 120, textYpos + 244, "↽").attr({
                     "textAnchor": "start",
                     "dominant-baseline": "central",
-                    "fontSize": 56,
+                    "fontSize": 50 * sgCrossBrowserFontSizeRatio.value,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
                     fill: "black",
                     opacity: 0,
                 })
-                let msOrangeMPText = g.text(posX + 120 + 54, textYpos + 242, "Orange MP").attr({
+                let msOrangeMPText = g.text(posX + 120 + 54, textYpos + 241, "Orange MP").attr({
                     "textAnchor": "start",
                     "dominant-baseline": "central",
-                    "fontSize": 36,
+                    "fontSize": 40 * sgCrossBrowserFontSizeRatio.value,
                     "fontWeight": "bold",
                     "fontFamily": "serif",
                     stroke: "none",
@@ -2262,11 +2372,11 @@ const Supply = (props) => {
                     `Since it is Mud weather, that Soviet armor unit
                     does not exert any ZOCs. It is not on any road,
                     and there is no adjacent town or city hex.`,
-                    textXpos - 50, textYpos - 20, 500, 5000)
+                    textXpos - 50, textYpos - 20, 500, 6000)
                 textBox(g,
                     `The road hexes at distances 13, 14, and 15 are
                         still valid Axis General Supply sources.`,
-                    textXpos, textYpos + 110, 5000, 11500)
+                    textXpos, textYpos + 110, 6000, 11500)
                 let numbersGroups2 = []
                 let adjust = 22
                 let numCoords = [{ x: 693 + adjust, y: 351 }, { x: 760 + adjust, y: 384 }, { x: 827 + adjust, y: 351 }]
@@ -2403,27 +2513,32 @@ const Supply = (props) => {
                         }, i * 300);
                     }
                 }, 5500);
+                // shake last supply hex
                 registerTimer(() => {
                     numbersGroups[numbersGroups.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
+                    registerTimer(() => {
+                        numbersGroups[numbersGroups.length - 1].animate({ transform: 't -4, -4 ' }, 100, mina.linear);
+                        registerTimer(() => {
+                            numbersGroups[numbersGroups.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
+                            registerTimer(() => {
+                                numbersGroups[numbersGroups.length - 1].animate({ transform: 't -2, -2 ' }, 100, mina.linear);
+                                registerTimer(() => {
+                                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't 4, -4 ' }, 100, mina.linear);
+                                    registerTimer(() => {
+                                        numbersGroups[numbersGroups.length - 1].animate({ transform: 't -2, 2 ' }, 100, mina.linear);
+                                        registerTimer(() => {
+                                            numbersGroups[numbersGroups.length - 1].animate({ transform: 't 1, -1 ' }, 100, mina.linear);
+                                        }, 100);
+                                    }, 100);
+                                }, 100);
+                            }, 100);
+                        }, 100);
+                    }, 100);
                 }, 7500);
-                registerTimer(() => {
-                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't -4, -4 ' }, 100, mina.linear);
-                }, 7600);
-                registerTimer(() => {
-                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
-                }, 7700);
-                registerTimer(() => {
-                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't -2, -2 ' }, 100, mina.linear);
-                }, 7800);
-                registerTimer(() => {
-                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't 4, -4 ' }, 100, mina.linear);
-                }, 7900);
-                registerTimer(() => {
-                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't -2, 2 ' }, 100, mina.linear);
-                }, 8000);
-                registerTimer(() => {
-                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't 1, -1 ' }, 100, mina.linear);
-                }, 8100);
+
+
+
+
                 registerTimer(() => {
                     for (let i = numbersGroups.length; i > 0; i--) {
                         let numGroup = numbersGroups[numbersGroups.length - i];
@@ -2861,28 +2976,30 @@ const Supply = (props) => {
                             numGroup.animate({ opacity: 1 }, 300);
                         }, i * 300);
                     }
+                    // shake last supply hex
+                    registerTimer(() => {
+                        numbersGroups[numbersGroups.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
+                        registerTimer(() => {
+                            numbersGroups[numbersGroups.length - 1].animate({ transform: 't -4, -4 ' }, 100, mina.linear);
+                            registerTimer(() => {
+                                numbersGroups[numbersGroups.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
+                                registerTimer(() => {
+                                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't -2, -2 ' }, 100, mina.linear);
+                                    registerTimer(() => {
+                                        numbersGroups[numbersGroups.length - 1].animate({ transform: 't 4, -4 ' }, 100, mina.linear);
+                                        registerTimer(() => {
+                                            numbersGroups[numbersGroups.length - 1].animate({ transform: 't -2, 2 ' }, 100, mina.linear);
+                                            registerTimer(() => {
+                                                numbersGroups[numbersGroups.length - 1].animate({ transform: 't 1, -1 ' }, 100, mina.linear);
+                                            }, 100);
+                                        }, 100);
+                                    }, 100);
+                                }, 100);
+                            }, 100);
+                        }, 100);
+                    }, 2100);
                 }, 4000);
-                registerTimer(() => {
-                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
-                }, 7100);
-                registerTimer(() => {
-                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't -4, -4 ' }, 100, mina.linear);
-                }, 7200);
-                registerTimer(() => {
-                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
-                }, 7300);
-                registerTimer(() => {
-                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't -2, -2 ' }, 100, mina.linear);
-                }, 7400);
-                registerTimer(() => {
-                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't 4, -4 ' }, 100, mina.linear);
-                }, 7500);
-                registerTimer(() => {
-                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't -2, 2 ' }, 100, mina.linear);
-                }, 7600);
-                registerTimer(() => {
-                    numbersGroups[numbersGroups.length - 1].animate({ transform: 't 1, -1 ' }, 100, mina.linear);
-                }, 7700);
+
 
                 let numberPositions2 = []
                 numberPositions2.push({ x: 1118, y: 274 }); // 1
@@ -2919,39 +3036,46 @@ const Supply = (props) => {
                     for (let i = numbersGroups.length; i > 0; i--) {
                         let numGroup = numbersGroups[numbersGroups.length - i];
                         registerTimer(() => {
-                            numGroup.animate({ opacity: 0 }, 90);
+                            if (numGroup) {
+                                numGroup.animate({ opacity: 0 }, 90);
+                            }
                         }, i * 90);
                     }
-                }, 9000);
-                registerTimer(() => {
-                    for (let i = 0; i < numbersGroups2.length; i++) {
-                        let numGroup = numbersGroups2[i];
+                    registerTimer(() => {
+                        for (let i = 0; i < numbersGroups2.length; i++) {
+                            let numGroup = numbersGroups2[i];
+                            registerTimer(() => {
+                                if (numGroup) {
+                                    numGroup.animate({ opacity: 1 }, 300);
+                                }
+                            }, i * 300);
+                        }
+                        // shake last supply hex
                         registerTimer(() => {
-                            numGroup.animate({ opacity: 1 }, 300);
-                        }, i * 300);
-                    }
-                }, 10000);
-                registerTimer(() => {
-                    numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
-                }, 18100);
-                registerTimer(() => {
-                    numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't -4, -4 ' }, 100, mina.linear);
-                }, 18200);
-                registerTimer(() => {
-                    numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
-                }, 18300);
-                registerTimer(() => {
-                    numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't -2, -2 ' }, 100, mina.linear);
-                }, 18400);
-                registerTimer(() => {
-                    numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't 4, -4 ' }, 100, mina.linear);
-                }, 18500);
-                registerTimer(() => {
-                    numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't -2, 2 ' }, 100, mina.linear);
-                }, 18600);
-                registerTimer(() => {
-                    numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't 1, -1 ' }, 100, mina.linear);
-                }, 18700);
+                            numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
+                            registerTimer(() => {
+                                numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't -4, -4 ' }, 100, mina.linear);
+                                registerTimer(() => {
+                                    numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't 2, 2 ' }, 100, mina.linear);
+                                    registerTimer(() => {
+                                        numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't -2, -2 ' }, 100, mina.linear);
+                                        registerTimer(() => {
+                                            numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't 4, -4 ' }, 100, mina.linear);
+                                            registerTimer(() => {
+                                                numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't -2, 2 ' }, 100, mina.linear);
+                                                registerTimer(() => {
+                                                    numbersGroups2[numbersGroups2.length - 1].animate({ transform: 't 1, -1 ' }, 100, mina.linear);
+                                                }, 100);
+                                            }, 100);
+                                        }, 100);
+                                    }, 100);
+                                }, 100);
+                            }, 100);
+                        }, 2000);
+                    }, 1000);
+                }, 9000);
+
+
                 registerTimer(() => {
                     if (sgZocGroup.value) {
                         sgZocGroup.value.animate({ opacity: 0 }, 500)
@@ -2967,18 +3091,24 @@ const Supply = (props) => {
                     for (let i = numbersGroups2.length; i > 0; i--) {
                         let numGroup = numbersGroups2[numbersGroups2.length - i];
                         registerTimer(() => {
-                            numGroup.animate({ opacity: 0 }, 300);
+                            if (numGroup) {
+                                numGroup.animate({ opacity: 0 }, 300);
+                            }
                         }, i * 90);
                     }
                 }, 18000);
                 registerTimer(() => {
                     sgMudRoadIndicators.value.forEach(ind => {
-                        ind.animate({ opacity: 0 }, 500)
+                        if(ind) {
+                            ind.animate({ opacity: 0 }, 500)
+                        }
                     })
                 }, 18000)
                 registerTimer(() => {
                     sgMudRoadIndicators.value.forEach(ind => {
-                        ind.remove()
+                        if(ind) {
+                            ind.remove()
+                        }
                     })
                     sgMudRoadIndicators.value = []
                 }, 19500)
@@ -3057,14 +3187,34 @@ const Supply = (props) => {
             }
         }
 
+        let page46 = {
+            label: 'reached the end',
+            pageInt: 45,
+            delay: 0,
+            duration: 6500,
+            remove: true,
+            async: true,
+            fn: () => {
+                let g = paper.g()
+                showPageNumber(g, "45")
+                let posX = 160
+                let posY = 330
+                textBox(g,
+                    `This animation is now restarting`,
+                    posX, posY)
+
+                return { discrete: g, percentage: null }
+            }
+        }
+
         const populateStoryBoard = () => {
             let _storyBoard = []
             _storyBoard.push(page1)
             _storyBoard.push(page1b)
-            _storyBoard.push(page2)
+             _storyBoard.push(page2)
             _storyBoard.push(page3)
             _storyBoard.push(page4)
-            _storyBoard.push(page5)
+             _storyBoard.push(page5)
             _storyBoard.push(page6)
             _storyBoard.push(page7)
             _storyBoard.push(page8)
@@ -3106,6 +3256,7 @@ const Supply = (props) => {
             _storyBoard.push(page43)
             _storyBoard.push(page44)
             _storyBoard.push(page45)
+            _storyBoard.push(page46)
             return _storyBoard
         }
         sgStoryBoard.value = populateStoryBoard()
@@ -3331,8 +3482,8 @@ const Supply = (props) => {
                         which is determined by counting hexes from the unit to a hex that is providing General Supply.
                     </div>
                     <div className="padded">
-                        The supply route is usually traced 
-                         along a Line of Communications (LOC) then to a Railroad or a Road (not minor road), or a limited
+                        The supply route is usually traced
+                        along a Line of Communications (LOC) then to a Railroad or a Road (not minor road), or a limited
                         combination of these.
                     </div>
                     <span className="spacer1rem" />
@@ -3396,13 +3547,13 @@ const Supply = (props) => {
             </div>
             <span className="spacer1rem" />
             <div className="rules-note">
-            Although you can visualize a constant stream of trucks and wagons carrying supplies to units on the front lines, the
-            actual tracing of a supply line is done by counting hexes from a hex adjacent to the unit to a hex on the General Supply
-            route.
-            You do not actually count the hex the unit is in - you start counting from an adjacent hex. That adjacent hex will be
-            hex number 1 if you are tracing the hexes of a LOC. One exception - a unit can't reach across a hexside that has
-            an enemy fortified belt hexside.
-</div>
+                Although you can visualize a constant stream of trucks and wagons carrying supplies to units on the front lines, the
+                actual tracing of a supply line is done by counting hexes from a hex adjacent to the unit to a hex on the General Supply
+                route.
+                You do not actually count the hex the unit is in - you start counting from an adjacent hex. That adjacent hex will be
+                hex number 1 if you are tracing the hexes of a LOC. One exception - a unit can't reach across a hexside that has
+                an enemy fortified belt hexside.
+            </div>
             <span className="spacer1_5rem" />
             6.13 No component of a Supply Route can be traced:<BsrLink page="9" rule="6.13" />
             <ul className="spread-list">
@@ -3485,10 +3636,10 @@ const Supply = (props) => {
                     The 7 hexes overland (LOC) has to be contiguous hexes.<BsrLink page="10" rule="6.11" /><br />
                     No "hopping" over hexes is allowed. No leaving a road to go around some obstruction (like an enemy unit) and getting back on the road. Any obstruction on a main road or railroad stops the use of that main road or railroad at the last hex before the obstruction. From there, the LOC goes out up to 7 (or 5) contiguous hexes.<br />
                     A General Supply path can not cross non-frozen lake/inland sea hexsides or unbridged major river. A General Supply path cannot enter a swamp hex during Dry or Mud turns unless the path is along a road or railroad that goes through the hex. A LOC can go along a railroad into a swamp hex during Dry or Mud turns.<br />
-                    A General Supply path cannot enter a hex with a undestroyed enemy strongpoint or cross over a non-destroyed 
+                    A General Supply path cannot enter a hex with a undestroyed enemy strongpoint or cross over a non-destroyed
                     fortified line hexside.<BsrLink page="10" rule="6.13" /><br />
                     The path from a Unit to General Supply can only be in this order: LOC -&gt; Railroad -&gt; Main Road or Motorway, with any of them being optional,
-                    but you cannot trace along more than one path of each type.<BsrLink page="10" rule="6.12" /><br/>
+                    but you cannot trace along more than one path of each type.<BsrLink page="10" rule="6.12" /><br />
                     Armored trains and flotillas do not require General Supply.<BsrLink page="11" rule="6.37" /><BsrLink page="39" rule="15.22" /><br />
                     Supply rules do not apply to air units.
                 </span>
@@ -3565,7 +3716,7 @@ const Supply = (props) => {
                             they are removed from the map.</li>
                         <li>Soviet units that are in the ZOC of an enemy unit and also in Emergency Supply or OOS suffer an additional die roll modifier on their
                             surrender roll.</li>
-                        <li>Cannot do Unit Conversion</li>
+                        <li>Cannot do Unit Conversion.</li>
                         <li>Cannot receive replacements, except for Soviet units which can still absorb Zap units.</li>
                     </ul>
                 </div>
@@ -3646,17 +3797,17 @@ const Supply = (props) => {
                 artillery support.<BsrLink page="39" rule="15.34" />
                 <span className="spacer0_5rem" />
                 After the Attack Supply point is consumed (by either removing the Mobile Supply counter, or flipping a Supply Dump back over to its
-                 Mobile Supply side), then the attack can proceed as a Combat Supplied attack.<br />
+                Mobile Supply side), then the attack can proceed as a Combat Supplied attack.<br />
                 If tracing to a dump, and more than one attack will be drawing on the dump, the player can wait until all the
                 combats are done (after informing his opponent what he's/she's doing), then remove or reduce the dump (depending on how many supply points were drawn from it).<BsrLink page="39" rule="15.21" />
             </div>
             <span className="spacer0_5rem" />
             <div className="rules-note">
-                    Note that when the odds are 9-1 or greater, the expenditure of Attack Supply is usually not necessary.
-                </div>
+                Note that when the odds are 9-1 or greater, the expenditure of Attack Supply is usually not necessary.
+            </div>
             <span className="spacer0_5rem" />
             <div className="padded">
-                Attack Supply is <span className="b">not required to conduct combat</span>. However, units that attack 
+                Attack Supply is <span className="b">not required to conduct combat</span>. However, units that attack
                 without Attack Supply suffer the following negative effects. Remember - even if you have one unit attacking
                 that does not have Attack Supply, the entire attack is considered to be undertaken without Attack Supply. You can omit
                 units without Attack Supply from the combat, and use only those with Attack Supply, to avoid this situation.

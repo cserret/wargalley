@@ -35,7 +35,7 @@ const Movement = (props) => {
             </div>
 
             <div className="generic-flex-space-around road-signs">
-                <img src={roadsigns} alt="road signs" />
+                <img src={roadsigns} alt="road signs" className="image-border"/>
             </div>
             <span className="spacer1rem" />
 

@@ -3,249 +3,267 @@
         position: relative;
         top: -8px;
     }
-  .armored {
-    img {
-      text-align: center;
-      display: block;
-      padding-bottom: 10px;
+    .german-engineer-image {
+        filter: contrast(1.1);
     }
-    margin: auto;
-    height: auto;
-    width: 824px;
-    height: 445px;
-    border: 2px solid #ccc;
-    overflow: hidden;
-    font-size: 1.3rem;
-    background-color: #eee;
-    box-sizing: border-box;
-  }
-  .gray-box img {
-    margin-left: 2rem;
-  }
-  .ship, .base {
-    img {
-      height: 60px;
-      width: auto;
-    }
-  }
-
-  .naval-info-container {
-    background: linear-gradient(to bottom, #f1dbc7 31%, #eeddce 100%);
-    position: relative;
-    position: block;
-    width: 767px;
-    height: 300px;
-    margin: auto;
-    .floater {
-        position: absolute;
-        text-align: center;
-        &.range {
-            font-size: 1.2rem;
-            position: absolute;
-            left: 59px;
-            top: 86px;
-        }
-        &.arty {
-            font-size: 1.2rem;
-            position: absolute;
-            left: 40px;
-            top: 130px;
-        }
-        &.protection {
-            font-size: 1.2rem;
-            position: absolute;
-            left: 80px;
-            top: 230px;
-        }
-        &.transport {
-            font-size: 1.2rem;
-            position: absolute;
-            left: 230px;
-            top: 230px;
-        }
-        &.movement {
-            font-size: 1.2rem;
-            position: absolute;
-            left: 342px;
-            top: 146px;
-        }
-        &.class {
-            font-size: 1.2rem;
-            position: absolute;
-            left: 362px;
-            top: 100px;
-        }
-        &.name {
-            font-size: 1.2rem;
-            position: absolute;
-            left: 358px;
-            top: 70px;
-        }
-        &.recovery {
-            font-size: 1.2rem;
-            position: absolute;
-            left: 648px;
-            top: 111px;
-        }
-        &.sailed {
-            font-size: 1.2rem;
-            position: absolute;
-            left: 532px;
-            top: 241px;
-        }
-      }
-    .title {
-        font-size: 1.5rem;  
-            position: absolute;
-        font-weight: bold;
-        text-align: center;
-        position: relative;
-        top: 9px;
-    }
-
-    .ships {
-      display: flex;
-      justify-content: space-around;
-      margin: 20px 130px 20px 140px;
-      text-align: center;
-      font-size: 1.2rem;
-      >:nth-child(2) {
-          margin-left: 120px;
-      }
-      div {
-          padding: 0 0 0.3rem 0.1rem;
-          box-sizing: border-box;
-      }
-      img {
-        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3),
-        2px 2px 2px 2px rgba(0, 0, 0, 0.3),
-        3px 3px 2px 2px rgba(0, 0, 0, 0.3),
-        4px 4px 3px 3px rgba(0, 0, 0, 0.2);
-        border-top: 1px solid #f6b072;
-        border-left: 1px solid #f6b072;
-        border-radius: 10px;
+    .shadow-image {
+        box-shadow:
+            1px 1px 0px 1px rgba(0, 0, 0, 0.3),
+            2px 2px 1px 1px rgba(0, 0, 0, 0.3),
+            3px 3px 1px 1px rgba(0, 0, 0, 0.3),
+            4px 4px 1px 2px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
         overflow: hidden;
-      }
-
-
     }
-    .naval-info-container-canvas {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 767px;
-        height: 298px;
-    }
-  }
-
-
-  .naval-info-container-fr {
-    background: linear-gradient(to bottom, #f1dbc7 31%, #eeddce 100%);
-    position: relative;
-    position: block;
-    width: 767px;
-    height: 300px;
-    margin: auto;
-    .floater {
-        position: absolute;
-        text-align: center;
-        &.range {
-            font-size: 1.2rem;
-            position: absolute;
-            left: 47px;
-            top: 86px;
-        }
-        &.arty {
-            font-size: 1.2rem;
-            position: absolute;
-            left:  28px;
-            top: 138px;
-        }
-        &.protection {
-            font-size: 1.2rem;
-            position: absolute;
-            left: 80px;
-            top: 230px;
-        }
-        &.transport {
-            font-size: 1.2rem;
-            position: absolute;
-            left: 230px;
-            top: 230px;
-        }
-        &.movement {
-            font-size: 1.2rem;
-            position: absolute;
-            left: 342px;
-            top: 146px;
-        }
-        &.class {
-            font-size: 1.2rem;
-            position: absolute;
-            left: 362px;
-            top: 100px;
-        }
-        &.name {
-            font-size: 1.2rem;
-            position: absolute;
-            left: 358px;
-            top: 70px;
-        }
-        &.recovery {
-            font-size: 1.2rem;
-            position: absolute;
-            left: 635px;
-            top: 111px;
-        }
-        &.sailed {
-            font-size: 1.2rem;
-            position: absolute;
-            left: 532px;
-            top: 241px;
-        }
-      }
-    .title {
-        font-size: 1.5rem;  
-            position: absolute;
-        font-weight: bold;
-        text-align: center;
-        position: relative;
-        top: 9px;
-    }
-
-    .ships {
-      display: flex;
-      justify-content: space-around;
-      margin: 20px 130px 20px 140px;
-      text-align: center;
-      font-size: 1.2rem;
-      >:nth-child(2) {
-          margin-left: 120px;
-      }
-      div {
-          padding: 0 0 0.3rem 0.1rem;
-          box-sizing: border-box;
-      }
-      img {
-        box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.3),
-        2px 2px 2px 2px rgba(0, 0, 0, 0.3),
-        3px 3px 2px 2px rgba(0, 0, 0, 0.3),
-        4px 4px 3px 3px rgba(0, 0, 0, 0.2);
-        border-top: 1px solid #f6b072;
-        border-left: 1px solid #f6b072;
-        border-radius: 10px;
+    .shadow-image-small {
+        box-shadow:
+            1px 1px 0px 1px rgba(0, 0, 0, 0.3),
+            1px 1px 1px 1px rgba(0, 0, 0, 0.3),
+            2px 2px 1px 1px rgba(0, 0, 0, 0.3),
+            2px 2px 1px 1px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
         overflow: hidden;
-      }
-
-
     }
-    .naval-info-container-canvas {
-        position: absolute;
-        left: 0;
-        top: 0;
+    .armored {
+        img {
+            text-align: center;
+            display: block;
+            padding-bottom: 10px;
+        }
+        margin: auto;
+        height: auto;
+        width: 824px;
+        height: 445px;
+        border: 2px solid #ccc;
+        overflow: hidden;
+        font-size: 1.3rem;
+        background-color: #eee;
+        box-sizing: border-box;
+    }
+    .gray-box img {
+        margin-left: 2rem;
+    }
+    .ship,
+    .base {
+        img {
+            height: 60px;
+            width: auto;
+        }
+    }
+
+    .naval-info-container {
+        background: linear-gradient(to bottom, #f1dbc7 31%, #eeddce 100%);
+        position: relative;
+        position: block;
         width: 767px;
-        height: 298px;
-    }
-  }
+        height: 300px;
+        margin: auto;
+        .floater {
+            position: absolute;
+            text-align: center;
+            &.range {
+                font-size: 1.2rem;
+                position: absolute;
+                left: 59px;
+                top: 86px;
+            }
+            &.arty {
+                font-size: 1.2rem;
+                position: absolute;
+                left: 40px;
+                top: 130px;
+            }
+            &.protection {
+                font-size: 1.2rem;
+                position: absolute;
+                left: 80px;
+                top: 230px;
+            }
+            &.transport {
+                font-size: 1.2rem;
+                position: absolute;
+                left: 230px;
+                top: 230px;
+            }
+            &.movement {
+                font-size: 1.2rem;
+                position: absolute;
+                left: 342px;
+                top: 146px;
+            }
+            &.class {
+                font-size: 1.2rem;
+                position: absolute;
+                left: 362px;
+                top: 100px;
+            }
+            &.name {
+                font-size: 1.2rem;
+                position: absolute;
+                left: 358px;
+                top: 70px;
+            }
+            &.recovery {
+                font-size: 1.2rem;
+                position: absolute;
+                left: 648px;
+                top: 111px;
+            }
+            &.sailed {
+                font-size: 1.2rem;
+                position: absolute;
+                left: 532px;
+                top: 241px;
+            }
+        }
+        .title {
+            font-size: 1.5rem;
+            position: absolute;
+            font-weight: bold;
+            text-align: center;
+            position: relative;
+            top: 9px;
+        }
 
+        .ships {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 130px 20px 140px;
+            text-align: center;
+            font-size: 1.2rem;
+            > :nth-child(2) {
+                margin-left: 120px;
+            }
+            div {
+                padding: 0 0 0.3rem 0.1rem;
+                box-sizing: border-box;
+            }
+            img {
+                box-shadow:
+                    1px 1px 1px 1px rgba(0, 0, 0, 0.3),
+                    2px 2px 2px 2px rgba(0, 0, 0, 0.3),
+                    3px 3px 2px 2px rgba(0, 0, 0, 0.3),
+                    4px 4px 3px 3px rgba(0, 0, 0, 0.2);
+                border-top: 1px solid #f6b072;
+                border-left: 1px solid #f6b072;
+                border-radius: 10px;
+                overflow: hidden;
+            }
+        }
+        .naval-info-container-canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 767px;
+            height: 298px;
+        }
+    }
+
+    .naval-info-container-fr {
+        background: linear-gradient(to bottom, #f1dbc7 31%, #eeddce 100%);
+        position: relative;
+        position: block;
+        width: 767px;
+        height: 300px;
+        margin: auto;
+        .floater {
+            position: absolute;
+            text-align: center;
+            &.range {
+                font-size: 1.2rem;
+                position: absolute;
+                left: 47px;
+                top: 86px;
+            }
+            &.arty {
+                font-size: 1.2rem;
+                position: absolute;
+                left: 28px;
+                top: 138px;
+            }
+            &.protection {
+                font-size: 1.2rem;
+                position: absolute;
+                left: 80px;
+                top: 230px;
+            }
+            &.transport {
+                font-size: 1.2rem;
+                position: absolute;
+                left: 230px;
+                top: 230px;
+            }
+            &.movement {
+                font-size: 1.2rem;
+                position: absolute;
+                left: 342px;
+                top: 146px;
+            }
+            &.class {
+                font-size: 1.2rem;
+                position: absolute;
+                left: 362px;
+                top: 100px;
+            }
+            &.name {
+                font-size: 1.2rem;
+                position: absolute;
+                left: 358px;
+                top: 70px;
+            }
+            &.recovery {
+                font-size: 1.2rem;
+                position: absolute;
+                left: 635px;
+                top: 111px;
+            }
+            &.sailed {
+                font-size: 1.2rem;
+                position: absolute;
+                left: 532px;
+                top: 241px;
+            }
+        }
+        .title {
+            font-size: 1.5rem;
+            position: absolute;
+            font-weight: bold;
+            text-align: center;
+            position: relative;
+            top: 9px;
+        }
+
+        .ships {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 130px 20px 140px;
+            text-align: center;
+            font-size: 1.2rem;
+            > :nth-child(2) {
+                margin-left: 120px;
+            }
+            div {
+                padding: 0 0 0.3rem 0.1rem;
+                box-sizing: border-box;
+            }
+            img {
+                box-shadow:
+                    1px 1px 1px 1px rgba(0, 0, 0, 0.3),
+                    2px 2px 2px 2px rgba(0, 0, 0, 0.3),
+                    3px 3px 2px 2px rgba(0, 0, 0, 0.3),
+                    4px 4px 3px 3px rgba(0, 0, 0, 0.2);
+                border-top: 1px solid #f6b072;
+                border-left: 1px solid #f6b072;
+                border-radius: 10px;
+                overflow: hidden;
+            }
+        }
+        .naval-info-container-canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 767px;
+            height: 298px;
+        }
+    }
 }
