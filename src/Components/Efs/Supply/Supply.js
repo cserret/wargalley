@@ -2344,7 +2344,7 @@ const Supply = (props) => {
             label: 'explain lack of ZOC',
             pageInt: 34,
             delay: 0,
-            duration: 12000,
+            duration: 14000,
             remove: true,
             async: true,
             fn: () => {
@@ -2358,11 +2358,11 @@ const Supply = (props) => {
                     `Since it is Mud weather, that Soviet armor unit
                     does not exert any ZOCs. It is not on any road,
                     and there is no adjacent town or city hex.`,
-                    textXpos - 50, textYpos - 20, 500, 6000)
+                    textXpos - 50, textYpos - 20, 500, 7000)
                 textBox(g,
                     `The road hexes at distances 13, 14, and 15 are
                         still valid Axis General Supply sources.`,
-                    textXpos, textYpos + 110, 6000, 11500)
+                    textXpos, textYpos + 110, 8000, 13500)
                 let numbersGroups2 = []
                 let adjust = 22
                 let numCoords = [{ x: 693 + adjust, y: 351 }, { x: 760 + adjust, y: 384 }, { x: 827 + adjust, y: 351 }]
@@ -2409,7 +2409,7 @@ const Supply = (props) => {
             label: 'place German unit for 5 LOC length',
             pageInt: 35,
             delay: 0,
-            duration: 13000,
+            duration: 6000,
             remove: false,
             async: true,
             fn: () => {
@@ -2417,14 +2417,10 @@ const Supply = (props) => {
                 showPageNumber(g, "35")
                 let textXpos = 1000
                 let textYpos = 488
-                textBox(g,
-                    `Since it is Mud weather, that Soviet armor unit
-                    does not exert any ZOCs. It is not on any road,
-                    and there is no adjacent town or city hex.`,
-                    textXpos - 50, textYpos - 50, 500, 8000)
+
                 textBox(g,
                     `Let's put an Axis unit here.`,
-                    textXpos + 350, textYpos - 160, 8000, 12000)
+                    textXpos + 350, textYpos - 160, 0, 5500)
                 sgAxisCombatUnit.value = g.image(german_infantry_unit, 1220, -64, 0, 0);
                 sgAxisCombatUnit.value.attr({
                     'xlink:href': german_infantry_unit,
@@ -2435,7 +2431,7 @@ const Supply = (props) => {
                 registerTimer(() => {
                     //  combat_unit.animate({ width: 35, height: 35, transform: 't 44, 44 ' }, 500);
                     sgAxisCombatUnit.value.animate({ transform: 't 0, 382 ' }, 500, mina.easeout);
-                }, 9500);
+                }, 3500);
 
                 return { discrete: g, percentage: null }
             }
