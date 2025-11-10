@@ -2264,7 +2264,7 @@ const Supply = (props) => {
                     textXpos, textYpos, 500, 14500, 0, 155)
                 let boxWidth = bbox.width
                 let spacing = boxWidth / 4
-                let msRedBoxText = g.text(textXpos + spacing + 175, textYpos + 241, "Red boxed MP").attr({
+                let msRedBoxText = g.text(textXpos + spacing + 169, textYpos + 241, "Red boxed MP").attr({
                     "textAnchor": "start",
                     "dominant-baseline": "central",
                     "fontSize": 40 * sgCrossBrowserFontSizeRatio.value,
@@ -2276,22 +2276,6 @@ const Supply = (props) => {
                 })
                 
 
-                let arrow = g.path("M 0,0 L 18,8 L 0,18 0,12, -18,12, -18,6, 0,6 Z").attr({
-                    fill: "black",
-                    "strokeWidth": 1,
-                    stroke: "black",
-                    opacity: 0,
-                    transform: `t637,709, s1.2, r180`
-                });
-
-                let arrow2 = g.path("M 0,0 L 18,8 L 0,18 0,12, -18,12, -18,6, 0,6 Z").attr({
-                    fill: "black",
-                    "strokeWidth": 1,
-                    stroke: "black",
-                    opacity: 0,
-                    transform: `t1111,709, s1.2, r180`
-                });
-
                 posX = textXpos + spacing
                 let displayRedBox = g.image(soviet_armor_unit, posX, posY + 200, 0, 0);
                 displayRedBox.attr({
@@ -2301,6 +2285,8 @@ const Supply = (props) => {
                     'opacity': 0
                 });
                 posX += spacing + 120
+
+
                 let displayOrangeMP = g.image(german_antiair_unit, posX, posY + 200, 0, 0);
                 displayOrangeMP.attr({
                     'xlink:href': german_antiair_unit,
@@ -2324,15 +2310,11 @@ const Supply = (props) => {
                     displayOrangeMP.animate({ opacity: 1 }, 500);
                     msRedBoxText.animate({ opacity: 1 }, 500);
                     msOrangeMPText.animate({ opacity: 1 }, 500);
-                    arrow.animate({ opacity: 1 }, 500);
-                    arrow2.animate({ opacity: 1 }, 500);
                     registerTimer(() => {
                         displayRedBox.animate({ opacity: 0 }, 500);
                         displayOrangeMP.animate({ opacity: 0 }, 500);
                         msRedBoxText.animate({ opacity: 0 }, 500);
                         msOrangeMPText.animate({ opacity: 0 }, 500);
-                        arrow.animate({ opacity: 0 }, 500);
-                        arrow2.animate({ opacity: 0 }, 500);
                     }, 13500)
                 }, 500);
 
@@ -3616,22 +3598,33 @@ const Supply = (props) => {
                 </div>
             </div>
             <div className="subheader-rule">
-                <div>General Supply specific clarifications</div>
+                <div>General Supply specific rules and clarifications</div>
             </div>
             <div className="padded">
                 <span>
-                    The term "Road net" refers to connected main road hexes, not minor roads.<BsrLink page="10" rule="6.15" /><br /> 
+                    The term "Road net" refers to connected main road (and or motorway) hexes, not minor roads.<BsrLink page="10" rule="6.15" /><br /> 
+                    <span className="spacer0_5rem" />
                     The Railroad used in a supply trace has to be contiguous hexes of the same (or connecting) railroad.<BsrLink page="10" rule="6.16" /><br />
+                    <span className="spacer0_5rem" />
                     The Main Road (or Motorway) used in a supply trace has to be contiguous hexes of the same main road.<BsrLink page="10" rule="6.15" /><br />
+                    <span className="spacer0_5rem" />
                     The 7 hexes overland (LOC) has to be contiguous hexes.<BsrLink page="10" rule="6.11" /><br />
+                    <span className="spacer0_5rem" />
                     No "hopping" over hexes is allowed. No leaving a road to go around some obstruction (like an enemy unit) and getting back on the road. Any obstruction on a main road or railroad stops the use of that main road or railroad at the last hex before the obstruction. From there, the LOC goes out up to 7 (or 5) contiguous hexes.<br />
-                    A General Supply path can not cross non-frozen lake/inland sea hexsides or unbridged major river. A General Supply path cannot enter a swamp hex during Dry or Mud turns unless the path is along a road or railroad that goes through the hex. A LOC can go along a railroad into a swamp hex during Dry or Mud turns.<br />
-                    A General Supply path cannot enter a hex with a undestroyed enemy strongpoint or cross over a non-destroyed
+                    <span className="spacer0_5rem" />
+                    A General Supply path can not cross non-frozen lake/inland sea hexsides or unbridged major river.
+                    <span className="spacer0_5rem" />A General Supply path cannot enter a swamp hex during Dry or Mud turns unless the path is along a road or railroad that goes through the hex. A LOC can go along a railroad into a swamp hex during Dry or Mud turns.<BsrLink page="39" rule="15.22" /><br />
+                    <span className="spacer0_5rem" />A General Supply path cannot enter a hex with a undestroyed enemy strongpoint or cross over a non-destroyed
                     fortified line hexside.<BsrLink page="9" rule="6.13" /><br />
-                    The path from a Unit to General Supply can only be in this order: LOC -&gt; Railroad -&gt; Main Road or Motorway, with any of them being optional,
+                    <span className="spacer0_5rem" /><span className="spacer0_5rem" />The path from a Unit to General Supply can only be in this order: LOC -&gt; Railroad -&gt; Main Road or Motorway, with any of them being optional,
                     but you cannot trace along more than one path of each type.<BsrLink page="10" rule="6.12" /><br />
                     Armored trains and flotillas do not require General Supply.<BsrLink page="11" rule="6.37" /><BsrLink page="39" rule="15.22" /><br />
-                    Supply rules do not apply to air units.
+                    <span className="spacer0_5rem" />Supply rules do not apply to air units.
+                    <span className="spacer0_5rem" />Units that are available for play but are currently being held off-map, are in General Supply while off-map.<BsrLink page="10" rule="6.22" /><br />
+                    <span className="spacer0_5rem" />Reinforcements entering through a map edge are considered to be in General Supply that turn.<BsrLink page="17" rule="8.12d" /><br />
+                    <span className="spacer0_5rem" />A Soviet major city (single or multi-hex) can function as a Soviet General Supply source if it can trace a supply route to a regular
+                    <span className="spacer0_5rem" />Soviet Supply source (not to another city). <BsrLink page="10" rule="6.24" /><br />
+                
                 </span>
             </div>
             <span className="spacer1rem" />
