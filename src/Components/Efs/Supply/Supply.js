@@ -3622,8 +3622,8 @@ const Supply = (props) => {
                     <span className="spacer0_5rem" />Supply rules do not apply to air units.
                     <span className="spacer0_5rem" />Units that are available for play but are currently being held off-map, are in General Supply while off-map.<BsrLink page="10" rule="6.22" /><br />
                     <span className="spacer0_5rem" />Reinforcements entering through a map edge are considered to be in General Supply that turn.<BsrLink page="17" rule="8.12d" /><br />
-                    <span className="spacer0_5rem" />A Soviet major city (single or multi-hex) can function as a Soviet General Supply source if it can trace a supply route to a regular
-                    <span className="spacer0_5rem" />Soviet Supply source (not to another city). <BsrLink page="10" rule="6.24" /><br />
+                    <span className="spacer0_5rem" />A Soviet major city (single or multi-hex) can function as a Soviet General Supply source if it can trace a supply route to a 
+                    regular Soviet Supply source (not to another major city that is providing General Supply). <BsrLink page="10" rule="6.24" /><br />
                 
                 </span>
             </div>

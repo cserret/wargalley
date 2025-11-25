@@ -813,4 +813,24 @@
   .drop-shadow {
     box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.3);
   }
+
+  ul.no-bullets {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+    li {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      div {
+        margin-left: 10px;
+        span.list_header {
+          font-weight: bold;
+          font-size: 1.3rem;
+          display: block;
+          padding-bottom: 0.2rem;
+        }
+      }
+    }
+  }
 }
