@@ -29,6 +29,7 @@ import germanInfantryDivision from "../../../images/efs/supply/german_infantry_d
 import germanHeavyArtillery from "../../../images/efs/movement/german_heavy_artiilery.png"
 import germanRocketArtillery from "../../../images/efs/movement/german_rocket_artillery_120.png"
 import germanPanzer from "../../../images/efs/movement/german_panzer_120x120.png"
+import roadsExample from "../../../images/efs/movement/roads_example.jpg"
 import './Movement.scss';
 
 const Movement = (props) => {
@@ -131,10 +132,10 @@ const Movement = (props) => {
             <div>
                 As you can see, the Soviets are at a disadvantage.
                 <span className="spacer0_5rem" />
-                The Axis player gets to move all his units to set up combats, but the Soviet player can only move motorized units before combat.
+                The Axis player gets to move all his units to set up combats, but the Soviet player can *only move motorized units before combat.
                 <span className="spacer0_5rem" />
-                However, the Soviet player does have a limited ability to move some non-motorized units during the Soviet Motorized Movement Phase by having a headquarters "Activate" a non-motorized unit. This will be discussed in the section under "Headquarters".
-                <span className="spacer0_5rem" />
+                *The Soviet player does have a limited ability to move some non-motorized units during the Soviet Motorized Movement Phase by having a headquarters "Activate" a non-motorized unit. This will be discussed in the section under "Headquarters".
+
             </div>
 
             <div className="subheader-rule">
@@ -145,30 +146,52 @@ const Movement = (props) => {
             <span className="spacer0_5rem" />
             There can also be conditions that cause "Lingering mud" and "Lingering snow", depending
             on the previous turn's weather. <BsrLink page="9" rule="5.2" />
-
+            <span className="spacer0_5rem" />
+            Weather has effects on movement, General supply, ZOCs, Air missions, and combat.
 
 
 
             <div className="subheader-rule">
                 Roads in EFS
+                <svg height="78" width="386" style={{ marginLeft: '1rem' }}>
+                    <image href={roadsExample} x="0" y="0" height="78" width="386" />
+
+                    <text x="45" y="62" className="image-label"
+                        fontSize="12px"
+                        textAnchor="middle"
+                    >Motorway</text>
+
+                    <text x="144" y="66" className="image-label"
+                        fontSize="12px"
+                        textAnchor="middle"
+                    >Main road</text>
+
+                    <text x="246" y="62" className="image-label"
+                        fontSize="12px"
+                        textAnchor="middle"
+                    >Trail</text>
+
+                    <text x="344" y="63" className="image-label"
+                        fontSize="12px"
+                        textAnchor="middle"
+                    >Railroad</text>
+                </svg>
             </div>
             <span className="spacer0_5rem" />
             <div>
-                The term "road" can sometimes be confusing in EFS. There are four kinds of roads in EFS. Each usually provide some movement benefits as compared to going "off road".
+                The term "road" can sometimes be confusing in EFS. There are three kinds of roads in EFS, plus rail lines that can provide road-like benefits. Each usually provide some movement benefits as compared to going "off road".
                 <span className="spacer0_5rem" />
-                Rail lines can provide rail movement, as in "on a choo-choo train", but troops can also
-                move along a rail line at a reduced cost since they are level and cut through rough or poor terrain, and often
-                have maintenance roads along them.
+                When "roads" are mentioned in the rules, they usually refer to both "Main" roads and "Minor" roads, unless
+                noted. The differences between main roads and minor roads is mostly handled by the Terrain Effects Chart.
                 <span className="spacer0_5rem" />
-                When "roads" are mentioned in the rules, they usually refer to both Minor Roads and Main Roads, unless
-                noted.
-                <span className="spacer0_5rem" />
-                Trails are the dashed lines, and they usually provide some easier travel along terrain.
+                Rail lines can provide rail movement, as in "traveling in a train", but troops can also
+                travel (on foot or in a wagon or vehicle) along a rail line at a reduced cost since, although not as nice as a main a road, they still
+                allow easier movement, especially through rough terrain. <BsrLink page="21" rule="10.42" />
                 <span className="spacer0_5rem" />
                 Main Roads are solid lines, and provide dependable easier travel.
                 <span className="spacer0_5rem" />
                 A Motorway is identical to a Main Road, but it can have certain restrictions on unit movement along it.
-                The Motorway to Moscow is heavily used by trucks transporting supplies to the front, depending on the
+                The Motorway to Moscow was heavily used by trucks transporting supplies to the front, depending on the
                 scenario.
                 <span className="spacer0_5rem" />
                 Unlike is most wargames, your units can only benefit from road movement if they are truely
@@ -179,26 +202,27 @@ const Movement = (props) => {
                 This rule has a little wiggle room. You could "end" your movement in a phase in a hex with a road and claim the road benefit. Then in the next movement phase you can leave that road and not worry about "paying back" for the previous movement phase. Using this method you could extract units that were otherwise "trapped" on a road going through otherwise prohibited terrain and "escape" into a non-prohibited hex that is next to it.
             </div>
 
-
+            <span className="spacer2rem" />
 
             <div className="subheader-image">
 
                 <div>Super-heavy artillery <BsrLink page="32" rule="13.4" /></div>
-                <img src={germanHeavyArtillery} alt="German heavy artillery" width="60" height="60" />
+                <img src={germanHeavyArtillery} alt="German heavy artillery" width="80" height="80" />
             </div>
             <span className="spacer1rem" />
-            <div className="pdiv">
-                Super-heavy artillery (marked by unit symbol and green movement rate) are very restricted in how they can move:
-                <ul className="bare-ul">
-                    <li>They can be transported by railroad movement. They must be in "move" mode before getting on a train.</li>
-                    <li>They can move along connected Main Road or Motorway hexes at the rate of 1/2 mp per hex, under all weather conditions.</li>
-                    <li>They can also move along connected Minor Roads at the rate of 1 mp per hex during Dry Weather with no Lingering Mud. </li>
-                    <li>They can utilize strategic movement along a Motorway or Main Road. They cannot do strategic movement on a Minor Road.</li>
-                    <li>If a super-heavy artillery is on a Minor Road when Mud occurs - it is stuck until totally dry weather returns.</li>
-                    <li>If a super-heavy gets a retreat result on it, it can only retreat if it is on its mobile side. If it is on its firing side it is destroyed. If its on its mobile side, it can only retreat along Main Road or Motorway hexes (or along a Minor Road if the weather is Dry with no Lingering Mud), otherwise it is destroyed.</li>
-                    <li>Super-heavy artillery can only change mode during the Engineering Phase. It can only change to its "firing" side if it did not move that turn. You might want to mark the super-heavy with some marker at the beginning of your movement phase so that you'll know not to move it so it can qualify to flip to firing mode.</li>
-                    <li>Note that super-heavy artillery that is OOS may not be able to move at all, since the -2 MP effect of being OOS may bring its movement rate down to 0.</li>
-                </ul>
+            <div>
+                Super-heavy artillery (marked by unit symbol and green movement rate) are very restricted in how they can move.
+                <span className="spacer0_5rem" />
+                They have two sides, a mobile side and a firing side. They must be on
+                their mobile side to be moved. <BsrLink page="32" rule="13.42d" />
+                <span className="spacer0_5rem" />
+                They can be moved by railroad movement (regardless of weather). <BsrLink page="32" rule="13.42d" />
+                <span className="spacer0_5rem" />
+                They can only move along minor roads during Dry or Frost weather. <BsrLink page="32" rule="13.42b" /> 
+                They can move along main roads in all weather conditions.
+                <span className="spacer0_5rem" />
+                They can conduct strategic movement. <BsrLink page="32" rule="13.42c" /><BsrLink page="25" rule="11.2" />
+
             </div>
 
 
@@ -206,9 +230,8 @@ const Movement = (props) => {
             <span className="spacer2rem" />
 
             <div className="subheader-image header-2-image">
-                <span>6.71, 22.12a</span>
                 <div>Soviet cavalry</div>
-                <img src={soviet_cavalry} alt="Soviet cavalry" />
+                <img src={sovietCavalry} alt="Soviet cavalry" width="80" height="80" />
                 <img src={soviet_cossack} alt="Soviet Cossack commander at Kiev, 1942" />
             </div>
             <span className="spacer1rem" />
