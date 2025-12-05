@@ -25,6 +25,13 @@
             }
         }
     }
+    ul.small-list {
+        display: block;
+        margin-block-start: 0.2em;
+        margin-block-end: 0.5em;
+        padding-inline-start: 40px;
+        unicode-bidi: isolate;
+    }
     .header-2-image {
         > span:nth-child(1) {
             position: absolute;
@@ -48,7 +55,7 @@
         img:first-of-type {
             margin-top: auto;
             margin-left: 1.5rem;
-            height: 70px;
+            height: 80px;
             width: auto;
         }
     }

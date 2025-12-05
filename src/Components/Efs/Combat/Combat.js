@@ -1402,13 +1402,7 @@ const Combat = (props) => {
                             None of the units being used to qualify for the bonus can be in OOS state, unless they have attack supply.
                         </li>
                     </ul>
-                    <span className="spacer0_5rem" />
-                    <div className="small-counters-left2">
-                        <div>
-                        <img src={ssLAH} alt="SS LAH counters" />
-                        </div>
-                        <div>Exception: The SS LAH motorized division only has two units, and still qualifies for the Panzer Divisional Integrity Bonus.</div>
-                    </div>
+        
                 </div>
 
 

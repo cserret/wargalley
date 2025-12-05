@@ -8,6 +8,7 @@ import c8 from "../../../images/efs/movement/c8.jpg";
 import c10 from "../../../images/efs/movement/c10.jpg";
 import c12 from "../../../images/efs/movement/c12.jpg";
 import german_bridge from "../../../images/efs/movement/bridge_unit_german.png";
+import german_ferry from "../../../images/efs/movement/german_ferry_120x120.png";
 import infiltration_movement_example from "../../../images/efs/movement/infiltration_movement_example.jpg";
 import german_superheavy from "../../../images/efs/movement/german_superheavy.jpg";
 import motorway from "../../../images/efs/movement/motorway.jpg";
@@ -30,6 +31,7 @@ import germanHeavyArtillery from "../../../images/efs/movement/german_heavy_arti
 import germanRocketArtillery from "../../../images/efs/movement/german_rocket_artillery_120.png"
 import germanPanzer from "../../../images/efs/movement/german_panzer_120x120.png"
 import roadsExample from "../../../images/efs/movement/roads_example.jpg"
+import sovietTrainEngine from "../../../images/efs/movement/soviet_train.jpg"
 import './Movement.scss';
 
 const Movement = (props) => {
@@ -148,6 +150,9 @@ const Movement = (props) => {
             on the previous turn's weather. <BsrLink page="9" rule="5.2" />
             <span className="spacer0_5rem" />
             Weather has effects on movement, General supply, ZOCs, Air missions, and combat.
+            <span className="spacer0_5rem" />
+            Although not usually shown, any roads or railroads that enter a hex with a town or city are considered
+            to be connected to any roads or railroads exiting the hex.  <BsrLink page="10" rule="6.15" />  <BsrLink page="10" rule="6.16" />
 
 
 
@@ -218,11 +223,12 @@ const Movement = (props) => {
                 <span className="spacer0_5rem" />
                 They can be moved by railroad movement (regardless of weather). <BsrLink page="32" rule="13.42d" />
                 <span className="spacer0_5rem" />
-                They can only move along minor roads during Dry or Frost weather. <BsrLink page="32" rule="13.42b" /> 
+                They can only move along minor roads during Dry or Frost weather. <BsrLink page="32" rule="13.42b" />
                 They can move along main roads in all weather conditions.
                 <span className="spacer0_5rem" />
                 They can conduct strategic movement. <BsrLink page="32" rule="13.42c" /><BsrLink page="25" rule="11.2" />
-
+                <span className="spacer0_5rem" />
+                They cannot be activated for movement by HQ activation. <BsrLink page="20" rule="10.13c" />
             </div>
 
 
@@ -236,93 +242,346 @@ const Movement = (props) => {
             </div>
             <span className="spacer1rem" />
             <div>
-                Soviet cavalry units can move during both Motorized and Regular Movement Phases.
-                <ul className="bare-ul">
-                    <li>They can always move 1/2 their movement during the Soviet Motorized Movement Phase, and then full movement during the Regular Movement Phase.</li>
-                    <li>They do not suffer from the -2 MP penalty for being OOS. </li>
-                    <li>Cavalry units with a yellow MA can conduct Infiltration Movement.  <span className="rule-ref">11.52.b, 10.13.d,e</span> </li>
-                    <li>Soviet (not Axis) cavalry units can conduct overruns. If the overrun fails with a Soviet cavalry unit, that cavalry unit takes the first hit. <BsrLink page="26" rule="11.37j" /></li>
-                    <li>They do not have the "retreat before combat option" capability that you see in some other games.</li>
-                </ul>
+                Soviet cavalry units can move during both Motorized and regular Movement Phases (see the Terrain Effects Chart).
+                <span className="spacer0_5rem" />
+                Soviet cavalry can conduct overrun movement. <BsrLink page="25" rule="11.32" /> However,
+                if the participated in a failed overrun, Soviet cavalry suffer an additional
+                step loss. <BsrLink page="26" rule="11.37j" />
+                <span className="spacer0_5rem" />
+                They do not suffer from the -2 MP penalty for being OOS.  <BsrLink page="11" rule="6.53" />
+                <span className="spacer0_5rem" />
+                They cannot be activated for movement by HQ activation. <BsrLink page="20" rule="10.13c" />
+                <span className="spacer0_5rem" />
+                Unlike many other wargames, cavalry in EFS do not have the ability to retreat before combat.
             </div>
 
 
 
             <div className="subheader-image stalin">
-                <span>10.75c2</span>
-                <div>Minor roads in mud</div>
+                <div>Weather effects on movement</div>
                 <img src={mudroad} alt="muddy road" />
             </div>
-
+            <span className="spacer0_5rem" />
             <div>
-                Minor Roads are considered to all but disappear in Mud turns. Motorized units must pay cost for the other terrain in the hex when moving along a Minor Road during Mud. The exception is Woods - do not add Woods cost while traveling along a Minor Road through Woods in Mud. Units can still do Strategic Movement along Minor Roads in Mud, though it doesn't change the cost of entering the hexes.
+                The Terrain Effects Chart has a column for the various weather conditions. The
+                costs generally go up for Mud and Snow weather conditions.
+                <BsrLink page="22" rule="10.44" />
+                <span className="spacer0_5rem" />
+                Weather conditions do not affect movement along a motorway - it remains
+                half an MP to enter a hex along a motorway.
+                Although the Axis player is only allowed to use the Motorway movement benefit
+                with Red, orange, and green MP uits, the Soviet player can benefit from the
+                Motorway movement benefit with any unit.
+                <BsrLink page="22" rule="10.44a" />
+                <span className="spacer0_5rem" />
+                In Mud or Snow weather, units spend 1 MP to enter any hex along a
+                main road. <BsrLink page="22" rule="10.44b" />
+                <span className="spacer0_5rem" />
+                In Frost weather, units spend 1 MP to enter any hex along
+                a minor road. <BsrLink page="22" rule="10.44c" />
+                <span className="spacer0_5rem" />
+                In Snow weather, units spend 2 MPs to enter any hex along
+                a minor road. <BsrLink page="22" rule="10.44c" />
+                <span className="spacer0_5rem" />
+                In Mud weather, units spend 2 MPs to enter a clear terrain hex
+                along a minor road. If other terrain, then the units need to
+                pay the cost for that terrain, ignoring the minor road.
+                Yes, minor roads pretty much disappear in Mud weather, and
+
+                if you have any heavy artillery on a trail, it may have to stay
+                there until the Mud goes away.
+                <BsrLink page="22" rule="10.44c" />
+
+
             </div>
 
             <span className="spacer2rem" />
-            <div className="subheader-image header-1-image">
-                <div>Minsk-Smolensk-Moscow Motorway</div>
-                <img src={motorway} alt="Minsk-Smolensk-Moscow Motorway" />
+            <div className="subheader-image">
+                <div>Motorway movement (only in AGC) <BsrLink page="22" rule="10.44a" /></div>
+                <img src={motorway} alt="Minsk-Smolensk-Moscow Motorway" width="380" height="285" />
             </div>
 
-            <div className="pdiv">
-                (<span className="i">Barbarossa: Army Group Center only</span>) The Motorway in Army Group Center has special restrictions on its use. The Motorway was so important for the movement of supplies and critical reinforcements to the drive on Smolensk and Moscow that the Germans strictly controlled who and want could utilize this very important highway.
-                <ul className="bare-ul">
-                    <li>Only Axis motorized, Orange MA, and Green MA units may benefit from the road rate on the Motorway. Super-Heavy artillery is still, though, restricted to one hex per MP.</li>
-                    <li>For all other units, they can move along the Motorway but they have to pay the costs of other terrain in the hex, as if the Motorway wasn't even there.</li>
-                    <li>Soviet forces can use the beneficial Motorway rates without these restrictions.</li>
+
+            <span className="spacer0_5rem" />
+            <div className="padded">
+                Movement along the motorway is 1/2 MP per hex, regardles of weather conditions.
+                <span className="spacer0_5rem" />
+                All Soviet units can use the motorway at 1/2 MP per hex.
+                <span className="spacer0_5rem" />
+                Only these Axis units can benefit from motorway movement:
+                <ul className="small-list">
+                    <li>All motorized (including armored)</li>
+                    <li>All Orange MP units (MSUs and artillery)</li>
+                    <li>All Green MP units (heavy artillery)</li>
                 </ul>
+                The motorway was historically heavily used to transport supplies
+                up to the front, and infantry usually had to march beside the road.
             </div>
 
             <span className="spacer2rem" />
+            <div className="subheader-image">
+                <div>Railroad transportation <BsrLink page="24" rule="11.1" /></div>
+                <img src={sovietTrainEngine} alt="Soviet train" width="400" height="233" />
+            </div>
+
+            <span className="spacer1rem" />
+            The scenario rules will specify the number of units that can utilize railroad transportation during a single turn.
+            Players must plan their railroad movements carefully to stay within these
+            limits. <BsrLink page="24" rule="11.14" />
+            <span className="spacer0_5rem" />
+            Any unit, including supply units and supply dumps, in General Supply can board a train in any rail hex which is in its friendly
+            rail net.<BsrLink page="24" rule="11.11" />
+            <span className="spacer0_5rem" />
+            A unit utilizing rail transportation does so during the friendly Movement phase, but cannot
+            also do regular movement in the Movement phase. <BsrLink page="24" rule="11.12" /> The unit cannot
+            be within 3 hexes of an enemy unit when starting its rail transporation. <BsrLink page="24" rule="11.13a" />
+            <span className="spacer0_5rem" />
+            Railroad transporation allows a unit to move up to 60 friendly (converted for Axis) connected rail hexes.
+            Terrain or weather is not considered when traveling by rail, each rail hex counts as 1 of the
+            60 max hexes.
+            Exceptions:
+            <ul className="small-list">
+                <li>rail hexes in a Axis interdiction zone - the cost for Soviets is 12 of the rail
+                    transportation movement allowance. <BsrLink page="24" rule="11.13b" /></li>
+                <li>Axis railroad capacity is halved during Snow weather. <BsrLink page="24" rule="11.16" /></li>
+            </ul>
+
+            <span className="spacer0_5rem" />
+            HQs and other units with zero stacking values will cost as 1 unit for railroad capacity. A MSU (mobile supply unit) will
+            cost as 1 unit. A supply dump costs as 1 unit per supply point. <BsrLink page="24" rule="11.15" />
+
+            <span className="spacer2rem" />
             <div className="subheader-image header-1-image">
-                <div>How Railroads are sometimes treated like a road</div>
+                <div>Railroads and roads</div>
                 <img src={german_troops_railroad} alt="German troops walking along railroad" />
             </div>
-            <div className="pdiv">
+            <div className="padded">
                 <ul className="bare-ul">
-                    <li>When moving along a railroad (not using rail movement) in woods, subtract 1 from the movement cost to enter that hex.</li>
-                    <li>When moving along a railroad over a River or Major River hexside, the unit ignores the cost of crossing that river or Major River hexside.</li>
-                    <li>Artillery units can cross a Major River along a railroad.</li>
-                    <li>Motorized units (and those with Orange MAs) may enter a swamp hex moving along a railroad. The cost is 3 MP per hex in any weather condition.</li>
-                    <li>During mud turns, motorized units extend their ZOCs into surrounding hexes only if it is along a road or railroad.</li>
-                    <li>A railroad can allow a LOC to go through a swamp hex during Dry or Mud turns.</li>
+                    <li>
+                        In Mud weather, red-box and orange MA units can only project
+                        their ZOCs into adjacent hexes (where they would normally extend into)
+                        if the hexside is crossed
+                        by a road or railroad. <BsrLink page="6" rule="3.24" />
+                    </li>
+                    <li>
+                        In Dry or Mud weather, a Supply Route can only enter (and cross)
+                        swamp hexes only when following a road or railroad.
+                        <BsrLink page="9" rule="6.13" />
+                    </li>
+                    <li>
+                        When tracing a LOC through a Marsh hex, the LOC is reduced to
+                        5 hexes unless along a road or railroad. <BsrLink page="10" rule="6.14c" />
+                    </li>
+                    <li>
+                        When crossing Woods terrain along a railroad, reduce the total woods
+                        cost by 1 MP in any weather condition. Units do not
+                        get this benefit in the hex where they exit to an adjacent
+                        hex not along the railroad. <BsrLink page="21" rule="10.42a" />
+                    </li>
+                    <li>
+                        When crossing a water barrier on a railroad, the
+                        water barrier crossing cost is negated. <BsrLink page="21" rule="10.42b" />
+                    </li>
+                    <li>
+                        Motorized units (Orange or Green MAs)
+                        can only cross Swamp hexes when moving along roads or railroads <BsrLink page="23" rule="10.48" />
+                        and pay 3 MPs per hex. <BsrLink page="21" rule="10.42c" />
+                    </li>
+                    <li>
+                        Units can overrun a marsh or swamp hex only when the hex
+                        is frozen or when moving along the path of a motorway, road, or
+                        railroad. Apply a (+2) DRM to the Overrun Table die roll result. <BsrLink page="26" rule="11.35b" />
+                    </li>
+                    <li>
+                    Super-Heavy Artillery can enter a hex only through a hexside
+                    crossed by a main road, minor road, motorway, or railroad. <BsrLink page="32" rule="13.41a" />
+                    </li>
+                    <li>
+                    Super-Heavy artillery units on their mobile sides can retreat
+only through hexsides crossed by minor road, main road, motorway, or railroad. Where Mud or Snow conditions apply, they
+cannot retreat along minor road or railroad. <BsrLink page="45" rule="16.47a" />
+</li>
+<li>A road bridge or railroad bridge can be subject to destruction. <BsrLink page="57" rule="22.42" />
+    </li>
                 </ul>
             </div>
 
             <span className="spacer1rem" />
-
-            <div className="subheader-image header-2-image">
-                <div>Bridges<BsrLink page="56" rule="22.2" /></div>
-                <img src={german_bridge} alt="German bridge" />
-                <img src={german_pontoon_bridge} alt="German pontoon bridge" />
+            <div className="padded">
+                Additional Retreat <BsrLink page="30" rule="30d" /><BsrLink page="44" rule="16.45" />
+            </div>
+            <div className="subheader-image">
+                <div>Bridges and Ferrys<BsrLink page="56" rule="22.2" /> <BsrLink page="57" rule="22.3" /></div>
+                <div>
+                <img src={german_bridge} alt="German bridge" width="100" height="100"/>
+                <img src={german_ferry} alt="German ferry" width="100" height="100"/>
+                <img src={german_pontoon_bridge} alt="German pontoon bridge" width="290" height="206"/>
+                </div>
             </div>
             <span className="spacer1rem" />
+
             <div>
-                Players may get some bridge units, depending on the scenario.
-                These bridge units allow movement across a river or major river without having to pay the river crossing costs.
-                Bridge units cannot be destroyed or captured. If an enemy unit enters the hex with the bridge unit, it is
-                removed from the map and returned to the owning player, who may place it again during the next turn.
-                Roads (major and minor) and railroads that go across rivers are assumed to have bridges there.
-                Those bridges also never get destroyed, and are always available to both sides.
-                Some bridges are printed on the map - those bridges *can* be destroyed.<BsrLink page="57" rule="22.4" />
-            </div>
-            <div>
-                To place a bridge, the active player can place the counter with the under-construction side next to a river, during the
-                (Axis) Movement Phase or (Soviet) Motorized Movement Phase.
-                The hex the bridge counter is placed in must be in General Supply (the other side of the river isn't required to be in
-                General Supply). A bridge can be constructed where there is a destroyed bridge marker (after the "new" bridge is complete,
-                the bridge marker and the destroyed bridge marker can be removed).
-                Movement over the completed bridge is considered to be road movement.
+                Bridges over major rivers are marked on the map.
+                Where a road or railroad crosses regular river
+                has an implied bridge. Where both a road and a railroad
+                crosses a bridge, treat them as separate bridges. Both
+                of which are subject to destruction and repair.
+                <BsrLink page="23" rule="10.45" />
+                <span className="spacer0_5rem" />
+                Both players can build bridges across rivers and canals where a bridge does not exist. They can also
+                build or repair a bridge where a bridge has been destroyed.
+                <span className="spacer0_5rem" />
+                Bridge markers have two sides, an under construction side and a completed side. When a bridge 
+                is in operation, the arrow on the bridge counter needs to be pointed at the hexside the bridge is crossing.
+                Bridges only negate any previous cost to cross an unbridged river or canal. If any roads had
+                previously crossed a bridge that had been destroyed, the road is considered reconnected after repair.
+                <BsrLink page="56" rule="22.21" />
+                <span className="spacer0_5rem" />
+                The number of Bridge markers is listed in the scenario. Bridge markers not being currently deployed are
+                kept in the player's active box. There is no limit to the number of times a bridge marker can be placed
+                or removed from the map. Removed Bridge markers are either redeployed or get returned to the active box.
+                <BsrLink page="56" rule="22.22" />
+                <span className="spacer0_5rem" />
+                Bridge markers do not require General Supply
+                to exist. Even Bridge markers on their under construction
+                side do not require General Supply. 
+                <BsrLink page="11" rule="6.26d" />
+                <span className="spacer0_5rem" />
+                Axis interdiction zones do not affect the cost of crossing
+                a river at a bridge or ferry, although the hexes on either
+                side of a bridge are still affected by any interdiction movement penalties.
+                <BsrLink page="37" rule="14.64c" />
+                <span className="spacer0_5rem" />
+                Bridge destruction is not allowed by the Soviet player when in range of a Soviet non-op HQ.
+                <BsrLink page="53" rule="21.26a" />
+                <span className="spacer0_5rem" />
+                Placement of a bridge marker within range of a Soviet non-op HQ
+                counts as the movement of one unit.
+                <BsrLink page="54" rule="21.27d" />
+                <span className="spacer0_5rem" />
+                To place a bridge, the active player can place the counter with 
+                the under-construction side next to a river, during the
+                (Axis) Movement Phase or (Soviet) Motorized Movement Phase. The
+                hex the bridge marker is placed cannot be in an Axis ZOC, but the
+                other side of the river can be in enemy ZOC (and not occupied
+                by an enemy unit). The
+                hex the bridge under construction marker is place must be in
+                General Supply. The opposite side of the river does not need
+                to be in General Supply. The arrow on the Bridge marker must
+                be placed to the opposite side of the river that the bridge will
+                connect to.
+                <BsrLink page="56" rule="22.23c" />
+                <span className="spacer0_5rem" />
+                A bridge placed under construction on a regular river is flipped
+                over immediately to its completed side 
+                <BsrLink page="56" rule="22.23b" />
+                only if the hex in the opposite
+                side of the river is not enemy occupied and not in enemy ZOC.
+                <BsrLink page="56" rule="22.23c" />
+                <span className="spacer0_5rem" />
+                 If a bridge under construction
+                is crossing a Major River, flip it to its completed side
+                in the owning player's Engineering Phase, 
+                <BsrLink page="56" rule="22.24b" />
+                as long as the hex opposite
+                the Major River is not enemy occupied and not in enemy ZOC.
+                <BsrLink page="56" rule="22.24c" />
+                <span className="spacer0_5rem" />
+                Soviet bridges work just like Axis bridges, except the Soviet player
+                cannot bridge across Major Rivers until game turn 98.
+                <BsrLink page="56" rule="22.25" />
+                <span className="spacer0_5rem" />
+                Units cannot use an enemy constructed bridge. Remove the bridge
+                when a unit enters a hex with the enemy bridge marker.
+                <BsrLink page="56" rule="22.26" />
+                <span className="spacer0_5rem" />
+                Only the bridges that are printed on the maps are subject to 
+                destruction. 
+                <BsrLink page="57" rule="22.4" />
+                <span className="spacer0_5rem" />
+                Only the Axis unit has Ferry markers.
+                <BsrLink page="57" rule="22.3" />
+                <span className="spacer0_5rem" />
+                A Ferry marker is used to reconnect a railroad that was broken
+                by a destroyed bridge. Its is not a bridge for ground units,
+                it's only for railroad transportation.
+                <BsrLink page="57" rule="22.31" />
+                <span className="spacer0_5rem" />
+                Ferry markers are used nearly the same way as Bridge markers.
+                <BsrLink page="57" rule="22.32" />
+                <span className="spacer0_5rem" />
+                A Ferry marker can only be placed next to a destroyed railroad
+                bridge if the hex contains a converted Railhead marker that traces
+                back to a General Supply source.
+                <BsrLink page="57" rule="22.32a" />
+                <span className="spacer0_5rem" />
+                A German engineer unit needs to be with with the Ferry marker
+                during placement and construction. A Ferry marker is placed under-construction
+                side up in the Axis Movement Phase. During the Axis Engineering Phase,
+                it is flipped to its completed side. When the Ferry is completed, the
+                railroad is considered connected for rail transport purposes only.
+                <BsrLink page="57" rule="22.32b" />
+                <span className="spacer0_5rem" />
+                Units using railroad movement pay 30 railroad transport MPs to cross a major river using
+                a Ferry.
+                <BsrLink page="57" rule="22.33" />
+
+                <span className="spacer0_5rem" />
+                A railroad connected by a Ferry still operatates normally as part of
+                a rail net for General Supply purposes.
+                <BsrLink page="57" rule="22.34" />
+
+                <span className="spacer0_5rem" />
+                Unlike Bridge markers, the owning player cannot freely remove them,
+                they can only be removed by either an enemy unit entering it's hex,
+                or the bridge across the river is repaired.
+                <BsrLink page="57" rule="22.35" />
+
+                <span className="spacer0_5rem" />
+                Only bridges printed on the map are subject to destruction. Bridge
+                and Ferry markers get removed if an enemy unit enters their hex,
+                or if the owning player freely removes a bridge marker from the map.
+                <BsrLink page="57" rule="22.41" />
+
+                <span className="spacer0_5rem" />
+                Any combat unit can conduct Bridge Destruction during their friendly
+                Engineering Phase. The unit can be on either side of the bridge and
+                no enemy unit can be within seven hexes of the unit doing the
+                destruction. 
+                <BsrLink page="57" rule="22.42" />
+                Exception: Soviet units within range of a non-Op HQ
+                cannot do Bridge Destruction. 
+                <BsrLink page="57" rule="22.43c" />
+                <span className="spacer0_5rem" />
+                When a unit qualifies for destroying a on-map bridge the 
+                player can simply declare the bridge is destroyed in their
+                Engineering Phase. The player places a Bridge Destroyed
+                marker on its 2 point side up on the hex either side of the
+                river, where the unit is in the hex across the river.
+                <BsrLink page="57" rule="22.43a" />
+                <span className="spacer0_5rem" />On-map bridges that had been destroyed
+                can be repaired <BsrLink page="57" rule="22.44a" />. In the player's 
+                Engineering phase, the player needs
+                to have an in-general-supply Engineer unit on either side of the bridge
+                in order to attempt repairs on the bridge.
+                <BsrLink page="57" rule="22.44b" />
+                The other side of the bridge from the unit cannot have an enemy unit in
+                it, but it can be in enemy ZOC. 
+                <BsrLink page="57" rule="22.44c" />
+                <span className="spacer0_5rem" />
+                Refer to the Bridge Repair Table for DRMS and then roll for the results of the
+                attempt to repair.
+                <BsrLink page="57" rule="22.45b" />
             </div>
 
             <span className="spacer2rem" />
 
             <div className="subheader-image header-2-image">
-                <div className="header-1-image-title">Infiltration Movement<BsrLink page="27" rule="11.4" /></div>
+                <div className="header-1-image-title">Infiltration Movement <BsrLink page="27" rule="11.4" /></div>
                 <img src={infiltration_movement_example} alt="Infiltration movement example" style={{ height: 'auto' }} />
             </div>
             <span className="spacer0_5rem" />
-            <div className="pdiv">
+            <div className="padded">
                 Infiltration Movement allows eligible units to move directly from a hex in enemy unit ZOC to adjacent hex in enemy unit ZOC (even if the ZOC is from different
                 enemy units), in it's movement phase where it normally has its full movement point allowance. The unit doing Infiltration Movement expends all its movement point allowance in moving that 1 hex.
                 already in enemy zoc. The unit can be Out of Supply, and still execute Infiltration Movement.<br />
@@ -354,7 +613,12 @@ const Movement = (props) => {
 
             </div>
 
+            Out of supply units have two MPs subtracted from their movement rates,
+            except for cavalry, flotilla, and armored trains.
+            Cannot conduct Railroad movement.
+            Cannot conduct Strategic movement.
 
+            Armored trains and railroad artillery can move only along railroads (for Axis they need to be converted rail hexes). <BsrLink page="21" rule="10.33" />
 
             <span className="spacer2rem" />
 
@@ -363,7 +627,7 @@ const Movement = (props) => {
                 <img src={mountain_unit_infiltration_example} alt="mountain unit Infiltration Movement example" style={{ height: 'auto' }} />
             </div>
             <span className="spacer0_5rem" />
-            <div className="pdiv">
+            <div className="padded">
                 <ul className="bare-ul">
                     <li>Mountain units can conduct Infiltration Movement into or out of a hill, mountain, or alpine hex.</li>
 
@@ -381,7 +645,7 @@ const Movement = (props) => {
                 <div className="header-1-image-title">One-Hex Movement<BsrLink page="27" rule="11.5" /></div>
             </div>
             <span className="spacer0_5rem" />
-            <div className="pdiv">
+            <div className="padded">
                 A unit with a movement allowance greater than 0 can always move 1 hex (as its total movement that phase)
                 even if it doesn't have enough movement points to do so, under these conditions:<br />
 
@@ -401,7 +665,7 @@ const Movement = (props) => {
                 <img src={airTransportUnits} alt="transport aircraft units" style={{ height: 'auto' }} />
             </div>
             <span className="spacer0_5rem" />
-            <div className="pdiv">
+            <div className="padded">
                 Airborne, parachute, infantry, mountain, engineer, MSU, and HQ units can be transported by air.
                 Exception - Non-Op Soviet HQ with a Do Not Move marker on it cannot be air transported.
                 <span className="spacer0_5rem" />
@@ -516,7 +780,7 @@ const Movement = (props) => {
 
             <span className="spacer1rem" />
             <div className="subheader-normal">Some other Movement rules</div>
-            <div className="pdiv">
+            <div className="padded">
                 <ul className="bare-ul">
                     <li>Enemy ZOCs cost an additional +1 movement point to enter (exception: Reaction Movement).</li>
                     <li>All roads (Main and Secondary) and railways are assumed to have a bridge when crossing any type of river. Bridges can not be demolished in EFS, however, both players may be equipped with pontoon units to create additional bridges as long as the pontoon unit remains adjacent to the river.</li>

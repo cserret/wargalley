@@ -19,10 +19,10 @@ const EfsHome = (props) => {
                         <div className="first-para">
                         Latest release:
                         </div>
-                        <a className="product-link" href="https://www.gmtgames.com/p-594-barbarossa-army-group-center-1941-2nd-edition.aspx" target="_blank" rel="noopener noreferrer">
+                        <a className="product-link" href="https://www.gmtgames.com/p-83-barbarossa-army-group-north-1941-2nd-edition.aspx" target="_blank" rel="noopener noreferrer">
                         <div className="product-style">
                             <div>BARBAROSSA</div>
-                            <div>ARMY GROUP CENTER, 1941</div>
+                            <div>ARMY GROUP NORTH, 1941</div>
                             <div>SECOND EDITION</div>
                         </div>
                         </a>
