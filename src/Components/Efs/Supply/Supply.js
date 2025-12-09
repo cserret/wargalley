@@ -2253,14 +2253,14 @@ const Supply = (props) => {
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "33")
-                let posX = 130
+                let posX = 80
                 let posY = 426
                 let textXpos = posX + 15
                 let textYpos = posY + 50
                 let bbox = textBox(g,
-                    `During Mud conditions, the ZOCs of units with Red boxed or Orange movement
-                    points do not extend into adjacent hexes, unless the unit's ZOC enters a town or city,
-                    or its ZOC enters the adjacent hex along motorway/road/minor road/railroad.`,
+                    `During Mud conditions, the ZOCs of units with Red boxed or Orange movement points do not extend into
+                    adjacent hexes, unless the unit's ZOC enters the adjacent hex along motorway/road/minor road/railroad 
+                    (but never into a Major City hex).`,
                     textXpos, textYpos, 500, 14500, 0, 155)
                 let boxWidth = bbox.width
                 let spacing = boxWidth / 4
@@ -2338,8 +2338,7 @@ const Supply = (props) => {
                 let textYpos = posY + 50
                 textBox(g,
                     `Since it is Mud weather, that Soviet armor unit
-                    does not exert any ZOCs. It is not on any road,
-                    and there is no adjacent town or city hex.`,
+                    does not exert any ZOCs. It is not on any road.`,
                     textXpos - 50, textYpos - 20, 500, 7000)
                 textBox(g,
                     `The road hexes at distances 13, 14, and 15 are
@@ -2631,7 +2630,7 @@ const Supply = (props) => {
             fn: () => {
                 let g = paper.g()
                 showPageNumber(g, "39")
-                let posX = 938
+                let posX = 968
                 let posY = 119
                 let textXpos = posX + 15
                 let textYpos = posY + 50
@@ -2639,7 +2638,7 @@ const Supply = (props) => {
                     `So say the Soviet unit is over here..`,
                     textXpos, textYpos, 500, 3500)
                 registerTimer(() => {
-                    sgSovietArmorUnit.value.animate({ width: 64, height: 64, transform: 't 67, 303' }, 500, mina.easeout);
+                    sgSovietArmorUnit.value.animate({ width: 64, height: 64, transform: 't 134, 264' }, 500, mina.easeout);
                 }, 2500)
 
                 return { discrete: g, percentage: null }
@@ -2699,7 +2698,7 @@ const Supply = (props) => {
                 let zocGroup = g.group()
                 zocGroup.attr({ opacity: 0 })
                 zocGroup.add(zocPath, msZocText)
-                zocGroup.transform('t 850, 272 s 0.5')
+                zocGroup.transform('t 920, 272 s 0.5')
                 registerTimer(() => {
                     zocGroup.animate({ width: 64, height: 64, transform: 't 917, 313', opacity: 1 }, 500, mina.easeout);
                 }, 5000)
@@ -2804,7 +2803,7 @@ const Supply = (props) => {
                 let posX = 1038
                 let posY = 379
                 textBox(g,
-                    `Let's move that Soviet unit down one hex.`,
+                    `Let's move that Soviet unit down to here.`,
                     posX, posY, 1000, 4000)
                 registerTimer(() => {
                     if (sgSovietArmorUnit.value) {
