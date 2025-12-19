@@ -1,26 +1,16 @@
 import React from 'react';
 import ScrollToTopOnMount from "../../ScrollToTopOnMount";
 import BsrLink from "../BsrLink/BsrLink";
-import c1 from "../../../images/efs/movement/c1.jpg";
-import c3 from "../../../images/efs/movement/c3.jpg";
-import c7 from "../../../images/efs/movement/c7.jpg";
-import c8 from "../../../images/efs/movement/c8.jpg";
-import c10 from "../../../images/efs/movement/c10.jpg";
-import c12 from "../../../images/efs/movement/c12.jpg";
 import german_bridge from "../../../images/efs/movement/bridge_unit_german.png";
 import german_ferry from "../../../images/efs/movement/german_ferry_120x120.png";
 import infiltration_movement_example from "../../../images/efs/movement/infiltration_movement_example.jpg";
-import german_superheavy from "../../../images/efs/movement/german_superheavy.jpg";
 import motorway from "../../../images/efs/movement/motorway.jpg";
 import roadsigns from "../../../images/efs/movement/roadsigns.jpg";
-import soviet_cavalry from "../../../images/efs/movement/soviet_cavalry.jpg";
 import soviet_cossack from "../../../images/efs/movement/soviet_cossack.png";
-import germansuperheavy from "../../../images/efs/movement/germansuperheavy.jpg";
 import german_pontoon_bridge from "../../../images/efs/movement/german_pontoon_bridge.png";
 import german_troops_railroad from "../../../images/efs/movement/german_troops_railroad.png";
 import mudroad from "../../../images/efs/movement/mudroad.jpg";
 import right_arrow from "../../../images/efs/right_arrow.png";
-import airTransportUnits from "../../../images/efs/movement/air_transport_units.jpg";
 import mountain_unit_infiltration_example from "../../../images/efs/movement/mountain_unit_infiltration_example.jpg";
 import overrun_marker from "../../../images/efs/movement/overrun_marker.png";
 import sovietCavalry from "../../../images/efs/movement/soviet_cavalry_120x120.png"
@@ -64,7 +54,7 @@ const Movement = (props) => {
             There is some limited ability to move units by railroad and by air transport. There are some actual armored trains
             that, of course, move only by rail lines.
             There are also some flottillas that can move mostly along rivers and lakes.
-            And finally there are optional Naval rules that allow some units in the sea and along the coast.
+            And finally there are optional Naval rules that allow movement in the sea and along the coast.
 
             <span className="spacer0_5rem" />
             <div>
@@ -75,42 +65,42 @@ const Movement = (props) => {
             <ul className="no-bullets">
                 <li><img src={germanInfantryDivision} alt="German infantry division" width="100" height="100" />
                     <div>
-                        <span className="list_header">White movement <BsrLink page="19" rule="10.11" /></span>
+                        <span className="list_header">White movement<BsrLink page="19" rule="10.11" /></span>
                         The normal movement type that moves in the regular Movement Phase.
                     </div>
                 </li>
                 <li><img src={sovietCavalry} alt="Soviet cavalry" width="100" height="100" />
                     <div>
-                        <span className="list_header">Yellow movement <BsrLink page="27" rule="11.4" /></span>
+                        <span className="list_header">Yellow movement<BsrLink page="27" rule="11.4" /></span>
                         Infiltration capable.</div>
                 </li>
                 <li><img src={sovietTrain} alt="Soviet train" width="100" height="100" />
                     <div>
-                        <span className="list_header">Gray movement <BsrLink page="24" rule="11.1" /></span>
+                        <span className="list_header">Gray movement<BsrLink page="24" rule="11.1" /></span>
                         Rail movement only.
                     </div></li>
                 <li><img src={sovietNavalArtillery} alt="German heavy artillery" width="100" height="100" />
                     <div>
-                        <span className="list_header">Green movement <BsrLink page="32" rule="13.41" /></span>
+                        <span className="list_header">Green movement<BsrLink page="32" rule="13.41" /></span>
                         Super Heavy artillery movement.
                     </div></li>
                 <li><img src={germanRocketArtillery} alt="German rocket artillery" width="100" height="100" />
                     <div>
-                        <span className="list_header">Orange movement <BsrLink page="20" rule="10.28" /></span>
+                        <span className="list_header">Orange movement<BsrLink page="20" rule="10.28" /></span>
                         Motorized but only moves in Regular Movement phase.
                     </div></li>
                 <li><img src={germanPanzer} alt="German panzer regiment" width="100" height="100" />
-                    <div><span className="list_header">Red boxed movement <BsrLink page="19" rule="10.12" /></span>
+                    <div><span className="list_header">Red boxed movement<BsrLink page="19" rule="10.12" /></span>
                         Motorized movement that moves in Motorized Movemment Phase.</div></li>
                 <li><img src={germanHeavyArtillery} alt="German heavy artillery" width="100" height="100" />
                     <div>
-                        <span className="list_header">Blue movement <BsrLink page="58" rule="22.51" /></span>
+                        <span className="list_header">Blue movement<BsrLink page="58" rule="22.51" /></span>
                         Flotilla/Naval movement only.
                     </div></li>
             </ul>
             <span className="spacer2rem" />
             <div className="padded">
-                If you look at the Sequence of Play <BsrLink page="8" rule="4.21" />, you'll see that there is an unusual order compared to other games.
+                If you look at the Sequence of Play<BsrLink page="8" rule="4.21" />, you'll see that there is an unusual order compared to other games.
                 The sequence of play for the Germans and Soviets are not symmetrical. Specifically the
                 Movement and Combat phases are in a different order for each side.
             </div>
@@ -137,48 +127,60 @@ const Movement = (props) => {
             <div>
                 As you can see, the Soviets are at a disadvantage.
                 <span className="spacer0_5rem" />
-                The Axis player gets to move all his units to set up combats, but the Soviet player can *only move motorized units before combat.
+                The Axis player gets to move all his units in the regular Movement Phase to set up combats, but the Soviet player 
+                can <span className="red-ask">*</span>only move motorized units before combat.
                 <span className="spacer0_5rem" />
-                *The Soviet player does have a limited ability to move some non-motorized units during the Soviet Motorized Movement Phase by having a headquarters "Activate" a non-motorized unit. This will be discussed in the section under "Headquarters".
+                <span className="red-ask">*The Soviet player does have a limited ability to move some non-motorized units during 
+                    the Soviet Motorized Movement Phase by having a headquarters "Activate" a non-motorized unit. 
+                    This is discussed below under "Soviet Non-Motorized Unit Activation".</span>
 
             </div>
 
             <div className="subheader-rule">
-                ZOC effects on Movement <BsrLink page="21" rule="10.3" />
+                ZOC effects on Movement<BsrLink page="21" rule="10.3" />
             </div>
             <span className="spacer0_5rem" />
-            A unit has to pay +1 MP to enter a hex in an enemy ZOC  <span className="slight-bold">exceptions</span> below).
+            A unit has to <span className="red-ask">*</span>pay +1 MP to enter a hex in an enemy ZOC.
             <BsrLink page="21" rule="10.34" />
             <span className="spacer0_5rem" />
             A unit that enters an enemy ZOC must stop moving for that phase.
             <BsrLink page="21" rule="10.32" />
             <span className="spacer0_5rem" />
-            <span className="slight-bold">Exception</span> - A unit conducting Reaction Movement does not pay an extra MP to enter an enemy ZOC
+            <span className="slight-bold red-ask">Exception</span> - A unit conducting Reaction Movement does not pay an extra MP to enter an enemy ZOC
             (although the destination hex must be occupied by a friendly unit).
             <BsrLink page="21" rule="12.43" />
             <span className="spacer0_5rem" />
-            <span className="slight-bold">Exception</span> - A unit or stack of units attempting Overrun do not pay an extra MP for entering an enemy ZOC
+            <span className="slight-bold red-ask">Exception</span> - A unit or stack of units attempting Overrun do not pay an extra MP for entering an enemy ZOC
             from where it will be attempting overrun (although they do pay a +1 MP for attempting an overrun, so it sort of washes out).
             <BsrLink page="26" rule="11.37b" />
+            <span className="spacer0_5rem" />
+            ZOCs do not extend into Major City hexes, even from an adjacent
+            Major City hex.<BsrLink page="24" rule="10.49" />
+            <span className="spacer0_5rem" />
+            ZOCs from unit(s) in towns or cities, while in Mud weather, do extend
+            into adjacent hexes as normal (not from Major City hex to adjacent Major City hex).
+            <BsrLink page="6" rule="3.24" /><BsrLink page="24" rule="10.49" />
 
             <span className="spacer0_5rem" />
             <div className="subheader-rule">
-                Terrain Effects on Movement <BsrLink page="21" rule="10.4" />
+                Terrain Effects on Movement<BsrLink page="21" rule="10.4" />
             </div>
             <span className="spacer0_5rem" />
-            The <span className="b">Terrain Effects Chart</span> has many different costs for different kinds, and combinations, of terrain. There are different columns for "Dry" weather, "Mud", "Frost", and "Arctic".
+            The <span className="b">Terrain Effects Chart</span> has many different costs for different types, and combinations, of terrain. There are different columns for "Dry" weather, "Mud", "Frost", and "Arctic".
             <span className="spacer0_5rem" />
             There can also be conditions that cause "Lingering mud" and "Lingering snow", depending
-            on the previous turn's weather. <BsrLink page="9" rule="5.2" />
+            on the previous turn's weather.<BsrLink page="9" rule="5.2" />
             <span className="spacer0_5rem" />
-            Weather has effects on movement, General supply, ZOCs, Air missions, and combat.
+            Weather has effects on movement, General Supply, ZOCs, Air missions, and combat.
             <span className="spacer0_5rem" />
-            Although not usually shown, any roads or railroads that enter a hex with a town or city are considered
-            to be connected to any roads or railroads exiting the hex.  <BsrLink page="10" rule="6.15" />  <BsrLink page="10" rule="6.16" />
+            Although often not printed on the map, any roads or railroads that enter a hex with a town or city are considered
+            to be connected to any roads or railroads exiting the hex.<BsrLink page="10" rule="6.15" />  <BsrLink page="10" rule="6.16" />
             <span className="spacer0_5rem" />
-            ZOCs do not extend into major city hexes, even from an adjacent
-            Major City hex. <BsrLink page="24" rule="10.49" />
-
+            ZOCs do not extend into Major City hexes, even from an adjacent
+            Major City hex.<BsrLink page="24" rule="10.49" />
+            <span className="spacer0_5rem" />
+            MP cost of going into a city or Major City hex is always 1/2 MP in all weather conditions. (See Terrain Effects Chart)
+            
             <div className="subheader-rule">
                 Roads in EFS
                 <svg height="78" width="386" style={{ marginLeft: '1rem' }}>
@@ -212,29 +214,36 @@ const Movement = (props) => {
                 When "roads" are mentioned in the rules, they usually refer to both "Main" roads and "Minor" roads, unless
                 noted. The differences between main roads and minor roads is mostly handled by the Terrain Effects Chart.
                 <span className="spacer0_5rem" />
-                Rail lines can provide rail movement, as in "traveling in a train", but troops can also
-                travel (on foot or in a wagon or vehicle) along a rail line at a reduced cost since, although not as nice as a main a road, they still
-                allow easier movement, especially through rough terrain. <BsrLink page="21" rule="10.42" />
-                <span className="spacer0_5rem" />
                 Main Roads are solid lines, and provide dependable easier travel.
                 <span className="spacer0_5rem" />
-                A Motorway is identical to a Main Road, but it can have certain restrictions on unit movement along it.
-                The Motorway to Moscow was heavily used by trucks transporting supplies to the front, depending on the
-                scenario.
+                Rail lines can provide rail movement, as in "traveling on a train". 
+                Troops can also
+                travel (on foot or in a wagon or vehicle) along a rail line at a reduced cost.<BsrLink page="21" rule="10.42" />
+
                 <span className="spacer0_5rem" />
-                Unlike is most wargames, your units can only benefit from road movement if they are truely
+                A Motorway is identical to a Main Road, but it has restrictions on the types of units that can
+                use it.
+                The Motorway to Moscow was heavily used by trucks transporting supplies to the front.
+                <BsrLink page="22" rule="10.44a" />
+                <span className="spacer0_5rem" />
+                Unlike in most wargames, units can only benefit from road movement if they are truly
                 traveling along a road. If your units are leaving a road and going into an adjacent hex that
                 is not connected to the road, then its assumed your units left the road in the previous hex,
-                and so they need to pay the full cost of entering that hex (without the road benefit).
+                and so they need to pay the full cost of entering that hex as if you were not on a road.
+                <BsrLink page="21" rule="10.41" />
                 <span className="spacer0_5rem" />
-                This rule has a little wiggle room. You could "end" your movement in a phase in a hex with a road and claim the road benefit. Then in the next movement phase you can leave that road and not worry about "paying back" for the previous movement phase. Using this method you could extract units that were otherwise "trapped" on a road going through otherwise prohibited terrain and "escape" into a non-prohibited hex that is next to it.
+                This rule has a little wiggle room. You could "end" your movement in a phase in a hex with a road 
+                and claim the road benefit. Then in the next movement phase you can leave that hex (and road) and not worry 
+                about "paying back" for the previous movement phase. Using this method you could extract units 
+                that were otherwise "trapped" on a road going through otherwise prohibited terrain and "escape" 
+                into a non-prohibited hex that is next to it.
             </div>
 
             <span className="spacer2rem" />
 
             <div className="subheader-image">
 
-                <div>Super-heavy artillery <BsrLink page="32" rule="13.4" /></div>
+                <div>Super-Heavy Artillery<BsrLink page="32" rule="13.4" /></div>
                 <img src={germanHeavyArtillery} alt="German heavy artillery" width="80" height="80" />
             </div>
             <span className="spacer1rem" />
@@ -242,16 +251,16 @@ const Movement = (props) => {
                 Super-heavy artillery (marked by unit symbol and green movement rate) are very restricted in how they can move.
                 <span className="spacer0_5rem" />
                 They have two sides, a mobile side and a firing side. They must be on
-                their mobile side to be moved. <BsrLink page="32" rule="13.42d" />
+                their mobile side to be moved.<BsrLink page="32" rule="13.41d" />
                 <span className="spacer0_5rem" />
-                They can be moved by railroad movement (regardless of weather). <BsrLink page="32" rule="13.42d" />
+                They can be moved by railroad movement (regardless of weather).<BsrLink page="32" rule="13.41d" />
                 <span className="spacer0_5rem" />
-                They can only move along minor roads during Dry or Frost weather. <BsrLink page="32" rule="13.42b" />
-                They can move along main roads in all weather conditions.
+                They can only move along minor roads during Dry or Frost weather.<BsrLink page="32" rule="13.41b" />
+                <span className="shift-right">They can move along main roads in all weather conditions.</span>
                 <span className="spacer0_5rem" />
-                They can conduct strategic movement. <BsrLink page="32" rule="13.42c" /><BsrLink page="25" rule="11.2" />
+                They can conduct strategic movement.<BsrLink page="32" rule="13.42c" /><BsrLink page="25" rule="11.2" />
                 <span className="spacer0_5rem" />
-                They cannot be activated for movement by HQ activation. <BsrLink page="20" rule="10.13c" />
+                They cannot be activated for movement by HQ activation.<BsrLink page="20" rule="10.13c" />
             </div>
 
 
@@ -267,13 +276,13 @@ const Movement = (props) => {
             <div>
                 Soviet cavalry units can move during both Motorized and regular Movement Phases (see the Terrain Effects Chart).
                 <span className="spacer0_5rem" />
-                Soviet cavalry can conduct overrun movement. <BsrLink page="25" rule="11.32" /> However,
+                Soviet cavalry can conduct overrun movement.<BsrLink page="25" rule="11.32" /> However,
                 if the participated in a failed overrun, Soviet cavalry suffer an additional
-                step loss. <BsrLink page="26" rule="11.37j" />
+                step loss.<BsrLink page="26" rule="11.37j" />
                 <span className="spacer0_5rem" />
-                They do not suffer from the -2 MP penalty for being OOS.  <BsrLink page="11" rule="6.53" />
+                They do not suffer from the -2 MP penalty for being OOS.<BsrLink page="11" rule="6.53" />
                 <span className="spacer0_5rem" />
-                They cannot be activated for movement by HQ activation. <BsrLink page="20" rule="10.13c" />
+                They cannot be activated for movement by HQ activation.<BsrLink page="20" rule="10.13c" />
                 <span className="spacer0_5rem" />
                 Unlike many other wargames, cavalry in EFS do not have the ability to retreat before combat.
             </div>
@@ -287,8 +296,7 @@ const Movement = (props) => {
             <span className="spacer0_5rem" />
             <div>
                 The Terrain Effects Chart has a column for the various weather conditions. The
-                costs generally go up for Mud and Snow weather conditions.
-                <BsrLink page="22" rule="10.44" />
+                costs generally go up for Mud and Snow weather conditions.<BsrLink page="22" rule="10.44" />
                 <span className="spacer0_5rem" />
                 Weather conditions do not affect movement along a motorway - it remains
                 half an MP to enter a hex along a motorway.
@@ -298,13 +306,13 @@ const Movement = (props) => {
                 <BsrLink page="22" rule="10.44a" />
                 <span className="spacer0_5rem" />
                 In Mud or Snow weather, units spend 1 MP to enter any hex along a
-                main road. <BsrLink page="22" rule="10.44b" />
+                main road.<BsrLink page="22" rule="10.44b" />
                 <span className="spacer0_5rem" />
                 In Frost weather, units spend 1 MP to enter any hex along
-                a minor road. <BsrLink page="22" rule="10.44c" />
+                a minor road.<BsrLink page="22" rule="10.44c" />
                 <span className="spacer0_5rem" />
                 In Snow weather, units spend 2 MPs to enter any hex along
-                a minor road. <BsrLink page="22" rule="10.44c" />
+                a minor road.<BsrLink page="22" rule="10.44c" />
                 <span className="spacer0_5rem" />
                 In Mud weather, units spend 2 MPs to enter a clear terrain hex
                 along a minor road. If other terrain, then the units need to
@@ -321,7 +329,7 @@ const Movement = (props) => {
             <span className="spacer1rem" />
 
             <div className="subheader-image">
-                <div>Motorway movement (exists only in AGC)<BsrLink page="22" rule="10.44a" /></div>
+                <div>Motorway movement <span className="normal-font-size">(exists only in AGC)</span><BsrLink page="22" rule="10.44a" /></div>
                 <img src={motorway} alt="Minsk-Smolensk-Moscow Motorway" width="380" height="285" />
             </div>
 
@@ -338,46 +346,52 @@ const Movement = (props) => {
                     <li>All Orange MP units (MSUs and artillery)</li>
                     <li>All Green MP units (heavy artillery)</li>
                 </ul>
-                The motorway was historically heavily used to transport supplies
+                The motorway was historically heavily used to transport supplies and vehicles
                 up to the front, and infantry usually had to march beside the road.
             </div>
 
 
             <span className="spacer2rem" />
             <div className="subheader-image">
-                <div>Railroad transportation <BsrLink page="24" rule="11.1" /></div>
+                <div>Railroad transportation<BsrLink page="24" rule="11.1" /></div>
                 <img src={sovietTrainEngine} alt="Soviet train" width="400" height="233" />
             </div>
 
             <span className="spacer1rem" />
             The scenario rules will specify the number of units that can utilize railroad transportation during a single turn.
             Players must plan their railroad movements carefully to stay within these
-            limits. <BsrLink page="24" rule="11.14" />
+            limits.<BsrLink page="24" rule="11.14" />
             <span className="spacer0_5rem" />
-            Any in-supply unit, including supply units and supply dumps, can board a train in any rail hex which is in its friendly
+            Any in-supply unit, including supply units and supply dumps, can board a train in any rail hex which is on its friendly
             rail net.<BsrLink page="24" rule="11.11" />
             <span className="spacer0_5rem" />
             A unit utilizing rail transportation does so during the friendly Movement phase, but cannot
-            also do regular movement in the Movement phase. <BsrLink page="24" rule="11.12" /> The unit cannot
-            be within 3 hexes of an enemy unit when starting its rail transporation. <BsrLink page="24" rule="11.13a" />
+            also do regular movement in the same Movement phase.<BsrLink page="24" rule="11.12" /> The unit cannot
+            be within 3 hexes of an enemy unit when starting its rail transportation.<BsrLink page="24" rule="11.13a" />
             <span className="spacer0_5rem" />
-            Railroad transporation allows a unit to move up to 60 friendly (converted for Axis) connected rail hexes.
+            Railroad transportation allows a unit to move up to 60 friendly (converted for Axis) connected rail hexes.
             Terrain or weather is not considered when traveling by rail, each rail hex counts as 1 of the
             60 max hexes.
             Exceptions:
             <ul className="small-list">
-                <li>rail hexes in a Axis interdiction zone - the cost for Soviets is 12 of the rail
-                    transportation movement allowance. <BsrLink page="24" rule="11.13b" /></li>
-                <li>Axis railroad capacity is halved during Snow weather. <BsrLink page="24" rule="11.16" /></li>
+                <li>Rail hexes in a Axis interdiction zone - the cost for Soviets is 12 of the rail
+                    transportation movement allowance.<BsrLink page="24" rule="11.13b" /></li>
+                <li>Axis railroad capacity is halved during Snow weather.<BsrLink page="24" rule="11.16" /></li>
             </ul>
-            Units using railroad transportation cannot enter an enemy ZOC
-            (Armored trains and railroad artillery are exempt from this rule).
+            Units being transported by railroad cannot enter an enemy ZOC, but
+            armored trains and railroad artillery can enter a enemy ZOC - 
+            they don't pay any extra MP, but they do have to stop moving.
             <BsrLink page="21" rule="10.33" />
 
 
             <span className="spacer0_5rem" />
             HQs and other units with zero stacking values will cost as 1 unit for railroad capacity. A MSU (mobile supply unit) will
-            cost as 1 unit. A supply dump costs as 1 unit per supply point. <BsrLink page="24" rule="11.15" />
+            cost as 1 unit. A supply dump costs as 1 unit per supply point.<BsrLink page="24" rule="11.15" />
+
+            <span className="spacer0_5rem" />
+            Armored trains and railroad artillery move using rail movement but do not count
+            against the unit limit for rail transportation.<BsrLink page="24" rule="11.15" />
+
 
             <span className="spacer2rem" />
             <div className="subheader-image header-1-image">
@@ -390,7 +404,7 @@ const Movement = (props) => {
                         In Mud weather, red-box and orange MA units can only project
                         their ZOCs into adjacent hexes (where they would normally extend into)
                         if the hexside is crossed
-                        by a road or railroad. <BsrLink page="6" rule="3.24" />
+                        by a road or railroad.<BsrLink page="6" rule="3.24" />
                     </li>
                     <li>
                         In Dry or Mud weather, a Supply Route can only enter (and cross)
@@ -399,48 +413,46 @@ const Movement = (props) => {
                     </li>
                     <li>
                         When tracing a LOC through a Marsh hex, the LOC is reduced to
-                        5 hexes unless along a road or railroad. <BsrLink page="10" rule="6.14c" />
+                        5 hexes unless along a road or railroad.<BsrLink page="10" rule="6.14c" />
                     </li>
                     <li>
                         When crossing Woods terrain along a railroad, reduce the total woods
                         cost by 1 MP in any weather condition. Units do not
                         get this benefit in the hex where they exit to an adjacent
-                        hex not along the railroad. <BsrLink page="21" rule="10.42a" />
+                        hex not along the railroad.<BsrLink page="21" rule="10.42a" />
                     </li>
                     <li>
                         When crossing a water barrier on a railroad, the
-                        water barrier crossing cost is negated. <BsrLink page="21" rule="10.42b" />
+                        water barrier crossing cost is negated.<BsrLink page="21" rule="10.42b" />
                     </li>
                     <li>
                         Motorized units (Orange or Green MAs)
-                        can only cross Swamp hexes when moving along roads or railroads <BsrLink page="23" rule="10.48" />
-                        and pay 3 MPs per hex. <BsrLink page="21" rule="10.42c" />
+                        can only cross Swamp hexes when moving along roads or railroads<BsrLink page="23" rule="10.48" />
+                        and pay 3 MPs per hex.<BsrLink page="21" rule="10.42c" />
                     </li>
                     <li>
                         Units can overrun a marsh or swamp hex only when the hex
                         is frozen or when moving along the path of a motorway, road, or
-                        railroad. Apply a (+2) DRM to the Overrun Table die roll result. <BsrLink page="26" rule="11.35b" />
+                        railroad. Apply a (+2) DRM to the Overrun Table die roll result.<BsrLink page="26" rule="11.35b" />
                     </li>
                     <li>
                         Super-Heavy Artillery can enter a hex only through a hexside
-                        crossed by a main road, minor road, motorway, or railroad. <BsrLink page="32" rule="13.41a" />
+                        crossed by a main road, minor road, motorway, or railroad.<BsrLink page="32" rule="13.41a" />
                     </li>
                     <li>
                         Super-Heavy artillery units on their mobile sides can retreat
                         only through hexsides crossed by minor road, main road, motorway, or railroad. Where Mud or Snow conditions apply, they
-                        cannot retreat along minor road or railroad. <BsrLink page="45" rule="16.47a" />
+                        cannot retreat along minor road or railroad.<BsrLink page="45" rule="16.47a" />
                     </li>
-                    <li>A road bridge or railroad bridge can be subject to destruction. <BsrLink page="57" rule="22.42" />
+                    <li>A road bridge or railroad bridge can be subject to destruction.<BsrLink page="57" rule="22.42" />
                     </li>
                 </ul>
             </div>
 
             <span className="spacer1rem" />
-            <div className="padded">
-                Additional Retreat <BsrLink page="30" rule="30d" /><BsrLink page="44" rule="16.45" />
-            </div>
+
             <div className="subheader-image">
-                <div>Bridges <BsrLink page="56" rule="22.2" /></div>
+                <div>Bridges<BsrLink page="56" rule="22.2" /></div>
                 <div className="align-bottom_nowrap">
                     <img src={german_bridge} alt="German bridge" width="100" height="100" />
                     <img src={german_pontoon_bridge} alt="German pontoon bridge" width="290" height="206" />
@@ -551,7 +563,7 @@ const Movement = (props) => {
                 river, where the unit is in the hex across the river.
                 <BsrLink page="57" rule="22.43a" />
                 <span className="spacer0_5rem" />On-map bridges that had been destroyed
-                can be repaired <BsrLink page="57" rule="22.44a" />. In the player's
+                can be repaired<BsrLink page="57" rule="22.44a" />. In the player's
                 Engineering phase, the player needs
                 to have an in-general-supply Engineer unit on either side of the bridge
                 in order to attempt repairs on the bridge.
@@ -566,10 +578,10 @@ const Movement = (props) => {
             </div>
 
             <div className="padded">
-                Additional Retreat <BsrLink page="30" rule="30d" /><BsrLink page="44" rule="16.45" />
+                Additional Retreat<BsrLink page="30" rule="30d" /><BsrLink page="44" rule="16.45" />
             </div>
             <div className="subheader-image">
-                <div>Ferrys <BsrLink page="57" rule="22.3" /></div>
+                <div>Ferrys<BsrLink page="57" rule="22.3" /></div>
                 <div className="align-bottom_nowrap">
                     <img src={german_ferry} alt="German ferry" width="100" height="100" />
                     <img src={soviet_ferry} alt="German pontoon bridge" width="304" height="206" />
@@ -610,23 +622,23 @@ const Movement = (props) => {
             <BsrLink page="57" rule="22.34" />
 
             <span className="spacer0_5rem" />
-            Unlike Bridge markers, the owning player cannot freely remove them,
+            Unlike Bridge markers, the owning player cannot freely remove Ferry markers -
             they can only be removed by either an enemy unit entering it's hex,
-            or the bridge across the river is repaired.
+            or when the bridge across the river is repaired.
             <BsrLink page="57" rule="22.35" />
             <div>
 
                 <span className="spacer2rem" />
 
                 <div className="subheader-image header-2-image">
-                    <div className="header-1-image-title">Infiltration Movement <BsrLink page="27" rule="11.4" /></div>
+                    <div className="header-1-image-title">Infiltration Movement<BsrLink page="27" rule="11.4" /></div>
                     <img src={infiltration_movement_example} alt="Infiltration movement example" style={{ height: 'auto' }} />
                 </div>
                 <span className="spacer1rem" />
                 <div className="padded">
                     Infiltration movement allows a unit to move directly from a hex in enemy unit ZOC to adjacent hex
                     in enemy unit ZOC (even if the ZOC is from different
-                    enemy units).  <BsrLink page="27" rule="11.41" />
+                    enemy units).<BsrLink page="27" rule="11.41" />
                     <span className="spacer0_5rem" />
                     Infiltration Movement can be conducted by:
                     <ul className="bare-ul">
@@ -715,7 +727,7 @@ const Movement = (props) => {
 
 
 
-            <div className="subheader-image header-2-image">
+            <div className="subheader-image">
                 <div className="header-1-image-title">Reaction Movement<BsrLink page="30" rule="12.4" /></div>
             </div>
             <span className="spacer0_5rem" />
@@ -760,15 +772,39 @@ const Movement = (props) => {
 
 
 
-
-
-            10.13 Soviet Non-Motorized Unit Activation
-
+            <span className="spacer1rem" />
 
 
 
 
+            <div className="subheader-image">
+                <div className="header-1-image-title"> Soviet Non-Motorized Unit Activation<BsrLink page="20" rule="10.13" /></div>
+            </div>
+            <span className="spacer0_5rem" />
+            <div className="padded">
+            
+               During the Soviet Motorized Movement Phase, the Soviet player can activate one non-motorized
+               unit<span className="red-ask">*</span> or MSU per each command point of each non-interdicted Soviet HQ unit within command range
+               (and not in range of a non-Op HQ).<BsrLink page="20" rule="10.13a" /><br/>
+               <span className="red-ask">* excludes: cavalry, armored trains,
+               Super-Heavy artillery, flotillas, or other HQs.<BsrLink page="20" rule="10.13c" /></span>
 
+               
+               <span className="spacer0_5rem" />
+               Each operational HQ can also activate one in-range Guards unit,
+               even if the HQ has no command points left.
+               <BsrLink page="20" rule="10.13b" />
+               <span className="spacer0_5rem" />
+               Activated units can move up to their full printed MA as modified
+               by weather, terrain, and supply.
+               <BsrLink page="20" rule="10.13d" />
+               <span className="spacer0_5rem" />
+                Place an Activated marker on each activated unit to 
+                show it expended its MPs in the Motorized Movement Phase, so
+                can't move in the regular Movement Phase. Remove
+                all Activation markers during the Recovery Phase.
+                <BsrLink page="20" rule="10.13e" />
+            </div>
 
 
 
@@ -835,7 +871,8 @@ const Movement = (props) => {
 
             <span className="spacer0_5rem" />
             <div>
-                The Overrun rules are a bit involved. This is an overview.
+                Overruns allow the "shoving aside" (or elimination) of weak enemy units that are standing in the way
+                of a powerful motorized or cavalry unit('s) movement.
                 <span className="spacer0_5rem" />
                 During a movement phase (including the Motorized Movement phase),
                 some units may be able
@@ -892,7 +929,7 @@ const Movement = (props) => {
                 Units doing an overrun can temporarily overstack with units not involved in the overrun.
                 <BsrLink page="26" rule="11.36b" />
                 But they may be eliminated if the overrun fails and the stack is still overstacked,
-                see - <BsrLink page="26" rule="11.37j" />
+                see -<BsrLink page="26" rule="11.37j" />
                 <span className="spacer0_5rem" />
                 Units doing an overrun need to have at least 5-1 odds.
                 <BsrLink page="26" rule="11.36c" />
@@ -934,7 +971,7 @@ const Movement = (props) => {
                         <BsrLink page="26" rule="11.35b" />
                     </li>
                     <li>Fortified hexside or strongpoint - Overrun is allowed if there is a motorized 
-                        engineer in the stack doing the overrun and the odds are at least 12-1.
+                        engineer in the stack doing the overrun and the odds are at least <span className="no-wrap">12-1.</span>
                         <BsrLink page="26" rule="11.35c" /></li>
                 </ul>
                 <span className="spacer0_5rem" />
@@ -956,7 +993,8 @@ const Movement = (props) => {
                 A hex with enemy units in it can be subjected to multiple overruns in a movement phase, even if
                 it was pushed into different hexe(s) by previous overrun(s).<BsrLink page="25" rule="11.32" />
                 <span className="spacer0_5rem" />
-                <div className="subheader-normal">Unsuccessful Overrun <BsrLink page="25" rule="11.37j" /></div>
+
+                <div className="subheader-normal">Unsuccessful Overrun<BsrLink page="25" rule="11.37j" /></div>
                 <span className="spacer0_5rem" />
                 If the overrun fails, the overrunning units are considered to have exhausted all their movement points and remain in the hex where they
                 attempted the overrun from.
@@ -970,7 +1008,9 @@ const Movement = (props) => {
                 in addition to any required loss.
                 <BsrLink page="26" rule="11.37j" />
                 <span className="spacer0_5rem" />
-                <div className="subheader-normal">Successful Overrun <BsrLink page="26" rule="11.37i" /></div>
+
+
+                <div className="subheader-normal">Successful Overrun<BsrLink page="26" rule="11.37i" /></div>
                 <span className="spacer0_5rem" />
                 Apply the results from the Overrun Table.
                 <BsrLink page="26" rule="11.37i" />
@@ -983,7 +1023,7 @@ const Movement = (props) => {
                 are retreated 2 hexes by the overrunning player. 
                 <BsrLink page="26" rule="11.37i" />
                 A stack being retreated can
-                have its units split up and retreated to different hexes. <BsrLink page="44" rule="16.4" />
+                have its units split up and retreated to different hexes.<BsrLink page="44" rule="16.4" />
                 <span className="spacer0_5rem" />
                 Supply dumps, Bridge markers, and Ferry markers cannot be retreated,
                 return them to the owning player's stock.
@@ -1011,16 +1051,15 @@ const Movement = (props) => {
                             </li>
                             <li>are not eligible for reaction movement.</li>
                             <li>HQs that get overrun get flipped to their non-op side.<BsrLink page="27" rule="11.38c" /></li>
+                            <li><span>An overrun attempt or Declared Combat against a unit or stack with an Overrun marker</span>
+                                <span className="nl-pl">on it receives a -1 DRM.<BsrLink page="27" rule="11.38b" /></span></li>
                         </ul>
                     </div>
                     <div>
                         <img src={overrun_marker} alt="overrun marker" />
                     </div>
                 </div>
-                <span className="spacer0_5rem" />
-                An overrun attempt or Declared Combat against a unit or stack with an Overrun marker
-                on it receives a -1 DRM.
-                <BsrLink page="27" rule="11.38b" />
+                
                 <span className="spacer0_5rem" />
                 Overrun markers are removed during the
                 owning player's next
@@ -1034,15 +1073,13 @@ const Movement = (props) => {
             <div className="subheader-normal">Some other Movement rules</div>
             <div className="padded">
                 <ul className="bare-ul">
-                    <li>Enemy ZOCs cost an additional +1 movement point to enter (exception: Reaction Movement).</li>
-                    <li>All roads (Main and Secondary) and railways are assumed to have a bridge when crossing any type of river. Bridges can not be demolished in EFS, however, both players may be equipped with pontoon units to create additional bridges as long as the pontoon unit remains adjacent to the river.</li>
-                    <li>Snow turns Rivers into NE terrain. Snow turns Major Rivers into a +1 cost hexside terrain.</li>
-                    <li>When Lingering Mud is in effect (always lasts 1 turn after weather turns from Mud back to Dry) all hexes with woods in them are considered to be in "Mud" weather. If you are tracing a LOC, it would be 7 hexes in Dry weather, but if trace through a Woods hex when its Lingering Mud, then that LOC gets cut down to 5 hexes.</li>
-                    <li>City and Major City hexes are always assumed to be also extensions of any road or railroad that goes into them. Plus they are always 1/2 MP to enter during all weather conditions.</li>
-                    <li>Fortified hexlines costs +1 MP to cross, and Strongpoint hexes costs +1 MP to enter, but a combination Fortified hexline and Strongpoint hex only costs +1 to cross and enter, not +2..</li>
-                    <li>Footnote (a), when it is present for a cost, creates a +1 MP penalty for all motorized units except for Soviet Armor. Soviet Armor had wider tracks than any other vehicles and could negotiate muddy or marshy ground better.</li>
-                    <li>Walking (or driving) along a Railroad gives a benefit of -1 MP cost when moving through a hex with Woods in it.</li>
-                    <li>Soviet units pay 1 less MP when moving through wood hexes than listed on the TEC. <span className="rule-ref">10.46</span></li>
+                    <li>MP cost of going into a city or Major City hex is always 1/2 MP in all weather conditions. (See Terrain Effects Chart)</li>
+                    <li>Fortified hexlines costs +1 MP to cross, and Strongpoint hexes costs +1 MP to enter, but 
+                        a combination Fortified hexline and Strongpoint hex only costs +1 to cross and enter, 
+                        not +2.<BsrLink page="48" rule="18.12" /></li>
+                    <li>Walking (or driving) along a Railroad gives a benefit of -1 MP cost when moving through a hex with Woods in it.<BsrLink page="21" rule="10.42a" /></li>
+                    <li>Motorized (with orange and green MAs) may enter a swamp hex along a railroad by spending
+                        3 MPs. If moving along a road, they pay that road's rate.<BsrLink page="21" rule="10.42c" /></li>
                 </ul>
             </div>
 

@@ -31,8 +31,11 @@ html {
         display: flex;
         margin-top: 20px;
         img {
-          box-shadow: 1px 1px 1px 1px rgba(140, 140, 140, 1), 2px 2px 1px 1px rgba(130, 130, 130, 1),
-            3px 3px 1px 1px rgba(140, 140, 140, 1), 4px 4px 1px 1px rgba(110, 110, 110, 1);
+          box-shadow:
+            1px 1px 1px 1px rgba(140, 140, 140, 1),
+            2px 2px 1px 1px rgba(130, 130, 130, 1),
+            3px 3px 1px 1px rgba(140, 140, 140, 1),
+            4px 4px 1px 1px rgba(110, 110, 110, 1);
         }
         .hex-logo {
           width: 118px;
@@ -77,12 +80,15 @@ html {
     }
   }
 }
-
+.red-ask {
+  color: #e00;
+  
+}
 .bulletsWithImageToRight {
   display: flex;
   width: 700px;
   padding: 10px 15px;
-  background-color: #cacaca;
+  background-color: #eaeaea;
   white-space: nowrap;
   border: 1px solid black;
   > div {

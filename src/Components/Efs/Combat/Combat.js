@@ -33,7 +33,6 @@ import hexFortifiedBelt from "../../../images/efs/combat/hex_fortified_belt.png"
 import hexCitadel from "../../../images/efs/combat/hex_citadel.png";
 import destroyedFortification from "../../../images/efs/combat/destroyed_fortification_120.png";
 import mandatedAttack from "../../../images/efs/combat/mandated_attack_120.png";
-import ssLAH from "../../../images/efs/combat/SS_LAH_80.png";
 import './Combat.scss';
 
 const Combat = (props) => {
@@ -1185,7 +1184,7 @@ const Combat = (props) => {
                 <span className="spacer2rem" />
                 <div className="subheader-image">
                     <div>Artillery Support<BsrLink page="31" rule="13.0" /></div>
-                    <img src={artillery_units} style={{ height: "auto" }} alt="artillery counters" />
+                    <img src={artillery_units} width="450" height="75" alt="artillery counters" />
                 </div>
                 <span className="spacer1rem" />
                 <div>
@@ -1252,9 +1251,9 @@ const Combat = (props) => {
 
                 <div className="subheader-n-images">
                     <div>Bunker Busting<BsrLink page="40" rule="15.44" /></div>
-                    <img src={german_luftwaffe_flak} alt="German Luftwaffe motorized antiair unit" />
-                    <img src={german_motorized_antiair} alt="German motorized anti-air unit" />
-                    <img src={german_assault_gun} alt="German assault gun unit" />
+                    <img src={german_luftwaffe_flak} width="80" height="80" alt="German Luftwaffe motorized antiair unit" />
+                    <img src={german_motorized_antiair} width="80" height="80" alt="German motorized anti-air unit" />
+                    <img src={german_assault_gun} width="80" height="80" alt="German assault gun unit" />
                 </div>
                 <div>
                     Some Axis units can be declared a "Bunker Buster" in a Declared Attack when attacking certain terrain, which allows them to double their attack value.
@@ -1299,9 +1298,9 @@ const Combat = (props) => {
 
                 <div className="subheader-n-images">
                     <div>Engineer Effects<BsrLink page="41" rule="15.53" /></div>
-                    <img src={german_engineer} style={{ height: 'auto' }} alt="German motorized engineer counter" />
-                    <img src={soviet_engineer} style={{ height: 'auto' }} alt="Soviet engineer counter" />
-                    <img src={german_engineers_crossing_river} style={{ height: 'auto' }} alt="Soviet Cossack commander at Kiev, 1942" />
+                    <img src={german_engineer} width="80" height="80" alt="German motorized engineer counter" />
+                    <img src={soviet_engineer} width="80" height="80" alt="Soviet engineer counter" />
+                    <img src={german_engineers_crossing_river} width="258" height="180" alt="Soviet Cossack commander at Kiev, 1942" />
                 </div>
 
 
@@ -1384,7 +1383,7 @@ const Combat = (props) => {
                 <span className="spacer2rem" />
                 <div className="subheader-image stalin">
                     <div>Panzer Divisional Integrity Bonus<BsrLink page="41" rule="15.58" /></div>
-                    <img src={divisional_integrity} style={{ height: 'auto' }} alt="Divisional Integrity" />
+                    <img src={divisional_integrity} width="301" height="180" alt="Divisional Integrity" />
                 </div>
                 <span className="spacer1rem" />
                 <div>
@@ -1530,23 +1529,23 @@ const Combat = (props) => {
                 <div className="subheader-n-images">
                     <div>Fortifications<BsrLink page="48" rule="18.0" /></div>
                     <div className="image-caption-underneath">
-                        <img src={germanStrongpoint} style={{ height: 'auto' }} alt="German strongpoint counter" />
+                        <img src={germanStrongpoint} width="80" height="80" alt="German strongpoint counter" />
                         <span>Axis Strongpoint</span>
                     </div>
                     <div className="image-caption-underneath">
-                        <img src={sovietStrongpoint} style={{ height: 'auto' }} alt="Soviet strongpoint counter" />
+                        <img src={sovietStrongpoint} width="80" height="80" alt="Soviet strongpoint counter" />
                         <span>Soviet Strongpoint</span>
                     </div>
                     <div className="image-caption-underneath">
-                        <img src={hexFortifiedLine} style={{ height: 'auto' }} alt="fortified line hex" />
+                        <img src={hexFortifiedLine} width="80" height="80" alt="fortified line hex" />
                         <span>Fortified Line</span>
                     </div>
                     <div className="image-caption-underneath">
-                        <img src={hexFortifiedBelt} style={{ height: 'auto' }} alt="fortified belt hex" />
+                        <img src={hexFortifiedBelt} width="80" height="80" alt="fortified belt hex" />
                         <span>Fortified Belt</span>
                     </div>
                     <div className="image-caption-underneath">
-                        <img src={hexCitadel} style={{ height: 'auto' }} alt="citadel hex" />
+                        <img src={hexCitadel} width="80" height="80" alt="citadel hex" />
                         <span>Citadel</span>
                     </div>
                 </div>
@@ -1717,7 +1716,7 @@ const Combat = (props) => {
                     <div className="subheader-n-images">
                         <div>Fortification Destruction<BsrLink page="49" rule="18.13" /></div>
 
-                        <img src={destroyedFortification} style={{ height: 'auto' }} alt="Destroyed Fortification counter" />
+                        <img src={destroyedFortification} width="80" height="80" alt="Destroyed Fortification counter" />
 
                     </div>
 
@@ -1751,11 +1750,15 @@ const Combat = (props) => {
                 </div>
 
                 <span className="spacer2rem" />
-                <div className="centered">
-                    <img src={germanantitank1942east} alt="German anti-tank crew" />
+
+
+                <div className="spacer2rem" />
+                <div className="subheader-n-images">
+                    <div>Additional Combat Rules</div>
+                    <img src={germanantitank1942east} width="467" height="300" alt="German anti-tank crew" />
                 </div>
 
-                <div className="subheader2">Additional Combat Rules</div>
+
                 <div className="pdiv">
                     <ul className="ul-no-top">
                         <li>The maximum DRMs that can be applied to a combat are +3 or -3. Additional DRMs are discarded <BsrLink page="40" rule="15.5" /></li>
@@ -1768,7 +1771,7 @@ const Combat = (props) => {
                 <div className="spacer2rem" />
                 <div className="subheader-n-images">
                     <div>Combat Phase<BsrLink page="38" rule="15.0" /></div>
-                    <img src={chargingSoldiers} alt="Soviets on the attack" />
+                    <img src={chargingSoldiers} width="496" height="300" alt="Soviets on the attack" />
                 </div>
                 <span className="spacer0_5rem" />
                 The attacker selects any air units that are in the Ready Box and places them on any desired Defender hexes, then the defender does

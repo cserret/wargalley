@@ -170,7 +170,8 @@
       margin: 12px 0 15px 0;
     }
     .pdiv {
-      font-size: 1.3rem;
+      padding: 0.2rem;
+      //font-size: 1.3rem;
     }
     .subheader-counter {
       display: flex;
@@ -526,7 +527,8 @@
       display: flex;
       flex-direction: column;
       img {
-        margin: 0 20px;
+        //margin: 0 20px;
+        margin: auto;
       }
       span {
         margin: 2px 20px 0 20px;
@@ -831,5 +833,15 @@
         }
       }
     }
+  }
+  span.shift-right {
+    margin-left: 3px;
+  }
+  span.normal-font-size {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+  span.no-wrap {
+    white-space: nowrap;
   }
 }
