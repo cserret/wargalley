@@ -636,8 +636,8 @@ const Movement = (props) => {
                 </div>
                 <span className="spacer1rem" />
                 <div className="padded">
-                    Infiltration movement allows a unit to move directly from a hex in enemy unit ZOC to adjacent hex
-                    in enemy unit ZOC (even if the ZOC is from different
+                    Infiltration movement allows a unit to move directly from a hex in enemy ZOC to adjacent hex
+                    in enemy ZOC (even if the ZOC is from different
                     enemy units).<BsrLink page="27" rule="11.41" />
                     <span className="spacer0_5rem" />
                     Infiltration Movement can be conducted by:
@@ -744,7 +744,7 @@ const Movement = (props) => {
                     <li>Has a red-box MA<BsrLink page="30" rule="12.41a" /></li>
                     <li>Is within 3 hexes of a Defender hex.<BsrLink page="30" rule="11.41a" /></li>
                     <li>Does not have a Fuel Shortage of Overrun marker on it.<BsrLink page="30" rule="12.41a" /></li>
-                    <li>Does not begin in an Enemy Zoc nor is in a Defender Hex.<BsrLink page="30" rule="12.41a" /></li>
+                    <li>Does not begin in an enemy Zoc nor is in a Defender Hex.<BsrLink page="30" rule="12.41a" /></li>
                     <li>Does not move into or out of an enemy air Zone of Interdiction.<BsrLink page="30" rule="12.41a" /></li>
                 </ul>
                 Additionally, Soviet units are under extra restrictions:
@@ -765,7 +765,7 @@ const Movement = (props) => {
                 A reacting unit can move into a hex adjacent to an attacking enemy unit
                 only if the hex has a friendly unit in it.<BsrLink page="30" rule="12.43" />
                 <span className="spacer0_5rem" />
-                Do not pay the +1 MP for entering zoc, but units still stop in the first 
+                Do not pay the +1 MP for entering enemy ZOC, but units still stop in the first 
                 enemy ZOC hex they enter.<BsrLink page="30" rule="12.43" />
             </div>
 
@@ -831,7 +831,7 @@ const Movement = (props) => {
                 are in the same Air Transport Mission.
                 <BsrLink page="37" rule="14.73" />
                 <span className="spacer0_5rem" />
-                Air Transport Missions are limited to a 60 hex range. They must "take off" from a a friendly supply source hex, a two, city, or major
+                Air Transport Missions are limited to a 60 hex range. They must "take off" from a a friendly supply source hex, a town, city, or major
                 city hex, or the Active Box of the Unit Rebuilding Track. They can land at a friendy town, city or major city hex.
                 <BsrLink page="37" rule="14.74" />
                 <span className="spacer0_5rem" />
@@ -871,7 +871,8 @@ const Movement = (props) => {
 
             <span className="spacer0_5rem" />
             <div>
-                Overruns allow the "shoving aside" (or elimination) of weak enemy units that are standing in the way
+                Overruns allow the "shoving aside" (or elimination) of weak enemy units that are standing 
+                in the way
                 of a powerful motorized or cavalry unit('s) movement.
                 <span className="spacer0_5rem" />
                 During a movement phase (including the Motorized Movement phase),
@@ -890,7 +891,9 @@ const Movement = (props) => {
                 enemy ZOC other than the ZOC of the unit(s) being overrun.
                 <BsrLink page="26" rule="11.34" />
                 <span className="spacer0_5rem" />
-                The odds must be at least 5-1 in favor of the overrunning unit(s).<BsrLink page="26" rule="11.36c" />
+                The odds must be at least 5-1 (or 12-1 for motorized engineers going across
+                a fortified hexside or into a strongpoint  <BsrLink page="26" rule="11.35c" />).
+                in favor of the overrunning unit(s).<BsrLink page="26" rule="11.36c" />
                 <span className="spacer0_5rem" />
                 If doing an overrun attempt,
                 it must be
@@ -912,10 +915,10 @@ const Movement = (props) => {
                 <BsrLink page="25" rule="11.33" />
                 <span className="spacer0_5rem" />
                 The unit(s) doing the overrun must have enough movement points left to
-                have entered the overrun hex (as if there was no enemy unit or ZOC in the hex),
-                plus the overrun cost of 1 MP. They do not pay another 1 MP for entering any ZOC
-                in the overrun hex. They do need enough movement points left to
-                to pay the terrain costs of entering the hex, ignoring ZOC costs.<BsrLink page="26" rule="11.37b" />
+                have entered the overrun hex,
+                plus the overrun cost of 1 MP (but don't pay the 1 MP cost for entering enemy ZOC). 
+                They do not pay another 1 MP for entering any enemy ZOC
+                in the overrun hex. <BsrLink page="26" rule="11.37b" />
 
                 <span className="spacer0_5rem" />
                 Only units capable do doing overruns in a stack can advance after
@@ -926,15 +929,14 @@ const Movement = (props) => {
                 Units doing an overrun cannot also be doing infiltration or one-hex movement.
                 <BsrLink page="26" rule="11.36a" />
                 <span className="spacer0_5rem" />
-                Units doing an overrun can temporarily overstack with units not involved in the overrun.
-                <BsrLink page="26" rule="11.36b" />
-                But they may be eliminated if the overrun fails and the stack is still overstacked,
-                see -<BsrLink page="26" rule="11.37j" />
+                Units doing an overrun can temporarily overstack with units not involved in the overrun
+                <BsrLink page="26" rule="11.36b" />, but they may be eliminated if the overrun fails and the stack is still overstacked.
+                <BsrLink page="26" rule="11.37j" />
                 <span className="spacer0_5rem" />
-                Units doing an overrun need to have at least 5-1 odds.
+                Units doing an overrun need to have at least 5-1 odds, or 12-1 odds if
+                attempting to overrun (with a motorized engineer) across a fortified hexside or into a strongpoint,
+                against the defending unit(s).
                 <BsrLink page="26" rule="11.36c" />
-                If there are any untried defending units (meaning you aren't sure you have at least 5-1 odds) in the overrun hex, see
-                <BsrLink page="26" rule="11.35d" />
                 
                 <span className="spacer0_5rem" />
                 Combat Supply is not used in overruns.
@@ -978,7 +980,7 @@ const Movement = (props) => {
                 When there are "Untried Defenders" in the Overrun hex:<BsrLink page="26" rule="11.35d" />
                 <ul className="bare-ul">
                     <li>Turn the untried defender(s) to their "tried" sides.</li>
-                    <li>If it turns out the overrun now fails to get to its 5-1 minimum odds, the overrun attempt automatically fails.</li>
+                    <li>If it turns out the overrun now fails to get to its minimum odds, the overrun attempt automatically fails.</li>
                     <li>If the untried defender(s) are all of the "Remove" type, and the overrun hex is now empty of defenders, the overrun is
                         automatically successful (but they don't get the overrun cost refunded to them).</li>
                 </ul>
