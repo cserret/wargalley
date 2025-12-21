@@ -86,7 +86,8 @@ html {
 }
 .bulletsWithImageToRight {
   display: flex;
-  width: 700px;
+  //width: 700px;
+  max-width: 800px;
   padding: 10px 15px;
   background-color: #eaeaea;
   white-space: nowrap;

@@ -25,6 +25,8 @@ import sovietTrainEngine from "../../../images/efs/movement/soviet_train.jpg"
 import soviet_ferry from "../../../images/efs/movement/ferry.jpg"
 import soviet_transport_plane from "../../../images/efs/movement/luftwaffe_j41_120x120.png"
 import overrun from "../../../images/efs/movement/overrun.jpg"
+import sovietFlotilla from "../../../images/efs/movement/soviet_flotilla_120x120.png"
+import flotilla from "../../../images/efs/special/flotilla.jpg";
 import './Movement.scss';
 
 const Movement = (props) => {
@@ -53,7 +55,7 @@ const Movement = (props) => {
 
             There is some limited ability to move units by railroad and by air transport. There are some actual armored trains
             that, of course, move only by rail lines.
-            There are also some flottillas that can move mostly along rivers and lakes.
+            There are also some flotillas that can move mostly along rivers and lakes.
             And finally there are optional Naval rules that allow movement in the sea and along the coast.
 
             <span className="spacer0_5rem" />
@@ -127,11 +129,11 @@ const Movement = (props) => {
             <div>
                 As you can see, the Soviets are at a disadvantage.
                 <span className="spacer0_5rem" />
-                The Axis player gets to move all his units in the regular Movement Phase to set up combats, but the Soviet player 
+                The Axis player gets to move all his units in the regular Movement Phase to set up combats, but the Soviet player
                 can <span className="red-ask">*</span>only move motorized units before combat.
                 <span className="spacer0_5rem" />
-                <span className="red-ask">*The Soviet player does have a limited ability to move some non-motorized units during 
-                    the Soviet Motorized Movement Phase by having a headquarters "Activate" a non-motorized unit. 
+                <span className="red-ask">*The Soviet player does have a limited ability to move some non-motorized units during
+                    the Soviet Motorized Movement Phase by having a headquarters "Activate" a non-motorized unit.
                     This is discussed below under "Soviet Non-Motorized Unit Activation".</span>
 
             </div>
@@ -180,7 +182,7 @@ const Movement = (props) => {
             Major City hex.<BsrLink page="24" rule="10.49" />
             <span className="spacer0_5rem" />
             MP cost of going into a city or Major City hex is always 1/2 MP in all weather conditions. (See Terrain Effects Chart)
-            
+
             <div className="subheader-rule">
                 Roads in EFS
                 <svg height="78" width="386" style={{ marginLeft: '1rem' }}>
@@ -216,7 +218,7 @@ const Movement = (props) => {
                 <span className="spacer0_5rem" />
                 Main Roads are solid lines, and provide dependable easier travel.
                 <span className="spacer0_5rem" />
-                Rail lines can provide rail movement, as in "traveling on a train". 
+                Rail lines can provide rail movement, as in "traveling on a train".
                 Troops can also
                 travel (on foot or in a wagon or vehicle) along a rail line at a reduced cost.<BsrLink page="21" rule="10.42" />
 
@@ -232,10 +234,10 @@ const Movement = (props) => {
                 and so they need to pay the full cost of entering that hex as if you were not on a road.
                 <BsrLink page="21" rule="10.41" />
                 <span className="spacer0_5rem" />
-                This rule has a little wiggle room. You could "end" your movement in a phase in a hex with a road 
-                and claim the road benefit. Then in the next movement phase you can leave that hex (and road) and not worry 
-                about "paying back" for the previous movement phase. Using this method you could extract units 
-                that were otherwise "trapped" on a road going through otherwise prohibited terrain and "escape" 
+                This rule has a little wiggle room. You could "end" your movement in a phase in a hex with a road
+                and claim the road benefit. Then in the next movement phase you can leave that hex (and road) and not worry
+                about "paying back" for the previous movement phase. Using this method you could extract units
+                that were otherwise "trapped" on a road going through otherwise prohibited terrain and "escape"
                 into a non-prohibited hex that is next to it.
             </div>
 
@@ -277,7 +279,7 @@ const Movement = (props) => {
                 Soviet cavalry units can move during both Motorized and regular Movement Phases (see the Terrain Effects Chart).
                 <span className="spacer0_5rem" />
                 Soviet cavalry can conduct overrun movement.<BsrLink page="25" rule="11.32" /> However,
-                if the participated in a failed overrun, Soviet cavalry suffer an additional
+                if they participated in a failed overrun, Soviet cavalry suffer an additional
                 step loss.<BsrLink page="26" rule="11.37j" />
                 <span className="spacer0_5rem" />
                 They do not suffer from the -2 MP penalty for being OOS.<BsrLink page="11" rule="6.53" />
@@ -336,7 +338,7 @@ const Movement = (props) => {
 
             <span className="spacer0_5rem" />
             <div className="padded">
-                Movement along the motorway is 1/2 MP per hex, regardles of weather conditions.
+                Movement along the motorway is 1/2 MP per hex, regardless of weather conditions.
                 <span className="spacer0_5rem" />
                 All Soviet units can use the motorway at 1/2 MP per hex.
                 <span className="spacer0_5rem" />
@@ -358,7 +360,7 @@ const Movement = (props) => {
             </div>
 
             <span className="spacer1rem" />
-            The scenario rules will specify the number of units that can utilize railroad transportation during a single turn.
+            The scenario rules will specify the number of units that can utilize railroad transportation during each single turn.
             Players must plan their railroad movements carefully to stay within these
             limits.<BsrLink page="24" rule="11.14" />
             <span className="spacer0_5rem" />
@@ -369,8 +371,8 @@ const Movement = (props) => {
             also do regular movement in the same Movement phase.<BsrLink page="24" rule="11.12" /> The unit cannot
             be within 3 hexes of an enemy unit when starting its rail transportation.<BsrLink page="24" rule="11.13a" />
             <span className="spacer0_5rem" />
-            Railroad transportation allows a unit to move up to 60 friendly (converted for Axis) connected rail hexes.
-            Terrain or weather is not considered when traveling by rail, each rail hex counts as 1 of the
+            Railroad transportation allows a unit to move up to 60 friendly (converted for Axis, non-converted for Soviet) connected rail hexes.
+            Terrain or weather is not considered when traveling by rail. Each rail hex counts as 1 of the
             60 max hexes.
             Exceptions:
             <ul className="small-list">
@@ -379,7 +381,7 @@ const Movement = (props) => {
                 <li>Axis railroad capacity is halved during Snow weather.<BsrLink page="24" rule="11.16" /></li>
             </ul>
             Units being transported by railroad cannot enter an enemy ZOC, but
-            armored trains and railroad artillery can enter a enemy ZOC - 
+            armored trains and railroad artillery can enter a enemy ZOC -
             they don't pay any extra MP, but they do have to stop moving.
             <BsrLink page="21" rule="10.33" />
 
@@ -733,7 +735,7 @@ const Movement = (props) => {
             <span className="spacer0_5rem" />
             <div className="padded">
                 After the opposing player's Attack Declarations Phase, you can (possibly) conduct
-                reaction movement during the Reaction Phase towards Declared Attack(s). This gives 
+                reaction movement during the Reaction Phase towards Declared Attack(s). This gives
                 the defender some ability to react to the declared attacks.
                 <span className="spacer0_5rem" />
                 For each declared attack, the defender can move one qualifying unit up
@@ -751,7 +753,7 @@ const Movement = (props) => {
                 <ul className="bare-ul">
                     <li>Is within command range of a HQ with a
                         non-interdicted command point.<BsrLink page="30" rule="12.41b" />
-                        HQs command rating is the number of reaction moves it can 
+                        HQs command rating is the number of reaction moves it can
                         authorize.<BsrLink page="53" rule="21.1c" /></li>
                     <li>Is not in range of a non-Op HQ.<BsrLink page="30" rule="11.41b" /></li>
                     <li>Is not an NKVD unit.<BsrLink page="30" rule="12.41b" /></li>
@@ -765,7 +767,7 @@ const Movement = (props) => {
                 A reacting unit can move into a hex adjacent to an attacking enemy unit
                 only if the hex has a friendly unit in it.<BsrLink page="30" rule="12.43" />
                 <span className="spacer0_5rem" />
-                Do not pay the +1 MP for entering enemy ZOC, but units still stop in the first 
+                Do not pay the +1 MP for entering enemy ZOC, but units still stop in the first
                 enemy ZOC hex they enter.<BsrLink page="30" rule="12.43" />
             </div>
 
@@ -782,24 +784,24 @@ const Movement = (props) => {
             </div>
             <span className="spacer0_5rem" />
             <div className="padded">
-            
-               During the Soviet Motorized Movement Phase, the Soviet player can activate one non-motorized
-               unit<span className="red-ask">*</span> or MSU per each command point of each non-interdicted Soviet HQ unit within command range
-               (and not in range of a non-Op HQ).<BsrLink page="20" rule="10.13a" /><br/>
-               <span className="red-ask">* excludes: cavalry, armored trains,
-               Super-Heavy artillery, flotillas, or other HQs.<BsrLink page="20" rule="10.13c" /></span>
 
-               
-               <span className="spacer0_5rem" />
-               Each operational HQ can also activate one in-range Guards unit,
-               even if the HQ has no command points left.
-               <BsrLink page="20" rule="10.13b" />
-               <span className="spacer0_5rem" />
-               Activated units can move up to their full printed MA as modified
-               by weather, terrain, and supply.
-               <BsrLink page="20" rule="10.13d" />
-               <span className="spacer0_5rem" />
-                Place an Activated marker on each activated unit to 
+                During the Soviet Motorized Movement Phase, the Soviet player can activate one non-motorized
+                unit<span className="red-ask">*</span> or MSU per each command point of each non-interdicted Soviet HQ unit within command range
+                (and not in range of a non-Op HQ).<BsrLink page="20" rule="10.13a" /><br />
+                <span className="red-ask">* excludes: cavalry, armored trains,
+                    Super-Heavy artillery, flotillas, or other HQs.<BsrLink page="20" rule="10.13c" /></span>
+
+
+                <span className="spacer0_5rem" />
+                Each operational HQ can also activate one in-range Guards unit,
+                even if the HQ has no command points left.
+                <BsrLink page="20" rule="10.13b" />
+                <span className="spacer0_5rem" />
+                Activated units can move up to their full printed MA as modified
+                by weather, terrain, and supply.
+                <BsrLink page="20" rule="10.13d" />
+                <span className="spacer0_5rem" />
+                Place an Activated marker on each activated unit to
                 show it expended its MPs in the Motorized Movement Phase, so
                 can't move in the regular Movement Phase. Remove
                 all Activation markers during the Recovery Phase.
@@ -813,7 +815,7 @@ const Movement = (props) => {
             <span className="spacer2rem" />
             <div className="subheader-image">
                 <div>Air Transport Mission<BsrLink page="37" rule="14.7" /></div>
-                <img src={soviet_transport_plane} alt="transport aircraft units" width="100" height="100" />
+                <img src={soviet_transport_plane} alt="transport aircraft units" width="80" height="80" />
             </div>
             <span className="spacer0_5rem" />
             <div className="padded">
@@ -854,12 +856,46 @@ const Movement = (props) => {
             </div>
 
 
+            <span className="spacer2rem" />
 
+            <div className="subheader-image counter-image">
+                <div>Flotillas<BsrLink page="58" rule="22.5" /></div>
+                <img src={sovietFlotilla} alt="Soviet flotilla counter" width="80" height="80" />
+                <div>
+                    <img src={flotilla} alt="flotilla" />
+                    <div>Camouflaged BK-1125, rear platform, 12.7mm<br />
+                        DSHK Heavy Machine Gun. (cmchant.com)</div>
+                </div>
+            </div>
 
             <span className="spacer1rem" />
-            <div className="subheader-normal"></div>
+            Flotillas are armored boats with weapons. They travel along rivers and the coast and sea hexes.
+            They move in either the Regular Movement Phase or the Motorized Movement Phase (but not both).
+            They cannot move during
+            the Reaction Phase. Soviet flotillas do not interact with Soviet HQs, and are not affected by non-op HQs.<BsrLink page="58" rule="22.51a" />
+            <span className="spacer1rem" />
+            They cannot do Specialized Movement.<BsrLink page="58" rule="22.51f" />
+            <span className="spacer1rem" />
+            Flotillas cannot move into hexes where Frozen conditions exist.<BsrLink page="58" rule="22.54a" />
+            <span className="spacer1rem" />
+            Flotillas cannot move during Storm weather, and are subject to repositioning.<BsrLink page="58" rule="22.54b" />
+            <span className="spacer1rem" />
+            Flotillas must stop when entering an enemy ZOC. Movement can be restricted by Air Interdiction.<BsrLink page="58" rule="22.51b" />
+            <span className="spacer1rem" />
+            As Flotilla's move along a major river, the owner determines which side of the hexside they are on.<BsrLink page="58" rule="22.51c" />
+            <span className="spacer1rem" />
+            On canals, Flotillas can only be on the side that has the canal hashed hexside graphic.<BsrLink page="58" rule="22.51d" />
+            <span className="spacer1rem" />
+            Flotillas can move on coastal or shallow sea or regular sea hexes at a MP cost of 1 per hex.<BsrLink page="58" rule="22.51e" />
+            <span className="spacer1rem" />
+
+            During Storm weather, Flotillas on shallow water, lake, insland sea, all-sea, or coastal hexes can be
+            subject to Repositioning. During the weather Phase, each such Flotilla must be repositioned
+            at the nearest friendly port within its movement allowance. If no port is in reach, then the Flotilla stays in place.
+            <BsrLink page="58" rule="22.55" />
 
 
+            <span className="spacer2rem" />
 
             <div className="subheader-image">
                 <div>Overrun<BsrLink page="25" rule="11.3" /></div>
@@ -871,7 +907,7 @@ const Movement = (props) => {
 
             <span className="spacer0_5rem" />
             <div>
-                Overruns allow the "shoving aside" (or elimination) of weak enemy units that are standing 
+                Overruns allow the "shoving aside" (or elimination) of weak enemy units that are standing
                 in the way
                 of a powerful motorized or cavalry unit('s) movement.
                 <span className="spacer0_5rem" />
@@ -892,8 +928,8 @@ const Movement = (props) => {
                 <BsrLink page="26" rule="11.34" />
                 <span className="spacer0_5rem" />
                 The odds must be at least 5-1 (or 12-1 for motorized engineers going across
-                a fortified hexside or into a strongpoint  <BsrLink page="26" rule="11.35c" />).
-                in favor of the overrunning unit(s).<BsrLink page="26" rule="11.36c" />
+                a fortified hexside or into a strongpoint<BsrLink page="26" rule="11.35c" />) in
+                favor of the overrunning unit(s).<BsrLink page="26" rule="11.36c" />
                 <span className="spacer0_5rem" />
                 If doing an overrun attempt,
                 it must be
@@ -916,12 +952,12 @@ const Movement = (props) => {
                 <span className="spacer0_5rem" />
                 The unit(s) doing the overrun must have enough movement points left to
                 have entered the overrun hex,
-                plus the overrun cost of 1 MP (but don't pay the 1 MP cost for entering enemy ZOC). 
+                plus the overrun cost of 1 MP (but don't pay the 1 MP cost for entering enemy ZOC).
                 They do not pay another 1 MP for entering any enemy ZOC
                 in the overrun hex. <BsrLink page="26" rule="11.37b" />
 
                 <span className="spacer0_5rem" />
-                Only units capable do doing overruns in a stack can advance after
+                Only units capable doing overruns in a stack can advance after
                 a successful overrun.  Units that cannot do overruns in the stack
                 must remain in their original hex.
                 <BsrLink page="25" rule="11.33" />
@@ -937,7 +973,7 @@ const Movement = (props) => {
                 attempting to overrun (with a motorized engineer) across a fortified hexside or into a strongpoint,
                 against the defending unit(s).
                 <BsrLink page="26" rule="11.36c" />
-                
+
                 <span className="spacer0_5rem" />
                 Combat Supply is not used in overruns.
                 <BsrLink page="26" rule="11.36e" />
@@ -967,12 +1003,12 @@ const Movement = (props) => {
                 <span className="spacer0_5rem" />
                 Additionally:
                 <ul className="bare-ul">
-                    <li>Marsh or Swamp - an overrun can be conducted into these only when the hex is 
+                    <li>Marsh or Swamp - an overrun can be conducted into these only when the hex is
                         frozen or when moving along a motorway, road, or railroad.
                         The Overrun Table lists a (+2) DRM to the Overrun Table die roll result.
                         <BsrLink page="26" rule="11.35b" />
                     </li>
-                    <li>Fortified hexside or strongpoint - Overrun is allowed if there is a motorized 
+                    <li>Fortified hexside or strongpoint - Overrun is allowed if there is a motorized
                         engineer in the stack doing the overrun and the odds are at least <span className="no-wrap">12-1.</span>
                         <BsrLink page="26" rule="11.35c" /></li>
                 </ul>
@@ -1017,27 +1053,26 @@ const Movement = (props) => {
                 Apply the results from the Overrun Table.
                 <BsrLink page="26" rule="11.37i" />
                 <span className="spacer0_5rem" />
-                If the overrun is successful, any Supply dumps, Bridge markers, and Ferry markers 
+                If the overrun is successful, any Supply dumps, Bridge markers, and Ferry markers
                 in the overrun hex are removed.
-                <BsrLink page="26" rule="11.37i" /> 
+                <BsrLink page="26" rule="11.37i" />
                 <span className="spacer0_5rem" />
                 Any surviving defenders
-                are retreated 2 hexes by the overrunning player. 
-                <BsrLink page="26" rule="11.37i" />
-                A stack being retreated can
+                are retreated 2 hexes by the overrunning player.
+                <BsrLink page="26" rule="11.37i" />A stack being retreated can
                 have its units split up and retreated to different hexes.<BsrLink page="44" rule="16.4" />
                 <span className="spacer0_5rem" />
                 Supply dumps, Bridge markers, and Ferry markers cannot be retreated,
                 return them to the owning player's stock.
-                <BsrLink page="26" rule="11.37i" /> 
+                <BsrLink page="26" rule="11.37i" />
                 <span className="spacer0_5rem" />
                 Units remaining that can't retreat are moved
                 to the Cadre Box or Cannot Rebuild Box as appropriate.
-                <BsrLink page="26" rule="11.37i" /> 
+                <BsrLink page="26" rule="11.37i" />
                 <span className="spacer0_5rem" />
-                The stack that conducted the overrun can continue moving if it has MPs left 
+                The stack that conducted the overrun can continue moving if it has MPs left
                 (it can even overrun another hex if
-                it has enough MPs left). 
+                it has enough MPs left).
                 <BsrLink page="26" rule="11.37i" />
                 <span className="spacer1rem" />
                 Place an overrun marker on the unit or stack of units that were retreated.
@@ -1061,7 +1096,7 @@ const Movement = (props) => {
                         <img src={overrun_marker} alt="overrun marker" />
                     </div>
                 </div>
-                
+
                 <span className="spacer0_5rem" />
                 Overrun markers are removed during the
                 owning player's next
@@ -1076,8 +1111,8 @@ const Movement = (props) => {
             <div className="padded">
                 <ul className="bare-ul">
                     <li>MP cost of going into a city or Major City hex is always 1/2 MP in all weather conditions. (See Terrain Effects Chart)</li>
-                    <li>Fortified hexlines costs +1 MP to cross, and Strongpoint hexes costs +1 MP to enter, but 
-                        a combination Fortified hexline and Strongpoint hex only costs +1 to cross and enter, 
+                    <li>Fortified hexlines costs +1 MP to cross, and Strongpoint hexes costs +1 MP to enter, but
+                        a combination Fortified hexline and Strongpoint hex only costs +1 to cross and enter,
                         not +2.<BsrLink page="48" rule="18.12" /></li>
                     <li>Walking (or driving) along a Railroad gives a benefit of -1 MP cost when moving through a hex with Woods in it.<BsrLink page="21" rule="10.42a" /></li>
                     <li>Motorized (with orange and green MAs) may enter a swamp hex along a railroad by spending

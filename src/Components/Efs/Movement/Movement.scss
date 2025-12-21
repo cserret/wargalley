@@ -52,8 +52,8 @@
             font-size: 1.3rem;
         }
         img {
-            height: 200px;
-            width: auto;
+            height: 133px;
+            width: 211px;
             margin-left: 2rem;
         }
         img:first-of-type {
@@ -61,6 +61,56 @@
             margin-left: 1.5rem;
             height: 80px;
             width: auto;
+        }
+    }
+    /*
+                <div className="subheader-image counter-image">
+                    <div>Flotillas<BsrLink page="58" rule="22.5" /></div>
+                    <img src={sovietFlotilla} alt="Soviet flotilla counter" width="80" height="80" />
+                    <div>
+                        <img src={flotilla} alt="flotilla" />
+                        <div>Camouflaged BK-1125, rear platform, 12.7mm<br />
+                        DSHK Heavy Machine Gun. (cmchant.com)</div>
+                    </div>
+                </div>
+            */
+    .counter-image {
+
+        div:nth-child(1) {
+            margin-top: auto;
+            position: relative;
+            top: 4px;
+            //font-size: 1.3rem;
+        }
+        div:nth-child(3) {
+            margin-top: 0.5rem;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: normal;
+            img {
+                border: 1px solid black;
+                width: 403px;
+                height: 250px;
+            }
+        }
+        img:first-of-type {
+            margin-top: auto;
+            margin-left: 1.5rem;
+            margin-right: 1.5rem;
+            height: 80px;
+            width: auto;
+        }
+        img:nth-of-type(2) {
+            border: 1px solid black;
+            margin-top: 0.5rem;
+            height: auto;
+            width: 150px;
+        }
+        div:nth-child(2) {
+            font-size: 0.9rem;
+            font-weight: normal;
+            position: relative;
+            top: 0px;
         }
     }
     .road-signs {

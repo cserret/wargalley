@@ -358,7 +358,7 @@ export default class Special extends Component {
                             Flotillas cannot attack during Storm weather, but can defend and retreat.<BsrLink page="58" rule="22.54c" />
                         </li>
                         <li>During Storm weather, Flotillas on shallow water, lake, insland sea, all-sea, or coastal hexes can be
-                            subject to Repositioning. During the werather Phase, each such Flotilla must be repositioned
+                            subject to Repositioning. During the weather Phase, each such Flotilla must be repositioned
                             at the nearest friendly port within its movement allowance. If no port is in reach, then the Flotilla stays in place.
                             <BsrLink page="58" rule="22.55" />
                         </li>
