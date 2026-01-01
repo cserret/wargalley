@@ -159,7 +159,7 @@ export default class Special extends Component {
                     <div className="subheader-image">
                         <div>Engineers<BsrLink page="56" rule="22.1" /></div>
 
-                        <img src={german_engineer2} alt="German engineer counter" className="german-engineer-image shadow-image" />
+                        <img src={german_engineer2} alt="German engineer counter" width="80" height="80" className="german-engineer-image shadow-image" />
                     </div>
                     <span className="spacer1rem" />
 
@@ -232,7 +232,7 @@ export default class Special extends Component {
                     <span className="spacer1rem" />
                     <div className="subheader-image">
                         <div>Bridges<BsrLink page="56" rule="22.2" /></div>
-                        <img src={german_bridge} alt="German bridge counter" className="shadow-image"/>
+                        <img src={german_bridge} alt="German bridge counter" width="80" height="80" className="shadow-image"/>
                     </div>
                     <span className="spacer1rem" />
 
@@ -275,7 +275,7 @@ export default class Special extends Component {
 
                     <div className="subheader-image">
                         <div>Armored trains<BsrLink page="54" rule="21.3" /></div>
-                        <img src={armored_train3} alt="Soviet armored train counter"  className="shadow-image"/>
+                        <img src={armored_train3} alt="Soviet armored train counter" width="80" height="80" className="shadow-image"/>
                     </div>
                     <span className="spacer1rem" />
                     <div className="adjusted-up">
@@ -327,7 +327,7 @@ export default class Special extends Component {
 
                     <div className="subheader-image">
                         <div>Flotillas<BsrLink page="58" rule="22.5" /></div>
-                        <img src={counter_flotilla3} alt="Soviet flotilla counter"  className="shadow-image"/>
+                        <img src={counter_flotilla3} alt="Soviet flotilla counter"  width="80" height="80" className="shadow-image"/>
                     </div>
                     <span className="spacer1rem" />
 
@@ -444,7 +444,7 @@ export default class Special extends Component {
 
                     <div className="subheader-image">
                         <div>Super-Heavy Artillery (S-HA)<BsrLink page="32" rule="13.4" /></div>
-                        <img src={super_heavy_artillery_front_rear} alt="super heavy artillery front and back" />
+                        <img src={super_heavy_artillery_front_rear} width="auto" height="80" alt="super heavy artillery front and back" />
                     </div>
                     <span className="spacer1rem" />
                     <div className="adjusted-up">Super-Heavy Artillery generally follow the rules for regular artillery, except for the following special rules.</div>
@@ -552,8 +552,8 @@ export default class Special extends Component {
 
                     <div className="subheader-image">
                         <div>Guards units<BsrLink page="54" rule="21.4" /></div>
-                        <img src={guards_rocket3} alt="Soviet guards rocket counter"  className="shadow-image"/>
-                        <img src={guards_inf3} alt="Soviet guards infantry counter"  className="shadow-image"/>
+                        <img src={guards_rocket3} alt="Soviet guards rocket counter" width="80" height="80"  className="shadow-image"/>
+                        <img src={guards_inf3} alt="Soviet guards infantry counter" width="80" height="80"  className="shadow-image"/>
                     </div>
                     <span className="spacer1rem" />
                     <div className="adjusted-up">
@@ -576,7 +576,7 @@ export default class Special extends Component {
                     <span className="spacer2rem" />
                     <div className="subheader-image">
                         <div>NKVD<BsrLink page="55" rule="21.5" /></div>
-                        <img src={soviet_nkvd} alt="Soviet NKVD counter"  className="shadow-image" />
+                        <img src={soviet_nkvd} alt="Soviet NKVD counter" width="80" height="80"  className="shadow-image" />
                     </div>
                     <span className="spacer1rem" />
 
@@ -616,7 +616,7 @@ export default class Special extends Component {
                     <span className="spacer2rem" />
                     <div className="subheader-image">
                         <div>Untried units<BsrLink page="17" rule="8.4" /></div>
-                        <img src={counter_untried3} alt="Soviet Untried counter" className="shadow-image" />
+                        <img src={counter_untried3} alt="Soviet Untried counter" width="80" height="80" className="shadow-image" />
                     </div>
                     <span className="spacer1rem" />
                     <div className="pdiv">
@@ -636,7 +636,7 @@ export default class Special extends Component {
                     <span className="spacer2rem" />
                     <div className="subheader-image">
                         <div>Militia<BsrLink page="18" rule="8.43" /><BsrLink page="55" rule="21.7" /></div>
-                        <img src={militia3} alt="Soviet militia counter" className="shadow-image" />
+                        <img src={militia3} alt="Soviet militia counter" width="80" height="80" className="shadow-image" />
                     </div>
                     <span className="spacer1rem" />
                     <div >Soviet Militia are brigade-sized units, which are put in an opaque cup for drawing randomly, per scenario instructions.
@@ -669,7 +669,7 @@ export default class Special extends Component {
                     <span className="spacer2rem" />
                     <div className="subheader-image">
                         <div>Zap units<BsrLink page="14" rule="7.43" /></div>
-                        <img src={counter_zap3} alt="Soviet Zap counter" className="shadow-image" />
+                        <img src={counter_zap3} alt="Soviet Zap counter" width="80" height="80" className="shadow-image" />
                     </div>
                     <span className="spacer1rem" />
                     <div className="pdiv">
@@ -710,7 +710,7 @@ export default class Special extends Component {
                     <span className="spacer1rem" />
                     <div className="subheader-image">
                         <div>Garrisons<BsrLink page="55" rule="21.8" /></div>
-                        <img src={garrison} alt="Soviet garrison counter" className="shadow-image" />
+                        <img src={garrison} alt="Soviet garrison counter" width="80" height="80" className="shadow-image" />
                     </div>
                     <span className="spacer1rem" />
                     <div>

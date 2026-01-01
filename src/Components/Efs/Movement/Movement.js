@@ -27,6 +27,10 @@ import soviet_transport_plane from "../../../images/efs/movement/luftwaffe_j41_1
 import overrun from "../../../images/efs/movement/overrun.jpg"
 import sovietFlotilla from "../../../images/efs/movement/soviet_flotilla_120x120.png"
 import flotilla from "../../../images/efs/special/flotilla.jpg";
+import interdictCounter from "../../../images/efs/movement/interdict_counter.jpg"
+import interdiction from "../../../images/efs/movement/interdiction.jpg"
+import counter_additional_retreat from "../../../images/efs/combat/additional_retreat_120.png";
+import additional_retreat from "../../../images/efs/movement/additionalretreat.jpg"
 import './Movement.scss';
 
 const Movement = (props) => {
@@ -456,7 +460,7 @@ const Movement = (props) => {
             <div className="subheader-image">
                 <div>Bridges<BsrLink page="56" rule="22.2" /></div>
                 <div className="align-bottom_nowrap">
-                    <img src={german_bridge} alt="German bridge" width="100" height="100" />
+                    <img src={german_bridge} alt="German bridge" width="80" height="80" />
                     <img src={german_pontoon_bridge} alt="German pontoon bridge" width="290" height="206" />
                 </div>
             </div>
@@ -516,16 +520,14 @@ const Movement = (props) => {
                 <span className="spacer0_5rem" />
                 A bridge placed under construction on a regular river is flipped
                 over immediately to its completed side
-                <BsrLink page="56" rule="22.23b" />
-                only if the hex in the opposite
+                <BsrLink page="56" rule="22.23b" /> only if the hex in the opposite
                 side of the river is not enemy occupied and not in enemy ZOC.
                 <BsrLink page="56" rule="22.23c" />
                 <span className="spacer0_5rem" />
                 If a bridge under construction
                 is crossing a Major River, flip it to its completed side
                 in the owning player's Engineering Phase,
-                <BsrLink page="56" rule="22.24b" />
-                as long as the hex opposite
+                <BsrLink page="56" rule="22.24b" /> as long as the hex opposite
                 the Major River is not enemy occupied and not in enemy ZOC.
                 <BsrLink page="56" rule="22.24c" />
                 <span className="spacer0_5rem" />
@@ -553,8 +555,7 @@ const Movement = (props) => {
                 Engineering Phase. The unit can be on either side of the bridge and
                 no enemy unit can be within seven hexes of the unit doing the
                 destruction.
-                <BsrLink page="57" rule="22.42" />
-                Exception: Soviet units within range of a non-Op HQ
+                <BsrLink page="57" rule="22.42" /> Exception: Soviet units within range of a non-Op HQ
                 cannot do Bridge Destruction.
                 <BsrLink page="57" rule="22.43c" />
                 <span className="spacer0_5rem" />
@@ -569,8 +570,7 @@ const Movement = (props) => {
                 Engineering phase, the player needs
                 to have an in-general-supply Engineer unit on either side of the bridge
                 in order to attempt repairs on the bridge.
-                <BsrLink page="57" rule="22.44b" />
-                The other side of the bridge from the unit cannot have an enemy unit in
+                <BsrLink page="57" rule="22.44b" />The other side of the bridge from the unit cannot have an enemy unit in
                 it, but it can be in enemy ZOC.
                 <BsrLink page="57" rule="22.44c" />
                 <span className="spacer0_5rem" />
@@ -578,14 +578,25 @@ const Movement = (props) => {
                 attempt to repair.
                 <BsrLink page="57" rule="22.45b" />
             </div>
+            <span className="spacer1rem" />
 
-            <div className="padded">
-                Additional Retreat<BsrLink page="30" rule="30d" /><BsrLink page="44" rule="16.45" />
+            <div className="subheader-image">
+                <div>Additional Retreat<BsrLink page="30" rule="30d" /><BsrLink page="44" rule="16.45b" /></div>
+                <div className="align-bottom_nowrap">
+                    <img src={counter_additional_retreat} alt="additional retreat" width="80" height="80" />
+                    <img src={additional_retreat} alt="Additional retreat" width="304" height="206" />
+                </div>
             </div>
+            <span className="spacer1rem" />
+            Units with an Additional Retreat marker retreats 3 hexes instead of the normal 2 hexes.<BsrLink page="44" rule="16.45b" />
+            <span className="spacer0_5rem" />
+            The non-owning player retreats the unit(s), but cannot move them as to where they suffer loses, if an alternative
+            safe path exists.<BsrLink page="44" rule="16.45b" />
+            <span className="spacer1rem" />
             <div className="subheader-image">
                 <div>Ferrys<BsrLink page="57" rule="22.3" /></div>
                 <div className="align-bottom_nowrap">
-                    <img src={german_ferry} alt="German ferry" width="100" height="100" />
+                    <img src={german_ferry} alt="German ferry" width="80" height="80" />
                     <img src={soviet_ferry} alt="German pontoon bridge" width="304" height="206" />
                 </div>
             </div>
@@ -628,57 +639,54 @@ const Movement = (props) => {
             they can only be removed by either an enemy unit entering it's hex,
             or when the bridge across the river is repaired.
             <BsrLink page="57" rule="22.35" />
-            <div>
-
-                <span className="spacer2rem" />
-
-                <div className="subheader-image header-2-image">
-                    <div className="header-1-image-title">Infiltration Movement<BsrLink page="27" rule="11.4" /></div>
-                    <img src={infiltration_movement_example} alt="Infiltration movement example" style={{ height: 'auto' }} />
-                </div>
-                <span className="spacer1rem" />
-                <div className="padded">
-                    Infiltration movement allows a unit to move directly from a hex in enemy ZOC to adjacent hex
-                    in enemy ZOC (even if the ZOC is from different
-                    enemy units).<BsrLink page="27" rule="11.41" />
-                    <span className="spacer0_5rem" />
-                    Infiltration Movement can be conducted by:
-                    <ul className="bare-ul">
-                        <li>Units with a yellow MA allowance of 7 or greater.<BsrLink page="27" rule="11.42" /></li>
-                        <li>Cavalry units with a yellow MA allowance.<BsrLink page="27" rule="11.42" /></li>
-                        <li>Mountain units in certain terrain.<BsrLink page="27" rule="11.42" /></li>
-                        <li>Units (not green or orange MAs) when moving into a hex that has a
-                            friendly unit in it at the start of the movement phase.<BsrLink page="27" rule="11.48b" />  </li>
-                    </ul>
-                    <span className="spacer0_5rem" />
-
-
-                    The unit can only do infiltration movement in the movement
-                    phase where they have their full printed MA available.
-                    <BsrLink page="27" rule="11.43" />
-                    <span className="spacer0_5rem" />
-                    The infiltration movement costs the unit its entire MA. The unit
-                    must have had enough movement points to have moved into the hex as if
-                    there was no enemy ZOC.
-                    <BsrLink page="27" rule="11.44" />
-                    <span className="spacer0_5rem" />
-                    Infiltration movement cannot take place when the weather
-                    condition of the hex being moved to is Mud.
-                    <BsrLink page="27" rule="11.45" />
-                    <span className="spacer0_5rem" />
-                    Ski units can only conduct Infiltration Movement when the weather
-                    condition of the hex being moved to is Snow.
-                    <BsrLink page="27" rule="11.46" />
-                    <span className="spacer0_5rem" />
-                    Infiltration movement cannot happen across non-destroyed enemy
-                    fortified lines or into enemy fortifications.
-                    <BsrLink page="27" rule="11.47" />
+            <span className="spacer1rem" />
 
 
 
-                    <span className="spacer1rem" />
-                </div>
+
+            <div className="subheader-image header-2-image">
+                <div className="header-1-image-title">Infiltration Movement<BsrLink page="27" rule="11.4" /></div>
+                <img src={infiltration_movement_example} alt="Infiltration movement example" style={{ height: 'auto' }} />
             </div>
+            <span className="spacer1rem" />
+            <div className="padded">
+                Infiltration movement allows a unit to move directly from a hex in enemy ZOC to adjacent hex
+                in enemy ZOC (even if the ZOC is from different
+                enemy units).<BsrLink page="27" rule="11.41" />
+                <span className="spacer0_5rem" />
+                Infiltration Movement can be conducted by:
+                <ul className="bare-ul">
+                    <li>Units with a yellow MA allowance of 7 or greater.<BsrLink page="27" rule="11.42" /></li>
+                    <li>Cavalry units with a yellow MA allowance.<BsrLink page="27" rule="11.42" /></li>
+                    <li>Mountain units in certain terrain.<BsrLink page="27" rule="11.42" /></li>
+                    <li>Units (not green or orange MAs) when moving into a hex that has a
+                        friendly unit in it at the start of the movement phase.<BsrLink page="27" rule="11.48b" />  </li>
+                </ul>
+                <span className="spacer0_5rem" />
+
+
+                The unit can only do infiltration movement in the movement
+                phase where they have their full printed MA available.
+                <BsrLink page="27" rule="11.43" />
+                <span className="spacer0_5rem" />
+                The infiltration movement costs the unit its entire MA. The unit
+                must have had enough movement points to have moved into the hex as if
+                there was no enemy ZOC.
+                <BsrLink page="27" rule="11.44" />
+                <span className="spacer0_5rem" />
+                Infiltration movement cannot take place when the weather
+                condition of the hex being moved to is Mud.
+                <BsrLink page="27" rule="11.45" />
+                <span className="spacer0_5rem" />
+                Ski units can only conduct Infiltration Movement when the weather
+                condition of the hex being moved to is Snow.
+                <BsrLink page="27" rule="11.46" />
+                <span className="spacer0_5rem" />
+                Infiltration movement cannot happen across non-destroyed enemy
+                fortified lines or into enemy fortifications.
+                <BsrLink page="27" rule="11.47" />
+            </div>
+
 
             <span className="spacer1rem" />
 
@@ -749,6 +757,7 @@ const Movement = (props) => {
                     <li>Does not begin in an enemy Zoc nor is in a Defender Hex.<BsrLink page="30" rule="12.41a" /></li>
                     <li>Does not move into or out of an enemy air Zone of Interdiction.<BsrLink page="30" rule="12.41a" /></li>
                 </ul>
+                <span className="spacer0_5rem" />
                 Additionally, Soviet units are under extra restrictions:
                 <ul className="bare-ul">
                     <li>Is within command range of a HQ with a
@@ -758,6 +767,7 @@ const Movement = (props) => {
                     <li>Is not in range of a non-Op HQ.<BsrLink page="30" rule="11.41b" /></li>
                     <li>Is not an NKVD unit.<BsrLink page="30" rule="12.41b" /></li>
                 </ul>
+                <span className="spacer0_5rem" />
                 In case of a multi-hex combat, multiple reacting units could react, but only
                 one unit can enter the Defender hex.<BsrLink page="30" rule="12.42" />
                 <span className="spacer0_5rem" />
@@ -793,7 +803,7 @@ const Movement = (props) => {
 
 
                 <span className="spacer0_5rem" />
-                Each operational HQ can also activate one in-range Guards unit,
+                Each operational HQ can also activate one in-range Guards unit, for 0 command point cost,
                 even if the HQ has no command points left.
                 <BsrLink page="20" rule="10.13b" />
                 <span className="spacer0_5rem" />
@@ -812,7 +822,7 @@ const Movement = (props) => {
 
 
 
-            <span className="spacer2rem" />
+            <span className="spacer1rem" />
             <div className="subheader-image">
                 <div>Air Transport Mission<BsrLink page="37" rule="14.7" /></div>
                 <img src={soviet_transport_plane} alt="transport aircraft units" width="80" height="80" />
@@ -843,9 +853,11 @@ const Movement = (props) => {
                 There are relavent DRMs on the AA Fire Table concerning
                 air units doing transport.
                 <BsrLink page="37" rule="14.76" />
+
                 <span className="spacer0_5rem" />
-                If there is air combat at the destination hex, the unit(s) being transported may suffer the same fate at the aircraft they are in:
-                <BsrLink page="38" rule="14.77" />
+                If there is air combat at the destination hex, the unit(s) being transported may
+                suffer the same fate at the aircraft they are in
+                <BsrLink page="38" rule="14.77" />:
                 <ul className="bare-ul">
                     <li>Destroyed: the unit that was being transported is also destroyed.</li>
                     <li>Damaged: the unit that was being transported is successfully delivered to the destination hex.</li>
@@ -853,23 +865,27 @@ const Movement = (props) => {
                     <li>If a unit with 2 stacking points was being transported by two transport air units, and one of the air units was destroyed
                         or aborted - return the transported unit to its starting hex.</li>
                 </ul>
+
+                <span className="spacer0_5rem" />
+                Ground unit(s) that, successfully or unsuccessfully, attempted air transport
+                get a Do Not Move 1 GT marker placed on them. The transporting air unit(s) (even
+                if their attempt to transport was aborted) go to the Flown box.
+                <BsrLink page="38" rule="14.75d" />
             </div>
 
 
-            <span className="spacer2rem" />
+            <span className="spacer1rem" />
 
             <div className="subheader-image counter-image">
                 <div>Flotillas<BsrLink page="58" rule="22.5" /></div>
-                <img src={sovietFlotilla} alt="Soviet flotilla counter" width="80" height="80" />
+                <img src={sovietFlotilla} alt="flotilla counter" width="80" height="80" />
                 <div>
-                    <img src={flotilla} alt="flotilla" />
-                    <div>Camouflaged BK-1125, rear platform, 12.7mm<br />
-                        DSHK Heavy Machine Gun. (cmchant.com)</div>
+                    <img src={flotilla} alt="Soviet flotilla" />
                 </div>
             </div>
 
             <span className="spacer1rem" />
-            Flotillas are armored boats with weapons. They travel along rivers and the coast and sea hexes.
+            Flotillas are armored boats with weapons (gunboats). They travel along rivers, coast and sea hexes.
             They move in either the Regular Movement Phase or the Motorized Movement Phase (but not both).
             They cannot move during
             the Reaction Phase. Soviet flotillas do not interact with Soviet HQs, and are not affected by non-op HQs.<BsrLink page="58" rule="22.51a" />
@@ -895,8 +911,43 @@ const Movement = (props) => {
             <BsrLink page="58" rule="22.55" />
 
 
-            <span className="spacer2rem" />
 
+            <span className="spacer1rem" />
+            <div className="subheader-image counter-image">
+                <div>Zone of Air Interdiction (ZOI)<BsrLink page="37" rule="14.65" /></div>
+                <img src={interdictCounter} alt="interdiction counter" width="80" height="80" />
+                <div>
+                    <img src={interdiction} alt="interdict" />
+                </div>
+            </div>
+            <span className="spacer0_5rem" />
+            Zones of Air Interdiction (ZOI) represent areas where Axis air units
+            are interfering with Soviet ground movement. Overlapping of ZOIs do not
+            confer any additional penalties on movement. Only Axis air units can create ZOIs.
+            <BsrLink page="36" rule="14.6" /><BsrLink page="37" rule="14.64" /><BsrLink page="37" rule="14.65" />
+            <span className="spacer0_5rem" />
+            A unit(s) conducting railroad movement, or armored train, paus 12 railroad transport MPs
+            per interdicted hex.<BsrLink page="37" rule="14.65" />
+            <span className="spacer0_5rem" />
+            Flotillas pay 3 MPs to enter a interdicted hex.<BsrLink page="37" rule="14.65" />
+            <span className="spacer0_5rem" />
+            A unit cannot begin or enter a ZOI using strategic movement.<BsrLink page="37" rule="14.65" />
+            <span className="spacer0_5rem" />
+            The benefit for moving along roads is not available when the hex is in an enemy ZOI,
+            unless the road terrain type is woods. For bridges, they avoid having the
+            road benefit negated when one side and/or the other side of the bridge in woods.
+            <span className="spacer0_5rem" />
+            Air transport missions taking off from or landing in an interdicted hex are subject to AA fire.
+            <BsrLink page="37" rule="14.76" />
+            <span className="spacer0_5rem" />
+            Units doing Reaction movement cannot enter or leave an enemy ZOI.
+            <BsrLink page="30" rule="12.41a" />
+            <span className="spacer0_5rem" />
+            Retreat Orders cannot be given to units in an enemy ZOI.
+            <BsrLink page="31" rule="12.53g" />
+
+
+            <span className="spacer2rem" />
             <div className="subheader-image">
                 <div>Overrun<BsrLink page="25" rule="11.3" /></div>
                 <div className="align-bottom_nowrap">
@@ -1031,79 +1082,80 @@ const Movement = (props) => {
                 A hex with enemy units in it can be subjected to multiple overruns in a movement phase, even if
                 it was pushed into different hexe(s) by previous overrun(s).<BsrLink page="25" rule="11.32" />
                 <span className="spacer0_5rem" />
+                <div className="indent-1rem">
+                    <div className="subheader-normal">Unsuccessful Overrun<BsrLink page="25" rule="11.37j" /></div>
+                    <span className="spacer0_5rem" />
+                    If the overrun fails, the overrunning units are considered to have exhausted all their movement points and remain in the hex where they
+                    attempted the overrun from.
+                    <BsrLink page="26" rule="11.37j" />
+                    <span className="spacer0_5rem" />
+                    If the stack that was attempting an overrun is still overstacked
+                    the player must eliminate unit(s) to create a legal stack.
+                    <BsrLink page="26" rule="11.37j" />
+                    <span className="spacer0_5rem" />
+                    If any Soviet cavalry unit(s) attempted in the overrun attempt, remove 1 step of cavalry
+                    in addition to any required loss.
+                    <BsrLink page="26" rule="11.37j" />
+                    <span className="spacer0_5rem" />
 
-                <div className="subheader-normal">Unsuccessful Overrun<BsrLink page="25" rule="11.37j" /></div>
-                <span className="spacer0_5rem" />
-                If the overrun fails, the overrunning units are considered to have exhausted all their movement points and remain in the hex where they
-                attempted the overrun from.
-                <BsrLink page="26" rule="11.37j" />
-                <span className="spacer0_5rem" />
-                If the stack that was attempting an overrun is still overstacked
-                the player must eliminate a/some unit(s).
-                <BsrLink page="26" rule="11.37j" />
-                <span className="spacer0_5rem" />
-                If any Soviet cavalry unit(s) attempted in the overrun attempt, remove 1 step of cavalry
-                in addition to any required loss.
-                <BsrLink page="26" rule="11.37j" />
-                <span className="spacer0_5rem" />
 
-
-                <div className="subheader-normal">Successful Overrun<BsrLink page="26" rule="11.37i" /></div>
-                <span className="spacer0_5rem" />
-                Apply the results from the Overrun Table.
-                <BsrLink page="26" rule="11.37i" />
-                <span className="spacer0_5rem" />
-                If the overrun is successful, any Supply dumps, Bridge markers, and Ferry markers
-                in the overrun hex are removed.
-                <BsrLink page="26" rule="11.37i" />
-                <span className="spacer0_5rem" />
-                Any surviving defenders
-                are retreated 2 hexes by the overrunning player.
-                <BsrLink page="26" rule="11.37i" />A stack being retreated can
-                have its units split up and retreated to different hexes.<BsrLink page="44" rule="16.4" />
-                <span className="spacer0_5rem" />
-                Supply dumps, Bridge markers, and Ferry markers cannot be retreated,
-                return them to the owning player's stock.
-                <BsrLink page="26" rule="11.37i" />
-                <span className="spacer0_5rem" />
-                Units remaining that can't retreat are moved
-                to the Cadre Box or Cannot Rebuild Box as appropriate.
-                <BsrLink page="26" rule="11.37i" />
-                <span className="spacer0_5rem" />
-                The stack that conducted the overrun can continue moving if it has MPs left
-                (it can even overrun another hex if
-                it has enough MPs left).
-                <BsrLink page="26" rule="11.37i" />
-                <span className="spacer1rem" />
-                Place an overrun marker on the unit or stack of units that were retreated.
-                <BsrLink page="27" rule="11.38" />
-                <span className="spacer1rem" />
-                <div className="bulletsWithImageToRight">
-                    <div>
-                        Units with an overrun marker on them:<BsrLink page="27" rule="11.38a" />
-                        <ul className="bare-ul">
-                            <li>do not project a ZOC.</li>
-                            <li>cannot provide artillery support (if it is an artillery unit).
-                                Turn to "fired" side if it has one.
-                            </li>
-                            <li>are not eligible for reaction movement.</li>
-                            <li>HQs that get overrun get flipped to their non-op side.<BsrLink page="27" rule="11.38c" /></li>
-                            <li><span>An overrun attempt or Declared Combat against a unit or stack with an Overrun marker</span>
-                                <span className="nl-pl">on it receives a -1 DRM.<BsrLink page="27" rule="11.38b" /></span></li>
-                        </ul>
+                    <div className="subheader-normal">Successful Overrun<BsrLink page="26" rule="11.37i" /></div>
+                    <span className="spacer0_5rem" />
+                    Apply the results from the Overrun Table.
+                    <BsrLink page="26" rule="11.37i" />
+                    <span className="spacer0_5rem" />
+                    If the overrun is successful, any Supply dumps, Bridge markers, and Ferry markers
+                    in the overrun hex are removed.
+                    <BsrLink page="26" rule="11.37i" />
+                    <span className="spacer0_5rem" />
+                    Any surviving defenders
+                    are retreated 2 hexes by the overrunning player.
+                    <BsrLink page="26" rule="11.37i" /> A stack being retreated can
+                    have its units split up and retreated to different hexes.<BsrLink page="44" rule="16.4" /> See
+                    the Retreat section of the Combat chapter for details on retreating units.<BsrLink page="44" rule="16.4" />
+                    <span className="spacer0_5rem" />
+                    Supply dumps, Bridge markers, and Ferry markers cannot be retreated,
+                    return them to the owning player's stock.
+                    <BsrLink page="26" rule="11.37i" />
+                    <span className="spacer0_5rem" />
+                    Units remaining that can't retreat are moved
+                    to the Cadre Box or Cannot Rebuild Box as appropriate.
+                    <BsrLink page="26" rule="11.37i" />
+                    <span className="spacer0_5rem" />
+                    The stack that conducted the overrun can continue moving if it has MPs left
+                    (it can even overrun another hex if
+                    it has enough MPs left).
+                    <BsrLink page="26" rule="11.37i" />
+                    <span className="spacer1rem" />
+                    Place an overrun marker on the unit or stack of units that were retreated.
+                    <BsrLink page="27" rule="11.38" />
+                    <span className="spacer1rem" />
+                    <div className="bulletsWithImageToRight">
+                        <div>
+                            Units with an overrun marker on them:<BsrLink page="27" rule="11.38a" />
+                            <ul className="bare-ul">
+                                <li>do not project a ZOC.</li>
+                                <li>cannot provide artillery support (if it is an artillery unit).
+                                    Turn to "fired" side if it has one.
+                                </li>
+                                <li>are not eligible for reaction movement.</li>
+                                <li>HQs that get overrun get flipped to their non-op side.<BsrLink page="27" rule="11.38c" /></li>
+                                <li><span>An overrun attempt or Declared Combat against a unit or stack with an Overrun marker</span>
+                                    <span className="nl-pl">on it receives a -1 DRM.<BsrLink page="27" rule="11.38b" /></span></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <img src={overrun_marker} alt="overrun marker" />
+                        </div>
                     </div>
-                    <div>
-                        <img src={overrun_marker} alt="overrun marker" />
-                    </div>
+
+                    <span className="spacer0_5rem" />
+                    Overrun markers are removed during the
+                    owning player's next
+                    Engineering Phase.
+                    <BsrLink page="27" rule="11.38d" />
                 </div>
-
-                <span className="spacer0_5rem" />
-                Overrun markers are removed during the
-                owning player's next
-                Engineering Phase.
-                <BsrLink page="27" rule="11.38d" />
             </div>
-
 
 
             <span className="spacer1rem" />

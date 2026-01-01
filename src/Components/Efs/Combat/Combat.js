@@ -948,7 +948,7 @@ const Combat = (props) => {
 
                 <div className="subheader-n-images">
                     <div>Attack Declaration Phase<BsrLink page="28" rule="12.1" /></div>
-                    <img src={declared_attack} alt="declared attack counter" />
+                    <img src={declared_attack} width="80" height="80" alt="declared attack counter" />
                 </div>
 
                 <ol>
@@ -986,7 +986,7 @@ const Combat = (props) => {
                         turned over at this time - assume they have a defense strength of 1 each.
                         <span className="spacer1rem" />
                     </li>
-                    <li><b>Reaction Phase</b> - The defender will get to conduct Reaction Movement, designate artillery, and issue Retreat Orders.
+                    <li><b>Reaction Phase<BsrLink page="30" rule="12.4" /></b> - The defender will get to conduct Reaction Movement, designate artillery, and issue Retreat Orders.
                         <span className="spacer0_5rem" />
                         <div className="indented-box background-green">
                             <div className="indented-box-title">Reaction Movement</div>
@@ -1053,8 +1053,8 @@ const Combat = (props) => {
 
 
                             <div className="normal-text-n-images bold">
-                                <div>Orders Placement<BsrLink page="30" rule="12.53" /></div>
-                                <img src={orders} alt="orders marker" />
+                                <div>Orders Placement<BsrLink page="30" rule="12.53" /> </div>
+                                <img src={orders} style={{marginLeft: "5px"}} width="80" height="80" alt="orders marker" />
                             </div>
 
                             <span className="spacer0_5rem" />
@@ -1099,7 +1099,7 @@ const Combat = (props) => {
                             <div className="box-with-image-to-left" style={{ background: "#fbb" }}>
                                 <div>Effects of the No Retreat order</div>
                                 <div className="two-column-flex counter-left">
-                                    <img src={counter_no_retreat} style={{ width: "auto" }} alt="counter no retreat order" />
+                                    <img src={counter_no_retreat} alt="counter no retreat order" />
                                     <div>
                                         <ul>
                                             <li>For the Defender with a No Retreat order, apply +1 DRM to the combat die roll. Attacker with No Retreat does not get a DRM.</li>
@@ -1115,7 +1115,7 @@ const Combat = (props) => {
                             <div className="box-with-image-to-left" style={{ background: "#dda" }}>
                                 <div>Effects of the Additional Retreat order</div>
                                 <div className="two-column-flex counter-left">
-                                    <img src={counter_additional_retreat} style={{ width: "auto" }} alt="counter additional retreat order" />
+                                    <img src={counter_additional_retreat} alt="counter additional retreat order" />
                                     <div>
                                         <ul>
                                             <li>Units that get a R result and are under an Additional Retreat order retreat 3 hexes instead of 2. Units can only retreat on a "R" or "Rn" result.</li>
@@ -1143,7 +1143,7 @@ const Combat = (props) => {
                 <span className="spacer2rem" />
                 <div className="subheader-n-images">
                     <div>Mandated Attack<BsrLink page="29" rule="12.3" /></div>
-                    <img src={mandatedAttack} alt="Mandated Attack marker" />
+                    <img src={mandatedAttack} alt="Mandated Attack marker" width="80" height="80" />
                     <img src={joseph_stalin} alt="Joseph Stalin looking judgemental" />
                 </div>
                 <span className="spacer0_5rem" />
@@ -1432,8 +1432,8 @@ const Combat = (props) => {
                         <b>Additionally:</b>
                         <span className="spacer0_5rem" />
                         <div className="two-column-flex counter-left flush-left" style={{ marginLeft: "10px", marginBottom: "5px" }}>
-                            <img src={fuelShortage} style={{ height: "auto" }} alt="fuel shortage counter" />
-                            <img src={panzerRegiment} style={{ height: "auto" }} alt="panzer regiment unit" />
+                            <img src={fuelShortage} alt="fuel shortage counter" width="80" height="80" />
+                            <img src={panzerRegiment} alt="panzer regiment unit" width="80" height="80" />
                             <div>
                                 <span className="title">Fuel Shortage and Star Result<BsrLink page="43" rule="16.32b" /></span><br />
                                 If attacking <b>or defending</b> Axis units include a red attack strength armored unit with a Fuel Shortage marker, then a Star Result
