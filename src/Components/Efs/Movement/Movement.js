@@ -152,19 +152,21 @@ const Movement = (props) => {
             A unit that enters an enemy ZOC must stop moving for that phase.
             <BsrLink page="21" rule="10.32" />
             <span className="spacer0_5rem" />
-            <span className="slight-bold red-ask">Exception</span> - A unit conducting Reaction Movement does not pay an extra MP to enter an enemy ZOC
+            <span className="slight-bold red-ask">*Exception</span> - A unit conducting Reaction Movement does not pay an extra MP to enter an enemy ZOC
             (although the destination hex must be occupied by a friendly unit).
             <BsrLink page="21" rule="12.43" />
             <span className="spacer0_5rem" />
-            <span className="slight-bold red-ask">Exception</span> - A unit or stack of units attempting Overrun do not pay an extra MP for entering an enemy ZOC
+            <span className="slight-bold red-ask">*Exception</span> - A unit or stack of units attempting Overrun do not pay an extra MP for entering an enemy ZOC
             from where it will be attempting overrun (although they do pay a +1 MP for attempting an overrun, so it sort of washes out).
             <BsrLink page="26" rule="11.37b" />
             <span className="spacer0_5rem" />
             ZOCs do not extend into Major City hexes, even from an adjacent
             Major City hex.<BsrLink page="24" rule="10.49" />
             <span className="spacer0_5rem" />
-            ZOCs from unit(s) in towns or cities, while in Mud weather, do extend
-            into adjacent hexes as normal (not from Major City hex to adjacent Major City hex).
+            During Mud weather, ZOCs of red-box or orange MA units do not extend into
+            adjacent hexes unless the unit(s) is in a town or city
+            (not from Major City hex to adjacent Major City hex), or if the unit(s) is on a road or railroad - in which
+            case their ZOC will extend into adjacent hexes where the same road or railroad connects to.
             <BsrLink page="6" rule="3.24" /><BsrLink page="24" rule="10.49" />
 
             <span className="spacer0_5rem" />
@@ -254,10 +256,16 @@ const Movement = (props) => {
             </div>
             <span className="spacer1rem" />
             <div>
-                Super-heavy artillery (marked by unit symbol and green movement rate) are very restricted in how they can move.
+                Super-Heavy artillery (marked by unit symbol and green movement rate) are very restricted in how they can move.
                 <span className="spacer0_5rem" />
                 They have two sides, a mobile side and a firing side. They must be on
                 their mobile side to be moved.<BsrLink page="32" rule="13.41d" />
+                <span className="spacer0_5rem" />
+                Super-Heavy Artillery units change modes during the friendly Engineering
+                Phase. If the S-HA unit did not move during the previous friendly
+                Movement Phase, it can change from Mobile mode to Firing
+                mode. <BsrLink page="32" rule="13.42b" />
+
                 <span className="spacer0_5rem" />
                 They can be moved by railroad movement (regardless of weather).<BsrLink page="32" rule="13.41d" />
                 <span className="spacer0_5rem" />
@@ -574,7 +582,7 @@ const Movement = (props) => {
                 it, but it can be in enemy ZOC.
                 <BsrLink page="57" rule="22.44c" />
                 <span className="spacer0_5rem" />
-                Refer to the Bridge Repair Table for DRMS and then roll for the results of the
+                Refer to the Bridge Repair Table for DRMs and then roll for the results of the
                 attempt to repair.
                 <BsrLink page="57" rule="22.45b" />
             </div>
@@ -588,7 +596,7 @@ const Movement = (props) => {
                 </div>
             </div>
             <span className="spacer1rem" />
-            Units with an Additional Retreat marker retreats 3 hexes instead of the normal 2 hexes.<BsrLink page="44" rule="16.45b" />
+            After combat, units with an Additional Retreat marker retreats 3 hexes instead of the normal 2 hexes.<BsrLink page="44" rule="16.45b" />
             <span className="spacer0_5rem" />
             The non-owning player retreats the unit(s), but cannot move them as to where they suffer loses, if an alternative
             safe path exists.<BsrLink page="44" rule="16.45b" />
