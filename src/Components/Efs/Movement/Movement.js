@@ -7,7 +7,7 @@ import infiltration_movement_example from "../../../images/efs/movement/infiltra
 import motorway from "../../../images/efs/movement/motorway.jpg";
 import roadsigns from "../../../images/efs/movement/roadsigns.jpg";
 import soviet_cossack from "../../../images/efs/movement/soviet_cossack.png";
-import german_pontoon_bridge from "../../../images/efs/movement/german_pontoon_bridge.png";
+import german_pontoon_bridge from "../../../images/efs/movement/german_pontoon_bridge.jpg";
 import german_troops_railroad from "../../../images/efs/movement/german_troops_railroad.png";
 import mudroad from "../../../images/efs/movement/mudroad.jpg";
 import right_arrow from "../../../images/efs/right_arrow.png";
@@ -18,6 +18,7 @@ import sovietTrain from "../../../images/efs/movement/soviet_train_120x120.png"
 import sovietNavalArtillery from "../../../images/efs/movement/soviet_naval_artillery_120x120.png"
 import germanInfantryDivision from "../../../images/efs/supply/german_infantry_division_120.png"
 import germanHeavyArtillery from "../../../images/efs/movement/german_heavy_artiilery.png"
+import germanSuperHeavyArtillery from "../../../images/efs/movement/germanSuperHeavyArtillery.jpg"
 import germanRocketArtillery from "../../../images/efs/movement/german_rocket_artillery_120.png"
 import germanPanzer from "../../../images/efs/movement/german_panzer_120x120.png"
 import roadsExample from "../../../images/efs/movement/roads_example.jpg"
@@ -78,7 +79,7 @@ const Movement = (props) => {
                 <li><img src={sovietCavalry} alt="Soviet cavalry" width="100" height="100" />
                     <div>
                         <span className="list_header">Yellow movement<BsrLink page="27" rule="11.4" /></span>
-                        Infiltration capable.</div>
+                        Normal movement, with the addition of Infiltration capable.</div>
                 </li>
                 <li><img src={sovietTrain} alt="Soviet train" width="100" height="100" />
                     <div>
@@ -93,11 +94,11 @@ const Movement = (props) => {
                 <li><img src={germanRocketArtillery} alt="German rocket artillery" width="100" height="100" />
                     <div>
                         <span className="list_header">Orange movement<BsrLink page="20" rule="10.28" /></span>
-                        Motorized but only moves in Regular Movement phase.
+                        Motorized but only moves in the regular Movement phase.
                     </div></li>
                 <li><img src={germanPanzer} alt="German panzer regiment" width="100" height="100" />
                     <div><span className="list_header">Red boxed movement<BsrLink page="19" rule="10.12" /></span>
-                        Motorized movement that moves in Motorized Movemment Phase.</div></li>
+                        Motorized movement that moves in regular Movement and Motorized Movement Phases.</div></li>
                 <li><img src={germanHeavyArtillery} alt="German heavy artillery" width="100" height="100" />
                     <div>
                         <span className="list_header">Blue movement<BsrLink page="58" rule="22.51" /></span>
@@ -133,14 +134,49 @@ const Movement = (props) => {
             <div>
                 As you can see, the Soviets are at a disadvantage.
                 <span className="spacer0_5rem" />
-                The Axis player gets to move all his units in the regular Movement Phase to set up combats, but the Soviet player
-                can <span className="red-ask">*</span>only move motorized units before combat.
+                The Axis player gets to move all his units in the regular Movement Phase to set up combats,
+                but the Soviet player
+                can usually only move motorized units before combat.
                 <span className="spacer0_5rem" />
-                <span className="red-ask">*The Soviet player does have a limited ability to move some non-motorized units during
+
+
+                <div className="boxed-titled">
+                    <div>See the Movement Phase Chart for complete details</div>
+                    <div className="axis-movement-phase-chart">
+                        <span>Axis Movement Phase</span> - All Axis units can move during
+                        the Axis regular Movement Phase at full movement rates. Flotillas and Armored Trains can move at their full movement rate, but
+                        then cannot move in the regular Movement Phase.
+                    </div>
+                    <div className="axis-movement-phase-chart">
+                        <span>Axis Motorized Movement Phase</span> - Only Axis motorized units (red-boxed MA units) and Cavalry can move, at 1/2 their movement rates.
+                        Flotillas and Armored trains can move at their full movement rate if they did not move in the regular Movement Phase.
+                    </div>
+                    <div className="soviet-movement-phase-chart">
+                        <span>Soviet Motorized Movement Phase</span> - Only Soviet motorized units (red-boxed MA units) move at their
+                        full movement rates. Cavalry move at 1/2 their movement rates. Flotillas and Armored Trains can move at their full movement rate, but
+                        then cannot move in the regular Movement Phase.
+                    </div>
+                    <div className="soviet-movement-phase-chart">
+                        <span>Soviet Movement Phase</span> - All units can move at their full movement rates,
+                        except motorized units (red-boxed MA units) which move at 1/2 their movement rates.
+                        Flotillas and Armored Trains, if they did not move in the Motorized Phase, can move at their full movement rate.
+
+                    </div>
+                    <div>
+                        When halving movement rates, retain fractions. Units that are Out of Supply
+                        may have a penalty of -2 MP to their movement rate (before any halving). <BsrLink page="11" rule="6.35" />
+                    </div>
+                </div>
+                <span className="spacer0_5rem" />
+                <span>The Soviet player does have a limited ability to move some non-motorized units during
                     the Soviet Motorized Movement Phase by having a headquarters "Activate" a non-motorized unit.
                     This is discussed below under "Soviet Non-Motorized Unit Activation".</span>
 
             </div>
+            <span className="spacer0_5rem" />
+            Note - the two different movement phases are often referred to as
+            Movement Phase and Motorized Movement Phase. To keep things clear, if I'm referring to specifically
+            the "Movement Phase" (not the Motorized Movement Phase), I'll call it the "regular Movement Phase".
 
             <div className="subheader-rule">
                 ZOC effects on Movement<BsrLink page="21" rule="10.3" />
@@ -174,7 +210,8 @@ const Movement = (props) => {
                 Terrain Effects on Movement<BsrLink page="21" rule="10.4" />
             </div>
             <span className="spacer0_5rem" />
-            The <span className="b">Terrain Effects Chart</span> has many different costs for different types, and combinations, of terrain. There are different columns for "Dry" weather, "Mud", "Frost", and "Arctic".
+            The <span className="b">Terrain Effects Chart</span> has many different costs for different types, and combinations, of terrain. There are different 
+            columns for "Dry", "Mud", "Frost", and "Arctic" weather.
             <span className="spacer0_5rem" />
             There can also be conditions that cause "Lingering mud" and "Lingering snow", depending
             on the previous turn's weather.<BsrLink page="9" rule="5.2" />
@@ -249,11 +286,12 @@ const Movement = (props) => {
 
             <span className="spacer2rem" />
 
-            <div className="subheader-image">
-
+            <div className="subheader-image header-2-image">
                 <div>Super-Heavy Artillery<BsrLink page="32" rule="13.4" /></div>
                 <img src={germanHeavyArtillery} alt="German heavy artillery" width="80" height="80" />
+                <img src={germanSuperHeavyArtillery} alt="German super heavy artillery" width="141" height="100" />
             </div>
+
             <span className="spacer1rem" />
             <div>
                 Super-Heavy artillery (marked by unit symbol and green movement rate) are very restricted in how they can move.
@@ -331,7 +369,7 @@ const Movement = (props) => {
                 In Mud weather, units spend 2 MPs to enter a clear terrain hex
                 along a minor road. If other terrain, then the units need to
                 pay the cost for that terrain, ignoring the minor road.
-                Yes, minor roads pretty much disappear in Mud weather, and
+                Yes, minor roads pretty much disappear in Mud weather (except for ZOC along a minor road), and
 
                 if you have any heavy artillery on a trail in mud, it will have to stay
                 there until the Mud goes away.
@@ -475,8 +513,8 @@ const Movement = (props) => {
             <span className="spacer1rem" />
 
             <div>
-                Bridges over major rivers are marked on the map.
-                Where a road or railroad crosses regular river
+                Bridges over Major Rivers are marked on the map.
+                Where a road or railroad crosses a non-major river, it
                 has an implied bridge. Where both a road and a railroad
                 crosses a bridge, treat them as separate bridges. Both
                 of which are subject to destruction and repair.

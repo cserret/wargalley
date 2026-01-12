@@ -29,6 +29,49 @@
             }
         }
     }
+    .boxed-titled {
+        position: relative;
+        margin-top: 1rem;
+        border: 1px solid black;
+        background: #ede7e7;
+        >div:nth-child(1) {
+            position: absolute;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            top: -0.8rem;
+            left: 1rem;
+            padding: 0 0.5rem;
+            border: 1px solid black;
+            background: white;
+            display: inline-block;
+        }
+        >div:nth-child(2) {
+            //margin: 1rem 1rem 0.5rem 1rem;
+            margin-top: 1.1rem;
+        }
+        >div:not(:first-child) {
+            //margin: 0.5rem 1rem 1rem 1rem;
+            font-size: 90%;
+            padding: 0.3rem 0.4rem 0.2rem 0.4rem;
+            //margin-top: 0.1rem;
+            margin-bottom: 0.2rem;
+
+        }
+        div.axis-movement-phase-chart {
+            background: #c6cbcd;
+            span {
+                font-weight: bold;
+            }
+        }
+        div.soviet-movement-phase-chart {
+            background: #fda672;
+            span {
+                font-weight: bold;
+            }
+        }
+    }
     ul.small-list {
         display: block;
         margin-block-start: 0.2em;
