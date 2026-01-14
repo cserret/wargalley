@@ -89,7 +89,7 @@ const Movement = (props) => {
                 <li><img src={sovietNavalArtillery} alt="German heavy artillery" width="100" height="100" />
                     <div>
                         <span className="list_header">Green movement<BsrLink page="32" rule="13.41" /></span>
-                        Super Heavy artillery movement.
+                        Super Heavy Artillery movement.
                     </div></li>
                 <li><img src={germanRocketArtillery} alt="German rocket artillery" width="100" height="100" />
                     <div>
@@ -968,11 +968,11 @@ const Movement = (props) => {
             </div>
             <span className="spacer0_5rem" />
             Zones of Air Interdiction (ZOI) represent areas where Axis air units
-            are interfering with Soviet ground movement. Overlapping of ZOIs do not
+            are interfering with Soviet ground movement and HQ operations. Overlapping of ZOIs do not
             confer any additional penalties on movement. Only Axis air units can create ZOIs.
             <BsrLink page="36" rule="14.6" /><BsrLink page="37" rule="14.64" /><BsrLink page="37" rule="14.65" />
             <span className="spacer0_5rem" />
-            A unit(s) conducting railroad movement, or armored train, paus 12 railroad transport MPs
+            A unit(s) conducting railroad movement, or armored train, pays 12 railroad transport MPs
             per interdicted hex.<BsrLink page="37" rule="14.65" />
             <span className="spacer0_5rem" />
             Flotillas pay 3 MPs to enter a interdicted hex.<BsrLink page="37" rule="14.65" />
@@ -981,7 +981,7 @@ const Movement = (props) => {
             <span className="spacer0_5rem" />
             The benefit for moving along roads is not available when the hex is in an enemy ZOI,
             unless the road terrain type is woods. For bridges, they avoid having the
-            road benefit negated when one side and/or the other side of the bridge in woods.
+            road benefit negated when one side and/or the other side of the bridge is in woods.
             <span className="spacer0_5rem" />
             Air transport missions taking off from or landing in an interdicted hex are subject to AA fire.
             <BsrLink page="37" rule="14.76" />
@@ -989,7 +989,7 @@ const Movement = (props) => {
             Units doing Reaction movement cannot enter or leave an enemy ZOI.
             <BsrLink page="30" rule="12.41a" />
             <span className="spacer0_5rem" />
-            Retreat Orders cannot be given to units in an enemy ZOI.
+            Additional Retreat Orders cannot be given to units in an enemy ZOI.
             <BsrLink page="31" rule="12.53g" />
 
 
@@ -1049,7 +1049,7 @@ const Movement = (props) => {
                 <span className="spacer0_5rem" />
                 The unit(s) doing the overrun must have enough movement points left to
                 have entered the overrun hex,
-                plus the overrun cost of 1 MP (but don't pay the 1 MP cost for entering enemy ZOC).
+                plus the overrun cost of 1 MP.
                 They do not pay another 1 MP for entering any enemy ZOC
                 in the overrun hex. <BsrLink page="26" rule="11.37b" />
 
@@ -1067,12 +1067,12 @@ const Movement = (props) => {
                 <BsrLink page="26" rule="11.37j" />
                 <span className="spacer0_5rem" />
                 Units doing an overrun need to have at least 5-1 odds, or 12-1 odds if
-                attempting to overrun (with a motorized engineer) across a fortified hexside or into a strongpoint,
+                attempting to overrun (with a required motorized engineer) across a fortified hexside or into a strongpoint,
                 against the defending unit(s).
                 <BsrLink page="26" rule="11.36c" />
 
                 <span className="spacer0_5rem" />
-                Combat Supply is not used in overruns.
+                Combat Supply is not used for overruns.
                 <BsrLink page="26" rule="11.36e" />
                 <span className="spacer0_5rem" />
                 Air missions are not used for overruns.
@@ -1178,16 +1178,15 @@ const Movement = (props) => {
                     <span className="spacer1rem" />
                     <div className="bulletsWithImageToRight">
                         <div>
-                            Units with an overrun marker on them:<BsrLink page="27" rule="11.38a" />
+                            Unit(s) with an overrun marker on them have these effects:<BsrLink page="27" rule="11.38a" />
                             <ul className="bare-ul">
-                                <li>do not project a ZOC.</li>
+                                <li>does not project a ZOC.</li>
                                 <li>cannot provide artillery support (if it is an artillery unit).
                                     Turn to "fired" side if it has one.
                                 </li>
                                 <li>are not eligible for reaction movement.</li>
-                                <li>HQs that get overrun get flipped to their non-op side.<BsrLink page="27" rule="11.38c" /></li>
-                                <li><span>An overrun attempt or Declared Combat against a unit or stack with an Overrun marker</span>
-                                    <span className="nl-pl">on it receives a -1 DRM.<BsrLink page="27" rule="11.38b" /></span></li>
+                                <li>any HQs get flipped to their non-op side.<BsrLink page="27" rule="11.38c" /></li>
+                                <li>receives a -1 DRM when an overrun or combat occurs against it.<BsrLink page="27" rule="11.38b" /></li>
                             </ul>
                         </div>
                         <div>
@@ -1213,7 +1212,7 @@ const Movement = (props) => {
                         a combination Fortified hexline and Strongpoint hex only costs +1 to cross and enter,
                         not +2.<BsrLink page="48" rule="18.12" /></li>
                     <li>Walking (or driving) along a Railroad gives a benefit of -1 MP cost when moving through a hex with Woods in it.<BsrLink page="21" rule="10.42a" /></li>
-                    <li>Motorized (with orange and green MAs) may enter a swamp hex along a railroad by spending
+                    <li>Motorized units with orange or green MAs may enter a swamp hex along a railroad by spending
                         3 MPs. If moving along a road, they pay that road's rate.<BsrLink page="21" rule="10.42c" /></li>
                 </ul>
             </div>
